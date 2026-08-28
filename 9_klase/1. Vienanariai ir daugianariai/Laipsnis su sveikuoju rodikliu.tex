@@ -1,0 +1,145 @@
+\documentclass[11pt,a4paper]{scrartcl} 
+
+% Kalbos nustatymai (lietuvių kalbai)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tasks}
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{lmodern} % Įkeliame modernų šriftą, kuris palaiko visas reikalingas formas
+\usepackage[lithuanian]{babel}
+
+% Įkeliame jūsų .sty failą (įsitikinkite, kad Overleaf projekte šalia yra failas manostilius.sty)
+\usepackage{manostilius_lt}
+
+% Projekto informacija (būtina preambulėje dėl jūsų stiliaus specifikos)
+\title{Laipsnis su sveikuoju rodikliu}
+\author{Andrius Berniukevičius} 
+
+\begin{document}
+
+\maketitle
+
+
+\section{Laipsnio su sveikuoju rodikliu apibrėžimas}
+Norint išplėsti laipsnio su natūraliuoju rodikliu apibrėžtį iki sveikųjų skaičių, būtina nustatyti laipsnio reikšmes, kai rodiklis yra lygus nuliui arba neigiamam sveikajam skaičiui. 
+\begin{proposition}[Laipsnio, kurio rodiklis lygus nuliui, reikšmė visada lygi $1$ ]
+Jei $a \neq 0$, tai $a^0 = 1$.
+\end{proposition}
+\begin{proof}
+Laipsnių su vienodais pagrindais dalybos savybė teigia, kad bet kokiems natūraliesiems skaičiams $m$ ir $n$ (kai $m > n$) galioja savybė:
+$$\frac{a^m}{a^n} = a^{m-n}$$
+Sukurkime situaciją, kai laipsnio rodikliai yra lygūs, t. y. $m = n$. Užrašykime dviejų vienodų laipsnių dalybą $\frac{a^n}{a^n}$ ir išnagrinėkime ją dviem būdais:
+\begin{enumerate}
+    \item \textbf{Remiantis aritmetikos taisykle:} Bet kokį nelygų nuliui skaičių ar reiškinį padaliję iš savęs, gauname vienetą:
+    $$\frac{a^n}{a^n} = 1$$
+    \item \textbf{Remiantis laipsnių dalybos savybe:} Atimame rodiklius:
+    $$\frac{a^n}{a^n} = a^{n-n} = a^0$$
+\end{enumerate}
+Kadangi abiem būdais buvo pertvarkomas tas pats reiškinys $\frac{a^n}{a^n}$, gautieji rezultatai privalo būti lygūs:
+$$a^0 = 1$$
+\end{proof}
+
+\begin{proposition} [Laipsnis su neigiamu sveikuoju rodikliu]
+Jei $a \neq 0$ ir $k$ yra natūralusis skaičius, tai $a^{-k} = \frac{1}{a^k}$.
+\end{proposition}
+\begin{proof}
+Paimkime bet kokį natūralųjį skaičių $m$. Kadangi $k$ taip pat yra natūralusis skaičius, sudarykime laipsnių su vienodais pagrindais dalybos reiškinį, kuriame vardiklio rodiklis yra didesnis už skaitiklio rodiklį tiksliai skaičiumi $k$:
+$$\frac{a^m}{a^{m+k}}$$
+Išnagrinėkime šį reiškinį dviem skirtingais būdais, remdamiesi tik natūraliųjų laipsnių savybėmis:
+\begin{enumerate}
+    \item \textbf{Prastinimas pagal apibrėžimą:} \\
+    Pagal laipsnių daugybos savybę, vardiklį galime išskleisti kaip laipsnių su natūraliaisiais rodikliais sandaugą: $a^{m+k} = a^m \cdot a^k$. Įrašykime tai į trupmeną:
+    $$\frac{a^m}{a^{m+k}} = \frac{a^m}{a^m \cdot a^k}$$
+    Kadangi skaitiklyje ir vardiklyje turime vienodą natūralųjį laipsnį $a^m$, jį galime suprastinti:
+    $$\frac{\cancelto{1}{a^m}}{\cancelto{1}{a^m} \cdot a^k} = \frac{1}{a^k}$$
+    \item \textbf{Laipsnių savybių taikymas:} \\
+    Jeigu pritaikytume  laipsnių dalybos savybę $\frac{a^m}{a^n} = a^{m-n}$ tiesiogiai, gautume:
+    $$\frac{a^m}{a^{m+k}} = a^{m - (m + k)} = a^{m - m - k} = a^{-k}$$
+\end{enumerate}
+Kadangi abu sprendimo būdai gauti pertvarkant tą patį pradinį reiškinį, jų galutiniai rezultatai privalo būti lygūs:
+$$a^{-k} = \frac{1}{a^k}$$
+\end{proof}
+\begin{corollary}
+Keliant trupmeną neigiamu laipsniu, ji yra apverčiama, o laipsnio rodiklis tampa teigiamas:
+$$\left(\frac{a}{b}\right)^{-k} = \left(\frac{b}{a}\right)^k$$
+\end{corollary}
+\begin{proof}
+Šį teiginį įrodysime kaip išvadą iš jau įrodytos lygybės 
+$$x^{-k} = \frac{1}{x^k}$$
+Tarkime, kad mūsų laipsnio pagrindas yra trupmena $x = \frac{a}{b}$. Pritaikykime jai neigiamo laipsnio apibrėžimą:
+$$\left(\frac{a}{b}\right)^{-k} = \frac{1}{\left(\frac{a}{b}\right)^k}$$
+Vardikliui pritaikome trupmenos kėlimo laipsniu savybę:
+$$\frac{1}{\left(\frac{a}{b}\right)^k} = \frac{1}{\frac{a^k}{b^k}}$$
+Gautą užrašą suprantame kaip vieneto dalybą iš trupmenos $\frac{a^k}{b^k}$. Žinome, kad dalijant iš trupmenos, veiksmas pakeičiamas daugyba iš jai atvirkštinės trupmenos:
+$$1 : \frac{a^k}{b^k} = 1 \cdot \frac{b^k}{a^k} = \frac{b^k}{a^k}$$
+Gautai trupmenai $\frac{b^k}{a^k}$ pritaikome laipsnių savybę atvirkštine tvarka (iškeliame bendrą laipsnio rodiklį $k$ už skliaustų):
+$$\frac{b^k}{a^k} = \left(\frac{b}{a}\right)^k$$
+Sujungę visą mąstymo grandinę nuo pradžios iki galo, gauname:
+$$\left(\frac{a}{b}\right)^{-k} = \left(\frac{b}{a}\right)^k$$
+\end{proof}
+Dabar galime suformuluoti laipsnio su sveikuoju rodikliu apibrėžimą:
+\begin{definition}
+   \vocab{Laipsnis su sveikuoju rodikliu} yra laipsnis $a^n$, kur  $a \neq 0$ ir $n$ yra sveikasis skaičius.
+\end{definition}
+Galimi trys atvejai:
+\begin{enumerate}
+    \item \textbf{Kai rodiklis teigiamas ($n > 0$):} 
+    $$a^n = \underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}$$
+    
+    \item \textbf{Kai rodiklis lygus nuliui ($n = 0$):} 
+    $$a^0 = 1$$
+    
+    \item \textbf{Kai rodiklis neigiamas ($n < 0$, t. y. $n = -k$, kur $k$ -- natūralusis skaičius):}
+    $$a^{-k} = \frac{1}{a^k}$$
+\end{enumerate}
+\begin{remark}
+Jei pagrindas yra paprastoji trupmena, neigiamas sveikasis rodiklis ją tiesiog apverčia:
+
+$$\left(\frac{a}{b}\right)^{-k} = \left(\frac{b}{a}\right)^k $$
+\end{remark}
+
+Jei pagrindas yra paprastoji trupmena, neigiamas sveikasis rodiklis ją tiesiog apverčia:
+
+$$\left(\frac{a}{b}\right)^{-k} = \left(\frac{b}{a}\right)^k = \frac{b^k}{a^k}$$
+
+
+\section{Uždaviniai}
+\begin{problem}
+Atlikite veiksmus su laipsniais:
+
+\begin{tasks}[label={(\arabic*)},label-offset=0.9em](2)
+    \task $(((x^2)^5)^4)^3 : x^{100}$
+    \task $\left(\frac{a^{25}}{b^{15}}\right)^4 \cdot \left(\frac{b^{30}}{a^{40}}\right)^2$
+    \task $(y^{15} \cdot y^{25})^3 : (y^{12})^8 \cdot y^{10}$
+    \task $(a^{10} \cdot b^{20} \cdot c^{30})^5 : (a^{12} \cdot b^{24} \cdot c^{36})^4$
+    \task $\frac{(p^{18} : p^{10})^5 \cdot p^{20}}{(p^3 \cdot p^7)^4}$
+    \task $\frac{(2a^{15})^4 \cdot (5a^{10})^2}{(10a^{30})^2}$
+    \task $\left( \frac{x^{25} \cdot y^{35}}{x^{15} \cdot y^{20}} \right)^4$
+    \task $\frac{u^{50}}{v^{30}} : \left(\frac{u^{15}}{v^{10}}\right)^3$
+    \task $x^{100} : \left( \frac{(x^{15})^4 \cdot x^{20}}{x^{10}} \right)$
+    \task $\frac{(m^{12} \cdot n^{18})^5 \cdot k^{40}}{(m^{20} \cdot n^{30})^3 \cdot (k^8)^5}$
+    \task $(((z^3)^4)^2 \cdot z^{15}) : z^{30}$
+    \task $\left(\frac{c^{40}}{d^{20}}\right)^3 : \left(\frac{c^{50}}{d^{30}}\right)^2$
+    \task $\frac{(3x^{12}y^8)^4}{(9x^{20}y^{15})^2}$
+    \task $\frac{(a^{15} \cdot a^{25})^4}{(a^{20})^7 \cdot a^{10}}$
+    \task $(w^{50} : w^{20})^3 \cdot (w^{10} : w^5)^4$
+    \task $\left( \frac{x^{30} \cdot y^{40} \cdot z^{50}}{x^{20} \cdot y^{25} \cdot z^{45}} \right)^5$
+    \task $\frac{(2^{30} \cdot 2^{40})^2}{(2^{35})^4}$
+    \task $(a^{18} \cdot b^{25})^5 : (a^{15} \cdot b^{20})^6$
+    \task $\frac{(((p^5)^4)^3)^2}{p^{100} \cdot p^{15}}$
+    \task $\left(\frac{m^{60}}{n^{40}}\right)^2 : \frac{m^{100}}{(n^{16})^5}$
+    \task $\frac{(4^5 \cdot 8^3)^2}{16^6 \cdot 2^{10}}$
+    \task $\frac{(9^{10} \cdot 27^5)^2}{(81^4)^3 \cdot 3^{15}}$
+    \task $\frac{125^8 \cdot 25^{10}}{(5^6)^4 \cdot 25^5}$
+    \task $\left( \frac{32^4 \cdot 8^6}{4^{10} \cdot 2^{15}} \right)^3$
+    \task $\frac{(1000^5 \cdot 100^8)^2}{10^{50} \cdot 10000^2}$
+    \task $\frac{64^5 \cdot (16^3)^4}{(4^8)^3 \cdot 8^5}$
+\end{tasks}
+\end{problem}
+
+
+
+
+
+\end{document}

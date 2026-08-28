@@ -1,0 +1,167 @@
+\documentclass[11pt,a4paper]{scrartcl} 
+
+% Kalbos nustatymai (lietuvių kalbai)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tasks}
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{lmodern} 
+\usepackage[lithuanian]{babel}
+
+% Įkeliame jūsų .sty failą (įsitikinkite, kad Overleaf projekte šalia yra failas manostilius.sty)
+\usepackage{manostilius_lt}
+
+% Projekto informacija (būtina preambulėje dėl jūsų stiliaus specifikos)
+\title{Laipsnis su natūraliuoju rodikliu ir jo savybės}
+\author{Andrius Berniukevičius} 
+
+\begin{document}
+
+\maketitle
+
+
+\section{Laipsnio apibrėžimas}
+
+\begin{definition}
+   Skaičiaus $a$ \vocab{laipsniu su natūraliuoju rodikliu $n$} (kai $n > 1$) vadinama $n$ vienodų dauginamųjų, kurių kiekvienas lygus $a$, sandauga.
+\end{definition}
+
+Užrašoma:
+$$a^n = \underbrace{a \cdot a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}$$
+Jei laipsnio rodiklis $n = 1$, tai skaičiaus pirmuoju laipsniu laikomas pats skaičius: $$a^1 = a$$
+Užraše $a^n$:
+\begin{itemize}
+    \item \textbf{$a$} vadinamas \textbf{laipsnio pagrindu} (tai skaičius, kurį dauginame).
+    \item \textbf{$n$} vadinamas \textbf{laipsnio rodikliu} (tai natūralusis skaičius, kuris rodo, kiek kartų pagrindas kartojasi sandaugoje).
+\end{itemize}
+
+\begin{remark}
+    Svarbu nesupainioti daugybos ir kėlimo laipsniu:
+\begin{itemize}
+    \item \textbf{Daugyba:} $4 \cdot 3 = 4 + 4 + 4 = 12$ (skaičių sudedame $3$ kartus)
+    \item \textbf{Laipsnis:} $4^3 = 4 \cdot 4 \cdot 4 = 64$ (skaičių sudauginame $3$ kartus)
+\end{itemize}
+\end{remark}
+
+\section{Laipsnio su natūraliuoju rodikliu savybės}
+Visų žemiau esančių savybių įrodymai remiasi pagrindiniu laipsnio su natūraliuoju rodikliu apibrėžimu: 
+$a^n = \underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}$.
+\begin{property}[Laipsnių su vienodais pagrindais daugyba]
+Kai dauginami laipsniai su vienodais pagrindais, pagrindas paliekamas tas pats, o rodikliai sudedami:
+$$a^m \cdot a^n = a^{m+n}$$
+\end{property}
+\begin{proof}
+Užrašykime abu sandaugos narius kaip vienodų dauginamųjų sandaugas pagal apibrėžimą:
+$$a^m \cdot a^n = (\underbrace{a \cdot a \cdot \dots \cdot a}_{m \text{ kartų}}) \cdot (\underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}})$$
+Kadangi skliaustai daugyboje asociatyvumo dėsnio pagrindu esmės nekeičia, matome, kad skaičius $a$ iš viso bendroje sandaugoje pasikartoja $m + n$ kartų:
+$$a^m \cdot a^n = \underbrace{a \cdot a \cdot \dots \cdot a}_{m+n \text{ kartų}} = a^{m+n}$$
+\end{proof}
+
+\begin{property}[Laipsnių su vienodais pagrindais dalyba]
+Kai dalijami laipsniai su vienodais pagrindais, pagrindas paliekamas tas pats, o iš dalinio rodiklio atimamas daliklio rodiklis:
+$$a^m : a^n = a^{m-n} \quad (\text{kai } a \neq 0 \text{ ir } m > n)$$
+\end{property}
+\begin{proof}
+Užrašykime dalybą trupmena ir išskleiskime abu laipsnius sandaugomis:
+$$\frac{a^m}{a^n} = \frac{\underbrace{a \cdot a \cdot \dots \cdot a}_{m \text{ kartų}}}{\underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}}$$
+Kadangi skaitiklyje yra $m$ dauginamųjų, o vardiklyje – $n$ dauginamųjų, ir žinome, kad $m > n$, galime suprastinti po $n$ dauginamųjų $a$ tiek skaitiklyje, tiek vardiklyje. Vardiklyje visi $a$ išsiprastina (lieka $1$), o skaitiklyje lieka $m - n$ dauginamųjų:
+$$\frac{a^m}{a^n} = \underbrace{a \cdot a \cdot \dots \cdot a}_{m-n \text{ kartų}} = a^{m-n}$$
+$\square$
+\end{proof}
+\begin{example}
+$$\frac{a^7}{a^3} = \frac{a \cdot a \cdot a \cdot a \cdot a \cdot a \cdot a}{a \cdot a \cdot a}$$
+Dabar pradedame prastinti vienodus dauginamuosius skaitiklyje ir vardiklyje poromis. Kadangi vardiklyje yra trys $a$, jie visi susiprastina su trimis $a$ iš skaitiklio:
+
+$$\frac{\cancelto{1}{a} \cdot \cancelto{1}{a} \cdot \cancelto{1}{a} \cdot a \cdot a \cdot a \cdot a}{\cancelto{1}{a} \cdot \cancelto{1}{a} \cdot \cancelto{1}{a}} = \frac{1 \cdot 1 \cdot 1 \cdot a \cdot a \cdot a \cdot a}{1 \cdot 1 \cdot 1}$$
+Vardiklyje lieka $1$ (jis pranyksta), o skaitiklyje lieka tik $7 - 3 = 4$ dauginamieji:
+
+$$a \cdot a \cdot a \cdot a = a^4$$
+\textbf{Išvada:} \\
+Matome, kad iš pradinių 7 dauginamųjų skaitiklyje atėmėme (suprastinome) 3 dauginamuosius iš vardiklio, todėl galutinis laipsnio rodiklis yra gaunamas atimties būdu: $a^{7-3} = a^4$.
+\end{example}    
+
+\begin{property}[Laipsnio kėlimas laipsniu]
+Keliant laipsnį laipsniu, pagrindas paliekamas tas pats, o rodikliai sudauginami:
+$$(a^m)^n = a^{m \cdot n}$$
+\end{property}
+\begin{proof}
+Pagal apibrėžimą, pagrindą $(a^m)$ reikia sudauginti iš savęs $n$ kartų:
+$$(a^m)^n = \underbrace{a^m \cdot a^m \cdot \dots \cdot a^m}_{n \text{ kartų}}$$
+Pritaikome pirmąją savybę (laipsnių daugybą) – pagrindas lieka $a$, o rodikliai sudedami:
+$$(a^m)^n = a^{\underbrace{m + m + \dots + m}_{n \text{ kartų}}}$$
+Kadangi skaičių $m$ sudedame iš savęs $n$ kartų, tai pagal daugybos apibrėžimą ši suma yra lygi $m \cdot n$:
+$$(a^m)^n = a^{m \cdot n}$$
+\end{proof}
+
+
+
+\begin{property}[Sandaugos kėlimas laipsniu]
+Keliant sandaugą laipsniu, kiekvienas dauginamasis keliamas tuo laipsniu atskirai:
+$$(a \cdot b)^n = a^n \cdot b^n$$
+\end{property}
+\begin{proof}
+Pagal apibrėžimą, sandaugą $(a \cdot b)$ sudauginame iš savęs $n$ kartų:
+$$(a \cdot b)^n = \underbrace{(a \cdot b) \cdot (a \cdot b) \cdot \dots \cdot (a \cdot b)}_{n \text{ kartų}}$$
+Remiantis daugybos perstatomumo (komutatyvumo) ir jungiamumo (asociatyvumo) dėsniais, sugrupuojame visus dauginamuosius $a$ ir visus $b$ atskirai:
+$$(a \cdot b)^n = (\underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}) \cdot (\underbrace{b \cdot b \cdot \dots \cdot b}_{n \text{ kartų}})$$
+Pritaikę laipsnio apibrėžimą abiems sandaugoms skliaustuose, gauname:
+$$(a \cdot b)^n = a^n \cdot b^n$$
+\end{proof}
+\begin{property}[Trupmenos kėlimas laipsniu]
+Keliant trupmeną laipsniu, skaitiklis ir vardiklis keliami tuo laipsniu atskirai:
+$$\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n} \quad (\text{kai } b \neq 0)$$
+\end{property}
+\begin{proof}
+Pagal apibrėžimą, trupmeną dauginame iš savęs $n$ kartų:
+$$\left(\frac{a}{b}\right)^n = \underbrace{\frac{a}{b} \cdot \frac{a}{b} \cdot \dots \frac{a}{b}}_{n \text{ kartų}}$$
+Pagal trupmenų daugybos taisyklę (skaitikliai sudauginami su skaitikliais, vardikliai su vardikliais):
+$$\left(\frac{a}{b}\right)^n = \frac{\underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}}{\underbrace{b \cdot b \cdot \dots \cdot b}_{n \text{ kartų}}}$$
+Pritaikę laipsnio apibrėžimą skaitikliui ir vardikliui atskirai, turime:
+$$\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}$$
+\end{proof}
+
+\section{Uždavinių sprendimo pavyzdžiai}
+
+
+
+
+\section{Uždaviniai}
+\begin{problem}
+Atlikite veiksmus su laipsniais:
+
+\begin{tasks}[label={(\arabic*)},label-offset=0.9em](2)
+    \task $(((x^2)^5)^4)^3 : x^{100}$
+    \task $\left(\frac{a^{25}}{b^{15}}\right)^4 \cdot \left(\frac{b^{30}}{a^{40}}\right)^2$
+    \task $(y^{15} \cdot y^{25})^3 : (y^{12})^8 \cdot y^{10}$
+    \task $(a^{10} \cdot b^{20} \cdot c^{30})^5 : (a^{12} \cdot b^{24} \cdot c^{36})^4$
+    \task $\frac{(p^{18} : p^{10})^5 \cdot p^{20}}{(p^3 \cdot p^7)^4}$
+    \task $\frac{(2a^{15})^4 \cdot (5a^{10})^2}{(10a^{30})^2}$
+    \task $\left( \frac{x^{25} \cdot y^{35}}{x^{15} \cdot y^{20}} \right)^4$
+    \task $\frac{u^{50}}{v^{30}} : \left(\frac{u^{15}}{v^{10}}\right)^3$
+    \task $x^{100} : \left( \frac{(x^{15})^4 \cdot x^{20}}{x^{10}} \right)$
+    \task $\frac{(m^{12} \cdot n^{18})^5 \cdot k^{40}}{(m^{20} \cdot n^{30})^3 \cdot (k^8)^5}$
+    \task $(((z^3)^4)^2 \cdot z^{15}) : z^{30}$
+    \task $\left(\frac{c^{40}}{d^{20}}\right)^3 : \left(\frac{c^{50}}{d^{30}}\right)^2$
+    \task $\frac{(3x^{12}y^8)^4}{(9x^{20}y^{15})^2}$
+    \task $\frac{(a^{15} \cdot a^{25})^4}{(a^{20})^7 \cdot a^{10}}$
+    \task $(w^{50} : w^{20})^3 \cdot (w^{10} : w^5)^4$
+    \task $\left( \frac{x^{30} \cdot y^{40} \cdot z^{50}}{x^{20} \cdot y^{25} \cdot z^{45}} \right)^5$
+    \task $\frac{(2^{30} \cdot 2^{40})^2}{(2^{35})^4}$
+    \task $(a^{18} \cdot b^{25})^5 : (a^{15} \cdot b^{20})^6$
+    \task $\frac{(((p^5)^4)^3)^2}{p^{100} \cdot p^{15}}$
+    \task $\left(\frac{m^{60}}{n^{40}}\right)^2 : \frac{m^{100}}{(n^{16})^5}$
+    \task $\frac{(4^5 \cdot 8^3)^2}{16^6 \cdot 2^{10}}$
+    \task $\frac{(9^{10} \cdot 27^5)^2}{(81^4)^3 \cdot 3^{15}}$
+    \task $\frac{125^8 \cdot 25^{10}}{(5^6)^4 \cdot 25^5}$
+    \task $\left( \frac{32^4 \cdot 8^6}{4^{10} \cdot 2^{15}} \right)^3$
+    \task $\frac{(1000^5 \cdot 100^8)^2}{10^{50} \cdot 10000^2}$
+    \task $\frac{64^5 \cdot (16^3)^4}{(4^8)^3 \cdot 8^5}$
+\end{tasks}
+\end{problem}
+
+
+
+
+
+\end{document}

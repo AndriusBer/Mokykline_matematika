@@ -1,0 +1,214 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tasks}
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{lmodern} 
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
+\usepackage{mathtools}
+\usepackage{microtype}
+
+%%% Colored sections
+\renewcommand*{\sectionformat}%
+  {\color{purple}\S\thesection\enskip}
+\renewcommand*{\subsectionformat}%
+  {\color{purple}\S\thesubsection\enskip}
+\renewcommand*{\subsubsectionformat}%
+  {\color{purple}\S\thesubsubsection\enskip}
+\addtokomafont{paragraph}{\color{orange!35!black}\P\ }
+\KOMAoptions{numbers=noenddot}
+
+%%% Title
+\addtokomafont{subtitle}{\Large}
+\setkomafont{author}{\Large\scshape}
+\setkomafont{date}{\Large\normalsize}
+% Neigiamas vertikalus tarpas, kuris pakelia dokumento antraštę į viršų. 
+% Galite keisti -2.5cm į -3cm (aukščiau) arba -1.5cm (žemiau).
+\titlehead{\vspace*{-2.5cm}} 
+
+% PRIDĖTA: Automatiškai perrašome datą į mokyklos pavadinimą
+\AtBeginDocument{%
+  \date{\normalsize Vilniaus licėjus}
+}
+
+%%% Page setup
+\usepackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+% PRIDĖTA: Ištrintas (\@date) iš puslapio antraštės, kad liktų tik autorius
+\ihead{\footnotesize\textbf{\@author}}
+\automark{section}
+\chead{}
+\ohead{\footnotesize\textbf{\@title}}
+\cfoot{\pagemark}
+
+%%% Macros
+\providecommand{\ol}{\overline}
+\providecommand{\ul}{\underline}
+\providecommand{\wt}{\widetilde}
+\providecommand{\wh}{\widehat}
+\providecommand{\eps}{\varepsilon}
+\providecommand{\half}{\frac{1}{2}}
+\providecommand{\inv}{^{-1}}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily #1}}
+\providecommand{\CC}{\mathbb C}
+\providecommand{\FF}{\mathbb F}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\ts}{\textsuperscript}
+\providecommand{\dg}{^\circ}
+\providecommand{\ii}{\item}
+\providecommand{\defeq}{\coloneqq}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+\providecommand{\hrulebar}{\par
+\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+\par\nointerlineskip \vspace{\baselineskip}}
+
+%%% Optional colored theorems
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{mdbluebox}{%
+  roundcorner=10pt,
+  linewidth=1pt,
+  skipabove=12pt,
+  innerbottommargin=9pt,
+  skipbelow=2pt,
+  linecolor=blue,
+  nobreak=true,
+  backgroundcolor=TealBlue!5,
+}
+\declaretheoremstyle[
+  headfont=\sffamily\bfseries\color{MidnightBlue},
+  mdframed={style=mdbluebox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt}
+]{thmbluebox}
+\mdfdefinestyle{mdredbox}{%
+  linewidth=0.5pt,
+  skipabove=12pt,
+  frametitleaboveskip=5pt,
+  frametitlebelowskip=0pt,
+  skipbelow=2pt,
+  frametitlefont=\bfseries,
+  innertopmargin=4pt,
+  innerbottommargin=8pt,
+  nobreak=true,
+  backgroundcolor=Salmon!5,
+  linecolor=RawSienna,
+}
+\declaretheoremstyle[
+  headfont=\bfseries\color{RawSienna},
+  mdframed={style=mdredbox},
+  headpunct={\\[3pt]},
+  postheadspace={0pt},
+]{thmredbox}
+\mdfdefinestyle{mdgreenbox}{%
+  skipabove=8pt,
+  linewidth=2pt,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false,
+  linecolor=ForestGreen,
+  backgroundcolor=ForestGreen!5,
+}
+\declaretheoremstyle[
+  headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+  bodyfont=\normalfont,
+  spaceabove=2pt,
+  spacebelow=1pt,
+  mdframed={style=mdgreenbox},
+  headpunct={ --- },
+]{thmgreenbox}
+\mdfdefinestyle{mdblackbox}{%
+  skipabove=8pt,
+  linewidth=3pt,
+  rightline=false,
+  leftline=true,
+  topline=false,
+  bottomline=false,
+  linecolor=black,
+  backgroundcolor=RedViolet!5!gray!5,
+}
+\declaretheoremstyle[
+  headfont=\bfseries,
+  bodyfont=\normalfont\small,
+  spaceabove=0pt,
+  spacebelow=0pt,
+  mdframed={style=mdblackbox}
+]{thmblackbox}
+
+%% Aplinkos su rėmeliais (thmtools)
+\declaretheorem[style=thmbluebox,name=Teorema,numberwithin=section]{theorem}
+\declaretheorem[style=thmbluebox,name=Lema,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Savybė,sibling=theorem]{property}
+\declaretheorem[style=thmbluebox,name=Teiginys,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Išvada,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Teorema,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Lema,numbered=no]{lemma*}
+\declaretheorem[style=thmbluebox,name=Teiginys,numbered=no]{proposition*}
+\declaretheorem[style=thmbluebox,name=Išvada,numbered=no]{corollary*}
+\declaretheorem[style=thmgreenbox,name=Algoritmas,sibling=theorem]{algorithm}
+\declaretheorem[style=thmgreenbox,name=Algoritmas,numbered=no]{algorithm*}
+\declaretheorem[style=thmgreenbox,name=Teiginys,sibling=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Teiginys,numbered=no]{claim*}
+\declaretheorem[style=thmredbox,name=Pavyzdys,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Pavyzdys,numbered=no]{example*}
+\declaretheorem[style=thmblackbox,name=Pastaba,sibling=theorem]{remark}
+\declaretheorem[style=thmblackbox,name=Pastaba,numbered=no]{remark*}
+
+%% Standartinės amsthm aplinkos (Apibrėžimai ir užduotys)
+\theoremstyle{definition}
+\newtheorem{conjecture}[theorem]{Hipotezė}
+\newtheorem{definition}[theorem]{Apibrėžimas}
+\newtheorem{fact}[theorem]{Faktas}
+\newtheorem{answer}[theorem]{Atsakymas}
+\newtheorem{ques}[theorem]{Klausimas}
+\newtheorem{exercise}[theorem]{Užduotis}
+\newtheorem{problem}[theorem]{Uždavinys}
+\newtheorem*{conjecture*}{Hipotezė}
+\newtheorem*{definition*}{Apibrėžimas}
+\newtheorem*{fact*}{Faktas}
+\newtheorem*{answer*}{Atsakymas}
+\newtheorem*{ques*}{Klausimas}
+\newtheorem*{exercise*}{Užduotis}
+\newtheorem*{problem*}{Uždavinys}
+
+%% GALUTINIS SPRENDIMAS PROOF APLINKAI
+%% --- PRADŽIA: Įrodymo aplinkos sutvarkymas ---
+\makeatletter
+
+% 1. Užtikriname, kad žodis būtų "Įrodymas", net jei "babel" paketas bando jį perrašyti
+\AtBeginDocument{%
+  \renewcommand{\proofname}{Įrodymas}%
+  \@ifpackageloaded{babel}{%
+    \addto\captionslithuanian{\renewcommand{\proofname}{Įrodymas}}%
+  }{}%
+}
+
+% 2. Priverstinai pašaliname scrartcl klasės bold šriftą ir paliekame TIK italic
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \normalfont\itshape % Priverčia naudoti tik pasvirą šriftą, kaip nuotraukoje
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
