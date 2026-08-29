@@ -1,0 +1,249 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+\declaretheorem[style=thmbluebox,name=Taisyklė,sibling=theorem]{monomialrule}
+
+
+
+\title{Veiksmai su vienanariais}
+\author{Andrius Berniukevičius}
+\begin{document}
+\maketitle
+
+\section{Panašieji vienanariai}
+
+Norint sudėti arba atimti vienanarius, pirmiausia reikia nustatyti, ar jie yra panašūs.
+
+\begin{definition}
+\vocab{Panašieji vienanariai} -- tai vienanariai, kurių raidinės dalys yra vienodos.
+\end{definition}
+
+Vienanarių koeficientai gali būti skirtingi. Svarbu, kad sutaptų visi kintamieji ir jų laipsnių rodikliai.
+
+\begin{example}
+Nustatykime, kurios vienanarių poros yra panašios:
+\begin{tasks}[style=itemize](2)
+	\task $3a^2b$ ir $-7a^2b$
+	\task $5x^2y$ ir $5xy^2$
+	\task $-4mn^3$ ir $\frac{1}{2}mn^3$
+	\task $6p^2q$ ir $6p^2q^2$
+\end{tasks}
+\textbf{Sprendimas}\\
+Panašūs yra $3a^2b$ ir $-7a^2b$, nes jų raidinė dalis yra $a^2b$. Taip pat panašūs yra $-4mn^3$ ir $\frac{1}{2}mn^3$, nes jų raidinė dalis yra $mn^3$.
+
+Vienanariai $5x^2y$ ir $5xy^2$ nėra panašūs, nes skiriasi kintamųjų rodikliai. Vienanariai $6p^2q$ ir $6p^2q^2$ taip pat nėra panašūs.
+\end{example}
+
+\section{Panašiųjų vienanarių sutraukimas}
+
+\begin{monomialrule}[Panašiųjų vienanarių sudėtis ir atimtis]
+Sudėdami arba atimdami panašiuosius vienanarius, atliekame veiksmus su jų koeficientais, o raidinę dalį paliekame tą pačią:
+\[
+ka^mb^n + la^mb^n = (k+l)a^mb^n.
+\]
+Tai galima daryti todėl, kad raidinė dalis $a^mb^n$ abiejuose nariuose yra bendrasis daugiklis. Iškeldami ją už skliaustų gauname $ka^mb^n + la^mb^n=(k+l)a^mb^n$.
+\end{monomialrule}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+7x^2y-3x^2y+5x^2y.
+\]
+\textbf{Sprendimas}\\
+Visi vienanariai yra panašūs, nes jų raidinė dalis yra $x^2y$. Sutraukiame koeficientus:
+\[
+7x^2y-3x^2y+5x^2y=(7-3+5)x^2y=9x^2y.
+\]
+\textbf{Atsakymas:} $9x^2y$.
+\end{example}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+4a^2b-3ab^2+6a^2b+ab^2.
+\]
+\textbf{Sprendimas}\\
+Sutraukiame atskirai vienanarius su raidine dalimi $a^2b$ ir su raidine dalimi $ab^2$:
+\[
+4a^2b+6a^2b-3ab^2+ab^2=10a^2b-2ab^2.
+\]
+\textbf{Atsakymas:} $10a^2b-2ab^2$.
+\end{example}
+
+\begin{remark}
+Nepanašiųjų vienanarių sutraukti negalima. Pavyzdžiui, reiškinio $3x^2+5x$ negalime pakeisti vienu vienanariu, nes $x^2$ ir $x$ yra skirtingos raidinės dalys.
+\end{remark}
+
+\section{Vienanarių daugyba}
+
+\begin{monomialrule}[Vienanarių daugyba]
+Norėdami sudauginti vienanarius, sudauginame jų koeficientus, o vienodų kintamųjų laipsnių rodiklius sudedame.
+
+Taip galima elgtis, nes, pavyzdžiui, sandaugoje $a^m\cdot a^n$ raidė $a$ iš viso dauginama iš savęs $m+n$ kartų. Todėl $a^m\cdot a^n=a^{m+n}$.
+\end{monomialrule}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+-3a^2b\cdot 4ab^3.
+\]
+\textbf{Sprendimas}\\
+Sudauginame koeficientus ir taikome laipsnių daugybos savybę:
+\[
+-3a^2b\cdot 4ab^3=-12\cdot a^{2+1}\cdot b^{1+3}=-12a^3b^4.
+\]
+\textbf{Atsakymas:} $-12a^3b^4$.
+\end{example}
+
+\begin{monomialrule}[Vienanarių sandauga]
+Dviejų vienanarių sandauga visada yra vienanaris.
+\end{monomialrule}
+
+Iš tikrųjų, sudauginus koeficientus gaunamas skaičius, o kiekvieno kintamojo laipsnio rodikliai yra sudedami. Natūraliųjų skaičių suma vėl yra natūralusis skaičius, todėl gautame reiškinyje kintamųjų rodikliai išlieka natūralieji.
+
+Tai primena natūraliuosius skaičius: dviejų natūraliųjų skaičių sandauga visada yra natūralusis skaičius. Pavyzdžiui,
+\[
+4\cdot 7=28.
+\]
+
+\section{Vienanarių dalyba}
+
+\begin{property}[Vienanarių dalyba]
+Dalijant vienanarius, dalijame jų koeficientus, o vienodų kintamųjų laipsnių rodiklius atimame:
+\[
+a^m:a^n=a^{m-n}.
+\]
+\end{property}
+
+Jeigu daliklis yra visas vienanaris, jį būtina rašyti skliaustuose. Pavyzdžiui, užrašas
+\[
+18x^5y^4:(6x^2y)
+\]
+reiškia, kad $18x^5y^4$ dalijamas iš viso vienanario $6x^2y$. Be skliaustų užrašas $18x^5y^4:6x^2y$ gali būti suprantamas kaip dalyba tik iš $6$, o po jos daugyba iš $x^2y$.
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+18x^5y^4:(6x^2y).
+\]
+\textbf{Sprendimas}\\
+\[
+18x^5y^4:(6x^2y)=\frac{18}{6}\cdot x^{5-2}\cdot y^{4-1}=3x^3y^3.
+\]
+\textbf{Atsakymas:} $3x^3y^3$.
+\end{example}
+
+\begin{remark}
+Vienanarių dalybos rezultatas nebūtinai yra vienanaris. Pavyzdžiui:
+\[
+6a^2:(3a^5)=2a^{-3}=\frac{2}{a^3}.
+\]
+Gautame reiškinyje kintamasis yra vardiklyje, todėl tai nėra vienanaris.
+
+Tai taip pat primena natūraliuosius skaičius: jų sandauga visada yra natūralusis skaičius, tačiau dalybos rezultatas nebūtinai yra natūralusis skaičius. Pavyzdžiui, $5\cdot 3=15$ yra natūralusis skaičius, bet $5:3=\frac{5}{3}$ nėra natūralusis skaičius.
+\end{remark}
+
+\section{Vienanario kėlimas laipsniu}
+
+\begin{property}[Vienanario kėlimas laipsniu]
+Keliant vienanarį laipsniu, kiekvieną jo daugiklį keliame tuo laipsniu:
+\[
+(ka^mb^n)^r=k^ra^{mr}b^{nr}.
+\]
+\end{property}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+(-2a^3b^2)^3.
+\]
+\textbf{Sprendimas}\\
+Keliame trečiuoju laipsniu koeficientą ir kiekvieną raidinės dalies daugiklį:
+\[
+(-2a^3b^2)^3=(-2)^3\cdot(a^3)^3\cdot(b^2)^3=-8a^9b^6.
+\]
+\textbf{Atsakymas:} $-8a^9b^6$.
+\end{example}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Nustatykite, kurios vienanarių poros yra panašios.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $5a^2b$ ir $-3a^2b$
+	\task $7xy^3$ ir $7x^3y$
+	\task $-mn^2$ ir $4mn^2$
+	\task $2p^2q^3$ ir $-5p^2q$
+	\task $6x^4$ ir $-x^4$
+	\task $3ab$ ir $3a^2b$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Sutraukite panašiuosius vienanarius.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $8x^2-3x^2+5x^2$
+	\task $4a^2b-7a^2b+2a^2b$
+	\task $6mn-2m^2n+5mn$
+	\task $-3p^2q+8pq^2+p^2q-2pq^2$
+	\task $7x^3y-4xy^3-2x^3y$
+	\task $5a^2-3a+4a^2+6a$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Atlikite veiksmus su vienanariais.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(-4a^3b)\cdot(3a^2b^4)$
+	\task $\frac{2}{5}x^2y^3\cdot(-15x^4y)$
+	\task $24m^6n^5:(6m^2n)$
+	\task $-35a^7b^3:(5a^2b^2)$
+	\task $(3x^2y)^3$
+	\task $(-2ab^4)^2$
+	\task $10p^2:(5p^4)$
+	\task $(\frac{1}{2}m^3n^2)^2$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task panašūs;
+	\task nepanašūs;
+	\task panašūs;
+	\task nepanašūs;
+	\task panašūs;
+	\task nepanašūs.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $10x^2$;
+	\task $-a^2b$;
+	\task $11mn-2m^2n$;
+	\task $-2p^2q+6pq^2$;
+	\task $5x^3y-4xy^3$;
+	\task $9a^2+3a$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $-12a^5b^5$;
+	\task $-6x^6y^4$;
+	\task $4m^4n^4$;
+	\task $-7a^5b$;
+	\task $27x^6y^3$;
+	\task $4a^2b^8$;
+	\task $\frac{2}{p^2}$, ne vienanaris;
+	\task $\frac{1}{4}m^6n^4$.
+\end{tasks}
+\end{problem}
+
+\end{document}

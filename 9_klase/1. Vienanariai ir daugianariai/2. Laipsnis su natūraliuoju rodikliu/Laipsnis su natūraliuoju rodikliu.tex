@@ -1,16 +1,10 @@
 \documentclass[11pt,a4paper]{scrartcl} 
 
 % Kalbos nustatymai (lietuvių kalbai)
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{tasks}
-\usepackage{cancel}
-\usepackage{tikz}
-\usepackage{lmodern} 
-\usepackage[lithuanian]{babel}
+
 
 % Įkeliame jūsų .sty failą (įsitikinkite, kad Overleaf projekte šalia yra failas manostilius.sty)
-\usepackage{manostilius_lt}
+\usepackage{../manostilius_lt}
 
 % Projekto informacija (būtina preambulėje dėl jūsų stiliaus specifikos)
 \title{Laipsnis su natūraliuoju rodikliu ir jo savybės}
@@ -46,7 +40,7 @@ Užraše $a^n$:
 
 \section{Laipsnio su natūraliuoju rodikliu savybės}
 Visų žemiau esančių savybių įrodymai remiasi pagrindiniu laipsnio su natūraliuoju rodikliu apibrėžimu: 
-$a^n = \underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}$.
+$$a^n = \underbrace{a \cdot a \cdot \dots \cdot a}_{n \text{ kartų}}$$ 
 \begin{property}[Laipsnių su vienodais pagrindais daugyba]
 Kai dauginami laipsniai su vienodais pagrindais, pagrindas paliekamas tas pats, o rodikliai sudedami:
 $$a^m \cdot a^n = a^{m+n}$$
@@ -123,8 +117,58 @@ $$\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}$$
 
 \section{Uždavinių sprendimo pavyzdžiai}
 
+\begin{example}
+Supaprastinkite reiškinį:
+$$ \left(x^{45} : x^{25}\right)^2 \cdot\left(x^{5}\right)^3 : x^{10} $$
+\textbf{Sprendimas:}
+Atliekame veiksmus eilės tvarka, remdamiesi laipsnių savybėmis:
+\begin{enumerate}
+    \item Pirmiausia atliekame veiksmą skliaustuose (laipsnių dalyba):
+    $$ x^{45} : x^{25} = x^{45-25} = x^{20} $$
+    
+    \item Gautą rezultatą keliame laipsniu (laipsnio kėlimas laipsniu):
+    $$ (x^{20})^2 = x^{20 \cdot 2} = x^{40} $$
+    
+    \item Sutvarkome antrąjį narį (laipsnio kėlimas laipsniu):
+    $$ (x^5)^3 = x^{5 \cdot 3} = x^{15} $$
+    
+    \item Atliekame daugybą (laipsnių daugyba):
+    $$ x^{40} \cdot x^{15} = x^{40+15} = x^{55} $$
+    
+    \item Galiausiai atliekame dalybą:
+    $$ x^{55} : x^{10} = x^{55-10} = x^{45} $$
+\end{enumerate}
 
+\textbf{Trumpas užrašas:}
+$$ \left(x^{45} : x^{25}\right)^2 \cdot\left(x^{5}\right)^3 : x^{10} = (x^{20})^2 \cdot x^{15} : x^{10} = x^{40} \cdot x^{15} : x^{10} = x^{55} : x^{10} = x^{45} $$
 
+\textbf{Atsakymas:} $x^{45}$.
+\end{example}
+
+\begin{example}
+Supaprastinkite reiškinį:
+$$ \frac{\left(\frac{243^5 \cdot 9^8}{81^3 \cdot 27^6}\right)^4 \cdot\left(3^{10}\right)^2}{\left(\frac{729^2}{9^4}\right)^3 \cdot 3^{12}} $$
+\textbf{Sprendimas:} Atliekame veiksmus etapais, konvertuodami viskas į 3 laipsnius:
+
+\begin{enumerate}
+    \item Konvertuojame skaičius į 3 laipsnius ($243 = 3^5$, $9 = 3^2$, $81 = 3^4$, $27 = 3^3$):
+    $$ \left(\frac{(3^5)^5 \cdot (3^2)^8}{(3^4)^3 \cdot (3^3)^6}\right)^4 = \left(\frac{3^{25} \cdot 3^{16}}{3^{12} \cdot 3^{18}}\right)^4 = \left(\frac{3^{41}}{3^{30}}\right)^4 = (3^{11})^4 = 3^{44} $$
+    
+    \item Skaičiuojame $(3^{10})^2 = 3^{20}$, todėl skaitiklis yra:
+    $$ 3^{44} \cdot 3^{20} = 3^{64} $$
+    
+    \item Vardiklyje konvertuojame ($729 = 3^6$, $9 = 3^2$):
+    $$ \left(\frac{729^2}{9^4}\right)^3 = \left(\frac{(3^6)^2}{(3^2)^4}\right)^3 = \left(\frac{3^{12}}{3^{8}}\right)^3 = (3^4)^3 = 3^{12} $$
+    
+    \item Visas vardiklis:
+    $$ 3^{12} \cdot 3^{12} = 3^{24} $$
+    
+    \item Paskutinis žingsnis -- skaitiklis dalijamas iš vardiklio:
+    $$ \frac{3^{64}}{3^{24}} = 3^{40} $$
+\end{enumerate}
+
+\textbf{Atsakymas:} $3^{40}$.
+\end{example}
 
 \section{Uždaviniai}
 \begin{problem}
@@ -160,6 +204,36 @@ Atlikite veiksmus su laipsniais:
 \end{tasks}
 \end{problem}
 
+\newpage
+\section{Atsakymai}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^{20}$
+    \task $a^{20}$
+    \task $y^{34}$
+    \task $a^2 b^4 c^6$
+    \task $p^{20}$
+    \task $4a^{20}$
+    \task $x^{40} y^{60}$
+    \task $u^5$
+    \task $x^{30}$
+    \task $1$
+    \task $z^9$
+    \task $c^{20}$
+    \task $x^8 y^2$
+    \task $a^{10}$
+    \task $w^{110}$
+    \task $x^{50} y^{75} z^{25}$
+    \task $1$
+    \task $b^5$
+    \task $p^5$
+    \task $m^{20}$
+    \task $16$
+    \task $2187$
+    \task $5^{10}$
+    \task $512$
+    \task $10000$
+    \task $32768$
+\end{tasks}
 
 
 

@@ -1,0 +1,280 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+
+\title{Vienanaris}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Vienanario apibrėžimas}
+
+Algebriniai reiškiniai gali būti sudaryti iš skaičių, raidžių ir įvairių veiksmų. Vienas paprasčiausių algebrinių reiškinių yra vienanaris.
+
+\begin{definition}
+\vocab{Vienanaris} -- tai skaičiaus ir kintamųjų, pakeltų natūraliaisiais laipsniais, sandauga.
+
+Vienanaryje neatliekami sudėties arba atimties veiksmai.
+\end{definition}
+
+Vienanarių pavyzdžiai:
+\[
+5a, \qquad -3x^2y, \qquad \frac{2}{7}ab^3, \qquad 8.
+\]
+
+\begin{example}
+Nustatykime, kurie reiškiniai yra vienanariai:
+
+\begin{tasks}[style=itemize](2)
+    \task $7x^3y$
+    \task $4a-3b$
+    \task $-\frac{5}{2}m^2n^4$
+    \task $x^2+5$
+    \task $\frac{3a}{5}$
+    \task $(a+b)^2$
+    \task $4x^{-2}y$
+    \task $3a\sqrt{b}$
+\end{tasks}
+\textbf{Sprendimas}\\
+Vienanariai yra:
+\[
+7x^3y, \qquad -\frac{5}{2}m^2n^4, \qquad \frac{3a}{5}.
+\]
+Reiškiniai $4a-3b$, $x^2+5$ ir $(a+b)^2$ nėra vienanariai, nes juose atliekamas sudėties arba atimties veiksmas. Reiškinys $4x^{-2}y$ nėra vienanaris, nes kintamojo $x$ rodiklis yra neigiamas. Reiškinys $3a\sqrt{b}$ taip pat nėra vienanaris, nes kintamasis $b$ yra po šaknies ženklu.
+\end{example}
+
+\begin{remark}
+Skaičius taip pat laikomas vienanariu. Pavyzdžiui:
+\[
+8=8 \cdot 1.
+\]
+
+Trupmena laikoma vienanariu, jei vardiklyje yra tik skaičius:
+\[
+\frac{3a}{5}=\frac{3}{5}\cdot a.
+\]
+\end{remark}
+
+\begin{remark}
+Reiškinys su kintamuoju vardiklyje nėra vienanaris. Pavyzdžiui:
+\[
+\frac{5}{x}
+\]
+nėra vienanaris, nes jį galima užrašyti kaip $5x^{-1}$, o rodiklis $-1$ nėra natūralusis skaičius.
+\end{remark}
+
+\section{Vienanario skaitinė ir raidinė dalys}
+
+Kiekvieną vienanarį galime išskaidyti į skaitinę ir raidinę dalis.
+
+\begin{definition}
+\vocab{Vienanario koeficientas} -- tai skaitinis vienanario daugiklis.
+\end{definition}
+
+\begin{definition}
+\vocab{Vienanario raidinė dalis} -- tai vienanaryje esančių kintamųjų ir jų laipsnių sandauga.
+\end{definition}
+
+\begin{example}
+Panagrinėkime vienanarį:
+\[
+-6a^3b^2.
+\]
+\textbf{Sprendimas}\\
+Jo koeficientas yra $-6$, o raidinė dalis yra:
+\[
+a^3b^2.
+\]
+\end{example}
+
+\begin{example}
+Panagrinėkime vienanarį:
+\[
+x^4y.
+\]
+\textbf{Sprendimas}\\
+Jo koeficientas yra $1$, nes:
+\[
+x^4y=1 \cdot x^4y.
+\]
+Raidinė dalis yra $x^4y$.
+\end{example}
+
+\begin{example}
+Panagrinėkime vienanarį:
+\[
+-abc^2.
+\]
+\textbf{Sprendimas}\\
+Jo koeficientas yra $-1$, nes:
+\[
+-abc^2=-1 \cdot abc^2.
+\]
+Raidinė dalis yra $abc^2$.
+\end{example}
+
+\section{Vienanario laipsnis}
+
+Vienanario laipsnis priklauso tik nuo raidinės dalies.
+
+\begin{definition}
+\vocab{Vienanario laipsnis} -- tai visų vienanario raidinėje dalyje esančių kintamųjų laipsnių rodiklių suma.
+Nelygaus nuliui skaičiaus laipsnis yra $0$.
+\end{definition}
+
+\begin{example}
+Raskime vienanario $5a^2b^3$ laipsnį.\\ \\
+\textbf{Sprendimas}\\
+Kintamojo $a$ rodiklis yra $2$, o kintamojo $b$ rodiklis yra $3$. Todėl:
+\[
+2+3=5.
+\]
+Vienanario $5a^2b^3$ laipsnis yra $5$.
+\end{example}
+
+\begin{example}
+Raskime vienanario $-7x^4y^2z$ laipsnį.\\ \\
+\textbf{Sprendimas}\\
+Kintamojo $z$ rodiklis yra $1$, todėl:
+\[
+4+2+1=7.
+\]
+Vienanario $-7x^4y^2z$ laipsnis yra $7$.
+\end{example}
+
+\begin{example}
+Raskime vienanario $12$ laipsnį. \\ \\
+\textbf{Sprendimas}\\ 
+Kadangi skaičius neturi raidinės dalies, jo laipsnis yra:
+\[
+0.
+\]
+\end{example}
+
+\begin{remark}
+Jeigu prie raidės laipsnio rodiklis neparašytas, jis yra lygus $1$:
+\[
+a=a^1, \qquad xy=x^1y^1.
+\]
+Pavyzdžiui, vienanario $4x^2y$ laipsnis yra:
+\[
+2+1=3.
+\]
+\end{remark}
+\newpage
+\section{Uždaviniai}
+
+\begin{problem}
+Nustatykite, kurie reiškiniai yra vienanariai.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $8a^2b$
+    \task $3x-5$
+    \task $-\frac{4}{7}m^3n$
+    \task $a^2+b^2$
+    \task $36$
+    \task $\frac{x+3}{5}$
+    \task $-xyz^4$
+    \task $\frac{5}{a}$
+    \task $0,6p^2q^3$
+    \task $(x-2)(x+2)$
+    \task $\frac{7a^2}{9}$
+    \task $-2a^{-3}b^4$
+    \task $-\frac{5x^3y}{12}$
+    \task $5x\sqrt{y}$
+    \task $\frac{3}{8}p^2q^4$
+    \task $\frac{4m^3}{n}$
+    \task $\frac{3}{4}m^2\sqrt[3]{n}$
+    \task $7pq^{-1}$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Nurodykite kiekvieno vienanario koeficientą ir raidinę dalį.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $7a^3b$
+    \task $-5x^2y^4$
+    \task $mn^2$
+    \task $\frac{7a^2b^3}{9}$
+    \task $-\frac{3}{8}p^5q$
+    \task $12$
+    \task $-abc^3$
+    \task $0,4x^2y$
+    \task $\frac{5}{6}a^4b^2$
+    \task $-\frac{11m^4n}{5}$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Raskite vienanarių laipsnius.
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $4a^3$
+    \task $-2x^2y^5$
+    \task $7abc$
+    \task $-5m^4n^2p^3$
+    \task $13$
+    \task $\frac{1}{2}x^6y$
+    \task $-a^2b^2c^2$
+    \task $0,8k^3l^4$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris.
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris;
+    \task vienanaris;
+    \task ne vienanaris;
+    \task ne vienanaris;
+    \task ne vienanaris.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+    \begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task koeficientas $7$, raidinė dalis $a^3b$;
+    \task koeficientas $-5$, raidinė dalis $x^2y^4$;
+    \task koeficientas $1$, raidinė dalis $mn^2$;
+    \task koeficientas $\frac{7}{9}$, raidinė dalis $a^2b^3$;
+    \task koeficientas $-\frac{3}{8}$, raidinė dalis $p^5q$;
+    \task koeficientas $12$, raidinės dalies nėra;
+    \task koeficientas $-1$, raidinė dalis $abc^3$;
+    \task koeficientas $0,4$, raidinė dalis $x^2y$;
+    \task koeficientas $\frac{5}{6}$, raidinė dalis $a^4b^2$.
+    \task koeficientas $-\frac{11}{5}$, raidinė dalis $m^4n$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $3$;
+    \task $7$;
+    \task $3$;
+    \task $9$;
+    \task $0$;
+    \task $7$;
+    \task $6$;
+    \task $7$.
+\end{tasks}
+\end{problem}
+
+\end{document}

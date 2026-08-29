@@ -1,0 +1,318 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+
+\title{Greitosios daugybos formulės}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Sumos ir skirtumo kvadratas}
+
+Greitosios daugybos formulės leidžia greitai išskleisti skliaustus arba išskaidyti reiškinį dauginamaisiais. Pirmiausia išnagrinėkime sumos kvadratą.
+
+\begin{property}[Sumos kvadratas]
+\[
+(a+b)^2=a^2+2ab+b^2.
+\]
+\end{property}
+
+\begin{proof}
+Laipsnis $2$ reiškia, kad reiškinį dauginame iš savęs. Pritaikę dviejų dvinarių daugybos taisyklę, gauname:
+\[
+\begin{aligned}
+(a+b)^2&=(a+b)(a+b)\\
+&=a\cdot a+a\cdot b+b\cdot a+b\cdot b\\
+&=a^2+ab+ab+b^2\\
+&=a^2+2ab+b^2.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{property}[Skirtumo kvadratas]
+\[
+(a-b)^2=a^2-2ab+b^2.
+\]
+\end{property}
+
+\begin{proof}
+ Atskliaudžiame ir sutraukiame panašiuosius vienanarius:
+\[
+\begin{aligned}
+(a-b)^2&=(a-b)(a-b)\\
+&=a^2-ab-ba+b^2\\
+&=a^2-2ab+b^2.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+(3x+5)^2.
+\]
+\textbf{Sprendimas}\\
+Taikome sumos kvadrato formulę, kai $a=3x$, o $b=5$:
+\[
+(3x+5)^2=(3x)^2+2\cdot3x\cdot5+5^2=9x^2+30x+25.
+\]
+\textbf{Atsakymas:} $9x^2+30x+25$.
+\end{example}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+(2x-3y)^2.
+\]
+\textbf{Sprendimas}\\
+Taikome skirtumo kvadrato formulę, kai $a=2x$, o $b=3y$:
+\[
+(2x-3y)^2=(2x)^2-2\cdot2x\cdot3y+(3y)^2=4x^2-12xy+9y^2.
+\]
+\textbf{Atsakymas:} $4x^2-12xy+9y^2$.
+\end{example}
+
+\section{Kvadratų skirtumas}
+
+\begin{property}[Kvadratų skirtumas]
+\[
+a^2-b^2=(a-b)(a+b).
+\]
+\end{property}
+
+\begin{proof}
+ Atskliaudžiame ir sutraukiame panašiuosius vienanarius:
+\[
+\begin{aligned}
+(a-b)(a+b)&=a^2+ab-ab-b^2\\
+&=a^2+ab-ab-b^2\\
+&=a^2-b^2.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+25x^2-16.
+\]
+\textbf{Sprendimas}\\
+Atpažįstame kvadratų skirtumą: $25x^2=(5x)^2$, o $16=4^2$. Todėl:
+\[
+25x^2-16=(5x-4)(5x+4).
+\]
+\textbf{Atsakymas:} $(5x-4)(5x+4)$.
+\end{example}
+
+\section{Sumos ir skirtumo kubas}
+
+\begin{property}[Sumos kubas]
+\[
+(a+b)^3=a^3+b^3+3ab(a+b).
+\]
+\end{property}
+
+\begin{proof}
+Sumos kubą užrašome kaip sumos kvadrato ir dar vienos tokios pačios sumos sandaugą:
+\[
+\begin{aligned}
+(a+b)^3&=(a+b)^2(a+b)\\
+&=(a^2+2ab+b^2)(a+b)\\
+&=a^3+a^2b+2a^2b+2ab^2+ab^2+b^3\\
+&=a^3+3a^2b+3ab^2+b^3\\
+&=a^3+b^3+3ab(a+b).
+\end{aligned}
+\]
+\end{proof}
+
+\begin{property}[Skirtumo kubas]
+\[
+(a-b)^3=a^3-b^3-3ab(a-b).
+\]
+\end{property}
+
+\begin{proof}
+ Atskliaudžiame ir sutraukiame panašiuosius vienanarius:
+\[
+\begin{aligned}
+(a-b)^3&=(a-b)(a-b)^2\\
+&=(a-b)(a^2-2ab+b^2)\\
+&=a^3-2a^2b+ab^2-a^2b+2ab^2-b^3\\
+&=a^3-3a^2b+3ab^2-b^3\\
+&=a^3-b^3-3ab(a-b).
+\end{aligned}
+\]
+\end{proof}
+
+\begin{remark}
+Palyginkime sumos kvadratą ir sumos kubą:
+\[
+(a+b)^2=a^2+b^2+2ab,
+\]
+\[
+(a+b)^3=a^3+b^3+3ab(a+b).
+\]
+Abiejose formulėse pirmieji nariai yra atskirai pakelti laipsniu, o vidurinis narys turi skaičių, lygų keliamo laipsnio rodikliui: kvadrato formulėje $2$, kubo formulėje $3$. Kubo formulėje dar atsiranda daugiklis $(a+b)$.\\ \\
+Skirtumo kubo formulę lengva įsiminti iš sumos kubo formulės: visus pliuso ženklus pakeičiame minuso ženklais:
+\[
+(a+b)^3=a^3+b^3+3ab(a+b),
+\]
+\[
+(a-b)^3=a^3-b^3-3ab(a-b).
+\]
+\end{remark}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+(x+2)^3.
+\]
+\textbf{Sprendimas}\\
+Taikome sumos kubo formulę, kai $a=x$, o $b=2$:
+\[
+(x+2)^3=x^3+2^3+3\cdot x\cdot2(x+2)=x^3+6x^2+12x+8.
+\]
+\textbf{Atsakymas:} $x^3+6x^2+12x+8$.
+\end{example}
+
+\begin{example}
+Supaprastinkite reiškinį:
+\[
+(4x-y)^3.
+\]
+\textbf{Sprendimas}\\
+Taikome skirtumo kubo formulę, kai $a=4x$, o $b=y$:
+\[
+\begin{aligned}
+(4x-y)^3&=(4x)^3-y^3-3\cdot4x\cdot y(4x-y)\\
+&=64x^3-y^3-48x^2y+12xy^2\\
+&=64x^3-48x^2y+12xy^2-y^3.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $64x^3-48x^2y+12xy^2-y^3$.
+\end{example}
+
+\section{Kubų suma ir skirtumas}
+
+\begin{property}[Kubų suma]
+\[
+a^3+b^3=(a+b)(a^2-ab+b^2).
+\]
+\end{property}
+
+\begin{proof}
+Pritaikome daugianarių daugybą:
+\[
+\begin{aligned}
+(a+b)(a^2-ab+b^2)
+&=a^3-a^2b+ab^2+a^2b-ab^2+b^3\\
+&=a^3+b^3.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{property}[Kubų skirtumas]
+\[
+a^3-b^3=(a-b)(a^2+ab+b^2).
+\]
+\end{property}
+
+\begin{proof}
+Atskliaudžiame ir sutraukiame panašiuosius vienanarius:
+\[
+\begin{aligned}
+(a-b)(a^2+ab+b^2)
+&=a^3+a^2b+ab^2-a^2b-ab^2-b^3\\
+&=a^3-b^3.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+x^3+27.
+\]
+\textbf{Sprendimas}\\
+Kadangi $27=3^3$, taikome kubų sumos formulę:
+\[
+x^3+27=x^3+3^3=(x+3)(x^2-3x+9).
+\]
+\textbf{Atsakymas:} $(x+3)(x^2-3x+9)$.
+\end{example}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+8a^3-b^3.
+\]
+\textbf{Sprendimas}\\
+Kadangi $8a^3=(2a)^3$, taikome kubų skirtumo formulę:
+\[
+8a^3-b^3=(2a-b)(4a^2+2ab+b^2).
+\]
+\textbf{Atsakymas:} $(2a-b)(4a^2+2ab+b^2)$.
+\end{example}
+
+\section{Uždaviniai}
+
+\begin{problem}
+ Atskliauskite taikydami greitosios daugybos formules.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(x+5)^2$
+	\task $(2a-3)^2$
+	\task $(3m+n)^2$
+	\task $(y-4)^2$
+	\task $(x+2)^3$
+	\task $(a-3)^3$
+	\task $(2p+q)^3$
+	\task $(3x-2y)^3$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskaidykite reiškinius dauginamaisiais taikydami greitosios daugybos formules.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2-49$
+	\task $9a^2-16b^2$
+	\task $m^3+8$
+	\task $27x^3-y^3$
+	\task $a^2+10a+25$
+	\task $4p^2-12p+9$
+	\task $x^3-125$
+	\task $8a^3+27b^3$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2+10x+25$;
+	\task $4a^2-12a+9$;
+	\task $9m^2+6mn+n^2$;
+	\task $y^2-8y+16$;
+	\task $x^3+6x^2+12x+8$;
+	\task $a^3-9a^2+27a-27$;
+	\task $8p^3+12p^2q+6pq^2+q^3$;
+	\task $27x^3-54x^2y+36xy^2-8y^3$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(x-7)(x+7)$;
+	\task $(3a-4b)(3a+4b)$;
+	\task $(m+2)(m^2-2m+4)$;
+	\task $(3x-y)(9x^2+3xy+y^2)$;
+	\task $(a+5)^2$;
+	\task $(2p-3)^2$;
+	\task $(x-5)(x^2+5x+25)$;
+	\task $(2a+3b)(4a^2-6ab+9b^2)$.
+\end{tasks}
+\end{problem}
+
+\end{document}

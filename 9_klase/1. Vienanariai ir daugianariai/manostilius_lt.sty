@@ -31,7 +31,7 @@
 \setkomafont{date}{\Large\normalsize}
 % Neigiamas vertikalus tarpas, kuris pakelia dokumento antraštę į viršų. 
 % Galite keisti -2.5cm į -3cm (aukščiau) arba -1.5cm (žemiau).
-\titlehead{\vspace*{-2.5cm}} 
+\titlehead{\vspace*{-7.5cm}} 
 
 % PRIDĖTA: Automatiškai perrašome datą į mokyklos pavadinimą
 \AtBeginDocument{%
@@ -187,6 +187,13 @@
 \newtheorem*{ques*}{Klausimas}
 \newtheorem*{exercise*}{Užduotis}
 \newtheorem*{problem*}{Uždavinys}
+
+\newcounter{answerssection}
+\newcommand{\answerssection}{%
+  \setcounter{answerssection}{\value{section}}%
+  \section{Atsakymai}%
+  \renewcommand{\theproblem}{\arabic{answerssection}.\arabic{theorem}}%
+}
 
 %% GALUTINIS SPRENDIMAS PROOF APLINKAI
 %% --- PRADŽIA: Įrodymo aplinkos sutvarkymas ---
