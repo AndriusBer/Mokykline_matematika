@@ -1,0 +1,889 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% ------------------------------------------------
+% pdfLaTeX: lietuviški simboliai ir šriftai
+% ------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian,english]{babel}
+\usepackage[sfdefault]{noto}
+
+% Matematika
+\usepackage{amsmath,amssymb,cancel}
+
+% ------------------------------------------------
+% Beamer tema ir spalvos
+% ------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\setbeamertemplate{navigation symbols}{}
+
+% Lietuviški Beamer aplinkų pavadinimai
+\deftranslation[to=lithuanian]{Definition}{Apibrėžimas}
+\deftranslation[to=lithuanian]{Example}{Pavyzdys}
+\deftranslation[to=lithuanian]{Remark}{Pastaba}
+\deftranslation[to=lithuanian]{Proof}{Įrodymas}
+
+% Papildomos aplinkos ir komandos
+\newenvironment{property}[1][]%
+{\begin{block}{Savybė: #1}}%
+{\end{block}}
+
+\newcommand{\vocab}[1]{\textbf{\color{structure.fg}#1}}
+
+% ------------------------------------------------
+% Dokumento informacija
+% ------------------------------------------------
+\title[Laipsniai su natūraliuoju rodikliu]
+{Laipsnis su natūraliuoju rodikliu ir jo savybės}
+
+\subtitle{Teorija, įrodymai, pavyzdžiai ir uždaviniai}
+
+\author[A. Berniukevičius]{Andrius Berniukevičius}
+
+\date{\today}
+
+% =================================================
+\begin{document}
+% =================================================
+
+
+% ------------------------------------------------
+% Titulinė skaidrė
+% ------------------------------------------------
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+% ------------------------------------------------
+% Laipsnio apibrėžimas
+% ------------------------------------------------
+\begin{frame}{Laipsnio apibrėžimas}
+
+    \begin{definition}[Laipsnis su natūraliuoju rodikliu]
+
+        Skaičiaus $a$ \vocab{laipsniu su natūraliuoju rodikliu $n$}
+        (kai $n>1$) vadinama $n$ vienodų dauginamųjų,
+        kurių kiekvienas lygus $a$, sandauga:
+
+        \[
+        a^n
+        =
+        \underbrace{
+        a\cdot a\cdot a\cdot\dots\cdot a
+        }_{n\text{ kartų}}
+        \]
+
+    \end{definition}
+
+    \vspace{0.2cm}
+
+    \begin{block}{Svarbios sąvokos ir taisyklės}
+
+        \begin{itemize}
+
+            \item Pirmojo laipsnio taisyklė:
+            \[
+            a^1=a
+            \]
+
+            \item
+            \textbf{$a$} – \vocab{laipsnio pagrindas}
+            (skaičius, kurį dauginame iš savęs).
+
+            \item
+            \textbf{$n$} – \vocab{laipsnio rodiklis}
+            (rodo, kiek kartų pagrindas kartojasi).
+
+        \end{itemize}
+
+    \end{block}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Daugyba ir kėlimas laipsniu
+% ------------------------------------------------
+\begin{frame}{Daugyba vs. Kėlimas laipsniu}
+
+    \begin{alertblock}{Svarbi pastaba}
+        Būtina atskirti skaičių daugybą nuo kėlimo laipsniu:
+    \end{alertblock}
+
+    \vspace{0.3cm}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.48\textwidth}
+
+            \begin{block}{Daugyba (Sudedame kartus)}
+
+                \[
+                4\cdot3=4+4+4=12
+                \]
+
+                Skaičių $4$ \textbf{sudedame} $3$ kartus.
+
+            \end{block}
+
+        \end{column}
+
+        \begin{column}{0.48\textwidth}
+
+            \begin{block}{Kėlimas laipsniu (Sudauginame kartus)}
+
+                \[
+                4^3=4\cdot4\cdot4=64
+                \]
+
+                Skaičių $4$ \textbf{sudauginame} iš savęs $3$ kartus.
+
+            \end{block}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% 1 savybė
+% ------------------------------------------------
+\begin{frame}{1 Savybė: Laipsnių daugyba}
+
+    \begin{property}[Vienodų pagrindų daugyba]
+
+        Kai dauginami laipsniai su vienodais pagrindais,
+        pagrindas paliekamas tas pats, o rodikliai sudedami:
+
+        \[
+        a^m\cdot a^n=a^{m+n}
+        \]
+
+    \end{property}
+
+    \begin{proof}
+
+        Užrašome abu sandaugos narius pagal apibrėžimą:
+
+        \[
+        a^m\cdot a^n
+        =
+        \left(
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{m\text{ kartų}}
+        \right)
+        \cdot
+        \left(
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{n\text{ kartų}}
+        \right)
+        \]
+
+        Kadangi skliaustai daugyboje esmės nekeičia,
+        iš viso skaičius $a$ pasikartoja $m+n$ kartų:
+
+        \[
+        a^m\cdot a^n
+        =
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{m+n\text{ kartų}}
+        =
+        a^{m+n}
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% 2 savybė
+% ------------------------------------------------
+\begin{frame}{2 Savybė: Laipsnių dalyba}
+
+    \begin{property}[Vienodų pagrindų dalyba]
+
+        Kai dalijami laipsniai su vienodais pagrindais,
+        pagrindas paliekamas tas pats, o iš dalinio rodiklio
+        atimamas daliklio rodiklis:
+
+        \[
+        a^m:a^n=a^{m-n}
+        \qquad
+        (\text{kai }a\neq0\text{ ir }m>n)
+        \]
+
+    \end{property}
+
+    \begin{proof}
+
+        Užrašome dalybą trupmena ir suprastiname
+        $n$ vienodų dauginamųjų skaitiklyje ir vardiklyje:
+
+        \[
+        \frac{a^m}{a^n}
+        =
+        \frac{
+        \overbrace{
+        a\cdot a\cdot\dots\cdot a
+        }^{m\text{ kartų}}
+        }{
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{n\text{ kartų}}
+        }
+        =
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{m-n\text{ kartų}}
+        =
+        a^{m-n}
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Dalybos pavyzdys
+% ------------------------------------------------
+\begin{frame}{Dalybos savybės pavyzdys}
+
+    \begin{example}[Kompaktiškas suprastinimas]
+
+        Apskaičiuokime $\dfrac{a^7}{a^3}$:
+
+        \[
+        \frac{a^7}{a^3}
+        =
+        \frac{
+        \cancelto{1}{a}\cdot
+        \cancelto{1}{a}\cdot
+        \cancelto{1}{a}\cdot
+        a\cdot a\cdot a\cdot a
+        }{
+        \cancelto{1}{a}\cdot
+        \cancelto{1}{a}\cdot
+        \cancelto{1}{a}
+        }
+        =
+        \frac{
+        1\cdot1\cdot1\cdot
+        a\cdot a\cdot a\cdot a
+        }{1}
+        =
+        a^4
+        \]
+
+    \end{example}
+
+    \begin{block}{Išvada}
+
+        Iš pradinių $7$ dauginamųjų skaitiklyje
+        atėmėme $3$ dauginamuosius iš vardiklio,
+        todėl galutinis laipsnio rodiklis gaunamas atimties būdu:
+
+        \[
+        a^{7-3}=a^4
+        \]
+
+    \end{block}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% 3 savybė
+% ------------------------------------------------
+\begin{frame}{3 Savybė: Laipsnio kėlimas laipsniu}
+
+    \begin{property}[Laipsnio kėlimas laipsniu]
+
+        Keliant laipsnį laipsniu, pagrindas paliekamas tas pats,
+        o rodikliai sudauginami:
+
+        \[
+        (a^m)^n=a^{m\cdot n}
+        \]
+
+    \end{property}
+
+    \begin{proof}
+
+        Pagal apibrėžimą pagrindą $(a^m)$ dauginame iš savęs
+        $n$ kartų:
+
+        \[
+        (a^m)^n
+        =
+        \underbrace{
+        a^m\cdot a^m\cdot\dots\cdot a^m
+        }_{n\text{ kartų}}
+        \]
+
+        Pritaikome laipsnių daugybos savybę
+        (rodiklius sudedame):
+
+        \[
+        (a^m)^n
+        =
+        a^{
+        \overbrace{
+        m+m+\dots+m
+        }^{n\text{ kartų}}
+        }
+        =
+        a^{m\cdot n}
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% 4 savybė
+% ------------------------------------------------
+\begin{frame}{4 Savybė: Sandaugos kėlimas laipsniu}
+
+    \begin{property}[Sandaugos kėlimas laipsniu]
+
+        Keliant sandaugą laipsniu, kiekvienas dauginamasis
+        keliamas tuo laipsniu atskirai:
+
+        \[
+        (a\cdot b)^n=a^n\cdot b^n
+        \]
+
+    \end{property}
+
+    \begin{proof}
+
+        Sugrupuojame dauginamuosius $a$ ir $b$ atskirai:
+
+        \[
+        (a\cdot b)^n
+        =
+        \underbrace{
+        (a\cdot b)\cdot\dots\cdot(a\cdot b)
+        }_{n\text{ kartų}}
+        =
+        \left(
+        \underbrace{
+        a\cdot a\cdot\dots\cdot a
+        }_{n\text{ kartų}}
+        \right)
+        \cdot
+        \left(
+        \underbrace{
+        b\cdot b\cdot\dots\cdot b
+        }_{n\text{ kartų}}
+        \right)
+        =
+        a^n\cdot b^n
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% 5 savybė
+% ------------------------------------------------
+\begin{frame}{5 Savybė: Trupmenos kėlimas laipsniu}
+
+    \begin{property}[Trupmenos kėlimas laipsniu]
+
+        Keliant trupmeną laipsniu, skaitiklis ir vardiklis
+        keliami tuo laipsniu atskirai:
+
+        \[
+        \left(\frac{a}{b}\right)^n
+        =
+        \frac{a^n}{b^n}
+        \qquad (b\neq0)
+        \]
+
+    \end{property}
+
+    \begin{proof}
+
+        Pagal trupmenų daugybos taisyklę:
+
+        \[
+        \left(\frac{a}{b}\right)^n
+        =
+        \underbrace{
+        \frac{a}{b}\cdot
+        \frac{a}{b}\cdot
+        \dots\cdot
+        \frac{a}{b}
+        }_{n\text{ kartų}}
+        =
+        \frac{
+        \overbrace{
+        a\cdot a\cdot\dots\cdot a
+        }^{n\text{ kartų}}
+        }{
+        \underbrace{
+        b\cdot b\cdot\dots\cdot b
+        }_{n\text{ kartų}}
+        }
+        =
+        \frac{a^n}{b^n}
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Pavyzdys 1
+% ------------------------------------------------
+\begin{frame}{Pavyzdys 1: Reiškinio supaprastinimas}
+
+    \begin{example}
+
+        Supaprastinkite reiškinį:
+
+        \[
+        \left(x^{45}:x^{25}\right)^2
+        \cdot
+        \left(x^5\right)^3
+        :
+        x^{10}
+        \]
+
+    \end{example}
+
+    \begin{block}{Sprendimo žingsniai}
+
+        \begin{enumerate}
+
+            \item
+            Veiksmas skliaustuose:
+            \[
+            x^{45}:x^{25}
+            =
+            x^{45-25}
+            =
+            x^{20}
+            \]
+
+            \item
+            Kėlimas laipsniu:
+            \[
+            (x^{20})^2
+            =
+            x^{20\cdot2}
+            =
+            x^{40}
+            \]
+
+            \item
+            Antrasis narys:
+            \[
+            (x^5)^3
+            =
+            x^{5\cdot3}
+            =
+            x^{15}
+            \]
+
+            \item
+            Daugyba ir dalyba:
+            \[
+            x^{40}\cdot x^{15}:x^{10}
+            =
+            x^{40+15-10}
+            =
+            x^{45}
+            \]
+
+        \end{enumerate}
+
+    \end{block}
+
+    \begin{alertblock}{Atsakymas}
+        \[
+        x^{45}
+        \]
+    \end{alertblock}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Pavyzdys 2
+% ------------------------------------------------
+\begin{frame}{Pavyzdys 2: Skaitinis reiškinys}
+
+    \begin{example}
+
+        Apskaičiuokite reiškinio reikšmę:
+
+        \[
+        \frac{
+        \left(
+        \frac{243^5\cdot9^8}{81^3\cdot27^6}
+        \right)^4
+        \cdot
+        \left(3^{10}\right)^2
+        }{
+        \left(
+        \frac{729^2}{9^4}
+        \right)^3
+        \cdot
+        3^{12}
+        }
+        \]
+
+    \end{example}
+
+    \begin{block}{Sprendimas (visus laipsnius pertvarkome į pagrindą $3$)}
+        \small
+        \begin{columns}[T,onlytextwidth]
+            \begin{column}{0.48\textwidth}
+                \vspace{0.4em}
+                \textbf{Skaitiklis:}
+                \[
+                    \begin{aligned}
+                    \left(\frac{3^{25}\cdot3^{16}}{3^{12}\cdot3^{18}}\right)^4
+                    \cdot3^{20}
+                    &=(3^{11})^4\cdot3^{20}\\
+                    &=3^{64}
+                    \end{aligned}
+                \]
+            \end{column}
+            \begin{column}{0.48\textwidth}
+                \vspace{0.4em}
+                \textbf{Vardiklis:}
+                \[
+                    \begin{aligned}
+                    \left(\frac{3^{12}}{3^8}\right)^3\cdot3^{12}
+                    &=(3^4)^3\cdot3^{12}\\
+                    &=3^{24}
+                    \end{aligned}
+                \]
+                \textbf{Galutinė dalyba:} $3^{64}:3^{24}=3^{40}$
+            \end{column}
+        \end{columns}
+    \end{block}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Uždaviniai 1–13
+% ------------------------------------------------
+\begin{frame}{Uždaviniai (1 dalis: 1--13)}
+
+    Atlikite veiksmus su laipsniais:
+
+    \vspace{0.2cm}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \item
+                $(((x^2)^5)^4)^3:x^{100}$
+
+                \item
+                $\left(\frac{a^{25}}{b^{15}}\right)^4
+                \cdot
+                \left(\frac{b^{30}}{a^{40}}\right)^2$
+
+                \item
+                $(y^{15}\cdot y^{25})^3:(y^{12})^8\cdot y^{10}$
+
+                \item
+                $(a^{10}b^{20}c^{30})^5:
+                (a^{12}b^{24}c^{36})^4$
+
+                \item
+                $\frac{
+                (p^{18}:p^{10})^5\cdot p^{20}
+                }{
+                (p^3\cdot p^7)^4
+                }$
+
+                \item
+                $\frac{
+                (2a^{15})^4\cdot(5a^{10})^2
+                }{
+                (10a^{30})^2
+                }$
+
+                \item
+                $\left(
+                \frac{x^{25}\cdot y^{35}}
+                {x^{15}\cdot y^{20}}
+                \right)^4$
+
+            \end{enumerate}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{7}
+
+                \item
+                $\frac{u^{50}}{v^{30}}
+                :
+                \left(
+                \frac{u^{15}}{v^{10}}
+                \right)^3$
+
+                \item
+                $x^{100}
+                :
+                \left(
+                \frac{
+                (x^{15})^4\cdot x^{20}
+                }{
+                x^{10}
+                }
+                \right)$
+
+                \item
+                $\frac{
+                (m^{12}n^{18})^5\cdot k^{40}
+                }{
+                (m^{20}n^{30})^3\cdot(k^8)^5
+                }$
+
+                \item
+                $(((z^3)^4)^2\cdot z^{15}):z^{30}$
+
+                \item
+                $\left(
+                \frac{c^{40}}{d^{20}}
+                \right)^3
+                :
+                \left(
+                \frac{c^{50}}{d^{30}}
+                \right)^2$
+
+                \item
+                $\frac{
+                (3x^{12}y^8)^4
+                }{
+                (9x^{20}y^{15})^2
+                }$
+
+            \end{enumerate}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Uždaviniai 14–26
+% ------------------------------------------------
+\begin{frame}{Uždaviniai (2 dalis: 14--26)}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{13}
+
+                \item
+                $\frac{
+                (a^{15}\cdot a^{25})^4
+                }{
+                (a^{20})^7\cdot a^{10}
+                }$
+
+                \item
+                $(w^{50}:w^{20})^3
+                \cdot
+                (w^{10}:w^5)^4$
+
+                \item
+                $\left(
+                \frac{
+                x^{30}y^{40}z^{50}
+                }{
+                x^{20}y^{25}z^{45}
+                }
+                \right)^5$
+
+                \item
+                $\frac{
+                (2^{30}\cdot2^{40})^2
+                }{
+                (2^{35})^4
+                }$
+
+                \item
+                $(a^{18}\cdot b^{25})^5:
+                (a^{15}\cdot b^{20})^6$
+
+                \item
+                $\frac{
+                (((p^5)^4)^3)^2
+                }{
+                p^{100}\cdot p^{15}
+                }$
+
+                \item
+                $\left(
+                \frac{m^{60}}{n^{40}}
+                \right)^2
+                :
+                \frac{
+                m^{100}
+                }{
+                (n^{16})^5
+                }$
+
+            \end{enumerate}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{20}
+
+                \item
+                $\frac{
+                (4^5\cdot8^3)^2
+                }{
+                16^6\cdot2^{10}
+                }$
+
+                \item
+                $\frac{
+                (9^{10}\cdot27^5)^2
+                }{
+                (81^4)^3\cdot3^{15}
+                }$
+
+                \item
+                $\frac{
+                125^8\cdot25^{10}
+                }{
+                (5^6)^4\cdot25^5
+                }$
+
+                \item
+                $\left(
+                \frac{
+                32^4\cdot8^6
+                }{
+                4^{10}\cdot2^{15}
+                }
+                \right)^3$
+
+                \item
+                $\frac{
+                (1000^5\cdot100^8)^2
+                }{
+                10^{50}\cdot10000^2
+                }$
+
+                \item
+                $\frac{
+                64^5\cdot(16^3)^4
+                }{
+                (4^8)^3\cdot8^5
+                }$
+
+            \end{enumerate}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% ------------------------------------------------
+% Atsakymai
+% ------------------------------------------------
+\begin{frame}{Atsakymai (1--26)}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.25\textwidth}
+            \small
+
+            (1) $x^{20}$\\
+            (2) $a^{20}$\\
+            (3) $y^{34}$\\
+            (4) $a^2b^4c^6$\\
+            (5) $p^{20}$\\
+            (6) $4a^{20}$\\
+            (7) $x^{40}y^{60}$
+
+        \end{column}
+
+        \begin{column}{0.25\textwidth}
+            \small
+
+            (8) $u^5$\\
+            (9) $x^{30}$\\
+            (10) $1$\\
+            (11) $z^9$\\
+            (12) $c^{20}$\\
+            (13) $x^8y^2$\\
+            (14) $a^{10}$
+
+        \end{column}
+
+        \begin{column}{0.25\textwidth}
+            \small
+
+            (15) $w^{110}$\\
+            (16) $x^{50}y^{75}z^{25}$\\
+            (17) $1$\\
+            (18) $b^5$\\
+            (19) $p^5$\\
+            (20) $m^{20}$\\
+            (21) $16$
+
+        \end{column}
+
+        \begin{column}{0.25\textwidth}
+            \small
+
+            (22) $2187$\\
+            (23) $5^{10}$\\
+            (24) $512$\\
+            (25) $10000$\\
+            (26) $32768$
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+
+% =================================================
+\end{document}

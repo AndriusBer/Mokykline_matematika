@@ -113,44 +113,6 @@ Trupmeninių reiškinių pavyzdžiai:
     Kadangi vardiklyje yra kintamasis, vadinasi, tai yra trupmeninis reiškinys.
 \end{remark}
 
-Iš sveikųjų reiškinių išskirkime \textbf{vienanarius} ir \textbf{daugianarius}.
-\begin{definition}
-    \vocab{Vienanaris} - tai toks sveikasis reiškinys, kuriame su kintamaisiais ir skaičiais neatliekami jokie sudėties $(+)$  arba atimties $(-)$ veiksmai. Kitaip tariant, tai yra sveikasis reiškinys, kurį sudaro tik skaičių, kintamųjų ir jų natūraliųjų laipsnių sandauga.
-\end{definition}
-\begin{example}
-Vienanarių pavyzdžiai:
-\begin{tasks}[style = itemize](3)
-    \task $5a$
-    \task $-3a ^{2} b ^{4} $
-    \task $xyz$
-    \task $\frac{1}{2}x ^{2} yz $ 
-    \task $\frac{2a}{5} $
-    \task $8$ 
-\end{tasks}
-
-\end{example}
-\begin{remark}
- Trupmena $\frac{2 a}{5}$ laikoma vienanariu tik todėl, kad ją galima užrašyti kaip sandaugą: $\frac{2}{5} \cdot a$, o toks reiškinys pagal apibrėžimą yra vienanaris. 
-\end{remark}
-
-\begin{remark}
-Skaičius $8$ yra laikomas vienanariu, nes jį galima užrašyti kaip sandaugą $8 \cdot 1$, o toks reiškinys pagal apibrėžimą yra vienanaris.
-\end{remark}
-
-\begin{definition}
-    \vocab{Daugianaris} - sveikasis reiškinys, sudarytas iš vienanarių algebrinės sumos.
-\end{definition}
-
-\begin{example}
-    \begin{tasks}[style = itemize](2)
-        \task $x ^{2} +3x-4$
-        \task $ab+bc+cd$
-        \task $x ^{3} +xy-y ^{2}+1 $
-        \task $x+8$ 
-    \end{tasks}
-\end{example}
-
-
 Visų algebrinių reiškinių klasifikacijos medis:
 
 \begin{center}
@@ -159,23 +121,18 @@ Visų algebrinių reiškinių klasifikacijos medis:
   level distance=2.5cm,          % Šiek tiek padidintas gylis, kad tekstas turėtų erdvės
   level 1/.style={sibling distance=8.0cm},
   level 2/.style={sibling distance=4.5cm},
-  level 3/.style={sibling distance=4.5cm}, % Padidintas atstumas tarp vienanarių ir daugianarių
   % Bendras mazgų stilius
   every node/.style={draw, rectangle, rounded corners, text width=3.6cm, align=center, thick},
   % Specifiniai stiliai skirtingiems lygiams (su spalvomis)
   root/.style={fill=blue!15, text width=4.5cm, font=\bfseries},
   level1/.style={fill=green!10, font=\bfseries},
-  level2/.style={fill=yellow!15},
-  level3/.style={fill=orange!15, text width=3.8cm} % Praplatinti langeliai papildomam tekstui
+    level2/.style={fill=yellow!15}
 ]
 
   % Medžio braižymas
   \node[root] {Algebriniai reiškiniai}
     child {node[level1] {Racionalieji reiškiniai \\ \small(be kintamojo po šaknimi)}
-      child {node[level2] {Sveikieji reiškiniai \\ \small(be kintamojo vardiklyje)}
-        child {node[level3] {Vienanariai \\ \small(tik skaičių ir raidžių sandauga, jokių $+/-$)}}
-        child {node[level3] {Daugianariai \\ \small(vienanarių algebrinė suma}}
-      }
+            child {node[level2] {Sveikieji reiškiniai \\ \small(be kintamojo vardiklyje)}}
       child {node[level2] {Trupmeniniai reiškiniai \\ \small(su kintamuoju vardiklyje)}}
     }
     child {node[level1] {Iracionalieji reiškiniai \\ \small(kintamasis yra po šaknimi)}};
@@ -186,7 +143,7 @@ Visų algebrinių reiškinių klasifikacijos medis:
 
 \section{Uždaviniai}
 \begin{problem}
-Prie kiekvieno žemiau esančio reiškinio parašykite, kokio tipo tai reiškinys: racionalus, iracionalus, sveikas, trupmeninis, vienanaris ar daugianaris. Atsiminkite, kad reiškinys gali turėti daugiau nei vieną tipą.
+Prie kiekvieno žemiau esančio reiškinio parašykite, kokio tipo tai reiškinys: racionalus, iracionalus, sveikas ar trupmeninis. Atsiminkite, kad reiškinys gali turėti daugiau nei vieną tipą.
 
 \begin{tasks}[ label={(\arabic*)},label-offset=0.9em](4) % Nustatome skaičiavimą ir formatą (1)
     \task $7x^3 -x- 15$
@@ -219,26 +176,26 @@ Prie kiekvieno žemiau esančio reiškinio parašykite, kokio tipo tai reiškiny
 \newpage
 \section{Atsakymai}
 \begin{tasks}[label={(\arabic*)}, label-offset=0.9em](1)
-    \task racionalus, sveikas, daugianaris.
+    \task racionalus, sveikas.
     \task iracionalus (kintamieji po šaknimi).
-    \task racionalus, sveikas, vienanaris (galima užrašyti $\frac{7}{3} \cdot x$).
+    \task racionalus, sveikas.
     \task racionalus, trupmeninis (kintamasis vardiklyje).
-    \task racionalus, sveikas, vienanaris.
-    \task racionalus, sveikas, daugianaris.
-    \task racionalus, sveikas, daugianaris (po šaknimi tik skaičius).
+    \task racionalus, sveikas.
+    \task racionalus, sveikas.
+    \task racionalus, sveikas (po šaknimi tik skaičius).
     \task racionalus, trupmeninis (lygu $\frac{5}{a^3}$).
-    \task racionalus, sveikas, vienanaris.
+    \task racionalus, sveikas.
     \task racionalus, trupmeninis.
     \task iracionalus (trupmeninis laipsnis).
-    \task racionalus, sveikas, daugianaris.
-    \task racionalus, sveikas, vienanaris.
+    \task racionalus, sveikas.
+    \task racionalus, sveikas.
     \task iracionalus (kintamasis po šaknimi).
-    \task racionalus, sveikas, daugianaris (išskleidus gaunama vienanarių suma).
-    \task racionalus, sveikas, vienanaris.
-    \task racionalus, sveikas, daugianaris.
-    \task racionalus, sveikas, daugianaris.
+    \task racionalus, sveikas.
+    \task racionalus, sveikas.
+    \task racionalus, sveikas.
+    \task racionalus, sveikas.
     \task racionalus, trupmeninis.
-    \task racionalus, sveikas, daugianaris.
+    \task racionalus, sveikas.
 \end{tasks}
 
 

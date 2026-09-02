@@ -1,0 +1,840 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% =========================================================
+% pdfLaTeX konfigūracija
+% =========================================================
+
+% Lietuviški simboliai
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Kalbos
+% Paskutinė nurodyta kalba yra pagrindinė
+\usepackage[english,lithuanian]{babel}
+
+% Noto Sans šriftas, suderinamas su pdfLaTeX
+\usepackage[sfdefault]{noto}
+
+% Matematika
+\usepackage{amsmath,amssymb,cancel}
+
+% =========================================================
+% Beamer tema ir spalvų paletė
+% =========================================================
+
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\setbeamertemplate{navigation symbols}{}
+
+% =========================================================
+% Lietuviški aplinkų pavadinimai
+% =========================================================
+
+\deftranslation[to=lithuanian]{Definition}{Apibrėžimas}
+\deftranslation[to=lithuanian]{Example}{Pavyzdys}
+\deftranslation[to=lithuanian]{Remark}{Pastaba}
+\deftranslation[to=lithuanian]{Proof}{Įrodymas}
+\deftranslation[to=lithuanian]{Corollary}{Išvada}
+
+% =========================================================
+% Papildomos aplinkos
+% =========================================================
+
+\newenvironment{proposition}[1][]%
+{\begin{block}{Teiginys: #1}}%
+{\end{block}}
+
+\newenvironment{property}[1][]%
+{\begin{block}{Savybė: #1}}%
+{\end{block}}
+
+\newcommand{\vocab}[1]{\textbf{\color{structure.fg}#1}}
+
+% =========================================================
+% Dokumento informacija
+% =========================================================
+
+\title[Laipsnis su sveikuoju rodikliu]
+{Laipsnis su sveikuoju rodikliu}
+
+\subtitle{Teorija, pavyzdžiai ir praktinės užduotys}
+
+\author[A. Berniukevičius]{Andrius Berniukevičius}
+
+\date{\today}
+
+% =========================================================
+% Dokumentas
+% =========================================================
+
+\begin{document}
+
+% ---------------------------------------------------------
+% Titulinė skaidrė
+% ---------------------------------------------------------
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% ---------------------------------------------------------
+% Nulinis laipsnis
+% ---------------------------------------------------------
+
+\begin{frame}{Nulinio laipsnio rodiklio atsiradimas}
+
+    \begin{proposition}[Nulinis laipsnis]
+        Jei $a \neq 0$, tai
+        \[
+        a^0 = 1.
+        \]
+    \end{proposition}
+
+    \begin{proof}
+
+        Pritaikykime laipsnių dalybos savybę
+
+        \[
+        \frac{a^m}{a^n}=a^{m-n},
+        \]
+
+        kai $m=n$:
+
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}{Nulinio laipsnio rodiklio atsiradimas}
+
+    \begin{proof}
+
+        \begin{enumerate}
+
+            \item
+            \textbf{Aritmetinė taisyklė:}
+            bet kurį nelygų nuliui reiškinį padaliję iš savęs,
+            gauname vienetą:
+
+            \[
+            \frac{a^n}{a^n}=1
+            \]
+
+            \item
+            \textbf{Laipsnių dalybos taisyklė:}
+            atimame rodiklius:
+
+            \[
+            \frac{a^n}{a^n}
+            =
+            a^{n-n}
+            =
+            a^0
+            \]
+
+        \end{enumerate}
+
+        Kadangi pertvarkėme tą patį reiškinį,
+        rezultatai yra lygūs:
+
+        \[
+        a^0=1
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Neigiamas rodiklis
+% ---------------------------------------------------------
+
+\begin{frame}{Laipsnis su neigiamu sveikuoju rodikliu}
+
+    \begin{proposition}[Neigiamas rodiklis]
+
+        Jei $a\neq0$ ir $k\in\mathbb{N}$, tai
+
+        \[
+        a^{-k}=\frac{1}{a^k}.
+        \]
+
+    \end{proposition}
+
+    \begin{proof}
+
+        Sudarykime trupmeną
+
+        \[
+        \frac{a^m}{a^{m+k}}
+        \]
+
+        (kur $m\in\mathbb{N}$)
+        ir pertvarkykime dviem būdais:
+
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}{Laipsnis su neigiamu sveikuoju rodikliu}
+
+    \begin{proof}
+
+        \begin{enumerate}
+
+            \item
+            \textbf{Prastinimas:}
+
+            išskaidome vardiklį
+
+            \[
+            a^{m+k}=a^m\cdot a^k
+            \]
+
+            ir suprastiname $a^m$:
+
+            \[
+            \frac{a^m}{a^{m+k}}
+            =
+            \frac{\cancelto{1}{a^m}}
+            {\cancelto{1}{a^m}\cdot a^k}
+            =
+            \frac{1}{a^k}
+            \]
+
+            \item
+            \textbf{Dalybos savybė:}
+            atimame rodiklius:
+
+            \[
+            \frac{a^m}{a^{m+k}}
+            =
+            a^{m-(m+k)}
+            =
+            a^{m-m-k}
+            =
+            a^{-k}
+            \]
+
+        \end{enumerate}
+
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}{Laipsnis su neigiamu sveikuoju rodikliu}
+
+    \begin{proof}
+
+        Sulyginę gautus rezultatus, turime:
+
+        \[
+        a^{-k}=\frac{1}{a^k}.
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Trupmenos kėlimas neigiamu laipsniu
+% ---------------------------------------------------------
+
+\begin{frame}{Trupmenos kėlimas neigiamu laipsniu}
+
+    \begin{block}{Išvada: Trupmenos apvertimas}
+
+        Keliant trupmeną neigiamu laipsniu,
+        ji yra apverčiama, o rodiklis tampa teigiamas:
+
+        \[
+        \left(\frac{a}{b}\right)^{-k}
+        =
+        \left(\frac{b}{a}\right)^k
+        =
+        \frac{b^k}{a^k}
+        \qquad
+        (a\neq0,\;b\neq0)
+        \]
+
+    \end{block}
+
+    \begin{proof}
+
+        Tarkime
+
+        \[
+        x=\frac{a}{b}
+        \]
+
+        ir pritaikykime formulę
+
+        \[
+        x^{-k}=\frac{1}{x^k}.
+        \]
+
+    \end{proof}
+
+\end{frame}
+
+\begin{frame}{Trupmenos kėlimas neigiamu laipsniu}
+
+    \begin{proof}
+
+        Tuomet
+
+        \[
+        \left(\frac{a}{b}\right)^{-k}
+        =
+        \frac{1}
+        {\left(\frac{a}{b}\right)^k}
+        =
+        \frac{1}
+        {\frac{a^k}{b^k}}
+        =
+        1:\frac{a^k}{b^k}
+        =
+        1\cdot\frac{b^k}{a^k}
+        =
+        \left(\frac{b}{a}\right)^k
+        \]
+
+    \end{proof}
+
+    \begin{alertblock}{Taisyklė praktikai}
+
+        Neigiamas rodiklis keičia dauginamojo vietą trupmenoje:
+        iš skaitiklio keliauja į vardiklį
+        (ir atvirkščiai) su teigiamu rodikliu.
+
+    \end{alertblock}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Apibrėžimas
+% ---------------------------------------------------------
+
+\begin{frame}{Laipsnio su sveikuoju rodikliu apibrėžimas}
+
+    \begin{definition}[Laipsnis su sveikuoju rodikliu]
+
+        \vocab{Laipsnis su sveikuoju rodikliu}
+        yra reiškinys $a^n$, kur
+
+        \[
+        a\neq0,
+        \qquad
+        n\in\mathbb{Z}.
+        \]
+
+    \end{definition}
+
+    \vspace{0.2cm}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.32\textwidth}
+
+            \begin{block}{1. Teigiamas ($n>0$)}
+
+                \[
+                a^n
+                =
+                \underbrace{
+                a\cdot a\cdot\dots\cdot a
+                }_{n\text{ kartų}}
+                \]
+
+                Įprasta $n$ vienodų dauginamųjų sandauga.
+
+            \end{block}
+
+        \end{column}
+
+        \begin{column}{0.32\textwidth}
+
+            \begin{block}{2. Nulinis ($n=0$)}
+
+                \[
+                a^0=1
+                \]
+
+                Bet koks nelygus nuliui skaičius,
+                pakeltas $0$ laipsniu, lygus $1$.
+
+            \end{block}
+
+        \end{column}
+
+        \begin{column}{0.32\textwidth}
+
+            \begin{block}{3. Neigiamas ($n=-k$)}
+
+                \[
+                a^{-k}=\frac{1}{a^k}
+                \]
+
+                Reikšmė atvirkštinė laipsniui
+                su teigiamu rodikliu.
+
+            \end{block}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Lygtis ir trupmenos prastinimas
+% ---------------------------------------------------------
+
+\begin{frame}{Pavyzdžiai: Lygtis ir trupmenos prastinimas}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.48\textwidth}
+
+            \begin{example}[1]
+
+                Išspręskite lygtį:
+
+                \[
+                \left(\frac{2}{5}\right)^x
+                =
+                6\frac{1}{4}
+                \]
+
+            \end{example}
+
+            \begin{block}{Sprendimas}
+
+                \begin{itemize}
+
+                    \item
+                    Mišrų skaičių verčiame trupmena:
+
+                    \[
+                    6\frac14
+                    =
+                    \frac{25}{4}
+                    =
+                    \left(\frac52\right)^2
+                    \]
+
+                    \item
+                    Apverčiame pagrindą:
+
+                    \[
+                    \left(\frac52\right)^2
+                    =
+                    \left(\frac25\right)^{-2}
+                    \]
+
+                    \item
+                    Sulyginame rodiklius:
+
+                    \[
+                    x=-2.
+                    \]
+
+                \end{itemize}
+
+            \end{block}
+
+        \end{column}
+
+        \begin{column}{0.48\textwidth}
+
+            \begin{example}[2]
+
+                Supaprastinkite:
+
+                \[
+                \frac{28a^6b^4c^{-13}}
+                {24a^{10}b^{-3}c}
+                \]
+
+            \end{example}
+
+            \begin{block}{Sprendimas}
+
+                \begin{align*}
+                    &=
+                    \frac{28}{24}
+                    \cdot
+                    a^{6-10}
+                    \cdot
+                    b^{4-(-3)}
+                    \cdot
+                    c^{-13-1}
+                    \\[3pt]
+                    &=
+                    \frac76
+                    \cdot
+                    a^{-4}
+                    \cdot
+                    b^7
+                    \cdot
+                    c^{-14}
+                    \\[3pt]
+                    &=
+                    \frac{7b^7}{6a^4c^{14}}
+                \end{align*}
+
+            \end{block}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Reiškinio pertvarkymas
+% ---------------------------------------------------------
+
+\begin{frame}{Pavyzdžiai: Reiškinio pertvarkymas}
+
+    \small
+
+    \begin{example}[3]
+
+        Supaprastinkite:
+
+        \[
+        \left(
+        \frac{3}{10}x^{-4}yz^2
+        \right)^{-4}
+        \]
+
+        \[
+        \left(
+        \frac{3yz^2}{10x^4}
+        \right)^{-4}
+        =
+        \left(
+        \frac{10x^4}{3yz^2}
+        \right)^4
+        =
+        \frac{
+        10^4\cdot(x^4)^4
+        }{
+        3^4\cdot y^4\cdot(z^2)^4
+        }
+        =
+        \frac{10000x^{16}}
+        {81y^4z^8}
+        \]
+
+    \end{example}
+
+    \begin{example}[4]
+
+        Supaprastinkite:
+
+        \[
+        \left(
+        \frac{6x^{-2}y^3}{5ab^4}
+        \right)^{-2}
+        :
+        \frac{5a^{-3}b}{72xy^4}
+        \]
+
+        \[
+        \left(
+        \frac{5ab^4x^2}{6y^3}
+        \right)^2
+        \cdot
+        \frac{72a^3xy^4}{5b}
+        =
+        \frac{25a^2b^8x^4}{36y^6}
+        \cdot
+        \frac{72a^3xy^4}{5b}
+        =
+        \frac{10a^5b^7x^5}{y^2}
+        \]
+
+    \end{example}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Uždaviniai 1--12
+% ---------------------------------------------------------
+
+\begin{frame}{Uždaviniai (1 dalis: 1--12)}
+
+    \small
+
+    Atlikite veiksmus
+    (atsakymus pateikite tik su teigiamais rodikliais):
+
+    \vspace{0.2cm}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \item
+                $6^x=\frac{1}{216}$
+
+                \item
+                $\left(\frac34\right)^x
+                =
+                2\frac{10}{27}$
+
+                \item
+                $0{,}2^x=125$
+
+                \item
+                $\left(
+                \frac34a^3b^{-2}
+                \right)^{-2}$
+
+                \item
+                $\left(
+                \frac{2x^3}{3y^4}
+                \right)^{-4}$
+
+                \item
+                $\left(
+                \frac{2m^3}{5n^7}
+                \right)^{-2}
+                \cdot
+                \frac{4m^3}{125n^{10}}$
+
+            \end{enumerate}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{6}
+
+                \item
+                $2{,}5^x=\frac{8}{125}$
+
+                \item
+                $5^x=0{,}0016$
+
+                \item
+                $\left(
+                0{,}1x^5y^{-4}z
+                \right)^{-3}$
+
+                \item
+                $\frac{
+                2x^3y^{-6}z
+                }{
+                12x^4y^6z^{-3}
+                }$
+
+                \item
+                $\frac{
+                36a^5bc^{-10}d^3
+                }{
+                24ab^{-1}c^{-3}d^6
+                }$
+
+                \item
+                $\frac{
+                45mn^{10}p^{-3}
+                }{
+                25m^{-3}n^0p^4
+                }$
+
+            \end{enumerate}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Uždaviniai 13--23
+% ---------------------------------------------------------
+
+\begin{frame}{Uždaviniai (2 dalis: 13--23)}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{12}
+
+                \item
+                $\left(
+                \frac{3ab^4}{5xy}
+                \right)^{-1}
+                \cdot
+                \frac{9x^{-1}y^2}{10ab^4}$
+
+                \item
+                $4^x=\frac{1}{64}$
+
+                \item
+                $\left(
+                \frac23
+                \right)^x
+                =
+                \frac{27}{8}$
+
+                \item
+                $0{,}25^x=64$
+
+                \item
+                $\left(
+                \frac52c^{-2}d^3
+                \right)^{-2}$
+
+                \item
+                $\left(
+                \frac{3p^2}{4q^3}
+                \right)^{-3}$
+
+            \end{enumerate}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{enumerate}
+
+                \setcounter{enumi}{18}
+
+                \item
+                $\left(
+                \frac{7r^{-3}s^2}{2t}
+                \right)^{-2}
+                \cdot
+                \frac{49r^2}{4s^4}$
+
+                \item
+                $0{,}4^x=\frac{125}{8}$
+
+                \item
+                $\left(
+                \frac13
+                \right)^x
+                =
+                81$
+
+                \item
+                $\left(
+                0{,}2u^{-3}v^2w^{-1}
+                \right)^{-2}$
+
+                \item
+                $\left(
+                \frac{4a^{-2}b^3}{9c}
+                \right)^{-1}
+                :
+                \frac{27ac^2}{8b^5}$
+
+            \end{enumerate}
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+% ---------------------------------------------------------
+% Atsakymai
+% ---------------------------------------------------------
+
+\begin{frame}{Atsakymai (1--23)}
+
+    \begin{columns}[T]
+
+        \begin{column}{0.33\textwidth}
+
+            \small
+
+            \textbf{(1)} $x=-3$ \\[3pt]
+
+            \textbf{(2)} $x=-3$ \\[3pt]
+
+            \textbf{(3)} $x=-3$ \\[3pt]
+
+            \textbf{(4)}
+            $\dfrac{16b^4}{9a^6}$ \\[5pt]
+
+            \textbf{(5)}
+            $\dfrac{81y^{16}}{16x^{12}}$ \\[5pt]
+
+            \textbf{(6)}
+            $\dfrac{n^4}{5m^3}$ \\[5pt]
+
+            \textbf{(7)} $x=-3$ \\[3pt]
+
+            \textbf{(8)} $x=-4$
+
+        \end{column}
+
+        \begin{column}{0.33\textwidth}
+
+            \small
+
+            \textbf{(9)}
+            $\dfrac{1000y^{12}}{x^{15}z^3}$ \\[5pt]
+
+            \textbf{(10)}
+            $\dfrac{z^4}{6xy^{12}}$ \\[5pt]
+
+            \textbf{(11)}
+            $\dfrac{3a^4b^2}{2c^7d^3}$ \\[5pt]
+
+            \textbf{(12)}
+            $\dfrac{9m^4n^{10}}{5p^7}$ \\[5pt]
+
+            \textbf{(13)}
+            $\dfrac{3y^3}{2a^2b^8}$ \\[5pt]
+
+            \textbf{(14)} $x=-3$ \\[3pt]
+
+            \textbf{(15)} $x=-3$ \\[3pt]
+
+            \textbf{(16)} $x=-3$
+
+        \end{column}
+
+        \begin{column}{0.33\textwidth}
+
+            \small
+
+            \textbf{(17)}
+            $\dfrac{4c^4}{25d^6}$ \\[5pt]
+
+            \textbf{(18)}
+            $\dfrac{64q^9}{27p^6}$ \\[5pt]
+
+            \textbf{(19)}
+            $\dfrac{r^8t^2}{s^8}$ \\[5pt]
+
+            \textbf{(20)} $x=-3$ \\[3pt]
+
+            \textbf{(21)} $x=-4$ \\[3pt]
+
+            \textbf{(22)}
+            $\dfrac{25u^6w^2}{v^4}$ \\[5pt]
+
+            \textbf{(23)}
+            $\dfrac{2ab^2}{3c}$
+
+        \end{column}
+
+    \end{columns}
+
+\end{frame}
+
+\end{document}
