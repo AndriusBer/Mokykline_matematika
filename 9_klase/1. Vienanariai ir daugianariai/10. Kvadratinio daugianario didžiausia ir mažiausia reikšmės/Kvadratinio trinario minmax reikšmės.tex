@@ -1,0 +1,229 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+
+\title{Kvadratinio daugianario ekstremumai}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Pilnojo kvadrato reikšmė}
+
+Norėdami rasti kvadratinio trinario didžiausią arba mažiausią reikšmę, jį pertvarkome išskirdami pilnąjį kvadratą. Pagrindinė idėja yra tokia: bet kurio reiškinio kvadratas negali būti neigiamas:
+\[
+(x-m)^2\geq0.
+\]
+Mažiausia kvadrato reikšmė yra $0$, ir ji pasiekiama tada, kai $x=m$.
+
+\begin{definition}
+\vocab{Kvadratinio trinario mažiausia reikšmė} -- tai mažiausia reikšmė, kurią gali įgyti reiškinys, kai $x$ įgyja visas galimas reikšmes.
+\end{definition}
+
+\begin{definition}
+\vocab{Kvadratinio trinario didžiausia reikšmė} -- tai didžiausia reikšmė, kurią gali įgyti reiškinys.
+\end{definition}
+
+\begin{definition}
+\vocab{Kvadratinio daugianario ekstremumai} -- tai jo mažiausia arba didžiausia reikšmė.
+\end{definition}
+
+Kvadratinis daugianaris gali turėti tik vieną iš šių ekstremumų: mažiausią reikšmę arba didžiausią reikšmę. Išskyrę pilnąjį kvadratą galime nustatyti, kuri iš jų yra pasiekiama ir su kuria $x$ reikšme.
+
+\section{Paprasčiausias atvejis: \texorpdfstring{$ax^2$}{ax2}}
+
+Pirmiausia panagrinėkime reiškinį $ax^2$. Kadangi $x^2\geq0$, jo mažiausia reikšmė yra $0$, pasiekiama tada, kai $x=0$. Toliau svarbus tik skaičiaus $a$ ženklas.
+
+Jei $a>0$, padauginę neneigiamą skaičių $x^2$ iš teigiamo skaičiaus gauname neneigiamą reiškinį:
+\[
+ax^2\geq0.
+\]
+Todėl reiškinio $ax^2$ mažiausia reikšmė yra $0$, ji pasiekiama, kai $x=0$.
+
+Jei $a<0$, padauginę neneigiamą skaičių $x^2$ iš neigiamo skaičiaus gauname neigiamą arba nulinį reiškinį:
+\[
+ax^2\leq0.
+\]
+Todėl reiškinio $ax^2$ didžiausia reikšmė yra $0$, ji pasiekiama, kai $x=0$.
+
+\begin{example}
+Raskite reiškinio $3x^2$ ekstremumą.
+\textbf{Sprendimas}\\
+Kadangi $3>0$ ir $x^2\geq0$, turime $3x^2\geq0$. Mažiausia reikšmė $0$ gaunama, kai $x=0$.
+\textbf{Atsakymas:} mažiausia reikšmė yra $0$, ji pasiekiama, kai $x=0$.
+\end{example}
+
+\begin{example}
+Raskite reiškinio $-5x^2$ ekstremumą.
+\textbf{Sprendimas}\\
+Kadangi $-5<0$ ir $x^2\geq0$, turime $-5x^2\leq0$. Didžiausia reikšmė $0$ gaunama, kai $x=0$.
+\textbf{Atsakymas:} didžiausia reikšmė yra $0$, ji pasiekiama, kai $x=0$.
+\end{example}
+
+\section{Mažiausios reikšmės radimas}
+
+Jeigu pilnąjį kvadratą išskyrę gauname formą
+\[
+a(x-m)^2+n, \qquad a>0,
+\]
+tai reiškinio mažiausia reikšmė yra $n$. Ji pasiekiama, kai $x=m$.
+
+\begin{property}[Mažiausia reikšmė]
+Jei reiškinį galime užrašyti forma $a(x-m)^2+n$, kai $a>0$, tai jo mažiausia reikšmė yra $n$. Ji pasiekiama, kai $x=m$.
+\end{property}
+
+Taip yra todėl, kad $a(x-m)^2\geq0$. Vadinasi, prie skaičiaus $n$ visada pridedame neneigiamą skaičių; mažiausiai gauname, kai jis lygus nuliui.
+
+\begin{example}
+Raskite reiškinio mažiausią reikšmę ir $x$ reikšmę, su kuria ji pasiekiama:
+\[
+x^2+6x+2.
+\]
+\textbf{Sprendimas}\\
+Kadangi $6x=2\cdot x\cdot3$, pridedame ir atimame $3^2=9$:
+\[
+\begin{aligned}
+x^2+6x+2
+&=x^2+6x+9-9+2\\
+&=(x+3)^2-7.
+\end{aligned}
+\]
+Kadangi $(x+3)^2\geq0$, mažiausia jo reikšmė yra $0$. Ji gaunama, kai $x+3=0$, t. y. kai $x=-3$. Todėl $(x+3)^2-7\geq-7$.\\ \\
+\textbf{Atsakymas:} mažiausia reikšmė yra $-7$, ji pasiekiama, kai $x=-3$.
+\end{example}
+
+\begin{example}
+Raskite reiškinio mažiausią reikšmę ir $x$ reikšmę, su kuria ji pasiekiama:
+\[
+2x^2-8x+3.
+\]
+\textbf{Sprendimas}\\
+Iškeliame $2$ prie pirmųjų dviejų narių ir išskiriame pilnąjį kvadratą:
+\[
+\begin{aligned}
+2x^2-8x+3
+&=2(x^2-4x)+3\\
+&=2(x^2-4x+4-4)+3\\
+&=2(x-2)^2-5.
+\end{aligned}
+\]
+Kadangi $2(x-2)^2\geq0$, mažiausia reikšmė yra $-5$. Ji pasiekiama, kai $x-2=0$, t. y. kai $x=2$.\\ \\
+\textbf{Atsakymas:} mažiausia reikšmė yra $-5$, ji pasiekiama, kai $x=2$.
+\end{example}
+
+\section{Didžiausios reikšmės radimas}
+
+Jeigu pilnąjį kvadratą išskyrę gauname formą
+\[
+-a(x-m)^2+n, \qquad a>0,
+\]
+tai reiškinio didžiausia reikšmė yra $n$. Ji pasiekiama, kai $x=m$.
+
+\begin{property}[Didžiausia reikšmė]
+Jei reiškinį galime užrašyti forma $-a(x-m)^2+n$, kai $a>0$, tai jo didžiausia reikšmė yra $n$. Ji pasiekiama, kai $x=m$.
+\end{property}
+
+Taip yra todėl, kad $-a(x-m)^2\leq0$. Vadinasi, prie skaičiaus $n$ pridedame neigiamą arba nulinį skaičių; daugiausiai gauname, kai jis lygus nuliui.
+
+\begin{example}
+Raskite reiškinio didžiausią reikšmę ir $x$ reikšmę, su kuria ji pasiekiama:
+\[
+-x^2+4x+1.
+\]
+\textbf{Sprendimas}\\
+Iškeliame minusą prie pirmųjų dviejų narių ir išskiriame pilnąjį kvadratą:
+\[
+\begin{aligned}
+-x^2+4x+1
+&=-(x^2-4x)+1\\
+&=-(x^2-4x+4-4)+1\\
+&=-(x-2)^2+5.
+\end{aligned}
+\]
+Kadangi $-(x-2)^2\leq0$, didžiausia reikšmė yra $5$. Ji pasiekiama, kai $x-2=0$, t. y. kai $x=2$.\\ \\
+\textbf{Atsakymas:} didžiausia reikšmė yra $5$, ji pasiekiama, kai $x=2$.
+\end{example}
+
+\begin{example}
+Raskite reiškinio didžiausią reikšmę ir $x$ reikšmę, su kuria ji pasiekiama:
+\[
+-3x^2-12x+7.
+\]
+\textbf{Sprendimas}\\
+Iškeliame $-3$ prie pirmųjų dviejų narių:
+\[
+\begin{aligned}
+-3x^2-12x+7
+&=-3(x^2+4x)+7\\
+&=-3(x^2+4x+4-4)+7\\
+&=-3(x+2)^2+19.
+\end{aligned}
+\]
+Kadangi $-3(x+2)^2\leq0$, didžiausia reikšmė yra $19$. Ji pasiekiama, kai $x+2=0$, t. y. kai $x=-2$.\\ \\
+\textbf{Atsakymas:} didžiausia reikšmė yra $19$, ji pasiekiama, kai $x=-2$.
+\end{example}
+
+\begin{remark}
+Išskyrus pilnąjį kvadratą, sprendimo kryptį nusako koeficiento prie kvadrato ženklas:
+\[
+a(x-m)^2+n,\quad a>0 \quad \Rightarrow \quad \text{mažiausia reikšmė yra } n;
+\]
+\[
+-a(x-m)^2+n,\quad a>0 \quad \Rightarrow \quad \text{didžiausia reikšmė yra } n.
+\]
+Abiem atvejais ekstremumo reikšmė pasiekiama tada, kai kvadratas lygus nuliui: $x=m$.
+\end{remark}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išskirdami pilnąjį kvadratą raskite reiškinio mažiausią arba didžiausią reikšmę ir nurodykite, su kuria $x$ reikšme ji pasiekiama.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2-10x+4$
+	\task $x^2+2x-8$
+	\task $-x^2-6x+2$
+	\task $-2x^2+8x+1$
+	\task $3x^2-6x+7$
+	\task $-4x^2-16x+3$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirdami pilnąjį kvadratą raskite reiškinio mažiausią arba didžiausią reikšmę ir nurodykite, su kuria $x$ reikšme ji pasiekiama.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $2x^2+12x-1$
+	\task $5x^2-20x+6$
+	\task $-2x^2+4x+9$
+	\task $-3x^2+18x-4$
+	\task $4x^2+4x+10$
+	\task $-x^2+10x-12$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task mažiausia reikšmė $-21$, kai $x=5$;
+	\task mažiausia reikšmė $-9$, kai $x=-1$;
+	\task didžiausia reikšmė $11$, kai $x=-3$;
+	\task didžiausia reikšmė $9$, kai $x=2$;
+	\task mažiausia reikšmė $4$, kai $x=1$;
+	\task didžiausia reikšmė $19$, kai $x=-2$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task mažiausia reikšmė $-19$, kai $x=-3$;
+	\task mažiausia reikšmė $-14$, kai $x=2$;
+	\task didžiausia reikšmė $11$, kai $x=1$;
+	\task didžiausia reikšmė $23$, kai $x=3$;
+	\task mažiausia reikšmė $9$, kai $x=-\frac{1}{2}$;
+	\task didžiausia reikšmė $13$, kai $x=5$.
+\end{tasks}
+\end{problem}
+
+\end{document}

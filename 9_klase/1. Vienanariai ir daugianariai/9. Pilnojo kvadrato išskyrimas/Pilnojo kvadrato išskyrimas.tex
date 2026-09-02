@@ -1,0 +1,219 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+
+\title{Pilnojo kvadrato išskyrimas}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra pilnojo kvadrato išskyrimas?}
+
+Pilnojo kvadrato išskyrimas -- tai daugianario pertvarkymas taip, kad jame atsirastų dvinario kvadratas. Šis būdas remiasi greitosios daugybos formulėmis:
+\[
+(a+b)^2=a^2+2ab+b^2,
+\]
+\[
+(a-b)^2=a^2-2ab+b^2.
+\]
+
+\begin{definition}
+\vocab{Pilnojo kvadrato išskyrimas} -- tai trinaro pertvarkymas į dvinario kvadratą arba į dvinario kvadrato ir skaičiaus sumą ar skirtumą.
+\end{definition}
+
+Kad trinarį galėtume užrašyti dvinario kvadratu, pirmasis ir paskutinis jo nariai turi būti kvadratai, o vidurinis narys turi būti lygus dvigubai jų kvadratinių šaknų sandaugai.
+
+\section{Pilnojo kvadrato atpažinimas}
+
+\begin{property}[Pilnojo kvadrato trinaris]
+Jei trinaris yra formos
+\[
+a^2+2ab+b^2,
+\]
+tai jis lygus $(a+b)^2$. Jei trinaris yra formos
+\[
+a^2-2ab+b^2,
+\]
+tai jis lygus $(a-b)^2$.
+\end{property}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+x^2+6x+9.
+\]
+\textbf{Sprendimas}\\
+Pirmasis narys yra $x^2$, todėl $a=x$. Paskutinis narys yra $9=3^2$, todėl $b=3$. Patikriname vidurinį narį:
+\[
+2ab=2\cdot x\cdot3=6x.
+\]
+Vidurinis narys sutampa, todėl taikome sumos kvadrato formulę:
+\[
+x^2+6x+9=x^2+2\cdot x\cdot3+3^2=(x+3)^2.
+\]
+\textbf{Atsakymas:} $(x+3)^2$.
+\end{example}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+4x^2-12x+9.
+\]
+\textbf{Sprendimas}\\
+Pirmasis narys yra $4x^2=(2x)^2$, o paskutinis narys yra $9=3^2$. Todėl tikriname, ar vidurinis narys yra $-2\cdot2x\cdot3$:
+\[
+-2\cdot2x\cdot3=-12x.
+\]
+Vidurinis narys sutampa, todėl gauname skirtumo kvadratą:
+\[
+4x^2-12x+9=(2x)^2-2\cdot2x\cdot3+3^2=(2x-3)^2.
+\]
+\textbf{Atsakymas:} $(2x-3)^2$.
+\end{example}
+
+\begin{example}
+Išskaidykite dauginamaisiais:
+\[
+9a^2+24ab+16b^2.
+\]
+\textbf{Sprendimas}\\
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+9a^2=(3a)^2, \qquad 16b^2=(4b)^2.
+\]
+Patikriname vidurinį narį:
+\[
+2\cdot3a\cdot4b=24ab.
+\]
+Taigi tai yra sumos kvadratas:
+\[
+9a^2+24ab+16b^2=(3a+4b)^2.
+\]
+\textbf{Atsakymas:} $(3a+4b)^2$.
+\end{example}
+
+\begin{remark}
+Ne kiekvienas trinaris yra pilnojo kvadrato trinaris. Pavyzdžiui, reiškinyje $x^2+5x+9$ pirmasis ir paskutinis nariai yra kvadratai, tačiau $2\cdot x\cdot3=6x$, o ne $5x$. Todėl šio trinaro negalime užrašyti $(x+3)^2$ forma.
+\end{remark}
+
+\section{Pilnojo kvadrato sudarymas}
+
+Kartais trūksta tik paskutinio nario, kad trinaris taptų pilnojo kvadrato trinariu. Tuomet reikiamą narį pridedame ir iš karto atimame. Reiškinio reikšmė dėl to nesikeičia.
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+x^2+8x.
+\]
+\textbf{Sprendimas}\\
+Pirmasis narys yra $x^2$, o vidurinis narys $8x$ turi būti lygus $2\cdot x\cdot b$. Randame $b$:
+\[
+2\cdot x\cdot b=8x, \qquad b=4.
+\]
+Taigi reikia pridėti $4^2=16$. Kad reiškinio reikšmė nepasikeistų, tą patį skaičių ir atimame:
+\[
+\begin{aligned}
+x^2+8x
+&=x^2+8x+16-16\\
+&=(x+4)^2-16.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $(x+4)^2-16$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+x^2-10x+7.
+\]
+\textbf{Sprendimas}\\
+Viduriniam nariui $-10x$ gauti reikia $b=5$, nes $-2\cdot x\cdot5=-10x$. Pridedame ir atimame $5^2=25$:
+\[
+\begin{aligned}
+x^2-10x+7
+&=x^2-10x+25-25+7\\
+&=(x-5)^2-18.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $(x-5)^2-18$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+4x^2+12x+1.
+\]
+\textbf{Sprendimas}\\
+Pirmasis narys yra $(2x)^2$. Vidurinį narį gauname pagal formulę $2\cdot2x\cdot b=12x$, todėl $b=3$. Pridedame ir atimame $3^2=9$:
+\[
+\begin{aligned}
+4x^2+12x+1
+&=4x^2+12x+9-9+1\\
+&=(2x+3)^2-8.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $(2x+3)^2-8$.
+\end{example}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išskaidykite dauginamaisiais pilnojo kvadrato trinarius.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2+10x+25$
+	\task $x^2-14x+49$
+	\task $4a^2+20a+25$
+	\task $9y^2-24y+16$
+	\task $25m^2+30mn+9n^2$
+	\task $16p^2-40pq+25q^2$
+	\task $a^2-6ab+9b^2$
+	\task $x^2+12xy+36y^2$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirkite pilnąjį kvadratą.
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2+4x$
+	\task $x^2-6x$
+	\task $x^2+12x+5$
+	\task $x^2-8x+3$
+	\task $4x^2+20x$
+	\task $9x^2-30x+4$
+	\task $a^2+14a-2$
+	\task $4y^2-4y+6$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(x+5)^2$;
+	\task $(x-7)^2$;
+	\task $(2a+5)^2$;
+	\task $(3y-4)^2$;
+	\task $(5m+3n)^2$;
+	\task $(4p-5q)^2$;
+	\task $(a-3b)^2$;
+	\task $(x+6y)^2$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(x+2)^2-4$;
+	\task $(x-3)^2-9$;
+	\task $(x+6)^2-31$;
+	\task $(x-4)^2-13$;
+	\task $(2x+5)^2-25$;
+	\task $(3x-5)^2-21$;
+	\task $(a+7)^2-51$;
+	\task $(2y-1)^2+5$.
+\end{tasks}
+\end{problem}
+
+\end{document}
