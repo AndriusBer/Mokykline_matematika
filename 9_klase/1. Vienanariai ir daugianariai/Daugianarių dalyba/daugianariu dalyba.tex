@@ -1,0 +1,223 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../manostilius_lt}
+
+\title{Daugianarių dalyba}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Daugianario dalyba iš dvinario}
+
+\begin{definition}
+Tegu $P(x)$ ir $D(x)$ yra daugianariai, o $D(x) \ne 0$. Jei egzistuoja daugianaris $Q(x)$, kuriam
+\[
+P(x)=D(x)\cdot Q(x),
+\]
+Daugianaris $P(x)$ \vocab{dalijasi} iš daugianario $D(x)$, o daugianaris $Q(x)$ vadinamas \vocab{dalmeniu}.
+\end{definition}
+
+\begin{algorithm}
+Norėdami padalyti daugianarį iš dvinario stulpeliu, atliekame šiuos veiksmus:
+\begin{enumerate}
+    \item Padalijame dalinio vyriausiąjį narį iš daliklio vyriausiojo nario. Gautą narį rašome į dalmenį.
+    \item Naują dalmens narį padauginame iš viso daliklio ir gautą daugianarį rašome po daliniu, sutapatindami vienodų laipsnių narius.
+    \item Atimame gautą sandaugą iš dalinio.
+	\item Kartojame veiksmus, kol gauname nulį.
+\end{enumerate}
+\end{algorithm}
+
+\section{Pavyzdžiai}
+
+\begin{example}
+Padalykime $6x^4-x^3-22x^2+17x-3$ iš $2x-3$.
+
+\setlength{\arraycolsep}{2pt}
+\renewcommand{\arraystretch}{1.1}
+\[
+\begin{array}[t]{ccccccccc}
+  6x^4 & - & x^3  & - & 22x^2 & + & 17x & - & 3 \\
+  6x^4 & - & 9x^3 &   & \downarrow & & & & \\
+  \cline{1-3}
+  \noalign{\vskip 3pt}
+	  &   & 8x^3  & - & 22x^2 &   & \downarrow & & \\
+	  &   & 8x^3  & - & 12x^2 &   &             & & \\
+  \cline{3-5}
+  \noalign{\vskip 3pt}
+	  &   &       &   & -10x^2 & + & 17x &   & \downarrow \\
+	  &   &       &   & -10x^2 & + & 15x &   & \\
+  \cline{5-7}
+  \noalign{\vskip 3pt}
+	  &   &       &   &        &   & 2x & - & 3 \\
+	  &   &       &   &        &   & 2x & - & 3 \\
+  \cline{7-9}
+  \noalign{\vskip 3pt}
+	  &   &       &   &        &   &    &   & 0
+\end{array}
+\enskip
+\begin{array}[t]{|@{\enskip}l}
+  2x-3 \\
+  \hline
+  \rule{0pt}{14pt}3x^3+4x^2-5x+1
+\end{array}
+\]
+Dalmenį sudarome po vieną narį:
+\begin{enumerate}
+	\item Dalinio vyriausiąjį narį dalijame iš daliklio vyriausiojo nario:
+	\[
+	6x^4:(2x)=3x^3.
+	\]
+	\item Padauginame $3x^3(2x-3)=6x^4-9x^3$ ir atimame. Gauname $8x^3$, tuomet nuleidžiame $-22x^2$, todėl gauname $8x^3-22x^2$. Dabar
+	\[
+	8x^3:(2x)=4x^2.
+	\]
+	\item Padauginame $4x^2(2x-3)=8x^3-12x^2$ ir atimame. Gauname $-10x^2$, tuomet nuleidžiame $+17x$, todėl gauname $-10x^2+17x$. Dabar
+	\[
+	-10x^2:(2x)=-5x.
+	\]
+	\item Padauginame $-5x(2x-3)=-10x^2+15x$ ir atimame. Gauname $2x$, tuomet nuleidžiame $-3$, todėl gauname $2x-3$. Dabar
+	\[
+	2x:(2x)=1.
+	\]
+\end{enumerate}
+Taigi
+\[
+(6x^4-x^3-22x^2+17x-3):(2x-3)=3x^3+4x^2-5x+1.
+\]
+\end{example}
+
+\begin{example}
+Padalykime $2x^3+x^2-11x+2$ iš $x-2$.
+
+\setlength{\arraycolsep}{2pt}
+\renewcommand{\arraystretch}{1.1}
+\[
+\begin{array}[t]{ccccccc}
+  2x^3 & + & x^2  & - & 11x & + & 2 \\
+  2x^3 & - & 4x^2 &   & \downarrow & & \\
+  \cline{1-3}
+  \noalign{\vskip 3pt}
+	  &   & 5x^2  & - & 11x &   & \downarrow \\
+	  &   & 5x^2  & - & 10x &   & \\
+  \cline{3-5}
+  \noalign{\vskip 3pt}
+	  &   &       &   & -x  & + & 2 \\
+	  &   &       &   & -x  & + & 2 \\
+  \cline{5-7}
+  \noalign{\vskip 3pt}
+	  &   &       &   &     &   & 0
+\end{array}
+\enskip
+\begin{array}[t]{|@{\enskip}l}
+  x-2 \\
+  \hline
+  \rule{0pt}{14pt}2x^2+5x-1
+\end{array}
+\]
+Dalmenį sudarome po vieną narį:
+\begin{enumerate}
+	\item Dalinio vyriausiąjį narį dalijame iš daliklio vyriausiojo nario:
+	\[
+	2x^3:x=2x^2.
+	\]
+	\item Padauginame $2x^2(x-2)=2x^3-4x^2$ ir atimame. Gauname $5x^2$, tuomet nuleidžiame $-11x$, todėl gauname $5x^2-11x$. Dabar
+	\[
+	5x^2:x=5x.
+	\]
+	\item Padauginame $5x(x-2)=5x^2-10x$ ir atimame. Gauname $-x$, tuomet nuleidžiame $+2$, todėl gauname $-x+2$. Dabar
+	\[
+	-x:x=-1.
+	\]
+\end{enumerate}
+Vadinasi,
+\[
+(2x^3+x^2-11x+2):(x-2)=2x^2+5x-1.
+\]
+\end{example}
+
+\begin{example}
+Padalykime $x^3+2x^2+4x+21$ iš $x+3$.
+
+\setlength{\arraycolsep}{2pt}
+\renewcommand{\arraystretch}{1.1}
+\[
+\begin{array}[t]{ccccccc}
+	x^3 & + & 2x^2 & + & 4x & + & 21 \\
+	x^3 & + & 3x^2 &      & \downarrow &   &    \\
+	\cline{1-3}
+	\noalign{\vskip 3pt}
+	    &   & -x^2 & + & 4x &   & \downarrow \\
+	    &   & -x^2 & - & 3x &   &             \\
+	\cline{3-5}
+	\noalign{\vskip 3pt}
+	    &   &      &   & 7x & + & 21 \\
+	    &   &      &   & 7x & + & 21 \\
+	\cline{5-7}
+	\noalign{\vskip 3pt}
+	    &   &      &   &    &   & 0
+\end{array}
+\enskip
+\begin{array}[t]{|@{\enskip}l}
+	x+3 \\
+	\hline
+	\rule{0pt}{14pt}x^2-x+7
+\end{array}
+\]
+Dalmenį sudarome po vieną narį:
+\begin{enumerate}
+	\item Dalinio vyriausiąjį narį dalijame iš daliklio vyriausiojo nario:
+	\[
+	x^3:x=x^2.
+	\]
+	\item Padauginame $x^2(x+3)=x^3+3x^2$ ir atimame. Gauname $-x^2$, tuomet nuleidžiame $+4x$, todėl gauname $-x^2+4x$. Dabar
+	\[
+	-x^2:x=-x.
+	\]
+	\item Padauginame $-x(x+3)=-x^2-3x$ ir atimame. Gauname $7x$, tuomet nuleidžiame $+21$, todėl gauname $7x+21$. Dabar
+	\[
+	7x:x=7.
+	\]
+\end{enumerate}
+Taigi
+\[
+(x^3+2x^2+4x+21):(x+3)=x^2-x+7.
+\]
+\end{example}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Atlikite daugianarių dalybą ir nurodykite dalmenį.
+\begin{tasks}[label={\arabic*.},label-offset=0.9em](2)
+	\task $(x^3+5x^2+8x+4):(x+1)$
+	\task $(2x^3-3x^2-8x+12):(x-2)$
+	\task $(3x^3+x^2-10x-24):(x+2)$
+	\task $(2x^4-5x^3-3x^2+20x-20):(x-2)$
+	\task $(x^3-4x+3):(x-1)$
+	\task $(4x^3-7x^2-7x+10):(x-2)$
+	\task $(x^4+4x^3+x^2-4x+4):(x+2)$
+	\task $(5x^4-3x^3-3x^2+5x-4):(x-1)$
+	\task $(x^4+3x^3+x^2-3x-2):(x^2-1)$
+	\task $(2x^4+5x^3-7x^2+10x-4):(2x-1)$
+\end{tasks}
+\end{problem}
+
+\newpage
+\section{Atsakymai}
+
+\begin{tasks}[label={\arabic*.},label-offset=0.9em](1)
+	\task $x^2+4x+4$
+	\task $2x^2+x-6$
+	\task $3x^2-5x$
+	\task $2x^3-x^2-5x+10$
+	\task $x^2+x-3$
+	\task $4x^2+x-5$
+	\task $x^3+2x^2-3x+2$
+	\task $5x^3+2x^2-x+4$
+	\task $x^2+3x+2$
+	\task $x^3+3x^2-2x+4$
+\end{tasks}
+
+\end{document}
