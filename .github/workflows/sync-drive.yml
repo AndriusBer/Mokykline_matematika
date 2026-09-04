@@ -19,9 +19,7 @@ jobs:
         env:
           GDRIVE_JSON: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: |
-          cat << 'EOF' > service_account.json
-          $GDRIVE_JSON
-          EOF
+          python3 -c "import os; open('service_account.json', 'w').write(os.environ['GDRIVE_JSON'])"
 
       - name: Sync files to Google Drive
         run: |
