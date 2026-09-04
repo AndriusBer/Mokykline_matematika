@@ -1,0 +1,28 @@
+name: Sync to Google Drive
+
+on:
+  push:
+    branches:
+      - main # jei jūsų pagrindinė šaka yra master, pakeiskite į master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Service Account Credentials
+        run: |
+          echo '${{ secrets.GDRIVE_CREDENTIALS }}' > service_account.json
+
+      - name: Sync files using rclone
+        uses: animenotifier/github-action-rclone@v1
+        with:
+          args: >-
+            sync . gdrive:
+            --drive-service-account-file=service_account.json
+            --drive-root-folder-id=${{ secrets.GDRIVE_FOLDER_ID }}
+            --exclude ".git/**"
+            --exclude ".github/**"
+            --exclude "service_account.json"
