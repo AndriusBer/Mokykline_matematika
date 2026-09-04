@@ -16,8 +16,38 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rclone
 
       - name: Setup Service Account Credentials
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: |
-          echo "${{ secrets.GDRIVE_CREDENTIALS }}" | base64 -d > service_account.json
+          python3 - <<'PY'
+          import base64
+          import json
+          import os
+          import pathlib
+          import sys
+
+          secret = os.environ["GDRIVE_CREDENTIALS"].strip()
+          candidates = [secret]
+
+          try:
+            decoded = base64.b64decode(secret, validate=True).decode("utf-8")
+          except Exception:
+            decoded = None
+
+          if decoded and decoded != secret:
+            candidates.append(decoded)
+
+          for candidate in candidates:
+            try:
+              json.loads(candidate)
+            except json.JSONDecodeError:
+              continue
+
+            pathlib.Path("service_account.json").write_text(candidate)
+            sys.exit(0)
+
+          raise SystemExit("GDRIVE_CREDENTIALS must contain valid JSON or base64-encoded JSON.")
+          PY
 
       - name: Sync files to Google Drive
         run: |
