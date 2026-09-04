@@ -3,7 +3,7 @@ name: Sync to Google Drive
 on:
   push:
     branches:
-      - main # jei pagrindinė šaka yra master, pakeiskite į master
+      - main
 
 jobs:
   sync:
@@ -16,14 +16,18 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rclone
 
       - name: Setup Service Account Credentials
+        env:
+          GDRIVE_JSON: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: |
-          echo '${{ secrets.GDRIVE_CREDENTIALS }}' > service_account.json
+          cat << 'EOF' > service_account.json
+          $GDRIVE_JSON
+          EOF
 
       - name: Sync files to Google Drive
         run: |
           rclone sync . :drive: \
             --drive-service-account-file=service_account.json \
-            --drive-root-folder-id=${{ secrets.GDRIVE_FOLDER_ID }} \
+            --drive-root-folder-id="${{ secrets.GDRIVE_FOLDER_ID }}" \
             --drive-scope=drive \
             --exclude ".git/**" \
             --exclude ".github/**" \
