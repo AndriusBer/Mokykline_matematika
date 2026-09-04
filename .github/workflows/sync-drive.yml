@@ -16,10 +16,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rclone
 
       - name: Setup Service Account Credentials
-        env:
-          GDRIVE_JSON: ${{ secrets.GDRIVE_CREDENTIALS }}
         run: |
-          python3 -c "import os; open('service_account.json', 'w').write(os.environ['GDRIVE_JSON'])"
+          echo "${{ secrets.GDRIVE_CREDENTIALS }}" | base64 -d > service_account.json
 
       - name: Sync files to Google Drive
         run: |
