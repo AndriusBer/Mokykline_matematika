@@ -12,19 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install rclone
-        run: sudo apt-get update && sudo apt-get install -y rclone
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Setup Service Account Credentials
-        run: |
-          echo "${{ secrets.GDRIVE_CREDENTIALS }}" | base64 -d > service_account.json
+      - name: Install Google API client
+        run: pip install google-api-python-client google-auth
 
-      - name: Sync files to Google Drive
-        run: |
-          rclone sync . :drive: \
-            --drive-service-account-file=service_account.json \
-            --drive-root-folder-id="${{ secrets.GDRIVE_FOLDER_ID }}" \
-            --drive-scope=drive \
-            --exclude ".git/**" \
-            --exclude ".github/**" \
-            --exclude "service_account.json"
+      - name: Upload to Drive
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python sync.py
