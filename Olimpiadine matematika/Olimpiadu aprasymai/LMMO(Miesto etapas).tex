@@ -1,0 +1,327 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+\geometry{
+  top=1.8cm,
+  bottom=1.8cm,
+  left=2.1cm,
+  right=2.1cm
+}
+
+\definecolor{titleblue}{HTML}{1F3A5F}
+\definecolor{ruleblue}{HTML}{6EA8E5}
+\definecolor{callout}{HTML}{EEF2F6}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\familydefault}{\sfdefault}
+
+\titleformat{\section}
+  {\large\bfseries\color{titleblue}}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{0.9em}{0.25em}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{titleblue}}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.65em}{0.2em}
+
+\setlist[itemize]{leftmargin=1.3em,itemsep=0.05em,topsep=0.15em,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=0.08em,topsep=0.15em,parsep=0pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\calloutbox}[1]{%
+  \begin{center}
+  \colorbox{callout}{%
+    \parbox{0.94\textwidth}{\centering\bfseries #1}%
+  }
+  \end{center}
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{titleblue} Lietuvos mokinių matematikos olimpiados\\[2pt]
+  Vilniaus miesto etapas}\par
+  \vspace{0.35em}
+  {\color{ruleblue}\rule{0.92\textwidth}{0.8pt}}\par
+  \vspace{0.45em}
+  {\itshape Trumpas gidas pradedančiajam olimpiadininkui}
+\end{center}
+
+\section{Kas tai per olimpiada?}
+
+\textbf{Lietuvos mokinių matematikos olimpiados Vilniaus miesto etapas} -- tai pagrindinės Lietuvos \textbf{9--12 klasių mokinių matematikos olimpiados antrasis etapas}.
+
+Visa olimpiada vyksta trimis etapais:
+\begin{enumerate}
+  \item \textbf{mokyklos etapas};
+  \item \textbf{savivaldybės etapas} -- Vilniaus mokiniams tai yra Vilniaus miesto etapas;
+  \item \textbf{šalies etapas}.
+\end{enumerate}
+
+Taigi Vilniaus miesto etapas nėra atskiras matematikos konkursas. Tai oficialaus kelio į \textbf{Lietuvos mokinių matematikos olimpiados šalies etapą} dalis.
+
+Pradedančiam olimpiadininkui miesto etapas yra pirmas rimtas susitikimas su klasikine olimpiadine matematika: čia svarbu ne tik gauti teisingą atsakymą, bet ir sugebėti \textbf{atrasti sprendimo idėją, ją pagrįsti ir aiškiai užrašyti visą matematinį argumentą}.
+
+\section{Kas gali dalyvauti?}
+
+Pirmiausia mokykloje vyksta \textbf{mokyklos etapas}.
+
+Mokyklos komisija parenka uždavinius, patikrina mokinių darbus ir atrenka geriausiai pasirodžiusius mokinius į Vilniaus miesto etapą.
+
+Pagal dabartinę Vilniaus tvarką iš vienos mokyklos į miesto etapą gali būti siunčiama iki \textbf{3 mokinių iš kiekvienos 9, 10, 11 ir 12 klasės}. Papildomą teisę dalyvauti gali turėti ankstesnių metų miesto ar šalies etapo prizininkai.
+
+Mokinį į olimpiadą registruoja mokykla.
+
+\section{Kiek laiko trunka olimpiada?}
+
+Vilniaus miesto etapo uždaviniams spręsti skiriamos \textbf{4 valandos}.
+
+Tai ilga olimpiada, tačiau uždavinių nėra labai daug. Didžioji laiko dalis skirta ne skaičiavimams, o \textbf{mąstymui, idėjos paieškai ir sprendimo užrašymui}.
+
+\section{Kokia užduočių struktūra?}
+
+Pastarųjų metų savivaldybės etapo rinkiniuose pateikiami \textbf{5 uždaviniai}.
+
+Užduotys skiriamos dviem grupėms:
+\begin{itemize}
+  \item \textbf{9--10 klasėms};
+  \item \textbf{11--12 klasėms}.
+\end{itemize}
+
+Tai reiškia, kad devintokas ir dešimtokas sprendžia tą patį uždavinių rinkinį, o vienuoliktokams ir dvyliktokams pateikiamas kitas rinkinys.
+
+Kiekvienas uždavinys vertinamas \textbf{5 taškais}, todėl maksimalus rezultatas yra \textbf{25 taškai}.
+
+\calloutbox{5 uždaviniai $\rightarrow$ 4 valandos $\rightarrow$ po 5 taškus $\rightarrow$ iš viso 25 taškai}
+
+\section{Kokie būna uždaviniai?}
+
+Tai jau \textbf{olimpiadiniai uždaviniai}, o ne įprasti mokykliniai pratimai.
+
+Gali pasitaikyti:
+\begin{itemize}
+  \item algebros;
+  \item skaičių teorijos;
+  \item geometrijos;
+  \item kombinatorikos;
+  \item loginio ir nestandartinio mąstymo uždavinių.
+\end{itemize}
+
+Dažnai mokyklinės formulės yra tik įrankiai. Sunkiausia dalis -- suprasti, \textbf{kokią idėją reikia panaudoti}.
+
+Uždavinys gali atrodyti labai trumpas -- vos keli sakiniai -- tačiau jo sprendimo idėjos galima ieškoti pusvalandį ar ilgiau.
+
+Todėl nereikėtų vertinti uždavinio pagal jo sąlygos ilgį.
+
+\section{Kaip vertinami sprendimai?}
+
+Tai viena svarbiausių miesto olimpiados ypatybių.
+
+\textbf{Vien teisingo atsakymo neužtenka.}
+
+Jeigu uždavinio atsakymas yra, pavyzdžiui, 17, vien parašęs „17“ visų taškų negausi.
+
+Reikia parodyti, \textbf{kodėl atsakymas yra 17}.
+
+Vertinamas visas matematinis sprendimas:
+\begin{itemize}
+  \item teisinga pagrindinė idėja;
+  \item logiški tarpiniai žingsniai;
+  \item reikalingų teiginių pagrindimas;
+  \item visų būtinų atvejų išnagrinėjimas;
+  \item teisinga išvada.
+\end{itemize}
+
+Pilnai ir taisyklingai išspręstas uždavinys vertas \textbf{5 taškų}.
+
+Tačiau labai svarbu suprasti, kad egzistuoja ir \textbf{daliniai taškai}.
+
+Jeigu viso uždavinio neišsprendei, bet padarei reikšmingą teisingą sprendimo dalį, už ją gali būti skiriama dalis taškų.
+
+\calloutbox{Jeigu turi teisingą matematinę mintį -- užrašyk ją.}
+
+Tuščias lapas garantuoja 0 taškų. Teisinga lema, pastebėtas svarbus ryšys ar įrodyta dalis uždavinio gali būti verta taškų.
+
+\section{Ar reikia išspręsti visus 5 uždavinius?}
+
+\textbf{Ne.}
+
+Tai labai svarbu suprasti pradedančiam olimpiadininkui.
+
+Miesto matematikos olimpiada nėra kontrolinis darbas, kuriame tikimasi surinkti 80--100 procentų.
+
+Uždaviniai specialiai parenkami taip, kad būtų sunkūs.
+
+Todėl vienas visiškai teisingai išspręstas uždavinys jau reiškia \textbf{5 taškus}.
+
+Du pilnai išspręsti uždaviniai -- \textbf{10 taškų}.
+
+Prie jų dar gali prisidėti daliniai taškai iš kitų uždavinių.
+
+Taigi mokinys, kuris neišsprendė visų penkių uždavinių, nebūtinai pasirodė blogai.
+
+Olimpiadoje daug svarbiau \textbf{kiek matematikos sugebėjai padaryti teisingai}, o ne kiek uždavinių pradėjai.
+
+\section{Ar yra minimali riba?}
+
+\textbf{Ne.}
+
+Čia nėra tokios sistemos kaip Matulionio konkurse, kur pirmiausia reikia įveikti tam tikrą I dalies ribą.
+
+Vilniaus miesto etape \textbf{tikrinami visi tavo pateikti sprendimai}.
+
+Galutinis rezultatas yra visų penkių uždavinių taškų suma -- nuo 0 iki 25 taškų.
+
+Todėl net jeigu vieno uždavinio nepavyko išspręsti pilnai, verta kovoti dėl dalinių taškų.
+
+\section{Kaip nustatomos prizinės vietos?}
+
+Fiksuoto skaičiaus, kuris automatiškai reikštų I, II ar III vietą, nėra.
+
+Negalima iš anksto pasakyti, kad tam tikras taškų skaičius garantuos prizinę vietą.
+
+Viskas priklauso nuo konkrečių metų uždavinių sunkumo ir kitų dalyvių rezultatų.
+
+Jeigu variantas labai sunkus, santykinai nedidelis taškų skaičius gali būti labai stiprus rezultatas.
+
+Todėl olimpiadoje neverta galvoti apie procentus taip, kaip kontroliniame darbe.
+
+\section{Kaip patenkama į šalies etapą?}
+
+Vilniaus miesto etapo darbai patikrinami, sudaromi rezultatai ir atrenkami stipriausi miesto mokiniai.
+
+Vilniaus miestui skiriamas ribotas vietų skaičius į šalies etapą, todėl patekimas į jį jau yra labai rimtas rezultatas.
+
+Dėl šių vietų Vilniuje varžosi daug stiprių olimpiadininkų.
+
+Taip pat gali egzistuoti papildomi patekimo į šalies etapą keliai, pavyzdžiui, ankstesnio šalies etapo prizininkams ar pagal kitus olimpiados nuostatuose numatytus kriterijus.
+
+\section{Kuo galima naudotis?}
+
+Olimpiados metu negalima naudotis:
+\begin{itemize}
+  \item skaičiuotuvu;
+  \item mobiliuoju telefonu;
+  \item kompiuteriu ar planšete;
+  \item formulynu;
+  \item knygomis;
+  \item lentelėmis.
+\end{itemize}
+
+Uždaviniai sprendžiami \textbf{ranka ant popieriaus}.
+
+\section{Kokia turėtų būti strategija per olimpiadą?}
+
+\subsection{1. Perskaityk visus uždavinius}
+
+Pirmomis minutėmis peržiūrėk visus penkis uždavinius.
+
+Nebūtina jų spręsti eilės tvarka.
+
+Gali būti, kad 1-asis uždavinys tau atrodo visiškai neaiškus, o 4-ajame iš karto pamatai idėją.
+
+Pradėk nuo to, kur \textbf{matai daugiausia galimybių pajudėti}.
+
+\subsection{2. Pirmiausia pasiimk užtikrintus taškus}
+
+Jeigu matai uždavinį, kurio sprendimą beveik supranti, verta pirmiausia jį užbaigti.
+
+Vienas pilnas sprendimas suteikia ne tik taškų, bet ir pasitikėjimo likusiai olimpiados daliai.
+
+\subsection{3. Neužstrik prie vieno uždavinio}
+
+Olimpiadiniam uždaviniui galima skirti daug laiko, tačiau jeigu ilgą laiką visiškai nejudi, verta pereiti prie kito.
+
+Kartais grįžęs po valandos į tą patį uždavinį staiga pamatai tai, ko anksčiau nepastebėjai.
+
+\subsection{4. Užrašyk dalinius rezultatus}
+
+Jeigu pilno sprendimo neradai, bet įrodei svarbų faktą, užrašyk jį.
+
+Pavyzdžiui:
+\begin{itemize}
+  \item įrodei vieną iš dviejų atvejų;
+  \item radai reikalingą lygybę;
+  \item įrodei svarbią lemą;
+  \item nustatei, kokios reikšmės apskritai galimos.
+\end{itemize}
+
+Tai gali būti verta dalinių taškų.
+
+\subsection{5. Palik laiko sprendimui sutvarkyti}
+
+Olimpiadoje vertinama ne tai, ką galvojai, o tai, \textbf{ką parašei}.
+
+Todėl sprendimas turi būti toks, kad jį galėtų suprasti žmogus, kuris nematė tavo mąstymo proceso.
+
+Baigęs uždavinį perskaityk sprendimą ir paklausk savęs:
+
+\begin{center}
+\textbf{Ar kiekvienas mano žingsnis pagrįstas?}
+\end{center}
+
+\section{Kaip ruoštis?}
+
+Vienas geriausių pasiruošimo būdų -- \textbf{spręsti ankstesnių metų Vilniaus miesto arba savivaldybių etapo uždavinius}.
+
+Pradedančiajam nebūtina iš karto spręsti viso varianto per keturias valandas.
+
+Iš pradžių galima paimti \textbf{vieną uždavinį} ir skirti jam daug laiko.
+
+Svarbiausia išmokti:
+\begin{itemize}
+  \item nepasiduoti po pirmų 10 minučių;
+  \item eksperimentuoti;
+  \item nagrinėti paprastesnius atvejus;
+  \item pastebėti dėsningumus;
+  \item formuluoti tarpinius teiginius;
+  \item įrodyti savo teiginius.
+\end{itemize}
+
+Tik vėliau verta pereiti prie visos olimpiados imitacijos:
+
+\calloutbox{5 uždaviniai $\rightarrow$ 4 valandos $\rightarrow$ 25 galimi taškai}
+
+\section{Koks turėtų būti pirmasis pradedančiojo tikslas?}
+
+Pirmą kartą dalyvaujant miesto olimpiadoje nereikėtų sau kelti tikslo išspręsti visus penkis uždavinius.
+
+Daug prasmingesnis pirmasis tikslas:
+
+\calloutbox{Per keturias valandas pilnai išspręsti bent vieną olimpiadinį uždavinį ir surinkti dalinių taškų kituose.}
+
+Kai vienas pilnas uždavinys tampa įprastu rezultatu, galima siekti dviejų.
+
+Vėliau -- dviejų pilnų ir dalinių taškų kituose.
+
+Taip palaipsniui artėjama prie kovos dėl miesto prizinių vietų ir patekimo į šalies etapą.
+
+Svarbiausia suprasti, kad olimpiadinė matematika nėra greitas teisingų formulių pritaikymas.
+
+Tai gebėjimas \textbf{ilgai būti su problema, kurios sprendimo iš pradžių nežinai, ieškoti, bandyti, klysti, pastebėti naują idėją ir galiausiai ją paversti griežtu matematiniu argumentu}.
+
+\enlargethispage{3\baselineskip}
+\begin{center}
+\textbf{Būtent šio gebėjimo Vilniaus miesto matematikos olimpiada ir pradeda rimtai reikalauti.}
+\end{center}
+
+\thispagestyle{empty}
+\end{document}
