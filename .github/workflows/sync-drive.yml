@@ -23,7 +23,8 @@ jobs:
           RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
         run: |
           rclone sync . gdrive: \
-            --exclude ".git/**" \
-            --exclude ".github/**" \
-            --exclude "sync.py" \
+            --include "*.tex" \
+            --include "*.pdf" \
+            --include "*.sty" \
+            --exclude "*" \
             --verbose
