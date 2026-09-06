@@ -1,0 +1,83 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+
+\title{\textbf{Namų darbas nr. 1}}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section{Sąlygos}
+
+\begin{enumerate}[label=\textbf{\arabic* užduotis.}, leftmargin=*]
+    % 1 lygis: Baziniai veiksmai su vienanariais
+    \item Atlikite veiksmus su vienanariais ir nustatykite, ar gautas reiškinys yra vienanaris. Jei taip, nurodykite jo koeficientą ir laipsnį:
+    \begin{enumerate}[label=\alph*)]
+        \item $32a^6 b^{10} : (2a^2 b^3)^2$
+        \item $\dfrac{5x^3 y z \cdot 4xyz^{10}}{8x^2 y^2 z^3}$
+        \item $(3abc^4)^3 : (9a^2 b^2 c^{13})$
+    \end{enumerate}
+
+    % 2 lygis: Tapatybės / koeficientų sulyginimas (tiesinis lygčių radimas)
+    \item Raskite nežinomų kintamųjų $a$, $b$ ir $c$ reikšmes, su kuriomis lygybė yra tapatybė:
+    \[
+    (2x + a)(bx + 4) = cx^2 + 14x + 8
+    \]
+
+    % 3 lygis: Tapatybės / koeficientų sulyginimas (su parametrais)
+    \item Raskite tokias parametrų $p$, $q$ ir $r$ reikšmes, su kuriomis lygybė galioja su visomis $x$ reikšmėmis:
+    \[
+    (3x - p)(2x + q) = rx^2 + x - 10
+    \]
+
+    % 4 lygis: Sudėtinis algebrinis įrodymas taikant greitosios daugybos formules
+    \item Įrodykite, kad su visomis leistinomis $x$ reikšmėmis ($x \neq 0$) trupmenos reikšmė yra pastovi:
+    \[
+    \frac{(4x - 1)(2x + 3) - 2(x - 2)^2 - (3x - 1)(3x + 1) + 3\left(x^2 + 3\frac{1}{3}\right)}{(3x + 1)(2x + 5) - 2(x + 2)^2 - (2x - 1)(2x + 1) + 3}
+    \]
+    Kodėl $x$ negali būti lygus nuliui?  
+    % 5 lygis: Sudėtinis daugiapakopis skaitinis reiškinys su DBD, šaknimis ir laipsniais
+    \item Apskaičiuokite reiškinio reikšmę:
+    \[
+    \frac{6\frac{1}{4} \cdot 2{,}8 - 3{,}4 : \frac{34}{55}}{(\sqrt{20} - 2\sqrt{45})^2} \cdot \frac{1}{\sqrt{\left(1\frac{9}{16}\right)^{-1}}} \cdot \sqrt[40]{4^{\text{DBD}(560, 880)}}
+    \]
+    \textit{Pastaba: $\text{DBD}(560, 880)$ – didžiausias bendrasis skaičių 560 ir 880 daliklis.}
+
+    % 6 lygis: Abstrakčiausia algebrinė rodiklinė lygtis
+    \item Išspręskite lygtį kintamojo $m$ atžvilgiu ($a > 0$, $a \neq 1$):
+    \[
+    \frac{(a^{m+1})^{m-3} \cdot a^{m^2 - 3m + 4}}{a^{3-2m}} = a^{6-3m}
+    \]
+\end{enumerate}
+
+\newpage
+
+\section{Atsakymai}
+
+\begin{enumerate}[label=\textbf{\arabic* užduotis.}, leftmargin=*]
+    \item 
+    \begin{enumerate}[label=\alph*)]
+        \item Yra vienanaris. Koeficientas: $8$, laipsnis: $6$.
+        \item Yra vienanaris. Koeficientas: $\dfrac{5}{2}$ (arba $2{,}5$), laipsnis: $10$.
+        \item Nėra vienanaris.
+    \end{enumerate}
+
+    \item $a = 2, \quad b = 3, \quad c = 6$
+
+    \item $p = 5, \quad q = 2, \quad r = 6$
+
+    \item Trupmenos reikšmė nepriklausomai nuo $x$ lygi $2$.
+
+    \item $3$
+
+    \item $m_1 = -2, \quad m_2 = 2$
+\end{enumerate}
+
+\end{document}
