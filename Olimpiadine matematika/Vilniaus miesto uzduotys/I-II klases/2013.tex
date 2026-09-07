@@ -1,0 +1,365 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2013 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2013 m.~9--10 klasės}\footnote{2013 m.~9--10 klasėms buvo pasiūlyti du variantai -- 
+lengvesnis ir sunkesnis. Sunkesniame variante vietoj 4 ir 5 uždavinių buvo 4* ir 5*.}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys}
+Keturiems iš eilės einantiems natūraliesiems skaičiams atvirkštinių 
+skaičių suma lygi $\displaystyle{\frac{19}{20}^{\phantom{2}}}$\hspace{-3pt}. Raskite šiuos natūraliuosius skaičius.
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Kiekviename $16\times 30$ lentelės langelyje tupi po vieną 
+vabalą. Ar įmanoma visus vabalus taip perkelti į $15\times 32$ lentelę (vėl po vieną į langelį), kad bet 
+kurie du vabalai, buvę kaimynais $16\times 30$ lentelėje, liktų kaimynais naujoje lentelėje? (Du 
+vabalai vadinami kaimynais, jei jie tupi langeliuose, turinčiuose bendrą 
+kraštinę.) 
+\end{uzdavinys}
+
+
+\begin{uzdavinys}
+Trikampio $ABC$ kraštinėje $AB$ pažymėtas toks taškas $K$, kad 
+$AK \hm{=} 3 KB$. Be to, kraštinėje $BC$ pažymėtas toks taškas $M$, kad 
+\[
+\angle BKM = 2 \angle BAC ~~~\text{ir} ~~~CM = MK = KB.
+\] 
+\begin{itemize}
+\item[a)] Raskite kampą $ACB$.
+\item[b)] Raskite visus trikampio $ABC$ kampus.
+\end{itemize}
+\end{uzdavinys}
+
+
+\begin{uzdavinys}
+Realieji skaičiai $x$ ir $y$ tenkina lygtį
+\[
+(x+y)^2 = (x+2013)(y-2013).
+\]
+\begin{itemize}
+\item[a)] Raskite bent vieną tokią skaičių porą $(x,y)$.
+\item[b)] Raskite visas tokias skaičių poras $(x,y)$.
+\end{itemize} 
+\end{uzdavinys}
+
+
+   
+
+\begin{uzdavinys}
+Raskite natūraliųjų skaičių \vspace{-3pt}
+\[
+p,\quad p+8 \quad\text{ir}\quad 2p^2+43 \vspace{-3pt}
+\]
+sandaugą, jei 
+ žinoma, kad visi trys skaičiai yra pirminiai.
+\end{uzdavinys}
+
+\textbf{4* uždavinys.} Sveikieji skaičiai $x$, $y$ ir $z$ tenkina lygtį 
+\[
+x^2 + xy + y^2 = 2013 z^2.
+\]
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį skaičių trejetą $(x,y,z)$.
+\item[b)] Raskite visus tokius skaičių trejetus $(x,y,z)$.
+\end{itemize}
+
+\vspace{1.7mm}
+\textbf{5* uždavinys.} Realieji skaičiai $x$ ir $y$ tenkina lygybes
+\[
+x^3 - 3x^2 + 5x - 17 = 0 ~~~\text{ir}~~~ y^3 - 3y^2 + 5y + 11 = 0.
+\]
+Raskite visas galimas sumos $x + y$ reikšmes.
+
+\vspace{7mm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2013 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys}
+Keturiems iš eilės einantiems natūraliesiems skaičiams atvirkštinių 
+skaičių suma lygi $\displaystyle{\frac{19}{20}^{\phantom{2}}}$\hspace{-4pt}. Raskite šiuos natūraliuosius skaičius.
+\end{uzdavinys}
+
+\textit{Pirmasis sprendimas.} 
+Keturis iš eilės einančius natūraliuosius skaičius pažymėkime~$n$, \,$n+1$, \,$n+2$, \,$n+3$. Tada
+\[
+\frac{19}{20} = \frac{1}{n} + \frac{1}{n+1} + \frac{1}{n+2} + \frac{1}{n+3} 
+ < \frac{1}{n} + \frac{1}{n} + \frac{1}{n} + \frac{1}{n} =   \frac{4}{n}.
+\]
+Iš nelygybės $\frac{19}{20} < \frac{4}{n}$ išplaukia, kad $n \le 4$. Taigi $n=1$, 2, 3 arba $4$. Tiesiogiai patikrinę šias reikšmes,  
+gauname, kad tinka tik $n=3$: tada $\frac13+\frac14+\frac15+\frac16=\frac{19}{20}$.
+\vspace{0,3cm}
+
+\textit{Antrasis sprendimas.} 
+Reiškinio 
+\[
+\frac{1}{n} + \frac{1}{n+1} + \frac{1}{n+2} + \frac{1}{n+3} 
+\]
+keturių dėmenų reikšmės mažėja, kai $n$ didėja. Todėl mažėja ir viso reiškinio reikšmės. Vadinasi, 
+reikšmė $\frac{19}{20}$ įgyjama daugiausiai su vienu $n$. Toks $n$ egzistuoja, ir jį nesunku rasti, tikrinant $n$ reikšmes 
+nuo mažiausios. Taip gauname vienintelį tinkamą skaičių ketvertą $(n, \,n+1, \,n+2, \,n+3)=(3, \,4, \,5, \,6)$.
+\begin{flushright}
+     Ats.: 3,\, 4,\, 5,\, 6.
+\end{flushright}
+\vspace{3mm}
+
+
+
+\begin{uzdavinys} 
+Kiekviename $16\times 30$ lentelės langelyje tupi po vieną 
+vabalą. Ar įmanoma visus vabalus taip perkelti į $15\times 32$ lentelę (vėl po vieną į langelį), kad bet 
+kurie du vabalai, buvę kaimynais $16\times 30$ lentelėje, liktų kaimynais naujoje lentelėje? (Du 
+vabalai vadinami kaimynais, jei jie tupi langeliuose, turinčiuose bendrą 
+kraštinę.) 
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, jog vabalus pavyko perkelti reikiamu būdu. Tada
+kiekvienas vabalas po perkėlimo turi 
+ne ma\-žiau kaimynų, nei jų turėjo pradinėje padėtyje. Vabalas, tupintis vienos iš lentelių langelyje, gali turėti daugiausiai 4 kaimynus. Be to, $16\times 30$ lentelėje po 4 kaimynus turėjo tie vabalai, kurie tupėjo lentelės vidiniuose langeliuose (t.~y.~langeliuose, nesančiuose prie lentelės krašto).  Tokių vidinių langelių $16\times 30$ lentelėje yra 
+$$(16-2)\hm{\times} (30-2) \hm= 392.$$ Todėl joje buvo 392 vabalai, turintys po~4 kaimynus. Šie 392 vabalai turi po 4 kaimynus ir $15\times 32$ lentelėje, taigi vėl tupi lentelės vidiniuose langeliuose. Tačiau joje tėra $$(15-2)\hm\times (32-2) = 390$$ vidinių langelių. Gautoji prieštara 
+įrodo, jog vabalų perkelti reikiamu būdu neįmanoma.
+       \begin{flushright}
+     Ats.: ne, neįmanoma.
+    \end{flushright}%\pagebreak
+\vspace{3mm}
+
+
+
+\begin{uzdavinys}
+Trikampio $ABC$ kraštinėje $AB$ pažymėtas toks taškas $K$, kad 
+$AK \hm{=} 3 KB$. Be to, kraštinėje $BC$ pažymėtas toks taškas $M$, kad 
+\[
+\angle BKM = 2 \angle BAC ~~~\text{ir} ~~~CM = MK = KB.
+\] 
+\begin{itemize}
+\item[a)] Raskite kampą $ACB$.
+\item[b)] Raskite visus trikampio $ABC$ kampus.
+\end{itemize}
+\end{uzdavinys}
+%\vspace{0,3cm}
+
+\textit{Sprendimas.} 
+Pažymėkime $\al = \angle BAC$. Tada $\angle BKM= 2\al$. 
+
+a) Kadangi $MK \hm{=} KB$, tai 
+trikampis $MKB$ lygiašonis ir
+$$ \angle KBM=\frac{180^\circ-\angle BKM}2=\frac{180^\circ-2\al}2=90^\circ-\al.$$
+Dabar galime rasti kampą $ACB$: 
+\[
+\angle ACB = 180^{\circ} - \angle BAC- \angle ABC = 180^{\circ} - \al - (90^\circ-\al) = 90^{\circ}.
+\]
+
+\begin{center}   
+     \includegraphics[width=147.45pt]{./Breziniai/brezinys_2013_9_10_SPR.png}
+\end{center} 
+
+b) Tašką $M$ sujunkime su atkarpos $AB$ vidurio tašku $T$ (žr.~pav.). Kadangi $AK\hm=3KB$, tai  $KB=\frac14AB$. Tada $TB=\frac12AB=2KB$ ir $TK=TB-KB=KB$. Taigi $TK=MK$, o trikampis $TKM$ yra lygiašonis ir
+\[
+\angle KTM = \frac{180^{\circ} - \angle TKM}{2} = \frac{\angle BKM}{2}  = \al.
+\]
+
+Atitinkamieji kampai $KTM$ ir $BAC$ yra lygūs, tad tiesės $TM$ ir $AC$ lygiagrečios. Be to, $BT=TA$, todėl $BM=MC$ (Talio teorema). Vadinasi, $BM=MK=KB$, trikampis $BKM$ yra lygiakraštis, o trikampio $ABC$ kampas $B$ lygus $\angle KBM=60^\circ$. Remiantis a)~dalies sprendimu, šis trikampis statusis. Todėl kiti du jo kampai~\mbox{lygūs}~$90^\circ$~ir~$30^\circ$.
+    \begin{flushright}
+     Ats.: a) $90^{\circ}$; b) $30^{\circ}$, $60^{\circ}$, $90^{\circ}$.
+    \end{flushright}
+\vspace{3mm}
+
+
+
+\begin{uzdavinys}
+Realieji skaičiai $x$ ir $y$ tenkina lygtį
+\[
+(x+y)^2 = (x+2013)(y-2013).
+\]
+\begin{itemize}
+\item[a)] Raskite bent vieną tokią skaičių porą $(x,y)$.
+\item[b)] Raskite visas tokias skaičių poras $(x,y)$.
+\end{itemize} 
+\end{uzdavinys}
+
+\textit{Sprendimas.} a) Lengva pastebėti, kad duotosios lygties abi pusės lygios 0, kai $-x\hm=y\hm=2013$. Taigi tinka skaičių pora $(x,y) \hm{=} (-2013, 2013)$.
+
+b) Įrodysime, kad duotosios lygties sprendinys, gautas a)~dalies sprendime, yra vienintelis.
+
+Tarkime, jog skaičių pora $(x, y)$ tenkina duotąją lygtį.
+Pažymėkime $u = x+2013$, $v=y-2013$. Tada $u+v=x+y$, o duotąją lygtį galima perrašyti taip:
+\[
+(u+v)^2 = uv,\qquad 
+u^2+uv + v^2 = 0.\]
+Gautajame reiškinyje išskirkime pilnąjį kvadratą:
+\[
+u^2+uv+v^2=u^2 + 2\cdot u \cdot \frac{v}{2} +   
+\left(\frac{v}{2}\right) ^2 - \left(\frac{v}{2} \right) ^2 +v^2 = 
+\left( u + \frac{v}{2} \right) ^2 + \frac{3 v^2}{4}.
+\]
+Kadangi $u^2+uv+v^2=0$, tai $u + \frac v2 = v = 0.$ Tada $u = v = 0$ ir $x = -2013$,\, $y = 2013$.
+\begin{flushright}
+     Ats.: a) ir b) $(x, y)=(-2013, 2013)$.
+\end{flushright}
+\vspace{3mm}
+
+
+
+
+\begin{uzdavinys}
+Raskite natūraliųjų skaičių \vspace{-3pt}
+\[
+p,\quad p+8 \quad\text{ir}\quad 2p^2+43 \vspace{-3pt}
+\]
+sandaugą, jei 
+ žinoma, kad visi trys skaičiai yra pirminiai.
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tinka reikšmė $p = 3$: tada skaičiai $p$,
+\,$p+8 = 11$ ir $2p^2+43 = 61$ tenkina uždavinio sąlygą, 
+o jų sandauga lygi $3\cdot 11 \cdot 61 = 2013$. 
+
+Tarkime, jog 
+$p\ne 3$. Skaičiaus $p$ dalybos iš 3 liekaną pažymėkime $r$. Tada  $p = 3k+r$, kur $k$ yra sveikasis skaičius. Skaičius~3 yra vienintelis 
+pirminis skaičius, kuris dalijasi iš 3, todėl $r \ne 0$. Vadinasi, $r=1$ arba 2.
+
+Jei $r=1$, tai pirminis skaičius $p+8=3(k+3)$ dalijasi iš 3. Tada $p+8=3$ ir $p<0$. Taigi $r=2$ ir 
+$$2p^2+43 = 2(3k + 2)^2 + 43 =18k^2 + 24k + 51 = 3(6k^2 + 8k + 17).$$
+Pirminis skaičius $2p^2+43$ dalijasi iš 3, todėl $2p^2+43=3$ ir $p^2<0$. Gavome prieštarą. Vadinasi, 
+$p=3$, o duotųjų skaičių sandauga tegali būti lygi 2013.
+       \begin{flushright}
+     Ats.: 2013.
+    \end{flushright}
+\vspace{5.5mm}
+
+\textbf{4* uždavinys.} Sveikieji skaičiai $x$, $y$ ir $z$ tenkina lygtį 
+\[
+x^2 + xy + y^2 = 2013 z^2.
+\]
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį skaičių trejetą $(x,y,z)$.
+\item[b)] Raskite visus tokius skaičių trejetus $(x,y,z)$.
+\end{itemize}
+\vspace{2.3mm}   
+   
+\textit{Sprendimas.} 
+Nesunku pastebėti, jog $(0,0,0)$ yra duotosios lygties sprendinys. Įrodysime, kad ši lygtis kitų sveikųjų sprendinių neturi.
+
+Tarkime, kad $(x_0,y_0,z_0)\neq(0, 0, 0)$ yra duotosios lygties sveikasis sprendinys. Tada yra apibrėžtas teigiamas skaičius $d =$\,DBD\,$(x_0,y_0,z_0)$, kuriam $\left(\frac{x_0}d, \frac{y_0}d, \frac{z_0}d\right)\neq(0, 0, 0)$ taip pat yra duotosios lygties sveikasis sprendinys. Todėl nemažindami bendrumo galime tarti, kad DBD\,$(x_0,y_0,z_0)=1$. Įrodysime, jog kiekvienas 
+iš skaičių $x_0$, $y_0$ ir $z_0$ dalijasi iš 3. Gauta prieštara -- vienu metu DBD\,$(x_0,y_0,z_0)=1$ ir DBD\,$(x_0,y_0,z_0)\geq3$ -- reikš, kad mūsų prielaida (duotoji lygtis turi sveikąjį nenulinį sprendinį) yra klaidinga.
+
+Kai $y=y_0$ ir $z=z_0$, tai duotoji lygtis yra kvadratinė lygtis su nežinomuoju $x$ ir sveikaisiais koeficientais. Ji turi sveikąjį sprendinį $x=x_0$. Todėl jos 
+diskriminantas 
+\[
+D = y_0^2 - 4(y_0^2-2013z_0^2) = -3y_0^2 + 8052z_0^2 = 3(2684z_0^2 - y_0^2)
+\]
+yra sveikojo skaičiaus kvadratas (kitaip skaičius $x_0=\left(-y_0\pm\sqrt{D}\right):2$ būtų iracionalusis). Kadangi diskriminantas dalijasi iš 3, 
+tai jis turi dalytis ir iš 9, t.~y.~skaičius 
+\[
+D:3 = 2684z_0^2 - y_0^2 =3\cdot 895 z_0^2 -(y_0^2 + z_0^2)
+\] 
+dalijasi iš 3. Taigi iš 3 dalijasi kvadratų suma $y_0^2 + z_0^2$. 
+Kita vertus, sveikojo skaičiaus kvadratas iš 3 visada dalijasi su liekana 0 arba 1 (iš 3 visada dalijasi vienas iš sveikųjų skaičių $a-1$, $a$, $a+1$, todėl ir vienas iš skaičių $a^2$ bei $a^2-1 = (a-1)(a+1)$). Tada abu skaičiai $y_0^2$ ir $z_0^2$ turi dalytis iš 3 su liekana 0. Abu skaičiai $y_0$ ir $z_0$ dalijasi iš 3, o duotojoje
+lygtyje matome, jog tada ir skaičius~$x_0$ dalijasi iš 3. Tai prieštarauja lygybei DBD\,$(x_0,y_0,z_0) = 1$. Vadinasi, vienintelis sveikasis duotosios lygties sprendinys yra nulinis sprendinys $(0, 0, 0)$.
+       \begin{flushright}
+     Ats.: a) ir b) lygtis turi vienintelį sprendinį $(x,y,z) = (0,0,0)$.
+    \end{flushright}
+%\vspace{3mm}
+\vspace{5.5mm}
+
+
+\textbf{5* uždavinys.} Realieji skaičiai $x$ ir $y$ tenkina lygybes
+\[
+x^3 - 3x^2 + 5x - 17 = 0 ~~~\text{ir}~~~ y^3 - 3y^2 + 5y + 11 = 0.
+\]
+Raskite visas galimas sumos $x + y$ reikšmes.
+\vspace{2.3mm}
+
+\textit{Sprendimas.} Pažymėkime $x = u+1$ ir $y = v+1$. Tada
+\begin{align*}
+x^3 - 3x^2 + 5x - 17 &= (u+1)^3 -3(u+1)^2 + 5(u+1) - 17 = u^3 + 2u - 14,\\
+y^3 - 3y^2 + 5y +11 &= (v+1)^3 -3(v+1)^2 + 5(v+1) + 11 = v^3 + 2v + 14.
+\end{align*}
+Taigi duotąsias lygybes galima užrašyti taip: 
+\[
+u^3 + 2u - 14 = 0 \;\; \textrm{ ir }\;\; v^3 + 2v + 14 = 0.
+\]
+Sudėję šias lygybes panariui, gauname
+\begin{align*}
+u^3 + v^3 + 2(u+v) &=0,\\
+(u+v)(u^2 - uv + v^2) + 2(u+v) &= 0,\\
+(u+v)(u^2 - uv + v^2 +2)& = 0.\end{align*}
+Kadangi $u^2 - uv + v^2 +2 = \left(u -\frac{1}{2}v\right)^2 + \frac{3}{4}v^2 + 2 >0$ su visais realiaisiais 
+$u$ ir $v$, tai $u+v = 0$, t.~y. $x+y = u+1+v+1 = 2$.
+
+\emph{Pastaba.} Skaičiai $x$ ir $y$ iš tiesų egzistuoja, nes kubinė lygtis visada turi bent vieną (realųjį) sprendinį. Tačiau $x+y$ radome, neieškodami $x$ ir $y$ reikšmių.
+       \begin{flushright}
+     Ats.: $x+y = 2$.
+    \end{flushright}
+
+
+
+
+\vspace{0,7cm}
+
+
+\end{document}

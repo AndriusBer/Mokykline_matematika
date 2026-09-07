@@ -1,0 +1,275 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2016 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2016 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Įrodykite, kad su visais teigiamais skaičiais $a$ ir $b$ teisinga nelygybė
+\[
+\frac{a+b}{1+a+b} < \frac{a}{1+a} + \frac{b}{1+b}.
+\] 
+\end{uzdavinys}
+
+    
+\vspace{0,25cm}
+
+
+
+%\begin{uzdavinys}
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.79\textwidth}
+\begin{uzdavinys}
+Dešinėje pavaizduotą figūrą sudaro 5 vienodi kvadratai. Kiekvienas iš jų padalijamas į $n\times n$ vienetinių langelių. Reikia nudažyti penkis iš $5n^2$ langelių, vėl sudarančius figūrą ~\includegraphics[width=7mm]{./Breziniai/xbrezinys_2016}.
+\begin{itemize}
+\item[a)] Keliais būdais tai galima padaryti, jei $n=5$?
+\item[b)] Kam lygu $n$, jei būdų tai padaryti iš viso yra 305?
+\end{itemize}
+\end{uzdavinys}
+\end{minipage}
+\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=68.55pt]{./Breziniai/brezinys_2016}
+\end{minipage}
+%\end{uzdavinys}
+\vspace{-1mm}
+
+
+
+\begin{uzdavinys} 
+Raskite mažiausią natūralųjį šešiaženklį skaičių, kurio visi skaitmenys yra skirtingi ir 
+kuris dalijasi iš 2, 3, 4, 5 ir 6.
+\end{uzdavinys}
+
+
+\begin{uzdavinys} 
+Duoti trys skirtingi natūralieji skaičiai. Bet kurių dviejų skaičių suma dalijasi 
+iš likusio skaičiaus. 
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį skaičių trejetą, kurio didžiausias skaičius būtų 9009.
+\item[b)] Įrodykite, kad bet kurio tokio trejeto skaičių suma dalijasi iš 6.  
+\end{itemize}
+\end{uzdavinys}
+
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.78\textwidth}
+\begin{uzdavinys}  
+Stačiakampio formos popierinė juosta, kurios kraštinių ilgiai yra 2 cm ir 20 cm, perlenkiama taip, kad persidengiančios dalys sudaro trikampį, kaip parodyta paveikslėlyje. Kam lygus mažiausias galimas tokio trikampio plotas?
+\end{uzdavinys} 
+%\vspace{2cm}
+\end{minipage}\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=78.36pt]{./Breziniai/brezinys_2016_9_10}
+\end{minipage}
+%\vspace{0mm}
+%\phantom{}
+
+\vspace{0,7cm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2016 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Įrodykite, kad su visais teigiamais skaičiais $a$ ir $b$ teisinga nelygybė
+\[
+\frac{a+b}{1+a+b} < \frac{a}{1+a} + \frac{b}{1+b}.
+\] 
+\end{uzdavinys}
+       
+\textit{Pirmasis sprendimas.} Tegu $a$ ir $b$ yra teigiami skaičiai. Kadangi $a>0$ ir $b>0$, tai
+\[
+\frac{a}{1+a+b} < \frac{a}{1+a} \quad \text{ir}\quad \frac{b}{1+a+b} < \frac{b}{1+b}.
+\] 
+Todėl
+\[
+\frac{a+b}{1+a+b} = \frac{a}{1+a+b} + \frac{b}{1+a+b} < \frac{a}{1+a} + \frac{b}{1+b}.
+\]
+ \vspace{0cm}  
+
+\textit{Antrasis sprendimas.} Tegu $a$ ir $b$ yra teigiami skaičiai. Pertvarkykime duotąją nelygybę -- padauginkime ją iš teigiamo skaičiaus $(1+a+b)(1+a)(1+b)$ ir suprastinkime:
+\begin{align*}
+(a+b)(1+a)(1+b) &< a(1+b)(1+a+b) + b(1+a)(1+a+b),\\%[0,2cm]
+(a+b)(1+a+b+ab) &< (1+a+b)(a(1+b) + b(1+a)),\\
+a + a^2 + ab + a^2b + b + ab + b^2 + ab^2 &< (1+a+b)(a + b + 2ab),\\
+a + a^2 + ab + a^2b + b + ab + b^2 + ab^2 &< a + b + 2ab + a^2 +ab +2a^2b +ab +b^2 + 2ab^2,\\
+0 &< 2ab + a^2b + ab^2.
+\end{align*}
+Gautoji nelygybė teisinga, nes $a>0$, \,$b>0$. Todėl teisinga ir duotoji nelygybė.
+\vspace{8mm} 
+
+%\phantom{}
+
+%\begin{uzdavinys}
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.79\textwidth}
+\begin{uzdavinys}
+Dešinėje pavaizduotą figūrą sudaro 5 vienodi kvadratai. Kiekvienas iš jų padalijamas į $n\times n$ vienetinių langelių. Reikia nudažyti penkis iš $5n^2$ langelių, vėl sudarančius figūrą ~\includegraphics[width=7mm]{./Breziniai/xbrezinys_2016}.
+\begin{itemize}
+\item[a)] Keliais būdais tai galima padaryti, jei $n=5$?
+\item[b)] Kam lygu $n$, jei būdų tai padaryti iš viso yra 305?
+\end{itemize}
+\end{uzdavinys}
+\end{minipage}
+\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=68.55pt]{./Breziniai/brezinys_2016}
+\end{minipage}
+\vspace{0cm}
+       
+\textit{Sprendimas.} 
+Penkialangę figūrą, kurią reikia nudažyti, sudaro vidurinis langelis ir keturi langeliai, turintys su juo po bendrą kraštinę. Nustatykime, kiek langelių galima pasirinkti kaip tokios figūros vidurinį langelį.
+
+Tinka visi langeliai, priklausantys viduriniam didžiajam kvadratui; jų yra $n^2$. Viršutiniame didžiajame kvadrate tinka visi langeliai, išskyrus viršutinę eilutę ir du kraštinius (iš kairės ir iš dešinės) stulpelius. Pašalinę šią eilutę ir stulpelius, vietoj $n\times n$ kvadrato gausime $(n-1)\times(n-2)$ stačiakampį, taigi $n^2-3n+2$ langelių. Po tiek pat tinkamų langelių dėl simetrijos yra ir likusiuose trijuose didžiuosiuose kvadratuose. Taigi tinkamų langelių, o tuo pačiu ir tinkamų penkialangės figūros nudažymo būdų iš viso~yra $$f(n)=n^2+4(n^2-3n+2)=5n^2-12n+8.$$
+Konkretų tinkamų langelių skaičių $f(5)$ galima gauti ir neturint šios bendrosios $f(n)$ formulės, vietoj to tiesiogiai suskaičiavus pilkus langelius paveikslėlyje.
+
+\begin{center}
+\includegraphics[width=240pt]{./Breziniai/xxbrezinys_2016}
+\end{center}
+
+Dabar galime greitai atsakyti į uždavinio klausimus: a) $f(5)=73$; b) jei $f(n)\hm=305$, tai $5n^2-12n-297=0$ ir tada arba $n=9$, arba $n=-\frac{33}{5}$ (netinka, nes $n>0$).
+
+\begin{flushright}
+     Ats.: a) 73; b) 9.
+    \end{flushright}
+ \vspace{0,3cm}
+
+  
+
+
+\begin{uzdavinys} 
+Raskite mažiausią natūralųjį šešiaženklį skaičių, kurio visi skaitmenys yra skirtingi ir 
+kuris dalijasi iš 2, 3, 4, 5 ir 6.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Natūralusis skaičius dalijasi iš 2 ir iš 5 tada ir tik tada, kai jis dalijasi iš~10, taigi kai baigiasi skaitmeniu 0. Tarp šešiaženklių skaičių $\overline{ABCDE0}$, kurių visi šeši skaitmenys skirtingi, mažiausi yra tie, kuriems $A=1$.
+Tarp tokių skaičių $\overline{1BCDE0}$ -- tie, kuriems $B=2$. Tarp tokių skaičių $\overline{12CDE0}$ -- tie, kuriems $C=3$, o tarp tokių skaičių $\overline{123DE0}$ -- tie, kuriems $D=4$. 
+Taigi mažiausi natūralieji šešiaženkliai skaičiai, kurių visi šeši skaitmenys skirtingi ir kurie dalijasi iš 2 bei iš 5, yra $\overline{1234E0}$, kur $E=5$, 6, 7, 8 arba 9. Reikia rasti mažiausią iš jų, kuris dalijasi iš 3, 4 ir 6 (jei tokio skaičiaus neatsirastų, turėtume nagrinėti didesnius skaičius). Skaičius $\overline{1234E0}=1234\cdot25\cdot4+10E$ dalijasi iš 3 ir iš 4, jei jo skaitmenų suma $10+E$ dalijasi iš 3, o skaičius $10E$ dalijasi iš~4. Tinka tik $E=8$. Gautasis skaičius $123\,480$ dalijasi iš 2, 5, 3, 4, taigi ir iš $6=2\cdot3$. Tai ir yra mažiausias skaičius, tenkinantis uždavinio sąlygą.
+
+\begin{flushright}
+     Ats.: $123\,480$.
+\end{flushright}
+\vspace{3mm}
+ 
+ 
+ \begin{uzdavinys} 
+Duoti trys skirtingi natūralieji skaičiai. Bet kurių dviejų skaičių suma dalijasi 
+iš likusio skaičiaus. 
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį skaičių trejetą, kurio didžiausias skaičius būtų 9009.
+\item[b)] Įrodykite, kad bet kurio tokio trejeto skaičių suma dalijasi iš 6.  
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} a) Uždavinio sąlygą tenkina skaičių trejetas 1, 2, 3. Jį radus, galima pastebėti, kad tinka ir visi trejetai $a$, $2a$, $3a$, kur $a$ yra bet koks natūralusis skaičius. Taip gauname tinkamą trejetą 3003, 6006, 9009, kurio didžiausias skaičius yra 9009.
+
+b) Tarkime, kad natūralieji skaičiai $a$, $b$ ir $c$, kuriems $a<b<c$, tenkina uždavinio sąlygą. Kadangi 
+$a+b$ dalijasi iš $c$, tai $a+b\geq c$. Kita vertus, $a+b<c+c=2c$, todėl $a+b=c$. Skaičius $a+c = 2a+b$ dalijasi iš $b$, todėl skaičius $2a$ dalijasi iš $b$. Kadangi 
+$2a<2b$, tai $2a=b$. Taigi $c=a+b=3a$, o suma $a+b+c=6a$ dalijasi iš $6$. 
+
+{\it Pastaba.} Čia iš tikrųjų įrodėme, kad be a)~dalyje pastebėtų trejetų $a$, $2a$, $3a$ kitų tinkamų skaičių trejetų nėra. Todėl gautasis a)~dalies atsakymas yra vienintelis galimas.
+\begin{flushright}
+     Ats.: a) 3003, 6006, 9009.
+\end{flushright}
+ \vspace{2mm}
+
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.78\textwidth}
+\begin{uzdavinys}  
+Stačiakampio formos popierinė juosta, kurios kraštinių ilgiai yra 2 cm ir 20 cm, perlenkiama taip, kad persidengiančios dalys sudaro trikampį, kaip parodyta paveikslėlyje. Kam lygus mažiausias galimas tokio trikampio plotas?
+\end{uzdavinys} 
+%\vspace{2cm}
+\end{minipage}\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=78.36pt]{./Breziniai/brezinys_2016_9_10}
+\end{minipage}
+\vspace{0mm}
+
+\textit{Sprendimas.} Atkarpą, 
+išilgai kurios perlenkta juosta, pažymėkime $AC$, o juostos~kraštų sankirtos tašką -- $B$. Trikampyje $ABC$ iš $A$ nuleiskime aukštinę $AH$ (žr.~pav.~kairėje). %\vfill
+
+\begin{center}
+\includegraphics[width=291.73pt]{./Breziniai/brezinys_2016_9_10_SPR}
+%\vspace{0,2cm}
+\end{center}
+
+ Trikampio $ABC$ plotas $S$ lygus 
+$\frac{1}{2}\cdot BC\cdot AH$. Atkarpos $AH$ ir $BC$ jungia popierinės juostos priešingus 
+kraštus, ir jų ilgiai ne mažesni už juostos plotį 2 cm. Taigi 
+\[
+S=\frac{1}{2}\cdot BC\cdot AH\geq \frac{1}{2} \cdot 2 \cdot 2 =2 \text{ (cm}^2).
+\]
+
+Įmanoma taip perlenkti juostą, kad trikampio $ABC$ plotas būtų 2~cm$^2$. Iš tiesų, jei juostą perlenksime taip, kad $\angle ABC = 90^{\circ}$ (žr.~pav.~dešinėje), tai atkarpos $AB$ ir $BC$ bus lygios 
+popierinės juostos pločiui, t.~y. $AB=BC=2$ cm. Tada $S=\frac{1}{2}\cdot BA\cdot BC\hm= \frac{1}{2} \cdot 2\cdot 2 =2 \text{ (cm}^2)$. Vadinasi, tai ir yra mažiausia $S$ reikšmė.
+
+\begin{flushright}
+     Ats.: 2 cm$^2$.
+\end{flushright}
+
+\vspace{0,7cm}
+
+
+\end{document}

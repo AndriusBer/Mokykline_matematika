@@ -1,0 +1,248 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2012 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2012 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+
+\begin{uzdavinys}
+Pamotė liepė Sigutei atnešti iš ežero tiek vandens, kiek telpa į kibirą, 
+ bet patį kibirą paslėpė. Sigutė terado du kubilus, vieną -- 9 kartus talpesnį 
+ už kibirą, o kitą -- 13 kartų.
+\begin{itemize}
+\item[a)] Sugalvokite, kaip Sigutei įvykdyti Pamotės paliepimą, naudojantis vien šiais kubilais.
+\item[b)] Kitąsyk Pamotė liepė per vieną kartą atnešti lygiai tiek ežero vandens, kiek telpa 7 tokiuose kibiruose. Kaip Sigutei tai padaryti (vėlgi turint tik tuos pačius kubilus)?
+\item[c)] Kiek dar kibirų vandens Sigutė gali tiksliai pamatuoti dviem kubilais, nuėjusi prie ežero? Raskite visus variantus. 
+\end{itemize}
+\end{uzdavinys}
+
+
+\begin{uzdavinys}
+Raskite visus triženklius skaičius $\overline{ABC}$, kurių 
+skaitmenys $A$, $B$ ir $C$ tenkina lygybę 
+\[
+56A+7B+C=426.
+\]
+\end{uzdavinys}
+
+
+\begin{uzdavinys}
+Realieji skaičiai $a$, $b$ ir $c$ yra tokie, kad su visais realiaisiais 
+ skaičiais~$x$ teisinga lygybė
+\[
+x^3 + ax^2 + bx + c = (x+2) (2x^2 + 2x + 2011) - (x+1)(x^2 + x + 1).
+\]
+Raskite reiškinio $a-b+c$ reikšmę.
+\end{uzdavinys}
+
+
+
+\begin{uzdavinys}
+Taškas $M$ yra trikampio $ABC$ kraštinės $AC$ vidurio taškas. 
+Yra žinoma, kad $\angle BAC = 30^{\circ}$ ir $\angle BMC = 60^{\circ}.$ Raskite $\angle BCA$.
+\end{uzdavinys}
+
+
+
+\begin{uzdavinys}
+Išspręskite lygtį
+\[
+\frac{1}{x(x+8)} - \frac{1}{(x+4)^2} = \frac{4}{9}.
+\]
+\end{uzdavinys}
+
+\vspace{7mm}
+%\phantom{}\\\phantom{}\\\phantom{}
+%\pagebreak
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2012 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+
+\begin{uzdavinys}
+Pamotė liepė Sigutei atnešti iš ežero tiek vandens, kiek telpa į kibirą, 
+ bet patį kibirą paslėpė. Sigutė terado du kubilus, vieną -- 9 kartus talpesnį 
+ už kibirą, o kitą -- 13 kartų.
+\begin{itemize}
+\item[a)] Sugalvokite, kaip Sigutei įvykdyti Pamotės paliepimą, naudojantis vien šiais kubilais.
+\item[b)] Kitąsyk Pamotė liepė per vieną kartą atnešti lygiai tiek ežero vandens, kiek telpa 7 tokiuose kibiruose. Kaip Sigutei tai padaryti (vėlgi turint tik tuos pačius kubilus)?
+\item[c)] Kiek dar kibirų vandens Sigutė gali tiksliai pamatuoti dviem kubilais, nuėjusi prie ežero? Raskite visus variantus. 
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Situaciją, kai mažesniajame kubile yra $x$ kibirų vandens, o didesniajame yra $y$ kibirų, žymėkime $(x,y)$.
+Sigutė gali semti vandenį iš ežero į kubilus ir pilstyti jį iš vieno kubilo į kitą tokia tvarka (taip pat ir tvarka, kuri yra atbula duotajai):
+\begin{gather*}(0,0)\Rightarrow(9,0)\Rightarrow(0,9)\Rightarrow(9,9)\Rightarrow(5,13)\Rightarrow(5,0)\Rightarrow(0,5)\Rightarrow(9,5)\Rightarrow\\
+\Rightarrow(1,13)\Rightarrow(1,0)\Rightarrow(0,1)\Rightarrow(9,1)\Rightarrow(0,10)\Rightarrow(9,10)\Rightarrow(6,13)\Rightarrow\\
+\Rightarrow(6,0)\Rightarrow(0,6)\Rightarrow(9,6)\Rightarrow(2,13)\Rightarrow(2,0)\Rightarrow(0,2)\Rightarrow(9,2)\Rightarrow(0,11)\Rightarrow\\
+\Rightarrow(9,11)\Rightarrow(7,13)\Rightarrow(7,0)\Rightarrow(0,7)\Rightarrow(9,7)\Rightarrow(3,13)\Rightarrow(3,0)\Rightarrow\\
+\Rightarrow(0,3)\Rightarrow(9,3)\Rightarrow(0,12)\Rightarrow(9,12)\Rightarrow(8,13)\Rightarrow(8,0)\Rightarrow(0,8)\Rightarrow\\
+\Rightarrow(9,8)\Rightarrow(4,13)\Rightarrow(4,0)\Rightarrow(0,4)\Rightarrow(9,4)\Rightarrow(0,13)\Rightarrow(9,13).\end{gather*}
+
+Gavome visas poras $(0, n)$, kai $n=1$,~2,~$\ldots$,~13. Todėl Sigutė gali pamatuoti 1,~2,~$\ldots$,~13 kibirų vandens, įskaitant $n=1$ ir $n=7$ kibirus. Porų $(x, y)$ seka parodo, kaip tai padaryti, tad jau turime a)~ir b)~dalių atsakymus. Iš poros $(0, n)$ galima iš karto gauti porą $(9, n)$, todėl Sigutė gali pamatuoti ir $1+9$, $2+9$, $\ldots$, $13+9=22$ kibirus vandens. Daugiau kibirų vandens Sigutė pamatuoti negali: į abu kubilus kartu sudėjus daugiau netelpa. Pilant sklidinus kubilus ir pilstant vandenį tarp jų, turimi vandens kiekiai kibirais visada yra sveikieji skaičiai. Vadinasi, kubilais Sigutė gali pamatuoti 1,~2,~$\ldots$,~22 kibirus vandens.
+\begin{flushright}
+     Ats.: a) ir b) pavyzdžiui, vandens kiekiai kubiluose keičiami pagal sekas $(0, 0)\Rightarrow\ldots\Rightarrow(1, 0)$ ir $(0, 0)\Rightarrow\ldots\Rightarrow(7, 0)$, pateiktas sprendime; c) 1, 2, $\ldots$, 22.
+    \end{flushright}
+\vspace{3mm}
+
+\begin{uzdavinys}
+Raskite visus triženklius skaičius $\overline{ABC}$, kurių 
+skaitmenys $A$, $B$ ir $C$ tenkina lygybę 
+\[
+56A+7B+C=426.
+\]
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, jog skaičius $\overline{ABC}$ tenkina uždavinio sąlygą. Duotąją lygybę perrašykime, kad jos kairioji pusė dalytųsi iš 7: $$56A\hm{+}7B-420 = 6-C,\qquad 7\cdot(8A+B-60)=6-C.$$ 
+Taigi $6-C$ dalijasi iš 7.
+Vienintelis tinkamas skaitmuo yra $C=6$. Tuomet
+ \begin{gather*}7\cdot(8A+B-60)=0,\qquad
+8A+B=60,\qquad 8A-56=4-B.
+\end{gather*}
+Kadangi $8A-56$ dalijasi iš 8, tai ir $4-B$ dalijasi iš 8. 
+Vadinasi,  $B=4$, \,$8A-56=0$ ir $A=7$. Gauname vienintelį skaičių $\overline{ABC}=746$, kuris tenkina uždavinio sąlygą.
+
+\emph{Pastaba.} Reikšmę $C=6$ galima gauti ir tiesiogiai iš duotosios lygybės, pastebėjus, kad skaičius $C$ dalijasi iš 7 su ta pačia liekana kaip $7\cdot(8A+B)+C=7\cdot60+6$, taigi su liekana 6. Gavus lygtį $8A+B=60$ galima atlikti reikšmių $B=0$, 1, $\ldots$, 9 perranką.
+\begin{flushright}
+     Ats.: $\overline{ABC}=746$.
+\end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys}
+Realieji skaičiai $a$, $b$ ir $c$ yra tokie, kad su visais realiaisiais 
+ skaičiais~$x$ teisinga lygybė
+\[
+x^3 + ax^2 + bx + c = (x+2) (2x^2 + 2x + 2011) - (x+1)(x^2 + x + 1).
+\]
+Raskite reiškinio $a-b+c$ reikšmę.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Įrašę $x=-1$ duotojoje lygybėje, gauname
+\[
+-1+a-b+c =1\cdot(2-2+2011)-0=2011,\qquad a-b+c=2012.
+\]
+
+\emph{Pastaba.} Atskliautus ir suprastinus duotosios lygybės dešiniąją pusę, gaunamas daugianaris $x^3+4x^2+2013x+4021$. Bet kuriems dviem daugianariams $p(x)$ ir $q(x)$ (su realiaisiais koefi\-cien\-tais) teisingas teiginys: $p(x_0)=q(x_0)$ kiekvienam realiajam $x_0$ tada ir tik tada, kai šie daugianariai yra to paties laipsnio, o jų atitinkami koeficientai sutampa. Todėl $a=4$, \,$b=2013$ ir $c=4021$. Pateiktame sprendime apsiėjome be šių reikšmių. Jį lengva sugalvoti, pastebėjus sąsają tarp reiškinių $a-b+c$ ir $(-1)^3+a\cdot(-1)^2+b\cdot(-1)+c$.
+       \begin{flushright}
+     Ats.: $a-b+c=2012$.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys}
+Taškas $M$ yra trikampio $ABC$ kraštinės $AC$ vidurio taškas. 
+Yra žinoma, kad $\angle BAC = 30^{\circ}$ ir $\angle BMC = 60^{\circ}$. Raskite $\angle BCA$.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Raskime trikampio $ABM$ kampus:
+\begin{gather*}
+\angle AMB=180^{\circ} \hm{-} \angle BMC \hm{=} 180^{\circ} - 60^{\circ} = 120^{\circ},\\
+\angle BAM=\angle BAC=30^\circ,\qquad\angle ABM = 180^{\circ}\hm{-}\angle AMB - \angle BAM = 30^{\circ}.
+\end{gather*}
+Trikampis $ABM$ lygiašonis ($\angle BAM = \angle ABM$) ir $AM = BM$. Tada ir trikampis~$BCM$ \pagebreak
+ lygiašonis ($CM = AM=BM$; žr.~pav.), o jo kampai prie pagrindo lygūs $(180^{\circ} - \angle BMC):2=60^\circ$. Vadinasi, $\angle BCA = \angle BCM=60^\circ$.
+
+ %\begin{figure}[h]
+    \begin{center}   
+     \includegraphics[width=148.09pt]{./Breziniai/brezinys_2012_9_10_SPR.png}
+\end{center} %\end{figure}
+
+Sprendimą galima užbaigti ir kitaip: $AM=BM=CM$, tad $B$ priklauso apskritimui su centru $M$ ir skersmeniu $AC$, kampas $ABC$ statusis ir $\angle BCA\hm=90^\circ-\angle BAC=60^\circ$.
+
+       \begin{flushright}
+     Ats.: $\angle BCA=60^{\circ}$.
+    \end{flushright}
+\vspace{3mm}
+
+
+
+\begin{uzdavinys}
+Išspręskite lygtį
+\[
+\frac{1}{x(x+8)} - \frac{1}{(x+4)^2} = \frac{4}{9}.
+\]
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Lygtį galima užrašyti taip:
+\[
+\frac{1}{x^2+8x} - \frac{1}{x^2+8x + 16} = \frac{4}{9}.
+\]
+Atlikę keitinį $y=x^2+8x+8$, gauname lygtį
+\[
+\frac{1}{y-8} - \frac{1}{y+8} = \frac{4}{9}.
+\]
+Skaičius $x$ yra duotosios lygties sprendinys tada ir tik tada, kai $y=x^2+8x+8$ yra gautosios lygties sprendinys.
+Gautosios lygties sprendinius rasime, padauginę ją iš $9(y-8)(y+8)$ ir sutraukę panašiuosius narius: $4y^2=400$ ir $y = \pm 10$. Liko išspręsti (kvadratines) lygtis $x^2+8x+8=-10$ ir $x^2+8x+8\hm{=}10$. Pirmoji iš jų neturi sprendinių, o antrosios sprendiniai yra 
+ $-4\pm3\sqrt{2}$.
+       \begin{flushright}
+     Ats.: $x=-4\pm3\sqrt{2}$.
+    \end{flushright}
+\vspace{0,7cm}
+
+
+\end{document}

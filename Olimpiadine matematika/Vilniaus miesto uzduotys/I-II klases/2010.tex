@@ -1,0 +1,215 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2010 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2010 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+\begin{uzdavinys}
+Prisirinkę riešutų, iš miško poromis išeina vaikai. Kiekvienoje poroje yra mergaitė ir berniukas. Be to, kiekvienas berniukas turi dvigubai daugiau arba perpus mažiau riešutų nei jo porininkė mergaitė. Ar gali būti taip, kad iš viso vaikai turi 2009 riešutus?
+\end{uzdavinys}
+%\phantom{}
+%\pagebreak
+    
+\begin{uzdavinys} 
+Su kuriomis realiosiomis $a$ reikšmėmis lygtys 
+\[
+x^3+ax+1=0 \;\;\text{ ir }\;\; x^4+ax^2+1=0
+\] 
+turi bendrą sprendinį?
+\end{uzdavinys}
+\vspace{-8mm}
+
+\hspace*{-5.2mm}
+\begin{minipage}{0.65\textwidth}
+\begin{uzdavinys}\vspace{8.5mm}
+Trikampyje $ABC$ išvesta pusiaukraštinė $AF,$ kurios
+    vidurio taškas yra $D$ (žr.~pav.). Tiesė, einanti per taškus $C$ ir $D$,
+    kraštinę $AB$ kerta taške $E.$ Be to, $BD=BF=CF.$ Įrodykite,
+    kad $AE=DE.$
+\end{uzdavinys}
+\end{minipage}\quad
+\begin{minipage}{0.8\textwidth}
+\includegraphics[width=138.27pt] {./Breziniai/brezinys_2010_9_10.png}
+\end{minipage}
+
+%\vspace{0mm}
+\begin{uzdavinys} 
+Raskite visus triženklius skaičius, kurie 12 kartų didesni už savo skaitmenų
+    sumą.
+\end{uzdavinys}
+
+
+\begin{uzdavinys} 
+Raskite mažiausią teigiamą skaičių $x$, su kuriuo teisinga nelygybė
+    \[
+    [x]\cdot \{ x\} \geq 3.
+    \]
+    Čia $[x]$ žymi skaičiaus $x$ sveikąją dalį, t.~y.~didžiausią sveikąjį skaičių,
+     ne didesnį už~$x$; $\{ x\}=x - [x]$ -- skaičiaus $x$ trupmeninė dalis. Pavyzdžiui,
+     $[2,\! 7]=2;$ $\{2{,}7\}=0,\! 7;$ $[0,\! 1]=0;$ $\{0,\! 1\}=0,\! 1;$ $[-2,\! 3]=-3;$ $\{-2,\! 3\}=0,\! 7.$
+\end{uzdavinys}
+
+\vspace{0,7cm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2010 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Prisirinkę riešutų, iš miško poromis išeina vaikai. Kiekvienoje poroje yra mergaitė ir berniukas. Be to, kiekvienas berniukas turi dvigubai daugiau arba perpus mažiau riešutų nei jo porininkė mergaitė. Ar gali būti taip, kad iš viso vaikai turi 2009 riešutus?
+\end{uzdavinys}
+
+
+\textit{Sprendimas.}
+Jei berniukas turi dvigubai daugiau riešutų nei jo porininkė mergaitė (berniukas turi $2k$, o mergaitė -- $k$ riešutų), tai bendras poros riešutų skaičius lygus trigubam mergaitės riešutų skaičiui ($2k+k=3k$). Jei mergaitė turi dvigubai daugiau riešutų nei jos porininkas berniukas, tai bendras poros riešutų skaičius lygus trigubam berniuko riešutų skaičiui. Todėl kiekvienos poros turimų riešutų skaičius dalijasi iš 3. Tada ir visų vaikų turimų riešutų skaičius dalijasi iš 3 bei negali būti lygus 2009.
+    \begin{flushright}
+     Ats.: negali.
+    \end{flushright}
+\vspace{3mm}
+
+    
+\begin{uzdavinys} 
+Su kuriomis realiosiomis $a$ reikšmėmis lygtys 
+\[
+x^3+ax+1=0 \;\;\text{ ir }\;\;    x^4+ax^2+1=0
+\] 
+turi bendrą sprendinį?
+\end{uzdavinys}
+
+\textit{Sprendimas.}  
+Tarkime, kad lygtys $x^3+ax+1=0$ ir $x^4\hm{+}ax^2+1=0$ turi bendrą sprendinį $x=x_0.$ Iš lygybės $x_0^4+ax_0^2+1=0$ atėmę panašią lygybę $x_0^3+ax_0+1=0$, padaugintą iš $x_0$, gauname 
+\[
+0=x_0^4+ax_0^2+1 - x_0(x_0^3+ax_0+1) = 1-x_0
+\] 
+ir $x_0=1$. Tada $0=x_0^3+ax_0+1=a+2$, ir gauname vienintelę galimą reikšmę $a=-2.$ Liko pastebėti, kad su $a=-2$ duotosios lygtys iš tiesų turi bendrą sprendinį $x=1$.
+    \begin{flushright}
+     Ats.: $a=-2.$
+    \end{flushright}
+\vspace{6mm}
+
+%\vspace{-0.3cm}
+\hspace*{-5.2mm}
+\begin{minipage}{0.65\textwidth}
+\begin{uzdavinys}
+Trikampyje $ABC$ išvesta pusiaukraštinė $AF,$ kurios
+    vidurio taškas yra $D$ (žr.~pav.). Tiesė, einanti per taškus $C$ ir $D$,
+    kraštinę $AB$ kerta taške $E.$ Be to, $BD=BF=CF.$ Įrodykite,
+    kad $AE=DE.$
+\end{uzdavinys}
+\end{minipage}\quad
+\begin{minipage}{0.8\textwidth}
+\includegraphics[width=138.27pt] {./Breziniai/brezinys_2010_9_10.png}
+\end{minipage}
+\vspace{0mm}
+
+
+\vspace{1mm}
+
+\textit{Sprendimas.} 
+Kadangi trikampis $DBF$ lygiašonis ($BD=BF$), tai $\angle BDF=\angle BFD.$ Tada
+    \[
+    \angle CFD=180^\circ -\angle BFD =180^\circ -\angle BDF = \angle BDA.
+    \]
+Be to, $DF=DA$, \,$CF=BD$ (žr.~pav.).  Todėl trikampiai $CFD$ ir $BDA$ lygūs (pagal dvi kraštines ir kampą), ir $\angle FDC\hm{=}\angle DAB.$ Tada $\angle EDA = \angle FDC = \angle DAB \hm= \angle DAE.$ Taigi trikampis $AED$ lygiašonis (kampai prie pagrindo lygūs) ir $AE=DE.$\vspace{3pt}
+   \begin{center}
+    \includegraphics%[width=69mm,height=52mm]
+    [width=139.18pt]{./Breziniai/brezinys_2010_9_10_SPR.png}
+  %  \caption{}
+    \end{center}
+\vspace{3mm}
+\vspace{-3pt}
+
+\begin{uzdavinys} 
+Raskite visus triženklius skaičius, kurie 12 kartų didesni už savo skaitmenų sumą.
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, kad $\overline{ABC}$ yra tinkamas triženklis skaičius. Triženklis skaičius negali prasidėti skaitmeniu $0,$ todėl $A\geq 1.$ Iš uždavinio sąlygos išplaukia, kad 
+\[
+\overline{ABC}=12(A+B+C),\quad100A+10B+C=12(A+B+C),\quad 88A=2B+11C.
+\] 
+Kadangi $88A=2B+11C\leq 2\cdot 9 + 11\cdot 9 =117,$ tai $A=1.$ Tada $2B=88-11C\hm=11(8-C)$. Skaičius $2B$, o todėl ir vienženklis skaičius $B$ dalijasi iš $11.$ Vadinasi, $B=0$ ir tada $C=8.$ Vienintelis gautas triženklis skaičius $108$ tenkina uždavinio sąlygą.
+    \begin{flushright}
+     Ats.: $108.$
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+Raskite mažiausią teigiamą skaičių $x$, su kuriuo teisinga nelygybė
+    \[
+    [x]\cdot \{ x\} \geq 3.
+    \]
+    Čia $[x]$ žymi skaičiaus $x$ sveikąją dalį, t.~y.~didžiausią sveikąjį skaičių,
+     ne didesnį už~$x$; $\{ x\}=x - [x]$ -- skaičiaus $x$ trupmeninė dalis. Pavyzdžiui,
+     $[2,\! 7]=2;$ $\{2,\! 7\}=0,\! 7;$ $[0,\! 1]=0;$ $\{0,\! 1\}=0,\! 1;$ $[-2,\! 3]=-3;$ $\{-2,\! 3\}=0,\! 7.$
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, kad skaičius $x>0$ tenkina duotąją nelygybę. Tada $[x]\neq0$. Kadangi $x>0$ ir $[x]\neq0$, tai $[x]>0.$ Be to, $0\leq \{ x\}<1,$ todėl $$[x]>[x]\cdot\{ x\}\geq 3.$$ Skaičius $[x]$ sveikasis, todėl $[x]\geq 4$. Vadinasi, arba $[x]\geq5$ ir tada $x\geq5$, arba $[x]=4$ ir tada $$4\cdot\{ x\}\geq3,\qquad \{x\}\geq0{,}75,\qquad x=[x]+\{x\}\geq4+0{,}75=4{,}75.$$ Abiem atvejais $x\geq4{,}75$. Skaičius $x=4{,}75$ tenkina duotąją nelygybę, tad jis ir yra mažiausia galima $x$ reikšmė.
+    \begin{flushright}
+     Ats.: $x=4{,}75.$
+    \end{flushright}
+
+
+\vspace{0,7cm}
+
+
+\end{document}

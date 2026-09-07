@@ -1,0 +1,371 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2011 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}\label{dvu}
+{\sc\large 2011 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys} 
+Ar įmanoma sveikuosius skaičius nuo $-7$ iki 7 (įskaitant 0) surašyti ratu taip, kad bet kurių dviejų gretimų skaičių sandauga būtų neneigiamas skaičius?
+\end{uzdavinys}
+
+
+\begin{uzdavinys} 
+Dviejų natūraliųjų skaičių $m$ ir $n$ mažiausias bendrasis kartotinis 8 kartus didesnis už šių skaičių didžiausią bendrąjį daliklį. Įrodykite, kad  $m$ dalijasi iš $n$ arba $n$ dalijasi iš $m$.
+\end{uzdavinys}
+\vspace{1.5mm}
+
+\hspace*{-5.2mm}
+%\begin{minipage}[b][4cm][c]{0.65\textwidth}
+\begin{minipage}{0.68\textwidth}
+\begin{uzdavinys}
+Pažymėtas lygiašonio trikampio $ABC$ pagrindo $AC$ vidaus taškas $D$. Taškas $E$ priklauso pagrindo $AC$ tęsiniui už taško $C,$ t.~y.~taškas $C$ yra tarp taškų~$A$ ir $E$ (žr.~pav.).  Be to, $AD = CE.$ Įrodykite, kad $$BD + BE > AB + BC.$$
+\end{uzdavinys}
+\end{minipage}\quad
+%\begin{minipage}[b][5cm][c]{0.5\textwidth}
+\begin{minipage}{0.8\textwidth}
+ \includegraphics[width=126.82pt]{./Breziniai/brezinys_2011_9_10.png}
+\end{minipage}
+\vspace{-1mm}
+
+\begin{uzdavinys} 
+Duota lygtis $x^2 + 5y^3 = t^2.$ 
+\begin{itemize}
+\item[a)] Ar šios lygties sveikųjų   sprendinių aibė baigtinė? 
+\item[b)] Ar šios lygties natūraliųjų   sprendinių aibė baigtinė?
+\end{itemize}
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Iš natūraliųjų skaičių nuo 1 iki 99 išrenkami tokie 50 skirtingų skaičių, kad jokių dviejų skirtingų to rinkinio skaičių suma nėra lygi nei 99, nei 100. 
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį rinkinį. 
+\item[b)] Raskite visus tokius rinkinius.
+\end{itemize}
+\end{uzdavinys}
+
+\vspace{0,7cm}
+\vspace{-0.53mm}
+
+%\pagebreak
+
+\begin{center}
+{\sc\large 2011 m.~9--10 klasės, Vilniaus m.}
+\end{center}
+\vspace{0,5cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\vspace{1.4mm}
+\hspace*{-5.2mm}
+\begin{minipage}{0.66\textwidth}
+\begin{uzdavinys} 
+Algis supjaustė pavaizduotąją 22 kvadratinių langelių figūrą į trilanges ir keturlanges dalis, sutampančias su figūromis dešinėje nuo jos (dalis galima apversti bei pasukti). Kiek trilangių dalių jis galėjo gauti?
+\end{uzdavinys} 
+\end{minipage}\quad
+\begin{minipage}{0.8\textwidth}
+\includegraphics[width=134.64pt]{./Breziniai/brezinys_2011_9_10_A.png}
+\end{minipage} 
+\vspace{-1.5mm}
+
+\begin{uzdavinys}
+Lygiagretainio $ABCD$ kampo $BAD$ pusiaukampinė eina per atkarpos~$CD$ vidurio tašką $E$. Raskite kampą $AEB$.
+\end{uzdavinys}
+\pagebreak
+
+\begin{uzdavinys}
+Išspręskite lygtį
+    $$x^{[x]}=\frac{9}{2},$$
+kur $[x]$ žymi realiojo skaičiaus $x$ sveikąją dalį (didžiausią sveikąjį skaičių, ne didesnį nei~$x$).
+\end{uzdavinys}    
+    
+    
+\begin{uzdavinys}
+$p$ ir $q$ -- tokie pirminiai skaičiai, kad $p^2+1$ dalijasi iš $q$, o $q^2-1$ dalijasi iš $p$. Įrodykite, kad $p+q+1$ -- sudėtinis skaičius.
+\end{uzdavinys}
+
+\vspace{0,7cm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}\label{dvu}
+{\sc\large 2011 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+
+
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys} 
+Ar įmanoma sveikuosius skaičius nuo $-7$ iki 7 (įskaitant 0) surašyti ratu taip, kad bet kurių dviejų gretimų skaičių sandauga būtų neneigiamas skaičius?
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, kad sveikuosius skaičius nuo $-7$ iki 7 galima surašyti taip, kaip nurodyta uždavinio sąlygoje. Imkime skaičių 0, ir po jo pagal laikrodžio rodyklę einančius skaičius pažymėkime $a_1, a_2, \ldots, a_{14}.$ (Skaičiui 0 gretimi skaičiai $a_1$ ir $a_{14}.$) Bet kurių dviejų gretimų skaičių sandauga neneigiama, todėl
+%\begin{gather*}
+$$a_1\cdot a_2\geq 0,\qquad a_3\cdot a_4\geq 0,\qquad \ldots,\qquad a_{13}\cdot a_{14}\geq 0,$$$$a_1 a_2\ldots a_{14} \geq 0.$$%\end{gather*}
+Tačiau
+\[
+a_1 a_2\ldots a_{14} = (-7)\cdot(-6)\cdot\ldots\cdot (-1)\cdot 1\cdot\ldots\cdot 6\cdot 7=(-1)^7\cdot7^2\cdot6^2\cdot\ldots\cdot1^2<0.
+\]
+Gavome prieštarą. Vadinasi, skaičių reikiamu būdu surašyti neįmanoma.
+   \begin{flushright}
+     Ats.: neįmanoma.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+Dviejų natūraliųjų skaičių $m$ ir $n$ mažiausias bendrasis kartotinis 8 kartus didesnis už šių skaičių didžiausią bendrąjį daliklį. Įrodykite, kad  $m$ dalijasi iš $n$ arba $n$ dalijasi iš $m$.
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Skaičių $m$ ir $n$ didžiausią bendrąjį daliklį pažymėkime $d$. Tuomet  $8d$ yra šių skaičių mažiausias bendrasis kartotinis. Skaičiai $m$ ir $n$ abu dalijasi iš $d$ ir abu yra skaičiaus $8d$ dalikliai, todėl jie 
+gali būti lygūs tik $d$, $2d$, $4d$, $8d$. Taigi $$m = 2^k d,\qquad n = 2^l d,$$ kur $k$ ir $l$ yra neneigiami sveikieji skaičiai. Jei $k\geq l,$ tai $m$ dalijasi iš $n.$ Priešingu atveju ($l> k$) skaičius $n$ dalijasi iš $m.$
+\vspace{9mm}
+
+
+\hspace*{-5.2mm}
+%\begin{minipage}[b][4cm][c]{0.65\textwidth}
+\begin{minipage}{0.68\textwidth}
+\begin{uzdavinys}
+Pažymėtas lygiašonio trikampio $ABC$ pagrindo $AC$ vidaus taškas $D$. Taškas $E$ priklauso pagrindo $AC$ tęsiniui už taško $C,$ t.~y.~taškas $C$ yra tarp taškų~$A$ ir $E$ (žr.~pav.).  Be to, $AD = CE.$ Įrodykite, kad $$BD + BE > AB + BC.$$
+\end{uzdavinys}
+\end{minipage}\quad
+%\begin{minipage}[b][5cm][c]{0.5\textwidth}
+\begin{minipage}{0.8\textwidth}
+ \includegraphics[width=126.82pt]{./Breziniai/brezinys_2011_9_10.png}
+\end{minipage}
+\vspace{2.6mm}
+
+\textit{Sprendimas.} 
+Kraštinės $BA$ tęsinyje už taško $A$ pažymėkime tokį tašką $F$, jog $AB \hm{=} AF$. Kadangi $BA=BC$, tai $\angle BAC = \angle BCA$. Todėl
+\[
+\angle BCE = 180^{\circ} -\angle BCA = 180^{\circ} -\angle BAC = \angle FAD.
+\]
+Be to, $AD = CE$ ir $FA = AB = BC$ (žr.~pav.). Todėl trikampiai $BCE$ ir $FAD$ lygūs (dvi kraštinės ir kampas tarp jų). Vadinasi, $BE = FD.$ \vspace{2pt}
+
+ % \begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=165.73pt]{./Breziniai/brezinys_2011_9_10_SPR.png}
+   % \caption{}
+    \end{center}
+  %  \end{figure}
+
+Nagrinėkime trikampį $FDB.$ Remiantis trikampio nelygybe, $FD + DB > FB$, ir toliau gauname reikiamą nelygybę:
+\[
+BD + BE = BD + FD > FB = FA + AB =  AB+BC.
+\]
+
+\vspace{0mm}
+
+
+\begin{uzdavinys} 
+Duota lygtis $x^2 + 5y^3 = t^2.$  
+\begin{itemize}
+\item[a)] Ar šios lygties sveikųjų   sprendinių aibė baigtinė? 
+\item[b)] Ar šios lygties natūraliųjų   sprendinių aibė baigtinė?
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Iš karto spręsime b)~dalį. Lygtis turi sprendinį $(x, y, t)=(2,1,3)$:
+\[
+2^2 + 5\cdot 1^3 = 3^2.
+\]
+Pasirinkime bet kokį natūralųjį skaičių $k$ ir padauginkime abi šios lygybės puses iš $k^6$:
+\[
+(k^3\cdot 2)^2 + 5\cdot (k^2\cdot 1)^3 = (k^3 \cdot 3)^2.
+\]
+Taigi $(x, y, t)=(2k^3, k^2, 3k^3)$ taip pat yra natūralusis duotosios lygties sprendinys. Skaičiui $k$ įgyjant visas natūraliąsias reikšmes, gauname be galo daug tokių sprendinių. Vadinasi, duotosios lygties natūraliųjų sprendinių aibė begalinė, o tuo labiau tokia yra lygties sveikųjų sprendinių aibė.
+    \begin{flushright}
+     Ats.: a) ne, begalinė; b) ne, begalinė.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+Iš natūraliųjų skaičių nuo 1 iki 99 išrenkami tokie 50 skirtingų skaičių, kad jokių dviejų skirtingų to rinkinio skaičių suma nėra lygi nei 99, nei 100. 
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį rinkinį. 
+\item[b)] Raskite visus tokius rinkinius.
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} a) Nagrinėkime visų natūraliųjų skaičių nuo 50 iki 99 rinkinį.  Jį sudaro 50 skaičių, ir jo bet kurių dviejų skirtingų skaičių suma ne mažesnė už $50+51=101$. Taigi šis rinkinys tenkina uždavinio sąlygą.
+\\\phantom{}
+
+\pagebreak
+b) Radome vieną tinkamą skaičių rinkinį. Įrodysime, kad kitų tokių rinkinių nėra.
+
+Nagrinėkime bet kokį rinkinį, tenkinantį uždavinio sąlygą. Skaičius 1, 2, $\ldots$, 99 suskirstykime į 49 poras, atskirdami vieną skaičių 50:
+\[
+(99,\,1),\qquad(98,\,2),\qquad(97,\,3),\qquad\ldots,\qquad(52,\,48),\qquad(51,\,49),\qquad50.
+\] 
+Čia kiekvienos poros skaičių suma lygi 100. Taigi 50 skaičių rinkinyje yra po daugiausiai vieną skaičių iš kiekvienos poros. Kadangi yra tik 49 poros, tai rinkinyje yra skaičius~50 ir po lygiai vieną skaičių iš kiekvienos poros. Kadangi skaičius 50 yra rinkinyje ir $49+50=99,$ tai poros $(51,\,49)$ skaičiaus 49 rinkinyje nėra. Vadinasi, skaičius 51 yra rinkinyje. Kadangi $48+51=99,$ tai rinkinyje nėra skaičiaus 48, bet yra poros $(52,\,48)$ skaičius 52. Gavę, kad rinkinyje yra skaičius $50+k$, kur $0\leq k\leq 48$, kaskart analogiškai galime daryti išvadą, kad rinkinyje nėra skaičiaus $49-k$, bet yra poros $(49-k,\,51+k)$ skaičius $51+k$. Taigi iš eilės gauname, kad rinkinyje yra skaičiai 50, 51, 52, 53, $\ldots$, 99. Vadinasi, rinkinį sudaro būtent šie 50 skaičių, o kitaip būti negali.
+   \begin{flushright}
+     Ats.: a) ir b) $(50,51,\ldots, 99)$. 
+    \end{flushright}
+
+
+\vspace{0,7cm}
+
+\begin{center}
+{\sc\large 2011 m.~9--10 klasių uždavinių (Vilniaus m.) sprendimai}
+\end{center}
+\vspace{3mm}
+
+\setcounter{uzdavinys}{0}
+
+
+\vspace{3.7mm}
+\hspace*{-5.2mm}
+\begin{minipage}{0.66\textwidth}
+\begin{uzdavinys} 
+Algis supjaustė pavaizduotąją 22 kvadratinių langelių figūrą į trilanges ir keturlanges dalis, sutampančias su figūromis dešinėje nuo jos (dalis galima apversti bei pasukti). Kiek trilangių dalių jis galėjo gauti?
+\end{uzdavinys} 
+\end{minipage}\quad
+\begin{minipage}{0.8\textwidth}
+\includegraphics[width=134.64pt]{./Breziniai/brezinys_2011_9_10_A.png}
+\end{minipage} 
+\vspace{0mm}
+
+\textit{Sprendimas.} 
+Trilangių dalių skaičių pažymėkime $x$, o keturlangių $y$. Tada turi galioti lygybė $3x+4y=22$. Perrinkime galimas $y$ reikšmes.
+    Netinka $y=0$, 2, 3, 5. Kai $y\geq 6$, tai $3x=22-4y\leq 22-24<0$, tad netinka ir šios $y$ reikšmės. Mums lieka du atvejai: $y=1$, $x=6$ arba $y=4$, $x=2.$ Abu šie atvejai galimi:
+    
+  %  \begin{figure}[h]
+    \begin{center}
+    \includegraphics[width=173.91pt]{./Breziniai/brezinys_2011_9_10_SPR_A.png}
+    \end{center}
+%    \end{figure}
+    \begin{flushright}
+     Ats.: 2 arba 6.
+    \end{flushright}
+\vspace{3mm}
+
+
+
+\begin{uzdavinys}
+Lygiagretainio $ABCD$ kampo $BAD$ pusiaukampinė eina per atkarpos~$CD$ vidurio tašką $E$. Raskite kampą $AEB$.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Pažymėkime $\angle BAE=\angle DAE=\al$, $\angle BEC=\beta$. Tada $\angle BCD\hm=\angle BAD=\al+\al=2\al$ (priešingi lygiagretainio kampai). Tiesės $AB$ ir $CD$ lygiagrečios, todėl $\angle AED=\angle BAE=\al$ (žr.~pav.).\vspace{4pt}
+
+\begin{center}
+    \includegraphics[width=137.36pt]{./Breziniai/brezinys_2011_9_10_SPR_B.png}
+    \end{center}
+    
+Trikampio $ADE$ du kampai lygūs $\al$, todėl jis lygiašonis, $DA=DE$. Kita vertus, $AD=BC$ (priešingos lygiagretainio kraštinės) ir $DE=CE$ (atkarpos $CD$ vidurio taškas $E$). Todėl $BC=CE$, trikampis $BCE$ taip pat lygiašonis. Jo viršūnės kampas lygus $2\alpha$, todėl jo kampas prie pagrindo yra $\beta=(180^\circ - 2\alpha):2=90^\circ-\alpha$. Vadinasi, $$\al+\beta=90^\circ,\qquad \angle AEB=180^\circ-\angle AED-\angle BEC=180^\circ-\al-\beta=90^\circ.$$
+     \begin{flushright}
+     Ats.: $90^\circ$.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys}
+Išspręskite lygtį
+    $$x^{[x]}=\frac{9}{2},$$
+kur $[x]$ žymi realiojo skaičiaus $x$ sveikąją dalį (didžiausią sveikąjį skaičių, ne didesnį nei~$x$).
+\end{uzdavinys}    
+    
+\textit{Sprendimas.} Perrinkime 7 galimybes, koks gali būti lygties sprendinys $x$.
+
+Kai $x\geq 3$, tai $[x]\geq 3$ ir $x^{[x]}\geq 3^3=27>\frac{9}{2}$.
+
+Kai $1\leq x<2$, tai $[x]=1$ ir $x^{[x]}=x<2<\frac{9}{2}$.
+
+Kai $0<x<1$, tai $[x]=0$ ir $x^{[x]}=x^0=1<\frac{9}{2}$.
+
+Kai $x=0$, tai lygties kairioji pusė neapibrėžta.
+
+Kai $-1\leq x<0$, tai $[x]=-1$ ir $x^{[x]}=x^{-1}\leq -1<\frac{9}{2}$.
+
+Kai $x<-1$, tai $[x]\leq -2, |x|>1$ ir $\left|x^{[x]}\right|=|x|^{[x]}\leq |x|^{-2}<1<\frac{9}{2}$.
+
+Kai $2\leq x<3$, tai $[x]=2$ ir $x^{[x]}=x^2=\frac{9}{2}$. Kadangi $x>0$, tai $x=\sqrt{\frac{9}{2}}=\frac{3\sqrt{2}}{2}$. Patikrinkime, kad ši $x$ reikšmė tikrai tenkina lygtį. Pakanka įsitikinti, kad $\Big[\sqrt{\frac{9}{2}}\,\Big] =2$ arba kad $2<\sqrt{\frac{9}{2}}<3$. Tai išplaukia iš nelygybių $4<\frac{9}{2}<9$.
+      \begin{flushright}
+     Ats.: $x=\dfrac{3\sqrt{2}}{2}$.
+    \end{flushright}
+\vspace{3mm}
+
+    
+\begin{uzdavinys}
+$p$ ir $q$ -- tokie pirminiai skaičiai, kad $p^2+1$ dalijasi iš $q$, o $q^2-1$ dalijasi iš $p$. Įrodykite, kad $p+q+1$ -- sudėtinis skaičius.
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Kadangi pirminis skaičius $p$ dalija $q^2-1=(q-1)(q+1)$, tai $p$ dalija arba $q-1$, arba $q+1$. Antruoju atveju iš karto gauname, kad $p$ dalija ir $p+q+1>p$, todėl skaičius $p+q+1$ sudėtinis (turi daliklį $p$, kuriam $1<p<p+q+1$). Toliau tarkime, kad $p$ dalija skaičių $q-1$.
+    
+Pažymėkime $k=\frac{q-1}p$, $m=\frac{p^2+1}{q}$ (šie skaičiai natūralieji). Tada $p^2=mq-1\hm=mkp+m-1$. Matome, kad $m-1=p(p-mk)$ dalijasi iš $p$. Tai reiškia, kad arba $m-1=0$, arba $m-1\geq p$. Antruoju atveju 
+\[
+p^2+1=mq\geq (p+1)q=(p+1)(kp+1)\geq (p+1)(p+1)=p^2+2p+1
+\] 
+ir $0\geq 2p$, o taip būti negali. Vadinasi, $m-1=0$ ir $q=mq=p^2+1$. Tada $p+q+1=p^2+p+2$ yra lyginis skaičius, didesnis už 2 (skaičius $p^2+p$ lyginis kaip dviejų to paties lyginumo skaičių suma). Vadinasi, skaičius $p+q+1$ sudėtinis. 
+
+Gavus lygybę $q=p^2+1$, sprendimą galima užbaigti ir kitaip. Ji parodo, kad vienas iš pirminių skaičių $p$ ir $q$ turi būti lyginis, taigi lygus 2. Tinka tik $p=2$, $q=2^2+1=5$. Tada $p+q+1=8$ yra sudėtinis skaičius.
+
+
+
+\vspace{0,7cm}
+
+
+\end{document}

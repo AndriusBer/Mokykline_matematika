@@ -1,0 +1,294 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2014 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2014 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys}
+Realieji skaičiai $x$ ir $y$ tenkina lygybes $xy=10$ ir $(x+1)(y+1) = 20$. 
+Kam lygi reiškinio $(x+2)(y+2)$ reikšmė?
+\end{uzdavinys}
+
+
+\begin{uzdavinys}  
+Algis turi raudonų ir mėlynų kubelių. Visi kubeliai vienodo dydžio ir vienas nuo kito skiriasi nebent spalva. Dėdamas juos vieną ant kito, Algis nori iš 11 kubelių pastatyti tokį bokštelį, kuriame jokie du raudoni kubeliai nebūtų greta. Kiek skirtingų bokštelių jis gali pastatyti, panaudodamas a) 6 raudonus ir 5 mėlynus kubelius; b) 5 raudonus ir 6 mėlynus kubelius?
+\end{uzdavinys}
+%\vspace{0.1cm}
+
+%\vspace{0.3cm}
+\hspace*{-5.2mm}
+%\begin{minipage}[b][6cm][c]{0.5\textwidth}
+\begin{minipage}{0.72\textwidth}
+\begin{uzdavinys}
+Stačiakampio $ABCD$ plotas lygus $48$. 
+Kraštinėje $CD$ pažymėtas toks taškas $L$, kad trikampio $BCL$ 
+plotas lygus $8$, o kraštinėje $AD$ pažymėtas toks taškas $M$, 
+kad trikampio $DML$ plotas lygus $6$ (žr.~pav.). 
+Raskite a) trikampio $ALD$ plotą; b)~trikampio $BLM$ plotą.
+\end{uzdavinys}
+\end{minipage}\quad
+%\begin{minipage}[t][1cm][t]{0.7\textwidth}
+\begin{minipage}{0.8\textwidth}
+    \includegraphics[width=109pt]{./Breziniai/brezinys_2014_9_10_SPR.png}
+\end{minipage}
+%\vspace{0cm}
+
+
+\begin{uzdavinys} 
+Natūralusis skaičius $n$ yra toks, kad $n^2+26$ dalijasi 
+iš $n+2$. Raskite a) bent du tokius natūraliuosius skaičius $n$; 
+b) visus tokius natūraliuosius skaičius $n$.
+\end{uzdavinys}
+
+
+
+\begin{uzdavinys} 
+ Išspręskite lygčių sistemą
+$$\begin{cases}\begin{aligned}
+x+xy+x^2 &= 9,\\
+y + xy + y^2\hspace{0.5pt} &= -3.
+\end{aligned}\end{cases}$$
+\end{uzdavinys}
+
+
+\vspace{0,7cm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2014 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys}
+Realieji skaičiai $x$ ir $y$ tenkina lygybes $xy=10$ ir $(x+1)(y+1) = 20$. 
+Kam lygi reiškinio $(x+2)(y+2)$ reikšmė?
+\end{uzdavinys}
+
+\textit{Sprendimas.} Žinome $xy$ reikšmę, o $x+y$ reikšmę galime apskaičiuoti:
+$$xy + x + y + 1 =(x+1)(y+1)=20,\qquad x+y = 20 - xy - 1 =20-10-1=9.$$
+Remdamiesi Vijeto teorema, galime sudaryti lygtį $t^2-9t+10=0$, kurios sprendiniai yra $x$ ir $y$, bei ją išspręsti. Tačiau rasti $x$ ir $y$ nebūtina:
+\[
+(x+2)(y+2) = xy + 2x + 2y + 4 = xy + 2(x+y) + 4 = 10 + 2\cdot 9 + 4 =32.
+\] 
+\begin{flushright}
+     Ats.: 32.
+\end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys}  
+Algis turi raudonų ir mėlynų kubelių. Visi kubeliai vienodo dydžio ir vienas nuo kito skiriasi nebent spalva. Dėdamas juos vieną ant kito, Algis nori iš 11 kubelių pastatyti tokį bokštelį, kuriame jokie du raudoni kubeliai nebūtų greta. Kiek skirtingų bokštelių jis gali pastatyti, panaudodamas a) 6 raudonus ir 5 mėlynus kubelius; b) 5 raudonus ir 6 mėlynus kubelius?
+\end{uzdavinys}
+
+\textit{Pirmasis sprendimas.}\footnote{Taip pat žr.~panašų 11--12 klasių 2 uždavinį ir jo sprendimus.} Tiek a),~tiek b)~dalyje įsivaizduokime, kad visi raudoni kubeliai jau sudėti vienas ant kito. Kiekviename tarpe tarp gretimų raudonų kubelių būtina įterpti po vieną mėlyną kubelį. Tarkime, kad tai jau padaryta.
+
+a) Turime 6 raudonus kubelius, tarp kurių įterpti 5 mėlyni (po vieną kiekviename iš~5 tarpų). Visi reikiami kubeliai jau panaudoti, tad šiuo atveju gauname vienintelį tinkamą bokštelį. 
+
+b) Turime 5 raudonus kubelius, tarp kurių įterpti 4 mėlyni (po vieną kiekviename iš 4 tarpų). Likę du mėlyni kubeliai bokštelyje gali būti padėti bet kur. Juos galima padėti 6-iose vietose: po apatiniu raudonu kubeliu, virš viršutinio raudono kubelio arba viename iš~4 tarpų tarp raudonų kubelių.
+
+Bokštelio vaizdas priklauso tik nuo to, kuriose iš 6 vietų ir po kiek mėlynų kubelių bus padėta. Galimi du atvejai: vienoje vietoje padedami abu likę kubeliai arba dviejose skirtingose vietose padedama po vieną kubelį. Pirmuoju atveju vieną iš 6 vietų galima pasirinkti 6 būdais. Antruoju atveju dvi vietas galima pasirinkti vieną po kitos: vieną~6 būdais, tada kitą 5 būdais. Kadangi šių dviejų bokštelio vietų tvarka nesvarbi, tai gauname $\frac{6\cdot 5}{2}=15$ būdų. Vadinasi, iš viso yra $6+15=21$ tinkamas bokštelis.
+\vspace{0,3cm}
+
+\textit{Antrasis sprendimas.} 
+Tiek a),~tiek b)~dalyje įsivaizduokime, kad mėlyni kubeliai jau sudėti vienas ant kito ir bokštelyje liko įterpti raudonus. Toks sprendimas trumpesnis nei pirmasis.
+
+a) Turime 5 mėlynus kubelius ir 6 vietas, kuriose galima dėti 6 raudonus kubelius (bokštelio apačia, viršus, 4 tarpai). Kiekvienoje vietoje gali būti daugiausiai vienas raudonas kubelis. Todėl visus 6 raudonus kubelius panaudosime, tik padėdami juos po vieną visose 6 vietose. Gauname vienintelį tinkamą bokštelį.
+
+b) Turime 6 mėlynus kubelius ir 7 vietas, į kurias galima dėti 5 raudonus kubelius (bokštelio apačia, viršus, 5 tarpai). Kiekvienoje vietoje gali būti daugiausiai vienas raudonas kubelis. Taigi visus tinkamus bokštelius gausime, pasirinkdami dvi iš 7 vietų ir padėdami 5 raudonus kubelius po vieną likusiose 5-iose. Tas dvi vietas galima pasirinkti bet kaip: vieną 7 būdais, tada kitą 6 būdais. Kadangi dviejų vietų tvarka nesvarbi, tai gauname
+$\frac{7\cdot6}{2}=21$ būdą. Vadinasi, yra 21 tinkamas bokštelis.
+       \begin{flushright}
+     Ats.: a) 1; b) 21.
+    \end{flushright}
+\vspace{6mm}
+
+%\vspace{0.3cm}
+\hspace*{-5.2mm}
+%\begin{minipage}[b][6cm][c]{0.5\textwidth}
+\begin{minipage}{0.72\textwidth}
+\begin{uzdavinys}
+Stačiakampio $ABCD$ plotas lygus $48$. 
+Kraštinėje $CD$ pažymėtas toks taškas $L$, kad trikampio $BCL$ 
+plotas lygus $8$, o kraštinėje $AD$ pažymėtas toks taškas $M$, 
+kad trikampio $DML$ plotas lygus $6$ (žr.~pav.). 
+Raskite a) trikampio $ALD$ plotą; b)~trikampio $BLM$ plotą.
+\end{uzdavinys}
+\end{minipage}\quad
+%\begin{minipage}[t][1cm][t]{0.7\textwidth}
+\begin{minipage}{0.8\textwidth}
+    \includegraphics[width=109pt]{./Breziniai/brezinys_2014_9_10_SPR.png}
+\end{minipage}
+\vspace{0cm}
+
+
+\textit{Sprendimas.}
+a) Stačiakampio $ABCD$ kraštinių $AB$ ir $BC$ ilgius pažymėkime atitinkamai 
+$a$ ir $b$. Tada šio stačiakampio plotas lygus $AB\cdot BC = ab = 48$. 
+Pagal uždavinio sąlygą trikampio $BCL$ plotas lygus $8$. 
+Kita vertus, stačiojo trikampio $BCL$ plotas lygus 
+\[
+\frac{1}{2}\cdot BC\cdot CL = \frac{b\cdot CL}{2}.
+\] 
+Taigi $$\frac{b\cdot CL}{2} = 8,\qquad\frac{b\cdot CL}{2ab}=\frac{8}{48}=\frac16,\qquad CL=\frac{2ab}b\cdot\frac16=\frac a3.$$
+Tada 
+\[
+LD = CD - CL = AB - CL = a - \frac{a}{3}=\frac{2a}{3}.
+\] 
+Dabar jau galime apskaičiuoti stačiojo trikampio $ALD$ plotą: 
+\[
+S_{\triangle ALD} =\frac{1}{2}\cdot AD\cdot LD = \frac{1}{2}\cdot b\cdot \frac{2a}{3} = 
+\frac{ab}{3} = \frac{48}{3} = 16.
+\]
+b) Spręsdami a)~dalį, gavome, kad $LD = \frac{2a}{3}$. Pagal uždavinio sąlygą 
+trikampio $DML$ plotas lygus $6$. Kita vertus, stačiojo 
+trikampio $DML$ plotas lygus 
+\[
+\frac{1}{2}\cdot LD\cdot DM = \frac{1}{2}\cdot \frac{2a}{3}\cdot DM = \frac{a\cdot DM}{3}.
+\] 
+Taigi $$\frac{a\cdot DM}{3} = 6,\qquad
+\frac{a\cdot DM}{3ab}=\frac6{48}=\frac18,\qquad DM = \frac{3ab}a\cdot\frac18=\frac{3b}{8}.$$ 
+Tada
+\[
+AM = AD - DM = BC - DM = b - \frac{3b}{8} = \frac{5b}{8}.
+\]
+Stačiojo trikampio $ABM$ plotas lygus 
+\[
+\frac{1}{2}\cdot AB \cdot AM = \frac{1}{2}\cdot a\cdot \frac{5b}{8} = \frac{5ab}{16} = 
+\frac{5\cdot 48}{16} = 15.
+\] 
+Taigi ieškomas plotas lygus
+\[
+S_{\triangle BLM} = S_{ABCD} - S_{\triangle BCL} - S_{\triangle DML} - S_{\triangle ABM} = 48 - 8 - 6 - 15 = 19.
+\]
+       \begin{flushright}
+     Ats.: a) 16; b) 19.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+Natūralusis skaičius $n$ yra toks, kad $n^2+26$ dalijasi 
+iš $n+2$. Raskite a) bent du tokius natūraliuosius skaičius $n$; 
+b) visus tokius natūraliuosius skaičius $n$.
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+a) Pavyzdžiui, skaičiai $n=1$ ir $n=3$ tenkina uždavinio sąlygą.
+
+
+b) Skaičių $n^2+26$ galima užrašyti kitais būdais, išreiškiant jį per $m=n+2$:
+\begin{align*}
+%\begin{split}
+n=m-2,\quad n^2+26 &= (m-2)^2+26 = m^2 - 4m + 30= (n+2)^2 - 4(n+2) + 30\\\text{arba}\quad n^2+26&=n^2-4+4+26=(n-2)(n+2)+30.
+\end{align*}
+Reiškinio pertvarkymo rezultatą galima užrašyti ir tapatybe
+$\frac{n^2+26}{n+2}=n-2+\frac{30}{n+2}.$
+Bet kuriuo atveju matome, kad kartu su skaičiumi $n^2+26$ iš $n+2$ dalijasi ir skaičius~30. Kadangi $n\geq1$, tai $n+2$ yra skaičiaus 30 daliklis, ne mažesnis už 3. Taigi
+$n+2 = 3$, 5, 6, 10, 15 arba 30, atitinkamai $n=1$, 3, 4, 8, 13 arba $28$.
+
+Visos šešios gautos $n$ reikšmės tinka. Norint tuo įsitikinti, skaičiuoti $n^2+26$ reikšmes ir dalyti jas iš $n+2$ nebūtina. Pakanka pastebėti, kad kiekvienu atveju skaičius 30 dalijasi iš $n+2$, todėl dalijasi ir skaičius $n^2+26=(n-2)(n+2)+30$. 
+       \begin{flushright}
+     Ats.: a) pavyzdžiui, $n=1$ ir $n=3$;
+b) $n = 1$, 3, 4, 8, 13, $28$.
+    \end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+ Išspręskite lygčių sistemą
+$$\begin{cases}\begin{aligned}
+x+xy+x^2 &= 9,\\
+y + xy + y^2\hspace{0.5pt} &= -3.
+\end{aligned}\end{cases}$$
+\end{uzdavinys}
+
+\textit{Sprendimas.} 
+Tarkime, kad skaičių pora $(x, y)$ tenkina duotąją lygčių sistemą. Sudėję lygtis, gauname%\pagebreak
+\begin{equation*}
+x+y + x^2 + 2xy + y^2= 6,\qquad
+x+y + (x+y)^2 = 6.
+\end{equation*} 
+Taigi skaičius $x+y$ yra kvadratinės lygties $t^2+t-6=0$ sprendinys. Ją išsprendę gauname, kad $x+y=-3$ arba $x+y=2$.
+
+Jei $x+y = -3$, tai $y = -3-x$. Šią išraišką įrašykime lygybėje $x+xy+x^2 = 9$:
+\begin{equation*}
+x+x(-3-x) + x^2 = 9,\qquad
+-2x=9,\qquad
+x=-\frac{9}{2}.
+\end{equation*} 
+Tada $y = -3-\left(-\frac{9}{2}\right) = \frac{3}{2}$. Gavome $(x, y)=\left(-\frac{9}{2}, \frac{3}{2}\right)=\left(-4\frac{1}{2}, 1\frac{1}{2}\right)$.
+
+Jei $x+y = 2$, tai, išraišką $y = 2-x$ įrašę lygybėje $x+xy+x^2 = 9$, gauname
+\begin{equation*}
+x+x(2-x) + x^2 = 9,\qquad
+3x=9,\qquad
+x=3.
+\end{equation*}
+Tada $y = 2-3=-1$. Taigi šiuo atveju $(x, y)=(3,-1)$.
+
+Abi gautos skaičių poros $(x, y)$ tenkina duotąją sistemą.
+\begin{flushright}
+     Ats.: $(x, y)=\left(-4\frac{1}{2}, 1\frac{1}{2}\right)$ ir $(x, y)=(3,-1)$.  
+    \end{flushright}
+
+\vspace{0,7cm}
+
+
+\end{document}

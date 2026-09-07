@@ -1,0 +1,348 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2009 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2009 m.~9 klasė, Vilniaus m.}
+\end{center}
+\vspace{0,3cm}
+
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Nustatykite, kiek yra natūraliųjų skaičių, užrašomų vien nuliais ir vienetais bei mažesnių už 1\,001\,001.
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Lygiašonės trapecijos įstrižainė dalija ją į du lygiašonius trikampius. Raskite šios trapecijos kampus.
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Duota lygtis
+$$\frac{x+6}{y}+\frac{13}{xy}=\frac{4-y}{x}.$$
+\begin{itemize}
+\item[a)] Raskite bent vieną realųjį šios lygties sprendinį $(x, y)$.
+\item[b)] Raskite visus realiuosius šios lygties sprendinius $(x, y)$.
+\end{itemize}
+\end{uzdavinys}
+
+
+\begin{uzdavinys}\hspace{0cm}
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį natūralųjį skaičių, kuris turėtų lygiai keturis natūraliuosius daliklius, o tų daliklių aritmetinis vidurkis būtų lygus 10.
+\item[b)] Raskite visus tokius natūraliuosius skaičius, kurie turėtų lygiai keturis natūraliuosius daliklius, o tų daliklių aritmetinis vidurkis būtų lygus 10.
+\end{itemize}
+\end{uzdavinys}
+\vspace{0,7cm}%\pagebreak
+
+\begin{center}
+{\sc\large 2009 m.~10 klasė, Vilniaus m.}
+\end{center}
+\vspace{0,3cm}
+
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Nustatykite, kiek yra natūraliųjų skaičių, užrašomų vien nuliais ir vienetais bei mažesnių už 1\,001\,001\,001.
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Lentoje užrašytas reiškinys
+$$*\,3^5*3^4*3^3*3^2*3*1.$$
+Vienu ėjimu leidžiama pakeisti vieną iš žvaigždučių ženklu ,,+`` arba ženklu ,,–``. Marytė ir Onutė ėjimus atlieka pakaitomis. Jei Marytė ėjimą atlieka pirmoji, tai ar visada Onutė gali pasiekti, kad galutinio reiškinio reikšmė dalytųsi iš 7?
+\end{uzdavinys}
+
+\begin{uzdavinys} 
+Iškilojo penkiakampio $ABCDE$ kraštinės tenkina sąlygą $$BC=CD=AE=AB+DE=1,$$ o jo kampai $B$ ir $D$ yra statieji. Raskite penkiakampio $ABCDE$ plotą.
+\end{uzdavinys}
+%\phantom{}\\
+%\phantom{}\\
+%\phantom{}
+
+
+
+\begin{uzdavinys}
+Tegu $a$ -- bet kuris realusis skaičius. Didžiausias sveikasis skaičius, ne didesnis nei $a$, yra vadinamas skaičiaus $a$ sveikąja dalimi ir žymimas $[a]$. \pagebreak Skaičius $a-[a]$ yra vadinamas skaičiaus $a$ trupmenine dalimi ir žymimas $\{a\}$.
+
+Išspręskite lygčių sistemą:
+$$\systeme{
+x\phantom{\}} + [y]\, + \{z\}=100{,}9{,},\\
+\{x\} +y\phantom{\}} + [z]\,=125{,}3{,},\\
+{[x]\,}+ \{y\} + z\phantom{\}}= 200{,}9.}$$
+
+\end{uzdavinys}
+
+
+\vspace{0,7cm}%\pagebreak
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}\label{dvu}
+{\sc\large 2009 m.~9 klasės uždavinių (Vilniaus m.) sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Nustatykite, kiek yra natūraliųjų skaičių, užrašomų vien nuliais ir vienetais bei mažesnių už 1\,001\,001.
+\end{uzdavinys}
+       
+\textit{Pirmasis sprendimas.}\footnote{Taip pat žr.~panašius 10 klasės 1 uždavinį ir 12 klasės 1 uždavinį bei kiekvieno iš jų sprendimus.} Vienženklių skaičių, tenkinančių uždavinio sąlygą, yra vienas. Dviženklių yra du (10 ir 11), triženklių yra keturi (100, 101, 110, 111). Keturženklių yra~8: pirmasis skaitmuo turi būti 1, kiekvienam iš likusių trijų skaitmenų yra po dvi galimybes (skaitmuo yra 0 arba 1), taigi turime $2\cdot2\cdot2=2^3=8$ galimybes. Panašiai penkiaženklių skaičių yra $2^4=16$, o šešiaženklių yra $2^5=32$. Jei septynženklis skaičius yra mažesnis už 1\,001\,001, tai jis prasideda skaitmenimis 100$\ldots$. Jei kitas skaitmuo yra~0, tai kiekvienam iš likusių trijų skaitmenų yra po dvi galimybes, taigi turime dar $2^3=8$ skaičius. O jei kitas skaitmuo yra 1, tai turime vienintelę galimybę 1\,001\,000.
+
+Iš viso gauname $1+2+2^2+2^3+2^4+2^5+2^3+1=72$ skaičius.
+
+ \vspace{0,3cm}
+
+\textit{Antrasis sprendimas.} Atsakymą rasime greičiau, jei kiekvieną tinkamą natūralųjį skaičių įsivaizduosime kaip septynženklį, prireikus prirašydami skaičiaus pradžioje vieną ar kelis nulius. Pavyzdžiui, $1\,101=0\,001\,101$. Tada turime du atvejus: tinkamo skaičiaus pirmasis skaitmuo yra 0 arba 1.
+
+Pirmuoju atveju likusius 6 skaitmenis galime pasirinkti laisvai ir turime $2^6$ galimybių, iš kurių vieną -- skaičių $0=0\,000\,000$ -- reikia atmesti. Taigi gauname $2^6-1=63$ skaičius.
+
+Antruoju atveju gauname likusius $2^3+1=9$ skaičius (žr.~pirmąjį sprendimą).
+
+Iš viso gauname $63+9=72$ skaičius.
+
+ \vspace{0,3cm}
+
+\textit{Trečiasis sprendimas.} Uždavinys iš esmės nepakinta, jei duotąjį skaičių perskaitysime ne dešimtainėje, bet dvejetainėje skaičiavimo sistemoje.  Joje visi skaičiai užrašomi tik nuliais ir vienetais. Tada tereikia nustatyti, kiek natūraliųjų skaičių yra mažesni už $1\,001\,001_{(2)}=2^6+2^3+1=73$. Žinoma, tokių skaičių yra $73-1=72$.
+
+\begin{flushright}
+     Ats.: $72$.
+\end{flushright}
+ \vspace{0,3cm}  
+
+
+\begin{uzdavinys} 
+Lygiašonės trapecijos įstrižainė dalija ją į du lygiašonius trikampius. Raskite šios trapecijos kampus.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Trapecijos pagrindai yra skirtingo ilgio, nes ji negali būti lygiagretainis. Duotosios trapecijos viršūnes galima pažymėti taip, kad ilgesnysis trapecijos pagrindas būtų $AB$, trumpesnysis -- $CD$, o įstrižainė, dalijanti trapeciją į lygiašonius trikampius, būtų $BD$. Kampus $A$ ir $C$ atitinkamai pažymėkime $\alpha$ ir $\beta$ (žr.~pav.; čia $\alpha<90^\circ$). Kiti du lygiašonės trapecijos kampai yra tokie patys: $\angle ABC=\alpha$, $\angle ADC=\beta$. Lygiašonėje trapecijoje turime $\alpha+\beta=180^\circ$, $\alpha<90^\circ$, $\beta>90^\circ$.\vspace{1pt}
+
+\begin{center}
+\includegraphics[width=120pt]{./Breziniai/Vilnius_2007_2009/xbrezinys_2009_9_SPR}
+\end{center}
+
+Trikampiai $ABD$ ir $BCD$ yra lygiašoniai. Tačiau kurie jų kampai lygūs? Kadangi $\beta>90^\circ$, tai lygiašoniame trikampyje $BCD$ kampas $C$ bukasis, o lygūs tegali būti kampai $CBD$ ir $CDB$. Taigi $AD=CB=CD<AB$, ir trikampyje $ABD$ turime $\angle ABD<\angle ADB$. Trapecijos kampai $A$ ir $B$ lygūs, todėl $\angle ABD<\angle ABC=\angle BAD$. Vadinasi, trikampyje $ABD$ kampai $BAD$ ir $ADB$ didesni už trečiąjį kampą, ir tik jie gali būti lygūs.
+
+Pasinaudokime gautomis kampų lygybėmis: $\angle ADB=\angle BAD=\alpha,$
+$$\angle BDC=\angle ADC-\angle ADB=\beta-\angle BAD=\beta-\alpha=\beta-(180^\circ-\beta)=2\beta-180^\circ$$
+ir $\angle CBD=\angle BDC=2\beta-180^\circ.$ Užrašykime trikampio $BCD$ kampų sumą:
+$$180^\circ=\beta+(2\beta-180^\circ)+(2\beta-180^\circ)=
+5\beta-360^\circ,\qquad5\beta=540^\circ,\qquad\beta=108^\circ.$$
+Taigi trapecijos kampai lygūs $\alpha=180^\circ-\beta=72^\circ$, $\alpha=72^\circ$, $\beta=108^\circ$, $\beta=108^\circ$.
+
+\begin{flushright}
+Ats.: $72^\circ$, $72^\circ$, $108^\circ$, $108^\circ$.
+\end{flushright}
+ \vspace{0,3cm}  
+
+\begin{uzdavinys}
+Duota lygtis
+$$\frac{x+6}{y}+\frac{13}{xy}=\frac{4-y}{x}.$$
+\begin{itemize}
+\item[a)] Raskite bent vieną realųjį šios lygties sprendinį $(x, y)$.
+\item[b)] Raskite visus realiuosius šios lygties sprendinius $(x, y)$.
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} Iš karto spręskime b)~dalį. Padauginkime lygtį iš $xy$ ir pertvarkykime ją, išskirdami pilnuosius kvadratus:
+\begin{align*}(x+6)x+13&=(4-y)y,\\
+x^2+6x+y^2-4y+13&=0,\\
+(x^2+6x+9)+(y^2-4y+4)&=0,\\
+(x+3)^2+(y-2)^2&=0.\end{align*}
+Dviejų kvadratų (taigi neneigiamų skaičių) suma lygi 0 tik tada, kai jie abu lygūs 0. Vadinasi, jei $(x, y)$ yra duotosios lygties sprendinys, tai $(x+3)^2=0$ ir $(y-2)^2=0$. Gauname vienintelį galimą sprendinį $(-3, 2)$. Lengva patikrinti, kad jis tenkina duotąją lygtį.
+
+\begin{flushright}
+Ats.: a) ir b) $(x, y)=(-3, 2)$.
+\end{flushright}
+ \vspace{0,3cm}  
+
+\begin{uzdavinys}\hspace{0cm}
+\begin{itemize}
+\item[a)] Raskite bent vieną tokį natūralųjį skaičių, kuris turėtų lygiai keturis natūraliuosius daliklius, o tų daliklių aritmetinis vidurkis būtų lygus 10.
+\item[b)] Raskite visus tokius natūraliuosius skaičius, kurie turėtų lygiai keturis natūraliuosius daliklius, o tų daliklių aritmetinis vidurkis būtų lygus 10.
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.} a) Tinka skaičius 27, turintis daliklius 1, 3, 9, 27.
+
+b) Įrodysime, kad 27 yra vienintelis tinkamas skaičius. Tarkime, kad natūralusis skaičius $n$ tenkina uždavinio sąlygą. Žinoma, $n>1$. Nagrinėkime du atvejus: kai $n$ turi du skirtingus pirminius daliklius $p_1$ ir $p_2$ (galbūt ir daugiau) bei kai $n$ turi vienintelį pirminį daliklį $p$.
+
+Pirmuoju atveju skaičius $n$ turi keturis skirtingus daliklius 1, $p_1$, $p_2$ ir $p_1p_2$. Daugiau daliklių jis turėti negali. Tada
+$$\frac{1+p_1+p_2+p_1p_2}{4}=10,\qquad1+p_1+p_2+p_1p_2=40,\qquad(p_1+1)(p_2+1)=40.$$
+Pastarojoje lygtyje įrašę $p_1=2$, 3 arba 5, gauname, kad $p_2$ nėra natūralusis pirminis skaičius. Analogiškai atmetame reikšmes $p_2=2$, 3 ir 5. O jei $p_1\geq7$, $p_2\geq7$, tai $(p_1+1)(p_2+1)\geq64>40$. Taigi šiuo atveju negauname jokių $n$ reikšmių.
+
+Antruoju atveju $n$ yra skaičiaus $p$ laipsnis: $n=p^k$, kur skaičius $k$ natūralusis. Skaičius $n$ turi $k+1$ natūralųjį daliklį: 1, $p$, $p^2$, $\ldots$, $p^{k}$. Tada $k+1=4$, $n=p^3$ ir
+$$\frac{1+p+p^2+p^3}{4}=10.$$
+Šios lygties kairioji pusė didėja, kai $p>0$, todėl lygtis turi daugiausiai vieną sprendinį~$p$. Jį jau atspėjome a)~dalyje: $n=3^3$ (ir $p=3$), o kitos $n$ reikšmės netinka.
+
+\begin{flushright}
+Ats.: a) ir b) $27$.
+\end{flushright}
+ \vspace{0,7cm}
+
+\begin{center}\label{dvu}
+{\sc\large 2009 m.~10 klasės uždavinių (Vilniaus m.) sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+
+\setcounter{uzdavinys}{0}
+
+
+\begin{uzdavinys}
+Nustatykite, kiek yra natūraliųjų skaičių, užrašomų vien nuliais ir vienetais bei mažesnių už 1\,001\,001\,001.
+\end{uzdavinys}
+
+\textit{Pirmasis sprendimas.}\footnote{Taip pat žr.~panašius 9 klasės 1 uždavinį ir 12 klasės 1 uždavinį bei kiekvieno iš jų sprendimus.} Yra $2^8$ tinkamų devynženklių skaičių: pirmasis skaitmuo turi būti 1, o kiekvienam iš likusių 8 skaitmenų yra po dvi galimybes (skaitmuo yra 0 arba~1). Analogiškai gauname, kad tinkamų vienženklių, dviženklių, triženklių, keturženklių, $\ldots$, aštuonženklių skaičių atitinkamai yra 1, 2, $2^2$, $2^3$, $\ldots$, $2^7$. Liko suskaičiuoti, kiek yra tinkamų dešimtženklių skaičių.
+
+Tinkamas dešimtženklis skaičius turi prasidėti $100\ldots$. Jei ketvirtasis skaitmuo yra~0, tai likusiems 6 skaitmenims reikšmes 0 ir 1 galima priskirti laisvai. Gauname $2^6$ tokių skaičių.  Jei ketvirtasis skaitmuo yra 1, tai skaičius prasideda $1\,001\,00\ldots$. Jei septintasis skaitmuo yra 0, tai likusius tris skaitmenis galime pasirinkti $2^3$ būdų. Jei septintasis skaitmuo yra 1, tai turime vienintelę galimybę 1\,001\,001\,000.
+
+Iš viso gauname $1+2+2^2+2^3+2^4+2^5+2^6+2^7+2^8+2^6+2^3+1=584$ skaičius.
+
+ \vspace{0,3cm}
+
+\textit{Antrasis sprendimas.} Atsakymą rasime greičiau, jei kiekvieną tinkamą natūralųjį skaičių įsivaizduosime kaip dešimtženklį, prireikus prirašydami skaičiaus pradžioje vieną ar kelis nulius. Pavyzdžiui, $101\,101=0\,000\,101\,101$. Tada turime du atvejus: tinkamo skaičiaus pirmasis skaitmuo yra 0 arba 1.
+
+Pirmuoju atveju likusius 9 skaitmenis galime pasirinkti laisvai ir turime $2^9$ galimybių, iš kurių vieną -- skaičių $0=0\,000\,000\,000$ -- reikia atmesti. Taigi gauname $2^9-1=511$ skaičių.
+
+Antruoju atveju gauname likusius $2^6+2^3+1=73$ skaičius (žr.~pirmąjį sprendimą).
+
+Iš viso gauname $511+73=584$ skaičius.
+
+ \vspace{0,3cm}
+
+\textit{Trečiasis sprendimas.} Uždavinys iš esmės nepakinta, jei duotąjį skaičių perskaitysime ne dešimtainėje, bet dvejetainėje skaičiavimo sistemoje.  Joje visi skaičiai užrašomi tik nuliais ir vienetais. Tada tereikia nustatyti, kiek natūraliųjų skaičių yra mažesni už $1\,001\,001\,001_{(2)}=2^9+2^6+2^3+1=585$. Žinoma, tokių skaičių yra $585-1=584$.
+
+\begin{flushright}
+     Ats.: $584$.
+\end{flushright}
+ \vspace{0,3cm}  
+
+\begin{uzdavinys} 
+Lentoje užrašytas reiškinys
+$$*\,3^5*3^4*3^3*3^2*3*1.$$
+Vienu ėjimu leidžiama pakeisti vieną iš žvaigždučių ženklu ,,+`` arba ženklu ,,–``. Marytė ir Onutė ėjimus atlieka pakaitomis. Jei Marytė ėjimą atlieka pirmoji, tai ar visada Onutė gali pasiekti, kad galutinio reiškinio reikšmė dalytųsi iš 7?
+\end{uzdavinys}
+
+\textit{Sprendimas.} Nustatykime, su kokiomis liekanomis iš 7 dalijasi duotojo reiškinio skaičiai: 1, \,3, \,$3^2=7+2$, \,$3^3=3\cdot7+6$, \,$3^4=81=11\cdot7+4$, \,$3^5=3\cdot81=243=34\cdot7+5$.
+Dabar lengva pastebėti, kad $1+3^3$, $3+3^4$ ir $3^2+3^5$ dalijasi iš 7. Pavyzdžiui, $3^2+3^5\hm=7+2+34\cdot7+5=7+34\cdot7+(2+5)=7+34\cdot7+7$.
+Viskas priklauso tik nuo liekanų 2 ir 5, kurių suma dalijasi iš 7.
+
+Pastebėti galima ir kitaip: $1+3^3=28$ dalijasi iš 7, o tada iš 7 dalijasi ir $3+3^4\hm=3\cdot(1+3^3)$, ir $3^2+3^5=3^2\cdot(1+3^3)$.
+
+Onutė gali taikyti tokią pergalės strategiją. Duotieji skaičiai suskirstomi poromis $(1, 3^3)$, $(3, 3^4)$, $(3^2, 3^5)$. Kai Marytė parašo ženklą prieš vieną poros skaičių, kitu ėjimu Onutė parašo tokį patį ženklą prieš kitą skaičių iš tos pačios poros. Tada po Onutės ėjimo reiškinyje atsiranda viena iš sumų $1+3^3$, $3+3^4$, $3^2+3^5$ (galbūt padauginta iš~$-1$), o po visų trijų ėjimų reiškinio reikšmė bus lygi
+$$\pm(1+3^3)\pm(3+3^4)\pm(3^2+3^5).$$ Sumos skliaustuose dalijasi iš 7, todėl ir viso reiškinio reikšmė dalijasi iš 7, nepriklausomai nuo prieš skliaustus esančių nežinomų ženklų pasirinkimo.
+
+\begin{flushright}
+Ats.: taip, visada.
+\end{flushright}
+ \vspace{0,3cm}  
+
+\begin{uzdavinys} 
+Iškilojo penkiakampio $ABCDE$ kraštinės tenkina sąlygą $$BC=CD=AE=AB+DE=1,$$ o jo kampai $B$ ir $D$ yra statieji. Raskite penkiakampio $ABCDE$ plotą.
+\end{uzdavinys}
+
+\textit{Sprendimas.} Uždavinį gana lengva išspręsti, tariant, kad penkiakampis turi simetrijos ašį, einančią per $C$ ir statmeną tiesei $AE$. Tačiau tai tėra atskiras atvejis, o plotą turime rasti visais galimais atvejais.
+
+Pažymėkime $CA=a$, $CE=b$. Įstrižainės $CA$ ir $CE$ dalija penkiakampį į tris trikampius. Stačiuosius trikampius $ABC$ ir $CDE$, turinčius po to paties ilgio statinį, galima suglausti ir gauti naują trikampį (žr.~pav.). Šio trikampio pagrindas ir į jį nuleista aukštinė yra ilgio 1, todėl jo plotas (trikampių $ABC$ ir $CDE$ plotų suma) lygus $\frac{1}{2}\cdot1\cdot1=\frac{1}{2}$.
+
+
+\begin{center}
+\includegraphics[width=233.82pt]{./Breziniai/Vilnius_2007_2009/xbrezinys_2009_10_SPR}
+\end{center}
+
+
+Liko rasti trikampio $ACE$ plotą. Jo kraštinių ilgiai yra $a$, $b$, 1, taigi tokie patys, kaip ir trikampio, kurio plotą ką tik radome. Du trikampiai yra lygūs ir jų plotai lygūs. Vadinasi, trikampio $ACE$ plotas taip pat yra $\frac{1}{2}$.
+
+Penkiakampio $ABCDE$ plotas lygus $\frac{1}{2}+\frac{1}{2}=1$. 
+
+\begin{flushright}
+Ats.: 1.
+\end{flushright}
+ \vspace{0,3cm}  
+
+
+\begin{uzdavinys}
+Tegu $a$ -- bet kuris realusis skaičius. Didžiausias sveikasis skaičius, ne didesnis nei $a$, yra vadinamas skaičiaus $a$ sveikąja dalimi ir žymimas $[a]$. Skaičius $a-[a]$ yra vadinamas skaičiaus $a$ trupmenine dalimi ir žymimas $\{a\}$.
+
+Išspręskite lygčių sistemą:
+$$\systeme{
+x\phantom{\}} + [y]\, + \{z\}=100{,}9{,},\\
+\{x\} +y\phantom{\}} + [z]\,=125{,}3{,},\\
+{[x]\,}+ \{y\} + z\phantom{\}}= 200{,}9.}$$
+
+\end{uzdavinys}
+
+\textit{Sprendimas.} Tegu $(x, y, z)$ yra duotosios lygčių sistemos sprendinys.
+
+Sudėkime tris lygtis ir pasinaudokime lygybe $[a]+\{a\}=a$:
+\begin{align*}x+y+z+([x]+\{x\})+([y]+\{y\})+([z]+\{z\})&=100{,}9
++125{,}3+200{,}9&=427{,}1,\\
+x+y+z+x+y+z&=2(x+y+z)=427{,}1,\\
+x+y+z&=213{,}55.\end{align*}
+Iš gautosios lygybės atimkime pirmąją duotosios sistemos lygtį:
+\begin{align*}(x+y+z)-(x+ [y] + \{z\})&=(y-[y])+(z-\{z\})=\\&=\{y\}+[z]=213{,}55-
+100{,}9=112{,}65.\end{align*}
+Taigi $[z]+\{y\}=112{,}65$ ir $\{y\}=112{,}65-[z]$. Iš 112,65 turime atimti sveikąjį skaičių~$[z]$, kad liktų trupmeninė dalis $\{y\}$, būtinai priklausanti intervalui $[0; 1)$. Taigi $[z]=112$ (113 jau būtų per daug, o 111 per mažai) ir $\{y\}=0{,}65$.
+
+Iš lygybės $x+y+z=213{,}55$ atskirai atėmę antrąją ir trečiąją duotosios sistemos lygtis, analogiškai gauname $\{z\}=88{,}25-[x]$, \,$[x]=88$, \,$\{z\}=0{,}25$ bei $\{x\}=12{,}65-[y]$, \,$[y]=12$, \,$\{x\}=0{,}65$.
+
+Pagaliau randame $x=[x]+\{x\}=88+0{,}65=88{,}65$ ir, analogiškai, $y=12{,}65$, $z=112{,}25$. Šios nežinomųjų reikšmės tenkina duotąją lygčių sistemą.
+
+\begin{flushright}
+Ats.: $(x, y, z)=(88{,}65, \,12{,}65, \,112{,}25)$.
+\end{flushright}
+ \vspace{0,7cm}
+
+
+\end{document}

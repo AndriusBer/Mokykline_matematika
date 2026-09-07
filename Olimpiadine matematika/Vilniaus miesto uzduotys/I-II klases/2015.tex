@@ -1,0 +1,347 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage{fancyhdr}
+
+% Makrokomandos, naudotos originaliuose failuose.
+\newcommand{\hm}[1]{\nobreak\hspace{0pt}#1\nobreak\hspace{0pt}}
+\newcommand{\al}{\alpha}
+
+% Uždavinių numeravimas.
+\newcounter{uzdavinys}
+\newenvironment{uzdavinys}
+  {\refstepcounter{uzdavinys}\par\medskip\noindent\textbf{\theuzdavinys\ uždavinys.}\ }
+  {\par\medskip}
+
+% Jei brėžinio failo šalia nėra, dokumentas vis tiek susikompiliuos.
+\makeatletter
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \IfFileExists{#2}{\originalincludegraphics[#1]{#2}}{%
+    \IfFileExists{#2.pdf}{\originalincludegraphics[#1]{#2}}{%
+      \IfFileExists{#2.png}{\originalincludegraphics[#1]{#2}}{%
+        \IfFileExists{#2.jpg}{\originalincludegraphics[#1]{#2}}{%
+          \fbox{\parbox[c][28mm][c]{42mm}{\centering Brėžinys}}%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+
+\begin{document}
+
+
+\begin{center}\LARGE\textbf{2015 m. IX--X klasių olimpiada}\end{center}
+
+\section*{Uždavinių sąlygos}
+
+\begin{center}
+{\sc\large 2015 m.~9--10 klasės}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+\begin{uzdavinys}
+Raidės $A$, $B$, $C$ ir $D$ žymi skirtingus skaitmenis. 
+Sudauginus dviženk\-lius natūraliuosius skaičius $\overline{AB}$ ir $\overline{CB}$, gaunamas triženklis skaičius $\overline{DDD}$. Raskite visas galimas reiškinio $$(A+C)(A^2+C^2)(A^A+C^C)$$ 
+reikšmes.
+\end{uzdavinys}
+    
+\begin{uzdavinys} 
+Penkių iš eilės einančių natūraliųjų skaičių sekoje pirmųjų trijų skaičių 
+kvadratų suma lygi paskutinių dviejų skaičių kvadratų sumai.
+\begin{itemize}
+\item[a)] Raskite vieną tokią seką.
+\item[b)] Ar yra daugiau tokių sekų?
+\end{itemize}
+\end{uzdavinys}
+
+\vspace{0,05cm}
+
+
+
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][2.5cm][c]
+{0.71\textwidth}
+\begin{uzdavinys}  
+Kiekviename skritulyje Sofija įrašė po vieną natūralųjį skaičių nuo 1 iki 9 (žr.~pav.).  
+Jokie du įrašyti skaičiai nėra lygūs. Paaiškėjo, kad kiekvienos 
+trikampio kraštinės keturiuose skrituliuose įrašytų skaičių suma yra ta pati. 
+Šią sumą pažymėkime $S$. 
+\end{uzdavinys}
+\end{minipage}
+\quad\;\;\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=94pt]{./Breziniai/brezinys_2015_9_10.png}
+\end{minipage}
+\begin{itemize}
+\item[a)] Nurodykite skaičių nuo 1 iki 9 bent vieną surašymą, 
+kuriam $S = 23$. 
+\item[b)] Ar Sofija galėjo gauti $S=24$?
+\end{itemize}  
+\vspace{1.5mm}
+
+
+
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.71\textwidth}
+\begin{uzdavinys}  
+Kvadrato $ABCD$ kraštinės ilgis yra 5. Kraštinėse $AD$ ir $CD$ pažymėti taškai 
+$E$, $F$, $G$ ir $H$: taškai 
+$E$ ir $F$ priklauso atkarpai $AD$, o taškai $G$ ir $H$ -- atkarpai $CD$; taškas $E$ priklauso atkarpai $AF$, 
+o taškas $H$ -- atkarpai $CG$ (žr.~pav.).  
+Atkarpos $BE$, $BF$, $BG$ ir $BH$ kvadratą $ABCD$ dalija į penkias vienodo ploto dalis.   
+Ras\-ki\-te atkarpos $FG$ ilgį.
+\end{uzdavinys} 
+%\vspace{2cm}
+\end{minipage}
+\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=107.91pt]{./Breziniai/brezinys_2015_9_10_A.png}
+\end{minipage}
+%\vspace{0cm}
+
+
+
+
+\begin{uzdavinys} 
+Raskite visus realiuosius skaičius $x\neq 0$, su kuriais abu skaičiai $x+\sqrt{35}$ ir $\frac{1}{x}-\sqrt{35}$ 
+ yra sveikieji.
+ 
+ {\it Pastaba.} Galima naudotis faktu, kad jei natūralusis
+skaičius $a$ nėra sveikojo skaičiaus kvadratas, tai $\sqrt{a}$ yra iracionalusis skaičius.
+\end{uzdavinys}
+
+
+\vspace{0,7cm}
+
+\clearpage
+
+\section*{Sprendimai}
+
+\begin{center}
+{\sc\large 2015 m.~9--10 klasių uždavinių sprendimai}
+\end{center}
+\vspace{0,3cm}
+
+\setcounter{uzdavinys}{0}
+
+
+
+\begin{uzdavinys}
+Raidės $A$, $B$, $C$ ir $D$ žymi skirtingus skaitmenis. 
+Sudauginus dviženk\-lius natūraliuosius skaičius $\overline{AB}$ ir $\overline{CB}$, gaunamas triženklis skaičius $\overline{DDD}$. Raskite visas galimas reiškinio $$(A+C)(A^2+C^2)(A^A+C^C)$$ 
+reikšmes.
+\end{uzdavinys}
+
+
+\textit{Sprendimas.} Kadangi $111 = 3\cdot 37$, tai $$\overline{AB} \cdot\overline{CB}=\overline{DDD} = D\cdot 111 = D\cdot 3 \cdot 37.$$ 
+Sandauga $\overline{AB} \cdot\overline{CB}$ dalijasi iš pirminio skaičiaus 37, todėl bent vienas iš dviženklių skaičių 
+$\overline{AB}$ ir $\overline{CB}$ dalijasi iš 37. Yra tik du dviženkliai skaičiai, kurie dalijasi iš 37: skaičiai 37 ir $2\cdot37=74$. Taigi teisinga bent viena iš keturių lygybių
+$$\overline{AB}=37,\qquad\overline{CB}=37,\qquad \overline{AB}=74,\qquad \overline{CB}=74.$$
+Kiekvienu atveju iš karto gauname du iš keturių skaitmenų. Pavyzdžiui, jei $\overline{AB}=37$, tai $A=3$, \,$B=7$. Likusias galimybes galima perrinkti įvairiais būdais.
+
+Tarkime, kad vienas iš skaičių $\overline{AB}$ ir $\overline{CB}$ lygus 37, o kitas lygus $x$. Tada $B=7$, o skaičius $\overline{DDD}=\overline{AB} \cdot\overline{CB}$ baigiasi tuo pačiu skaitmeniu kaip $B\cdot B=49$. Taigi $$D=9,\qquad 999=37x,\qquad x=999:37=9\cdot3\cdot37:37=27.$$ Gauname dvi tinkamas dviženklių skaičių poras: $\overline{AB} = 37$, \,$\overline{CB} = 27$ ir $\overline{CB}=37$, \,$\overline{AB}=27$.
+
+Tarkime, kad vienas iš skaičių $\overline{AB}$ ir $\overline{CB}$ lygus 74, o kitas lygus $y$. Tada $B=4$, o skaičius $\overline{DDD}=\overline{AB} \cdot\overline{CB}$ baigiasi tuo pačiu skaitmeniu kaip $B\cdot B=16$. Taigi $$D=6,\qquad 666=74y,\qquad y=666:74=6\cdot3\cdot37:(2\cdot37)=9.$$ Tačiau skaičius $y$ turi būti dviženklis. Vadinasi, $\overline{AB}\neq74$ ir $\overline{CB}\neq74$.
+
+Taigi $B=7$, \,$D=9$ ir arba $A = 3$, \,$C=2$, arba $A = 2$, \,$C=3$. Abiem atvejais
+\[
+(A+C)(A^2+C^2)(A^A+C^C) = (2+3)(2^2+3^2)(2^2+3^3) =5\cdot13\cdot31=2015.
+\]
+
+\begin{flushright}
+     Ats.: $2015$.
+\end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys}  
+Penkių iš eilės einančių natūraliųjų skaičių sekoje pirmųjų trijų skaičių 
+kvadratų suma lygi paskutinių dviejų skaičių kvadratų sumai.
+\begin{itemize}
+\item[a)] Raskite vieną tokią seką.
+\item[b)] Ar yra daugiau tokių sekų?
+\end{itemize}
+\end{uzdavinys}
+
+\textit{Sprendimas.}
+Tarkime, kad natūraliųjų skaičių seka $n$, $n+1$, $n+2$, $n+3$, $n+4$ tenkina 
+uždavinio sąlygą, t.~y. 
+\[
+n^2 + (n+1)^2 + (n+2)^2 = (n+3)^2+ (n+4)^2.
+\] 
+Atskliautę šią lygybę ir 
+sutraukę panašiuosius narius, gauname lygtį $n^2-8n-20 = 0$. Jos sprendiniai 
+yra $n=10$ ir $n=-2$. Kadangi $n>0$, tai $n=10$. 
+Taigi gauname~vie\-nin\-te\-lę seką 10, 11, 12, 13, 14. Ji tenkina uždavinio sąlygą: $100+121+144=169+196$.
+\begin{flushright}
+     Ats.: a) 10, 11, 12, 13, 14; b) daugiau tinkamų sekų nėra.
+\end{flushright}
+\vspace{6mm}
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][2.5cm][c]
+{0.71\textwidth}
+\begin{uzdavinys}  
+Kiekviename skritulyje Sofija įrašė po vieną natūralųjį skaičių nuo 1 iki 9 (žr.~pav.).  
+Jokie du įrašyti skaičiai nėra lygūs. Paaiškėjo, kad kiekvienos 
+trikampio kraštinės keturiuose skrituliuose įrašytų skaičių suma yra ta pati. 
+Šią sumą pažymėkime $S$. 
+\end{uzdavinys}
+\end{minipage}
+\quad\;\;\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=94pt]{./Breziniai/brezinys_2015_9_10.png}
+\end{minipage}
+\begin{itemize}
+\item[a)] Nurodykite skaičių nuo 1 iki 9 bent vieną surašymą, 
+kuriam $S = 23$. 
+\item[b)] Ar Sofija galėjo gauti $S=24$?
+\end{itemize}  
+\vspace{0cm}
+
+
+\textit{Sprendimas.} a) Tinkamas skaičių surašymas, kuriam $S=23$, parodytas kairiajame paveikslėlyje. Taip pat žr.~pastabą sprendimo pabaigoje.
+\begin{center}
+\includegraphics[width=248.27pt]{./Breziniai/brezinys_2015_9_10_SPR.png}
+\end{center}
+
+
+b)  Įrašytuosius skaičius pažymėkime 
+$s_1$, $s_2$, $\ldots$, $s_9$, kaip parodyta dešiniajame paveikslėlyje. Tada
+\begin{equation*}
+S = s_1 + s_2 + s_3 + s_4,\qquad
+S = s_4 + s_5 + s_6 + s_7,\qquad
+S = s_7 + s_8 + s_9 + s_1.
+\end{equation*}
+Sudėkime šias tris lygybes:
+\begin{align*}
+3S &=s_1 + s_2 + \ldots + s_9 + (s_1 + s_4 + s_7) =\\
+&= 1 + 2 + \ldots + 9+ (s_1 + s_4 + s_7) = 45 +  (s_1 + s_4 + s_7).
+\end{align*}
+Kadangi skaičiai $s_1$, $s_4$ ir $s_7$ yra skirtingi, tai  
+\[
+3S\leq45 +7+8+9=69,\qquad S\leq23.
+\]
+Vadinasi, Sofija negalėjo taip surašyti skaičių, kad gautų $S=24$.
+
+\emph{Pastaba.} Spręsdami b)~dalį, gavome nelygybę $S\leq23$. Iš sprendimo išplaukia, kad ji virsta lygybe, tik jei $\{s_1, s_4, s_7\}=\{7, 8, 9\}$. Šie pastebėjimai gali padėti rasti a)~dalies pavyzdį. Trijuose kampiniuose skrituliuose būtina įrašyti tris didžiausius skaičius 7, 8 ir 9, o tai padarius jau nesunku atspėti, kaip surašyti likusius skaičius.  
+\begin{flushright}
+     Ats.: a) pavyzdžiui, surašymas, parodytas sprendimo kairiajame paveikslėlyje;\\b) ne, negalėjo.
+\end{flushright}
+\vspace{6mm}
+
+
+\hspace*{-5.2mm}
+\begin{minipage}%[b][3.2cm][c]
+{0.71\textwidth}
+\begin{uzdavinys}  
+Kvadrato $ABCD$ kraštinės ilgis yra 5. Kraštinėse $AD$ ir $CD$ pažymėti taškai 
+$E$, $F$, $G$ ir $H$: taškai 
+$E$ ir $F$ priklauso atkarpai $AD$, o taškai $G$ ir $H$ -- atkarpai $CD$; taškas $E$ priklauso atkarpai $AF$, 
+o taškas $H$ -- atkarpai $CG$ (žr.~pav.).  
+Atkarpos $BE$, $BF$, $BG$ ir $BH$ kvadratą $ABCD$ dalija į penkias vienodo ploto dalis.   
+Ras\-ki\-te atkarpos $FG$ ilgį.
+\end{uzdavinys} 
+%\vspace{2cm}
+\end{minipage}
+\quad\begin{minipage}%[t][1cm][t]
+{0.8\textwidth}
+\includegraphics[width=107.91pt]{./Breziniai/brezinys_2015_9_10_A.png}
+\end{minipage}
+\vspace{0cm}
+
+\textit{Sprendimas.} Kvadrato $ABCD$ plotas lygus $5^2= 25$. Trikampių $BAE$ ir $BEF$ plotai lygūs 
+ penktadaliui kvadrato $ABCD$ ploto: $S_{\triangle BAE} = S_{\triangle BEF} = \frac{1}{5}\cdot25= 5.$
+ Atkarpa $BA$ yra trikampių $BAE$ ir $BEF$ aukštinė, todėl 
+\begin{gather*}
+ 10=2S_{\triangle BAE}=AE\cdot BA=5AE,\qquad AE=2,\\
+ 10=2S_{\triangle BEF}=EF\cdot BA=5EF,\qquad EF=2.\end{gather*}
+ Taigi $FD = AD - AE - EF = 5-2-2=1$. Analogiškai gauname, kad $GD = 1$. Pagal Pitagoro 
+teoremą stačiajam trikampiui $FGD$
+ gauname $FG = \sqrt{FD^2 + GD^2} = \sqrt{2}$.
+\begin{flushright}
+     Ats.: $FG = \sqrt{2}$.
+\end{flushright}
+\vspace{3mm}
+
+
+\begin{uzdavinys} 
+Raskite visus realiuosius skaičius $x\neq 0$, su kuriais abu skaičiai $x+\sqrt{35}$ ir $\frac{1}{x}-\sqrt{35}$ 
+ yra sveikieji.
+ 
+ {\it Pastaba.} Galima naudotis faktu, kad jei natūralusis
+skaičius $a$ nėra sveikojo skaičiaus kvadratas, tai $\sqrt{a}$ yra iracionalusis skaičius.
+\end{uzdavinys}
+
+\textit{Pirmasis sprendimas.} 
+Tarkime, kad realusis skaičius $x$ tenkina uždavinio sąlygą. Tada egzistuoja tokie sveikieji skaičiai $m$ ir 
+$n$, kad $x+\sqrt{35} = m$ ir $\frac{1}{x}-\sqrt{35} = n$. Šiose lygybėse eliminuokime $x$: 
+\begin{align*}
+\frac{1}{m-\sqrt{35}}-\sqrt{35} = n.
+\end{align*}
+Gautąją lygybę padauginkime iš $m-\sqrt{35}$ ir pertvarkykime:
+\begin{align*}
+1-\sqrt{35}\left(m-\sqrt{35}\right) &= n\left(m-\sqrt{35}\right),\\ 1-m\sqrt{35}+35&=mn-n\sqrt{35},\\
+(m-n)\sqrt{35} &= 36-mn.\end{align*}
+Jei $m-n\neq 0$, tai iracionalusis skaičius $\sqrt{35}$ lygus racionaliajam skaičiui $\frac{36-mn}{m-n}$. Vadinasi, $m=n$ ir $36-mn=0$. Tada $$m^2=36,\qquad m= \pm 6,\qquad x =m-\sqrt{35}= \pm 6 - \sqrt{35}.$$
+
+Nesunku įsitikinti, kad abu skaičiai $x = \pm 6 - \sqrt{35}$ tenkina uždavinio sąlygą. Iš tikrųjų,
+$x+ \sqrt{35} \hm= \left(\pm 6 - \sqrt{35}\right) + \sqrt{35} = \pm 6$,
+ \begin{align*}
+\frac{1}{x} - \sqrt{35} = \frac{1}{\pm 6-\sqrt{35}}-\sqrt{35} &= \frac{\pm 6+\sqrt{35}}{\left(\pm 6-\sqrt{35}\right)\left(\pm 6+\sqrt{35}\right)}-\sqrt{35} =\\
+&= \frac{\pm 6+\sqrt{35}}{6^2 - 35}-\sqrt{35} = \pm 6.
+\end{align*}
+ \vspace{0mm}
+
+\textit{Antrasis sprendimas.} Pateiksime sprendimą, kuriame nenaudojamas faktas, kad skaičius $\sqrt{35}$ yra iracionalusis.
+
+Jei skaičius $x=x_1$ tenkina uždavinio sąlygą, tai ją tenkina ir 
+skaičius $x=x_2=-\frac{1}{x_1}$. Iš tiesų, kadangi skaičiai $x_1+\sqrt{35}$ ir $\frac{1}{x_1}-\sqrt{35}$ sveikieji, tai tokie yra ir skaičiai
+\begin{equation*}
+x_2+ \sqrt{35}= -\left(\frac{1}{x_1} - \sqrt{35} \right),\qquad
+\frac{1}{x_2} - \sqrt{35} = -\left(x_1 + \sqrt{35} \right).
+\end{equation*}
+Taigi visas tinkamas $x$ reikšmes galima suskirstyti poromis $(x_1, x_2)$, kur $x_1x_2=-1$. Čia skaičių $x_1$ ir $x_2=-\frac1{x_1}$ ženklai skirtingi. Todėl galime laikyti, kad kiekvienoje poroje $x_1>0$, $x_2<0$. Radę visas galimas $x_1$ reikšmes, gausime ir visas galimas $x_2$ reikšmes.
+
+Tarkime, kad $x=x_1>0$ tenkina uždavinio sąlygą. Tada
+skaičius $m=x_1 + \sqrt{35}$ yra sveikasis.
+Be to, $m\geq 6$, nes $m >\sqrt{35}>5$. Nagrinėkime du atvejus: $m=6$ ir $m>6$.
+
+Pirmuoju atveju $x_1 =m-\sqrt{35}=6-\sqrt{35}$. Šis skaičius tenkina uždavinio sąlygą -- tai galima patikrinti kaip pirmajame sprendime.
+
+Antruoju atveju $m\geq7$ ir $x_1 = m-\sqrt{35}\geq 7-\sqrt{35}>1$. Todėl $0<\frac{1}{x_1}<1$. 
+Skaičius  $n=\frac{1}{x_1} - \sqrt{35} $ yra sveikasis. Be to,
+\[
+-6 <   - \sqrt{35}< n < 1 - \sqrt{35} <1-5=-4.
+\]
+Intervale $(-6; -4)$, kuriam priklauso $n$, yra vienintelis sveikasis skaičius $-5$. 
+Vadinasi, $$\frac{1}{x_1} - \sqrt{35} =n\hm{=} -5,\qquad x_1 =\frac{1}{\sqrt{35}-5}=\frac{5+ \sqrt{35}}{10},\qquad m =x_1+\sqrt{35}= \frac{5+ 11\sqrt{35}}{10}.$$ 
+Tačiau tada skaičius $m$ nėra sveikasis. Pavyzdžiui, galima patikrinti, kad jo gautoji reikšmė priklauso intervalui $(7; 8)$, kuriame nėra sveikųjų skaičių. 
+Vadinasi, šiuo atveju nėra tinkamų $x_1$ reikšmių.
+
+Gavome vienintelį tinkamą skaičių $x_1=6-\sqrt{35}$. Todėl tėra vienintelis tinkamas skaičius $x_2$, lygus $-\frac1{x_1}=-\frac1{6-\sqrt{35}}=-6-\sqrt{35}$. Tai vienintelės dvi tinkamos $x$ reikšmės.
+\begin{flushright}
+     Ats.: $x = \pm6-\sqrt{35}$.
+\end{flushright}
+
+\vspace{0,7cm}
+
+
+\end{document}
