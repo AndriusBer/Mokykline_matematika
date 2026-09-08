@@ -1,0 +1,584 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage{amsmath,amssymb}
+
+\title{Pilnojo kvadrato išskyrimas}
+\author{Andrius Berniukevičius}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Kas yra pilnasis kvadratas?}
+
+\begin{block}{Apibrėžimas}
+Pilnasis kvadratas -- tai reiškinys, kurį galima užrašyti dvinario kvadratu:
+\[
+(a+b)^2 \quad \text{arba} \quad (a-b)^2.
+\]
+\end{block}
+
+\pause
+
+\begin{block}{Pilnojo kvadrato išskyrimas}
+Pilnojo kvadrato išskyrimas -- tai trinario pertvarkymas į dvinario
+kvadratą arba į dvinario kvadrato ir skaičiaus sumą ar skirtumą.
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Pilnojo kvadrato trinaris}
+
+Jei trinaris yra formos
+\[
+a^2+2ab+b^2,
+\]
+\pause
+tai
+\[
+a^2+2ab+b^2=(a+b)^2.
+\]
+
+\pause
+
+Jei trinaris yra formos
+\[
+a^2-2ab+b^2,
+\]
+\pause
+tai
+\[
+a^2-2ab+b^2=(a-b)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Kaip atpažinti pilnojo kvadrato trinarį?}
+
+\begin{enumerate}[<+->]
+    \item Patikriname, ar pirmasis narys yra kvadratas.
+    \item Patikriname, ar paskutinis narys yra kvadratas.
+    \item Patikriname, ar vidurinis narys lygus
+    \[
+    2ab \quad \text{arba} \quad -2ab.
+    \]
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 1}
+
+Išskirkite pilnąjį kvadratą:
+\[
+x^2+6x+9.
+\]
+
+\pause
+
+Pirmasis narys yra $x^2$, todėl $a=x$.
+
+\pause
+
+Paskutinis narys yra $9=3^2$, todėl $b=3$.
+
+\pause
+
+Patikriname vidurinį narį:
+\[
+2ab=2\cdot x\cdot3=6x.
+\]
+
+\pause
+
+Todėl
+\[
+x^2+6x+9=x^2+2\cdot x\cdot3+3^2=(x+3)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 2}
+
+Išskirkite pilnąjį kvadratą:
+\[
+4x^2-12x+9.
+\]
+
+\pause
+
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+4x^2=(2x)^2,
+\qquad
+9=3^2.
+\]
+
+\pause
+
+Patikriname vidurinį narį:
+\[
+-2\cdot2x\cdot3=-12x.
+\]
+
+\pause
+
+Todėl
+\[
+4x^2-12x+9
+=(2x)^2-2\cdot2x\cdot3+3^2
+=(2x-3)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 3}
+
+Išskirkite pilnąjį kvadratą:
+\[
+9a^2+24ab+16b^2.
+\]
+
+\pause
+
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+9a^2=(3a)^2,
+\qquad
+16b^2=(4b)^2.
+\]
+
+\pause
+
+Patikriname vidurinį narį:
+\[
+2\cdot3a\cdot4b=24ab.
+\]
+
+\pause
+
+Todėl
+\[
+9a^2+24ab+16b^2
+=(3a)^2+2\cdot3a\cdot4b+(4b)^2
+=(3a+4b)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 4}
+
+Išskirkite pilnąjį kvadratą:
+\[
+4a^2+12ab+9b^2.
+\]
+
+\pause
+
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+4a^2=(2a)^2,
+\qquad
+9b^2=(3b)^2.
+\]
+
+\pause
+
+Patikriname vidurinį narį:
+\[
+2\cdot2a\cdot3b=12ab.
+\]
+
+\pause
+
+Todėl
+\[
+4a^2+12ab+9b^2
+=(2a)^2+2\cdot2a\cdot3b+(3b)^2
+=(2a+3b)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 5}
+
+Išskirkite pilnąjį kvadratą:
+\[
+9m^2n^2-6mny+y^2.
+\]
+
+\pause
+
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+9m^2n^2=(3mn)^2,
+\qquad
+y^2=y^2.
+\]
+
+\pause
+
+Patikriname vidurinį narį:
+\[
+-2\cdot3mn\cdot y=-6mny.
+\]
+
+\pause
+
+Todėl
+\[
+9m^2n^2-6mny+y^2
+=(3mn)^2-2\cdot3mn\cdot y+y^2
+=(3mn-y)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Ne kiekvienas trinaris yra pilnasis kvadratas}
+
+Pavyzdžiui:
+\[
+x^2+5x+9.
+\]
+
+\pause
+
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+x^2=x^2,
+\qquad
+9=3^2.
+\]
+
+\pause
+
+Tačiau
+\[
+2\cdot x\cdot3=6x,
+\]
+o vidurinis narys yra $5x$.
+
+\pause
+
+Todėl
+\[
+x^2+5x+9\neq(x+3)^2.
+\]
+
+\end{frame}
+
+\begin{frame}{Pilnojo kvadrato sudarymas}
+
+Kartais trūksta tik paskutinio nario, kad trinaris taptų
+pilnojo kvadrato trinariu.
+
+\pause
+
+Tuomet reikiamą narį \textbf{pridedame ir iš karto atimame}.
+
+\pause
+
+\begin{block}{Kodėl taip galima?}
+Reiškinio reikšmė nepasikeičia, nes
+\[
+k-k=0.
+\]
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 6}
+
+Išskirkite pilnąjį kvadratą:
+\[
+x^2+8x.
+\]
+
+\pause
+
+Vidurinis narys turi būti
+\[
+2\cdot x\cdot b=8x,
+\]
+todėl
+\[
+b=4.
+\]
+
+\pause
+
+Pridedame ir atimame $4^2=16$:
+\[
+x^2+8x=x^2+8x+16-16.
+\]
+
+\pause
+
+\[
+x^2+8x=x^2+2\cdot x\cdot4+4^2-16.
+\]
+
+\pause
+
+\[
+x^2+8x=(x+4)^2-16.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 7}
+
+Išskirkite pilnąjį kvadratą:
+\[
+x^2-10x+7.
+\]
+
+\pause
+
+Viduriniam nariui $-10x$ gauti reikia $b=5$, nes
+\[
+-2\cdot x\cdot5=-10x.
+\]
+
+\pause
+
+Pridedame ir atimame $5^2=25$:
+\[
+x^2-10x+7=x^2-10x+25-25+7.
+\]
+
+\pause
+
+\[
+x^2-10x+7=x^2-2\cdot x\cdot5+5^2-25+7.
+\]
+
+\pause
+
+\[
+x^2-10x+7=(x-5)^2-18.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 8}
+
+Išskirkite pilnąjį kvadratą:
+\[
+4x^2+12x+1.
+\]
+
+\pause
+
+Pirmasis narys yra
+\[
+4x^2=(2x)^2.
+\]
+
+\pause
+
+Viduriniam nariui gauti:
+\[
+2\cdot2x\cdot b=12x,
+\]
+todėl $b=3$.
+
+\pause
+
+Pridedame ir atimame $3^2=9$:
+\[
+4x^2+12x+1=4x^2+12x+9-9+1.
+\]
+
+\pause
+
+\[
+4x^2+12x+1=(2x)^2+2\cdot2x\cdot3+3^2-9+1.
+\]
+
+\pause
+
+\[
+4x^2+12x+1=(2x+3)^2-8.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 9}
+
+Išskirkite pilnąjį kvadratą:
+\[
+x^2+3x+1.
+\]
+
+\pause
+
+Vidurinio nario koeficiento pusė yra
+\[
+\frac{3}{2}.
+\]
+
+\pause
+
+Todėl pridedame ir atimame
+\[
+\left(\frac{3}{2}\right)^2.
+\]
+
+\pause
+
+\[
+x^2+3x+1
+=x^2+2\cdot x\cdot\frac32
+ +\left(\frac32\right)^2
+ -\left(\frac32\right)^2+1.
+\]
+
+\pause
+
+\[
+x^2+3x+1
+=\left(x+\frac32\right)^2-\frac94+1.
+\]
+
+\pause
+
+\[
+x^2+3x+1
+=\left(x+\frac32\right)^2-\frac54.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 10}
+\small
+
+Išskirkite pilnąjį kvadratą:
+\[
+2x^2+\frac15x+3.
+\]
+
+\pause
+
+Iškeliame $2$ prieš pirmuosius du narius:
+\[
+2x^2+\frac15x+3
+=
+2\left(x^2+\frac1{10}x\right)+3.
+\]
+
+\pause
+
+Skliaustuose vidurinio nario koeficiento pusė yra $\frac1{20}$.
+
+\pause
+
+\[
+\begin{aligned}
+2x^2+\frac15x+3
+&=2\left(
+x^2+2\cdot x\cdot\frac1{20}
++\left(\frac1{20}\right)^2
+-\left(\frac1{20}\right)^2
+\right)+3.
+\end{aligned}
+\]
+
+\pause
+
+\[
+2x^2+\frac15x+3
+=
+2\left(
+\left(x+\frac1{20}\right)^2-\frac1{400}
+\right)+3.
+\]
+
+\pause
+
+\[
+2x^2+\frac15x+3
+=
+2\left(x+\frac1{20}\right)^2+\frac{599}{200}.
+\]
+
+\end{frame}
+
+\begin{frame}{Pavyzdys 11}
+
+Išskirkite pilnąjį kvadratą:
+\[
+25a^2b^2+10abc+a.
+\]
+
+\pause
+
+Pirmasis narys yra
+\[
+25a^2b^2=(5ab)^2.
+\]
+
+\pause
+
+Kad gautume pilnojo kvadrato trinarį, reikia pridėti $c^2$:
+\[
+2\cdot5ab\cdot c=10abc.
+\]
+
+\pause
+
+Todėl
+\[
+25a^2b^2+10abc+a
+=25a^2b^2+10abc+c^2-c^2+a.
+\]
+
+\pause
+
+\[
+25a^2b^2+10abc+a
+=(5ab)^2+2\cdot5ab\cdot c+c^2-c^2+a.
+\]
+
+\pause
+
+\[
+25a^2b^2+10abc+a
+=(5ab+c)^2-c^2+a.
+\]
+
+\end{frame}
+
+\begin{frame}{Santrauka}
+
+\begin{block}{Pilnojo kvadrato atpažinimas}
+\[
+a^2+2ab+b^2=(a+b)^2,
+\]
+\[
+a^2-2ab+b^2=(a-b)^2.
+\]
+\end{block}
+
+\pause
+
+\begin{block}{Pilnojo kvadrato sudarymas}
+Jei trūksta reikiamo nario, jį pridedame ir atimame:
+\[
+x^2+2bx
+=x^2+2bx+b^2-b^2
+=(x+b)^2-b^2.
+\]
+\end{block}
+
+\end{frame}
+
+\end{document}

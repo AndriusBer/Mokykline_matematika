@@ -10,6 +10,9 @@
 \maketitle
 
 \section{Kas yra pilnojo kvadrato išskyrimas?}
+\begin{definition}
+\vocab{Pilnasis kvadratas} -- tai reiškinys, kurį galima užrašyti dvinario kvadratu, t. y. forma $(a+b)^2$ arba $(a-b)^2$.
+\end{definition}
 
 Pilnojo kvadrato išskyrimas -- tai daugianario pertvarkymas taip, kad jame atsirastų dvinario kvadratas. Šis būdas remiasi greitosios daugybos formulėmis:
 \[
@@ -19,8 +22,10 @@ Pilnojo kvadrato išskyrimas -- tai daugianario pertvarkymas taip, kad jame atsi
 (a-b)^2=a^2-2ab+b^2.
 \]
 
+
+
 \begin{definition}
-\vocab{Pilnojo kvadrato išskyrimas} -- tai trinaro pertvarkymas į dvinario kvadratą arba į dvinario kvadrato ir skaičiaus sumą ar skirtumą.
+\vocab{Pilnojo kvadrato išskyrimas} -- tai trinario pertvarkymas į dvinario kvadratą arba į dvinario kvadrato ir skaičiaus sumą ar skirtumą.
 \end{definition}
 
 Kad trinarį galėtume užrašyti dvinario kvadratu, pirmasis ir paskutinis jo nariai turi būti kvadratai, o vidurinis narys turi būti lygus dvigubai jų kvadratinių šaknų sandaugai.
@@ -39,8 +44,10 @@ a^2-2ab+b^2,
 tai jis lygus $(a-b)^2$.
 \end{property}
 
+\setcounter{theorem}{0}
+
 \begin{example}
-Išskaidykite dauginamaisiais:
+Išskirkite pilnąjį kvadratą:
 \[
 x^2+6x+9.
 \]
@@ -57,7 +64,7 @@ x^2+6x+9=x^2+2\cdot x\cdot3+3^2=(x+3)^2.
 \end{example}
 
 \begin{example}
-Išskaidykite dauginamaisiais:
+Išskirkite pilnąjį kvadratą:
 \[
 4x^2-12x+9.
 \]
@@ -74,7 +81,7 @@ Vidurinis narys sutampa, todėl gauname skirtumo kvadratą:
 \end{example}
 
 \begin{example}
-Išskaidykite dauginamaisiais:
+Išskirkite pilnąjį kvadratą:
 \[
 9a^2+24ab+16b^2.
 \]
@@ -92,6 +99,48 @@ Taigi tai yra sumos kvadratas:
 9a^2+24ab+16b^2=(3a+4b)^2.
 \]
 \textbf{Atsakymas:} $(3a+4b)^2$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+4a^2+12ab+9b^2.
+\]
+\textbf{Sprendimas}\\
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+4a^2=(2a)^2, \qquad 9b^2=(3b)^2.
+\]
+Patikriname vidurinį narį:
+\[
+2\cdot2a\cdot3b=12ab.
+\]
+Taigi tai yra sumos kvadratas:
+\[
+4a^2+12ab+9b^2=(2a+3b)^2.
+\]
+\textbf{Atsakymas:} $(2a+3b)^2$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+9m^2n^2-6mny+y^2.
+\]
+\textbf{Sprendimas}\\
+Pirmasis ir paskutinis nariai yra kvadratai:
+\[
+9m^2n^2=(3mn)^2, \qquad y^2=y^2.
+\]
+Patikriname vidurinį narį:
+\[
+-2\cdot3mn\cdot y=-6mny.
+\]
+Taigi tai yra skirtumo kvadratas:
+\[
+9m^2n^2-6mny+y^2=(3mn-y)^2.
+\]
+\textbf{Atsakymas:} $(3mn-y)^2$.
 \end{example}
 
 \begin{remark}
@@ -141,6 +190,7 @@ x^2-10x+7
 \end{example}
 
 \begin{example}
+\small
 Išskirkite pilnąjį kvadratą:
 \[
 4x^2+12x+1.
@@ -157,10 +207,65 @@ Pirmasis narys yra $(2x)^2$. Vidurinį narį gauname pagal formulę $2\cdot2x\cd
 \textbf{Atsakymas:} $(2x+3)^2-8$.
 \end{example}
 
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+x^2+3x+1.
+\]
+\textbf{Sprendimas}\\
+Vidurinio nario koeficiento pusė yra $\frac{3}{2}$, todėl pridedame ir atimame $\left(\frac{3}{2}\right)^2$:
+\[
+\begin{aligned}
+x^2+3x+1
+&=x^2+2\cdot x\cdot\frac{3}{2}+\left(\frac{3}{2}\right)^2-\left(\frac{3}{2}\right)^2+1\\
+&=\left(x+\frac{3}{2}\right)^2-\frac{9}{4}+1\\
+&=\left(x+\frac{3}{2}\right)^2-\frac{5}{4}.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $\left(x+\frac{3}{2}\right)^2-\frac{5}{4}$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+2x^2+\frac{1}{5}x+3.
+\]
+\textbf{Sprendimas}\\
+Iškeliame $2$ prieš pirmus du narius. Skliaustuose vidurinio nario koeficiento pusė yra $\frac{1}{20}$:
+\[
+\begin{aligned}
+2x^2+\frac{1}{5}x+3
+&=2\left(x^2+\frac{1}{10}x\right)+3\\
+&=2\left(x^2+2\cdot x\cdot\frac{1}{20}+\left(\frac{1}{20}\right)^2-\left(\frac{1}{20}\right)^2\right)+3\\
+&=2\cdot\left(\left(x+\frac{1}{20}\right)^2-\frac{1}{400}\right)+3\\
+&=2\left(x+\frac{1}{20}\right)^2-\frac{1}{200}+3\\
+&=2\left(x+\frac{1}{20}\right)^2+\frac{599}{200}.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $2\left(x+\frac{1}{20}\right)^2+\frac{599}{200}$.
+\end{example}
+
+\begin{example}
+Išskirkite pilnąjį kvadratą:
+\[
+25a^2b^2+10abc+a.
+\]
+\textbf{Sprendimas}\\
+Pridedame ir atimame $c^2$, kad pirmi trys nariai sudarytų pilnojo kvadrato trinarį:
+\[
+\begin{aligned}
+25a^2b^2+10abc+a
+&=25a^2b^2+10abc+c^2-c^2+a\\
+&=(5ab+c)^2-c^2+a.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $(5ab+c)^2-c^2+a$.
+\end{example}
+
 \section{Uždaviniai}
 
 \begin{problem}
-Išskaidykite dauginamaisiais pilnojo kvadrato trinarius.
+Išskirkite pilnąjį kvadratą:
 \begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
 	\task $x^2+10x+25$
 	\task $x^2-14x+49$
@@ -174,7 +279,17 @@ Išskaidykite dauginamaisiais pilnojo kvadrato trinarius.
 \end{problem}
 
 \begin{problem}
-Išskirkite pilnąjį kvadratą.
+Išskirkite pilnąjį kvadratą:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $9a^2b^2-6abx+x^2$
+	\task $4m^2n^2-12mny+9y^2$
+	\task $25p^2q^2-20pqr+4r^2$
+	\task $x^2-14xy+49y^2$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirkite pilnąjį kvadratą:
 \begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
 	\task $x^2+4x$
 	\task $x^2-6x$
@@ -184,6 +299,44 @@ Išskirkite pilnąjį kvadratą.
 	\task $9x^2-30x+4$
 	\task $a^2+14a-2$
 	\task $4y^2-4y+6$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirkite pilnąjį kvadratą:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $x^2+x+2$
+	\task $x^2+5x-1$
+	\task $x^2-3x+4$
+	\task $x^2-7x+2$
+	\task $x^2+\frac{1}{2}x+1$
+	\task $x^2-\frac{3}{2}x+5$
+	\task $x^2+\frac{7}{3}x-2$
+	\task $x^2-\frac{5}{3}x+3$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirkite pilnąjį kvadratą, prieš tai iškeldami pirmojo nario koeficientą:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $2x^2+2x+3$
+	\task $5x^2-4x+1$
+	\task $-3x^2+9x-2$
+	\task $4x^2-x+4$
+	\task $-x^2+ \frac{1}{4} x+1$
+	\task $2x^2-0,1x-1$
+	\task $3x^2+ \frac{2}{3} x-1$
+	\task $-4x^2-x+2$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskirkite pilnąjį kvadratą:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $9a^2b^2+12abc+d$
+	\task $16x^2y^2-24xyz-9$
+	\task $25m^2+20mn-p$
+	\task $4r^2s^2+4rst-uv$
 \end{tasks}
 \end{problem}
 
@@ -205,6 +358,15 @@ Išskirkite pilnąjį kvadratą.
 
 \begin{problem} \phantom{text}
 \begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(3ab-x)^2$;
+	\task $(2mn-3y)^2$;
+	\task $(5pq-2r)^2$;
+	\task $(x-7y)^2$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
 	\task $(x+2)^2-4$;
 	\task $(x-3)^2-9$;
 	\task $(x+6)^2-31$;
@@ -213,6 +375,42 @@ Išskirkite pilnąjį kvadratą.
 	\task $(3x-5)^2-21$;
 	\task $(a+7)^2-51$;
 	\task $(2y-1)^2+5$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $\left(x+\frac{1}{2}\right)^2+\frac{7}{4}$;
+	\task $\left(x+\frac{5}{2}\right)^2-\frac{29}{4}$;
+	\task $\left(x-\frac{3}{2}\right)^2+\frac{7}{4}$;
+	\task $\left(x-\frac{7}{2}\right)^2-\frac{41}{4}$;
+	\task $\left(x+\frac{1}{4}\right)^2+\frac{15}{16}$;
+	\task $\left(x-\frac{3}{4}\right)^2+\frac{71}{16}$;
+	\task $\left(x+\frac{7}{6}\right)^2-\frac{121}{36}$;
+	\task $\left(x-\frac{5}{6}\right)^2+\frac{83}{36}$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $2\left(x+\frac{1}{2}\right)^2+\frac{5}{2}$;
+	\task $5\left(x-\frac{2}{5}\right)^2+\frac{1}{5}$;
+	\task $-3\left(x-\frac{3}{2}\right)^2+\frac{19}{4}$;
+	\task $4\left(x-\frac{1}{8}\right)^2+\frac{63}{16}$;
+	\task $-\left(x-\frac{1}{8}\right)^2+\frac{65}{64}$;
+	\task $2\left(x-\frac{1}{40}\right)^2-\frac{801}{800}$;
+	\task $3\left(x+\frac{1}{9}\right)^2-\frac{28}{27}$;
+	\task $-4\left(x+\frac{1}{8}\right)^2+\frac{33}{16}$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+	\task $(3ab+2c)^2-4c^2+d$;
+	\task $(4xy-3z)^2-9z^2-9$;
+	\task $(5m+2n)^2-4n^2-p$;
+	\task $(2rs+t)^2-t^2-uv$.
 \end{tasks}
 \end{problem}
 
