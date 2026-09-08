@@ -1,0 +1,646 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\input{"../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Algebrinės galios mokymai\\ I dalis}
+\author{Anton Anakin Liutvinas ir Pijus Palpatinas Piekus}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Naudingos algebrinės savybės}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item $(x\pm y)^2=x^2\pm 2xy+y^2$.
+    \item $x^2-y^2=(x-y)(x+y)$.
+    \item $(x\pm y)^3=x^3\pm 3x^2y+3xy^2\pm y^3$.
+    \item $x^3\pm y^3=(x\pm y)(x^2\mp xy+y^2)$.
+    \item $x^3+y^3+z^3=(x+y+z)(x^2+y^2+z^2-xy-xz-yz)+3xyz$.
+    \item $x^4+x^2y^2+y^4=(x^2+xy+y^2)(x^2-xy+y^2)$.
+    \item Jei $x_1,x_2,\ldots,x_n\in\mathbb R$, tai $x_1^2+x_2^2+\cdots+x_n^2=0\Longrightarrow x_1=x_2=\cdots=x_n=0$.
+\end{enumerate}
+
+
+\section{Lygčių sistemos}
+
+\subsection{Teorija}
+
+Pamačius lygčių sistemą verta pirmiausia ieškoti ryšio tarp jos lygčių.
+Dažnai padeda:
+
+\begin{itemize}
+    \item sudėti arba atimti lygtis;
+    \item padauginti lygtis arba vieną lygtį iš tinkamo skaičiaus;
+    \item dalyti lygtis ar reiškinius tik tada, kai žinome, kad daliklis nėra lygus nuliui;
+    \item ieškoti simetrijos;
+    \item sudaryti pilnuosius kvadratus;
+    \item panaudoti faktą, kad realiojo skaičiaus kvadratas yra neneigiamas.
+\end{itemize}
+
+Svarbu: vien tai, kad kintamųjų yra daugiau negu lygčių, dar nereiškia,
+kad sistemą būtina spręsti nelygybėmis arba kad ji turi be galo daug
+sprendinių. Reikia nagrinėti konkrečią sistemos struktūrą.
+
+\begin{example}
+
+Išspręskite lygčių sistemą
+\[
+\left\{
+\begin{array}{l}
+xy=-30,\\
+yz=-12,\\
+zx=10.
+\end{array}
+\right.
+\]
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Kadangi
+\[
+xy\neq0,\qquad yz\neq0,\qquad zx\neq0,
+\]
+tai
+\[
+x\neq0,\qquad y\neq0,\qquad z\neq0.
+\]
+
+Sudauginame visas tris lygtis:
+\[
+(xy)(yz)(zx)=(-30)(-12)\cdot10.
+\]
+
+Kairėje pusėje gauname
+\[
+x^2y^2z^2=(xyz)^2,
+\]
+todėl
+\[
+(xyz)^2=3600=60^2.
+\]
+
+Vadinasi,
+\[
+xyz=60
+\quad\text{arba}\quad
+xyz=-60.
+\]
+
+\textbf{1 atvejis:}
+\[
+xyz=60.
+\]
+
+Tuomet
+\[
+x=\frac{xyz}{yz}
+=\frac{60}{-12}
+=-5,
+\]
+
+\[
+y=\frac{xyz}{zx}
+=\frac{60}{10}
+=6,
+\]
+
+\[
+z=\frac{xyz}{xy}
+=\frac{60}{-30}
+=-2.
+\]
+
+Gauname
+\[
+(x,y,z)=(-5,6,-2).
+\]
+
+\textbf{2 atvejis:}
+\[
+xyz=-60.
+\]
+
+Analogiškai,
+\[
+x=5,\qquad y=-6,\qquad z=2.
+\]
+
+Abu trejetai tenkina pradines lygtis.
+
+\textbf{Atsakymas:} $(-5;6;-2)$ ir $(5;-6;2)$.
+\end{solution}
+
+\begin{example}
+
+Raskite visus realiųjų skaičių trejetus $(x,y,z)$, tenkinančius sistemą
+
+\[
+\left\{
+\begin{array}{l}
+x^2+9=4y,\\
+y^2+1=6z,\\
+z^2+4=2x.
+\end{array}
+\right.
+\]
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Sudėkime visas tris lygtis:
+\[
+x^2+y^2+z^2+14=2x+4y+6z.
+\]
+
+Visus narius perkeliame į kairę pusę:
+\[
+x^2-2x+y^2-4y+z^2-6z+14=0.
+\]
+
+Išskiriame pilnuosius kvadratus:
+\[
+(x^2-2x+1)
++
+(y^2-4y+4)
++
+(z^2-6z+9)
+=0.
+\]
+
+Taigi
+\[
+(x-1)^2+(y-2)^2+(z-3)^2=0.
+\]
+
+Kadangi nagrinėjame realiuosius skaičius, kiekvienas kvadratas yra
+neneigiamas. Todėl jų suma gali būti lygi nuliui tik tada, kai
+
+\[
+x-1=0,\qquad y-2=0,\qquad z-3=0.
+\]
+
+Vadinasi,
+\[
+x=1,\qquad y=2,\qquad z=3.
+\]
+
+Tačiau tai dar tik galimas sprendinys. Patikriname jį pradinėje sistemoje.
+
+Pirmojoje lygtyje:
+\[
+1^2+9=10,
+\]
+bet
+\[
+4\cdot2=8.
+\]
+
+Lygybė negalioja, todėl trejetas $(1,2,3)$ nėra pradinės sistemos
+sprendinys.
+
+\textbf{Atsakymas:} sprendinių nėra.
+\end{solution}
+
+\subsection{Uždaviniai}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Raskite visus sprendinius:
+    \[
+    \left\{
+    \begin{array}{l}
+    a+b+c+d=4,\\
+    a+b+c+e=8,\\
+    a+b+d+e=12,\\
+    a+c+d+e=16,\\
+    b+c+d+e=20.
+    \end{array}
+    \right.
+    \]
+
+    \item Išspręskite lygčių sistemą:
+    \[
+    \left\{
+    \begin{array}{l}
+    2x^2-2x+2=y+z,\\
+    2y^2-2y+2=z+x,\\
+    2z^2-2z+2=x+y.
+    \end{array}
+    \right.
+    \]
+
+    \item Realieji skaičiai $x$ ir $y$ tenkina lygybes
+    \[
+    xy=10
+    \]
+    ir
+    \[
+    (x+1)(y+1)=20.
+    \]
+    Kam lygi reiškinio
+    \[
+    (x+2)(y+2)
+    \]
+    reikšmė?
+
+    \item Su kuriomis realiosiomis $a$ reikšmėmis lygtys
+    \[
+    x^3+ax+1=0
+    \]
+    ir
+    \[
+    x^4+ax^2+1=0
+    \]
+    turi bendrą šaknį?
+
+    \item Išspręskite lygčių sistemą:
+    \[
+    \left\{
+    \begin{array}{l}
+    x+xy+x^2=9,\\
+    y+xy+y^2=-3.
+    \end{array}
+    \right.
+    \]
+
+    \item Duoti teigiami realieji skaičiai $x,y,z$, kurie tenkina
+    \[
+    \left\{
+    \begin{array}{l}
+    x+\dfrac1y=4,\\[0.2cm]
+    y+\dfrac1z=1,\\[0.2cm]
+    z+\dfrac1x=\dfrac73.
+    \end{array}
+    \right.
+    \]
+    Raskite $xyz$.
+
+    \item Raskite visus sprendinius:
+    \[
+    \left\{
+    \begin{array}{l}
+    \dfrac{x}{y}+\dfrac{y}{z}+\dfrac{z}{x}=3,\\[0.3cm]
+    \dfrac{y}{x}+\dfrac{z}{y}+\dfrac{x}{z}=3,\\[0.3cm]
+    \dfrac1x+\dfrac1y+\dfrac1z=2.
+    \end{array}
+    \right.
+    \]
+
+    \item Raskite visus realiuosius skaičius $x$, $y$ ir $z$, kurie tenkina
+    \[
+    x^2+y^2+z^2=x-z=2.
+    \]
+
+    \item Išspręskite lygčių sistemą
+    \[
+    \left\{
+    \begin{array}{l}
+    x^2+4y^2-2z^4=18,\\
+    x+2y+2z^2=40,\\
+    z^4-2xy=9.
+    \end{array}
+    \right.
+    \]
+
+\end{enumerate}
+
+
+\section{Keitiniai}
+
+\subsection{Teorija}
+
+Olimpiadiniuose uždaviniuose dažnai pasitaiko lygčių, kurios iš pirmo
+žvilgsnio atrodo sudėtingos, tačiau jose kartojasi tas pats reiškinys.
+Tokiu atveju naudinga tą reiškinį pakeisti nauju kintamuoju.
+
+Pavyzdžiui, galima įsivesti keitinius
+
+\[
+t=x+y,\qquad
+t=x-y,\qquad
+t=xy,
+\]
+
+\[
+t=a^x,\qquad
+t=\sqrt{f(x)},\qquad
+t=\frac1x,\qquad
+t=\frac{x}{y}.
+\]
+
+Kartais patogu naudoti ir kelis keitinius vienu metu, pavyzdžiui,
+
+\[
+s=x+y,\qquad p=xy.
+\]
+
+Keitinio tikslas -- sudėtingą lygtį paversti paprastesne, dažnai
+kvadratine arba kita lengvai išskaidoma lygtimi.
+
+Atlikus keitinį būtina:
+
+\begin{enumerate}
+    \item atsižvelgti į pradinės lygties apibrėžimo sritį;
+    \item išspręsti lygtį su naujuoju kintamuoju;
+    \item grįžti prie pradinio kintamojo;
+    \item patikrinti gautus sprendinius, jei atlikti pertvarkymai galėjo sukurti pašalinių šaknų.
+\end{enumerate}
+
+\begin{example}
+
+Išspręskite lygtį
+\[
+4^x+8=6\cdot2^x.
+\]
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Pastebime, kad
+\[
+4^x=(2^2)^x=(2^x)^2.
+\]
+
+Todėl įsiveskime keitinį
+\[
+t=2^x.
+\]
+
+Kadangi
+\[
+2^x>0,
+\]
+turime
+\[
+t>0.
+\]
+
+Pradinė lygtis tampa
+\[
+t^2+8=6t.
+\]
+
+Perkeliame visus narius į vieną pusę:
+\[
+t^2-6t+8=0.
+\]
+
+Išskaidome dauginamaisiais:
+\[
+(t-2)(t-4)=0.
+\]
+
+Taigi
+\[
+t=2
+\quad\text{arba}\quad
+t=4.
+\]
+
+Grįžtame prie pradinio kintamojo.
+
+Jei
+\[
+2^x=2,
+\]
+tai
+\[
+x=1.
+\]
+
+Jei
+\[
+2^x=4=2^2,
+\]
+tai
+\[
+x=2.
+\]
+
+\textbf{Atsakymas:} $x=1$ arba $x=2$.
+\end{solution}
+
+\begin{example}
+
+Tegul
+\[
+S=(x-1)^4+4(x-1)^3+6(x-1)^2+4(x-1)+1.
+\]
+Kam lygus $S$?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Visuose nariuose kartojasi reiškinys
+\[
+x-1.
+\]
+
+Todėl įsiveskime keitinį
+\[
+t=x-1.
+\]
+
+Tuomet
+\[
+S=t^4+4t^3+6t^2+4t+1.
+\]
+
+Pastebime Niutono binomo formulę:
+\[
+(t+1)^4=t^4+4t^3+6t^2+4t+1.
+\]
+
+Vadinasi,
+\[
+S=(t+1)^4.
+\]
+
+Grįžtame prie $x$:
+\[
+t=x-1.
+\]
+
+Todėl
+\[
+S=(x-1+1)^4=x^4.
+\]
+
+\textbf{Atsakymas:} $x^4$.
+\end{solution}
+
+\subsection{Uždaviniai}
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Supaprastinkite reiškinį
+    \[
+    A=(t-1)^3+3(t-1)^2+3(t-1)+1.
+    \]
+
+    \item Realieji skaičiai $x$ ir $y$ tenkina lygybę
+    \[
+    x^2+2xy+y^2+x+y-2=0.
+    \]
+    Raskite visas reiškinio $x+y$ reikšmes.
+
+    \item Išspręskite lygtį
+    \[
+    x^2+18x+30
+    =
+    2\sqrt{x^2+18x+45}.
+    \]
+
+    \item Išspręskite lygtį realiųjų skaičių aibėje:
+    \[
+    100^{1/x}+25^{1/x}
+    =
+    4{,}25\cdot50^{1/x},
+    \qquad x\ne0.
+    \]
+
+    \item Išspręskite lygtį realiųjų skaičių aibėje:
+    \[
+    y^2+5y-\frac{36}{y^2+5y}=0.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    2^x+3^x-4^x+6^x-9^x=1.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \frac{1}{x(x+8)}
+    -
+    \frac{1}{(x+4)^2}
+    =
+    \frac49.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \sqrt{x^2-1}
+    =
+    x\sqrt{x}-\sqrt{x-1}.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \frac{x^2+11x-6}{x^2-x-6}
+    =
+    \frac{26x}{x^2-6}.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \frac{8^x+27^x}{12^x+18^x}
+    =
+    \frac76.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \frac{(3-\sqrt{x})^4}{\sqrt{x}}
+    +
+    \frac{x^2}{3-\sqrt{x}}
+    =
+    \frac{33}{2}.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    2x^2+6x+9
+    =
+    7x\sqrt{2x+3}.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    \frac{5x-4}{x^2}
+    +
+    \frac{70}{(x+2)^2}
+    =
+    1.
+    \]
+
+    \item Išspręskite lygtį realiaisiais skaičiais:
+    \[
+    \sqrt[4]{x+32}
+    -
+    \sqrt[4]{x-33}
+    =
+    1.
+    \]
+
+    \item Išspręskite lygtį
+    \[
+    x
+    =
+    11+
+    \sqrt{
+    \frac{5x-56}{(x-13)(x-14)}
+    }.
+    \]
+
+\end{enumerate}
+
+
+\section{Atsakymai}
+
+\subsection{Lygčių sistemos}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item $(a,b,c,d,e)=(-5,-1,3,7,11)$.
+    \item $(x,y,z)=(1,1,1)$.
+    \item $32$.
+    \item $a=-2$.
+    \item $(x,y)=(3,-1)$ arba $(x,y)=\left(-\frac92,\frac32\right)$.
+    \item $xyz=1$.
+    \item $(x,y,z)=\left(\frac32,\frac32,\frac32\right)$.
+    \item $(x,y,z)=(1,0,-1)$.
+    \item $\left(7,\frac{13}{2},\sqrt{10}\right)$, $\left(7,\frac{13}{2},-\sqrt{10}\right)$, $\left(13,\frac72,\sqrt{10}\right)$ arba $\left(13,\frac72,-\sqrt{10}\right)$.
+
+\end{enumerate}
+
+
+\subsection{Keitiniai}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item $A=t^3$.
+    \item $x+y=1$ arba $x+y=-2$.
+    \item $x=-9\pm\sqrt{61}$.
+    \item $x=\pm\frac12$.
+    \item $y\in\{-6,-3,-2,1\}$.
+    \item $x=0$.
+    \item $x=-4\pm3\sqrt2$.
+    \item $x=\frac{1+\sqrt5}{2}$.
+    \item $x=1\pm\sqrt7$ arba $x=\frac{13\pm\sqrt{193}}{2}$.
+    \item $x=-1$ arba $x=1$.
+    \item $x=1$ arba $x=4$.
+    \item $x=\frac{1+\sqrt{13}}{4}$ arba $x=9+6\sqrt3$.
+    \item $x=5\pm\sqrt{21}$ arba $x=\frac{-9\pm\sqrt{65}}{2}$.
+    \item $x=49$.
+    \item $x=13\pm\sqrt3$.
+
+\end{enumerate}
+
+\end{document}
