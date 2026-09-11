@@ -1,0 +1,193 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\input{"../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Dirichlė (Balandžių ir narvelių) principas}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra Dirichlė principas?}
+
+Dirichlė (dažnai vadinamas \textit{balandžių ir narvelių}) principas yra vienas iš intuityviausių, tačiau galingiausių įrankių sprendžiant logikos, kombinatorikos ir skaičių teorijos uždavinius.
+
+\begin{theorem}
+Jei $(n+1)$ balandžių yra patalpinami į $n$ narvelių, tai bent viename narvelyje bus \textbf{bent du balandžiai}.
+\end{theorem}
+
+\begin{theorem}
+Tegu $m$ ir $n$ yra teigiami sveikieji skaičiai. Jei $(m \times n + 1)$ balandžių patalpinami į $n$ narvelių, tai bent viename narvelyje bus \textbf{bent $(m + 1)$ balandžių}.
+\end{theorem}
+
+Sprendžiant uždavinius sunkiausia yra suprasti, kas konkrečioje situacijoje atlieka \textbf{„balandžių“}, o kas -- \textbf{„narvelių“} vaidmenį. „Narveliai“ dažniausiai būna dalybos liekanos, tam tikros skaičių aibės arba geometrinės figūros dalys.
+
+\subsection{Pavyzdžiai}
+
+\begin{example}
+Įrodykite, kad iš bet kokių keturių sveikųjų skaičių visada galima išrinkti du, kurių skirtumas dalijasi iš 3.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas.} Bet kokį skaičių dalijant iš 3, galimos tik trys liekanos: 0, 1 arba 2. Taigi, turime 3 „narvelius“ (liekanas) ir 4 „balandžius“ (skaičius). Pagal Dirichlė principą, bent du skaičiai turės tą pačią liekaną. Jų skirtumas bus dalus iš 3.
+
+\textbf{Atsakymas:} teiginys teisingas.
+\end{solution}
+
+\begin{example}
+Kvadrate, kurio kraštinė lygi 2, atsitiktinai pažymėti 5 taškai. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių yra nedidesnis nei $\sqrt{2}$.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas.} Padalinkime didįjį kvadratą į 4 mažesnius kvadratus (narvelius), kurių kiekvieno kraštinė yra 1.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \draw[thick] (0,0) rectangle (2,2);
+    \draw[thick] (1,0) -- (1,2);
+    \draw[thick] (0,1) -- (2,1);
+    \node at (0.5, 0.5) {$1 \times 1$};
+    \node at (1.5, 0.5) {$1 \times 1$};
+    \node at (0.5, 1.5) {$1 \times 1$};
+    \node at (1.5, 1.5) {$1 \times 1$};
+    \filldraw[black] (0.3,0.7) circle (1.5pt);
+    \filldraw[black] (1.7,0.2) circle (1.5pt);
+    \filldraw[black] (1.2,1.8) circle (1.5pt);
+    \filldraw[black] (0.8,1.3) circle (1.5pt);
+    \filldraw[black] (0.6,1.8) circle (1.5pt);
+\end{tikzpicture}
+\end{center}
+
+Kadangi turime 5 taškus (balandžius) ir 4 kvadratus (narvelius), bent du taškai atsidurs tame pačiame $1 \times 1$ kvadrate. Didžiausias atstumas tarp dviejų taškų tokiame kvadrate yra jo įstrižainė, kurios ilgis $\sqrt{1^2 + 1^2} = \sqrt{2}$.
+
+\textbf{Atsakymas:} toks porų pora visada egzistuoja.
+\end{solution}
+
+\begin{example}
+Iš skaičių aibės $\{1, 2, 3, \dots, 100\}$ atsitiktinai išrenkamas 51 skaičius. Įrodykite, kad tarp jų būtinai atsiras du, kurie yra tarpusavy pirminiai (neturi bendrų daliklių, išskyrus 1).
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas.} Žinome, kad bet kurie du iš eilės einantys skaičiai yra tarpusavy pirminiai. Sukonstruokime 50 „narvelių“ iš gretimų skaičių porų: $\{1, 2\}, \{3, 4\}, \dots, \{99, 100\}$. Kadangi pasirenkame 51 skaičių, bent du iš jų pateks į tą pačią porą. Kadangi jie yra iš tos pačios poros, jie yra iš eilės einantys, todėl tarpusavy pirminiai.
+
+\textbf{Atsakymas:} tokia pora visada egzistuoja.
+\end{solution}
+
+\begin{example}
+Iš skaičių aibės $\{1, 2, 3, \dots, 100\}$ atsitiktinai išrenkamas 51 skaičius. Įrodykite, kad tarp jų būtinai atsiras du skaičiai, iš kurių vienas dalijasi iš kito.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas.} Bet kokį sveikąjį skaičių galime užrašyti pavidalu $j \cdot 2^k$, kur $j$ -- nelyginis skaičius, o $k \ge 0$. Aibėje nuo 1 iki 100 yra lygiai 50 nelyginių skaičių ($1, 3, 5, \dots, 99$). Šiuos nelyginius skaičius naudosime kaip „narvelius“. Kadangi pasirenkame 51 skaičių, bent du iš jų turės tą pačią nelyginę dalį $j$. Taigi, vienas skaičius bus $j \cdot 2^{k_1}$, o kitas $j \cdot 2^{k_2}$. Akivaizdu, kad tas, kurio dvejeto laipsnis mažesnis, dalins tą skaičių, kurio dvejeto laipsnis didesnis.
+
+\textbf{Atsakymas:} tokia pora visada egzistuoja.
+\end{solution}
+
+\section{Uždaviniai treniruotei}
+
+\subsection{I dalis. Klasika ir kombinatorika}
+
+\begin{problem}
+Mokykloje mokosi 367 mokiniai. Įrodykite, kad bent du iš jų švenčia gimtadienį tą pačią dieną.
+\end{problem}
+
+\begin{problem}
+Tamsiame kambaryje stalčiuje guli 10 juodų ir 10 baltų kojinių. Kiek mažiausiai kojinių reikia ištraukti nežiūrint, kad būtumėte garantuoti, jog turėsite bent vieną vienodos spalvos porą?
+\end{problem}
+
+\begin{problem}
+Iš standartinės 52 kortų malkos aklai traukiamos kortos. Kiek mažiausiai kortų reikia ištraukti, kad rankose garantuotai turėtumėte bent 5 tos pačios rūšies (širdžių, būgnų, pikų arba kryžių) kortas?
+\end{problem}
+
+\begin{problem}
+Matematikos teste yra tik 2 uždaviniai. Už teisingai išspręstą skiriama 10 taškų, už praleistą 2 taškai, už neteisingą 0 taškų. Kiek mažiausiai mokinių turi rašyti testą, kad bent 3 iš jų surinktų vienodą taškų sumą?
+\end{problem}
+
+\begin{problem}
+Dėžėje yra daug keturių skirtingų rūšių Velykinių kiaušinių. Kiekvienam vaikui leidžiama iš dėžės išsitraukti po 1 arba 2 kiaušinius. Kiek mažiausiai vaikų turi dalyvauti žaidime, kad bent du vaikai padarytų identišką pasirinkimą?
+\end{problem}
+
+\begin{problem}
+Gimtadienio vakarėlyje dalyvauja $n$ žmonių. Įrodykite, kad vakarėlyje visada atsiras bent du žmonės, kurie turi vienodą skaičių pažįstamų tarp kitų vakarėlio svečių.
+\end{problem}
+
+\subsection{II dalis. Skaičių teorija ir liekanos}
+
+\begin{problem}
+Turime bet kokius $(n+1)$ sveikųjų skaičių. Įrodykite, kad visada galima išrinkti du, kurių skirtumas dalijasi iš $n$.
+\end{problem}
+
+\begin{problem}
+Duota 12 skirtingų dviženklių skaičių. Įrodykite, kad visada galima išrinkti du skaičius taip, kad jų skirtumo vienetų ir dešimčių skaitmenys būtų vienodi (t.y. skirtumas dalintųsi iš 11).
+\end{problem}
+
+\begin{problem}
+Duota 100 bet kokių sveikųjų skaičių. Įrodykite, kad iš jų galima išrinkti bent 15 skaičių taip, kad bet kurių dviejų išrinktųjų skirtumas dalintųsi iš 7.
+\end{problem}
+
+\begin{problem}
+Tegu $a_1, a_2, \dots, a_9$ yra skaičių $1, 2, \dots, 9$ kėlinys (tie patys skaičiai surašyti atsitiktine tvarka). Įrodykite, kad sandauga $(a_1-1)(a_2-2)\dots(a_9-9)$ būtinai yra lyginis skaičius.
+\end{problem}
+
+\begin{problem}
+Duoti bet kokie 5 sveikieji skaičiai. Įrodykite, kad visada galima išrinkti lygiai 3 iš jų taip, kad jų suma dalintųsi iš 3.
+\end{problem}
+
+\subsection{III dalis. Geometriniai narveliai}
+
+\begin{problem}
+Kvadrate, kurio matmenys yra $3 \times 3$, atsitiktinai pažymėta 10 taškų. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių yra nedidesnis nei $\sqrt{2}$.
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \draw[thick] (0,0) rectangle (3,3);
+    \draw[step=1cm,gray,very thin,dashed] (0,0) grid (3,3);
+\end{tikzpicture}
+\end{center}
+\end{problem}
+
+\begin{problem}
+Lygiakraščio trikampio, kurio kraštinės ilgis yra 2, viduje atsitiktinai pažymėti 5 taškai. Įrodykite, kad atstumas tarp kažkurių dviejų taškų neviršija 1.
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \draw[thick] (0,0) -- (2,0) -- (1, {sqrt(3)}) -- cycle;
+    \draw[dashed, gray] (1,0) -- (0.5, {sqrt(3)/2}) -- (1.5, {sqrt(3)/2}) -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{problem}
+
+\begin{problem}
+Skritulio, kurio spindulys yra 1, viduje atsitiktinai pažymėti 7 taškai. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių neviršija 1.
+\end{problem}
+
+\begin{problem}
+Vienetinio kvadrato ($1 \times 1$) viduje pažymėti 9 taškai. Įrodykite, kad iš jų visada galima išrinkti 3 taškus, kurie sudarytų trikampį, kurio plotas neviršija $1/8$.
+\end{problem}
+
+\subsection{IV dalis. Olimpiadinis iššūkis}
+
+\begin{problem}
+Duoti bet kokie 52 sveikieji skaičiai. Įrodykite, kad iš jų visada galima išrinkti du skaičius taip, kad tų skaičių suma arba skirtumas dalintųsi iš 100.
+\end{problem}
+
+\begin{problem}
+Visi begalinės plokštumos taškai yra atsitiktinai nuspalvinti dviem spalvomis (pavyzdžiui, raudona ir mėlyna). Įrodykite, kad plokštumoje būtinai atsiras du \textbf{vienodos spalvos} taškai, atstumas tarp kurių yra lygiai 1.
+\end{problem}
+
+\begin{problem}
+Duota 7 atsitiktinių sveikųjų skaičių seka. Įrodykite, kad visada įmanoma rasti vieną arba kelis \textit{iš eilės einančius} šios sekos elementus, kurių suma dalijasi iš 7.
+\end{problem}
+
+\begin{problem}
+Įrodykite, kad egzistuoja skaičiaus 2017 kartotinis, kurio dešimtainiame užraše naudojami tik skaitmenys 8 ir 0.
+\end{problem}
+
+\begin{problem}
+Yra dvi skirtingo dydžio ruletės su bendru centru. Kiekviena padalinta į 200 vienodų sektorių. Didesnėje ruletėje 100 sektorių nuspalvinti raudonai, kiti 100 - žaliai. Mažesnės ruletės 200 sektorių atsitiktinai nuspalvinti raudonai arba žaliai (skaičius nebūtinai po lygiai). Įrodykite, kad visada galima pasukti ruletes taip, jog bent 100 persidengiančių sektorių poros sutaptų spalvomis.
+\end{problem}
+
+\end{document}
