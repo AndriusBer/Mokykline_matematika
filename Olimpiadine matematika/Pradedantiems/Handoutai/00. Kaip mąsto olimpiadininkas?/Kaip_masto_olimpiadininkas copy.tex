@@ -1,0 +1,662 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Kaip mąsto olimpiadininkas?}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Svarbiausia mintis}
+
+Sprendžiant olimpiadinį uždavinį vyksta du skirtingi dalykai:
+
+\[
+\boxed{\text{sprendimo paieška}}
+\qquad\text{ir}\qquad
+\boxed{\text{sprendimo įrodymas}}.
+\]
+
+Ieškant sprendimo visiškai normalu:
+
+\begin{itemize}
+    \item bandyti mažus atvejus;
+    \item skaičiuoti konkrečius pavyzdžius;
+    \item piešti brėžinius;
+    \item spėti dėsningumą;
+    \item bandyti kelias skirtingas idėjas;
+    \item klysti ir pradėti iš naujo.
+\end{itemize}
+
+Tačiau galutinis sprendimas turi atsakyti į kitą klausimą:
+
+\[
+\text{„Kodėl tai \textbf{būtinai} yra tiesa?“}
+\]
+
+Todėl labai svarbu atskirti:
+
+\[
+\text{„Atrodo, kad taip yra“}
+\]
+nuo
+\[
+\text{„Taip turi būti, nes \ldots“}.
+\]
+
+Galutinis užrašytas sprendimas gali atrodyti visai kitaip negu kelias,
+kuriuo jį atradote. Tai yra normalu. Kad tai pamatytumėte, palyginkite, kaip atrodo tas pats uždavinys juodraštyje ir švarraštyje.
+
+\bigskip
+\textbf{Pavyzdys:} \textit{Įrodykite, kad su visais sveikaisiais $n$, skaičius $n^2+n$ yra lyginis.}
+
+\noindent
+\textbf{Juodraštyje (sprendimo paieška):}
+\begin{itemize}
+    \item Jei $n=1$, tai $1^2+1 = 2$ (lyginis).
+    \item Jei $n=2$, tai $2^2+2 = 6$ (lyginis).
+    \item Jei $n=3$, tai $3^2+3 = 12$ (lyginis).
+    \item Aha! Jei $n$ nelyginis, $n^2$ nelyginis, o nelyginis + nelyginis = lyginis.
+    \item Jei $n$ lyginis, tai lyginis + lyginis = lyginis. Viskas aišku!
+\end{itemize}
+
+\noindent
+\textbf{Švarraštyje (olimpiados darbe):}
+\begin{quote}
+Išskaidome reiškinį dauginamaisiais: $n^2+n = n(n+1)$. 
+Kadangi $n$ ir $n+1$ yra du iš eilės einantys sveikieji skaičiai, lygiai vienas iš jų privalo būti lyginis. Lyginio ir bet kokio sveikojo skaičiaus sandauga visada yra lyginis skaičius, todėl $n(n+1)$ yra lyginis visiems sveikiesiems $n$. $\square$
+\end{quote}
+
+\section{Kaip pradėti galvoti apie olimpiadinį uždavinį?}
+
+Įprastame mokykliniame uždavinyje dažnai iš anksto aišku, kokį metodą
+reikia taikyti. Olimpiadiniame uždavinyje svarbi sprendimo dalis yra
+\textbf{pačiam atpažinti idėją}. Todėl pirmasis klausimas neturėtų būti
+
+\[
+\text{„Kokią formulę čia reikia panaudoti?“}
+\]
+Geriau klausti:
+\[
+\text{„Ką galiu išvesti iš to, kas duota?“}
+\]
+Sprendžiant verta sau užduoti tokius klausimus:
+
+\begin{itemize}
+    \item Kas tiksliai yra duota?
+    \item Ką tiksliai reikia įrodyti arba rasti?
+    \item Ar galiu sąlygą užrašyti kita forma?
+    \item Kas nutinka mažais arba paprastais atvejais?
+    \item Ar objektus galima suskirstyti į kelis atvejus?
+    \item Kas būtų, jeigu teiginys būtų neteisingas?
+    \item Ko pakaktų, kad gaučiau tai, ką reikia įrodyti?
+\end{itemize}
+
+\section{Eksperimentas padeda atrasti, bet neįrodo}
+
+Mažų atvejų tikrinimas yra labai geras įprotis. Jis gali padėti pastebėti
+dėsningumą arba atspėti atsakymą. Tačiau keli pavyzdžiai dar nėra įrodymas. Pavyzdžiui, reiškinys
+
+\[
+n^2+n+41
+\]
+yra pirminis, kai
+\[
+n=0,1,2,\ldots,39.
+\]
+Po tiek daug pavyzdžių labai lengva patikėti, kad jis visada pirminis.
+Tačiau, kai $n=40$,
+\[
+40^2+40+41=1681=41^2,
+\]
+todėl gautas skaičius jau nėra pirminis. Taigi eksperimentavimas turi labai svarbią paskirtį:
+
+\[
+\boxed{\text{pavyzdžiai padeda atrasti, ką verta bandyti įrodyti.}}
+\]
+Bet pats įrodymas turi paaiškinti, \textbf{kodėl} teiginys galioja visais
+reikalingais atvejais.
+
+\section{Pavyzdys nėra įrodymas}
+
+Tarkime, norime parodyti, kad dviejų nelyginių sveikųjų skaičių suma yra
+lyginė. Galime patikrinti:
+
+\[
+3+5=8,\qquad 7+11=18,\qquad 101+203=304.
+\]
+
+Visais trimis atvejais teiginys teisingas. Tačiau sveikųjų skaičių yra
+be galo daug, todėl šie pavyzdžiai dar neįrodo bendro teiginio. Norėdami įrodyti jį visiems nelyginiams skaičiams, naudojame bendrą
+nelyginio sveikojo skaičiaus formą
+\[
+2k+1,
+\]
+kur $k\in\mathbb Z$.
+
+\begin{example}
+Įrodykite, kad dviejų nelyginių sveikųjų skaičių suma yra lyginė.
+\end{example}
+
+\textit{Prieš skaitydami sprendimą, pabandykite jį užrašyti patys.}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Tegul
+\[
+a=2m+1,\qquad b=2n+1,
+\]
+kur $m,n\in\mathbb Z$. Tuomet
+\[
+a+b=(2m+1)+(2n+1)=2(m+n+1).
+\]
+Kadangi $m+n+1$ yra sveikasis skaičius, tai $a+b$ dalijasi iš $2$. Vadinasi, $a+b$ yra lyginis. \hfill $\square$
+\end{solution}
+
+Svarbiausia čia ne pats skaičiavimas. Svarbiausia buvo pereiti nuo kelių
+konkrečių pavyzdžių prie \textbf{bendro argumento}.
+
+\section{Teiginio kryptis}
+
+Daugelis matematinių teiginių turi formą
+\[
+A\Longrightarrow B.
+\]
+Tai reiškia: jeigu $A$ yra tiesa, tai turi būti tiesa ir $B$. Labai svarbu nepamiršti, kad iš
+\[
+A\Longrightarrow B
+\]
+nebūtinai seka
+\[
+B\Longrightarrow A.
+\]
+Pavyzdžiui,
+\[
+6\mid n\Longrightarrow 3\mid n
+\]
+yra teisingas teiginys. Tačiau atvirkštinis teiginys
+\[
+3\mid n\Longrightarrow 6\mid n
+\]
+yra klaidingas: užtenka paimti $n=9$.
+
+Olimpiadoje galima parašyti daug teisingų formulių ir vis tiek neįrodyti
+to, ko buvo prašoma, jeigu įrodoma ne ta implikacijos kryptis.
+
+\section{Kontrapozicija}
+
+Kartais teiginį
+\[
+A\Longrightarrow B
+\]
+patogiau įrodyti parodant lygiavertį teiginį
+\[
+\neg B\Longrightarrow \neg A.
+\]
+Tai vadinama \textbf{kontrapozicija}.
+Kodėl tai veikia? Nes teiginys „jeigu $A$, tai $B$“ yra tas pats, kas
+„jeigu $B$ neįvyksta, tai $A$ neįvyksta“. Kitaip tariant, jei kažkas
+nesilaiko $B$, tai automatiškai nereiškia, kad $A$ buvo teisinga. Pavyzdžiui, paprastas sakinys:
+
+\[
+\text{Jeigu lietus lyja, tai gatvė yra šlapia.}
+\]
+yra ekvivalentus su:
+\[
+\text{Jeigu gatvė nėra šlapia, tai lietus nelyja.}
+\]
+Abu sakiniai reiškia tą patį. Todėl kartais lengviau įrodyti
+neigiamą versiją, nei pačią originalią formulę. Štai kodėl olimpiadoje dažnai apsuka teiginį: užuot bandę tiesiogiai
+parodyti, kad iš $A$ seka $B$, jie įrodo, kad iš $\neg B$ seka $\neg A$.
+Tai dažnai suveda problemą prie paprastesnių ar labiau matomų atvejų.
+
+\begin{example}
+Įrodykite: jei $n^2$ yra lyginis, tai $n$ yra lyginis.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Įrodysime kontrapoziciją: jeigu $n$ yra nelyginis, tai $n^2$ yra
+nelyginis. Tegul
+\[
+n=2k+1,
+\]
+kur $k\in\mathbb Z$. Tuomet
+\[
+n^2=(2k+1)^2=4k^2+4k+1
+=2(2k^2+2k)+1.
+\]
+Taigi $n^2$ yra nelyginis. Vadinasi,
+\[
+n^2\text{ lyginis}\Longrightarrow n\text{ lyginis}. \hfill \square
+\]
+\end{solution}
+
+Apie kontrapoziciją verta pagalvoti tada, kai sunku tiesiogiai įrodyti
+$A\Longrightarrow B$, tačiau lengva suprasti, kas nutiktų, jeigu $B$
+būtų netiesa.
+
+\section{Įrodymas prieštara}
+
+Dar vienas svarbus metodas yra \textbf{įrodymas prieštara}. Jo idėja:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Tarkime, kad norimas teiginys yra neteisingas.
+    \item Logiškai tęskime šią prielaidą.
+    \item Parodykime, kad gauname neįmanomą rezultatą.
+    \item Vadinasi, pradinė prielaida buvo klaidinga.
+\end{enumerate}
+
+\begin{example}
+Įrodykite, kad nėra didžiausio sveikojo skaičiaus.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Tarkime priešingai: egzistuoja didžiausias sveikasis skaičius $N$. Tačiau skaičius
+\[
+N+1
+\]
+taip pat yra sveikasis ir
+\[
+N+1>N.
+\]
+Tai prieštarauja prielaidai, kad $N$ yra didžiausias sveikasis skaičius.
+Vadinasi, didžiausio sveikojo skaičiaus nėra. \hfill $\square$
+\end{solution}
+
+\section{Kontrpavyzdys}
+
+Norint įrodyti teiginį, kuris turi galioti \textbf{visiems} objektams,
+reikia bendro argumento. Tačiau norint parodyti, kad toks teiginys yra neteisingas, pakanka rasti
+\textbf{vieną} atvejį, kuriam jis negalioja. Toks atvejis vadinamas \textbf{kontrpavyzdžiu}.
+
+\begin{example}
+Ar teisingas teiginys:
+\[
+\text{„Jeigu }ab\text{ yra lyginis, tai }a\text{ ir }b\text{ yra lyginiai“?}
+\]
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+Ne. Paimkime
+\[
+a=2,\qquad b=3.
+\]
+Tuomet
+\[
+ab=6
+\]
+yra lyginis, tačiau $b=3$ yra nelyginis.
+
+Taigi radome kontrpavyzdį, todėl teiginys neteisingas. \hfill $\square$
+\end{solution}
+
+Svarbu:
+\begin{itemize}
+    \item keli teisingi pavyzdžiai dar neįrodo bendro teiginio;
+    \item vienas kontrpavyzdys jau paneigia bendrą teiginį.
+\end{itemize}
+
+\section{„Raskite visus“ reiškia daugiau negu „raskite kelis“}
+
+Jeigu uždavinys prašo \textbf{rasti visus} skaičius, poras ar kitus
+objektus, reikia atlikti tris darbus:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item rasti galimus kandidatus;
+    \item įrodyti, kad kitų kandidatų nėra;
+    \item patikrinti, kad rasti kandidatai iš tikrųjų tenkina pradinę sąlygą.
+\end{enumerate}
+
+\begin{example}
+Raskite visus sveikuosius skaičius $n$, kuriems trupmenos
+\[
+\frac{n^2+3n+1}{n+1}
+\]
+reikšmė yra sveikasis skaičius.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Pirmiausia pastebime, kad $n\neq -1$. Pertvarkome skaitiklį:
+\[
+n^2+3n+1=(n+1)(n+2)-1.
+\]
+Todėl
+\[
+\frac{n^2+3n+1}{n+1} = n+2-\frac{1}{n+1}.
+\]
+Kadangi $n+2$ yra sveikasis skaičius, visa išraiška bus sveikasis
+skaičius tada ir tik tada, kai
+\[
+\frac{1}{n+1}
+\]
+yra sveikasis skaičius. Tai įmanoma tik tada, kai
+\[
+n+1=1 \qquad\text{arba}\qquad n+1=-1.
+\]
+Taigi
+\[
+n=0 \qquad\text{arba}\qquad n=-2.
+\]
+
+Būtinai patikriname gautus kandidatus pradinėje sąlygoje:
+\begin{itemize}
+    \item Kai $n=0$: $\frac{0^2+3\cdot 0+1}{0+1} = \frac{1}{1} = 1$ (sveikasis skaičius, tinka).
+    \item Kai $n=-2$: $\frac{(-2)^2+3(-2)+1}{-2+1} = \frac{4-6+1}{-1} = \frac{-1}{-1} = 1$ (sveikasis skaičius, tinka).
+\end{itemize}
+
+\textbf{Atsakymas:} $\boxed{n=-2,\ 0}$. \hfill $\square$
+\end{solution}
+
+\section{Pertvarkykite sąlygą}
+
+Olimpiadiniame uždavinyje informacija dažnai pateikta ne ta forma, kuri
+patogiausia sprendimui. Todėl verta klausti:
+
+\[
+\text{„Ar galiu tą pačią sąlygą užrašyti naudingesniu būdu?“}
+\]
+Dažnai padeda:
+
+\begin{itemize}
+    \item išskaidymas dauginamaisiais;
+    \item bendro daugiklio iškėlimas;
+    \item skirtumo kvadratų formulė;
+    \item tinkamo skaičiaus pridėjimas arba atėmimas;
+    \item visų narių perkėlimas į vieną pusę.
+\end{itemize}
+
+\begin{example}
+Raskite visas sveikųjų skaičių poras $(x,y)$, tenkinančias
+\[
+x+y=xy.
+\]
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+Perkeliame narius:
+\[
+xy-x-y=0.
+\]
+Pridedame $1$:
+\[
+xy-x-y+1=1.
+\]
+Gauname
+\[
+(x-1)(y-1)=1.
+\]
+Kadangi $x$ ir $y$ yra sveikieji, turime tik du atvejus:
+\[
+x-1=1,\qquad y-1=1,
+\]
+arba
+\[
+x-1=-1,\qquad y-1=-1.
+\]
+Todėl
+\[
+(x,y)=(2,2) \qquad\text{arba}\qquad (x,y)=(0,0).
+\]
+
+Patikriname: 
+$2+2=2\cdot 2$ (tinka), $0+0=0\cdot 0$ (tinka).
+
+\textbf{Atsakymas:} $\boxed{(0;0) \text{ ir } (2;2)}$. \hfill $\square$
+\end{solution}
+
+\section{Trys dažni spąstai}
+
+\subsection{„Patikrinau daug pavyzdžių“}
+Tai gali būti puikus būdas \textbf{atspėti} atsakymą, bet neįrodo, kad
+jis visada teisingas.
+
+\subsection{„Akivaizdu, kad tai geriausias pasirinkimas“}
+Maksimumo arba minimumo uždavinyje neužtenka parodyti vieną gerą
+konstrukciją. Reikia dar įrodyti, kad geresnė neįmanoma.
+
+\subsection{„Uždavinys to klausia, vadinasi taip ir yra“}
+Uždavinio formuluotė nėra papildoma sąlyga. Jeigu uždavinys prašo rasti
+tam tikrą santykį ar kampą, negalima tiesiog manyti, kad jis nekinta.
+Tai reikia įrodyti.
+
+\section{Ką daryti, kai nežinote, nuo ko pradėti?}
+
+Užstrigti olimpiadiniame uždavinyje yra normalu. Tikslas nėra visada iš
+karto pamatyti sprendimą. Tikslas --- mokėti ieškoti.
+
+Pabandykite eiti tokia tvarka:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item \textbf{Tiksliai suformuluokite tikslą.}
+    Ką turite įrodyti arba rasti?
+
+    \item \textbf{Išrašykite, ką žinote.}
+    Kokias išvadas iš karto duoda sąlyga?
+
+    \item \textbf{Patikrinkite mažus atvejus.}
+    Jie gali padėti pastebėti dėsningumą, bet nepamirškite, kad tai dar
+    nėra įrodymas.
+
+    \item \textbf{Ieškokite struktūros.}
+    Lyginumas, dalumas, faktorizavimas, simetrija, vienodi reiškiniai,
+    keli galimi atvejai.
+
+    \item \textbf{Pabandykite sąlygą perrašyti.}
+    Kartais viena tinkama transformacija atskleidžia visą uždavinį.
+
+    \item \textbf{Pagalvokite nuo galo.}
+    Ko pakaktų, kad galėtumėte padaryti norimą išvadą?
+
+    \item \textbf{Jeigu vis dar nežinote, užrašykite bent vieną naują
+    teisingą išvadą.}
+    Nauja išvada dažnai tampa kitu žingsniu.
+\end{enumerate}
+
+\section{Kaip turi atrodyti geras olimpiadinis sprendimas?}
+
+Geras sprendimas turi būti ne tik teisingas, bet ir logiškai pilnas.
+
+Prieš baigdami uždavinį patikrinkite:
+
+\begin{itemize}
+    \item Ar aišku, ką reiškia visi mano kintamieji?
+    \item Ar įrodžiau būtent tą teiginį, kurio buvo prašoma?
+    \item Ar kiekviena svarbi išvada yra pagrįsta?
+    \item Ar nepakeičiau įrodymo kelių pavyzdžių patikrinimu?
+    \item Jei reikėjo rasti visus sprendinius, ar įrodžiau, kad kitų nėra?
+    \item Jei ieškojau maksimumo ar minimumo, ar įrodžiau optimalumą?
+    \item Ar patikrinau rastus kandidatus pradinėje sąlygoje?
+\end{itemize}
+
+Olimpiadoje vertinama ne tai, ką sprendėjas turėjo galvoje, o tai, ką jis
+sugebėjo pagrįsti ir užrašyti.
+
+\section{Uždaviniai savarankiškam sprendimui}
+
+Pirmuose uždaviniuose svarbu ne tik gauti atsakymą, bet ir pastebėti,
+\textbf{ko trūksta argumentui}. Vėliau pereisime prie savarankiškų
+įrodymų.
+
+\subsection{A lygis. Ar tai tikrai įrodymas?}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Mokinys nori įrodyti, kad $n(n+1)$ yra lyginis kiekvienam
+    sveikajam $n$. Jis patikrina $n=1,2,3,4,5$ ir visais atvejais gauna
+    lyginį skaičių.
+    Ar tai įrodymas? Jei ne, parašykite pilną įrodymą.
+
+    \item Reikia įrodyti teiginį:
+    \[
+    6\mid n\Longrightarrow 3\mid n.
+    \]
+    Mokinys užrašo: „Jeigu $3\mid n$, tai $n=3k$. Todėl $n$ dalijasi iš
+    $3$.“
+    Paaiškinkite, kodėl šis argumentas neįrodo prašomo teiginio, ir
+    parašykite teisingą įrodymą.
+
+    \item Mokinys teigia:
+    \[
+    \text{Jeigu }a^2\text{ dalijasi iš }4,\text{ tai }a\text{ dalijasi iš }4.
+    \]
+    Raskite kontrpavyzdį. Tada suformuluokite panašų teisingą teiginį.
+
+    \item Uždavinyje reikia rasti visus sveikuosius $x$, kuriems
+    \[
+    x^2=9.
+    \]
+    Mokinys parašo: „Tinka $x=3$ ir $x=-3$.“
+    Ko trūksta, kad sprendimas būtų pilnas?
+
+    \item Mokinys nori rasti didžiausią sandaugą $xy$, kai $x$ ir $y$
+    yra teigiami realieji skaičiai ir
+    \[
+    x+y=10.
+    \]
+    Jis parašo: „Akivaizdu, kad geriausia imti $x=y=5$, todėl maksimumas
+    yra $25$.“
+    Kokia svarbiausia loginė spraga šiame argumente?
+\end{enumerate}
+
+\subsection{B lygis. Pirmieji pilni įrodymai}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{5}
+
+    \item Įrodykite, kad lyginio ir nelyginio sveikųjų skaičių suma yra
+    nelyginė.
+
+    \item Įrodykite, kad dviejų nelyginių sveikųjų skaičių sandauga yra
+    nelyginė.
+
+    \item Įrodykite: jeigu $a+b$ yra nelyginis, tai vienas iš skaičių
+    $a,b$ yra lyginis, o kitas --- nelyginis.
+
+    \item Įrodykite: jeigu $n^3$ yra lyginis, tai $n$ yra lyginis.
+
+    \item Įrodykite, kad trijų iš eilės einančių sveikųjų skaičių suma
+    dalijasi iš $3$.
+
+    \item Įrodykite, kad tarp bet kurių trijų sveikųjų skaičių yra bent
+    du vienodo lyginumo.
+\end{enumerate}
+
+\subsection{C lygis. Raskite visus ir pertvarkykite}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{11}
+
+    \item Raskite visus sveikuosius skaičius $n$, kuriems
+    \[
+    n-2\mid n^2-5n+8.
+    \]
+
+    \item Raskite visus sveikuosius skaičius $n$, kuriems
+    \[
+    n+2\mid n^2+n+1.
+    \]
+
+    \item Raskite visas teigiamųjų sveikųjų skaičių poras $(x,y)$,
+    tenkinančias
+    \[
+    xy=x+y+2.
+    \]
+
+    \item Raskite visas teigiamųjų sveikųjų skaičių poras $(x,y)$,
+    tenkinančias
+    \[
+    \frac1x+\frac1y=\frac13.
+    \]
+
+    \item Raskite visas sveikųjų skaičių poras $(x,y)$, tenkinančias
+    \[
+    x^2-y^2=15.
+    \]
+    Įrodykite, kad radote visas poras.
+\end{enumerate}
+
+\subsection{D lygis. Pirmasis olimpiadinis iššūkis}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{16}
+
+    \item Įrodykite, kad keturių iš eilės einančių sveikųjų skaičių
+    sandauga dalijasi iš $24$.
+
+    \item Tegu $a$ ir $b$ yra sveikieji skaičiai. Įrodykite, kad jeigu
+    \[
+    a+b
+    \]
+    ir
+    \[
+    ab
+    \]
+    yra lyginiai, tai $a$ ir $b$ abu yra lyginiai.
+
+    \item Įrodykite, kad lygtis
+    \[
+    x^2-y^2=2
+    \]
+    neturi sveikųjų sprendinių. 
+    \textit{(Užuomina: išskaidykite kairę pusę dauginamaisiais ir pagalvokite apie $(x-y)$ bei $(x+y)$ lyginumą. Kas nutinka, kai lygtį sprendžiame prieštaros būdu?)}
+
+    \item Tarp bet kurių penkių sveikųjų skaičių įrodykite, kad yra du
+    tokie, kurių skirtumas dalijasi iš $4$.
+\end{enumerate}
+
+\section{Po treniruotės}
+
+Atsakykite į klausimus:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Kuris uždavinys buvo sunkiausias?
+    \item Kuriame uždavinyje ilgiausiai nežinojote, nuo ko pradėti?
+    \item Kuriame uždavinyje pavyzdžiai padėjo atspėti idėją?
+    \item Kuriame uždavinyje reikėjo įrodyti, kad kitų galimybių nėra?
+    \item Kurį uždavinį po savaitės verta išspręsti dar kartą be pagalbos?
+\end{enumerate}
+
+\bigskip
+
+\begin{center}
+\textbf{Olimpiadininko taisyklė}
+\end{center}
+
+Jeigu nežinote viso sprendimo, tai dar nereiškia, kad nieko negalite
+padaryti.
+
+Pabandykite:
+
+\[
+\boxed{\text{surasti bent vieną naują teisingą išvadą iš to, kas duota.}}
+\]
+
+Būtent iš tokių mažų žingsnių dažniausiai ir gimsta visas sprendimas.
+
+\end{document}

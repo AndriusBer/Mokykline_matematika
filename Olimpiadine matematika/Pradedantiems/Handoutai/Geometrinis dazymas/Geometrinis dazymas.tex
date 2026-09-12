@@ -1,0 +1,264 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Geometrinis dažymas}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Nuo lyginumo prie spalvų}
+
+Praėjusioje temoje kalbėjome apie lyginumą. Matėme, kad šachmatinis (dviejų spalvų) dažymas tėra geometrinė lyginumo išraiška: juodas langelis reiškia nelyginį skaičių, baltas – lyginį. Vienas ėjimas – viena pakeista spalva.
+
+Šachmatinis dažymas yra tobulas įrankis, kai uždavinyje veikia $1 \times 2$ dydžio figūros (domino kauliukai) arba kai žirgas šokinėja šachmatų lentoje. Tačiau olimpiadininkai žino, kad gyvenimas neapsiriboja dalyba iš 2. 
+Kas nutinka, jeigu jums reikia lentą padengti $1 \times 3$ dydžio kaladėlėmis? Arba $1 \times 4$ dydžio „laivais“? Šachmatinė lenta čia nebepadės – 2 spalvos neturi nieko bendro su figūromis, sudarytomis iš 3 ar 4 langelių.
+
+Tokiais atvejais mes griebiamės \textbf{sudėtingesnio geometrinio dažymo} Mes dažome erdvę 3, 4 ar net daugiau spalvų. Užuot naudoję tikrus dažus, lentelės langeliuose mes tiesiog įrašome skaičius (1, 2, 3, 4...). 
+
+Ši technika leidžia įrodyti neįtikėtinus dalykus. Pažiūrėkime į tris pagrindines dažymo strategijas.
+
+% ==========================================
+% 1 STRATEGIJA: ĮSTRIŽAINĖS
+% ==========================================
+\section{1 strategija: Įstrižaininis dažymas (Dalyba iš $k$)}
+
+Kai uždavinyje figūruoja $1 \times 3$ dydžio stačiakampiai (tromino), lentą dažome 3 spalvomis (įrašome skaičius $0, 1, 2$). Tai darome \textbf{įstrižai}: kiekvienas langelis $(x, y)$ gauna spalvą, atitinkančią sumos $x+y$ liekaną padalijus iš 3.
+
+Kokia šio dažymo magija? Ogi ta, kad kaip bepadėtume $1 \times 3$ figūrą (horizontaliai ar vertikaliai), ji \textbf{visada} uždengs lygiai po vieną kiekvienos spalvos langelį!
+
+\begin{example}[Trūkstamas langelis]
+Turime $5 \times 5$ dydžio lentą, kurioje išpjautas kairysis viršutinis kampas. Ar galima likusius $24$ langelius uždengti aštuoniomis $1 \times 3$ figūromis?
+\end{example}
+
+\begin{minipage}{0.65\textwidth}
+\begin{solution}
+\textbf{Sprendimas:}
+Lentos plotas yra 24, todėl teoriškai aštuonios figūros tilptų ($8 \times 3 = 24$). Tačiau pritaikykime įstrižaininį dažymą 3 spalvomis (skaičiais 0, 1, 2).
+
+Pažiūrėkime į visos pilnos $5 \times 5$ lentos spalvų kiekius (suskaičiuokite skaičius brėžinyje):
+\begin{itemize}
+    \item Skaičius \textbf{0} pasikartoja \textbf{9} kartus.
+    \item Skaičius \textbf{1} pasikartoja \textbf{8} kartus.
+    \item Skaičius \textbf{2} pasikartoja \textbf{8} kartus.
+\end{itemize}
+Jeigu likusią lentą įmanoma uždengti $1 \times 3$ figūromis, tai kiekviena figūra uždengs lygiai po vieną $0$, $1$ ir $2$. Vadinasi, aštuonios figūros privalo uždengti lygiai aštuonius $0$, aštuonius $1$ ir aštuonius $2$. 
+
+Kad taip nutiktų, iš lentos privalome išpjauti \textbf{0} spalvos langelį (nes nulių yra per daug). Tačiau pažiūrėkite į kairįjį viršutinį kampą – ten įrašytas skaičius \textbf{2}! Išpjovus jį, lentos spalvų balansas tampa $(9, 8, 7)$. Kadangi skaičiai nevienodi, tokios lentos padengti $1 \times 3$ figūromis neįmanoma. \hfill $\square$
+\end{solution}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.6]
+    \foreach \x in {1,...,5} {
+        \foreach \y in {1,...,5} {
+            \pgfmathparse{mod(\x+\y,3)}
+            \edef\c{\pgfmathresult}
+            \ifdim\c pt=0.0pt
+                \draw[fill=blue!20] (\x,-\y) rectangle ++(1,1);
+                \node at (\x+0.5,-\y+0.5) {\textbf{0}};
+            \else
+                \draw[fill=white] (\x,-\y) rectangle ++(1,1);
+                \node at (\x+0.5,-\y+0.5) {\c};
+            \fi
+        }
+    }
+    % X mark on top-left (1,1) -> coordinate in tikz is (1,-1)
+    \draw[very thick, red] (1,-1) -- (2,0);
+    \draw[very thick, red] (1,0) -- (2,-1);
+\end{tikzpicture}
+\end{minipage}
+
+% ==========================================
+% 2 STRATEGIJA: HIBRIDINIAI DAŽYMAI
+% ==========================================
+\section{2 strategija: Defektų ieškojimas ($1 \times 4$ prieš $2 \times 2$)}
+
+Kartais visos lentos spalvų balansas yra tobulas, tačiau pati „įsibrovėlė“ figūra turi defektą.
+
+\begin{example}[Klasikinis $2 \times 2$ pakeitimas]
+Standartinė šachmatų lenta ($8 \times 8$) yra idealiai padengiama šešiolika $1 \times 4$ dydžio stačiakampių. Ar galima šią lentą padengti naudojant penkiolika $1 \times 4$ stačiakampių ir vieną $2 \times 2$ dydžio kvadratą?
+\end{example}
+
+\begin{minipage}{0.65\textwidth}
+\begin{solution}
+\textbf{Sprendimas:}
+Lentos plotas vis dar 64 ($15 \times 4 + 4 = 64$). Dažykime lentą įstrižai \textbf{4 spalvomis} ($0, 1, 2, 3$). Pilnoje $8 \times 8$ lentoje kiekvienos spalvos yra lygiai po $16$.
+
+Kiekviena $1 \times 4$ figūra (tiek horizontali, tiek vertikali) uždengia lygiai vieną $0$, vieną $1$, vieną $2$ ir vieną $3$. Taigi, penkiolika tokių figūrų sunaudos lygiai po 15 kiekvienos spalvos langelių. Vadinasi, likęs $2 \times 2$ kvadratas \textbf{privalo} uždengti lygiai po vieną kiekvienos spalvos langelį.
+
+Tačiau pažiūrėkime, kokias spalvas dengia bet koks $2 \times 2$ kvadratas (raudonas kontūras brėžinyje). Pagal mūsų diagonalaus dažymo formulę, matome, kad $2 \times 2$ kvadratas visada turi dvi vienodas spalvas įstrižainėje, ir \textbf{jam visada trūksta vienos spalvos} (mūsų pavyzdyje jis dengia $0, 0, 1, 3$, todėl jam trūksta $1$). 
+
+Kadangi $2 \times 2$ kvadratas nesugeba „surinkti“ visų 4 spalvų po vieną, tokios lentos padengti neįmanoma. \hfill $\square$
+\end{solution}
+\end{minipage}
+\hfill
+\begin{minipage}{0.3\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.55]
+    % Piešiame 5x5 fragmentą su 4 spalvų įstrižaininiu dažymu
+    \foreach \x in {0,...,4} {
+        \foreach \y in {0,...,4} {
+            \pgfmathparse{int(mod(\x+\y, 4))}
+            \edef\c{\pgfmathresult}
+            \ifnum\c=0 \def\bg{white} \fi
+            \ifnum\c=1 \def\bg{black!5} \fi
+            \ifnum\c=2 \def\bg{black!15} \fi
+            \ifnum\c=3 \def\bg{black!25} \fi
+            \draw[fill=\bg, draw=gray!80] (\x,-\y) rectangle ++(1,1);
+            \node at (\x+0.5,-\y+0.5) {\textbf{\c}};
+        }
+    }
+    % Mėlynas 1x4 (tobula figūra)
+    \draw[very thick, blue] (0,0) rectangle (4,-1);
+    \node[blue, above, yshift = 5mm] at (2,0) {\footnotesize $1 \times 4$ surenka visas};
+    
+    % Raudonas 2x2 (defektas)
+    \draw[very thick, red] (1,-3) rectangle (3,-1);
+    \node[red, right, xshift = 10mm] at (3,-2) {\footnotesize trūksta 2};
+\end{tikzpicture}
+\end{minipage}
+
+% ==========================================
+% 3 STRATEGIJA: JUOSTINIS DAŽYMAS
+% ==========================================
+\section{3 strategija: Juostinis dažymas (Stripe Coloring)}
+
+Įstrižaininis dažymas yra galingas, bet kartais figūros elgiasi ne pagal įstrižaines. Pavyzdžiui, jei norime blokuoti vertikalias figūras, o horizontalioms leisti veikti laisvai, mes dažome lentą \textbf{juostomis} (eilutėmis arba stulpeliais).
+
+\begin{example}[Ilgieji laivai]
+Turime $10 \times 10$ dydžio lentą. Ar galima ją visą padengti 25 „laivais“, kurių kiekvieno dydis yra $1 \times 4$ langeliai?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+
+\begin{minipage}{0.55\textwidth}
+Dažykime lentą 4 spalvomis, bet ne įstrižai, o \textbf{horizontaliai (juostomis)}:
+1 eilutę dažome $1$, antrą $2$, trečią $3$, ketvirtą $4$, penktą vėl $1$ ir t.t.
+Lentoje turime dešimt eilučių. Tai reiškia, kad spalvos 1 ir 2 pasikartos po tris kartus (eilutės 1, 5, 9 ir 2, 6, 10), o spalvos 3 ir 4 – tik po du kartus (eilutės 3, 7 ir 4, 8).
+Kadangi kiekvienoje eilutėje yra 10 langelių, iš viso $10 \times 10$ lentoje bus:
+\begin{itemize}
+    \item Spalvos \textbf{1}: $30$ langelių.
+    \item Spalvos \textbf{2}: $30$ langelių.
+    \item Spalvos \textbf{3}: $20$ langelių.
+    \item Spalvos \textbf{4}: $20$ langelių.
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.5]
+    % Piešiame 6x6 fragmentą juostiniu dažymu
+    \foreach \y in {0,...,5} {
+        \pgfmathparse{int(mod(\y,4)+1)}
+        \edef\c{\pgfmathresult}
+        \foreach \x in {0,...,5} {
+            \ifnum\c=1 \def\bg{blue!15} \fi
+            \ifnum\c=2 \def\bg{green!15} \fi
+            \ifnum\c=3 \def\bg{yellow!20} \fi
+            \ifnum\c=4 \def\bg{red!15} \fi
+            \draw[fill=\bg, draw=gray!80] (\x,-\y) rectangle ++(1,1);
+            \node at (\x+0.5,-\y+0.5) {\c};
+        }
+    }
+    % Vertikalus 1x4
+    \draw[very thick, blue] (1,0) rectangle (2,-4);
+    \node[blue, above, yshift=1mm] at (1.5,0) {\footnotesize V};
+    
+    % Horizontalus 1x4
+    \draw[very thick, red] (2,-4) rectangle (6,-5);
+    \node[red, right] at (6,-4.5) {\footnotesize H};
+\end{tikzpicture}
+\end{minipage}
+
+\vspace{0.3cm}
+O dabar paanalizuokime pačius laivus ($1 \times 4$). 
+Kaip matote brėžinyje, \textbf{vertikalus (V)} laivas visada pereina per 4 skirtingas eilutes, todėl jis visada uždengs lygiai po vieną $1, 2, 3$ ir $4$.
+\textbf{Horizontalus (H)} laivas visas guli vienoje eilutėje, todėl jis uždengs lygiai \textbf{keturis TOS PAČIOS spalvos} langelius (pvz., keturis $1$ arba keturis $4$).
+
+Tarkime, visoje lentoje yra $V$ vertikalių laivų. Taip pat turime horizontalių laivų: tegul $H_1$ yra skaičius horizontalių laivų, gulinčių 1-os spalvos eilutėse, o $H_3$ – gulinčių 3-ios spalvos eilutėse.
+
+Sudarykime lygtis 1-ajai ir 3-iajai spalvai. 
+Kiek iš viso lentoje uždengta \textbf{1-osios} spalvos langelių? Kiekvienas vertikalus laivas uždengia po vieną, o kiekvienas horizontalus (esantis toje juostoje) – po keturis. Tai turi būti lygu visų tos spalvos langelių skaičiui (30):
+\[ V + 4H_1 = 30 \]
+Kiek uždengta \textbf{3-iosios} spalvos langelių? Analogiškai:
+\[ V + 4H_3 = 20 \]
+
+O dabar pritaikykime olimpiadinį triuką – atimkime antrąją lygtį iš pirmosios!
+\[ (V + 4H_1) - (V + 4H_3) = 30 - 20 \]
+\[ 4H_1 - 4H_3 = 10 \]
+\[ 4(H_1 - H_3) = 10 \]
+Padalinę abi puses iš 4, gauname:
+\[ H_1 - H_3 = 2{,}5 \]
+
+Gavome visišką nesąmonę! $H_1$ ir $H_3$ yra \textbf{laivų vienetų skaičiai}, todėl jie privalo būti sveikieji skaičiai ($0, 1, 2, 3\dots$). Dviejų sveikųjų skaičių skirtumas niekada negali būti lygus su trupmena ($2{,}5$). 
+Vadinasi, taip padengti lentos yra neįmanoma. \hfill $\square$
+\end{solution}
+
+\vspace{1cm}
+
+\begin{center}
+\textbf{Trenerio taisyklė \#2}
+\end{center}
+\begin{quote}
+Jei uždavinys su domino ($1 \times 2$) – dažyk 2 spalvomis (šachmatais). \\
+Jei su tromino ($1 \times 3$) – dažyk 3 spalvomis (įstrižainėmis). \\
+Jei su laivais ($1 \times 4$) – dažyk 4 spalvomis (įstrižainėmis arba juostomis). \\
+Niekada nepasikliaukite vien plotu! Plotas meluoja, spalvos – ne.
+\end{quote}
+\vspace{1cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+Sprendžiant šiuos uždavinius naudokite geometrinį dažymą: spalvinkite langelius ir skaičiuokite figūrų padengiamas spalvas.
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Iš standartinės šachmatų lentos ($8 \times 8$) išpjovėme du langelius: patį apatinį kairįjį ir patį viršutinį dešinįjį. Ar galima likusius 62 langelius uždengti $1 \times 2$ dydžio domino kauliukais?
+    \item Lentoje $5 \times 5$ išpjautas pats centrinis langelis. Ar įmanoma likusius 24 langelius uždengti domino kauliukais ($1 \times 2$)?
+    \item Ar galima stačiakampę lentą $7 \times 7$ uždengti $1 \times 3$ dydžio tromino figūromis?
+    \item Turime $7 \times 7$ dydžio lentą. Į patį centrą padedame vieną mažą $1 \times 1$ dydžio langelį. Ar galima likusią lentos dalį padengti 16 tromino figūrų ($1 \times 3$)?
+    \item Ar galima $6 \times 6$ dydžio lentą padengti vienuolika $1 \times 3$ stačiakampių ir vienu „kampeliu“ (L formos iš 3 langelių)?
+    \item Standartinėje $8 \times 8$ šachmatų lentoje stovi 15 vnt. T formos tetromino (4 langeliai) ir vienas $2 \times 2$ dydžio kvadratas. Įrodykite, kad taip būti negali.
+    \item Kubą $3 \times 3 \times 3$ sudaro 27 maži kubeliai. Pelė pragriaužė ir suvalgė patį centrinį kubelį. Ar gali ji suvalgyti visus likusius 26 kubelius, kiekvienu žingsniu pereidama tik į gretimą kubelį (turintį bendrą sieną)?
+    \item Ar galima padengti $12 \times 12$ dydžio lentą $1 \times 4$ dydžio stačiakampiais?
+    \item Turime $9 \times 9$ lentą. Ją padengėme 27 figūromis $1 \times 3$. Įrodykite, kad tarp jų negali būti lygiai 14 horizontalių ir 13 vertikalių figūrų.
+    \item Ar galima $6 \times 6$ lentą visiškai padengti 12 L-tromino figūrų (3 langelių kampeliais)?
+    \item $10 \times 10$ lenta yra padengta 25 Z-tetromino figūromis (kiekviena uždengia 4 langelius zigzagu). Įrodykite, kad tai neįmanoma.
+    \item Iš $8 \times 8$ lentos išpjovėme vieną langelį. Kokiose koordinatėse jis privalo būti, kad likusią lentos dalį būtų teoriškai įmanoma padengti 21 figūra $1 \times 3$?
+    \item Iš $10 \times 10$ lentos išpjautas centrinis $2 \times 2$ kvadratas. Ar galima likusią dalį (96 langelius) padengti 24 T formos tetromino figūromis?
+    \item Muziejaus salė turi formą stačiakampio, kurio matmenys $11 \times 12$. Grindis dengia plytelės $1 \times 4$. Viena plytelė sudužo, bet meistras atnešė naują plytelę, kurios dydis $2 \times 2$. Ar galima perdėlioti senas plyteles ir įkomponuoti naująją, kad grindys vėl būtų pilnai uždengtos?
+    \item Plokštumoje nubrėžtas daugiakampis. Visi jo kampai yra statūs, o kiekvienos kraštinės ilgis yra nelyginis skaičius (1, 3, 5...). Įrodykite, kad šio daugiakampio ploto negalima padengti domino kauliukais $1 \times 2$.
+    \item Ar galima padengti $10 \times 10$ lentą dvidešimt penkiomis L formos tetromino (4 langelių) figūromis?
+    \item Turime $8 \times 8$ lentą. Prie jos pridėtas papildomas $1 \times 1$ langelis prie vieno iš kampų, taip kad bendras plotas taptų 65. Ar galima šią naują figūrą padengti trylika $1 \times 5$ stačiakampių?
+    \item Ar galima erdvėje esantį bloką $6 \times 6 \times 6$ (susidedantį iš 216 kubelių) pilnai padengti plytomis, kurių matmenys yra $1 \times 2 \times 4$?
+    \item $7 \times 7$ lentoje padėta 16 T-tetromino figūrų, kurios niekur nepersidengia, ir liko vienas tuščias langelis. Įrodykite, kad tas tuščias langelis privalo būti pačiame lentos centre.
+    \item Įrodykite, kad jeigu lentą $m \times n$ galima padengti stačiakampiais $1 \times a$, tai bent vienas iš skaičių $m$ arba $n$ privalo dalytis iš $a$.
+    \item Iš šachmatų lentos $8 \times 8$ iškirptas vienas langelis, ir lenta liko susijusi (nesubyrėjo į dalis). Ar gali būti taip, kad likusią lentos dalį galima padengti L formos tromino (iš 3 langelių) figūromis?
+    \item Ar galima $9 \times 9$ lentos langelius nuspalvinti trimis spalvomis taip, kad kiekviename $2 \times 2$ kvadrate visos 3 spalvos būtų panaudotos?
+    \item Iš $10 \times 10$ lentos iškirptas centrinis $4 \times 4$ kvadratas. Ar galima likusią figūrą (84 langelius) padengti $1 \times 4$ stačiakampiais?
+    \item $13 \times 13$ lenta uždengta $2 \times 2$ ir $3 \times 3$ kvadratais (be persidengimų, padengta pilnai). Įrodykite, kad $2 \times 2$ kvadratų yra bent vienas.
+    \item Turime kryžiaus formos penkmino figūrą (5 langeliai pliuso forma). Ar galima 20 tokių kryžių pilnai ir be persidengimų padengti $10 \times 10$ lentą?
+    \item Erdvė $10 \times 10 \times 10$ suformuota iš mažų kubelių $1 \times 1 \times 1$. Ją visą norima padengti kaladėlėmis $1 \times 1 \times 4$. Įrodykite, kad tai padaryti neįmanoma.
+    \item Duota $23 \times 23$ dydžio kvadrato formos lenta. Ji padengta lygiai vienu $1 \times 1$ kvadratėliu ir daugybe $2 \times 2$ bei $3 \times 3$ kvadratų. Įrodykite, kad $1 \times 1$ kvadratėlis negali būti lentos centre.
+    \item Lenta $10 \times 10$ uždengta dvidešimt penkiais $1 \times 4$ stačiakampiais. Jūs išėmėte vieną horizontalų ir vieną vertikalų stačiakampį. Jums davė du naujus vertikalius stačiakampius $1 \times 4$. Ar įmanoma jais užpildyti atsiradusias skyles (galimai perdėliojant kitus likusius stačiakampius)?
+    \item Lentoje surašyti nuliai. Vienu ėjimu leidžiama pasirinkti bet kokį $1 \times 3$ (horizontalią ar vertikalią) sritį ir visus joje esančius tris skaičius padidinti 1. Ar po kelių ėjimų įmanoma gauti lentą, kurios centrinis langelis yra $2026$, o visi likę langeliai aplink jį yra lygūs $2025$?
+    \item Stačiakampis sudarytas iš mažesnių stačiakampių. Žinoma, kad kiekvieno iš tų mažesnių stačiakampių bent viena kraštinė (plotis arba ilgis) yra sveikasis skaičius (pvz., $3 \times 1{,}5$ arba $0{,}7 \times 4$). Įrodykite, kad viso didžiojo stačiakampio bent viena kraštinė taip pat privalo būti sveikasis skaičius.
+\end{enumerate}
+
+\end{document}

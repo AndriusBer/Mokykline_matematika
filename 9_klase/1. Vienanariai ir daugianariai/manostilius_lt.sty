@@ -44,11 +44,16 @@
 \addtolength{\textheight}{3.14cm}
 \setlength{\footskip}{0.5in}
 \setlength{\headsep}{10pt}
-% PRIDĖTA: Ištrintas (\@date) iš puslapio antraštės, kad liktų tik autorius
-\ihead{\footnotesize\textbf{\@author}}
+% Puslapio antraštė turi rodyti tik konkrečius dokumento duomenis.
+% Nustatome juos aiškiai, kad neatsirastų "\@author" / "\@title" arba senų reikšmių.
+\makeatletter
+\AtBeginDocument{%
+  \ihead{\footnotesize\textbf{Andrius Berniukevičius}}%
+  \ohead{\footnotesize\textbf{Kaip mąsto olimpiadininkas?}}%
+}
+\makeatother
 \automark{section}
 \chead{}
-\ohead{\footnotesize\textbf{\@title}}
 \cfoot{\pagemark}
 
 %%% Macros
@@ -208,6 +213,8 @@
 }
 
 % 2. Priverstinai pašaliname scrartcl klasės bold šriftą ir paliekame TIK italic
+% 3. Sujungiame su tuščiu kvadratėliu dešiniajame kampe.
+\renewcommand{\qedsymbol}{\ensuremath{\Box}}
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}%
   \normalfont \topsep6\p@\@plus6\p@\relax

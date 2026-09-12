@@ -1,0 +1,796 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Dalumas, lyginumas ir DBD}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{Dalumo žymėjimai ir kalba}
+% ============================================================
+
+\subsection{Ką reiškia $b\mid a$?}
+
+Tegu $a,b\in\mathbb Z$ ir $b\neq 0$. Žymėjimas
+\[
+b\mid a
+\]
+reiškia, kad \textbf{$b$ dalija $a$}, t.~y. egzistuoja toks sveikasis skaičius
+$k$, kad
+\[
+a=bk.
+\]
+Pavyzdžiui,
+\[
+4\mid 20,
+\]
+nes
+\[
+20=4\cdot 5.
+\]
+Tačiau
+\[
+4\nmid 22,
+\]
+nes nėra sveikojo skaičiaus $k$, kuriam
+\[
+22=4k.
+\]
+Svarbu nepainioti:
+\[
+b\mid a
+\]
+reiškia, kad \textbf{$b$ yra daliklis, o $a$ --- dalinys}. 
+Jeigu
+\[
+a=bk,
+\]
+tai taip pat sakome, kad $a$ yra $b$ kartotinis.
+
+\subsection{Naudingos dalumo savybės}
+
+Tegu $a,b,c,m,n\in\mathbb Z$.
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Jei $a\mid b$, tai $a\mid bc$.
+
+    \textbf{Įrodymas.} Kadangi $a\mid b$, egzistuoja $k\in\mathbb Z$, kad
+    $b=ak$. Tada
+    \[
+    bc=(ak)c=a(kc).
+    \]
+    Kadangi $kc\in\mathbb Z$, tai $a\mid bc$.
+    \hfill $\square$
+
+    \item Jei $a\mid b$ ir $a\mid c$, tai
+    \[
+    a\mid (b+c)
+    \qquad\text{ir}\qquad
+    a\mid (b-c).
+    \]
+
+    \textbf{Įrodymas.} Iš $a\mid b$ gauname $b=am$, o iš $a\mid c$ ---
+    $c=an$ kai $m,n\in\mathbb Z$. Tada
+    \[
+    b+c=am+an=a(m+n),
+    \]
+    \[
+    b-c=am-an=a(m-n).
+    \]
+    Kadangi $m\pm n\in\mathbb Z$, gauname $a\mid (b+c)$ ir $a\mid (b-c)$.
+    \hfill $\square$
+
+    \item Dar bendriau: jei $a\mid b$ ir $a\mid c$, tai bet kuriems
+    $m,n\in\mathbb Z$
+    \[
+    a\mid (mb+nc).
+    \]
+
+    \textbf{Įrodymas.} Kaip ir aukščiau, $b=am$ ir $c=an$ kai $m,n\in\mathbb Z$.
+    Tuomet
+    \[
+    mb+nc=(am)u+(an)v=a(mu+nv),
+    \]
+    kur $u,v\in\mathbb Z$ yra atitinkami koeficientai. Kadangi $mu+nv\in\mathbb Z$,
+    gauname \[a\mid (mb+nc)\].
+    \hfill $\square$
+
+    \item Jei $a\mid b$ ir $b\mid c$, tai $a\mid c$.
+
+    \textbf{Įrodymas.} Iš $a\mid b$ gauname $b=ak$, o iš $b\mid c$ ---
+    $c=bl$ su $k,l\in\mathbb Z$. Tada
+    \[
+    c=bl=(ak)l=a(kl).
+    \]
+    Kadangi $kl\in\mathbb Z$, tai $a\mid c$.
+    \hfill $\square$
+
+    \item Jei $a\mid b$ ir $b\mid a$, tai
+    \[
+    |a|=|b|.
+    \]
+
+    \textbf{Įrodymas.} Iš $a\mid b$ gauname $b=ak$ su $k\in\mathbb Z$.
+    Iš $b\mid a$ gauname $a=bl$ su $l\in\mathbb Z$. Tuomet
+    \[
+    a=bl=(ak)l=a(kl).
+    \]
+    Jei $a\neq 0$, tai $kl=1$, todėl $k=\pm 1$, o tai reiškia $|b|=|a|$.
+    Jei $a=0$, tada $b=0$, ir vėl $|a|=|b|=0$.
+    \hfill $\square$
+\end{enumerate}
+
+Trečioji savybė ypač svarbi olimpiadose. Ji sako, kad jeigu skaičius dalija du
+skaičius, tai jis dalija ir bet kurią jų \textbf{sveikųjų koeficientų tiesinę kombinaciją}.
+
+\begin{example}
+
+Žinoma, kad $7\mid a$ ir $7\mid b$. Įrodykite, kad
+\[
+7\mid (3a-5b).
+\]
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Kadangi $7\mid a$, egzistuoja $m\in\mathbb Z$, kuriam
+\[
+a=7m.
+\]
+
+Kadangi $7\mid b$, egzistuoja $n\in\mathbb Z$, kuriam
+\[
+b=7n.
+\]
+
+Tuomet
+\[
+3a-5b=3\cdot 7m-5\cdot 7n=7(3m-5n).
+\]
+
+Kadangi $3m-5n\in\mathbb Z$, gauname
+\[
+7\mid(3a-5b).
+\]
+
+\hfill $\square$
+
+\end{solution}
+
+\subsection{Išvada olimpiadininkui}
+
+Jeigu sąlygoje matai kelis dalumo teiginius, verta paklausti:
+
+\begin{center}
+\textbf{„Ar sudėjęs, atėmęs arba padauginęs šiuos skaičius iš tinkamų
+sveikųjų skaičių galiu gauti ką nors paprastesnio?“}
+\end{center}
+
+% ============================================================
+\section{Dalumas ir liekana be modulių kalbos}
+% ============================================================
+
+Jeigu norime išsiaiškinti, kada išraiška $A(n)$ dalijasi iš $B(n)$, dažnai
+naudinga perrašyti
+\[
+A(n)=B(n)\cdot Q(n)+r,
+\]
+kur $r$ yra mažas skaičius.
+
+Tuomet
+\[
+B(n)\mid A(n)
+\]
+galima pakeisti daug paprastesne sąlyga
+\[
+B(n)\mid r.
+\]
+
+\begin{example}
+
+Raskite visus sveikuosius skaičius $n$, kuriems
+\[
+n+2\mid n^2+5n+8.
+\]
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Pertvarkome:
+\[
+n^2+5n+8=(n+2)(n+3)+2.
+\]
+
+Jeigu
+\[
+n+2\mid n^2+5n+8,
+\]
+tai $n+2$ turi dalyti ir skirtumą
+\[
+\bigl(n^2+5n+8\bigr)-(n+2)(n+3)=2.
+\]
+
+Taigi
+\[
+n+2\mid 2.
+\]
+
+Sveikieji skaičiaus $2$ dalikliai yra
+\[
+\pm1,\ \pm2.
+\]
+
+Todėl
+\[
+n+2\in\{-2,-1,1,2\},
+\]
+taigi
+\[
+n\in\{-4,-3,-1,0\}.
+\]
+
+Visos keturios reikšmės tinka.
+
+\textbf{Atsakymas:}
+\[
+\boxed{n\in\{-4,-3,-1,0\}}.
+\]
+
+\hfill $\square$
+
+\end{solution}
+
+% ============================================================
+\section{Lyginiai ir nelyginiai skaičiai}
+% ============================================================
+
+Sveikasis skaičius yra \textbf{lyginis}, jeigu jis dalijasi iš $2$. Taigi lyginį skaičių galime užrašyti forma
+\[
+2k,
+\qquad k\in\mathbb Z.
+\]
+Sveikasis skaičius yra \textbf{nelyginis}, jeigu jis nesidalija iš $2$.
+Kiekvieną nelyginį skaičių galima užrašyti forma
+\[
+2k+1,
+\qquad k\in\mathbb Z.
+\]
+Naudinga mokėti ne tik prisiminti, bet ir greitai įrodyti šias savybes:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item lyginis $+$ lyginis $=$ lyginis;
+    \item nelyginis $+$ nelyginis $=$ lyginis;
+    \item lyginis $+$ nelyginis $=$ nelyginis;
+    \item lyginis $\cdot$ bet koks sveikasis $=$ lyginis;
+    \item nelyginis $\cdot$ nelyginis $=$ nelyginis.
+\end{enumerate}
+
+\begin{example}
+
+Įrodykite, kad kiekvienam sveikajam skaičiui $n$ skaičius
+\[
+n(n+1)
+\]
+yra lyginis.
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Skaičiai $n$ ir $n+1$ yra du iš eilės einantys sveikieji skaičiai.
+Vienas iš jų būtinai yra lyginis. Todėl bent vienas iš sandaugos
+\[
+n(n+1)
+\]
+daugiklių dalijasi iš $2$.
+
+Vadinasi,
+\[
+2\mid n(n+1).
+\]
+
+\end{solution}
+
+\begin{example}
+
+Įrodykite: jeigu $n^2$ yra lyginis, tai ir $n$ yra lyginis.
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Įrodysime kontrapoziciją. Tarkime, kad $n$ yra nelyginis. Tuomet
+\[
+n=2k+1
+\]
+su tam tikru $k\in\mathbb Z$.
+
+Tada
+\[
+n^2=(2k+1)^2=4k^2+4k+1
+=2(2k^2+2k)+1.
+\]
+
+Vadinasi, $n^2$ yra nelyginis.
+
+Taigi, jeigu $n^2$ yra lyginis, $n$ negali būti nelyginis, todėl $n$ yra
+lyginis.
+
+\end{solution}
+
+\subsection{Išvada olimpiadininkui}
+
+Kai uždavinyje yra sveikieji skaičiai ir klausiama, ar kažkas
+\textbf{įmanoma}, pirmiausia verta patikrinti lyginumą.
+
+Kartais visas ilgas uždavinys subyra į vieną klausimą:
+
+\begin{center}
+\textbf{„Kas čia yra lyginis, o kas nelyginis?“}
+\end{center}
+
+% ============================================================
+\section{Bendrieji dalikliai ir DBD}
+% ============================================================
+
+Skaičius $d$ vadinamas skaičių $a$ ir $b$ \textbf{bendruoju dalikliu}, jeigu
+\[
+d\mid a
+\qquad\text{ir}\qquad
+d\mid b.
+\]
+Didžiausias teigiamas bendrasis daliklis vadinamas
+\textbf{didžiausiuoju bendruoju dalikliu}. Žymėsime
+\[
+\operatorname{DBD}(a,b).
+\]
+Pavyzdžiui,
+\[
+\operatorname{DBD}(18,30)=6.
+\]
+Jeigu
+\[
+\operatorname{DBD}(a,b)=1,
+\]
+sakome, kad $a$ ir $b$ yra \textbf{tarpusavyje pirminiai}. Pavyzdžiui,
+\[
+\operatorname{DBD}(8,15)=1.
+\]
+
+Tai nereiškia, kad $8$ arba $15$ turi būti pirminiai skaičiai.
+Tai reiškia tik tai, kad jie neturi bendro daliklio, didesnio už $1$.
+
+% ============================================================
+\section{Svarbiausia DBD idėja: skirtumas nekeičia bendrųjų daliklių}
+% ============================================================
+
+Jeigu skaičius $d$ dalija $a$ ir $b$, tai jis dalija ir
+\[
+a-b.
+\]
+Todėl skaičių $a$ ir $b$ bendrieji dalikliai yra tokie patys kaip skaičių
+$a-b$ ir $b$ bendrieji dalikliai. Taigi
+\[
+\boxed{\operatorname{DBD}(a,b)=\operatorname{DBD}(a-b,b)}.
+\]
+Dar bendriau, bet kuriam $q\in\mathbb Z$,
+\[
+\boxed{\operatorname{DBD}(a,b)=\operatorname{DBD}(a-qb,b)}.
+\]
+\textbf{Įrodymas.} Tegul $q\in\mathbb Z$.
+Tarkime, kad $c$ yra bet koks sveikasis skaičius. Tada
+\[
+ c\mid a \text{ ir } c\mid b
+\Longleftrightarrow
+ c\mid (a-qb) \text{ ir } c\mid b.
+\]
+\begin{itemize}
+    \item jei $c\mid a$ ir $c\mid b$, tai $c\mid qb$, o tada
+    \[
+    c\mid (a-qb),
+    \]
+    nes $a-qb=a+(-q)b$.
+
+    \item jei $c\mid (a-qb)$ ir $c\mid b$, tai $c\mid qb$, o tada
+    \[
+    a=(a-qb)+qb,
+    \]
+    taigi $c\mid a$.
+\end{itemize}
+Taigi skaičių $a$ ir $b$ bendrųjų daliklių aibė sutampa su skaičių $a-qb$ ir $b$ bendrųjų daliklių aibe. Todėl jų didžiausias bendrasis daliklis yra vienodas:
+\[
+\operatorname{DBD}(a,b)=\operatorname{DBD}(a-qb,b).
+\]
+\hfill $\square$
+
+Ši savybė yra Euklido algoritmo pagrindas.
+
+\begin{example}
+
+Apskaičiuokite
+\[
+\operatorname{DBD}(252,198).
+\]
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Naudojame Euklido algoritmą:
+\[
+252=198\cdot1+54,
+\]
+todėl
+\[
+\operatorname{DBD}(252,198)=\operatorname{DBD}(198,54).
+\]
+
+Toliau
+\[
+198=54\cdot3+36,
+\]
+todėl
+\[
+\operatorname{DBD}(198,54)=\operatorname{DBD}(54,36).
+\]
+
+Galiausiai
+\[
+54=36\cdot1+18,
+\]
+\[
+36=18\cdot2.
+\]
+
+Taigi
+\[
+\boxed{\operatorname{DBD}(252,198)=18}.
+\]
+
+\end{solution}
+
+% ============================================================
+\section{Kodėl du iš eilės einantys skaičiai yra tarpusavyje pirminiai?}
+% ============================================================
+
+\begin{example}
+
+Įrodykite, kad bet kuriam sveikajam $n$ skaičiai $n$ ir $n+1$ yra
+tarpusavyje pirminiai.
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Tegu $d$ yra bet kuris bendras skaičių $n$ ir $n+1$ daliklis.
+Tuomet
+\[
+d\mid n
+\qquad\text{ir}\qquad
+d\mid(n+1).
+\]
+
+Vadinasi, $d$ dalija ir jų skirtumą:
+\[
+d\mid\bigl((n+1)-n\bigr).
+\]
+
+Taigi
+\[
+d\mid1.
+\]
+
+Vienintelis teigiamas skaičiaus $1$ daliklis yra $1$.
+Todėl
+\[
+\boxed{\operatorname{DBD}(n,n+1)=1}.
+\]
+
+\end{solution}
+
+\subsection{Labai svarbus mąstymo šablonas}
+
+Jeigu reikia rasti arba apriboti
+\[
+\operatorname{DBD}(A,B),
+\]
+bandyk sudaryti paprastesnę tiesinę kombinaciją
+\[
+mA+nB.
+\]
+Bet kuris bendras $A$ ir $B$ daliklis dalys ir šią kombinaciją. Jei pavyksta gauti, pavyzdžiui,
+\[
+mA+nB=5,
+\]
+tai iš karto žinome, kad
+\[
+\operatorname{DBD}(A,B)\mid5.
+\]
+Vadinasi, DBD gali būti tik $1$ arba $5$.
+
+\begin{example}
+
+Įrodykite, kad bet kuriam sveikajam $n$
+\[
+\operatorname{DBD}(2n+1,n+3)
+\]
+gali būti tik $1$ arba $5$.
+
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas}
+
+Tegu
+\[
+d=\operatorname{DBD}(2n+1,n+3).
+\]
+
+Tuomet
+\[
+d\mid(2n+1)
+\qquad\text{ir}\qquad
+d\mid(n+3).
+\]
+
+Todėl $d$ dalija ir tiesinę kombinaciją
+\[
+2(n+3)-(2n+1)=5.
+\]
+
+Taigi
+\[
+d\mid5.
+\]
+
+Kadangi $d$ yra teigiamas, gauname
+\[
+\boxed{d\in\{1,5\}}.
+\]
+
+\end{solution}
+
+% ============================================================
+\section{Dar viena naudinga savybė}
+% ============================================================
+
+Jeigu
+\[
+\operatorname{DBD}(a,b)=1
+\]
+ir
+\[
+a\mid bc,
+\]
+tai
+\[
+a\mid c.
+\]
+Šis teiginys vadinamas \textbf{Euklido lema}. Intuityviai: jeigu $a$ neturi bendrų pirminių daliklių su $b$, tai visi
+$a$ pirminiai dalikliai, esantys sandaugoje $bc$, turi ateiti iš $c$. Pavyzdžiui, kadangi
+\[
+\operatorname{DBD}(8,15)=1
+\]
+ir
+\[
+8\mid 15c,
+\]
+tai būtinai
+\[
+8\mid c.
+\]
+Šią savybę naudosime vėlesniuose skaičių teorijos uždaviniuose.
+
+% ============================================================
+\section{Ką daryti pamačius dalumo uždavinį?}
+% ============================================================
+
+Prieš pradėdamas skaičiuoti, paklausk:
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Ar galiu užrašyti dalumo sąlygą forma
+    \[
+    a=bk?
+    \]
+
+    \item Ar galiu sudėti arba atimti du dalumo teiginius?
+
+    \item Ar galiu sudaryti naudingą tiesinę kombinaciją?
+
+    \item Ar galima didelę išraišką perrašyti forma
+    \[
+    \text{daliklis}\cdot\text{kažkas}+\text{mažas skaičius}?
+    \]
+
+    \item Ar svarbus lyginumas?
+
+    \item Ar verta nagrinėti DBD ir iš skaičių skirtumo gauti mažesnį skaičių?
+
+    \item Ar du skaičiai negali būti tarpusavyje pirminiai?
+\end{enumerate}
+
+% ============================================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui}
+% ============================================================
+
+\subsection{A lygis. Dalumo kalba}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Užrašykite lygybe su sveikuoju skaičiumi $k$, ką reiškia teiginys
+    \[
+    7\mid a.
+    \]
+
+    \item Žinoma, kad $5\mid a$ ir $5\mid b$. Įrodykite, kad
+    \[
+    5\mid(2a+3b).
+    \]
+
+    \item Žinoma, kad $9\mid a$ ir $9\mid b$. Įrodykite, kad
+    \[
+    9\mid(4a-7b).
+    \]
+
+    \item Įrodykite: jei $6\mid a$, tai
+    \[
+    3\mid a
+    \qquad\text{ir}\qquad
+    2\mid a.
+    \]
+
+    \item Įrodykite: jei $a\mid b$ ir $b\mid c$, tai $a\mid c$.
+
+\end{enumerate}
+
+\subsection{B lygis. Lyginumas}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{5}
+
+    \item Įrodykite, kad dviejų iš eilės einančių sveikųjų skaičių suma yra
+    nelyginė.
+
+    \item Įrodykite, kad trijų iš eilės einančių sveikųjų skaičių sandauga
+    yra lyginė.
+
+    \item Įrodykite: jeigu $a+b$ yra nelyginis, tai $a$ ir $b$ yra skirtingo
+    lyginumo.
+
+    \item Įrodykite: jeigu $ab$ yra nelyginis, tai ir $a$, ir $b$ yra
+    nelyginiai.
+
+    \item Įrodykite, kad skaičius
+    \[
+    n^2+n
+    \]
+    yra lyginis su kiekvienu sveikuoju $n$.
+
+\end{enumerate}
+
+\subsection{C lygis. DBD ir Euklido algoritmas}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{10}
+
+    \item Euklido algoritmu apskaičiuokite
+    \[
+    \operatorname{DBD}(414,662).
+    \]
+
+    \item Apskaičiuokite
+    \[
+    \operatorname{DBD}(2026,2025).
+    \]
+    Paaiškinkite, kodėl atsakymą galima gauti beveik be skaičiavimų.
+
+    \item Įrodykite, kad
+    \[
+    \operatorname{DBD}(n,n+2)
+    \]
+    gali būti tik $1$ arba $2$.
+
+    \item Įrodykite, kad
+    \[
+    \operatorname{DBD}(3n+1,n)=1
+    \]
+    su kiekvienu sveikuoju $n$.
+
+    \item Įrodykite, kad
+    \[
+    \operatorname{DBD}(2n+1,3n+2)=1
+    \]
+    su kiekvienu sveikuoju $n$.
+
+\end{enumerate}
+
+\subsection{D lygis. Olimpiadinis taikymas}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \setcounter{enumi}{15}
+
+    \item Raskite visus sveikuosius skaičius $n$, kuriems
+    \[
+    n+5\mid n^2+3n+7.
+    \]
+
+    \item Raskite visus sveikuosius skaičius $n$, kuriems trupmenos
+    \[
+    \frac{n^2+4n+7}{n+2}
+    \]
+    reikšmė yra sveikasis skaičius.
+
+    \item Įrodykite, kad bet kuriam sveikajam $n$
+    \[
+    \operatorname{DBD}(3n+4,5n+7)
+    \]
+    dalija skaičių $1$. Kokią išvadą galima padaryti apie šį DBD?
+
+    \item Įrodykite: jeigu $a$ ir $b$ yra tarpusavyje pirminiai ir abu dalija
+    sveikąjį skaičių $c$, tai
+    \[
+    ab\mid c.
+    \]
+
+    \item Tegu $a$ ir $b$ yra nelyginiai sveikieji skaičiai. Įrodykite, kad
+    skaičius
+    \[
+    a^2-b^2
+    \]
+    dalijasi iš $8$.
+
+\end{enumerate}
+
+% ============================================================
+\section*{Po treniruotės}
+% ============================================================
+
+Atsakykite į klausimus.
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Ką tiksliai reiškia žymėjimas $b\mid a$?
+
+    \item Kodėl iš $d\mid a$ ir $d\mid b$ galime daryti išvadą, kad
+    \[
+    d\mid(ma+nb)
+    \]
+    visiems sveikiesiems $m,n$?
+
+    \item Kodėl DBD uždaviniuose dažnai naudinga atimti skaičius?
+
+    \item Ką pirmiausia verta tikrinti, kai uždavinyje klausiama, ar tam tikra
+    situacija su sveikaisiais skaičiais yra įmanoma?
+
+    \item Kurio uždavinio pagrindinė idėja šiandien buvo netikėčiausia?
+\end{enumerate}
+
+\end{document}
