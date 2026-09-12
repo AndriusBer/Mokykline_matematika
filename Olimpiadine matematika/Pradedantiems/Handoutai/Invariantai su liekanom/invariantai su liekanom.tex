@@ -1,0 +1,190 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Invariantai su liekanomis}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kai neužtenka tik juodos ir baltos}
+
+Praėjusiose temose matėme, kad ieškant nesikeičiančio dydžio (invarianto), labai dažnai užtenka pažiūrėti į \textbf{lyginumą} (dalumą iš 2) arba lentą \textbf{nuspalvinti} keliomis spalvomis.
+
+Tačiau kartais olimpiadiniai uždaviniai neturi jokios lentos ar figūrų – jie duoda tik grynus skaičius, lygtis ar algebrines operacijas. Tokiu atveju mes vis dar galime ieškoti invariantų, tik jie bus pasislėpę skaičių \textbf{liekanose} arba \textbf{algebrinėse formulėse}. 
+
+Šiame lape mes nenaudosime jokios „aukštosios matematikos“ ar sudėtingų simbolių. Viską įrodysime naudodami tik paprastą skliaustų atskleidimą, kurį išmokote mokykloje, ir pamatysime, kaip tai atrakina duris į pačius sunkiausius uždavinius.
+
+% ==========================================
+% 1 STRATEGIJA: KVADRATŲ LIEKANOS
+% ==========================================
+\section{1 strategija: Kvadratų liekanos (Dalyba iš 4)}
+
+Dažnai uždaviniuose prašoma rasti, ar lygtis turi sveikųjų sprendinių, pavyzdžiui, su skaičių kvadratais ($x^2, y^2$). Vietoje to, kad spėliotume skaičius, pažiūrėkime, kaip skaičių kvadratai elgiasi dalijami iš \textbf{4}.
+
+Visi sveikieji skaičiai yra arba \textbf{lyginiai}, arba \textbf{nelyginiai}. 
+\begin{itemize}
+    \item Lyginį skaičių visada galime užrašyti kaip $2k$. Pakelkime jį kvadratu: 
+    \[ (2k)^2 = 4k^2 \]
+    Matome, kad priekyje atsirado 4. Tai reiškia, kad bet kokio lyginio skaičiaus kvadratas \textbf{idealiai dalijasi iš 4} (duoda liekaną $0$).
+    
+    \item Nelyginį skaičių visada galime užrašyti kaip $2k+1$. Pakelkime jį kvadratu (naudodami greitosios daugybos formulę):
+    \[ (2k+1)^2 = 4k^2 + 4k + 1 \]
+    Iš pirmųjų dviejų narių iškelkime 4 prieš skliaustus:
+    \[ 4(k^2 + k) + 1 \]
+    Ką matome? Dalis $4(k^2+k)$ idealiai dalijasi iš 4, o gale lieka \textbf{plius 1}. Vadinasi, bet kokio nelyginio skaičiaus kvadratas dalijamas iš 4 visada duoda \textbf{liekaną 1}.
+\end{itemize}
+
+\textbf{Auksinė taisyklė:} Bet kokį sveikąjį skaičių pakėlus kvadratu ir padalinus iš 4, liekana \textbf{gali būti tik 0 arba 1}. Ji niekada negali būti 2 arba 3!
+
+\begin{example}[Kvadratų suma]
+Ar lygtis $x^2 + y^2 = 2027$ turi sprendinių, jei $x$ ir $y$ yra sveikieji skaičiai?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Paskaičiuokime, kokią liekaną skaičius 2027 duoda dalijamas iš 4. Artimiausias dalus skaičius yra 2024, todėl liekana yra \textbf{3}. Vadinasi, dešinė lygties pusė (dalijant iš 4) duoda liekaną 3.
+
+Dabar pažiūrėkime į kairę pusę: $x^2 + y^2$. Pagal mūsų auksinę taisyklę, kiekvienas kvadratas atskirai gali duoti tik liekaną 0 arba 1. Kokia gali būti dviejų tokių skaičių suma?
+\begin{itemize}
+    \item Jei abu dalijasi: $0 + 0 = 0$
+    \item Jei vienas dalijasi, kitas ne: $0 + 1 = 1$
+    \item Jei abu duoda liekaną 1: $1 + 1 = 2$
+\end{itemize}
+Matome, kad kairė pusė didžiausią liekaną gali duoti \textbf{tik 2}. Kad ir kokius skaičius bepaimtume, kairės pusės liekana niekada nebus lygi 3. Todėl ši lygtis \textbf{neturi jokių sprendinių}. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 2 STRATEGIJA: SKAITMENŲ SUMA
+% ==========================================
+\section{2 strategija: Skaitmenų suma (Dalyba iš 9 ir 3)}
+
+Mokykloje mokėmės taisyklę: „skaičius dalijasi iš 9, jei jo skaitmenų suma dalijasi iš 9“. Bet olimpiadininkai žino platesnę šios taisyklės versiją (invariantą):
+\textbf{„Kokią liekaną skaičius duoda dalijamas iš 9, tiksliai tokią pat liekaną duos ir jo skaitmenų suma.“}
+
+Kodėl tai tiesa? Nereikia jokios magijos, paimkime bet kokį triženklį skaičių (pažymėkime jį raidėmis $abc$):
+\[ \text{Skaičius} = 100a + 10b + c \]
+Išskaidykime šimtus ir dešimtis taip, kad išsiskirtų devynetai:
+\[ (99a + a) + (9b + b) + c \]
+Dabar devynetus perkelkime į priekį, o po vieną $a, b$ ir $c$ palikime gale:
+\[ (99a + 9b) + (a + b + c) \]
+Iš pirmos grupės galime iškelti 9:
+\[ 9(11a + b) + (a + b + c) \]
+Pasižiūrėkite į šį užrašą. Pirmoji dalis visada tobulai dalijasi iš 9. Vadinasi, visą skaičiaus liekaną (likutį) lemia tik antroji dalis, kuri yra tiesiog \textbf{skaitmenų suma} ($a+b+c$)!
+
+\begin{example}[Devynetų prarijimas]
+Lentoje užrašytas milžiniškas skaičius $A = 7^{2026}$. Mokinys suskaičiavo jo skaitmenų sumą ir pavadino ją $B$. Tada suskaičiavo $B$ skaitmenų sumą ir pavadino ją $C$. Taip jis tęsė, kol gavo vienaženklį skaičių $X$. Koks tai skaičius?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Kaskart skaičiuojant skaitmenų sumą, \textbf{skaičiaus liekana dalijant iš 9 niekada nesikeičia}. Vadinasi, paskutinio vienaženklio skaičiaus $X$ liekana bus tokia pati, kaip ir pradinio skaičiaus $7^{2026}$.
+
+Pažiūrėkime, kokias liekanas dalijant iš 9 duoda skaičiaus 7 laipsniai:
+\begin{itemize}
+    \item $7^1 = 7 \implies$ liekana \textbf{7}
+    \item $7^2 = 49 \implies 4+9 = 13 \implies 1+3 = \textbf{4}$
+    \item $7^3 = 343 \implies 3+4+3 = 10 \implies \textbf{1}$
+\end{itemize}
+Matome, kad liekanos sukasi ciklu kas tris: $(7, 4, 1, 7, 4, 1 \dots)$. 
+Mūsų laipsnis yra 2026. Patikrinkime, ar jis dalijasi iš 3 (ciklo ilgio). Skaičiaus 2026 skaitmenų suma yra $2+0+2+6 = 10$, vadinasi, dalinant iš 3, lieka 1. 
+Kadangi 2026 žingsnyje esame 1-oje ciklo vietoje po pilnų ciklų, liekana bus \textbf{7}. 
+
+Kadangi $X$ yra vienaženklis skaičius, kurio liekana iš 9 yra 7, tai tas skaičius ir privalo būti \textbf{7}. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 3 STRATEGIJA: ALGEBRINIAI INVARIANTAI
+% ==========================================
+\section{3 strategija: Paslėptos formulės (Algebrinis konstravimas)}
+
+Kartais dalybos ar liekanų išvis nereikia. Mums tiesiog duota keista taisyklė ir reikia rasti, \textbf{kokia matematinė formulė niekada nesikeičia}. 
+
+\begin{example}[Plius vienas triukas]
+Lentoje užrašyti skaičiai nuo $1$ iki $100$. Vienu ėjimu leidžiama nutrinti bet kokius du skaičius $a$ ir $b$, o vietoje jų parašyti vieną skaičių: $a + b + ab$. Šis procesas tęsiamas, kol lentoje lieka tik vienas skaičius. Koks tai skaičius?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+
+Atrodytų, priklausomai nuo to, kokia tvarka trinsime skaičius, galime gauti daugybę skirtingų rezultatų. Tačiau pažiūrėkime, kaip ši trynimo taisyklė veikia iš tiesų.
+
+\textbf{1 žingsnis: Kaip keičiasi skaičiai?}
+Tarkime, lentoje nutriname du skaičius $a$ ir $b$. Pagal taisyklę, vietoje jų parašome naują skaičių, pavadinkime jį $N$.
+Mūsų taisyklė sako: $N = a + b + ab$.
+
+\textbf{2 žingsnis: Ieškome paslėptos struktūros}
+Ši išraiška atrodo negraži, tačiau olimpiadininkai turi triuką – pabandykime prie šio naujo skaičiaus mintyse pridėti vienetą ir atlikti grupavimą (iškelti $b$):
+\[ N + 1 = (a + b + ab) + 1 \]
+\[ N + 1 = a + 1 + b(1 + a) \]
+Skliausteliai $(a+1)$ kartojasi, todėl iškeliame juos į priekį:
+\[ N + 1 = (a+1)(b+1) \]
+
+\textbf{3 žingsnis: Kas yra invariantas?}
+Ką tik įrodėme labai svarbų dalyką: \textbf{naujas skaičius (padidintas vienetu) yra lygus senųjų skaičių (padidintų vienetu) sandaugai}.
+Tai reiškia, kad jeigu mes prie absoliučiai visų lentoje esančių skaičių mintyse pridėsime po 1 ir visus juos sudauginsime, ši didžiulė sandauga \textbf{niekada nesikeis}. 
+Trinant skaičius, tiesiog du dauginamieji, pavyzdžiui, $(a+1)$ ir $(b+1)$, susijungia į vieną bendrą dauginamąjį $(N+1)$. Bendra visų skaičių sandauga išlieka stabili!
+
+\textbf{4 žingsnis: Skaičiuojame rezultatą}
+Pradžioje lentoje turėjome skaičius $1, 2, 3, \dots, 100$. 
+Prie visų pridedame po 1 ir juos sudauginame. Gauname pradinį invariantą:
+\[ 2 \cdot 3 \cdot 4 \cdot \dots \cdot 101 = 101! \]
+Žaidimo pabaigoje lentoje liks tik vienas vienintelis skaičius (pavadinkime jį $X$). 
+Kadangi mūsų invariantas (padidintų skaičių sandauga) viso žaidimo metu nesikeitė, prie šio paskutinio skaičiaus pridėję 1, privalome gauti tą patį rezultatą:
+\[ X + 1 = 101! \]
+Vadinasi, galutinis skaičius lentoje visada bus $101! - 1$. \hfill $\square$
+\end{solution}
+
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+Pirmajam dešimtukui jums prireiks tik mokyklinių žinių, tačiau pamažu uždaviniai sunkės iki pačių rimčiausių olimpiadų. Ieškokite liekanų ir formulių, kurios atlaiko visas transformacijas!
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Ar skaičius, besibaigiantis skaitmeniu 2, gali būti kokio nors sveikojo skaičiaus kvadratas?
+    \item Lentoje surašyti skaičiai nuo 1 iki 100. Vienu ėjimu leidžiama nutrinti bet kokius du skaičius ir vietoje jų parašyti jų \textbf{sumą}. Koks skaičius liks pačioje pabaigoje ir ar tai priklauso nuo trynimo tvarkos?
+    \item Lentoje surašyti skaičiai nuo 1 iki 10. Vienu ėjimu nutrinate du skaičius $a$ ir $b$, o vietoje jų parašote $a + b + 1$. Šis procesas kartojamas, kol lieka 1 skaičius. Koks tai skaičius?
+    \item Ar lygtis $x^2 + y^2 = 1000003$ turi sprendinių, kur $x, y$ – sveikieji skaičiai?
+    \item Lentoje užrašytas skaičius, kurio skaitmenų suma lygi 2027. Įrodykite, kad šis skaičius jokiu būdu negali būti tobulas kvadratas ($x^2$).
+    \item Mokinys paėmė skaičių 123456 ir bet kaip sumaišė jo skaitmenis vietomis. Ar gali gautas naujas skaičius būti pirminis?
+    \item Lentoje užrašyti visi sveikieji skaičiai nuo 1 iki 20. Leidžiama nutrinti skaičius $a$ ir $b$, ir vietoj jų parašyti $a \cdot b$. Koks skaičius liks pabaigoje?
+    \item Apskritime auga 7 medžiai. Ant kiekvieno iš jų tupi po vieną paukštį. Kiekvieną minutę bet kokie du paukščiai perkeliami: vienas paukštis perskrenda ant gretimo medžio pagal laikrodžio rodyklę, o kitas – prieš laikrodžio rodyklę. Ar įmanoma, kad po kurio laiko visi 7 paukščiai tupės ant vieno medžio?
+    \item Įrodykite, kad lygtis $x^2 - 3y^2 = 17$ neturi sveikųjų sprendinių.
+    \item Lentoje surašyta 100 vienetų. Vienu ėjimu pasirenkami bet kokie du skaičiai $a$ ir $b$, jie nutrinami ir vietoje jų parašomas skaičius $a + b - 1$. Koks skaičius liks pabaigoje?
+    \item Lentoje užrašyta 100 vienetų. Vienu ėjimu leidžiama nutrinti du skaičius $a$ ir $b$, o vietoje jų parašyti $a \cdot b + a + b$. Koks skaičius liks lentoje pačioje pabaigoje?
+    \item Įrodykite, kad lygtis $x^3 + y^3 = 4$ neturi sveikųjų sprendinių.
+    \item Ar lygtis $x^2 + y^2 + z^2 = 2023$ turi sveikųjų sprendinių?
+    \item Saloje gyvena 13 raudonų, 15 žalių ir 17 mėlynų chameleonas. Susitikus dviem skirtingų spalvų chameleonams, jie abu pakeičia spalvą į trečiąją (pvz. raudonas ir žalias tampa dviem mėlynais). Ar po kurio laiko gali visi chameleonas tapti vienos spalvos?
+    \item Eilutėje surašyti skaičiai nuo 1 iki 100. Vienu ėjimu galima sukeisti vietomis \textbf{bet kokius du} skaičius (nebūtinai stovinčius greta). Ar galima atlikus lygiai 2027 tokius sukeitimus vėl gauti pradinę eilutę $1, 2, \dots, 100$?
+    \item Žaidėjas turi skaičių 2026. Vienu ėjimu jis gali padauginti turimą skaičių iš 2, iš 3, arba perstatyti jo skaitmenis bet kokia tvarka. Ar gali jis po kelių ėjimų gauti skaičių, kurio visi skaitmenys yra vienetai?
+    \item Lentoje surašyti skaičiai $1, \frac{1}{2}, \frac{1}{3}, \dots, \frac{1}{100}$. Vienu ėjimu nutrinate du skaičius $a$ ir $b$, ir parašote $a + b + a \cdot b$. Koks skaičius liks pabaigoje?
+    \item Yra žinoma, kad $2^n$ (dvejeto laipsnis) yra milžiniškas skaičius. Ar gali šis skaičius baigtis skaitmenimis $2026$?
+    \item Fibonačio seka prasideda $1, 1, 2, 3, 5, 8, 13, 21 \dots$ Kiekvienas skaičius yra dviejų prieš tai buvusių suma. Ar gali šioje sekoje būti skaičius, kuris idealiai dalijasi iš 8, o iš karto po jo sekantis skaičius irgi dalijasi iš 8?
+    \item Skaičius $A$ yra užrašytas naudojant tik skaitmenis $1$ ir $2$. Ar gali šis skaičius tobulai dalytis iš 25?
+    \item Lentoje užrašytas skaičius 1. Leidžiama atlikti dvi operacijas: padauginti skaičių iš 3, arba sumaišyti jo skaitmenis. Ar galima tokiais veiksmais gauti skaičių $9999999999$?
+    \item Įrodykite, kad lygtis $x^2 + y^2 = 3(u^2 + v^2)$ neturi jokių kitų sveikųjų sprendinių, išskyrus visus nulius ($x=y=u=v=0$).
+    \item Lentoje surašyti du skaičiai: 1 ir 2. Vienu ėjimu leidžiama pasirinkti bet kokius du lentoje esančius skaičius $a$ ir $b$, juos nutrinti, o vietoje jų parašyti skaičius $a+b$ ir $a-b$. Taip padaroma daug kartų. Ar po to lentoje gali būti skaičiai 2026 ir 2027?
+    \item Tegul $S(n)$ yra skaičiaus $n$ skaitmenų suma. Išspręskite lygtį: $n + S(n) = 2027$.
+    \item Skaičius $A$ sudarytas iš 2026 vienetų ir 2026 dvejetų (jokia konkrečia tvarka). Ar šis milžiniškas skaičius gali būti tobulas kvadratas?
+    \item Ar egzistuoja penki tokie sveikieji skaičiai $x, y, z, u, v$, kad galiotų lygybė: $x^2 + y^2 + z^2 + u^2 + v^2 = 2027$?
+    \item Lentoje ratu surašyti 4 skaičiai $a, b, c, d$. Vienu ėjimu juos visus pakeičiame atitinkamai į jų kaimynų skirtumų modulius: $|a-b|, |b-c|, |c-d|, |d-a|$. Įrodykite, kad po kurio laiko (atliekant šią operaciją daug kartų) visi 4 skaičiai garantuotai taps nuliais.
+    \item Tegul $P(n)$ žymi skaičiaus $n$ skaitmenų sandaugą (pvz., $P(25) = 10$). Ar egzistuoja toks sveikasis skaičius $n$, kad $P(n) = n^2 - 10n - 22$?
+    \item Lentoje užrašyti trys skaičiai: 2, $\sqrt{2}$, $\frac{1}{\sqrt{2}}$. Vienu ėjimu leidžiama pasirinkti bet kokius du skaičius (pavadinę juos $a$ ir $b$), juos nutrinti, ir vietoj jų įrašyti $\frac{a+b}{\sqrt{2}}$ ir $\frac{a-b}{\sqrt{2}}$. Ar atliekant šiuos veiksmus įmanoma gauti skaičių $1+ \sqrt{2}$?
+    \item Lentoje užrašyti skaičiai nuo 1 iki 2026. Leidžiama pasirinkti bet kokius du skaičius $a$ ir $b$, juos nutrinti, ir vietoj jų parašyti $a^2 - b$. (Pastaba: rašomas tik vienas skaičius, tad bendras skaičių kiekis mažėja). Ar pačioje pabaigoje gali likti nulis?
+\end{enumerate}
+
+\end{document}
