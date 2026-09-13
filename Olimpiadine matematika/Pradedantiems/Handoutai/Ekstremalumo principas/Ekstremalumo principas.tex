@@ -1,0 +1,137 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Ekstremalumo principas}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra Ekstremalumo principas?}
+
+Sprendžiant uždavinius, kuriuose yra daug elementų (skaičių, taškų, figūrų, grafų viršūnių), dažnai būna sunku apžvelgti visą sistemą. \textbf{Ekstremalumo principas} sako: užuot bandę suprasti visumą, paimkite \textbf{patį „ekstremaliausią“ sistemos elementą}. 
+
+Tai gali būti pats didžiausias arba mažiausias skaičius, labiausiai į kairę nutolęs taškas, ilgiausia atkarpa, mažiausias kampas arba ilgiausias maršrutas. Kadangi šis elementas yra kraštutinis, jam galioja griežti apribojimai, kurie dažniausiai iškart priveda prie prieštaravimo arba leidžia išnarplioti visą uždavinį.
+
+% ==========================================
+% 1 STRATEGIJA: ALGEBRINIAI EKSTREMUMAI
+% ==========================================
+\section{1 strategija: Didžiausias ir mažiausias skaičius}
+
+Skaičių lentelėse ir sekose ekstremalumo principas dažniausiai taikomas ieškant absoliutaus maksimumo arba minimumo. Jei parodysime, kad mažiausias elementas negali būti mažesnis už savo kaimynus, įrodysime, kad visi elementai yra vienodi.
+
+\begin{example}[Begalinė šachmatų lenta]
+Begalinės languotos lentos kiekviename langelyje įrašytas sveikasis teigiamas skaičius. Yra žinoma, kad kiekvienas skaičius yra lygiai keturių savo kaimynų (viršuje, apačioje, kairėje ir dešinėje esančių skaičių) aritmetinis vidurkis. Įrodykite, kad visi lentoje įrašyti skaičiai yra lygūs.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Kadangi visi skaičiai yra sveikieji teigiami (didesni už nulį), šioje begalinėje lentoje privalo egzistuoti \textbf{pats mažiausias skaičius}. Pavadinkime jį $m$. (Jei mažiausių skaičių yra keli, paimkime bet kurį iš jų).
+
+Pagal sąlygą, skaičius $m$ yra keturių savo kaimynų $a, b, c, d$ aritmetinis vidurkis:
+\[ m = \frac{a + b + c + d}{4} \]
+Kadangi $m$ yra pats mažiausias skaičius visoje lentoje, visi jo kaimynai turi būti ne mažesni už jį: $a \ge m, b \ge m, c \ge m, d \ge m$.
+
+Jei bent vienas iš kaimynų būtų griežtai didesnis už $m$, tai jų vidurkis taip pat taptų griežtai didesnis už $m$. Tačiau vidurkis yra lygiai $m$. Tai įmanoma tik vienu atveju: kai \textbf{visi keturi kaimynai yra lygūs} $m$ ($a=b=c=d=m$).
+Taigi, visi $m$ kaimynai taip pat yra lygūs $m$. Tada ir jų kaimynai turi būti lygūs $m$. Tęsiant šį samprotavimą, visi begalinės lentos skaičiai privalo būti lygūs $m$. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 2 STRATEGIJA: GEOMETRINIAI EKSTREMUMAI
+% ==========================================
+\section{2 strategija: Tolimiausi ir artimiausi taškai}
+
+Geometrijoje ekstremumai dažniausiai yra atstumai, plotai arba kampai. Pradėti spręsti nuo pačios trumpiausios atkarpos arba pačio kairiausio taško yra viena populiariausių olimpiadinių taktikų.
+
+\begin{example}[Vidurio taškų paradoksas]
+Plokštumoje pažymėtas baigtinis taškų skaičius. Yra žinoma, kad kiekvienas iš šių taškų yra atkarpos, jungiančios kažkuriuos kitus du pažymėtus taškus, vidurys. Įrodykite, kad tokia situacija yra neįmanoma.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Užuot nagrinėję visą taškų sistemą ir bandę juos jungti, pasinaudokime ekstremalumo principu. Kadangi taškų skaičius yra baigtinis, plokštumoje privalo egzistuoti \textbf{taškas, esantis labiausiai nutolęs į kairę}. (Tiksliau – taškas, kurio $x$ koordinatė yra pati mažiausia). Pavadinkime jį $A$. Jei tokių taškų yra keli, iš jų išsirinkime tą, kuris yra žemiausiai (mažiausia $y$ koordinatė).
+
+Pagal sąlygą, taškas $A$ privalo būti atkarpos tarp kažkokių kitų dviejų taškų $B$ ir $C$ vidurys. 
+Tačiau, jei $A$ yra atkarpos $BC$ vidurys, jis privalo gulėti \textbf{tarp} taškų $B$ ir $C$. Tai reiškia, kad bent vienas iš taškų $B$ arba $C$ privalo būti dar labiau nutolęs į kairę negu $A$ (turėti dar mažesnę $x$ koordinatę). 
+
+Gavome prieštaravimą: $A$ buvo išrinktas kaip labiausiai į kairę nutolęs taškas, bet atsirado taškas, kuris yra dar kairiau. Vadinasi, tokia taškų konfigūracija egzistuoti negali. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 3 STRATEGIJA: KOMBINATORINIAI EKSTREMUMAI (GRAFAI)
+% ==========================================
+\section{3 strategija: Ilgiausias maršrutas (Grafų teorija)}
+
+Grafuose (taškų ir linijų sistemose) ekstremalumo principas idealiai tinka ieškant ciklų arba uždarų kelių. Mes tiesiog pasirenkame \textbf{patį ilgiausią įmanomą kelią} neaplankant to paties taško du kartus.
+
+\begin{example}[Uždaras ciklas grafe]
+Šalyje yra kelios dešimtys miestų, sujungtų keliais. Yra žinoma, kad iš kiekvieno miesto išeina \textbf{bent 2} keliai. Įrodykite, kad šioje šalyje galima pradėti kelionę iš vieno miesto ir, keliaujant keliais, sugrįžti į jį nevažiuojant tuo pačiu keliu du kartus (t. y. egzistuoja ciklas).
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Šalyje miestų skaičius baigtinis, todėl visi įmanomi maršrutai, kuriuose neaplankomas tas pats miestas du kartus, taip pat turi baigtinį ilgį. 
+Paimkime \textbf{patį ilgiausią įmanomą maršrutą} šioje šalyje, kuriame miestai nesikartoja. Pavadinkime šį maršrutą $v_1 \to v_2 \to v_3 \dots \to v_k$. 
+
+Pažiūrėkime į paskutinį šio maršruto miestą $v_k$. Pagal sąlygą, iš jo išeina bent 2 keliai. Vienas kelias grįžta atgal į $v_{k-1}$. Vadinasi, turi būti dar bent vienas kelias į kažkokį miestą $X$.
+Kur yra miestas $X$? 
+Jei miestas $X$ nepriklausytų mūsų maršrutui, mes galėtume jį prijungti ir gautume dar ilgesnį maršrutą ($v_1 \dots \to v_k \to X$). Bet tai neįmanoma, nes mes jau paėmėme \textbf{patį ilgiausią}.
+Vadinasi, miestas $X$ privalo būti vienas iš mūsų jau aplankytų miestų šiame maršrute (pvz., $v_2$). Bet tokiu atveju mes ką tik radome uždarą ciklą: $v_2 \to v_3 \dots \to v_k \to v_2$! Ciklas garantuotai egzistuoja. \hfill $\square$
+\end{solution}
+
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    
+    % --- Lengvi (Idėjos formavimas) ---
+    \item Apskritime užrašyta 10 realiųjų skaičių. Yra žinoma, kad kiekvienas skaičius yra lygus savo dviejų kaimynų (iš kairės ir iš dešinės) aritmetiniam vidurkiui. Įrodykite, kad visi 10 skaičių yra lygūs.
+    \item Tiesėje yra baigtinis skaičius atkarpų. Yra žinoma, kad bet kurios dvi atkarpos turi bent vieną bendrą tašką (kertasi). Įrodykite, kad egzistuoja bent vienas taškas, kuris priklauso \textbf{visoms} atkarpoms vienu metu.
+    \item Lentoje $n \times m$ surašyti skirtingi skaičiai. Iš kiekvienos eilutės išrenkamas pats didžiausias skaičius, o iš visų šių išrinktų skaičių atrenkamas pats mažiausias (pavadinkime jį $A$). Tada iš kiekvieno stulpelio išrenkamas pats mažiausias skaičius, o iš jų atrenkamas pats didžiausias (pavadinkime jį $B$). Įrodykite, kad visada galioja nelygybė $A \ge B$.
+    \item Plokštumoje stovi $n$ žmonių (skaičius $n$ yra nelyginis). Atstumai tarp visų žmonių porų yra \textbf{skirtingi}. Vienu metu visi išsitraukia vandens pistoletus ir iššauna į \textbf{sau artimiausią} kaimyną. Įrodykite, kad bent vienas žmogus liks sausas.
+    \item Šachmatų turnyre, kuriame nė viena partija nesibaigia lygiosiomis, kiekvienas žaidėjas sužaidė su kiekvienu. Įrodykite, kad egzistuoja žaidėjas (pavadinkime jį čempionu), kuris prieš kiekvieną likusį žaidėją laimėjo pats, arba laimėjo prieš kažką, kas laimėjo prieš tą žaidėją.
+    \item Šachmatų lentos $8 \times 8$ langeliuose įrašyti skaičiai $1, 2, \dots, 64$ (po vieną skaičių kiekviename langelyje). Įrodykite, kad egzistuoja du kaimyniniai langeliai (turintys bendrą kraštinę), kuriuose įrašytų skaičių skirtumas yra ne mažesnis kaip 5.
+    
+    % --- Vidutiniai (Kirčiai, grafai ir atstumai) ---
+    \item Parlamente kiekvienas narys turi ne daugiau kaip 3 priešus. Įrodykite, kad visą parlamentą galima padalyti į dvejus rūmus (dvi grupes) taip, kad kiekvienas narys savo rūmuose turėtų ne daugiau kaip 1 priešą.
+    \item Lentos $m \times n$ langeliuose įrašyti bet kokie realieji skaičiai. Vienu ėjimu leidžiama pasirinkti bet kurią eilutę arba bet kurį stulpelį ir \textbf{pakeisti visų jame esančių skaičių ženklus} į priešingus. Įrodykite, kad po baigtinio skaičiaus tokių ėjimų galima pasiekti, jog kiekvienos eilutės ir kiekvieno stulpelio elementų suma būtų neneigiama ($\ge 0$).
+    \item Plokštumoje atsitiktinai pažymėta $2n$ taškų. Jokie trys taškai neguli vienoje tiesėje. Iš jų lygiai $n$ taškų nuspalvinti raudonai, o likę $n$ – mėlynai. Įrodykite, kad visus raudonus taškus galima sujungti su mėlynais (kiekvieną su kiekvienu) $n$ atkarpų taip, kad jokios dvi atkarpos \textbf{nesikirstų}.
+    \item Grafe (miestų ir kelių tinkle) kiekviena viršūnė turi laipsnį bent $k$ (iš kiekvieno miesto išeina bent $k$ kelių). Įrodykite, kad šiame grafe garantuotai egzistuoja uždaras ciklas, kurio ilgis yra bent $k+1$.
+    \item Plokštumoje nubrėžtas baigtinis skaičius tiesių. Kiekvienos dvi tiesės kertasi, bet jokios trys tiesės nesikerta viename bendrame taške. Tiesės plokštumą padalija į daugybę sričių. Įrodykite, kad tarp šių sričių garantuotai egzistuoja sritis, kuri yra trikampis.
+    \item Taisyklingojo 100-kampio viršūnėse surašyti skaičiai nuo 1 iki 100 (bet kokia tvarka). Įrodykite, kad atsiras tokios trys iš eilės einančios viršūnės, kuriose esančių skaičių suma yra ne mažesnė kaip 152.
+    \item Lentoje užrašyta 10 teigiamų skaičių. Vienu ėjimu leidžiama pasirinkti bet kuriuos du skaičius $a$ ir $b$ (kur $a \ne b$) ir juos abu pakeisti jų aritmetiniu vidurkiu $\frac{a+b}{2}$. Įrodykite, kad po baigtinio skaičiaus tokių ėjimų neįmanoma sugrįžti prie pradinio skaičių rinkinio.
+    \item Medis (grafas, kuriame nėra ciklų) turi bent dvi viršūnes. Įrodykite, kad šiame medyje yra bent dvi \textit{kabančios} viršūnės (viršūnės, turinčios lygiai vieną kaimyną).
+    
+    % --- Sunkūs (Geometrija, Plotai ir Iškilieji apvalkalai) ---
+    \item Plokštumoje pažymėtas baigtinis skaičius taškų. Yra žinoma, kad bet kokių trijų pažymėtų taškų sudaryto trikampio plotas yra ne didesnis už 1. Įrodykite, kad visus šiuos taškus galima uždengti vienu dideliu trikampiu, kurio plotas lygus 4.
+    \item Plokštumoje pažymėti 5 taškai. Jokie trys iš jų neguli vienoje tiesėje. Įrodykite, kad iš jų visada galima išrinkti lygiai 4 taškus, kurie sudaro \textbf{iškiląjį keturkampį}.
+    \item Plokštumoje išdėstyta $n$ taškų. Visi atstumai tarp jų porų yra skirtingi. Kiekvienas taškas sujungtas atkarpa su jam artimiausiu tašku. Įrodykite, kad gautame brėžinyje \textbf{nėra jokių susikertančių atkarpų}.
+    \item Remdamiesi ankstesnio uždavinio sąlyga (kai taškai sujungiami su atitinkamai artimiausiais kaimynais), įrodykite, kad iš jokio taško negali išeiti \textbf{daugiau kaip 5 atkarpos}.
+    \item Daugiakampis yra iškilasis. Yra žinoma, kad kiekvienas jo kampas ir kiekviena kraštinė yra skirtingi. Įrodykite, kad tarp jo kraštinių galima rasti bent dvi tokias, kurios yra griežtai ilgesnės už abi su jomis besiliečiančias (gretimas) kraštines.
+    \item Erdvinio daugiakampio (uždaros erdvės laužtės) viršūnės erdvėje nesutampa, ir jokios dvi negretimos kraštinės nesikerta. Įrodykite, kad bent viena iš šio daugiakampio plokštuminių projekcijų taip pat bus daugiakampis be susikertančių kraštinių.
+    \item Plokštumoje duotas baigtinis taškų skaičius. Bet kurios trys tiesės, einančios per kažkuriuos du taškus iš šio rinkinio, nesikerta viename taške. Įrodykite, kad atsiras taškas, per kurį eina ne daugiau kaip trys tokios tiesės.
+    
+    % --- Olimpiadiniai „Bossai“ (Begaliniai nusileidimai ir Sylverster-Gallai) ---
+    \item \textbf{(Begalinio nusileidimo klasika)} Įrodykite, kad lygtis $x^2 + y^2 = 3(z^2 + w^2)$ neturi jokių kitų sveikųjų sprendinių, išskyrus sprendinį $(0, 0, 0, 0)$.
+    \item Išspręskite lygtį natūraliaisiais skaičiais: $x^3 + 2y^3 = 4z^3$.
+    \item \textbf{(Sylvester-Gallai teorema)} Plokštumoje pažymėtas baigtinis taškų skaičius. Yra žinoma, kad ne visi šie taškai guli vienoje tiesėje. Įrodykite, kad būtinai egzistuoja tiesė, kuri eina per \textbf{lygiai du} iš šių pažymėtų taškų.
+    \item Begalinio languoto popieriaus lapo kiekviename langelyje įrašytas \textbf{natūralusis} skaičius. Yra žinoma, kad kiekvienas skaičius yra griežtai didesnis už bent vieną iš savo keturių kaimynų (viršuje, apačioje, kairėje, dešinėje). Ar gali tokia lentelė egzistuoti?
+    \item Turnyre, kuriame nė viena partija nesibaigia lygiosiomis, kiekvienas žaidėjas sužaidė su kiekvienu kitame lygiai po vieną partiją. Įrodykite, kad visus žaidėjus galima išrikiuoti į vieną eilę taip, kad kiekvienas žaidėjas toje eilėje būtų laimėjęs partiją prieš patį artimiausią už jo stovintį žaidėją.
+    \item Plokštumoje pažymėta $N$ taškų ($N \ge 3$). Atstumas tarp bet kurių dviejų iš jų yra ne didesnis už 1. Įrodykite, kad visus šiuos taškus galima uždengti skrituliu, kurio spindulys lygus $\frac{1}{\sqrt{3}}$.
+    \item Yra 100 monetų, kurių svoriai yra skirtingi. Turite svirtines svarstykles (be svarsčių), kuriomis galima palyginti bet kurių dviejų monetų svorius. Įrodykite, kad pačią sunkiausią ir pačią lengviausią monetas garantuotai galima surasti atlikus ne daugiau kaip 148 svėrimus.
+    \item Plokštumoje nubrėžtos $n$ tiesių. Jokios dvi iš jų nėra lygiagrečios ir jokios trys nesikerta viename bendrame taške. Įrodykite, kad šios tiesės padalija plokštumą į sritis, tarp kurių yra \textbf{bent} $n-2$ trikampiai.
+    \item \textbf{(Konvėjaus kareiviai)} Begalinės languotos lentos visuose langeliuose, esančiuose žemiau tam tikros horizontalios linijos (ir pačioje linijoje), stovi po vieną figūrėlę. Vienu ėjimu figūrėlė gali peršokti per bet kurią gretimą (horizontaliai ar vertikaliai) figūrėlę į tuščią langelį, o ta peršokta figūrėlė yra nuimama nuo lentos. Įrodykite, kad atliekant bet kokius įmanomus šuolius, jokia figūrėlė niekada nepasieks 5-osios eilutės, esančios virš pradinės horizontalios linijos.
+\end{enumerate}
+
+\end{document}

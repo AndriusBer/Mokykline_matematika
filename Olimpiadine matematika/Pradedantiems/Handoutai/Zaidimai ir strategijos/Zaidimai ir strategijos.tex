@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Matematiniai žaidimai ir strategijos}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Olimpiadinių žaidimų paslaptis}
+
+Įprastuose stalo žaidimuose ar kortų partijose dažnai viską lemia sėkmė: išmestas kauliukas, ištraukta korta ar varžovo klaida. Tačiau olimpiadiniai matematiniai žaidimai yra kitokie. Čia \textbf{nėra jokio atsitiktinumo veiksnio}. 
+
+Abu žaidėjai mato absoliučiai visą informaciją, žaidimo taisyklės yra griežtos, o žaidėjų veiksmai – paremti logika. Tokiuose žaidimuose laimėtojas (jei nedaro klaidų) yra aiškus \textbf{dar prieš pradedant žaisti}. Mūsų tikslas yra surasti \textbf{laiminčią strategiją} – aiškų algoritmą, kurio laikydamasis vienas iš žaidėjų garantuotai laimi, nepaisant to, kaip genialiai žaistų jo priešininkas.
+
+Svarbiausias klausimas sprendžiant žaidimų uždavinius yra ne „Kaip žaisti?“, o \textbf{„Kas laimi – pirmasis ar antrasis žaidėjas, ir kokia jo strategija?“}
+
+% ==========================================
+% 1 STRATEGIJA: SIMETRIJA
+% ==========================================
+\section{1 strategija: Simetrija (Kopijavimas)}
+
+Pats paprasčiausias ir elegantiškiausias būdas nepalikti varžovui jokių galimybių – pasinaudoti lentos ar situacijos simetrija. Jei galime atkartoti kiekvieną varžovo ėjimą simetriškai, užsitikriname, kad po jo ėjimo \textbf{visada} turėsime kur paeiti.
+
+\begin{example}[Monetos ant apvalaus stalo]
+Du žaidėjai pakaitomis deda po vienodą monetą ant apvalaus stalo. Monetas galima dėti bet kur, svarbu, kad jos nepersidengtų ir neišsikištų už stalo krašto. Žaidėjas, kuris nebegali padėti monetos, pralaimi. Kas laimi šį žaidimą?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Laimi \textbf{pirmasis} žaidėjas. 
+Savo pirmuoju ėjimu jis privalo padėti monetą lygiai į \textbf{stalo centrą}.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Stalas
+    \draw[thick, fill=blue!5] (0,0) circle (3cm);
+    \node at (0, 3.3) {\footnotesize Stalas};
+    
+    % Pirmoji moneta centre
+    \draw[thick, fill=yellow!40] (0,0) circle (0.4cm);
+    \node at (0,0) {$1$};
+    
+    % Varžovo moneta
+    \draw[thick, fill=red!40] (-1.5, 1) circle (0.4cm);
+    \node at (-1.5, 1) {$V$};
+    
+    % Mūsų atsakomoji moneta
+    \draw[thick, fill=green!40] (1.5, -1) circle (0.4cm);
+    \node at (1.5, -1) {$M$};
+    
+    % Simetrijos linija
+    \draw[dashed, gray] (-1.5, 1) -- (1.5, -1);
+\end{tikzpicture}
+\end{center}
+
+Nuo šio momento, kad ir kur padėtų monetą antrasis žaidėjas (raudona moneta V), pirmasis žaidėjas visada deda savo monetą \textbf{simetriškai stalo centro atžvilgiu} (žalia moneta M). 
+
+Kadangi po pirmojo ėjimo stalas yra tobulai simetriškas, jei varžovas randa laisvą vietą savo monetai, tai jai simetriška vieta kitoje centro pusėje \textbf{garantuotai bus laisva}. 
+Taip žaidžiant, pirmasis žaidėjas visada turės atsakomąjį ėjimą. Kadangi stalo plotas yra baigtinis, anksčiau ar vėliau vietos nebeliks, ir žaidėjas, kuris neberas vietos, neišvengiamai bus antrasis. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 2 STRATEGIJA: ANALIZĖ NUO GALO
+% ==========================================
+\section{2 strategija: Analizė nuo galo (Bachet žaidimas)}
+
+Dažnai būna sunku sugalvoti, ką daryti žaidimo pradžioje, kai variantų yra galybė. Olimpiadinė paslaptis: \textbf{pradėkite galvoti nuo žaidimo pabaigos}. Atsukite laiką atgal ir išsiaiškinkite, į kokias pozicijas privalote įstumti priešininką, kad jis pralaimėtų. Šios pozicijos vadinamos \textit{pralaiminčiomis pozicijomis}.
+
+\begin{example}[21 akmenukas]
+Ant stalo guli 21 akmenukas. Du žaidėjai pakaitomis ima 1, 2 arba 3 akmenukus. Laimi tas, kuris paima paskutinį akmenuką. Kas laimi šį žaidimą ir kaip jis turėtų žaisti?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Atlikime analizę nuo galo. Mūsų tikslas – paimti paskutinį akmenuką.
+Jei mūsų ėjimo metu ant stalo bus likę 1, 2 arba 3 akmenukai, mes juos paimsime ir iškart laimėsime. Vadinasi, norime, kad \textbf{priešininkui atitektų ėjimas, kai ant stalo yra lygiai 4 akmenukai}. Kodėl? Nesvarbu, kiek jis paims (1, 2 ar 3), po jo ėjimo liks 3, 2 arba 1 akmenukas, kuriuos paimsime mes!
+
+Taigi, $4$ yra priešininkui „pralaiminti“ pozicija. 
+Norėdami garantuoti, kad varžovas gaus 4 akmenukus, prieš tai turime jam palikti $8$ akmenukus. Dar prieš tai – $12$, dar prieš tai – $16$, o pačioje pradžioje – $20$.
+
+Išvada: \textbf{laimi pirmasis žaidėjas}. 
+Savo pirmuoju ėjimu jis paima lygiai \textbf{1 akmenuką} (ant stalo lieka 20). 
+Toliau, jei antrasis žaidėjas paima $x$ akmenukų, pirmasis visada paima $4-x$ akmenukų. Taip po kiekvieno pirmojo žaidėjo ėjimo akmenukų skaičius ant stalo bus skaičiaus 4 kartotinis ($16 \to 12 \to 8 \to 4 \to 0$). Pirmasis žaidėjas paims paskutinį akmenuką! \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 3 STRATEGIJA: INVARIANTAS IR PARITETAS
+% ==========================================
+\section{3 strategija: „Apgavystės“ žaidimai (Invariantas)}
+
+Kartais žaidimo kūrėjai paspendžia mums spąstus. Žaidimas atrodo sudėtingas, pilnas pasirinkimų ir strategijų, bet iš tikrųjų jo baigtis apskritai \textbf{nepriklauso nuo žaidėjų ėjimų}! Žaidimas yra tarsi nulemtas Invarianto – kad ir ką darytum, rezultatas bus tas pats. Čia vėl praverčia lyginumas (paritetas).
+
+\begin{example}[Šokolado laužymas]
+Yra $6 \times 8$ dydžio šokolado plytelė. Vienu ėjimu žaidėjas gali paimti bet kurį turimą šokolado gabalą ir perlaužti jį per tiesią liniją (dalijimo griovelį) į dvi dalis. Laimi tas, kuris atlieka paskutinį įmanomą laužymą (kai lieka tik $1 \times 1$ dydžio gabalėliai). Kas laimi?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Iš pirmo žvilgsnio atrodo, kad galima laužyti išilgai, skersai, kurti didelius ar mažus gabalus. Tačiau pritaikykime \textbf{Invariantą} – stebėkime bendrą šokolado gabalėlių skaičių ant stalo.
+
+Iš pradžių turime \textbf{1} didelį šokolado gabalą.
+Kiekvienas laužymas paima vieną gabalą ir padalija jį į du. Vadinasi, po \textbf{kiekvieno} laužymo bendras gabalėlių skaičius \textbf{padidėja lygiai 1}.
+
+Žaidimas baigiasi tada, kai visi gabalėliai tampa $1 \times 1$ dydžio. Kadangi plytelė yra $6 \times 8$, iš viso bus lygiai \textbf{48 gabalėliai}.
+Jei pradėjome nuo 1 gabalo ir mums reikia gauti 48 gabalėlius, o kiekvienas ėjimas prideda po 1, iš viso žaidime bus atlikti lygiai $48 - 1 = \textbf{47}$ laužymai.
+
+Šis skaičius ($47$) visiškai nepriklauso nuo žaidėjų strategijos. Jis yra \textbf{nelyginis}. 
+Kadangi pirmasis žaidėjas daro 1-ąjį, 3-iąjį, 5-ąjį... ir 47-ąjį (paskutinį) ėjimą, \textbf{pirmasis žaidėjas garantuotai laimės}, kad ir kaip beatodairiškai jis laužytų tą šokoladą! \hfill $\square$
+\end{solution}
+
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Yra dvi krūvelės, kuriose yra po 10 akmenukų. Žaidėjai pakaitomis gali paimti bet kokį skaičių akmenukų, bet tik iš vienos pasirinktos krūvelės. Laimi tas, kuris paima paskutinį akmenuką.
+    \item Ant stalo guli 100 degtukų. Žaidėjai pakaitomis ima nuo 1 iki 10 degtukų. Laimi paėmęs paskutinį degtuką.
+    \item Šachmatų bokštas stovi langelyje h8. Du žaidėjai pakaitomis jį gali perkelti per bet kokį skaičių langelių žemyn arba į kairę. Laimi tas, kuris pastato bokštą į langelį a1.
+    \item Yra $7 \times 7$ dydžio šokolado plytelė. Žaidėjai pakaitomis ją laužo per griovelius. Vienu ėjimu imamas vienas gabalas ir perlaužiamas į du. Laimi tas, kuris atlieka paskutinį įmanomą laužymą.
+    \item Ant stačiakampio formos stalo žaidėjai pakaitomis deda po 20 centų monetą taip, kad jos nepersidengtų ir neišsikištų už stalo kraštų. Pralaimi nebegalintis padėti monetos.
+    \item Lentoje užrašyti skaičiai nuo 1 iki 10. Žaidėjai pakaitomis prieš dar nepažymėtą skaičių įrašo pliuso arba minuso ženklą. Kai prie visų skaičių padedamas ženklas, apskaičiuojama suma. Jei suma lyginė, laimi pirmasis žaidėjas, jei nelyginė – antrasis.
+    \item Dėžutėje yra 20 rutuliukų. Žaidėjai pakaitomis traukia iš dėžutės 1, 2 arba 3 rutuliukus. Laimi tas, kuris ištraukia paskutinį rutuliuką.
+    \item Lentoje parašytas skaičius 1. Žaidėjai pakaitomis prie lentoje esančio skaičiaus prideda bet kokį jo daliklį, mažesnį už patį skaičių (vietoje senojo įrašomas naujas skaičius). Pralaimi tas, po kurio ėjimo skaičius tampa didesnis už 50.
+    \item Šachmatų žirgas stovi langelyje a1. Žaidėjai pakaitomis daro žirgo ėjimą, tačiau leidžiama eiti tik į dešinę ir/arba į viršų (t. y. figūra turi judėti priešingo lentos kampo link). Pralaimi nebegalintis atlikti ėjimo.
+    \item Ant stalo guli ramunė su 15 žiedlapių. Žaidėjai pakaitomis gali nuskinti arba 1 žiedlapį, arba 2 gretimus žiedlapius. Laimi nuskynęs paskutinį.
+    \item Yra dvi krūvelės akmenukų: vienoje jų yra 10, kitoje – 11. Vienu ėjimu galima iš bet kurios vienos krūvelės paimti bet kokį skaičių akmenukų. Kitos krūvelės liesti negalima. Laimi paimantis paskutinį.
+    \item Yra dvi krūvelės po 20 saldainių. Vienas ėjimas – suvalgyti visą vieną krūvelę, o likusią padalyti į dvi (nebūtinai lygias) netuščias dalis. Jei žaidėjas to padaryti nebegali, jis pralaimi.
+    \item Ant stalo guli 100 akmenukų. Žaidėjas vienu ėjimu gali paimti 1, 3 arba 4 akmenukus. Laimi paėmęs paskutinį.
+    \item Lentoje parašytas skaičius 2. Žaidėjai pakaitomis jį daugina iš bet kurio sveikojo skaičiaus nuo 2 iki 9. Laimi tas žaidėjas, po kurio ėjimo skaičius tampa didesnis už 1000.
+    \item Du žaidėjai žaidžia naudodamiesi kalendoriumi. Pradinė data – sausio 1 diena. Savo ėjimu žaidėjas gali padidinti arba mėnesio dieną, arba patį mėnesį, bet ne abu iš karto (pvz., iš sausio 10 galima eiti į sausio 11 arba vasario 10). Laimi pasiekęs gruodžio 31 dieną.
+    \item Ant stalo išrikiuota 20 skirtingos vertės monetų. Du žaidėjai pakaitomis ima po vieną monetą tik iš kurio nors eilės krašto (kairiojo arba dešiniojo). Laimi tas, kuris surenka didesnę pinigų sumą. Įrodykite, kad pirmasis žaidėjas visada gali užsitikrinti, jog nepralaimės.
+    \item Yra $10 \times 10$ dydžio lenta. Žaidėjai pakaitomis dengia po du gretimus langelius vienu $1 \times 2$ dydžio domino kauliuku. Kauliukai negali persidengti. Pralaimi tas, kuris nebegali padėti kauliuko.
+    \item Yra dvi krūvelės akmenukų: vienoje – 10, kitoje – 15. Vienu ėjimu iš pasirinktos krūvelės galima paimti tiek akmenukų, kiek jų tuo metu yra kitoje krūvelėje (arba šio skaičiaus kartotinį). Laimi paėmęs paskutinį.
+    \item Yra stačiakampė $3 \times 4$ dydžio šokolado plytelė. Apatinis kairysis jos gabalėlis yra užnuodytas. Žaidėjai pakaitomis pasirenka vieną šokolado gabalėlį ir suvalgo jį kartu su visais gabalėliais, esančiais aukščiau ir dešiniau jo. Laimi (išgyvena) tas, kuriam netenka suvalgyti nuodų. Įrodykite, kad pirmasis žaidėjas turi laiminčią strategiją.
+    \item Lentoje surašyti skaičiai nuo 1 iki 9. Žaidėjai pakaitomis išsirenka po vieną dar nepaimtą skaičių. Laimi tas, kuris pirmas surenka lygiai tris skaičius, kurių suma lygi 15.
+    \item Yra dvi krūvelės, kuriose yra atitinkamai 3 ir 5 akmenukai. Žaidėjas vienu ėjimu gali imti bet kokį skaičių akmenukų iš pasirinktos krūvelės ARBA imti po vienodą skaičių akmenukų iš abiejų krūvelių vienu metu. Laimi paėmęs paskutinį. Kas laimi tinkamai žaidžiant?
+    \item Lentoje užrašyti visi sveikieji skaičiai nuo 1 iki 20. Žaidėjai pakaitomis nutrina po vieną skaičių, kol lentoje lieka lygiai du skaičiai. Jei šių dviejų likusių skaičių skirtumas dalijasi iš 3, laimi antrasis žaidėjas, kitu atveju – pirmasis.
+    \item Žaidimas su šachmatų karaliumi $8 \times 8$ lentoje. Pirmasis žaidėjas pastato karalių į bet kurį langelį. Antrasis jį perkelia į gretimą, dar neaplankytą langelį pagal šachmatų taisykles. Žaidėjai taip daro ėjimus pakaitomis, karalius negali grįžti ten, kur jau buvo. Pralaimi nebegalintis atlikti ėjimo.
+    \item Lentoje parašyti skaičiai nuo 1 iki 100. Pirmasis žaidėjas pasirenka vieną iš jų. Kiekvienu kitu ėjimu žaidėjas iš esamo skaičiaus turi atimti bet kokį jo daliklį (įskaitant 1, bet ne patį skaičių) ir gautu rezultatu pakeisti ankstesnį skaičių. Laimi tas, kuris gauna nulį.
+    \item Yra trys krūvelės akmenukų, kuriose atitinkamai yra 10, 15 ir 20 akmenukų. Vienu ėjimu žaidėjas paima bet kokį skaičių akmenukų iš bet kurios vienos krūvelės. Laimi paimantis paskutinį.
+    \item Žaidėjai pakaitomis deda po vieną žirgo figūrėlę $8 \times 8$ lentoje taip, kad nė vienas žirgas negalėtų kirsti kito jau padėto žirgo (žirgų spalvos vienodos). Pralaimi nebegalintis atlikti ėjimo.
+    \item Yra $8 \times 8$ dydžio lenta, iš kurios iškirpti du priešingi kampiniai langeliai. Žaidėjai pakaitomis deda po vieną $1 \times 2$ dydžio kauliuką, kuris uždengia du gretimus laisvus langelius. Pralaimi nebegalintis atlikti ėjimo.
+    \item Lentoje surašyti skaičiai 1, 2, ..., 1000. Žaidėjai pakaitomis ištrina du skaičius $a$ ir $b$, o vietoje jų parašo skaičių $|a-b|$. Po 999 ėjimų lentoje lieka vienas skaičius. Jei jis lyginis – laimi pirmasis žaidėjas, jei nelyginis – antrasis.
+    \item Plokštumoje pažymėta 10 taškų. Žaidėjai pakaitomis sujungia du taškus atkarpa. Neleidžiama brėžti atkarpos, jeigu dėl to susidarytų uždaras trikampis. Pralaimi nebegalintis atlikti ėjimo.
+    \item Šachmatų žirgas stovi langelyje a1. Žaidėjai pakaitomis jį perkelia į dar neaplankytą langelį. Laimi tas žaidėjas, po kurio ėjimo žirgas nebegali atlikti jokio leistino ėjimo. Yra žinoma, kad egzistuoja uždaras žirgo maršrutas, apeinantis visus lentos langelius. Kas turi laiminčią strategiją?
+\end{enumerate}
+
+\end{document}
