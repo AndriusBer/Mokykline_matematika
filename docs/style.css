@@ -1,39 +1,437 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    max-width: 900px;
+    margin: 0;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #f5f6f8;
+
+    color: #172033;
+}
+
+
+/* HERO */
+
+.hero {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 90px 25px;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #071426,
+            #102b4e
+        );
+}
+
+
+/* subtilūs matematiniai simboliai */
+
+.hero::before {
+
+    content:
+        "∑   ∞   π   √   △   ∫   ≡   ℤ   ∏";
+
+    position: absolute;
+
+    top: 15px;
+    left: 0;
+
+    width: 100%;
+
+    font-family: Georgia, serif;
+
+    font-size: 70px;
+
+    letter-spacing: 25px;
+
+    color: rgba(255,255,255,0.035);
+
+    white-space: nowrap;
+
+    transform: rotate(-5deg);
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    max-width: 750px;
+
     margin: auto;
-    padding: 30px;
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 70px;
+    height: 70px;
+
+    margin:
+        0 auto
+        25px;
+
+    border: 2px solid #d7b45a;
+
+    border-radius: 50%;
+
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+
+    color: #d7b45a;
+}
+
+
+.hero h1 {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 52px;
+
+    font-weight: 500;
+
+}
+
+
+.hero p {
+
+    max-width: 630px;
+
+    margin:
+        20px auto 0;
+
+    font-size: 19px;
+
     line-height: 1.6;
-    background: #fafafa;
-    color: #222;
+
+    color: #ced7e4;
+
 }
 
-header {
-    border-bottom: 2px solid #222;
-    margin-bottom: 40px;
+
+/* MAIN */
+
+main {
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding: 60px 25px;
+
 }
 
-h1 {
-    font-size: 42px;
-    margin-bottom: 0;
+
+.intro {
+
+    margin-bottom: 35px;
+
 }
 
-h2 {
-    margin-top: 40px;
+
+.intro h2 {
+
+    margin-bottom: 10px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 34px;
+
+    color: #102b4e;
+
 }
 
-a {
-    color: #174ea6;
+
+.intro p {
+
+    color: #677184;
+
+    font-size: 17px;
+
+}
+
+
+/* CARDS */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 20px;
+
+}
+
+
+.card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    min-height: 150px;
+
+    padding: 28px;
+
+    background: white;
+
+    border: 1px solid #e2e6ec;
+
+    border-radius: 12px;
+
     text-decoration: none;
+
+    color: inherit;
+
+    box-shadow:
+        0 5px 20px
+        rgba(20,40,70,0.05);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+
 }
 
-a:hover {
-    text-decoration: underline;
+
+a.card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #d7b45a;
+
+    box-shadow:
+        0 12px 30px
+        rgba(20,40,70,0.12);
+
 }
+
+
+.symbol {
+
+    min-width: 60px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 32px;
+
+    color: #c39b3b;
+
+}
+
+
+.card h3 {
+
+    margin:
+        0 0 8px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+    color: #102b4e;
+
+}
+
+
+.card p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    color: #6b7280;
+
+}
+
+
+.arrow {
+
+    margin-left: auto;
+
+    font-size: 26px;
+
+    color: #c39b3b;
+
+}
+
+
+.disabled {
+
+    opacity: 0.65;
+}
+
+
+.soon {
+
+    margin-left: auto;
+
+    padding:
+        5px 9px;
+
+    border-radius: 20px;
+
+    background: #eef1f5;
+
+    color: #8a919c;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* QUOTE */
+
+.quote {
+
+    margin-top: 70px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-top:
+        1px solid #d8dde5;
+
+    border-bottom:
+        1px solid #d8dde5;
+
+}
+
+
+.quote-symbol {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 45px;
+
+    color: #d7b45a;
+
+}
+
+
+.quote p {
+
+    max-width: 650px;
+
+    margin:
+        10px auto;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    color: #39465a;
+
+}
+
+
+/* FOOTER */
 
 footer {
-    margin-top: 80px;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-    font-size: 14px;
+
+    padding:
+        30px;
+
+    text-align: center;
+
+    color: #8a919c;
+
+    font-size: 13px;
+
+}
+
+
+/* TELEFONAMS */
+
+@media
+(max-width: 600px) {
+
+    .hero {
+
+        padding:
+            65px 20px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 36px;
+
+    }
+
+    .hero p {
+
+        font-size: 16px;
+
+    }
+
+    main {
+
+        padding:
+            40px 18px;
+
+    }
+
 }
