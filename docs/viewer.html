@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>PDF</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e8e8e8;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+
+            background: #222;
+            color: white;
+
+            padding: 12px;
+
+            text-align: center;
+
+            z-index: 100;
+        }
+
+        button {
+            margin: 0 5px;
+            padding: 7px 14px;
+            font-size: 16px;
+        }
+
+        #pages {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 30px;
+        }
+
+        canvas {
+            background: white;
+
+            max-width: 100%;
+            height: auto;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.25);
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <button onclick="history.back()">
+        ← Atgal
+    </button>
+
+    <span id="title">
+        Matematikos medžiaga
+    </span>
+
+</header>
+
+
+<div id="pages"></div>
+
+
+<script type="module">
+
+    import * as pdfjsLib from
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
+
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+
+    const file =
+        params.get("file");
+
+
+    if (!file) {
+
+        document.getElementById("pages").innerHTML =
+            "<p>PDF failas nenurodytas.</p>";
+
+        throw new Error("PDF failas nenurodytas");
+
+    }
+
+
+    const pdf =
+        await pdfjsLib.getDocument(file).promise;
+
+
+    const container =
+        document.getElementById("pages");
+
+
+    for (
+        let pageNumber = 1;
+        pageNumber <= pdf.numPages;
+        pageNumber++
+    ) {
+
+        const page =
+            await pdf.getPage(pageNumber);
+
+
+        const viewport =
+            page.getViewport({
+                scale: 1.5
+            });
+
+
+        const canvas =
+            document.createElement("canvas");
+
+
+        const context =
+            canvas.getContext("2d");
+
+
+        canvas.width =
+            viewport.width;
+
+
+        canvas.height =
+            viewport.height;
+
+
+        container.appendChild(canvas);
+
+
+        await page.render({
+
+            canvasContext: context,
+
+            viewport: viewport
+
+        }).promise;
+
+    }
+
+</script>
+
+
+</body>
+</html>
