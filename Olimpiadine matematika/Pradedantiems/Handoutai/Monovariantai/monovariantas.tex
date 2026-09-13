@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Procesai ir monovariantai}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kai invarianto nėra}
+
+Iki šiol mes visada ieškojome to, kas \textbf{nesikeičia}: išlaikyto spalvų balanso, pastovaus lyginumo, stabilios liekanos ar sandaugos. Tai yra klasikiniai \textit{Invariantai}.
+
+Tačiau olimpiadose gausu uždavinių, kuriuose vyksta nuolatinis judėjimas: kariai sukinėjasi, skaičiai keičiami kitais, žmonės pykstasi ir taikosi, figūros stumdomos lentoje. Tokiose sistemose keičiasi absoliučiai viskas ir jokio „inkaro“ nėra. Dažniausiai tokių uždavinių pabaigoje klausiama: \textbf{„Ar šis procesas kada nors sustos?“}
+
+Norėdami įrodyti, kad net ir pats chaotiškiausias procesas privalo sustoti, mes naudojame \textbf{Monovarianto} (kartais vadinamo \textit{Pusinvariantu}) strategiją. 
+
+Monovariantas – tai tam tikras sistemos dydis, kuris po kiekvieno ėjimo \textbf{griežtai tik didėja} (arba griežtai tik mažėja). Kadangi matematikoje daiktų, atstumų ar teigiamų sumų skaičius negali mažėti iki minus begalybės (arba didėti be ribų baigtinėje sistemoje), toks dydis anksčiau ar vėliau atsirems į „lubas“ arba „grindis“ ir procesas bus priverstas sustoti.
+
+% ==========================================
+% 1 STRATEGIJA: GRIEŽTAI MAŽĖJANTYS DYDŽIAI
+% ==========================================
+\section{1 strategija: Mažėjantys „konfliktai“}
+
+Paprasčiausias monovarianto pritaikymas yra skaičiuoti sistemoje esančius „konfliktus“. Jeigu parodysime, kad kiekvienas ėjimas sumažina bendrą konfliktų skaičių, procesas neišvengiamai pasibaigs.
+
+\begin{example}[Kariai rikiuotėje]
+Šimtas karių stovi vienoje eilėje. Kiekvienas karys žiūri arba į dešinę, arba į kairę. Jei du greta stovintys kariai žiūri vienas į kitą (atsiduria veidas į veidą), jie abu apsisuka $180^\circ$ kampu ir nusisuka vienas nuo kito. Ar gali būti taip, kad kariai sukinėsis amžinai?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Atrodytų, kad kariams apsisukus, jie gali sukurti naujus konfliktus su kitais kaimynais, ir taip banga keliaus pirmyn ir atgal. 
+
+Užuot sekę kiekvieną karį, įveskime \textbf{Monovariantą}: skaičiuokime, kiek iš viso rikiuotėje yra porų (nebūtinai stovinčių greta), kuriose vienas karys žiūri į dešinę, o kitas, esantis dešiniau jo, žiūri į kairę. Tokią porą vadinsime „konfliktuojančia“ (nes anksčiau ar vėliau jie turėtų susitikti).
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75, baseline=(current bounding box.center)]
+    % Rikiuotė prieš
+    \node at (2.25, 2) {\textbf{Prieš ėjimą:}};
+    \node[draw, circle, fill=blue!20] (A) at (0, 0.8) {$\rightarrow$};
+    \node[draw, circle, fill=red!20] (B) at (1.5, 0.8) {$\rightarrow$};
+    \node[draw, circle, fill=red!20] (C) at (3, 0.8) {$\leftarrow$};
+    \node[draw, circle, fill=blue!20] (D) at (4.5, 0.8) {$\leftarrow$};
+    
+    \draw[<->, thick, red] (B) -- (C) node[midway, above,yshift=9pt] {\footnotesize Konfliktas};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=0.75, baseline=(current bounding box.center)]
+    % Rikiuotė po
+    \node at (2.25, 2) {\textbf{Po ėjimo:}};
+    \node[draw, circle, fill=blue!20] (A2) at (0, 0.8) {$\rightarrow$};
+    \node[draw, circle, fill=green!20] (B2) at (1.5, 0.8) {$\leftarrow$};
+    \node[draw, circle, fill=green!20] (C2) at (3, 0.8) {$\rightarrow$};
+    \node[draw, circle, fill=blue!20] (D2) at (4.5, 0.8) {$\leftarrow$};
+    
+    \draw[->, thick, green!60!black] (B2.south) to[out=-45, in=225] (C2.south);
+    \node[below, green!60!black,yshift = -3pt] at (2.25, 0.3) {\footnotesize Nusisuko};
+\end{tikzpicture}
+\end{center}
+
+Pažiūrėkime, kas nutinka, kai du gretimi kariai (Dešinė, Kairė) apsisuka ir tampa (Kairė, Dešinė).
+Tarpusavyje jie \textbf{sunaikino 1 konfliktą}. 
+O kaip tai paveikė kitus karius? Visi kariai, stovintys kairiau šios poros, mato lygiai tokį patį vaizdą: vieną karį, žiūrintį į kairę, ir vieną į dešinę. Jų konfliktų skaičius su šia pora nepasikeitė! Tas pats galioja ir kariams, stovintiems dešiniau.
+
+Vadinasi, po \textbf{kiekvieno} karių poros apsisukimo, bendras konfliktų skaičius visoje rikiuotėje \textbf{griežtai sumažėja lygiai 1}. 
+Kadangi konfliktų skaičius negali būti mažesnis už $0$, procesas privalo kažkada baigtis. Kariai amžinai nesisukinės! \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 2 STRATEGIJA: DIDĖJANČIOS SUMOS
+% ==========================================
+\section{2 strategija: Augančios sumos baigtinėse erdvėse}
+
+Kita klasikinė monovarianto forma – kai dydis atliekant ėjimą \textbf{griežtai didėja}. Jei mes žinome, kad įmanomų sistemos būsenų skaičius yra baigtinis, toks procesas vėlgi neturi kitos išeities, kaip tik sustoti.
+
+\begin{example}[Legendinis Baltijos kelio uždavinys]
+Lentelės $10 \times 10$ langeliuose surašyti sveikieji skaičiai (nebūtinai teigiami). Jeigu kurios nors eilutės arba stulpelio skaičių suma yra \textbf{neigiama}, mums leidžiama pakeisti visų tos eilutės (arba stulpelio) skaičių ženklus į priešingus. Ar galima atliekant šią operaciją pasiekti, kad visų eilučių ir stulpelių sumos taptų \textbf{neneigiamos}?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Kaskart pakeitus eilutės ženklus, gali „sugesti“ stulpeliai, o taisant stulpelius – vėl „sugesti“ eilutės. Atrodo, kad tai gali tęstis be pabaigos. 
+
+Kaip Invariantą (tiksliau, Monovariantą) pasirinkime \textbf{absoliučiai visų lentelėje esančių 100 skaičių sumą}. Pavadinkime ją $S$.
+Kas nutinka su suma $S$, kai mes pasirenkame neigiamą eilutę ir apverčiame jos ženklus? 
+Tarkime, tos blogosios eilutės suma buvo $E = -5$. Apvertus ženklus, naujoji šios eilutės suma taps $+5$.
+Vadinasi, bendra visos lentelės suma $S$ padidėjo lygiai $10$ vienetų (nuo $-5$ pakilome iki $0$, ir tada dar pridėjome $5$).
+
+Išvada: po \textbf{kiekvieno} mūsų ėjimo visos lentelės skaičių suma $S$ \textbf{griežtai padidėja}. 
+
+Tačiau ar ji gali didėti į begalybę? Ne! Lentelėje skaičių vertės (moduliai) nesikeičia, keičiasi tik jų pliusai ir minusai. Skirtingų pliusų ir minusų kombinacijų 100 langelių lentelėje yra baigtinis skaičius ($2^{100}$). Vadinasi, egzistuoja absoliuti maksimali įmanoma šios lentelės suma (kai visi skaičiai turi optimalius ženklus).
+Kadangi suma visą laiką tik didėja, ji anksčiau ar vėliau pasieks savo piką arba tiesiog nebebus neigiamų eilučių ir stulpelių. Procesas garantuotai sustos, ir visos sumos taps neneigiamos! \hfill $\square$
+\end{solution}
+
+% ==========================================
+% 3 STRATEGIJA: GRAFAI IR PERBĖGĖLIAI
+% ==========================================
+\section{3 strategija: Grafai, svoriai ir „Perbėgėliai“}
+
+Grafų teorijos (draugų ir priešų) uždaviniuose dažnai tenka skirstyti elementus į grupes taip, kad būtų tenkinamos tam tikros sąlygos. Čia monovariantu tampa \textbf{vidinių ryšių skaičius}.
+
+\begin{example}[Parlamento posėdis]
+Parlamente yra 100 narių. Kiekvienas iš jų parlamente turi ne daugiau kaip 3 priešus. Įrodykite, kad šiuos narius galima padalinti į dvejus rūmus (dvi sales) taip, kad kiekvienas narys savo salėje turėtų \textbf{ne daugiau kaip 1 priešą}.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Padalinkime parlamentą į dvi sales bet kaip (atsitiktinai). Žinoma, sąlyga greičiausiai nebus tenkinama. 
+Jeigu randame narį (pavadinkime jį X), kuris savo salėje turi 2 (arba net 3) priešus, mes jį tiesiog \textbf{perkeliame į kitą salę}. 
+Kadangi iš viso jis turi ne daugiau kaip 3 priešus, o bent 2 liko senojoje salėje, tai naujojoje salėje jis dabar turės \textbf{daugiausiai 1 priešą}.
+
+Atrodytų, kad perkėlus narį X į kitą salę, mes galime supykdyti ten esančius žmones, jiems atsiras daugiau priešų, ir jie vėl kelsis atgal. Kodėl šis bėgiojimas tarp salių baigsis?
+
+Įveskime \textbf{Monovariantą}: skaičiuokime bendrą \textbf{vidinių konfliktų skaičių} (kiek iš viso yra priešiškų porų, kurios sėdi toje pačioje salėje).
+Kas nutinka, kai mes perkeliame narį X į kitą salę?
+\begin{itemize}
+    \item Iš senosios salės mes pašalinome bent 2 konfliktus (nes ten liko bent 2 jo priešai).
+    \item Į naująją salę mes atnešėme daugiausiai 1 konfliktą (nes ten jo laukia ne daugiau kaip 1 priešas).
+\end{itemize}
+Vadinasi, kiekvieno perėjimo metu bendras vidinių konfliktų skaičius abiejose salėse \textbf{griežtai sumažėja} (prarandame $\ge 2$, gauname $\le 1$, bendras pokytis yra neigiamas).
+Kadangi vidinių konfliktų skaičius negali būti mažesnis už 0, šis perbėgimų procesas privalo sustoti. O kai jis sustos, tai reikš, kad nebeliko nė vieno nario, turinčio 2 ar daugiau priešų savo salėje! \hfill $\square$
+\end{solution}
+
+
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+Naudokite monovarianto ieškojimo taktiką. Pabandykite susikurti savo asmeninį „skaitiklyje“ besisukantį dydį, kuris visada auga arba visada krenta.
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    
+    % --- 1 lygis: Paprasčiausi mažėjantys/didėjantys dydžiai ---
+    \item Lentoje parašytas skaičius. Kiekvieną sekundę iš šio skaičiaus atimame jo skaitmenų sumą. Įrodykite, kad po kurio laiko lentoje būtinai atsiras nulis.
+    \item Lentoje parašyti $N$ sveikųjų teigiamų skaičių. Leidžiama paimti bet kurį skaičių, padalinti jį iš 2 ir apvalinti žemyn (pvz., $7 \to 3$). Įrodykite, kad lenta po kurio laiko pasieks stabilią būseną nuliais, nepriklausomai nuo operacijų tvarkos.
+    \item Šalyje veikia 20 skirtingų ministerijų. Kiekvienas valdininkas dirba lygiai dviejose. Jei valdininkas mato, kad vienoje jo ministerijoje atlyginimas yra mažesnis nei kitoje, jis pereina dirbti tik į tą, kur moka daugiau. Ar procesas baigsis?
+    \item Eilutėje guli monetos, kai kurios herbu aukštyn, kai kurios skaičiumi. Jei matome „Skaičius–Herbas“ (būtent tokia tvarka), galime apversti abi monetas, kad taptų „Herbas–Skaičius“. Ar įmanoma monetas vartyti be pabaigos?
+    \item Valstybėje yra daug miestų, sujungtų vienpusiais keliais. Iš kiekvieno miesto išeina lygiai vienas kelias. Keliautojas pradeda eiti iš vieno miesto pagal kelių rodykles. Įrodykite, kad jis anksčiau ar vėliau pateks į ciklą (pradės suktis ratu).
+    \item Lentoje surašyti 10 skirtingų skaičių. Vienu ėjimu leidžiama pasirinkti bet kokius du skaičius, stovinčius ne savo eilės tvarka (kairysis didesnis už dešinįjį), ir juos sukeisti vietomis. Įrodykite, kad po baigtinio skaičiaus ėjimų skaičiai bus surikiuoti didėjimo tvarka.
+    
+    % --- 2 lygis: Grafai, priešai ir perbėgėliai ---
+    \item Klasėje kiekvienas mokinys turi ne daugiau kaip 3 priešus. Mokytojas juos susodina prie dviejų ilgų stalų. Jei mokinys sėdi prie stalo su 2 ar daugiau savo priešų, jis persėda prie kito stalo. Ar jie kada nors nurims?
+    \item \textbf{(Bėgantys baronai)} Karalystėje yra $N$ pilių. Kiekvienoje guli po baronų klaną. Jei baronas pastebi, kad kaimyninėse pilyse jis turi daugiau priešų nei draugų, jis su visa kariuomene perbėga į kitą pilį. Įrodykite, kad po kelerių perbėgimų karalystėje įsivyraus taika.
+    \item Lentoje parašyti skaičiai nuo 1 iki $N$. Leidžiama nutrinti skaičius $a$ ir $b$ bei vietoje jų parašyti $|a-b|$. Procesas baigiasi, kai lieka 1 skaičius. Ar šis procesas gali būti begalinis?
+    \item 100 varlių sėdi ant lelijų lapų, išrikiuotų vienoje eilėje. Kiekvieną minutę bet kokia viena varlė peršoka per lygiai vieną gretimą varlę (jei už jos yra laisvas lapas). Įrodykite, kad šis šokinėjimas negali tęstis amžinai.
+    \item Medyje sėdi 100 beždžionių. Jei beždžionė mato, kad ant kaimyninės (sujungtos) šakos sėdi daugiau beždžionių nei ant jos šakos, ji peršoka ten. Įrodykite, kad po kurio laiko visos beždžionės nustos šokinėti.
+    \item $N$-kampiame kambaryje stovi žmogus. Kiekvienu ėjimu jis gali pereiti į gretimą kambarį per duris. Yra žinoma, kad jis niekada neina į kambarį, kuriame jau buvo daugiau kartų nei tame, į kurį ruošiasi eiti. Įrodykite, kad jo kelionė baigsis.
+    
+    % --- 3 lygis: Algebriniai monovariantai (sumos ir kvadratai) ---
+    \item Turime $8 \times 8$ lentelę su skaičiais. Jei kurios nors eilutės ar stulpelio suma neigiama, visus tos linijos ženklus pakeičiame priešingais. Ar gali šis procesas užsiciklinti?
+    \item Lentoje parašyti skaičiai. Galima pakeisti $a$ ir $b$ į $a+b$ ir $a-b$. Įrodykite, kad niekada negausime pradinio skaičių rinkinio.
+    \item Lentoje parašyta 100 atsitiktinių skaičių. Vienu ėjimu galime ištrinti bet kokius du skaičius $a, b$ ir vietoje jų įrašyti $\frac{a+b}{2}$ ir $\frac{a+b}{2}$. Įrodykite, kad skaičių kvadratų suma nuolat mažėja.
+    \item Turime kelias krūveles akmenukų. Vienu ėjimu leidžiama paimti vieną akmenuką iš didžiausios krūvelės ir padėti jį į mažiausią krūvelę. Įrodykite, kad ilgainiui visose krūvelėse akmenukų skaičius susivienodins (arba skirsis ne daugiau kaip 1).
+    \item Turime krūvą iš 100 akmenų. Leidžiama padalinti bet kokią krūvą į dvi mažesnes. Kiekvieną kartą, kai padalijame krūvą (kurioje buvo $a+b$ akmenų) į dalis $a$ ir $b$, į savo sąskaitą įsirašome taškų sumą, lygią $a \times b$. Įrodykite, kad nepriklausomai nuo padalijimų tvarkos, kai liks 100 krūvelių po 1 akmenį, surinktų taškų suma bus visada ta pati.
+    
+    % --- 4 lygis: Išplėstinė „energija“ ---
+    \item Keli vaikai žaidžia su kamuoliukais. Jei vaikas turi bent 2 kamuoliukus, jis gali vieną kamuoliuką atiduoti kaimynui iš kairės, o kitą – kaimynui iš dešinės. Įrodykite, kad žaidimas baigsis.
+    \item Eilėje sustoję $N$ žmonių. Kiekvienas turi po kelias monetas. Kiekvieną sekundę žmogus, turintis bent 2 monetas, atiduoda po vieną kaimynams iš abiejų pusių. Įrodykite, kad tai sustos.
+    \item Kaladėlių bokštas dalijamas į dvi dalis. Monovariantas – kaladėlių potencialinė energija. Įrodykite, kad po bet kokių perstatymų baigtinis stabilios būsenos aukštis yra ribotas.
+    \item Ant stalo guli 45 akmenukai, padalinti į kelias bet kokio dydžio krūveles. Vienu ėjimu nuo kiekvienos krūvelės paimama po 1 akmenuką ir iš visų paimtų akmenukų suformuojama viena nauja krūvelė. Įrodykite, kad po kurio laiko ant stalo garantuotai atsiras stabili būsena: 9 krūvelės, kuriose bus atitinkamai 1, 2, 3, 4, 5, 6, 7, 8 ir 9 akmenukai.
+    
+    % --- 5 lygis: Šachmatiniai dažymai ir perimetrai ---
+    \item Žaidimas „Virusas“. Lentoje $10 \times 10$ kai kurie langeliai yra „užkrėsti“. Langelis suserga, jei bent du jo kaimynai (turintys bendrą kraštinę) jau yra užkrėsti. Ar gali 9 pradiniai užkrėsti langeliai galiausiai užkrėsti visą lentą?
+    \item Miesto gatvės sudaro stačiakampį tinklą. Kiekvienoje sankryžoje stovi policininkas. Kiekvieną valandą visi policininkai pasisuka $90^\circ$ kampu ir nueina į gretimą sankryžą. Ar gali po kurio laiko visose sankryžose vėl stovėti po vieną policininką, jei tinklelis yra $n \times m$?
+    
+    % --- 6 lygis: Geometriniai procesai ---
+    \item Duotas iškilasis $N$-kampis. Jį padalijame į trikampius brėždami nesikertančias įstrižaines. Vienu ėjimu leidžiama paimti bet kokius du trikampius, turinčius bendrą kraštinę (jie sudaro keturkampį), ištrinti tą bendrą kraštinę ir nubrėžti kitą to keturkampio įstrižainę. Įrodykite, kad iš bet kokio padalijimo galima gauti bet kokį kitą padalijimą atliekant baigtinį skaičių tokių ėjimų.
+    \item Plokštumoje nubrėžtas iškilusis $N$-kampis, kurio plotas lygus $S$. Sujungę visus šio $N$-kampio gretimų kraštinių vidurio taškus, gauname naują, mažesnį $N$-kampį. Šis procesas kartojamas su kiekvienu naujai gautu daugiakampiu. Įrodykite, kad kiekvienu žingsniu gaunamo daugiakampio plotas griežtai mažėja (plotas yra mažėjantis monovariantas), o po begalinio skaičiaus žingsnių šis plotas artėja prie $0$.
+    \item Yra $N$ taškų apskritime. Sujungę juos stygomis, gauname persipinančias linijas. Jei dvi stygos kertasi, jas ištriname ir vietoj jų nubrėžiame dvi kitas stygas (jungiančias tuos pačius 4 taškus), kurios nesikerta. Įrodykite, kad procesas sustos.
+    \item Plokštumoje pažymėta $N$ taškų, iš kurių jokie trys neguli vienoje tiesėje. Šie taškai sujungti atkarpomis taip, kad susidaro vienas uždaras, bet pats save kertantis daugiakampis (jo kraštinės persipina). Vienu ėjimu leidžiama pasirinkti dvi besikertančias kraštines $AB$ ir $CD$, jas ištrinti ir vietoje jų nubrėžti atkarpas $AC$ ir $BD$ (taip, kad daugiakampis vis dar liktų vienu uždaru kontūru ir sankirta toje vietoje dingtų). Įrodykite, kad po baigtinio skaičiaus tokių ėjimų daugiakampis taps paprastu (be persikirtimų).
+    
+    % --- 7 lygis: Absoliutūs „Bossai“ (Olimpiadų finalai) ---
+    \item 5-kampiame tinklelyje kiekvienoje viršūnėje užrašytas skaičius. Jei skaičius yra neigiamas (pvz., $-x$), galime jį pakeisti į $+x$, o prie kaimyninių viršūnių skaičių pridėti po $-x$. Įrodykite, kad nepriklausomai nuo pradinių skaičių, atliekant šią operaciją, žaidimas visada baigsis (nebebus neigiamų skaičių).
+    \item Daugiakampio kraštinėse stovi skaičiai. Ėjimas: jei skaičius $x$ yra mažesnis už nulį, pridedame jį prie abiejų kaimynų, o patį $x$ keičiame į $-x$. Įrodykite, kad šis procesas visada baigiasi.
+    \item Begalinės šachmatų lentos apatinėje pusėje stovi žetonai. Ėjimas: žetonas gali peršokti per kaimyninį žetoną į tuščią langelį, o peršoktasis žetonas išmetamas. Įrodykite, kad joks žetonas negali pasiekti 5-os eilutės virš pradinės ribos.
+\end{enumerate}
+
+\end{document}
