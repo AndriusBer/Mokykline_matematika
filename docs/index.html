@@ -6,23 +6,23 @@
 
     <title>Matematikos olimpiados</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
 
-<header class="hero">
+<header class="site-header">
 
-    <div class="hero-content">
+    <div class="header-inner">
 
-        <div class="logo">∑</div>
+        <a class="brand" href="index.html">
+            Matematikos olimpiados
+        </a>
 
-        <h1>Matematikos olimpiados</h1>
-
-        <p>
-            Uždaviniai, teorija ir metodai tiems,
-            kurie nori išmokti mąstyti giliau.
-        </p>
+        <nav>
+            <a href="#medziaga">Medžiaga</a>
+            <a href="#apie">Apie</a>
+        </nav>
 
     </div>
 
@@ -31,110 +31,191 @@
 
 <main>
 
-    <section class="intro">
+    <section class="hero">
 
-        <h2>9 klasė</h2>
-
-        <p>
-            Olimpiadinės matematikos medžiaga:
-            nuo bazinių metodų iki rimtesnių uždavinių.
+        <p class="eyebrow">
+            OLIMPIADINĖ MATEMATIKA
         </p>
 
-    </section>
+        <h1>
+            Mokykis ne formulių.<br>
+            Mokykis <em>mąstyti.</em>
+        </h1>
 
+        <p class="hero-text">
+            Teorija, metodai ir atrinkti uždaviniai
+            mokiniams, norintiems giliau suprasti matematiką
+            ir ruoštis olimpiadoms.
+        </p>
 
-    <section class="cards">
-
-        <a class="card"
-           href="viewer.html?file=Algebra.pdf">
-
-            <div class="symbol">x²</div>
-
-            <div>
-                <h3>Algebra</h3>
-
-                <p>
-                    Lygtys, tapatybės, skaidymas,
-                    gudrios transformacijos.
-                </p>
-            </div>
-
-            <span class="arrow">→</span>
-
+        <a class="primary-link" href="#medziaga">
+            Peržiūrėti medžiagą
+            <span>↓</span>
         </a>
 
-
-        <div class="card disabled">
-
-            <div class="symbol">△</div>
-
-            <div>
-                <h3>Geometrija</h3>
-
-                <p>
-                    Trikampiai, apskritimai,
-                    panašumas ir konstrukcijos.
-                </p>
-            </div>
-
-            <span class="soon">
-                netrukus
-            </span>
-
-        </div>
+    </section>
 
 
-        <div class="card disabled">
+    <div class="divider"></div>
 
-            <div class="symbol">ℤ</div>
 
-            <div>
-                <h3>Skaičių teorija</h3>
+    <section id="medziaga" class="materials">
 
-                <p>
-                    Dalumas, liekanos,
-                    DBD ir diofantinės lygtys.
-                </p>
-            </div>
+        <div class="section-heading">
 
-            <span class="soon">
-                netrukus
-            </span>
+            <p class="eyebrow">
+                9 KLASĖ
+            </p>
+
+            <h2>
+                Mokymosi medžiaga
+            </h2>
 
         </div>
 
 
-        <div class="card disabled">
+        <div class="subject-list">
 
-            <div class="symbol">∑</div>
+            <a class="subject"
+               href="viewer.html?file=Algebra.pdf">
 
-            <div>
-                <h3>Kombinatorika</h3>
+                <div class="subject-number">
+                    01
+                </div>
 
-                <p>
-                    Skaičiavimo principai,
-                    invariantai ir ekstremumo metodas.
-                </p>
+                <div class="subject-content">
+
+                    <h3>
+                        Algebra
+                    </h3>
+
+                    <p>
+                        Tapatybės, lygtys, nelygybės,
+                        skaidymas ir algebrinės transformacijos.
+                    </p>
+
+                </div>
+
+                <div class="subject-symbol">
+                    x²
+                </div>
+
+                <div class="subject-arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <div class="subject inactive">
+
+                <div class="subject-number">
+                    02
+                </div>
+
+                <div class="subject-content">
+
+                    <h3>
+                        Geometrija
+                    </h3>
+
+                    <p>
+                        Trikampiai, apskritimai, panašumas,
+                        konstrukcijos ir geometrinės idėjos.
+                    </p>
+
+                </div>
+
+                <div class="subject-symbol">
+                    △
+                </div>
+
+                <div class="status">
+                    Ruošiama
+                </div>
+
             </div>
 
-            <span class="soon">
-                netrukus
-            </span>
+
+            <div class="subject inactive">
+
+                <div class="subject-number">
+                    03
+                </div>
+
+                <div class="subject-content">
+
+                    <h3>
+                        Skaičių teorija
+                    </h3>
+
+                    <p>
+                        Dalumas, liekanos, pirminiai skaičiai,
+                        DBD ir diofantinės lygtys.
+                    </p>
+
+                </div>
+
+                <div class="subject-symbol">
+                    ℤ
+                </div>
+
+                <div class="status">
+                    Ruošiama
+                </div>
+
+            </div>
+
+
+            <div class="subject inactive">
+
+                <div class="subject-number">
+                    04
+                </div>
+
+                <div class="subject-content">
+
+                    <h3>
+                        Kombinatorika
+                    </h3>
+
+                    <p>
+                        Skaičiavimo principai, invariantai,
+                        ekstremumo metodas ir konstrukcijos.
+                    </p>
+
+                </div>
+
+                <div class="subject-symbol">
+                    ∑
+                </div>
+
+                <div class="status">
+                    Ruošiama
+                </div>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <section class="quote">
+    <section id="apie" class="philosophy">
 
-        <div class="quote-symbol">
-            ∞
-        </div>
+        <p class="eyebrow">
+            POŽIŪRIS
+        </p>
+
+        <blockquote>
+            Geras olimpiadinis uždavinys moko ne pritaikyti
+            žinomą formulę, o pamatyti tai, ko iš pradžių nematai.
+        </blockquote>
 
         <p>
-            „Olimpiadinėje matematikoje svarbiausia
-            ne formulė, o idėja.“
+            Šios medžiagos tikslas – palaipsniui ugdyti
+            problemų sprendimo intuiciją, gebėjimą ieškoti idėjos
+            ir aiškiai pagrįsti sprendimą.
         </p>
 
     </section>
@@ -144,7 +225,17 @@
 
 <footer>
 
-    Matematikos olimpiados · Andrius
+    <div class="footer-inner">
+
+        <span>
+            Matematikos olimpiados
+        </span>
+
+        <span>
+            © Andrius
+        </span>
+
+    </div>
 
 </footer>
 
