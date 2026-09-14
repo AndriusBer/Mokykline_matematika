@@ -1,0 +1,154 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Kombinatorinė žaidimų teorija: Nim ir paslaptingoji XOR suma}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra Nim žaidimas ir kodėl jis toks svarbus?}
+
+Iki šiol mes mokėmės įvairių matematinių žaidimų, kuriuose padėdavo simetrija, invariantai arba atgalinis mąstymas. Tačiau atėjo laikas susipažinti su \textbf{Nim} – žaidimu, kuris atvėrė visiškai naują matematikos šaką (Kombinatorinę žaidimų teoriją). Remiantis Sprague-Grundy teorema, \textit{bet koks} nešališkas, baigtinis dviejų žaidėjų žaidimas iš tikrųjų tėra paslėptas Nim žaidimas!
+
+\textbf{Klasikinės Nim taisyklės:}
+\begin{itemize}
+    \item Ant stalo yra kelios krūvelės akmenukų (pvz., trys krūvelės po 3, 5 ir 7 akmenukus).
+    \item Du žaidėjai ėjimus atlieka pakaitomis.
+    \item Vienu ėjimu žaidėjas gali paimti \textbf{bet kokį} skaičių akmenukų (bent vieną, arba nors ir visus), bet \textbf{tik iš vienos pasirinktos krūvelės}.
+    \item Laimi tas žaidėjas, kuris paima patį \textbf{paskutinį} akmenuką nuo stalo.
+\end{itemize}
+
+Žaidžiant su viena ar dviem krūvelėmis, laimėti lengva (jei dvi vienodos – naudoji simetriją). Bet kas nutinka, kai krūvelės yra trys ar daugiau? Čia simetrija nebeveikia. 1901 metais Harvardo matematikas Charles Bouton atrado genialų sprendimą – jis panaudojo \textbf{dvejetainę skaičiavimo sistemą}.
+
+\section{Magiškas įrankis: XOR suma (Nim-suma)}
+
+Prisiminkite lempučių uždavinį iš praėjusio handouto: kai du žmonės paspaudžia tą patį jungiklį, lemputė lieka išjungta (veiksmai vienas kitą panaikina). Informatikoje ši „susinaikinimo“ taisyklė vadinama \textbf{XOR operacija} (žymima simboliu $\oplus$) arba „sudėtimi be mintyje“.
+
+\textbf{XOR taisyklės (vienam bitui):}
+\begin{center}
+$0 \oplus 0 = 0$ \quad (Nieko nelietėm – liko nulis)\\
+$1 \oplus 0 = 1$ ir $0 \oplus 1 = 1$ \quad (Paspaudėm vieną kartą – įsijungė)\\
+$\mathbf{1 \oplus 1 = 0}$ \quad \textbf{(Paspaudėm du kartus – vienetukai vienas kitą sunaikino!)}
+\end{center}
+
+Kaip suskaičiuoti kelių skaičių XOR sumą? Užrašome juos dvejetaine sistema vieną po kitu ir \textbf{kiekvieną stulpelį sudedame atskirai}, taikydami anihiliacijos taisyklę (jei stulpelyje vienetukų skaičius lyginis – rašome 0, jei nelyginis – rašome 1).
+
+\begin{example}[Suskaičiuokime $3 \oplus 5 \oplus 7$]
+Užrašome skaičius 3, 5 ir 7 dvejetaine sistema ir dedame stulpeliais:
+\begin{center}
+\begin{tabular}{c c c c}
+  & 0 & 1 & 1 \quad (Tai yra 3)\\
+  & 1 & 0 & 1 \quad (Tai yra 5)\\
+  $\oplus$ & 1 & 1 & 1 \quad (Tai yra 7)\\
+\hline
+\textbf{Rezultatas:} & \textbf{0} & \textbf{0} & \textbf{1} \quad (Tai yra $1_{10}$)
+\end{tabular}
+\end{center}
+Matome, kad dešiniajame stulpelyje yra trys vienetukai (nelyginis skaičius $\implies 1$). Viduriniame du (susinaikino $\implies 0$). Kairiajame du (susinaikino $\implies 0$). Vadinasi, $\mathbf{3 \oplus 5 \oplus 7 = 1}$.
+\end{example}
+
+\section{Boutono teorema: Kodėl nulis garantuoja pergalę Nim žaidime?}
+
+Pritaikykime XOR sumos matematiką tiesiogiai \textbf{Nim žaidimui} (kai pakaitomis imame akmenukus iš krūvelių). Mes jau išmokome suskaičiuoti krūvelių XOR sumą. Bet kodėl matematikas Charles Bouton atrado, kad būtent \textbf{XOR nulis} yra raktas į pergalę šiame žaidime? 
+
+Tai nėra atsitiktinumas. Pergalė Nim žaidime remiasi trimis geležiniais logikos žingsniais (tai tobulai veikiantys spąstai varžovui):
+
+\textbf{1. Galutinis Nim žaidimo tikslas yra nulis}
+Pagal taisykles, žaidimą laimi tas, kuris paima patį paskutinį akmenuką. Kai žaidimas baigiasi, ant stalo nelieka nieko: krūvelės yra tuščios $(0, 0, \dots, 0)$. 
+Kokia yra šios galutinės, \textbf{laiminčiosios} pozicijos XOR suma? $0 \oplus 0 \oplus \dots \oplus 0 = \mathbf{0}$.
+Vadinasi, mūsų absoliutus tikslas – pačiame paskutiniame ėjime įteikti varžovui tuščią stalą, kurio XOR suma yra lygiai nulis.
+
+\textbf{2. Spąstai: Iš nulio neįmanoma padaryti nulio (P-pozicija)}
+Tarkime, jūs atlikote tobulą ėjimą ir ant stalo palikote krūveles, kurių XOR suma yra $0$. Atėjo varžovo eilė. 
+Ką jis privalo padaryti? Pagal Nim taisykles, jis privalo paimti akmenukų iš \textbf{vienos} krūvelės (t. y., pakeisti lygiai vieno skaičiaus dydį).
+Tačiau XOR operacijoje nulis gaunamas tik tada, kai \textbf{visi} vienetukai yra tobulai susiporavę. Jei varžovas pakeičia nors vienos krūvelės dydį, jis \textbf{neišvengiamai sugadina} šį balansą. 
+Išvada: Jei jūs varžovui palikote XOR = 0, po jo ėjimo XOR suma \textbf{visada} taps nelygi nuliui! Jis įkliuvo į spąstus.
+
+\textbf{3. Atstatymas: Sugadintą balansą visada galima sutaisyti (N-pozicija)}
+Jei varžovas jums paliko poziciją, kurios XOR suma \textbf{nėra 0} (jis sugadino balansą, nes buvo priverstas tai padaryti), matematiškai įrodoma, kad \textbf{visada egzistuoja bent vienas ėjimas}, kuris grąžins XOR sumą atgal į nulį!
+Kaip jį rasti? Pažiūrėkite į dabartinės XOR sumos patį kairiausią (didžiausią) vienetuką. Bent vienoje krūvelėje toje pačioje pozicijoje taip pat privalo būti vienetukas. Būtent iš tos krūvelės ir reikia imti akmenukus, kad panaikintumėte šį „išsišokėlį“ ir vėl atstatytumėte visišką nulį.
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Žaidimo variklis (Pergalės ciklas):}
+\begin{itemize}
+    \item Jūs visada savo ėjimu padarote XOR sumą lygią $\mathbf{0}$.
+    \item Varžovas savo ėjimu neišvengiamai ją sugadina (XOR $\neq \mathbf{0}$).
+    \item Jūs savo ėjimu vėl atstatote ją į $\mathbf{0}$.
+    \item Kadangi akmenukų skaičius ant stalo nuolat mažėja, o žaidimas privalo baigtis, šis ciklas garantuoja, kad vienintelė situacija, kai XOR tampa lygi galutiniam $\mathbf{0}$ (t.y. $(0,0,0)$), atiteks po jūsų ėjimo! Varžovas tiesiog ras tuščią stalą.
+\end{itemize}
+\end{minipage}
+}
+\end{center}
+
+\subsection*{Kaip rasti laimintį ėjimą praktikoje?}
+Grįžkime prie mūsų pavyzdžio – trijų krūvelių $(3, 5, 7)$. Praeitame skyriuje apskaičiavome, kad jų XOR suma yra: $3 \oplus 5 \oplus 7 = \mathbf{1}$ (tai nėra nulis!). Kadangi suma nelygi nuliui, mes, darydami pirmąjį ėjimą, garantuotai laimėsime. Koks turi būti ėjimas? 
+
+Mes turime pakeisti vienos krūvelės akmenukų skaičių taip, kad nauja XOR suma taptų $0$. 
+Kadangi mūsų apskaičiuota suma buvo $1$, mes tiesiog turime panaikinti tą dešiniausią vienetuką vienoje iš krūvelių (paimti vieną akmenuką).
+Išbandykime sumažinti 7 akmenukų krūvelę iki 6:
+XOR suma tampa $3 \oplus 5 \oplus 6 \implies 011_2 \oplus 101_2 \oplus 110_2 = \mathbf{000_2}$. 
+
+\textbf{Tobulas ėjimas!} Jūs paimate $1$ akmenuką iš trečios krūvelės. Varžovas gauna krūveles $(3, 5, 6)$, kurių XOR suma jau yra $0$. Ką jis bedarytų, jis šį nulį sugadins, o jūs jį vėl atstatysite savo ėjimu, kol galiausiai laimėsite.
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    
+    % --- Apšilimas (XOR skaičiavimai) ---
+    \item Apskaičiuokite XOR sumas: \textbf{a)} $5 \oplus 9$; \quad \textbf{b)} $10 \oplus 10$; \quad \textbf{c)} $15 \oplus 7$.
+    \item Apskaičiuokite trijų krūvelių XOR sumą: $10 \oplus 15 \oplus 20$. Jei tai būtų Nim žaidimo pozicija, ar pradedantysis žaidėjas turėtų laiminčiąją strategiją?
+    \item Išspręskite algebrinę XOR lygtį: $x \oplus 7 = 12$. \textit{(Užuomina: kaip perkelti skaičių į kitą pusę naudojant $7 \oplus 7 = 0$?)}
+    \item Įrodykite šias esmines XOR algebros taisykles: bet kokiam natūraliajam skaičiui $a$ galioja $a \oplus a = 0$ ir $a \oplus 0 = a$.
+    \item Raskite visus tokius skaičius $x$, kuriems teisinga lygybė $x \oplus 13 = x + 13$. \textit{(Pagalvokite, kokiais atvejais XOR sudėtis nesiskiria nuo paprastos sudėties stulpeliu).}
+    
+    % --- Baziniai Nim žaidimai ---
+    \item Žaidžiamas Nim žaidimas su dviem krūvelėmis. Jose yra atitinkamai 100 ir 100 akmenukų. Kas laimi (pirmas ar antras žaidėjas) ir kokia jo strategija? Paaiškinkite tai remdamiesi XOR suma.
+    \item Žaidžiamas Nim su dviem krūvelėmis $(50, 60)$. Laimėti norintis žaidėjas atlieka pirmąjį ėjimą. Ką jis turi padaryti?
+    \item Žaidžiamas klasikinis Nim su trimis krūvelėmis $(1, 2, 3)$. Paskaičiuokite šios pozicijos XOR sumą ir nustatykite, kas laimės.
+    \item Nim žaidimas, krūvelės yra $(3, 4, 5)$. Kas turi laiminčiąją strategiją? Koks turėtų būti pirmasis ėjimas?
+    \item Nim žaidimas, krūvelės yra $(1, 4, 5)$. Kas laimės – pirmasis ar antrasis žaidėjas? Pagrįskite atsakymą.
+    
+    % --- Išplėstiniai Nim skaičiavimai ---
+    \item Apskaičiuokite XOR sumą skaičių nuo 1 iki 10: $1 \oplus 2 \oplus 3 \dots \oplus 10$.
+    \item Stalo teniso kamuoliukai padalinti į tris dėžutes: jose yra 7, 11 ir 13 kamuoliukų. Galima imti kamuoliukus tik iš vienos dėžutės. Koks turi būti pats \textbf{pirmasis ėjimas}, kad užsitikrintumėte pergalę? (Nurodykite iš kurios dėžutės ir kiek imsite).
+    \item Žaidžiama su krūvelėmis $(10, 15, 20)$. Raskite \textbf{visus įmanomus} pirmuosius ėjimus, kurie garantuoja pergalę pirmajam žaidėjui.
+    \item Keturių krūvelių Nim! Ant stalo guli krūvelės su $1, 3, 5$ ir $7$ akmenukais. Kas laimės (pirmas ar antras) ir kodėl?
+    \item Nim žaidime liko trys krūvelės: jose yra 14, 21 ir $x$ akmenukų. Prie stalo priėjęs olimpiadininkas iškart pasakė, kad šioje pozicijoje laimės \textbf{antrasis} žaidėjas (kurio eilė laukti). Koks skaičius slepiasi po raide $x$?
+    
+    % --- Loginiai triukai ir modifikacijos ---
+    \item Ar įmanoma žaidžiant su krūvelėmis $(10, 20, 30)$ vienu ėjimu padaryti taip, kad visų likusių krūvelių XOR suma taptų lygi 0? Ar tai patvirtina Boutono teoremos taisyklę?
+    \item Žaidimas labai panašus į Nim, tačiau yra apribojimas: vienu ėjimu iš krūvelės galima paimti \textbf{ne daugiau kaip 3 akmenukus} (t. y. 1, 2 arba 3). Yra dvi krūvelės po 10 akmenukų. Kas laimi?
+    \item \textbf{(Misère Nim įvadas)} Žaidžiama su tomis pačiomis taisyklėmis, bet pasikeitė tikslas: laimi tas, kuris priverčia priešininką paimti patį \textbf{paskutinį} akmenuką (paskutinio akmenuko ėmėjas pralaimi). Ant stalo guli trys krūvelės $(1, 1, 1)$. Kas laimės ir kokia čia XOR suma?
+    \item Žaidžiamas Misère Nim (kuris paima paskutinį, tas pralaimi). Krūvelės yra $(2, 2)$. Kas laimi dabar? Koks turi būti pirmas ėjimas?
+    \item \textbf{(„Aklasis“ Nim)} Ant stalo yra trys krūvelės akmenukų. Jų skaičiai yra $2^k, 2^m$ ir $2^n$, kur $k, m, n$ yra \textbf{skirtingi} sveikieji neneigiami skaičiai (pvz., 1, 4 ir 16). Įrodykite, kad net nežinodamas tikslių $k, m, n$ reikšmių, pirmasis žaidėjas visada turi laiminčiąją strategiją.
+    
+    % --- Olimpiadiniai variantai (Gilioji teorija) ---
+    \item \textbf{(Pokerio Nim)} Žaidžiama su trimis krūvelėmis $(3, 5, 7)$. Tačiau kiekvienas žaidėjas savo kišenėje turi dar po 100 akmenukų. Savo ėjimo metu žaidėjas gali arba padaryti normalų Nim ėjimą (paimti iš krūvelės), ARBA paimti bet kiek akmenukų iš savo kišenės ir \textbf{pridėti} juos į vieną pasirinktą krūvelę ant stalo. Įrodykite, kad laimėtojas nuo to nepasikeičia (XOR strategija vis dar veikia!). \textit{Užuomina: ką turite daryti, jei varžovas prideda akmenukų?}
+    \item Žaidžiama su krūvelėmis $(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)$. Kas laimės, jeigu žaidėjai laikysis tobulos strategijos?
+    \item \textbf{(Daliklių žaidimas)} Ant lentos užrašytas skaičius 100. Vienu ėjimu žaidėjas gali ištrinti lentoje esantį skaičių $N$ ir vietoje jo parašyti bet kokį skaičiaus $N$ \textbf{tikrąjį daliklį} (išskyrus patį $N$). Pavyzdžiui, 100 galima pakeisti į 50, 25, 20 ir t.t. Laimi tas, kuris parašo skaičių 1. Kas laimi šį žaidimą?
+    \item \textbf{(Monetos ant juostos)} Languotoje juostoje stovi trys monetos pozicijose 5, 8 ir 12 (skaičiuojant nuo kairiojo krašto). Vienu ėjimu galima paimti vieną monetą ir perkelti ją bet kiek langelių į kairę, tačiau draudžiama peršokti kitą monetą (ir užlipti ant kitos). Laimi tas, kuris atlieka paskutinį ėjimą. Parodykite, kaip šį žaidimą paversti Nim žaidimu ir kas jame laimi.
+    \item Ar egzistuoja trys tokie natūralieji skaičiai $a, b, c$, kurie galėtų sudaryti \textbf{neišsigimusį trikampį} (t. y. tenkintų griežtą trikampio nelygybę $a+b>c$, $a+c>b$, $b+c>a$), ir kurių XOR suma būtų lygi nuliui ($a \oplus b \oplus c = 0$)? Jei taip, pateikite pavyzdį.
+    
+    % --- „Boss“ lygio iššūkiai ---
+    \item \textbf{(Laiptų Nim / Staircase Nim)} Yra 5 pakopų laiptai. Ant pakopų guli atitinkamai 1, 2, 3, 4 ir 5 monetos (ant pirmos – 1, ant penktos – 5). Vienu ėjimu žaidėjas gali paimti bet kokį monetų skaičių iš pakopos numeris $k$ ir \textbf{perkelti jas vienu laipteliu žemyn} į pakopą $k-1$. Jei monetos perkeliamos iš 1-osios pakopos, jos nukrenta ant žemės ir dingsta iš žaidimo. Laimi tas, kuris numeta paskutinę monetą ant žemės. Įrodykite, kad žaidimą galima laimėti ignoruojant kas antrą pakopą!
+    \item Kiek yra tokių natūraliųjų skaičių $x$ (kur $x \le 127$), kuriems teisinga lygybė $x \oplus 127 = 127 - x$?
+    \item Raskite mažiausią natūralųjį skaičių $N$, su kuriuo $1 \oplus 2 \oplus 3 \dots \oplus N = 0$.
+    \item Iš krūvelių $(3, 5, 7)$ jūs ką tik atlikote tobulą ėjimą (paėmėte 1 iš paskutinės krūvelės ir palikote XOR sumą 0). Varžovas supykęs paėmė iš trečiosios krūvelės 4 akmenukus. Liko $(3, 5, 2)$. Koks turi būti jūsų atsakomasis ėjimas, kad vėl sugrąžintumėte XOR nulį?
+    \item \textbf{(Galutinis iššūkis)} Lentoje užrašyti skaičiai $1, 2, 3, \dots, 2026$. Žaidėjai pakaitomis atlieka tokį ėjimą: pasirenka bet kokius du lentoje esančius skaičius $A$ ir $B$, ištrina juos abu, o vietoje jų užrašo jų XOR sumą ($A \oplus B$). Po 2025 ėjimų lentoje liks tik vienas skaičius. Įrodykite, kad šis paskutinis likęs skaičius visiškai nepriklauso nuo žaidėjų pasirinkimų, ir raskite, koks tai skaičius! \textit{(Užuomina: ar XOR operacijai galioja perstatomumo ir jungiamumo dėsniai?)}
+\end{enumerate}
+
+\end{document}

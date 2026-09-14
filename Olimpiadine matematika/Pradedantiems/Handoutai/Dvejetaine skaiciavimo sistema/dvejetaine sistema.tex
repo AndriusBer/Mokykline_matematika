@@ -1,0 +1,254 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{tikz} 
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Dvejetainė skaičiavimo sistema ir jos magija}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kaip skaičiuoja kompiuteriai (ir olimpiadininkai)?}
+
+Mes esame įpratę skaičiuoti \textbf{dešimtaine} skaičiavimo sistema. Joje turime 10 skaitmenų ($0, 1, 2, \dots, 9$), o kiekviena skaičiaus pozicija atitinka dešimtuko laipsnį (vienetai, dešimtys, šimtai, tūkstančiai). Pavyzdžiui:
+\[ 2026_{10} = 2 \cdot 1000 + 0 \cdot 100 + 2 \cdot 10 + 6 \cdot 1 = 2 \cdot 10^3 + 0 \cdot 10^2 + 2 \cdot 10^1 + 6 \cdot 10^0 \]
+
+Tačiau olimpiadinėje matematikoje ir kompiuterių moksle karaliauja \textbf{dvejetainė} sistema. Joje egzistuoja tik du skaitmenys: \textbf{$0$ ir $1$}. Pozicijos čia reiškia ne dešimtuko, o \textbf{dvejetuko laipsnius}: $1, 2, 4, 8, 16, 32, 64, 128 \dots$
+
+Bet koks natūralusis skaičius gali būti \textbf{vieninteliu būdu} išreikštas skirtingų dvejeto laipsnių suma. 
+
+\subsection*{1. Iš dešimtainės į dvejetainę (Skaidymo metodas)}
+Pabandykime skaičių $25$ užrašyti dvejetaine sistema. Tam išskaidysime jį dvejeto laipsnių suma:
+\begin{itemize}
+    \item Koks didžiausias dvejeto laipsnis telpa į 25? Tai 16. Likutis: $25 - 16 = 9$.
+    \item Koks didžiausias laipsnis telpa į 9? Tai 8. Likutis: $9 - 8 = 1$.
+    \item Koks laipsnis telpa į 1? Tai 1. Likutis: 0.
+\end{itemize}
+Taigi, $25 = 16 + 8 + 1$. Užrašome tai visomis pozicijomis – nuo didžiausios iki mažiausios (nepraleisdami ir tų, kurių nenaudojome, t. y. 4 ir 2):
+\[ 25 = \mathbf{1} \cdot 16 + \mathbf{1} \cdot 8 + \mathbf{0} \cdot 4 + \mathbf{0} \cdot 2 + \mathbf{1} \cdot 1 \]
+Dvejetainėje sistemoje skaičius užrašomas tiesiog surašant gautus koeficientus: \textbf{$11001_2$}.
+
+\subsection*{2. Iš dvejetainės į dešimtainę (Sudėties metodas)}
+Šis procesas dar paprastesnis. Norėdami atlikti atvirkštinį veiksmą, tiesiog imame dvejetainį skaičių, po kiekvienu jo skaitmeniu mintyse pasirašome jo „vertę“ (dvejeto laipsnį, pradedant nuo $1$ iš dešinės) ir sudedame tas vertes, virš kurių stovi vienetukai.
+Išreikškime skaičių $10110_2$ dešimtaine sistema:
+\[ 10110_2 = (\mathbf{1} \cdot 16) + (\mathbf{0} \cdot 8) + (\mathbf{1} \cdot 4) + (\mathbf{1} \cdot 2) + (\mathbf{0} \cdot 1) = 16 + 4 + 2 = \textbf{22}_{10} \]
+
+% ==========================================
+% MAGIJA 1: SVARSČIAI
+% ==========================================
+\section{1-oji Magija: Tobuli svarsčiai}
+
+\begin{example}[Svarsčių problema]
+Parduotuvėje yra svirtinės svarstyklės. Svarsčius galima dėti tik ant vienos lėkštės (ant kitos dedamas sveriamas daiktas). Kokį \textbf{mažiausią} kiekį svarsčių reikia turėti, norint pasverti bet kokį sveikąjį svorį nuo 1 kg iki 31 kg? Kokie tai svarsčiai?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}
+Kiekvienas svarstis sveriant gali būti tik dviejose būsenose: jis arba uždėtas ant svarstyklių (būsena 1), arba neuždėtas (būsena 0). Tai gryna dvejetainė sistema!
+Jei paimsime svarsčius, atitinkančius dvejeto laipsnius – \textbf{1 kg, 2 kg, 4 kg, 8 kg ir 16 kg} (iš viso tik 5 svarsčius) – mes galėsime pasverti bet kokį svorį, nes bet kokį skaičių galima išreikšti dvejetaine sistema.
+Pavyzdžiui, kaip pasverti 25 kg? Kadangi $25 = 16 + 8 + 1$, mes tiesiog uždedame 16 kg, 8 kg ir 1 kg svarsčius. Viskas!
+Maksimalus svoris, kurį galime pasverti, yra visų svarsčių suma: $16+8+4+2+1 = 31$ kg. \hfill $\square$
+\end{solution}
+
+% ==========================================
+% MAGIJA 2: MINČIŲ SKAITYMAS
+% ==========================================
+% ==========================================
+% MAGIJA 2: MINČIŲ SKAITYMAS
+% ==========================================
+\section{2-oji Magija: Minčių skaitymo kortelės}
+
+Įsivaizduokite, kad draugas sugalvoja bet kokį skaičių nuo 1 iki 15. Jūs parodote jam 4 specialias korteles, kuriose surašyta įvairių skaičių, ir paklausiate: \textit{„Ar tavo sugalvotas skaičius yra pirmoje kortelėje? O antroje?“} 
+Draugui atsakius tik „Taip“ arba „Ne“, jūs akimirksniu, be jokio vargo, pasakote jo sugalvotą skaičių. 
+
+Kaip tai atrodo realybėje? Štai šios 4 kortelės:
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    % Kortelė 1
+    \draw[thick, rounded corners=5pt, fill=blue!5] (0, 5) rectangle (4.5, 8.5);
+    \node[anchor=north west, font=\bfseries\Large, text=blue!70!black] at (0.2, 8.3) {1};
+    \node[align=center, font=\large] at (2.25, 6.5) {1 \quad 3 \quad 5 \quad 7\\[0.4cm] 9 \quad 11 \quad 13 \quad 15};
+    
+    % Kortelė 2
+    \draw[thick, rounded corners=5pt, fill=green!5] (5.5, 5) rectangle (10, 8.5);
+    \node[anchor=north west, font=\bfseries\Large, text=green!70!black] at (5.7, 8.3) {2};
+    \node[align=center, font=\large] at (7.75, 6.5) {2 \quad 3 \quad 6 \quad 7\\[0.4cm] 10 \quad 11 \quad 14 \quad 15};
+
+    % Kortelė 4
+    \draw[thick, rounded corners=5pt, fill=red!5] (0, 1) rectangle (4.5, 4.5);
+    \node[anchor=north west, font=\bfseries\Large, text=red!70!black] at (0.2, 4.3) {4};
+    \node[align=center, font=\large] at (2.25, 2.5) {4 \quad 5 \quad 6 \quad 7\\[0.4cm] 12 \quad 13 \quad 14 \quad 15};
+
+    % Kortelė 8
+    \draw[thick, rounded corners=5pt, fill=orange!5] (5.5, 1) rectangle (10, 4.5);
+    \node[anchor=north west, font=\bfseries\Large, text=orange!70!black] at (5.7, 4.3) {8};
+    \node[align=center, font=\large] at (7.75, 2.5) {8 \quad 9 \quad 10 \quad 11\\[0.4cm] 12 \quad 13 \quad 14 \quad 15};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Kaip veikia ši magija?}
+
+Kortelės nėra atsitiktinės – jos tobulai atspindi dvejetainę sistemą. Atkreipkite dėmesį į kairiajame viršutiniame kampe esančius skaičius: \textbf{1, 2, 4, 8}. Tai yra dvejeto laipsniai (mūsų „raktai“). 
+
+\textbf{Kortelių sudarymo taisyklė:}
+Į kiekvieną kortelę mes įrašėme visus tuos skaičius, kurių dvejetainiame užraše atitinkamoje pozicijoje stovi vienetukas. Pavyzdžiui, į pirmąją kortelę (raktas 1) įrašyti visi nelyginiai skaičiai, nes tik jiems dvejetainėje sistemoje reikalingas $1$. Į kortelę su raktu 8 įrašyti skaičiai, kuriems „reikia“ aštuoneto ($8, 9, 10\dots$).
+
+\textbf{Triuko atlikimo pavyzdys:}
+Tarkime, draugas mintyse sugalvojo skaičių \textbf{11}.
+\begin{enumerate}
+    \item Jūs rodote kortelę \textbf{[1]}. Draugas mato ten savo skaičių ir sako: \textit{„Taip“}.
+    \item Rodote kortelę \textbf{[2]}. Draugas mato skaičių 11 ir sako: \textit{„Taip“}.
+    \item Rodote kortelę \textbf{[4]}. Šioje kortelėje 11 nėra. Draugas sako: \textit{„Ne“}.
+    \item Rodote kortelę \textbf{[8]}. Draugas mato ten savo skaičių ir sako: \textit{„Taip“}.
+\end{enumerate}
+
+\textbf{Paslapties atskleidimas:} 
+Draugas tiesiog ieškojo savo skaičiaus įvairiuose popieriaus lapeliuose ir jam atrodė, kad skaičiai ten sumėtyti be jokios tvarkos. Tačiau iš tikrųjų, sakydamas „Taip“ arba „Ne“, jis \textbf{pats padiktavo savo skaičių dvejetaine skaičiavimo sistema}: jam reikėjo $8$, $2$ ir $1$ ($1011_2$). 
+
+Jums net nereikia analizuoti visos kortelės. Jūs kaskart tiesiog pažiūrite į patį pirmą skaičių (raktą) tos kortelės, kuriai draugas ištaria „Taip“, ir mintyse juos sudedate:
+\[ \textbf{Raktas 8} + \textbf{Raktas 2} + \textbf{Raktas 1} = \textbf{11}. \]
+
+\textit{Pastaba:} Šį triuką galima lengvai išplėsti iki skaičiaus $63$. Tam prireiks viso labo 6 kortelių (pridedant korteles, kurių raktai yra 16 ir 32). O su 10 kortelių galėtumėte atspėti bet kokį sugalvotą skaičių net iki 1023!
+% ==========================================
+% MAGIJA 3: FLAVIJAUS UŽDAVINYS
+% ==========================================
+
+\section{Olimpiadinis „Bossas“: Juozapo Flavijaus uždavinys}
+
+\begin{example}[Išgyvenimo ratas]
+Ratu stovi 100 karių, sunumeruotų nuo 1 iki 100. Pradedant skaičiuoti nuo pirmojo, kas antras karys iškrenta iš rato (1-as lieka, 2-as iškrenta, 3-ias lieka, 4-as iškrenta\dots). Procesas tęsiasi, kol rate lieka tik vienas žmogus. Koks jo numeris?
+\end{example}
+\begin{solution}
+\textbf{Kodėl tai sudėtinga?} Jei karių skaičius būtų \textbf{tikslus dvejeto laipsnis} (pvz., 2, 4, 8, 16, 32, 64), viskas būtų labai paprasta. Kiekvieną kartą apėjus ratą, žmonių skaičius sumažėtų lygiai per pusę (t. y., vėl liktų dvejeto laipsnis). Tokiame tobulame ratelyje visada išgyvena tas žmogus, kuris \textbf{pradeda skaičiavimą} (t. y., numeris 1). 
+
+Tačiau $100$ nėra dvejeto laipsnis. Pažiūrėkime, kaip šią problemą išspręsti logiškai, pasitelkiant mažesnį pavyzdį (pvz., 10 karių), o tuomet pritaikysime tai mūsų 100 karių atvejui ir atrasime magišką dvejetainį algoritmą.
+
+\textbf{1. Loginis sprendimas (Ieškome tobulos būsenos)}
+
+Kaip tai veikia? Paimkime sumažintą modelį: \textbf{10 karių}.
+Didžiausias dvejeto laipsnis, telpantis į $10$, yra $8$. Vadinasi, $10 = 8 + 2$. Mums trukdo šie $2$ „atliekami“ kariai. Mes tiesiog imame juos mesti iš rato tol, kol liks tobulas skaičius $8$. 
+
+\vspace{0.5cm}
+\noindent
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Node stiliai apibrėžti vietoje, kad nepaveiktų kitų elementų
+    \tikzstyle{karys}=[circle, draw, minimum size=0.8cm, font=\bfseries]
+    
+    % N=10 apskritimas
+    \foreach \i in {1,...,10} {
+        \pgfmathsetmacro{\angle}{90 - (\i-1)*36}
+        \node[karys] (\i) at (\angle:3.2cm) {\i};
+    }
+    
+    % Išmesti kariai (kryžiukai)
+    \draw[thick, red] (2.north west) -- (2.south east);
+    \draw[thick, red] (2.north east) -- (2.south west);
+    \draw[thick, red] (4.north west) -- (4.south east);
+    \draw[thick, red] (4.north east) -- (4.south west);
+    
+    % Pažymėtas naujas lyderis
+    \node[karys, draw=green!60!black, line width=2pt, fill=green!10, minimum size=0.9cm] at (5) {5};
+    
+    \draw[->, thick, green!60!black] (5.south east) ++(1.5,-1) node[right, align=left, font=\small, text width=3cm, yshift=-10mm] {Naujas ratas prasideda čia!} -- (5);
+\end{tikzpicture}
+\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\textwidth}
+\textbf{Modelis: $N = 10$ žmonių}
+\begin{enumerate}
+    \item $10 = 8 + 2$ (dvejeto laipsnis + likutis).
+    \item Kad liktų tobulas $8$ karių ratas, turime išmesti $2$ žmones.
+    \item Iškrenta kariai Nr. 2 ir Nr. 4.
+    \item Dabar rate liko lygiai $8$ kariai, o skaičiavimo eilė perėjo \textbf{kariui Nr. 5}. Nuo šio momento jis veikia kaip „naujasis vienetukas“ tobulame rate, todėl tikrai išgyvens.
+\end{enumerate}
+\end{minipage}
+\vspace{0.5cm}
+
+Pritaikius šią logiką mūsų \textbf{100 karių} uždaviniui:
+\begin{itemize}
+    \item $100 = 64 + 36$ (laipsnis + likutis). Mums reikia palaukti, kol iškris $36$ kariai.
+    \item Kadangi iškrenta kas antras, 36-asis iškritęs karys stovės pozicijoje $36 \cdot 2 = 72$.
+    \item Kai iškrenta karys Nr. $72$, rate lieka lygiai $64$ žmonės (dvejeto laipsnis!). Eilė pradėti tobulą skaičiavimą ateina sekančiam žmogui – \textbf{kariui Nr. 73} ($2 \cdot 36 + 1$). Jis ir išgyvens.
+\end{itemize}
+
+\textbf{2. Kaip tai tampa dvejetaine magija?}
+Olimpiadininkams net nereikia skaičiuoti formulių ($2l+1$), nes dvejetainė sistema šį „likučių išmetimo“ procesą atlieka pati:
+
+\begin{enumerate}
+    \item Užrašome karių skaičių ($100$) dvejetaine sistema. Mūsų rastas atskyrimas $100 = 64 + 36$ reiškia, kad patį pirmą vienetuką skiria nuo likučio: $100 = \mathbf{1}100100_2$.
+    \item Išgyvenusio kario formulė yra $2l + 1$ (likutį padauginti iš 2 ir pridėti 1).
+    \item Ką reiškia skaičių $l$ ($100100_2$) padauginti iš $2$? Dvejetainėje sistemoje tai reiškia pridėti nulį į galą: $1001000_2$. 
+    \item Ką reiškia pridėti $1$? Tai tiesiog pakeičia galinį nulį į vienetuką: $1001001_2$.
+    \item \textbf{Atradimas:} Rezultatas visada atrodys taip, lyg būtume paėmę patį pirmą vienetuką ir perkėlę jį į patį galą (tai vadinama \textit{cikliniu poslinkiu})!
+    \[ \mathbf{1}100100_2 \quad \xrightarrow{\text{perkeliame į galą}} \quad 100100\mathbf{1}_2 \]
+    \item Išreiškiame šį naują skaičių atgal dešimtaine sistema:
+    \[ 1001001_2 = 64 + 8 + 1 = \mathbf{73}. \]
+\end{enumerate}
+
+Atsakymas: Paskutinis išgyvens karys numeris \textbf{73}. 
+\end{solution}
+
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    
+    % --- Lengvi (Apšilimas ir vertimai) ---
+    \item Užrašykite skaičius $42$, $127$ ir $2026$ dvejetaine skaičiavimo sistema.
+    \item Išreikškite dvejetainius skaičius $10101_2$, $111111_2$ ir $1000000000_2$ dešimtaine sistema.
+    \item Kas nutinka dvejetainio skaičiaus užrašui, jei tą skaičių padauginame iš 2? O kas nutinka, jei padauginame iš 8?
+    \item Išvardykite visus natūraliuosius skaičius, kurių dvejetainis užrašas turi lygiai keturis skaitmenis. Kiek tokių skaičių yra?
+    \item Dvejetainių skaičių sudėtis atliekama panašiai kaip ir dešimtainių, tik $1+1 = 10_2$ (0 rašome, 1 keliauja į kitą poziciją). Apskaičiuokite $1011_2 + 1101_2$ neversdami jų į dešimtainę sistemą.
+    \item Raskite nežinomą skaičiavimo sistemos pagrindą $b$, jei galioja lygybė: $121_b = 25_{10}$.
+    \item Žinome, kad $2^{10} = 1024 \approx 10^3$. Kiek apytiksliai skaitmenų turės skaičius $10^6$, jei jį užrašysime dvejetaine skaičiavimo sistema?
+    \item Išspręskite lygtį: $1101_2 + x_2 = 10010_2$. Atsakymą $x$ pateikite dešimtaine sistema.
+    
+    % --- Svarsčiai, Algoritmai ir Magija ---
+    \item Jūs turite 4 svarsčius: $1$ kg, $2$ kg, $4$ kg ir $8$ kg. Užrašykite, kuriuos svarsčius dėsite ant svarstyklių, norėdami pasverti 11 kg ir 14 kg.
+    \item Turite 6 svarsčius: 1, 2, 4, 8, 16 ir 32 kg. Koks yra pats didžiausias svoris, kurį galite pasverti? Kaip pasvertumėte lygiai 45 kg?
+    \item \textbf{(Pelių ir nuodų detektyvas)} Karalius turi 1000 butelių brangaus vyno. Šnipas pranešė, kad lygiai į vieną butelį įpilta mirtinų nuodų, kurie suveikia lygiai po 24 valandų. Karalius turi 10 laboratorinių pelių. Kaip per 24 valandas (vieną bandymą) tiksliai nustatyti, kuris butelis užnuodytas? \textit{Užuomina: $2^{10} = 1024$. Sunumeruokite butelius dvejetaine sistema.}
+    \item Sukurkite „Minčių skaitymo“ korteles skaičiams nuo 1 iki 15. Kiek kortelių prireiks? Tiksliai išvardykite, kokie aštuoni skaičiai bus užrašyti kortelėje, kurios kairiajame viršutiniame kampe („rakte“) parašytas skaičius 4.
+    \item Draugas nori sukurti tokį patį „Minčių skaitymo“ triuką, tik skaičiams nuo 1 iki 1000. Kiek iš viso kortelių jam prireiks šiam triukui?
+    \item \textbf{(Klausimai Taip/Ne)} Sugalvojau sveikąjį skaičių nuo 1 iki 1000. Jūs galite man užduoti klausimus, į kuriuos galiu atsakyti tik „Taip“ arba „Ne“. Koks mažiausias klausimų skaičius garantuoja, kad tiksliai atspėsite mano skaičių, ir kokia tai strategija?
+    
+    % --- Aibės, Logika ir Dalumas ---
+    \item Kiek skirtingų poaibių (įskaitant tuščiąją aibę ir pačią pradinę aibę) turi 5 elementų aibė $A = \{a, b, c, d, e\}$? Kodėl šis uždavinys yra tiesiogiai susijęs su penkiaženkliais dvejetainiais skaičiais (nuo $00000_2$ iki $11111_2$)?
+    \item Kiekviename $3 \times 3$ dydžio lentelės langelyje įrašytas 0 arba 1. Yra žinoma, kad kiekvienos eilutės ir kiekvieno stulpelio skaičių suma yra nelyginė. Kiek tokių skirtingų lentelių galima sudaryti?
+    \item \textbf{(Ateities iššūkis – Trejetainė sistema)} Parduotuvėje yra svarstyklės su dviem lėkštėmis. Tai reiškia, kad svarsčius galite dėti ne tik kartu su preke, bet ir ant kitos lėkštės (t. y. svarsčius galima atimti). Kokių \textbf{keturių} svarsčių pakanka norint pasverti bet kokį svorį nuo 1 kg iki 40 kg?
+    \item Dešimtainėje sistemoje skaičius dalijasi iš 11, jei jo skaitmenų, paimtų su alternuojančiais (kaitaliojamais) ženklais (plius, minus), suma dalijasi iš 11. Įrodykite, kad dvejetainėje sistemoje skaičius dalijasi iš \textbf{3}, jei jo dvejetainių skaitmenų su alternuojančiais ženklais suma dalijasi iš 3. (Pvz., $11011_2 \implies 1-1+0-1+1 = 0 \implies$ dalijasi iš 3).
+    \item Paskalio trikampyje nelyginių skaičių išsidėstymas sudaro gražų raštą (Sierpinskio trikampį). Įrodykite (arba pagrįskite), kad Paskalio trikampio $n$-toji eilutė (kurios viršuje stovi 1, o po juo $1, 1$) susideda \textbf{vien tik iš nelyginių skaičių} tada ir tik tada, kai $n = 2^k - 1$.
+    \item Ant lentos parašytas skaičius 1. Vienu ėjimu leidžiama atlikti vieną iš dviejų operacijų: padauginti lentoje esantį skaičių iš 2, arba pridėti prie jo 1. Koks yra mažiausias ėjimų skaičius, reikalingas norint lentoje gauti skaičių 2026? Kaip tai susiję su dvejetaine sistema?
+    
+    % --- Klasikiniai procesai ---
+    \item Teniso turnyre, kuriame žaidžiama atkrintamųjų varžybų sistema (pralaimėjęs iškrenta), dalyvauja $2^n$ žaidėjų. Kiek iš viso partijų bus sužaista šiame turnyre, kol paaiškės čempionas?
+    \item Eilėje stovi 100 lempučių, iš pradžių visos išjungtos. Pro jas praeina 100 žmonių. Pirmasis žmogus perjungia kiekvienos lemputės būseną (įjungia visas). Antrasis perjungia kas antros (2, 4, 6\dots) lemputės būseną. Trečiasis – kas trečios, ir t.t., iki 100-ojo žmogaus, kuris perjungia tik 100-ąją lemputę. Kurios lemputės liks šviesti pasibaigus visam procesui?
+    \item \textbf{(Hanojaus bokštai)} Yra trys stulpeliai. Ant pirmojo stulpelio užmauti 8 skirtingo dydžio diskai, sudarantys piramidę (didžiausias apačioje, mažiausias viršuje). Vienu ėjimu galima perdėti vieną viršutinį diską ant bet kurio kito stulpelio, tačiau \textbf{draudžiama} didesnį diską dėti ant mažesnio. Kiek mažiausiai ėjimų prireiks, norint visą piramidę perkelti ant trečiojo stulpelio?
+    
+    % --- Flavijaus (Josephus) rato variacijos ---
+    \item Flavijaus ratelyje stovi 50 karių. Kas antras karys iškrenta. Pritaikę dvejetainio ciklinio poslinkio algoritmą (iš teorijos dalies), apskaičiuokite paskutinio išgyvenusio kario numerį.
+    \item Koks turi būti karių skaičius $N$ (kur $N \le 100$), Flavijaus ratelyje (išmetant kas antrą), kad garantuotai išgyventų pats pirmasis (Nr. 1) karys? Išvardykite visas įmanomas $N$ reikšmes.
+    \item Flavijaus atvirkštinis uždavinys: Yra žinoma, kad ratelyje stovėjo $N$ žmonių. Atlikus visą išmetimo „kas antrą“ procedūrą, išgyveno karys numeris 27. Koks galėjo būti didžiausias ratelio dydis $N$, jei žinome, kad žmonių buvo ne daugiau kaip 100?
+    
+    % --- Olimpiadiniai „Bossai“ ---
+    \item \textbf{(Thue-Morse seka)} Lentoje užrašytas skaičius $0$. Kiekvieną minutę atliekama operacija: visi lentoje esantys nuliai pakeičiami į $01$, o visi vienetai – į $10$. Gaunama seka: $0 \to 01 \to 0110 \to 01101001 \dots$ Koks bus \textbf{100-asis} šios sekos skaitmuo po pakankamai ilgo laiko?
+    \item \textbf{(Begalinė seka)} Kiekvienam natūraliajam skaičiui $n$ priskiriame reikšmę $f(n)$, kuri lygi skaičiaus $n$ dvejetainiame užraše esančių vienetukų skaičiui. Pavyzdžiui, $f(13) = f(1101_2) = 3$. Išrikiuojame šią seką: $1, 1, 2, 1, 2, 2, 3, 1 \dots$ Įrodykite, kad bet kokiam natūraliajam $k$, skaičius $k$ šioje sekoje pasikartos be galo daug kartų.
+    \item \textbf{(Prieš-Nim žaidimas)} Yra trys krūvelės monetų: 3, 5 ir 7. Du žaidėjai pakaitomis gali paimti bet kokį monetų skaičių (ne mažiau kaip vieną) iš \textbf{vienos} pasirinktos krūvelės. Laimi tas, kuris paima paskutinę monetą. Įrodykite (nenaudodami bandomojo spėliojimo), kad antrasis žaidėjas turi laiminčiąją strategiją. \textit{(Užuomina: pažiūrėkite į monetų skaičius dvejetaine sistema ir ieškokite lyginių stulpelių sumų – tai atvers kelią į 9-ąjį handoutą!)}
+    \item \textbf{(Kalėjimo spynų logika)} 100 kalinių žaidžia išlikimo žaidimą. Kambaryje yra 100 dėžučių, kuriose atsitiktine tvarka paslėpti kalinių numeriai (nuo 1 iki 100, po vieną numerį dėžutėje). Kiekvienas kalinys gali įeiti į kambarį ir atidaryti lygiai 50 dėžučių. Jei bent vienas kalinys neras savo numerio – visi bus nubausti. 
+    Jei jie atidarinės dėžutes atsitiktinai, šansai išgyventi lygūs nuliui. Kokia strategija (paremta dėžučių numeriais ir ten randamais lapeliais) leidžia jiems laimėti su apytiksliai $31\,\%$ tikimybe?
+\end{enumerate}
+
+\end{document}
