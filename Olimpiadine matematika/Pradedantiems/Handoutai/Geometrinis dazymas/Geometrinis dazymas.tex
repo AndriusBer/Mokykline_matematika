@@ -23,9 +23,9 @@ Praėjusioje temoje kalbėjome apie lyginumą. Matėme, kad šachmatinis (dviej�
 Šachmatinis dažymas yra tobulas įrankis, kai uždavinyje veikia $1 \times 2$ dydžio figūros (domino kauliukai) arba kai žirgas šokinėja šachmatų lentoje. Tačiau olimpiadininkai žino, kad gyvenimas neapsiriboja dalyba iš 2. 
 Kas nutinka, jeigu jums reikia lentą padengti $1 \times 3$ dydžio kaladėlėmis? Arba $1 \times 4$ dydžio „laivais“? Šachmatinė lenta čia nebepadės – 2 spalvos neturi nieko bendro su figūromis, sudarytomis iš 3 ar 4 langelių.
 
-Tokiais atvejais mes griebiamės \textbf{sudėtingesnio geometrinio dažymo} Mes dažome erdvę 3, 4 ar net daugiau spalvų. Užuot naudoję tikrus dažus, lentelės langeliuose mes tiesiog įrašome skaičius (1, 2, 3, 4...). 
+Tokiais atvejais mes griebiamės \textbf{sudėtingesnio geometrinio dažymo}. Mes dažome erdvę 3, 4 ar net daugiau spalvų. Užuot naudoję tikrus dažus, lentelės langeliuose mes tiesiog įrašome skaičius ($0, 1, 2, 3\dots$). 
 
-Ši technika leidžia įrodyti neįtikėtinus dalykus. Pažiūrėkime į tris pagrindines dažymo strategijas.
+Ši technika leidžia įrodyti neįtikėtinus dalykus. Iš pradžių susipažinkime su trimis standartinėmis dažymo strategijomis, o tuomet pereisime prie tikrojo olimpiadinio kūrybiškumo.
 
 % ==========================================
 % 1 STRATEGIJA: ĮSTRIŽAINĖS
@@ -40,31 +40,17 @@ Kokia šio dažymo magija? Ogi ta, kad kaip bepadėtume $1 \times 3$ figūrą (h
 Turime $5 \times 5$ dydžio lentą, kurioje išpjautas kairysis viršutinis kampas. Ar galima likusius $24$ langelius uždengti aštuoniomis $1 \times 3$ figūromis?
 \end{example}
 
-\begin{minipage}{0.65\textwidth}
 \begin{solution}
 \textbf{Sprendimas:}
 Lentos plotas yra 24, todėl teoriškai aštuonios figūros tilptų ($8 \times 3 = 24$). Tačiau pritaikykime įstrižaininį dažymą 3 spalvomis (skaičiais 0, 1, 2).
 
-Pažiūrėkime į visos pilnos $5 \times 5$ lentos spalvų kiekius (suskaičiuokite skaičius brėžinyje):
-\begin{itemize}
-    \item Skaičius \textbf{0} pasikartoja \textbf{9} kartus.
-    \item Skaičius \textbf{1} pasikartoja \textbf{8} kartus.
-    \item Skaičius \textbf{2} pasikartoja \textbf{8} kartus.
-\end{itemize}
-Jeigu likusią lentą įmanoma uždengti $1 \times 3$ figūromis, tai kiekviena figūra uždengs lygiai po vieną $0$, $1$ ir $2$. Vadinasi, aštuonios figūros privalo uždengti lygiai aštuonius $0$, aštuonius $1$ ir aštuonius $2$. 
-
-Kad taip nutiktų, iš lentos privalome išpjauti \textbf{0} spalvos langelį (nes nulių yra per daug). Tačiau pažiūrėkite į kairįjį viršutinį kampą – ten įrašytas skaičius \textbf{2}! Išpjovus jį, lentos spalvų balansas tampa $(9, 8, 7)$. Kadangi skaičiai nevienodi, tokios lentos padengti $1 \times 3$ figūromis neįmanoma. \hfill $\square$
-\end{solution}
-\end{minipage}
-\hfill
-\begin{minipage}{0.3\textwidth}
-\centering
+\begin{center}
 \begin{tikzpicture}[scale=0.6]
     \foreach \x in {1,...,5} {
         \foreach \y in {1,...,5} {
-            \pgfmathparse{mod(\x+\y,3)}
+            \pgfmathparse{int(mod(\x+\y,3))}
             \edef\c{\pgfmathresult}
-            \ifdim\c pt=0.0pt
+            \ifnum\c=0
                 \draw[fill=blue!20] (\x,-\y) rectangle ++(1,1);
                 \node at (\x+0.5,-\y+0.5) {\textbf{0}};
             \else
@@ -77,7 +63,18 @@ Kad taip nutiktų, iš lentos privalome išpjauti \textbf{0} spalvos langelį (n
     \draw[very thick, red] (1,-1) -- (2,0);
     \draw[very thick, red] (1,0) -- (2,-1);
 \end{tikzpicture}
-\end{minipage}
+\end{center}
+
+Pažiūrėkime į visos pilnos $5 \times 5$ lentos spalvų kiekius (suskaičiuokite skaičius brėžinyje):
+\begin{itemize}
+    \item Skaičius \textbf{0} pasikartoja \textbf{9} kartus.
+    \item Skaičius \textbf{1} pasikartoja \textbf{8} kartus.
+    \item Skaičius \textbf{2} pasikartoja \textbf{8} kartus.
+\end{itemize}
+Jeigu likusią lentą įmanoma uždengti $1 \times 3$ figūromis, tai kiekviena figūra uždengs lygiai po vieną $0$, $1$ ir $2$. Vadinasi, aštuonios figūros privalo uždengti lygiai aštuonius $0$, aštuonius $1$ ir aštuonius $2$. 
+
+Kad taip nutiktų, iš lentos privalome išpjauti \textbf{0} spalvos langelį (nes nulių yra per daug). Tačiau pažiūrėkite į kairįjį viršutinį kampą – ten įrašytas skaičius \textbf{2}! Išpjovus jį, lentos spalvų balansas tampa $(9, 8, 7)$. Kadangi skaičiai nevienodi, tokios lentos padengti $1 \times 3$ figūromis neįmanoma. \hfill $\square$
+\end{solution}
 
 % ==========================================
 % 2 STRATEGIJA: HIBRIDINIAI DAŽYMAI
@@ -90,21 +87,11 @@ Kartais visos lentos spalvų balansas yra tobulas, tačiau pati „įsibrovėlė
 Standartinė šachmatų lenta ($8 \times 8$) yra idealiai padengiama šešiolika $1 \times 4$ dydžio stačiakampių. Ar galima šią lentą padengti naudojant penkiolika $1 \times 4$ stačiakampių ir vieną $2 \times 2$ dydžio kvadratą?
 \end{example}
 
-\begin{minipage}{0.65\textwidth}
 \begin{solution}
 \textbf{Sprendimas:}
 Lentos plotas vis dar 64 ($15 \times 4 + 4 = 64$). Dažykime lentą įstrižai \textbf{4 spalvomis} ($0, 1, 2, 3$). Pilnoje $8 \times 8$ lentoje kiekvienos spalvos yra lygiai po $16$.
 
-Kiekviena $1 \times 4$ figūra (tiek horizontali, tiek vertikali) uždengia lygiai vieną $0$, vieną $1$, vieną $2$ ir vieną $3$. Taigi, penkiolika tokių figūrų sunaudos lygiai po 15 kiekvienos spalvos langelių. Vadinasi, likęs $2 \times 2$ kvadratas \textbf{privalo} uždengti lygiai po vieną kiekvienos spalvos langelį.
-
-Tačiau pažiūrėkime, kokias spalvas dengia bet koks $2 \times 2$ kvadratas (raudonas kontūras brėžinyje). Pagal mūsų diagonalaus dažymo formulę, matome, kad $2 \times 2$ kvadratas visada turi dvi vienodas spalvas įstrižainėje, ir \textbf{jam visada trūksta vienos spalvos} (mūsų pavyzdyje jis dengia $0, 0, 1, 3$, todėl jam trūksta $1$). 
-
-Kadangi $2 \times 2$ kvadratas nesugeba „surinkti“ visų 4 spalvų po vieną, tokios lentos padengti neįmanoma. \hfill $\square$
-\end{solution}
-\end{minipage}
-\hfill
-\begin{minipage}{0.3\textwidth}
-\centering
+\begin{center}
 \begin{tikzpicture}[scale=0.55]
     % Piešiame 5x5 fragmentą su 4 spalvų įstrižaininiu dažymu
     \foreach \x in {0,...,4} {
@@ -127,14 +114,21 @@ Kadangi $2 \times 2$ kvadratas nesugeba „surinkti“ visų 4 spalvų po vieną
     \draw[very thick, red] (1,-3) rectangle (3,-1);
     \node[red, right, xshift = 10mm] at (3,-2) {\footnotesize trūksta 2};
 \end{tikzpicture}
-\end{minipage}
+\end{center}
+
+Kiekviena $1 \times 4$ figūra (tiek horizontali, tiek vertikali) uždengia lygiai vieną $0$, vieną $1$, vieną $2$ ir vieną $3$. Taigi, penkiolika tokių figūrų sunaudos lygiai po 15 kiekvienos spalvos langelių. Vadinasi, likęs $2 \times 2$ kvadratas \textbf{privalo} uždengti lygiai po vieną kiekvienos spalvos langelį.
+
+Tačiau pažiūrėkime, kokias spalvas dengia bet koks $2 \times 2$ kvadratas (raudonas kontūras brėžinyje). Pagal mūsų diagonalaus dažymo formulę, matome, kad $2 \times 2$ kvadratas visada turi dvi vienodas spalvas įstrižainėje, ir \textbf{jam visada trūksta vienos spalvos} (mūsų pavyzdyje jis dengia $0, 0, 1, 3$, todėl jam trūksta $1$). 
+
+Kadangi $2 \times 2$ kvadratas nesugeba „surinkti“ visų 4 spalvų po vieną, tokios lentos padengti neįmanoma. \hfill $\square$
+\end{solution}
 
 % ==========================================
 % 3 STRATEGIJA: JUOSTINIS DAŽYMAS
 % ==========================================
 \section{3 strategija: Juostinis dažymas (Stripe Coloring)}
 
-Įstrižaininis dažymas yra galingas, bet kartais figūros elgiasi ne pagal įstrižaines. Pavyzdžiui, jei norime blokuoti vertikalias figūras, o horizontalioms leisti veikti laisvai, mes dažome lentą \textbf{juostomis} (eilutėmis arba stulpeliais).
+Įstrižaininis dažymas yra galingas, bet kartais figūros elgiasi ne pagal įstrižaines. Jei norime blokuoti vertikalias figūras, o horizontalioms leisti veikti laisvai, mes dažome lentą \textbf{juostomis} (eilutėmis arba stulpeliais).
 
 \begin{example}[Ilgieji laivai]
 Turime $10 \times 10$ dydžio lentą. Ar galima ją visą padengti 25 „laivais“, kurių kiekvieno dydis yra $1 \times 4$ langeliai?
@@ -142,22 +136,11 @@ Turime $10 \times 10$ dydžio lentą. Ar galima ją visą padengti 25 „laivais
 
 \begin{solution}
 \textbf{Sprendimas:}
-
-\begin{minipage}{0.55\textwidth}
 Dažykime lentą 4 spalvomis, bet ne įstrižai, o \textbf{horizontaliai (juostomis)}:
 1 eilutę dažome $1$, antrą $2$, trečią $3$, ketvirtą $4$, penktą vėl $1$ ir t.t.
-Lentoje turime dešimt eilučių. Tai reiškia, kad spalvos 1 ir 2 pasikartos po tris kartus (eilutės 1, 5, 9 ir 2, 6, 10), o spalvos 3 ir 4 – tik po du kartus (eilutės 3, 7 ir 4, 8).
-Kadangi kiekvienoje eilutėje yra 10 langelių, iš viso $10 \times 10$ lentoje bus:
-\begin{itemize}
-    \item Spalvos \textbf{1}: $30$ langelių.
-    \item Spalvos \textbf{2}: $30$ langelių.
-    \item Spalvos \textbf{3}: $20$ langelių.
-    \item Spalvos \textbf{4}: $20$ langelių.
-\end{itemize}
-\end{minipage}
-\hfill
-\begin{minipage}{0.4\textwidth}
-\centering
+Lentoje turime dešimt eilučių. Tai reiškia, kad spalvos 1 ir 2 pasikartos po tris kartus, o spalvos 3 ir 4 – tik po du kartus.
+
+\begin{center}
 \begin{tikzpicture}[scale=0.5]
     % Piešiame 6x6 fragmentą juostiniu dažymu
     \foreach \y in {0,...,5} {
@@ -180,44 +163,172 @@ Kadangi kiekvienoje eilutėje yra 10 langelių, iš viso $10 \times 10$ lentoje 
     \draw[very thick, red] (2,-4) rectangle (6,-5);
     \node[red, right] at (6,-4.5) {\footnotesize H};
 \end{tikzpicture}
-\end{minipage}
+\end{center}
 
-\vspace{0.3cm}
-O dabar paanalizuokime pačius laivus ($1 \times 4$). 
-Kaip matote brėžinyje, \textbf{vertikalus (V)} laivas visada pereina per 4 skirtingas eilutes, todėl jis visada uždengs lygiai po vieną $1, 2, 3$ ir $4$.
-\textbf{Horizontalus (H)} laivas visas guli vienoje eilutėje, todėl jis uždengs lygiai \textbf{keturis TOS PAČIOS spalvos} langelius (pvz., keturis $1$ arba keturis $4$).
+Kadangi kiekvienoje eilutėje yra 10 langelių, iš viso $10 \times 10$ lentoje bus:
+\begin{itemize}
+    \item Spalvos \textbf{1}: $30$ langelių.
+    \item Spalvos \textbf{2}: $30$ langelių.
+    \item Spalvos \textbf{3}: $20$ langelių.
+    \item Spalvos \textbf{4}: $20$ langelių.
+\end{itemize}
+
+Paanalizuokime pačius laivus. \textbf{Vertikalus (V)} laivas visada uždengs lygiai po vieną $1, 2, 3$ ir $4$. \textbf{Horizontalus (H)} laivas visas guli vienoje eilutėje, todėl jis uždengs lygiai \textbf{keturis tos pačios spalvos} langelius.
 
 Tarkime, visoje lentoje yra $V$ vertikalių laivų. Taip pat turime horizontalių laivų: tegul $H_1$ yra skaičius horizontalių laivų, gulinčių 1-os spalvos eilutėse, o $H_3$ – gulinčių 3-ios spalvos eilutėse.
-
-Sudarykime lygtis 1-ajai ir 3-iajai spalvai. 
-Kiek iš viso lentoje uždengta \textbf{1-osios} spalvos langelių? Kiekvienas vertikalus laivas uždengia po vieną, o kiekvienas horizontalus (esantis toje juostoje) – po keturis. Tai turi būti lygu visų tos spalvos langelių skaičiui (30):
+Sudarykime lygtis 1-ajai ir 3-iajai spalvai (bendras uždengtų langelių skaičius):
 \[ V + 4H_1 = 30 \]
-Kiek uždengta \textbf{3-iosios} spalvos langelių? Analogiškai:
 \[ V + 4H_3 = 20 \]
 
-O dabar pritaikykime olimpiadinį triuką – atimkime antrąją lygtį iš pirmosios!
-\[ (V + 4H_1) - (V + 4H_3) = 30 - 20 \]
-\[ 4H_1 - 4H_3 = 10 \]
-\[ 4(H_1 - H_3) = 10 \]
-Padalinę abi puses iš 4, gauname:
-\[ H_1 - H_3 = 2{,}5 \]
-
-Gavome visišką nesąmonę! $H_1$ ir $H_3$ yra \textbf{laivų vienetų skaičiai}, todėl jie privalo būti sveikieji skaičiai ($0, 1, 2, 3\dots$). Dviejų sveikųjų skaičių skirtumas niekada negali būti lygus su trupmena ($2{,}5$). 
-Vadinasi, taip padengti lentos yra neįmanoma. \hfill $\square$
+Atimkime antrąją lygtį iš pirmosios:
+\[ 4H_1 - 4H_3 = 10 \implies H_1 - H_3 = 2{,}5 \]
+Gavome visišką nesąmonę! Laivų kiekis ($H_1, H_3$) privalo būti sveikasis skaičius. Dviejų sveikųjų skaičių skirtumas niekada negali būti trupmena ($2{,}5$). Vadinasi, taip padengti lentos yra neįmanoma. \hfill $\square$
 \end{solution}
 
+% ==========================================
+% AUKSINĖ TAISYKLĖ: KŪRYBIŠKUMAS
+% ==========================================
 \vspace{1cm}
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Auksinė taisyklė: Būkite kūrybingi – susikurkite savo dažymą!}
+
+Šachmatinė lenta, įstrižainės ar juostos yra tik populiariausi įrankiai. Tačiau tikrasis olimpiadininkas nesusiriša su jokia taisykle – jis kuria savo dažymą pagal uždavinio poreikius! Galite dažyti kas trečią stulpelį, galite nuspalvinti tik kampus, galite lentą paversti „tinkleliu“. Svarbiausia taisyklė: jūsų dažymas yra geras, jeigu figūra (kad ir kur ją padėtumėte) visada \textbf{išlaiko tą patį spalvų invariantą} (pvz., visada dengia lyginį skaičių juodų langelių).
+\end{minipage}
+}
+\end{center}
+\vspace{0.5cm}
+
+% ==========================================
+% 4 STRATEGIJA: NESTANDARTINIS (TINKLELIS)
+% ==========================================
+\section{4 strategija: Nestandartinis „tinklelio“ dažymas}
+
+\begin{example}[Maža lenta ir ilgi laivai]
+Ar įmanoma $6 \times 6$ dydžio lentą uždengti devyniais $1 \times 4$ dydžio stačiakampiais?
+\end{example}
+
+\begin{solution}
+\textbf{Kodėl vengiame standartinių dažymų?}
+\begin{itemize}
+    \item \textbf{Įstrižaininis (4 spalvų) dažymas:} Lentoje yra $36$ langeliai, todėl kiekviena iš 4 spalvų pasikartos lygiai 9 kartus. Kadangi kiekvienas $1 \times 4$ laivas visada dengia lygiai po vieną kiekvienos spalvos langelį, 9 laivai sunaudos lygiai po 9 kiekvienos spalvos langelius. Balansas tobulas, įstrižainės jokios prieštaros neranda.
+    \item \textbf{Juostinis dažymas:} Jei dažytume horizontaliomis juostomis (1, 2, 3, 4, 1, 2), mes prieštarą rastume. Tačiau tam reikėtų sudaryti kintamųjų lygčių sistemą (kaip 3-ioje strategijoje) ir algebriškai įrodinėti, kad gaunasi trupmenos. 
+\end{itemize}
+
+Olimpiadose mes ieškome elegancijos. Sukurkime savo unikalų „tinklelį“, kuris problemą „nukirs“ vizualiai ir akimirksniu, be jokių lygčių! 
+
+Nudažysime juodai tik tuos langelius, kurie \textbf{vienu metu} yra: 
+2-ame, 3-iame arba 6-ame stulpelyje \textbf{IR} 2-oje, 3-ioje arba 6-oje eilutėje. 
+Tokių langelių iš viso yra $3 \times 3 = \mathbf{9}$. 9 yra \textbf{nelyginis} skaičius!
 
 \begin{center}
-\textbf{Trenerio taisyklė \#2}
+\begin{tikzpicture}[scale=0.6]
+    % Braižome langelius
+    \draw[thick] (1,-6) grid (7,0);
+    
+    % Spalviname sankirtas (2,3,6)
+    \foreach \x in {2,3,6} {
+        \foreach \y in {2,3,6} {
+            \draw[fill=black!70] (\x,-\y) rectangle ++(1,1);
+        }
+    }
+    
+    % Užrašome koordinates
+    \foreach \x in {1,...,6} {
+        \node at (\x+0.5, 0.4) {\footnotesize \x};
+        \node at (0.4, -\x+0.5) {\footnotesize \x};
+    }
+    
+    % Parodome vieną horizontalų laivą (raudoną)
+    \draw[very thick, red] (1,-2) rectangle (5,-3);
+    \node[red, right] at (7,-2.5) {\footnotesize \textbf{H} (dengia 2)};
+    
+    % Parodome vieną vertikalų laivą (mėlyną)
+    \draw[very thick, blue] (5,-1) rectangle (6,-5);
+    \node[blue, right] at (7,-4.5) {\footnotesize \textbf{V} (dengia 0)};
+\end{tikzpicture}
 \end{center}
-\begin{quote}
-Jei uždavinys su domino ($1 \times 2$) – dažyk 2 spalvomis (šachmatais). \\
-Jei su tromino ($1 \times 3$) – dažyk 3 spalvomis (įstrižainėmis). \\
-Jei su laivais ($1 \times 4$) – dažyk 4 spalvomis (įstrižainėmis arba juostomis). \\
-Niekada nepasikliaukite vien plotu! Plotas meluoja, spalvos – ne.
-\end{quote}
-\vspace{1cm}
+
+Ką daro bet koks padėtas $1 \times 4$ stačiakampis šioje lentoje?
+\begin{itemize}
+    \item \textbf{Horizontalus} laivas užims 4 gretimus stulpelius. Kad ir kur jį dėsime (pvz., per stulpelius 1-2-3-4, arba 3-4-5-6), jis \textbf{visada} kirs lygiai du mūsų „ypatinguosius“ stulpelius. Jei stačiakampis guli juodoje eilutėje, jis uždengs lygiai $\mathbf{2}$ juodus langelius. Jei baltoje – $\mathbf{0}$ juodų langelių.
+    \item Pagal simetriją, \textbf{vertikalus} stačiakampis irgi visada uždengs arba $\mathbf{2}$, arba $\mathbf{0}$ juodų langelių.
+\end{itemize}
+
+\textbf{Atradimas:} Kiekvienas laivas \textit{visada} uždengia lyginį juodų langelių skaičių. Vadinasi, 9 laivai kartu gali uždengti tik \textbf{lyginį} skaičių juodų langelių. Bet lentoje juodų langelių yra $\mathbf{9}$ (nelyginis!). Lyginiais skaičiais nelyginio uždengti neįmanoma. Prieštara! \hfill $\square$
+
+\vspace{0.3cm}
+\textit{\textbf{Pastaba:} Šį uždavinį iš tikrųjų galima išspręsti ir „Kryžminiu metodu“ (kurį išmoksime sekančioje strategijoje). Jei nudažytume tik 1-ą ir 5-ą eilutes, įrodytume, kad vertikalių laivų yra lyginis skaičius. Pakartojus tai su stulpeliais, gautume, kad horizontalių laivų irgi yra lyginis skaičius (Lyginis + Lyginis = Lyginis, o mes turime 9 laivus). Mūsų sukurtas „Tinklelis“ yra genialus triukas, leidžiantis abu šiuos kryžminio įrodymo žingsnius atlikti vienu metu!}
+\end{solution}
+
+% ==========================================
+% 5 STRATEGIJA: DVIGUBOS JUOSTOS IR KRYŽMINIS ĮRODYMAS
+% ==========================================
+\vspace{0.5cm}
+\section{5 strategija: Dvigubos juostos ir kryžminis įrodymas}
+
+Ką daryti, jeigu figūra yra ne tiesi, o „laužta“? Aukščiau naudotas „tinklelis“ čia subyrėtų, nes laužta figūra kirstų jį chaotiškai ir neužtikrintų jokio lyginumo. Tokioms figūroms matematikai naudoja stambiausią kalibrą – dvigubas juostas, atliekamas dvejomis kryptimis.
+
+\begin{example}[Z-tetromino magija]
+Ar įmanoma $10 \times 10$ dydžio lentą uždengti 25 vienetais Z formos tetromino figūrų (žr. brėžinį)?
+\end{example}
+
+\begin{solution}
+\textbf{1. Šablonų mirtis} \\
+Šachmatinė lenta mus apgauna – kiekviena Z figūra visada uždengia lygiai 2 juodus ir 2 baltus langelius, todėl 25 figūros idealiai padengia $50/50$ lentos balansą. Standartinės juostos taip pat nieko neranda. 
+
+\textbf{2. Sukuriame savo įrankį: Dvigubos juostos} \\
+Spalvinkime lentos stulpelius \textbf{dvigubomis juostomis}: du juodi stulpeliai, du balti, du juodi... (1-2 juodi, 3-4 balti, 5-6 juodi, 7-8 balti, 9-10 juodi). 
+Visoje $10 \times 10$ lentoje dabar turime 6 juodus stulpelius (60 langelių) ir 4 baltus (40 langelių).
+
+\vspace{0.3cm}
+Panagrinėkime, kiek juodų langelių uždengia viena Z figūra tokiame rašte:
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+    % Braižome langelius 6x5 fragmentą
+    \draw[thick] (1,-5) grid (6,0);
+    
+    % Dvigubos juostos (1-2 juoda, 3-4 balta, 5-6 juoda)
+    \foreach \x in {1,2,5,6} {
+        \foreach \y in {1,...,5} {
+            \draw[fill=black!30] (\x,-\y) rectangle ++(1,1);
+        }
+    }
+    
+    % Vertikali Z
+    \draw[very thick, blue, fill=blue!20, opacity=0.9] (1,-1) rectangle (2,-3);
+    \draw[very thick, blue, fill=blue!20, opacity=0.9] (2,-2) rectangle (3,-4);
+    \draw[very thick, blue] (1,-1) -- (2,-1) -- (2,-2) -- (3,-2) -- (3,-4) -- (2,-4) -- (2,-3) -- (1,-3) -- cycle;
+    \node[blue, xshift=-1.5cm,yshift = 1cm] at (2,-4.5) {\footnotesize \textbf{V} (4 juodi)};
+    
+    % Horizontali Z
+    \draw[very thick, red, fill=red!20, opacity=0.9] (3,-1) rectangle (5,-2);
+    \draw[very thick, red, fill=red!20, opacity=0.9] (4,-2) rectangle (6,-3);
+    \draw[very thick, red] (3,-1) -- (5,-1) -- (5,-2) -- (6,-2) -- (6,-3) -- (4,-3) -- (4,-2) -- (3,-2) -- cycle;
+    \node[red, xshift=2.2cm,yshift = 0.5cm] at (5,-3.5) {\footnotesize \textbf{H} (1 juodas)};
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Vertikali Z (stovi 2 stulpeliuose):} Ji krenta arba ant dviejų juodų stulpelių (dengia \textbf{4} juodus langelius), arba ant dviejų baltų (dengia \textbf{0} juodų), arba ant spalvų ribos – vieno balto ir vieno juodo stulpelio (tada dengia \textbf{2} juodus). Išvada: vertikali Z figūra \textit{visada} dengia \textbf{LYGINĮ} skaičių juodų langelių.
+    \item \textbf{Horizontali Z (stovi 3 stulpeliuose):} Ji kerta stulpelių spalvų ribą. Jei ji kerta ribą (Juoda, Juoda, Balta), ji uždengia \textbf{3} juodus langelius. Jei kerta ribą (Juoda, Balta, Balta) – dengia \textbf{1} juodą langelį. Išvada: horizontali Z figūra \textit{visada} dengia \textbf{NELYGINĮ} skaičių juodų langelių!
+\end{itemize}
+
+Kadangi bendras juodų langelių skaičius lentoje yra \textbf{60 (lyginis)}, o vertikalios figūros įneša tik lyginius priedus, tai reiškia, kad bendrą lyginumą lemia horizontalios figūros. Kad jų sukurta nelyginių skaičių suma taptų lyginė (60), pačių \textbf{horizontalių Z figūrų privalo būti lyginis skaičius!} (Tarkime, $H$ yra lyginis).
+
+\vspace{0.5cm}
+\textbf{3. Kryžminis įrodymas} \\
+Dabar pakeiskime dažymą: pasukime lentą 90 laipsnių kampu. Dažykime \textbf{eilutes} dvigubomis juostomis (1-2 eilutė juoda, 3-4 balta ir t.t.). Viskas apsiverčia veidrodiškai!
+Dabar juodų langelių skaičius vėl lygus 60 (lyginis). Tačiau dabar horizontali Z dengia lyginį skaičių juodų langelių, o vertikali – nelyginį. Vadinasi, kad suma būtų lyginė, \textbf{vertikalių Z figūrų privalo būti lyginis skaičius!} ($V$ yra lyginis).
+
+\textbf{4. Išvada} \\
+Įrodėme, kad horizontalių figūrų skaičius ($H$) yra lyginis, vertikalių ($V$) – taip pat lyginis. 
+Vadinasi, bendras figūrų skaičius privalo būti jų suma:
+\[ H + V = Lyginis + Lyginis = \mathbf{LYGINIS \ SKAIČIUS}. \]
+Tačiau mes turime lygiai \textbf{25} figūras, o 25 yra \textbf{NELYGINIS} skaičius! 
+Gauname prieštarą. \hfill $\square$
+\end{solution}
 
 % ==========================================
 % UŽDAVINIAI
@@ -239,7 +350,7 @@ Sprendžiant šiuos uždavinius naudokite geometrinį dažymą: spalvinkite lang
     \item Ar galima padengti $12 \times 12$ dydžio lentą $1 \times 4$ dydžio stačiakampiais?
     \item Turime $9 \times 9$ lentą. Ją padengėme 27 figūromis $1 \times 3$. Įrodykite, kad tarp jų negali būti lygiai 14 horizontalių ir 13 vertikalių figūrų.
     \item Ar galima $6 \times 6$ lentą visiškai padengti 12 L-tromino figūrų (3 langelių kampeliais)?
-    \item $10 \times 10$ lenta yra padengta 25 Z-tetromino figūromis (kiekviena uždengia 4 langelius zigzagu). Įrodykite, kad tai neįmanoma.
+    \item Ar galima $14 \times 14$ lentą visiškai padengti 49 Z-tetromino figūromis?
     \item Iš $8 \times 8$ lentos išpjovėme vieną langelį. Kokiose koordinatėse jis privalo būti, kad likusią lentos dalį būtų teoriškai įmanoma padengti 21 figūra $1 \times 3$?
     \item Iš $10 \times 10$ lentos išpjautas centrinis $2 \times 2$ kvadratas. Ar galima likusią dalį (96 langelius) padengti 24 T formos tetromino figūromis?
     \item Muziejaus salė turi formą stačiakampio, kurio matmenys $11 \times 12$. Grindis dengia plytelės $1 \times 4$. Viena plytelė sudužo, bet meistras atnešė naują plytelę, kurios dydis $2 \times 2$. Ar galima perdėlioti senas plyteles ir įkomponuoti naująją, kad grindys vėl būtų pilnai uždengtos?
