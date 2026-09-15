@@ -1,0 +1,93 @@
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[a4paper, left=1cm, right=1cm, top=2.5cm, bottom=1cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{tasks}
+
+% Antraštė
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Vardas: \rule{4cm}{0.4pt}}{Kontrolinis darbas: \\Daugianariai}{Sokrato variantas}
+\runningheader{Daugianariai}{}{}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+\pointsdroppedatright          
+\bracketedpoints               
+\setlength{\rightpointsmargin}{1.6cm} 
+\renewcommand{\points}{taškai} 
+\renewcommand{\pointname}{Taškai:} 
+\marginpointname{\ taškai}     
+\renewcommand{\dottedlinefillheight}{0.7cm}
+\newcommand{\atsakymas}{%
+    \par\vspace{0.3cm}
+    \textbf{Atsakymas:} \framebox[7cm]{\rule{0pt}{0.7cm}}
+}
+
+\begin{document}
+
+\begin{questions}
+
+\question[3] Nustatykite duotų reiškinių tipus (racionalusis, trupmeninis, sveikas, iracionalusis). Atsakymą pateikite prie kiekvieno reiškinio prirašydami raides pvz. R,S (Racionalus ir Sveikas).
+\begin{tasks}[label-width=1.2em](3)
+    \task $\displaystyle \frac{x^3 - \sqrt{7}}{2}$
+    \task $\displaystyle \frac{3}{x^2 + 1}$
+    \task $\displaystyle x^{-3} + \pi x$
+    \task $\displaystyle \sqrt{x^2 - 4}$
+    \task $\displaystyle 5x+4 ^{-3} $
+    \task $\displaystyle \sqrt{3}x-5 $
+\end{tasks}
+\droppoints
+
+\question[4] Suprastinkite reiškinį ir jeigu atsakymas yra vienanaris, nurodykite jo koeficientą ir laipsnį. Jei ne vienanaris, paaiškinkite kodėl.
+$$ \left( -3x^3y^{-1} \right)^4 \cdot \left( 3x^{-2}y^2 \right)^{-3} $$
+\droppoints
+\vspace{2.5cm}
+\atsakymas
+
+\question[4] Nenaudodami prietaiso, kuris homo sapiens paverčia homo babuinus, apskaičiuokite šio reiškinio reikšmę:
+ $$\displaystyle \frac{57^3 + 43^3}{0,1 ^{-2} \cdot (57 \cdot 14+43 ^{2} ) } $$ \droppoints
+\vspace{3.5cm}
+\atsakymas
+
+\question Įrodykite formules:
+\begin{parts}
+    \part[2] $(x ^{r} ) ^{t}  = x ^{rt} $ \droppoints
+    \vspace{2cm}
+    \part[3] $(x+y) ^{3} = x^3 + 3x^2y + 3xy^2 + y^3 $. \droppoints
+\end{parts}
+\newpage
+
+\question[4] Raskite didžiausią ir mažiausią reiškinio $-3x^2 + 2 x - 1$ reikšmes. Nurodykite, su kokia $x$ reikšmėmis jos gaunamos.
+\droppoints
+\vspace{3.5cm}
+\atsakymas
+
+\question[5]  Reiškinį $(x-1) ^{3} -(x-2) ^{2} (x-1)$ užrašę pavidalu $a(x+b)^{2} + c$ apskaičiuote reiškinio $\sqrt{3a-4b-8c+4} $ reiškmę.   
+\droppoints
+\vspace{3.5cm}
+\atsakymas
+
+\question[4] Kokia yra mažiausia galima reiškinio $x ^{2} +y ^{2} + z ^{2} -4x+6y-2z$ reikšmė? 
+\droppoints
+\vspace{1cm} % Šiek tiek sumažinau tarpą, kad gražiai tilptų lentelė
+
+\end{questions}
+
+% Nustumiame turinį į puslapio apačią
+\vfill 
+
+\begin{center}
+    \textbf{Vertinimo lentelė (Iš viso: 29 taškai)} \\[0.2cm]
+    \renewcommand{\arraystretch}{1.3} % Šiek tiek paplatina eilutes, kad skaičiai nesusiliestų su rėmeliu
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Taškai} & 0--3 & 4--6 & 7--9 & 10--12 & 13--15 & 16--18 & 19--21 & 22--24 & 25--27 & 28--29 \\ \hline
+        \textbf{Pažymys} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\ \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
