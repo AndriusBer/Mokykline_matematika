@@ -1,0 +1,91 @@
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[a4paper, left=1cm, right=1cm, top=2.5cm, bottom=1cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{tasks}
+
+% Antraštė
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Vardas: \rule{4cm}{0.4pt}}{Kontrolinis darbas: \\Daugianariai}{Archimedo variantas}
+\runningheader{Daugianariai}{}{}
+\firstpagefooter{}{}{}
+\runningfooter{}{}{}
+\pointsdroppedatright          
+\bracketedpoints               
+\setlength{\rightpointsmargin}{1.6cm} 
+\renewcommand{\points}{taškai} 
+\renewcommand{\pointname}{Taškai:} 
+\marginpointname{\ taškai}     
+\renewcommand{\dottedlinefillheight}{0.7cm}
+\newcommand{\atsakymas}{%
+    \par\vspace{0.3cm}
+    \textbf{Atsakymas:} \framebox[7cm]{\rule{0pt}{0.7cm}}
+}
+
+\begin{document}
+
+\begin{questions}
+
+\question[3] Nustatykite duotų reiškinių tipus (racionalusis, trupmeninis, sveikas, iracionalusis). Atsakymą pateikite prie kiekvieno reiškinio prirašydami raides pvz. R,S (Racionalus ir Sveikas).
+\begin{tasks}[label-width=1.2em](3)
+    \task $\displaystyle \frac{5-3x}{2}$
+    \task $\displaystyle \frac{7}{x^3 + 4}$
+    \task $\displaystyle 4x^3 - \sqrt{5} x^2$
+    \task $\displaystyle \sqrt{x^4 - 3}$
+    \task $\displaystyle x^2 + 5^{-2}$
+    \task $\displaystyle \sqrt{10}x^2 + 3x$
+\end{tasks}
+\droppoints
+
+\question[4] Suprastinkite reiškinį ir jeigu atsakymas yra vienanaris, nurodykite jo koeficientą ir laipsnį. Jei ne vienanaris, paaiškinkite kodėl.
+$$ \left( -3x^4y^{-2} \right)^3 \cdot \left( 3x^{-5}y^4 \right)^{-2} $$
+\droppoints
+\vspace{2.5cm}
+\atsakymas
+
+\question[4] Nenaudodami prietaiso, kurį naudojant smegenų ląstelių skaičius mažėja šviesos greičiu, apskaičiuokite šio reiškinio reikšmę:
+\[ \frac{156^3+144 \cdot\left(132^2+24 \cdot 132+12^2\right)}{156 \cdot(10 \sqrt{3})^2 \cdot\left(12+\frac{144^2}{156}\right)} \] \vspace{3.5cm}
+\atsakymas
+
+\question Įrodykite formules:
+\begin{parts}
+    \part[2] $\displaystyle x ^{m} \cdot y  ^{m} = (xy)^{m}   $ \droppoints
+    \vspace{2cm}
+    \part[3] $x^3 + y^3 = (x+y)(x^2 - xy + y^2)$. \droppoints
+\end{parts}
+\newpage
+
+\question[4] Raskite didžiausią ir mažiausią reiškinio $-2x^2 + 3x - 2$ reikšmes. Nurodykite, su kokia $x$ reikšmėmis jos gaunamos.
+\droppoints
+\vspace{3.5cm}
+\atsakymas
+
+\question[5]  Įrodykite, kad reiškinį $(3x-1)^3 - (9x-1)(3x^2 - 3x + 1) + 9x\left(x - \frac{2}{3}\right)$ padauginę iš $\frac{1}{x} $ gautume daugianarį. Nurodykite to daugianario laipsnį. 
+\droppoints
+\vspace{3.5cm}
+\atsakymas
+
+\question[4] Nustatę $a$ ir $b$ reikšmes su kuriomis lygybė $(3x-2)\left(2x^2+ax+1\right)+b = 6x^3+5x^2-5x+3$ yra teisinga apskaičiuokite reiškinio $\left(-\frac{1}{3}a\right)^{888} + \left(-\frac{1}{5}b\right)^{777}$ reikšmę. 
+\droppoints
+\vspace{8cm}
+\atsakymas
+\end{questions}
+
+\vfill 
+
+\begin{center}
+    \textbf{Vertinimo lentelė (Iš viso: 29 taškai)} \\[0.2cm]
+    \renewcommand{\arraystretch}{1.3} 
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Taškai} & 0--3 & 4--6 & 7--9 & 10--12 & 13--15 & 16--18 & 19--21 & 22--24 & 25--27 & 28--29 \\ \hline
+        \textbf{Pažymys} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\ \hline
+    \end{tabular}
+\end{center}
+
+\end{document}
