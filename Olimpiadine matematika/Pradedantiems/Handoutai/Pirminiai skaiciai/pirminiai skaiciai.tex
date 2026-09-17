@@ -1,0 +1,171 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Skaičių teorija: Skaičių „DNR“ ir pirminiai skaičiai}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Skaičių „DNR“: Pagrindinė aritmetikos teorema}
+
+Iki šiol mes mokėmės skaičius išardyti sudėties būdu ($100a + 10b + c$). Tačiau tikroji skaičiaus prigimtis slypi ne sudėtyje, o \textbf{daugyboje}.
+
+Įsivaizduokite, kad visi sveikieji skaičiai yra pastatai. Jei skaičių galime padalinti, vadinasi, pastatą galime išardyti į mažesnius blokus. Pavyzdžiui, $60 = 6 \cdot 10$. Bet $6$ ir $10$ dar nėra mažiausios detalės. Ardome toliau: $6 = 2 \cdot 3$, o $10 = 2 \cdot 5$. 
+Dabar turime $60 = 2 \cdot 2 \cdot 3 \cdot 5 = 2^2 \cdot 3 \cdot 5$. 
+
+Skaičiai $2, 3$ ir $5$ toliau nebesiskaido. Tai yra \textbf{pirminiai skaičiai} – patys elementariausi matematikos „atomai“, iš kurių daugybos būdu pastatomas bet koks kitas skaičius.
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Pagrindinė aritmetikos teorema}\\
+Kiekvienas natūralusis skaičius (didesnis už $1$) gali būti išskaidytas pirminių skaičių sandauga, ir toks skaidymas yra \textbf{vienintelis} (neskaitant dauginamųjų tvarkos). \\
+Šis skaidymas $n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k}$ yra unikalus skaičiaus \textbf{„DNR kodas“}.
+\end{minipage}
+}
+\end{center}
+
+Kodėl tai galinga? Nes skaičiaus DNR pasako viską apie jo savybes. Pavyzdžiui, jei matome skaičių $x^2$ (tobuląjį kvadratą), jo DNR \textbf{visi} pirminių skaičių laipsniai privalo būti lyginiai ($x^2 = p_1^{2a_1} \cdot p_2^{2a_2} \dots$).
+
+% ==========================================
+% DALIKLIŲ SKAIČIUS IR KOMBINATORIKA
+% ==========================================
+\section{Kiek daliklių turi skaičius? (Labas, Kombinatorika!)}
+
+Dažnas olimpiadų klausimas: kiek daliklių turi skaičius $1 000 000$? Bandyti juos išrašyti ranka būtų savižudybė. Bet čia į pagalbą ateina mūsų sena draugė – Kombinatorika.
+
+Tarkime, turime skaičių $N$, kurio DNR yra $N = p_1^{a_1} \cdot p_2^{a_2}$.
+Jei kažkoks skaičius $d$ yra mūsų $N$ daliklis, vadinasi $d$ yra pastatytas \textbf{tik} iš tų pačių „atomų“ $p_1$ ir $p_2$, ir jų kiekis negali viršyti to, kiek jų turi $N$.
+
+Taigi, formuodami daliklį, mes \textbf{kombinatorikos daugybos taisykle} darome pasirinkimus:
+\begin{itemize}
+    \item Kiek turime variantų pasirinkti pirminį skaičių $p_1$? Galime jo neimti visai ($0$ vnt.), imti $1$ vnt., $2$ vnt. ir t.t. iki pat $a_1$. Iš viso: \textbf{$(a_1 + 1)$} pasirinkimų.
+    \item Kiek turime variantų pasirinkti $p_2$? Analogiškai, nuo $0$ iki $a_2$. Iš viso: \textbf{$(a_2 + 1)$} pasirinkimų.
+\end{itemize}
+
+Vadinasi, bendras visų įmanomų daliklių skaičius (žymimas graikiška raide $\tau(n)$ - „tau“) yra lygus šių pasirinkimų sandaugai!
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Daliklių skaičiaus formulė:}\\
+Jei skaičiaus DNR yra $n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k}$, tai to skaičiaus daliklių kiekis yra:\\
+\[ \tau(n) = (a_1 + 1)(a_2 + 1) \dots (a_k + 1) \]
+\textit{Pastaba: Mes dauginame ne pačius pirminius skaičius, o jų \textbf{laipsnius, padidintus vienetu}!}
+\end{minipage}
+}
+\end{center}
+
+\textbf{Pavyzdys:} Kiek daliklių turi skaičius $72$? 
+Skaidome: $72 = 8 \cdot 9 = 2^3 \cdot 3^2$.
+Daliklių skaičius: $(3+1)(2+1) = 4 \cdot 3 = \mathbf{12}$.
+
+% ==========================================
+% TOBULIEJI KVADRATAI IR LYGINUMAS
+% ==========================================
+\section{Daliklių poros ir stebuklingi kvadratai}
+
+Pabandykime išrašyti skaičiaus $12$ visus daliklius: $1, 2, 3, 4, 6, 12$. 
+Pastebite dėsningumą? Dalikliai \textbf{visada vaikšto poromis}! 
+Jei išsirinksime bet kokį daliklį $d$, jį padauginę iš „porininko“ ($\frac{12}{d}$) visada gausime pradinį skaičių:
+$1 \cdot 12 = 12, \quad 2 \cdot 6 = 12, \quad 3 \cdot 4 = 12$.
+Kadangi jie vaikšto poromis, daliklių skaičius paprastai būna \textbf{lyginis}.
+
+Bet ar kada nors gali nutikti taip, kad daliklių skaičius bus \textbf{nelyginis}?
+Tai įmanoma tik tuo atveju, jei koks nors daliklis $d$ poroje turės \textbf{pats save}! 
+T.y., kai $d \cdot d = N$, arba $N = d^2$. 
+O toks skaičius matematikoje vadinamas \textbf{tobuluoju kvadratu} ($1, 4, 9, 16, 25 \dots$).
+
+\textbf{Olimpiadinis faktas:} Natūralusis skaičius turi \textbf{nelyginį} daliklių skaičių tada ir tik tada, kai tas skaičius yra tobulasis kvadratas.
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+\section{Olimpiadiniai triukai su pirminiais skaičiais}
+
+\begin{example}[Klasikinis algebrinis įrodymas]
+Įrodykite, kad jei $p$ yra pirminis skaičius, didesnis už $3$ (t.y. $p \ge 5$), tai reiškinys $p^2 - 1$ \textbf{visada} dalijasi iš $24$.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Šis uždavinys – absoliuti 9-10 klasių klasika. Išskaidykime reiškinį dauginamaisiais (taikydami kvadratų skirtumo formulę):
+\[ p^2 - 1 = (p - 1)(p + 1) \]
+Pastebėkime, kad $(p-1), p, (p+1)$ yra trys paeiliui einantys sveikieji skaičiai.
+
+\textbf{1 žingsnis (Dalumas iš 8):}
+Kadangi $p \ge 5$ yra pirminis, jis privalo būti nelyginis. Vadinasi, jo kaimynai $(p-1)$ ir $(p+1)$ yra \textbf{lyginiai} skaičiai. Mes turime dviejų iš eilės einančių lyginių skaičių sandaugą. Jei paimsite bet kokius du iš eilės einančius lyginius skaičius (pvz., 2 ir 4, arba 10 ir 12), vienas iš jų visada dalijasi iš 2, o kitas – \textbf{būtinai dalijasi iš 4}. Todėl jų sandauga visada dalijasi iš $2 \cdot 4 = 8$. Vadinasi, $8 \mid (p^2 - 1)$.
+
+\textbf{2 žingsnis (Dalumas iš 3):}
+Iš bet kokių trijų paeiliui einančių skaičių \textbf{lygiai vienas} visada dalijasi iš 3. Kadangi $p$ yra pirminis (ir $p \ge 5$), pats $p$ iš 3 dalintis negali. Vadinasi, iš 3 privalo dalintis arba $(p-1)$, arba $(p+1)$. Bet kuriuo atveju, jų sandauga dalinsis iš 3. Vadinasi, $3 \mid (p^2 - 1)$.
+
+\textbf{Išvada:}
+Kadangi $p^2 - 1$ dalijasi ir iš 8, ir iš 3, o skaičiai 8 ir 3 neturi jokių bendrų daliklių (yra tarpusavyje pirminiai), tai $p^2 - 1$ privalo dalintis iš jų sandaugos: $8 \cdot 3 = \mathbf{24}$. \hfill $\square$
+\end{solution}
+
+
+\begin{example}[Skaičiaus „DNR“ paieška]
+Raskite mažiausią natūralųjį skaičių, turintį lygiai $15$ daliklių.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Pasinaudokime daliklių skaičiaus formule $\tau(n) = (a_1 + 1)(a_2 + 1)\dots$
+Mums žinoma, kad ši sandauga turi būti lygi $15$. 
+Kaip galime gauti skaičių $15$ sudauginę sveikuosius skaičius? Yra tik du būdai:
+ $15 \cdot 1$ arba  $3 \cdot 5$
+
+\textit{1 atvejis:} Jei formulėje tėra vienas skliaustas $(a_1 + 1) = 15$, tai laipsnis $a_1 = 14$. 
+Skaičiaus „DNR“ atrodo taip: $n = p_1^{14}$.
+Kad skaičius būtų kuo mažesnis, imame mažiausią įmanomą pirminį skaičių $p_1 = 2$.
+Gauname: $2^{14} = 16384$.
+
+\textit{2 atvejis:} Jei formulėje yra du skliaustai $(a_1 + 1)(a_2 + 1) = 3 \cdot 5$.
+Tuomet vienas laipsnis yra $2$, o kitas $4$. 
+Skaičiaus „DNR“ atrodo taip: $n = p_1^2 \cdot p_2^4$.
+Kad skaičius būtų kuo mažesnis, didesnį laipsnį (ketvirtąjį) priskiriame mažiausiam pirminiam skaičiui ($2$), o mažesnį laipsnį (kvadratą) – sekančiam pirminiam skaičiui ($3$).
+Gauname: $n = 3^2 \cdot 2^4 = 9 \cdot 16 = \mathbf{144}$.
+
+Kadangi $144$ yra gerokai mažesnis už $16384$, mažiausias skaičius, turintis lygiai $15$ daliklių, yra $144$. \hfill $\square$
+\end{solution}
+
+\vspace{1cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (18 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Raskite du pirminius skaičius $p$ ir $q$, jei žinoma, kad jų suma $p + q = 101$.
+    \item Raskite pirminį skaičių $p$, jeigu žinoma, kad $p^2 + 11$ taip pat yra pirminis skaičius.
+    \item Kiek daliklių turi skaičiai: a) $1000$; \quad b) $2026$; \quad c) $2025$?
+    \item Kuris skaičius turi daugiau daliklių: $5^{20} \cdot 3^{10}$ ar $2^{15} \cdot 7^{15}$?
+    \item Raskite mažiausią natūralųjį skaičių, turintį lygiai $14$ daliklių.
+    \item Įrodykite, kad neegzistuoja toks pirminis skaičius $p$, su kuriuo skaičiai $p, p+2$ ir $p+4$ visi trys kartu būtų pirminiai, išskyrus vienintelį atvejį, kai $p=3$.
+    \item Koridoriuje yra $100$ uždarytų spintelių, sunumeruotų nuo $1$ iki $100$. Pirmas mokinys praeidamas atidaro visas spinteles. Antras mokinys praeidamas pakeičia kas antros spintelės būseną (2, 4, 6... - jei buvo atidaryta, uždaro, jei uždaryta, atidaro). Trečias mokinys keičia kas trečios spintelės būseną (3, 6, 9...), ketvirtas – kas ketvirtos ir t.t., kol praeina $100$ mokinių. Kurios spintelės liks atidarytos po visų $100$ mokinių praėjimo? Kodėl?
+    \item Įrodykite, kad bet kokiems dviem pirminiams skaičiams $p \ge 5$ ir $q \ge 5$, reiškinys $p^2 - q^2$ visada dalijasi iš $24$.
+    \item Skaičius baigiasi vienuolika nulių. Koks mažiausias daliklių skaičius, kurį jis gali turėti?
+    \item Keliu nulių baigiasi skaičius, kuris gaunamas sudauginus visus natūraliuosius skaičius nuo $1$ iki $100$ (t.y. $100!$)?
+    \item Raskite visus pirminius skaičius $p, q, r$, tenkinančius lygtį: $p \cdot q \cdot r = 5(p + q + r)$.
+    \item Jei žinoma, kad $p$ ir $8p^2 + 1$ yra pirminiai skaičiai, raskite $p$. 
+    \item Ar egzistuoja toks natūralusis skaičius $n$, kad jo daliklių skaičius $\tau(n)$ būtų lygus pačiam skaičiui $n$? Jei taip, raskite juos visus.
+    \item Raskite visus natūraliuosius skaičius $x$ ir $y$, tenkinančius lygtį $x^2 - y^2 = 31$.
+    \item Raskite visus natūraliuosius skaičius $x$ ir $y$, tenkinančius lygtį $xy + 2x - 3y = 20$.
+    \item Įrodykite, kad skaičius $2^{100} + 5^{100}$ nėra pirminis.
+    \item Raskite mažiausią skaičių, kuris pusiau padalintas tampa tobuluoju kvadratu, o padalintas iš 3 – tobuluoju kubu.
+    \item \textbf{Iššūkis:} Tegu $d_1, d_2, \dots, d_k$ yra visi skaičiaus $N$ dalikliai (įskaitant 1 ir patį $N$). Įrodykite, kad sandauga $d_1 \cdot d_2 \cdot \dots \cdot d_k = N^{\frac{k}{2}}$.
+\end{enumerate}
+
+\end{document}

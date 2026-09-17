@@ -1,0 +1,199 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Algebra: skaidymas dauginamaisiais}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Skiriamoji riba: atskliausti ar sutraukti?}
+
+Mokyklinėje algebroje jūs nuolat atliekate vieną ir tą patį veiksmą – \textbf{atskliaudžiate}. Pamatę išraišką $(x+2)(x-3)$, jūs iškart ją dauginate ir gaunate $x^2 - x - 6$. Tai yra „griovimo“ procesas. 
+
+Olimpiadinėje matematikoje viskas veikia atvirkščiai. Laimi tas, kuris sugeba \textbf{statyti} struktūras, o ne jas griauti. Mūsų tikslas yra paimti palaidą skaičių ar raidžių kratinį ir paversti jį \textbf{dauginamaisiais} (skliaustais). Kodėl? Nes kai reiškinys tampa sandauga (pavyzdžiui, lygi nuliui, arba nagrinėjant jos dalumą), mes galime daryti griežtas logines išvadas.
+
+\subsection*{Olimpiadininko ginklų arsenalas}
+Šias formules jūs žinote mintinai. Tačiau dabar privalote išmokti jas pamatyti net ten, kur jos gudriai paslėptos.
+
+\begin{enumerate}
+    \item \textbf{Kvadratų skirtumas (Absoliutus lyderis):} $a^2 - b^2 = (a-b)(a+b)$
+    \item \textbf{Pilnas kvadratas (Suma ir skirtumas):} $a^2 \pm 2ab + b^2 = (a \pm b)^2$
+    \item \textbf{Kubų suma ir skirtumas:} $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$
+\end{enumerate}
+
+% ==========================================
+% PRIDĖK IR ATIMK TRIUKAS
+% ==========================================
+\section{Magija: Triukas „Pridėk ir Atimk“}
+
+Kaip išskaidyti reiškinį $x^4 + x^2 + 1$? 
+Jokios standartinės formulės čia tiesiogiai netinka. Tačiau įsižiūrėkime atidžiau. Mes turime $x^4$ (tai yra $(x^2)^2$) ir turime $1$ (tai yra $1^2$). Trūksta tik vidurinio nario, kad gautume pilną kvadratą. Pilnam kvadratui $(x^2 + 1)^2$ per vidurį reikia nario $2x^2$. O mes turime tik $1x^2$.
+
+Matematikoje galioja nuostabi taisyklė: \textbf{prie reiškinio visada galima pridėti nulį}. 
+O kas yra nulis? Tai yra $+x^2 - x^2$. 
+Pridėkime ir atimkime $x^2$:
+\[ x^4 + x^2 + 1 \quad = \quad x^4 + \mathbf{2x^2} + 1 - \mathbf{x^2} \]
+Pirmi trys nariai dabar idealiai susiskleidžia į pilną kvadratą!
+\[ (x^2 + 1)^2 - x^2 \]
+Ką gavome? Tobulą \textbf{kvadratų skirtumą} ($A^2 - B^2$)! Išskaidome:
+\[ (x^2 + 1 - x)(x^2 + 1 + x) \]
+Perrašome gražiau (pagal laipsnių mažėjimą):
+\[ \mathbf{(x^2 - x + 1)(x^2 + x + 1)} \]
+Išskaidyta! Šis „Pridėk ir Atimk“ metodas yra vienas galingiausių įrankių olimpiadose.
+
+% ==========================================
+% SOPHIE GERMAIN TAPATYBĖ
+% ==========================================
+\section{Sophie Germain Tapatybė}
+
+XVIII amžiuje gyvenusi prancūzų matematikė Sophie Germain atrado vieną gražiausių ir dažniausiai olimpiadose pasitaikančių tapatybių. Kaip išskaidyti sumą $a^4 + 4b^4$? (Prisiminkite, kad kvadratų \textit{sumai} formulės nėra!)
+
+Pritaikysime tą patį triuką. Turime $(a^2)^2$ ir $(2b^2)^2$. Kad turėtume pilną kvadratą $(a^2 + 2b^2)^2$, mums trūksta vidurinio nario: $2 \cdot a^2 \cdot 2b^2 = 4a^2b^2$. 
+Pridėkime jį ir iškart atimkime!
+\[ a^4 + 4b^4 \quad = \quad a^4 + \mathbf{4a^2b^2} + 4b^4 - \mathbf{4a^2b^2} \]
+Grupuojame pirmus tris narius į pilną kvadratą:
+\[ (a^2 + 2b^2)^2 - 4a^2b^2 \]
+Pastebime, kad $4a^2b^2$ taip pat yra kvadratas: $(2ab)^2$. Gauname kvadratų skirtumą:
+\[ (a^2 + 2b^2)^2 - (2ab)^2 \]
+Pritaikome kvadratų skirtumo formulę ir gauname legendinę \textbf{Sophie Germain tapatybę}:
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Sophie Germain tapatybė:}
+\[ a^4 + 4b^4 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2) \]
+\end{minipage}
+}
+\end{center}
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+\section{Olimpiadiniai pavyzdžiai}
+
+\begin{example}[Grupavimo menas ir paslėptos formulės]
+Išskaidykite dauginamaisiais reiškinius:
+a) $x^3 - 3x^2 - 4x + 12$
+b) $a^2 - b^2 + 5a - 5b$
+\end{example}
+
+\textbf{Sprendimas:}\\
+\textbf{a)} Kai matome 4 narius, dažniausiai veikia grupavimas poromis (2 ir 2). Sugrupuokime pirmą narį su antru, o trečią – su ketvirtu. \textbf{Atsargiai su minuso ženklu!}
+\[ (x^3 - 3x^2) - (4x - 12) \]
+\textit{(Atkreipkite dėmesį: prieš antrą skliaustą iškėlus minusą, skliausto viduje plius $12$ pavirto į minus $12$).}
+
+Iškeliame bendrus dauginamuosius iš kiekvieno skliausto (iš pirmo $x^2$, iš antro $4$):
+\[ x^2(x - 3) - 4(x - 3) \]
+Dabar matome, kad abu masyvūs dėmenys turi bendrą „bloką“ $(x - 3)$. Iškeliame jį:
+\[ (x - 3)(x^2 - 4) \]
+Ar tai pabaiga? Olimpiadose visada patikrinkite, ar skliaustuose neliko formulių. Antrasis skliaustas yra akivaizdus kvadratų skirtumas ($x^2 - 2^2$)! Išskaidome jį iki galo:
+\[ (x - 3)(x - 2)(x + 2) \hfill \square \]
+
+\textbf{b)} Šiame reiškinyje vėl 4 nariai. Pirmieji du nariai iškart „prašosi“ būti išskaidyti pagal formulę:
+\[ (a^2 - b^2) + (5a - 5b) \]
+Išskaidome pirmąjį skliaustą, o iš antrojo iškeliame 5:
+\[ (a - b)(a + b) + 5(a - b) \]
+Matome, kad susidarė du dideli dėmenys, turintys bendrą skliaustą $(a - b)$. Iškeliame jį:
+\[ (a - b)(a + b + 5) \hfill \square \]
+
+
+\begin{example}[Kvadratų skirtumo grandinė]
+Apskaičiuokite: $100^2 - 99^2 + 98^2 - 97^2 + 96^2 - 95^2 + \dots + 2^2 - 1^2$.
+\end{example}
+
+\textbf{Sprendimas:}\\
+Niekas olimpiadose neprašo jūsų skaičiuoti $10000 - 9801$ ranka. Grupuojame po du:
+\[ (100^2 - 99^2) + (98^2 - 97^2) + \dots + (2^2 - 1^2) \]
+Išskaidome kiekvieną porą pagal formulę $a^2 - b^2 = (a-b)(a+b)$:
+\[ (100-99)(100+99) + (98-97)(98+97) + \dots + (2-1)(2+1) \]
+Pastebėkite, kad kiekviename pirmajame skliauste (skirtume) gauname lygiai $1$! 
+Vadinasi, reiškinys virsta į:
+\[ 1 \cdot (100+99) \quad + \quad 1 \cdot (98+97) \quad + \quad \dots \quad + \quad 1 \cdot (2+1) \]
+Kadangi daugyba iš $1$ nieko nekeičia, mes galime tiesiog nutirpdyti skliaustus:
+\[ 100 + 99 + 98 + 97 + \dots + 2 + 1 \]
+Tai tiesiog visų natūraliųjų skaičių nuo 1 iki 100 suma. Pritaikome Gauso sumos taisyklę: $\frac{100 \cdot 101}{2} = 5050$. \hfill $\square$
+
+
+\begin{example}[Milžiniškų skaičių kubai]
+Apskaičiuokite (be skaičiuotuvo): $\frac{2026^3 + 1}{2026^2 - 2025}$.
+\end{example}
+\textbf{Sprendimas:}\\
+Matome kubus, nes $1 = 1^3$. Užuot skaičiavę milijardus, įsiveskime kintamąjį. 
+Pažymėkime $2026 = x$. Tuomet vardiklyje esantis $2025$ yra $x - 1$.
+Perrašykime reiškinį naudodami $x$:
+\[ \frac{x^3 + 1^3}{x^2 - (x - 1)} \quad = \quad \frac{x^3 + 1}{x^2 - x + 1} \]
+Dabar skaitikliui pritaikome kubų sumos formulę $a^3 + b^3 = (a+b)(a^2 - ab + b^2)$:
+\[ x^3 + 1^3 = (x + 1)(x^2 - x \cdot 1 + 1^2) = (x + 1)(x^2 - x + 1) \]
+Įstatome šį skaidinį atgal į trupmeną:
+\[ \frac{(x + 1)\mathbf{(x^2 - x + 1)}}{\mathbf{x^2 - x + 1}} \]
+Masyvus antrasis skliaustas idealiai susiprastina su vardikliu! Lieka tik:
+\[ x + 1 \]
+Kadangi $x = 2026$, atsakymas yra $2026 + 1 = \mathbf{2027}$. \hfill $\square$
+
+
+\begin{example}[Dalumo įrodymas su Sophie Germain]
+Įrodykite, kad skaičius $2026^4 + 4^{2026}$ yra sudėtinis (t.y. turi daugiau daliklių nei 1 ir jis pats).
+\end{example}
+
+\textbf{Sprendimas:}\\
+Tai yra išraiška $a^4 + 4b^4$. Pabandykime atrasti tinkamus $a$ ir $b$.
+Akivaizdu, kad $a = 2026$. 
+O kaip su $4^{2026}$? Žinome, kad $4^{2026} = (2^2)^{2026} = 2^{4052}$. 
+Išskirkime daugiklį $4$: $2^{4052} = 2^2 \cdot 2^{4050} = 4 \cdot (2^{1012})^4$.
+Taigi pradinė išraiška yra:
+\[ 2026^4 + 4 \cdot (2^{1012})^4 \]
+Pagal Sophie Germain tapatybę, šį skaičių (kur $a = 2026$ ir $b = 2^{1012}$) galime išskaidyti į dviejų skliaustų sandaugą:
+\[ (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2) \]
+Kadangi nei $a$, nei $b$ nėra lygūs $0$, abu šie skliaustai bus natūralieji skaičiai, griežtai didesni už $1$. Jei skaičių galima užrašyti kaip dviejų skaičių (didesnių už 1) sandaugą, vadinasi, jis yra sudėtinis. \hfill $\square$
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (18 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    
+    \item Apskaičiuokite (be skaičiuotuvo!): $\frac{2026^2 - 2025^2}{2026 + 2025}$.
+    \item Apskaičiuokite: $2026^2 - 2027 \cdot 2025$.
+    \item Išskaidykite dauginamaisiais: $x^3 - x^2 - 4x + 4$.
+    \item Išskaidykite dauginamaisiais: $a^2 - b^2 - a - b$.
+    
+    \item Apskaičiuokite: $1^2 - 2^2 + 3^2 - 4^2 + 5^2 - \dots - 100^2$.
+    \item Apskaičiuokite (be skaičiuotuvo): $\frac{77^3 + 23^3}{100} - 77 \cdot 23$.
+    \item Suprastinkite trupmeną: $\frac{a^3 - 8}{a^2 + 2a + 4}$.
+    \item Išskaidykite dauginamaisiais reiškinius:
+    \begin{itemize}
+        \item[a)] $x^4 + 4$ 
+        \item[b)] $y^4 + y^2 + 25$
+    \end{itemize}
+    \item Reiškinį $x^6 - y^6$ išskaidykite dauginamaisiais.
+    
+    \item Duota, kad $x - y = 5$ ir $xy = 14$. Nespręsdami pačios lygties (neieškodami $x$ ir $y$), raskite reiškinio $x^2 + y^2$ reikšmę.
+    \item Žinoma, kad $a + \frac{1}{a} = 3$. Raskite:
+    \begin{itemize}
+        \item[a)] $a^2 + \frac{1}{a^2}$
+        \item[b)] $a^3 + \frac{1}{a^3}$
+    \end{itemize}
+    \item Išskaidykite reiškinį $a^3 + b^3 + a + b$. Ar visada, jei $a$ ir $b$ yra nelyginiai skaičiai, ši išraiška dalijasi iš $4$?
+    
+    \item Išskaidykite dauginamaisiais reiškinį $x^4 + 64$.
+    \item Įrodykite, kad skaičius $3^{44} + 4^{29}$ yra sudėtinis.
+    \item Ar egzistuoja toks pirminis skaičius $p$, kuriam esant reiškinys $p^4 + 4$ taip pat yra pirminis skaičius?
+    \item Išskirdami pilną kvadratą įrodykite, kad reiškinys $x^2 - 6x + 13$ niekada negali būti neigiamas. Kokia yra pati mažiausia galima šio reiškinio reikšmė ir su kokiu $x$ ji pasiekiama?
+    \item Raskite visus natūraliuosius skaičius $n$, su kuriais reiškinys $n^4 + 4^n$ yra pirminis skaičius.
+    \item Įrodykite, kad bet kokiam natūraliajam $n > 1$, skaičius $n^4 + 4n^3 + 11n^2 + 14n + 8$ yra sudėtinis.
+\end{enumerate}
+
+\end{document}

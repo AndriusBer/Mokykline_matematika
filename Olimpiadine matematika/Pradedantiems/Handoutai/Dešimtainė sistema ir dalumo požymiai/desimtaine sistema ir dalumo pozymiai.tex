@@ -1,0 +1,175 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Skaičių teorija: Skaičių anatomija ir dalumo požymiai}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Skaičių anatomija: Kas slepiasi viduje?}
+
+Praeitame užsiėmime išmokome naudoti vertikalų brūkšnį ($a \mid b$) ir algebriškai įrodinėti dalumą. Tačiau kartais uždaviniai kalba ne apie pačius skaičius, o apie jų \textbf{skaitmenis}. 
+
+Mokykloje jūs tiesiog parašote skaičių, pavyzdžiui, $372$. Visi supranta, kad tai „trys šimtai septyniasdešimt du“. Tačiau olimpiadinėje matematikoje, jei norime surasti nežinomą dviženklį skaičių ir pažymime jo skaitmenis raidėmis $x$ ir $y$, mes \textbf{negalime} tiesiog parašyti $xy$. Kodėl? Nes algebroje $xy$ reiškia skaičių \textbf{sandaugą} ($x \cdot y$).
+
+Kad atskirtume skaičiaus užrašymą skaitmenimis nuo daugybos, matematikai naudoja brūkšnį viršuje:
+\[ \overline{xy} \]
+Tai reiškia dviženklį skaičių, kurio dešimčių skaitmuo yra $x$, o vienetų – $y$.
+
+Bet su brūkšniu matematinių veiksmų neatliksi. Norėdami skaičiuoti, mes turime skaičių „išardyti“ (išskleisti dešimtaine sistema):
+\begin{itemize}
+    \item Dviženklis: $\overline{ab} = 10a + b$
+    \item Triženklis: $\overline{abc} = 100a + 10b + c$
+    \item Keturaženklis: $\overline{abcd} = 1000a + 100b + 10c + d$
+\end{itemize}
+\textit{Svarbu atsiminti: pirmasis skaitmuo (pvz., $a$) niekada negali būti nulis, o patys skaitmenys yra sveikieji skaičiai nuo 0 iki 9.}
+
+% ==========================================
+% DALUMO POŽYMIAI KAIP TEOREMOS
+% ==========================================
+\section{Kodėl veikia dalumo požymiai?}
+
+Mokykloje jūs išmokote taisykles: „skaičius dalijasi iš 3, jei jo skaitmenų suma dalijasi iš 3“. Bet ar kada nors susimąstėte, \textbf{kodėl} tai veikia? Dabar, kai mokate naudoti $a \mid b$ notaciją ir algebrines dalumo savybes, jūs patys galite šią taisyklę įrodyti!
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Dalumo iš 9 (ir iš 3) įrodymas}
+
+Paimkime bet kokį triženklį skaičių $\overline{abc}$. Išskleiskime jį:
+\[ \overline{abc} = 100a + 10b + c \]
+Gudrybė: atskirkime tuos skaičius, kurie akivaizdžiai dalijasi iš 9. Žinome, kad $100 = 99 + 1$, o $10 = 9 + 1$. Pakeiskime mūsų išraišką:
+\[ \overline{abc} = (99a + a) + (9b + b) + c \]
+Sugrupuokime narius:
+\[ \overline{abc} = (99a + 9b) + (a + b + c) \]
+\[ \overline{abc} = 9(11a + b) + (a + b + c) \]
+
+Pirmasis dėmuo $9(11a + b)$ akivaizdžiai dalijasi iš 9 (ir iš 3). Kad \textbf{visa suma} (mūsų pradinis skaičius) dalintųsi iš 9, pagal Sumos taisyklę privalo dalintis ir antrasis dėmuo, t.y. $(a + b + c)$. O kas yra $(a+b+c)$? Tai yra skaičiaus skaitmenų suma!
+\end{minipage}
+}
+\end{center}
+
+\subsection*{Olimpiadininkų ginklas: Dalumas iš 11}
+
+Olimpiadose dalumas iš 9 pasitaiko retai, nes jis per daug žinomas. Tikrasis olimpiadininkų ginklas yra dalumo iš $11$ požymis. 
+
+Pabandykime sukonstruoti jį taip pat, kaip darėme su devynetu. Paimkime keturaženklį $\overline{abcd}$. 
+Mums reikia rasti $10, 100, 1000$ artimiausius kaimynus, kurie dalijasi iš 11.
+Žinome, kad $11 \mid 11$, $11 \mid 99$, $11 \mid 1001$.
+Išskleiskime:
+\[ \overline{abcd} = 1000a + 100b + 10c + d \]
+\[ = (1001a - a) + (99b + b) + (11c - c) + d \]
+\[ = (1001a + 99b + 11c) - a + b - c + d \]
+
+Pirmasis skliaustas idealiai dalijasi iš 11. Vadinasi, kad visas skaičius dalintųsi iš 11, turi dalintis ir likusi dalis:
+\[ 11 \mid (-a + b - c + d) \quad \text{arba, pakeitus ženklus,} \quad 11 \mid (a - b + c - d) \]
+
+\textbf{Taisyklė:} Skaičius dalijasi iš 11 tada ir tik tada, kai jo skaitmenų suma su kintančiais ženklais (plius, minus, plius, minus...) dalijasi iš 11. Dažnai užtenka, kad ši suma būtų lygi $0$ (nes $11 \mid 0$).
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+\section{Pavyzdžiai: Nuo atradimo iki įrodymo}
+
+\begin{example}[Klasikinis įrodymas]
+Įrodykite, kad bet koks keturaženklis skaičius-palindromas (skaitomas vienodai iš abiejų pusių, pavyzdžiui, $4774$) visada dalijasi iš $11$.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Bet kokį tokį skaičių galime užrašyti kaip $\overline{abba}$ (kur $a \neq 0$).
+Turime du būdus tai įrodyti.
+
+\textit{1 būdas (Išskleidimas):} 
+$\overline{abba} = 1000a + 100b + 10b + a = 1001a + 110b$.
+Kadangi $11 \mid 1001$ ($1001 = 11 \cdot 91$) ir $11 \mid 110$ ($110 = 11 \cdot 10$), reiškinį galime užrašyti kaip $11(91a + 10b)$. Jis tobulai dalijasi iš $11$.
+
+\textit{2 būdas (Požymio taikymas):} 
+Pritaikome skaitmenų su kintančiais ženklais sumos taisyklę:
+$a - b + b - a = 0$. Kadangi $11 \mid 0$, skaičius visada dalijasi iš 11. \hfill $\square$
+\end{solution}
+
+
+\begin{example}[Dviženklių magija]
+Dviženklio skaičiaus skaitmenų suma lygi 12. Pakeitus šio skaičiaus skaitmenis vietomis, gaunamas skaičius, kuris yra $54$ didesnis už pradinį. Raskite pradinį skaičių.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Tegu pradinis skaičius yra $\overline{xy}$. Sąlygoje pasakyta, kad $x+y = 12$.
+Apkeitę skaitmenis gauname skaičių $\overline{yx}$.
+Užrašome sąlygą lygtimi:
+\[ \overline{yx} - \overline{xy} = 54 \]
+Dabar šį užrašą paverčiame algebra (išskleidžiame):
+\[ (10y + x) - (10x + y) = 54 \]
+\[ 9y - 9x = 54 \]
+Padalinę iš 9, gauname labai paprastą lygtį:
+\[ y - x = 6 \]
+Dabar turime paprastą sistemą: suma $x+y = 12$, o skirtumas $y-x = 6$.
+Sudėję šias dvi lygtis gauname $2y = 18 \implies y = 9$.
+Tuomet $x = 12 - 9 = 3$.
+Pradinis skaičius buvo $39$ (galime patikrinti: $93 - 39 = 54$). \hfill $\square$
+\end{solution}
+
+
+\begin{example}[Paslėpti skaitmenys]
+Kokie skaitmenys $x$ ir $y$ gali būti įrašyti skaičiuje $\overline{5x7y}$, kad jis tobulai dalintųsi iš $45$?
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Požymio dalumui iš 45 nėra. Bet $45 = 5 \cdot 9$. Kadangi 5 ir 9 neturi bendrų daliklių, skaičius dalinsis iš 45 tik tada, kai dalinsis ir iš 5, ir iš 9.
+
+1) \textbf{Dalumas iš 5:} Skaičius dalijasi iš 5 tik tada, kai jo paskutinis skaitmuo yra $0$ arba $5$. Vadinasi, $y = 0$ arba $y = 5$.
+
+2) \textbf{Dalumas iš 9:} Skaičiaus skaitmenų suma turi dalintis iš 9.
+\begin{itemize}
+    \item Jei $y = 0$: Skaičius yra $\overline{5x70}$. Skaitmenų suma: $5+x+7+0 = 12+x$. Koks skaitmuo $x$ padarys $(12+x)$ dalų iš 9? Tik $x=6$ (gausime 18). Skaičius: $5670$.
+    \item Jei $y = 5$: Skaičius yra $\overline{5x75}$. Skaitmenų suma: $5+x+7+5 = 17+x$. Kad $(17+x)$ dalintųsi iš 9, $x$ privalo būti $1$ (gausime 18). Skaičius: $5175$.
+\end{itemize}
+Atsakymas: Skaičiai gali būti $5670$ ir $5175$. \hfill $\square$
+\end{solution}
+
+\vspace{1cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (18 iššūkių)}
+
+Šiuose uždaviniuose, kur reikia ieškoti dviženklių ar triženklių skaičių, būtinai išskleiskite juos panaudodami dešimtainę anatomiją ($10a+b$).
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Įrodykite, kad bet kokio dviženklio skaičiaus ir to paties skaičiaus, parašyto atvirkščia skaitmenų tvarka, suma visada dalijasi iš $11$. (T.y., įrodykite, kad $11 \mid (\overline{ab} + \overline{ba})$).
+    \item Įrodykite, kad bet kokio dviženklio skaičiaus ir to paties skaičiaus, parašyto atvirkščia tvarka, skirtumas visada dalijasi iš $9$.
+    \item Įrodykite, kad skaičius $\overline{abcabc}$ (kuris gaunamas du kartus iš eilės parašius tą patį triženklį skaičių) visada dalijasi iš $7$, $11$ ir $13$.
+    \item Ar tiesa, kad bet kaip sudėliojus devynis skaitmenis $1, 2, 3, 4, 5, 6, 7, 8, 9$, gautas devynženklis skaičius visada dalinsis iš $9$? Atsakymą pagrįskite.
+    \item Įrašykite žvaigždutės vietoje tokį skaitmenį, kad skaičius $12345*$ dalytųsi iš: 
+    a) $9$; \quad b) $8$; \quad c) $11$.
+    \item Raskite visus galimus skaitmenis $x$ ir $y$, kad skaičius $\overline{7x3y}$ dalintųsi iš $15$.
+    \item Raskite visus tokius dviženklius skaičius $\overline{ab}$, kurie yra $4$ kartus didesni už savo skaitmenų sumą.
+    \item Prie dviženklio skaičiaus dešinėje pusėje prirašius $0$, jis padidėjo $252$ vienetais. Koks tai skaičius?
+    \item Raskite trupmeną, kurios skaitiklis ir vardiklis yra dviženkliai skaičiai ir kuri nesikeičia, jei jos skaitiklio ir vardiklio skaitmenys sukeičiami vietomis. (T.y. raskite $\frac{\overline{ab}}{\overline{cd}} = \frac{\overline{ba}}{\overline{dc}}$, kai $\overline{ab} \neq \overline{cd}$).
+    \item Ar įmanoma rasti tokį triženklį skaičių, kuris būtų lygiai $2$ kartus didesnis už savo paties išraišką atvirkščia skaitmenų tvarka? T.y., ar egzistuoja sprendinys lygčiai $\overline{abc} = 2 \cdot \overline{cba}$?
+    \item Yra žinoma, kad penkiaženklis skaičius $\overline{24x8y}$ dalijasi iš $9$, o atėmus iš jo skaičių, užrašytą tais pačiais skaitmenimis atvirkščia tvarka, gaunamas skaičius, besidalijantis iš $11$. Raskite skaitmenis $x$ ir $y$.
+    \item Įrodykite, kad lygtyje $\overline{ab} \cdot \overline{cd} = \overline{ba} \cdot \overline{dc}$ neįmanoma rasti tokių skaitmenų, kad visi jie būtų skirtingi nelyginiai skaičiai.
+    \item Raskite mažiausią natūralųjį skaičių, kurio skaitmenų suma lygi $2026$.
+    \item Raskite visus triženklius skaičius, kurie yra lygūs savo skaitmenų faktorialų sumai. T.y. $\overline{abc} = a! + b! + c!$ (Prisiminkite, kad $n! = 1 \cdot 2 \cdot \ldots \cdot n$, ir žinokite, kad $0! = 1$). \textit{Užuomina: koks didžiausias gali būti skaitmuo, kad jo faktorialas neviršytų 999?}
+    \item Įrodykite dalumo iš $8$ požymį: „skaičius dalijasi iš $8$ tada ir tik tada, kai jo paskutinių trijų skaitmenų sudarytas skaičius dalijasi iš $8$“. \textit{Užuomina: atskirkite $1000$.}
+    \item Turime skaičių, užrašytą iš lygiai $100$ vienetų: $111\dots111$. Ar jis dalijasi iš $11$? O iš $9$?
+    \item Raskite visus keturaženklius skaičius $\overline{abcd}$, kurie yra lygūs tiksliam skaičiaus $\overline{ab}$ ir $\overline{cd}$ sumos kvadratui. T.y. $\overline{abcd} = (\overline{ab} + \overline{cd})^2$.
+    \item \textbf{Iššūkis:} Parodykite, kad neegzistuoja joks dviženklis skaičius $\overline{xy}$, tenkinantis lygtį $\overline{xy} = x^2 + y^2$.
+\end{enumerate}
+
+\end{document}

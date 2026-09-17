@@ -1,0 +1,203 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Skaičių teorija: DBD, MBK ir Euklido algoritmas}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Bendrųjų daliklių ir kartotinių paieška}
+
+Matematikoje, sprendžiant lygtis su sveikaisiais skaičiais, suprastinant trupmenas ar ieškant pasikartojančių ciklų, nuolat susiduriame su dviem esminiais dydžiais:
+\begin{itemize}
+    \item \textbf{DBD (Didžiausias bendras daliklis)} – didžiausias natūralusis skaičius, iš kurio tobulai dalijasi abu duotieji skaičiai.
+    \item \textbf{MBK (Mažiausias bendras kartotinis)} – mažiausias natūralusis skaičius, kuris tobulai dalijasi iš abiejų duotųjų skaičių.
+\end{itemize}
+
+Praeitame užsiėmime išmokome kiekvieną natūralųjį skaičių išskaidyti pirminiais dauginamaisiais (užrašyti jo \textbf{kanoninį skaidinį}). Žinant skaičių kanoninius skaidinius, rasti jų DBD ir MBK yra labai paprasta.
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Kanoninio skaidinio metodas:}
+
+Tarkime, turime du skaičius ir jų skaidymus pirminiais dauginamaisiais:
+$A = 2^3 \cdot 3^2 \cdot 5^1$ (tai yra $360$) ir $B = 2^2 \cdot 3^4$ (tai yra $324$).
+
+\textbf{Kaip rasti DBD?} Iš abiejų skaidinių išsirenkame tik tuos pirminius dauginamuosius, kuriuos turi \textbf{abu} skaičiai, ir imame \textbf{mažiausią} jų laipsnį (nes daliklis turi tilpti į abu skaičius). \\
+$DBD(360, 324) = 2^2 \cdot 3^2 = 4 \cdot 9 = \mathbf{36}$.
+
+\textbf{Kaip rasti MBK?} Surenkame \textbf{visus} paminėtus pirminius dauginamuosius ir imame \textbf{didžiausią} jų laipsnį (kad gautas skaičius dalintųsi iš abiejų pradinių skaičių). \\
+$MBK(360, 324) = 2^3 \cdot 3^4 \cdot 5^1 = 8 \cdot 81 \cdot 5 = \mathbf{3240}$.
+\end{minipage}
+}
+\end{center}
+
+% ==========================================
+% KAI METODAS PAVEDA IR EUKLIDO ALGORITMAS
+% ==========================================
+\section{Kai skaidymas pirminiais buksuoja: Euklido algoritmas}
+Kanoninio skaidinio metodas yra patogus, kai skaičiai nedideli. Bet įsivaizduokite, kad olimpiadoje gaunate užduotį: \textit{Raskite $DBD(1073, 851)$}. 
+Bandyti juos išskaidyti pirminiais dauginamaisiais užtruktų labai ilgai. Kaip rasti atsakymą greitai?
+
+Čia į pagalbą ateina daugiau nei prieš 2000 metų senovės Graikijoje aprašytas \textbf{Euklido algoritmas}. Jis remiasi fundamentalia dalumo savybe:
+\[ \mathbf{DBD(a, b) = DBD(a - b, b)} \]
+\textit{(Atėmus mažesnį skaičių iš didesnio, jų didžiausias bendras daliklis nepasikeičia).}
+
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\textbf{Kodėl Euklido algoritmas veikia? (Griežtas įrodymas)}
+
+Įrodykime, kad skaičių poros $(a, b)$ ir poros $(a-b, b)$ bendri dalikliai yra visiškai tie patys.
+\begin{itemize}
+    \item \textbf{Pirma kryptis:} Tarkime, skaičius $d$ yra bendras skaičių $a$ ir $b$ daliklis. Tai reiškia, kad $d \mid a$ ir $d \mid b$. Pagal mums jau žinomą Skirtumo taisyklę (iš pirmojo užsiėmimo), $d$ privalo dalinti ir jų skirtumą: $d \mid (a-b)$. Vadinasi, $d$ yra ir skaičių $(a-b)$ bei $b$ bendras daliklis.
+    \item \textbf{Antra kryptis:} Tarkime, kažkoks skaičius $k$ dalija $(a-b)$ ir dalija $b$. Tai reiškia, $k \mid (a-b)$ ir $k \mid b$. Pagal Sumos taisyklę, $k$ privalo dalinti jų sumą: $k \mid ((a-b) + b)$, kas reiškia, jog $k \mid a$. Vadinasi, $k$ yra ir pradinių skaičių $a$ bei $b$ bendras daliklis.
+\end{itemize}
+\textbf{Išvada:} Kadangi abiejų porų visų įmanomų daliklių sąrašai yra visiškai identiški, tai ir patys \textbf{didžiausi} tų sąrašų skaičiai privalo sutapti! Todėl $DBD(a, b) = DBD(a-b, b)$.
+\end{minipage}
+}
+\end{center}
+
+\textbf{Euklido algoritmo taikymas (dalijimas su liekana):}
+Raskime $DBD(1073, 851)$.
+Vietoj to, kad skaidytume, pasinaudokime įrodyta taisykle – atimkime!
+$1073 - 851 = 222$. Vadinasi:
+$DBD(1073, 851) = DBD(851, 222)$.
+
+Skaičiai sumažėjo. Tęsiame procesą – atimame 222 iš 851 tiek kartų, kiek telpa (tai yra tas pats, kas \textbf{dalijimas su liekana}).
+Skaičius $222$ į $851$ telpa $3$ kartus ($222 \cdot 3 = 666$). Atimame: $851 - 666 = 185$.
+Gauname: $DBD(851, 222) = DBD(222, 185)$.
+
+Tęsiame: $222 - 185 = 37$.
+Gauname: $DBD(222, 185) = DBD(185, 37)$.
+
+Kiek kartų $37$ telpa į $185$? Lygiai $5$ kartus ($37 \cdot 5 = 185$). Liekana lygi nuliui!
+Kai gauname liekaną nulis, procesas baigtas. Paskutinis nelygus nuliui skaičius ir yra ieškomas DBD.
+Atsakymas: \textbf{DBD yra 37}.
+% ==========================================
+% AUKSINĖ TAISYKLĖ
+% ==========================================
+% ==========================================
+% AUKSINĖ TAISYKLĖ
+% ==========================================
+
+\section{Tarpusavyje pirminiai skaičiai ir MBK formulė}
+
+O kaip rasti MBK dideliems skaičiams? Egzistuoja griežta algebrinė formulė, siejanti abu dydžius:
+\[ \mathbf{DBD(a, b) \cdot MBK(a, b) = a \cdot b} \]
+\textit{Dviejų skaičių DBD ir MBK sandauga visada yra lygi pačių tų skaičių sandaugai.}
+\textbf{Įrodymas:}\\
+Prisiminkime, kaip ieškome DBD ir MBK iš skaičių kanoninių skaidinių. Tarkime, turime bet kokį pirminį skaičių $p$, kuris į skaičių $a$ įeina laipsniu $x$, o į skaičių $b$ – laipsniu $y$. 
+(Pavyzdžiui, jei $a = 2^3 \cdot \dots$ ir $b = 2^5 \cdot \dots$, tai $x=3$, o $y=5$).
+
+\begin{itemize}
+    \item Ieškodami \textbf{DBD}, mes pasirenkame \textbf{mažiausią} iš šių dviejų laipsnių. Pažymėkime jį $\min(x, y)$.
+    \item Ieškodami \textbf{MBK}, mes pasirenkame \textbf{didžiausią} laipsnį. Pažymėkime jį $\max(x, y)$.
+\end{itemize}
+
+Dauginant skaičius, vienodų pagrindų laipsniai yra sudedami.
+Pažiūrėkime, koks bus pirminio skaičiaus $p$ laipsnis abiejose mūsų lygties pusėse:
+1) Sandaugoje $DBD(a,b) \cdot MBK(a,b)$ laipsnis bus: $\min(x, y) + \max(x, y)$.
+2) Sandaugoje $a \cdot b$ laipsnis bus tiesiog: $x + y$.
+
+Bet juk akivaizdu, kad paėmus du skaičius (pvz., $3$ ir $5$), mažesniojo ir didesniojo suma yra lygiai ta pati kaip ir pačių skaičių suma ($3 + 5 = 8$). Matematiškai: 
+\[ \min(x, y) + \max(x, y) = x + y \]
+Kadangi ši lygybė galioja absoliučiai kiekvienam pirminiam dauginamajam $p$, abiejų lygties pusių kanoniniai skaidiniai yra identiški. Vadinasi, $DBD \cdot MBK = a \cdot b$. \hfill $\square$
+
+\vspace{0.5cm}
+
+\textbf{Tarpusavyje pirminiai skaičiai:} 
+Jeigu dviejų skaičių $DBD(a, b) = 1$ (jie neturi jokių bendrų pirminių dauginamųjų, išskyrus 1), tokie skaičiai vadinami \textbf{tarpusavyje pirminiais}.
+Iš ką tik įrodytos MBK formulės išplaukia, kad tarpusavyje pirminių skaičių mažiausias bendras kartotinis yra lygus tiesiog jų sandaugai ($1 \cdot MBK = a \cdot b$).
+
+
+% PAVYZDŽIAI
+% ==========================================
+\section{Olimpiadiniai pavyzdžiai}
+
+\begin{example}[Algebrinis Euklido algoritmo taikymas]
+Įrodykite, kad bet kokiam natūraliajam skaičiui $n$, trupmena $\frac{7n+3}{5n+2}$ yra nesuprastinama.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Trupmena yra nesuprastinama tada ir tik tada, kai jos skaitiklis ir vardiklis yra tarpusavyje pirminiai skaičiai (jų DBD lygus 1). Pritaikysime Euklido algoritmą:
+$DBD(7n+3, 5n+2)$.
+
+Atimame mažesnį reiškinį iš didesnio: $(7n+3) - (5n+2) = 2n+1$.
+Vadinasi, $DBD(7n+3, 5n+2) = DBD(5n+2, 2n+1)$.
+
+Tęsiame atiminėjimą. Kiek kartų $2n+1$ telpa į $5n+2$? Telpa 2 kartus ($4n+2$). Atimame:
+$(5n+2) - 2(2n+1) = (5n+2) - (4n+2) = n$.
+Vadinasi, $DBD(5n+2, 2n+1) = DBD(2n+1, n)$.
+
+Atimame toliau: $(2n+1) - 2 \cdot n = 1$.
+Vadinasi, $DBD(2n+1, n) = DBD(n, 1)$.
+Didžiausias bendras skaičiaus $n$ ir vieneto daliklis yra \textbf{1}. 
+Kadangi $DBD = 1$, skaitiklis ir vardiklis yra tarpusavyje pirminiai, todėl trupmena nesuprastinama jokiam $n$. \hfill $\square$
+\end{solution}
+
+\begin{example}[Skaičių atstatymas]
+Raskite natūraliuosius skaičius $a$ ir $b$, jeigu žinoma, kad $DBD(a, b) = 15$, o jų sandauga $a \cdot b = 6750$.
+\end{example}
+
+\begin{solution}
+\textbf{Sprendimas:}\\
+Kadangi $DBD(a, b) = 15$, abu skaičiai dalijasi iš $15$. 
+Užrašykime juos algebriškai: $a = 15x$ ir $b = 15y$. 
+Čia kintamieji $x$ ir $y$ privalo būti \textbf{tarpusavyje pirminiai} ($DBD(x, y) = 1$), kitaip pradinis DBD būtų buvęs didesnis nei 15.
+
+Įstatykime į duotą sandaugą:
+\[ 15x \cdot 15y = 6750 \]
+\[ 225 \cdot xy = 6750 \]
+\[ xy = 30 \]
+
+Ieškome dviejų tarpusavyje pirminių skaičių, kurių sandauga lygi 30.
+Galimi variantai porai $(x, y)$:
+1) $1$ ir $30$.  Tuomet $a = 15 \cdot 1 = 15$, o $b = 15 \cdot 30 = 450$.
+2) $2$ ir $15$.  Tuomet $a = 15 \cdot 2 = 30$, o $b = 15 \cdot 15 = 225$.
+3) $3$ ir $10$.  Tuomet $a = 15 \cdot 3 = 45$, o $b = 15 \cdot 10 = 150$.
+4) $5$ ir $6$.   Tuomet $a = 15 \cdot 5 = 75$, o $b = 15 \cdot 6 = 90$.
+
+Visi šie variantai tenkina sąlygas. \hfill $\square$
+\end{solution}
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (16 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Naudodamiesi kanoninio skaidinio metodu, raskite $DBD$ ir $MBK$ skaičiams $360$ ir $504$.
+    \item Naudodamiesi Euklido algoritmu (dalijimu su liekana), raskite $DBD(3132, 7200)$.
+    \item Raskite $DBD(2026, 2027)$. Ką galite pasakyti apie bet kokių dviejų iš eilės einančių natūraliųjų skaičių $n$ ir $n+1$ bendrus daliklius?
+    \item Žinoma, kad ieškome $DBD(n, n+2)$. Kokias reikšmes gali įgyti šis dydis? Pagrįskite atsakymą Euklido algoritmu.
+    \item Dviejų skaičių $a$ ir $b$ didžiausias bendras daliklis yra $8$, o jų mažiausias bendras kartotinis yra $144$. Kokia yra šių dviejų skaičių sandauga $a \cdot b$?
+    \item Euklido algoritmu įrodykite, kad trupmena $\frac{3n+1}{2n+1}$ yra nesuprastinama.
+    \item Euklido algoritmu įrodykite, kad trupmena $\frac{12n+5}{5n+2}$ yra nesuprastinama jokiam natūraliajam $n$.
+    \item Žinoma, kad dviejų skaičių sandauga yra $1500$, o jų DBD yra $10$. Raskite visus tokius skaičius $a$ ir $b$.
+    \item Dviejų natūraliųjų skaičių suma lygi $168$, o jų $DBD$ yra $24$. Raskite visus tokius skaičius.
+    \item Raskite mažiausią natūralųjį skaičių, kuris dalijant iš $2$ duoda liekaną $1$, dalijant iš $3$ duoda liekaną $2$, iš $4$ duoda $3$, iš $5$ duoda $4$, o iš $6$ duoda $5$.
+    \item Koks gali būti didžiausias bendras daliklis $DBD(a+b, a-b)$, jeigu žinoma, kad $a$ ir $b$ yra tarpusavyje pirminiai ($DBD(a, b) = 1$)?
+    \item Švyturys A mirksi kas 12 sekundžių, švyturys B – kas 15 sekundžių, o švyturys C – kas 20 sekundžių. Ką tik visi trys švyturiai sumirksėjo vienu metu. Po kiek laiko jie vėl visi trys sumirksės kartu?
+    \item Įrodykite, kad skaičiai $2^n - 1$ ir $2^{n+1} - 1$ visada yra tarpusavyje pirminiai.
+    \item Krumpliaratis, turintis $18$ dantukų, suka kitą krumpliaratį, turintį $45$ dantukus. Ant abiejų krumpliaračių yra po vieną raudoną atžymą. Šiuo metu atžymos liečiasi viena su kita. Kiek mažiausiai pilnų apsisukimų turi padaryti mažasis krumpliaratis, kad raudonos atžymos vėl susiliestų?
+    \item Skaičius $A$ sudarytas iš lygiai $100$ vienetų ($111\dots11$), o skaičius $B$ sudarytas iš lygiai $60$ vienetų. Raskite $DBD(A, B)$.
+    \item \textbf{Iššūkis:} Raskite visus natūraliuosius skaičius $n$, kuriems esant trupmena $\frac{n^2 + 4}{n + 5}$ bus \textbf{suprastinama}.
+\end{enumerate}
+
+\end{document}
