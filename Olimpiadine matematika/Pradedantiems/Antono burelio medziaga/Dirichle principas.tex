@@ -54,10 +54,10 @@ Iš skaičių aibės $\{1, 2, 3, \dots, 100\}$ atsitiktinai išrenkamas 51 skai�
 \begin{solution}
 \textbf{Sprendimas:} \\
 \textbf{Balandžiai:} 51 išrinktas skaičius.\\
-\textbf{Narveliai:} 50 nelyginių skaičių nuo 1 iki 99 ($1, 3, 5, \dots, 99$).\\
+\textbf{Narveliai:} 50 nelyginių skaičių nuo 1 iki 99 ($j \in \{1, 3, 5, \dots, 99\}$).\\
 
 Bet kokį sveikąjį skaičių unikaliai galime užrašyti pavidalu $j \cdot 2^k$, kur $j$ – \textbf{nelyginė dalis}, o $2^k$ – didžiausias dvejeto laipsnis, iš kurio tas skaičius dalijasi. 
-Kadangi išrenkame 51 skaičių, o galimų nelyginių dalių aibėje nuo 1 iki 100 yra tik 50, tai bent du išrinkti skaičiai turės \textbf{tą pačią nelyginę dalį $j$}. 
+Kadangi išrenkame 51 skaičių, o \textbf{galimų nelyginių dalių $j$ intervale nuo 1 iki 100 tėra lygiai 50}, tai bent du išrinkti skaičiai privalės turėti \textbf{tą pačią nelyginę dalį $j$}. 
 Vienas iš tų skaičių bus $j \cdot 2^x$, o kitas $j \cdot 2^y$. Akivaizdu, kad skaičius su mažesniu dvejeto laipsniu be liekanos dalys skaičių su didesniu dvejeto laipsniu! \hfill $\square$
 \end{solution}
 
@@ -77,7 +77,7 @@ Kvadrate, kurio kraštinės ilgis lygus 2, atsitiktinai pažymėti 5 taškai. Į
 \textbf{Balandžiai:} 5 pažymėti taškai.\\
 \textbf{Narveliai:} 4 vienodi maži $1 \times 1$ kvadratai.\\
 
-Padalykime didįjį kvadratą į 4 lygius narvelius.
+Padalykime didįjį kvadratą į 4 lygius narvelius.\footnote{Svarbus momentas: o kas, jei taškas nukris tiksliai ant linijos, skiriančios du kvadratus? Tokiu atveju susitariame jį priskirti bet kuriam \textit{vienam} iš besiliečiančių narvelių. Tai niekaip nesumažins balandžių skaičiaus bendroje sumoje.}
 \begin{center}
 \begin{tikzpicture}[scale=1.5]
     \draw[thick] (0,0) rectangle (2,2);
@@ -118,7 +118,7 @@ Gimtadienio vakarėlyje dalyvauja $n$ žmonių. Įrodykite, kad vakarėlyje visa
 \textbf{Balandžiai:} $n$ žmonių.\\
 \textbf{Narveliai:} Galimas draugų skaičius (nuo $0$ iki $n-1$).\\
 
-Jei yra $n$ žmonių, kiekvienas žmogus gali turėti 0 draugų, 1 draugą, $\dots$ iki $n-1$ draugų. Taigi, galimų draugų skaičių (narvelių) yra lygiai $n$.
+Tariame, kad draugystė yra abipusė ir niekas nedraugauja pats su savimi. Jei yra $n$ žmonių, kiekvienas žmogus gali turėti 0 draugų, 1 draugą, $\dots$ iki $n-1$ draugų. Taigi, galimų draugų skaičių (narvelių) yra lygiai $n$.
 Turime $n$ žmonių ir $n$ narvelių. Atrodo, kad kiekvienas gali atsidurti skirtingame narvelyje. 
 \textbf{Bet palaukite!} Pažiūrėkime į narvelį „0 draugų“ ir narvelį „$n-1$ draugų“.
 
@@ -144,7 +144,7 @@ Kadangi turime $n$ žmonių ir tik $n-1$ įmanomų narvelių, bent du žmonės p
 % ==========================================
 \section{4 strategija: Dalinės sumos}
 
-Tai „aukštojo pilotažo“ strategija, būtina kiekvienam olimpiadininkui. Kai uždavinys prašo rasti kelių \textbf{iš eilės einančių} skaičių sumą, besidalijančią iš tam tikro skaičiaus, mes visada naudojame \textbf{dalines sumas} (sumas nuo sekos pradžios).
+Tai „aukštojo pilotažo“ strategija, būtina kiekvienam olimpiadininkui. Kai uždavinys prašo rasti kelių \textbf{iš eilės einančių} skaičių sumą, besidalijančią iš tam tikro skaičiaus, mes visada naudojame \textbf{dalines sumas} (sumas nuo sekos pradžios) ir pritaikome „$S_0=0$“ triuką.
 
 \begin{example}[Iš eilės einantys skaičiai]
 Duota 7 atsitiktinių sveikųjų skaičių seka $a_1, a_2, \dots, a_7$. Įrodykite, kad visada įmanoma rasti vieną arba kelis \textit{iš eilės einančius} šios sekos elementus, kurių suma dalijasi iš 7.
@@ -152,38 +152,35 @@ Duota 7 atsitiktinių sveikųjų skaičių seka $a_1, a_2, \dots, a_7$. Įrodyki
 
 \begin{solution}
 \textbf{Sprendimas:} \\
-\textbf{Balandžiai:} 7 dalinės sumos ($S_1, S_2, \dots, S_7$).\\
-\textbf{Narveliai:} 6 nenulinės liekanos dalijant iš 7 (1, 2, 3, 4, 5, 6).\\
+\textbf{Balandžiai:} 8 dalinės sumos ($S_0, S_1, S_2, \dots, S_7$).\\
+\textbf{Narveliai:} 7 galimos liekanos dalijant iš 7 (0, 1, 2, 3, 4, 5, 6).\\
 
-Sukurkime septynias dalines sumas, kaskart pridėdami po naują skaičių:
+Sukurkime dalines sumas, įskaitant ir „nulinę“ sumą $S_0 = 0$ (kuri reiškia, kad dar nesudėjome jokių skaičių, pradinis atskaitos taškas):
 \begin{align*}
+S_0 &= 0 \\
 S_1 &= a_1 \\
 S_2 &= a_1 + a_2 \\
 &\dots \\
 S_7 &= a_1 + a_2 + a_3 + a_4 + a_5 + a_6 + a_7
 \end{align*}
 
-Pažiūrėkime į šių 7 sumų liekanas dalijant iš 7. 
-Jei bent vienos iš šių sumų liekana yra 0, mes laimėjome! (Tų skaičių nuo pradžios suma dalijasi iš 7).
-Bet kas, jei \textbf{nė viena} iš sumų nesidalija iš 7? Tada joms lieka tik 6 galimos liekanos (nuo 1 iki 6). Kadangi turime 7 sumas (balandžius) ir 6 liekanas (narvelius), \textbf{bent dvi sumos turės tą pačią liekaną}. 
+Turime iš viso 8 dalines sumas (balandžius). Dalijant bet kokį skaičių iš 7, galimos lygiai 7 liekanos (narveliai). Pagal Dirichlė principą, kadangi $8 > 7$, \textbf{bent dvi sumos (įskaitant ir $S_0$) privalo turėti tą pačią liekaną}. 
 
 Tarkime, kad ilgesnė suma yra $S_j$, o trumpesnė – $S_i$. Kadangi abi šios sumos dalijant iš 7 duoda tą pačią liekaną (pavadinkime ją $R$), mes galime jas užrašyti algebriškai:
 \[ S_i = 7k + R \]
 \[ S_j = 7m + R \]
-(čia $k$ ir $m$ yra sveikieji skaičiai).
-
 Dabar iš ilgesnės sumos atimkime trumpesnę:
-\[ S_j - S_i = (7m + R) - (7k + R) = 7m + R - 7k - R = 7(m - k) \]
+\[ S_j - S_i = (7m + R) - (7k + R) = 7(m - k) \]
 
-Matome, kad vienodos liekanos $R$ susinaikina, ir gautas skirtumas garantuotai dalijasi iš 7! 
+Vienodos liekanos $R$ susinaikina, ir skirtumas garantuotai dalijasi iš 7! 
 O kas gi yra tas skirtumas $S_j - S_i$? Kadangi $S_j$ yra skaičių suma iki $j$, o $S_i$ – iki $i$, jas atėmus lieka tiesiog \textit{iš eilės einančių} skaičių atkarpos suma: $a_{i+1} + a_{i+2} + \dots + a_j$. 
-Vadinasi, mes radome iš eilės einančių skaičių rinkinį, kurio suma dalijasi iš 7. \hfill $\square$
+Jei sutapo, kad viena iš tų sumų buvo mūsų nulinė suma ($S_i = S_0$), tai $S_j - 0 = S_j$, ir reiškia, kad skaičių atkarpa nuo pat pradžių dalijasi iš 7. Abiem atvejais įrodymas sėkmingas. \hfill $\square$
 \end{solution}
 
 % ==========================================
 % 5 STRATEGIJA: APIBENDRINTAS PRINCIPAS
 % ==========================================
-\section{5 strategija: Apibendrintas principas ir „Blogiausias scenarijus“}
+\section{5 strategija: „Blogiausias scenarijus“}
 
 Dažnai uždavinys prašo įrodyti, kad bus „bent 5“ ar „bent 10“ vienodų elementų. Tam naudojamas apibendrintas principas. Formules atsiminti sunku, todėl mes naudosime intuityvų \textbf{„Blogiausio scenarijaus“} mąstymą.
 
@@ -214,7 +211,7 @@ Skaitant uždavinį, atkreipkite dėmesį į šiuos signalus, kurie šaukte šau
     \item \textbf{„Įrodykite, kad atsiras \textit{bent du}...“} $\implies$ Čia klasikinis Dirichlė (Ieškokite, kas yra narveliai).
     \item \textbf{Klausimas su skaičiais prasideda žodžiais „\textit{Bet kokiems} $n$ skaičių...“} $\implies$ Tikriausiai reikės naudoti skaičių liekanas (mod $n$ arba moduliu pagal kitą skaičių).
     \item \textbf{Figūroje pažymėti $n$ taškų. „Įrodykite, kad atstumas tarp kažkurių...“} $\implies$ Būtina supjaustyti figūrą į $n-1$ vienodų ar panašių dalių, kad į vieną įkristų bent du taškai.
-    \item \textbf{Klausia apie „iš eilės einančius“ elementus} $\implies$ Iškart generuokite dalines sumas $S_1, S_2 \dots$ ir ieškokite jų liekanų.
+    \item \textbf{Klausia apie „iš eilės einančius“ elementus} $\implies$ Iškart generuokite dalines sumas $S_0, S_1, \dots$ ir ieškokite jų liekanų.
 \end{itemize}
 \end{minipage}
 }
@@ -225,34 +222,25 @@ Skaitant uždavinį, atkreipkite dėmesį į šiuos signalus, kurie šaukte šau
 % UŽDAVINIAI
 % ==========================================
 \newpage
-\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+\section{Uždaviniai savarankiškam sprendimui (38 iššūkiai)}
 
 Kiekviename uždavinyje sprendimą mintyse pradėkite nuo dviejų klausimų: \textit{Kas čia balandžiai?} ir \textit{Kas čia narveliai?}
 
+% --- Lengvi (Klasikiniai balandžiai) ---
+
 \begin{enumerate}
-    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
-    
-    % --- Lengvi (Klasikiniai balandžiai) ---
     \item Mokykloje mokosi 367 mokiniai. Įrodykite, kad bent du iš jų švenčia gimtadienį tą pačią dieną.
     \item Miške auga vienas milijonas pušų. Yra žinoma, kad nė viena pušis neturi daugiau nei $600\,000$ spyglių. Įrodykite, kad miške garantuotai yra bent dvi pušys, turinčios lygiai tiek pat spyglių.
     \item Tamsiame kambaryje stalčiuje guli 10 juodų ir 10 baltų kojinių. Kiek mažiausiai kojinių reikia ištraukti nežiūrint, kad garantuotai turėtumėte bent vieną vienodos spalvos porą?
-    \item Dėžėje yra daug raudonų, mėlynų, žalių ir geltonų rutuliukų. Kiek mažiausiai rutuliukų reikia ištraukti aklai, kad garantuotai turėtumėte bent \textbf{tris} tos pačios spalvos rutuliukus?
-    \item Iš aibės $\{1, 2, 3, \dots, 10\}$ atsitiktinai išrenkami 6 skaičiai. Įrodykite, kad tarp jų būtinai atsiras du, kurių suma lygi 11.
     \item Iš standartinės 52 kortų malkos aklai traukiamos kortos. Kiek mažiausiai kortų reikia ištraukti, kad rankose garantuotai turėtumėte bent 5 tos pačios rūšies (širdžių, būgnų, pikų arba kryžių) kortas?
-    
-    % --- Vidutiniai (Kombinatorika ir liekanos) ---
-    \item Gimtadienio vakarėlyje dalyvauja $n$ žmonių. Įrodykite, kad vakarėlyje visada atsiras bent du žmonės, turintys po vienodą skaičių pažįstamų tarp kitų vakarėlio svečių.
-    \item Matematikos teste yra tik 2 uždaviniai. Už teisingai išspręstą uždavinį skiriama 10 taškų, už praleistą – 2 taškai, už neteisingą – 0 taškų. Kiek mažiausiai mokinių turi laikyti testą, kad bent 3 iš jų surinktų vienodą galutinę taškų sumą?
+    \item Į parduotuvę atvežtos 25 dėžės obuolių. Obuoliai yra trijų skirtingų rūšių, ir visi obuoliai vienoje dėžėje yra tos pačios rūšies. Įrodykite, kad tarp šių dėžių yra bent devynios dėžės su tos pačios rūšies obuoliais.
+    \item Iš aibės $\{1, 2, 3, \dots, 10\}$ atsitiktinai išrenkami 6 skaičiai. Įrodykite, kad tarp jų būtinai atsiras du, kurių suma lygi 11.
+    \item Iš 100 žmonių, sėdinčių prie apvalaus stalo, daugiau nei pusė yra vyrai. Įrodykite, kad yra bent du vyrai, kurie sėdi vienas priešais kitą (diametraliai priešingose pusėse).
     \item Dėžėje guli daug keturių skirtingų rūšių velykinių kiaušinių. Kiekvienam vaikui leidžiama iš dėžės išsitraukti po 1 arba 2 kiaušinius. Kiek mažiausiai vaikų turi dalyvauti žaidime, kad bent du vaikai padarytų visiškai identišką pasirinkimą?
-    \item Apskritime surašyti 10 sveikųjų skaičių, kurių suma lygi 100. Įrodykite, kad visada atsiras trys greta esantys skaičiai, kurių suma yra ne mažesnė kaip 30.
-    \item Paimkime $(n+1)$ bet kokių sveikųjų skaičių. Įrodykite, kad visada galima išrinkti du skaičius, kurių skirtumas dalijasi iš $n$.
-    \item Duota 12 skirtingų dviženklių skaičių. Įrodykite, kad iš jų visada galima išrinkti du skaičius taip, kad jų skirtumo vienetų ir dešimčių skaitmenys būtų vienodi (t. y. skirtumas dalytųsi iš 11).
-    \item Duoti bet kokie 5 sveikieji skaičiai. Įrodykite, kad iš jų visada galima išrinkti lygiai 3 skaičius taip, kad jų suma dalytųsi iš 3.
-    \item Plokštumoje pažymėti 5 taškai, kurių visos koordinatės $(x, y)$ yra sveikieji skaičiai. Įrodykite, kad bent vienos atkarpos, jungiančios bet kuriuos du iš šių taškų, vidurio taškas taip pat turi tik sveikąsias koordinates.
-    \item Duota 100 bet kokių sveikųjų skaičių. Įrodykite, kad iš jų galima išrinkti bent 15 skaičių taip, kad bet kurių dviejų išrinktųjų skirtumas dalytųsi iš 7.
-    \item Tegu $a_1, a_2, \dots, a_9$ yra skaičių $1, 2, \dots, 9$ kėlinys (tie patys skaičiai surašyti bet kokia tvarka). Įrodykite, kad sandauga $(a_1-1)(a_2-2)\dots(a_9-9)$ būtinai yra lyginis skaičius.
-    
-    % --- Geometriniai iššūkiai ---
+    \item Matematikos teste yra tik 2 uždaviniai. Už teisingai išspręstą uždavinį skiriama 10 taškų, už praleistą – 2 taškai, už neteisingą – 0 taškų. Kiek mažiausiai mokinių turi laikyti testą, kad bent 3 iš jų surinktų vienodą galutinę taškų sumą?
+    \item Penkiolika berniukų pririnko 100 riešutų. Įrodykite, kad kažkuri pora berniukų surinko vienodą riešutų skaičių.
+    \item Matematikos olimpiadoje dešimt mokinių iš viso išsprendė 35 uždavinius. Kiekvieną uždavinį išsprendė lygiai vienas mokinys. Yra bent vienas mokinys, kuris išsprendė lygiai 1 uždavinį, bent vienas – lygiai 2, ir bent vienas – lygiai 3. Įrodykite, kad taip pat yra bent vienas mokinys, kuris išsprendė bent 5 uždavinius.
+    \item Kiekvienas $3\times3$ lentelės langelis užpildytas vienu iš skaičių: $-1, 0, 1$. Įrodykite, kad iš aštuonių galimų sumų (skaičiuojamų išilgai 3 eilučių, 3 stulpelių ir 2 įstrižainių), bent dvi sumos privalo būti lygios.
     \item Kvadrate, kurio matmenys yra $3 \times 3$, atsitiktinai pažymėta 10 taškų. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių yra ne didesnis nei $\sqrt{2}$.
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
@@ -268,19 +256,29 @@ Kiekviename uždavinyje sprendimą mintyse pradėkite nuo dviejų klausimų: \te
 \end{tikzpicture}
 \end{center}
     \item Taisyklingojo šešiakampio, kurio kraštinės ilgis lygus 1, viduje atsitiktinai pažymėti 7 taškai. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių neviršija 1.
+    \item Paimkime $(n+1)$ bet kokių sveikųjų skaičių. Įrodykite, kad visada galima išrinkti du skaičius, kurių skirtumas dalijasi iš $n$.
+    \item Duota 12 skirtingų dviženklių skaičių. Įrodykite, kad iš jų visada galima išrinkti du skaičius taip, kad jų skirtumo vienetų ir dešimčių skaitmenys būtų vienodi (t. y. skirtumas dalytųsi iš 11).
+    \item Įrodykite, kad egzistuoja sveikasis skaičius, kurio dešimtainėje išraiškoje yra tik vienetai (pavyzdžiui, 111, 11111) ir kuris be liekanos dalijasi iš 1987.
+    \item Duota 100 bet kokių sveikųjų skaičių. Įrodykite, kad iš jų galima išrinkti bent 15 skaičių taip, kad bet kurių dviejų išrinktųjų skirtumas dalytųsi iš 7.
+    \item Apskritime surašyti 10 sveikųjų skaičių, kurių suma lygi 100. Įrodykite, kad visada atsiras trys greta esantys skaičiai, kurių suma yra ne mažesnė kaip 30.
+    \item Duoti bet kokie 5 sveikieji skaičiai. Įrodykite, kad iš jų visada galima išrinkti lygiai 3 skaičius taip, kad jų suma dalytųsi iš 3.
+    \item Plokštumoje pažymėti 5 taškai, kurių visos koordinatės $(x, y)$ yra sveikieji skaičiai. Įrodykite, kad bent vienos atkarpos, jungiančios bet kuriuos du iš šių taškų, vidurio taškas taip pat turi tik sveikąsias koordinates.
+    \item Tegu $a_1, a_2, \dots, a_9$ yra skaičių $1, 2, \dots, 9$ kėlinys (tie patys skaičiai surašyti bet kokia tvarka). Įrodykite, kad sandauga $(a_1-1)(a_2-2)\dots(a_9-9)$ būtinai yra lyginis skaičius.
+    \item Duoti 8 skirtingi natūralieji skaičiai, nė vienas iš jų ne didesnis už 15. Įrodykite, kad galima rasti bent tris šių skaičių poras, kurių (teigiamas) skirtumas yra vienodas (skirtingoms poroms gali priklausyti ir tas pats skaičius).
+    \item Įrodykite, kad bet kurioje šešių žmonių grupėje visada atsiras arba trys žmonės, kurie visi pažįsta vienas kitą, arba trys žmonės, kurie visi vienas kito nepažįsta.
+    \item Koks yra didžiausias karalių skaičius, kurį galima pastatyti standartinėje $8\times8$ šachmatų lentoje taip, kad jokie du iš jų negrėstų vienas kitam?
+    \item $10\times10$ dydžio lentelės kiekviename langelyje įrašyta po sveikąjį skaičių taip, kad jokie du besiliečiantys skaičiai nesiskiria daugiau kaip 5 (langeliai liečiasi, jei turi bendrą kraštinę). Įrodykite, kad bent du lentelėje esantys skaičiai privalo būti vienodi.
     \item Skritulio, kurio spindulys yra 1, viduje atsitiktinai pažymėti 7 taškai. Įrodykite, kad atsiras bent du taškai, atstumas tarp kurių neviršija 1.
     \item Vienetinio kvadrato ($1 \times 1$) viduje pažymėti 9 taškai. Įrodykite, kad iš jų visada galima išrinkti 3 taškus, kurie sudarytų trikampį, kurio plotas neviršytų $1/8$.
-    
-    % --- Olimpiadiniai „Bossai“ ---
+    \item Tam tikroje tolimoje planetoje sausuma užima šiek tiek daugiau nei pusę planetos paviršiaus. Įrodykite, kad šios planetos gyventojai gali iškasti tiesų tunelį per patį planetos centrą taip, kad jis prasidėtų ir baigtųsi sausumoje.
     \item Duoti bet kokie 52 sveikieji skaičiai. Įrodykite, kad iš jų visada galima išrinkti du skaičius taip, kad tų skaičių suma arba skirtumas dalytųsi iš 100.
-    \item Duota 7 atsitiktinių sveikųjų skaičių seka. Įrodykite, kad visada įmanoma rasti vieną arba kelis \textit{iš eilės einančius} šios sekos elementus, kurių suma dalijasi iš 7.
     \item Įrodykite, kad egzistuoja skaičiaus 2017 kartotinis, kurio dešimtainiame užraše naudojami tik skaitmenys 8 ir 0.
     \item Fibonačio sekoje $1, 1, 2, 3, 5, 8, \dots$ kiekvienas narys lygus dviejų ankstesnių narių sumai. Įrodykite, kad šioje sekoje privalo egzistuoti skaičius, kuris baigiasi bent keturiais nuliais.
+    \item Yra dvi skirtingo dydžio ruletės su bendru centru. Kiekviena jų padalyta į 200 vienodų sektorių. Didesnėje ruletėje 100 sektorių nuspalvinti raudonai, kiti 100 – žaliai. Mažesnės ruletės 200 sektorių atsitiktinai nuspalvinti raudonai arba žaliai (spalvų skaičius nebūtinai lygus). Įrodykite, kad visada galima pasukti ruletes taip, jog bent 100 persidengiančių sektorių poros būtų vienodos spalvos.
     \item Visi begalinės plokštumos taškai yra atsitiktinai nuspalvinti dviem spalvomis (pavyzdžiui, raudona ir mėlyna). Įrodykite, kad plokštumoje būtinai atsiras du \textbf{vienodos spalvos} taškai, atstumas tarp kurių yra lygiai 1.
     \item Kiekvienas plokštumos taškas su sveikosiomis koordinatėmis $(x, y)$ yra nuspalvintas viena iš 3 spalvų. Įrodykite, kad visada egzistuoja stačiakampis, kurio kraštinės lygiagrečios koordinačių ašims, o visos keturios viršūnės yra tos pačios spalvos.
-    \item Yra dvi skirtingo dydžio ruletės su bendru centru. Kiekviena jų padalyta į 200 vienodų sektorių. Didesnėje ruletėje 100 sektorių nuspalvinti raudonai, kiti 100 – žaliai. Mažesnės ruletės 200 sektorių atsitiktinai nuspalvinti raudonai arba žaliai (spalvų skaičius nebūtinai lygus). Įrodykite, kad visada galima pasukti ruletes taip, jog bent 100 persidengiančių sektorių poros būtų vienodos spalvos.
+    \item Begalinėje languotoje plokštumoje kiekvienas langelis nuspalvintas viena iš $N$ spalvų. Įrodykite, kad visada galima rasti keturis tos pačios spalvos langelius, kurių centrai sudaro stačiakampį su kraštinėmis, lygiagrečiomis tinklelio linijoms.
     \item Lentoje surašytas 101 atsitiktinis skirtingas skaičius. Įrodykite, kad iš jų visada galima išbraukti 90 skaičių taip, kad likę 11 skaičių eitų griežtai didėjimo arba griežtai mažėjimo tvarka.
-    \item \textbf{(Kombinatorikos finalas)} Begalinėje languotoje plokštumoje kiekvienas langelis nuspalvintas viena iš $N$ spalvų. Įrodykite, kad visada galima rasti keturis tos pačios spalvos langelius, kurių centrai sudaro stačiakampį su kraštinėmis, lygiagrečiomis tinklelio linijoms.
 \end{enumerate}
 
 \end{document}
