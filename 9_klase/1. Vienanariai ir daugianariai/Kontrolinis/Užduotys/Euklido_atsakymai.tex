@@ -1,0 +1,83 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Kontrolinis darbas: Daugianariai}}\\[0.3cm]
+    {\large \textbf{Euklido variantas -- Atsakymai ir sprendimai}}
+\end{center}
+\vspace{0.5cm}
+
+\begin{enumerate}
+    \item \textbf{Reiškinių tipai:}
+    \begin{itemize}
+        \item[a)] $\displaystyle \frac{x^4 - \sqrt{5}}{3}$ -- \textbf{R, S} (Racionalusis sveikas). 
+        \item[b)] $\displaystyle \frac{4}{x^3 + 2}$ -- \textbf{R, T} (Racionalusis trupmeninis).
+        \item[c)] $\displaystyle x^{-4} + \sqrt{2} x$ -- \textbf{R, T} (Racionalusis trupmeninis). $x^{-4} = \frac{1}{x^4}$.
+        \item[d)] $\displaystyle \sqrt{x^2 - 9}$ -- \textbf{I} (Iracionalusis).
+        \item[e)] $\displaystyle 2x + 3^{-2}$ -- \textbf{R, S} (Racionalusis sveikas). 
+        \item[f)] $\displaystyle \sqrt{2}x - 7$ -- \textbf{R, S} (Racionalusis sveikas).
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \item \textbf{Vienanarių daugyba:} \\
+    $$ \left( -2x^2y^{-3} \right)^5 \cdot \left( 2x^{-3}y^4 \right)^{-4} = (-2)^5 \cdot x^{10} \cdot y^{-15} \cdot 2^{-4} \cdot x^{12} \cdot y^{-16} $$
+    $$ = -32 \cdot x^{10} \cdot y^{-15} \cdot \frac{1}{16} \cdot x^{12} \cdot y^{-16} = -2 \cdot x^{10+12} \cdot y^{-15-16} = \mathbf{-2x^{22}y^{-31}} \text{ arba } \mathbf{-\frac{2x^{22}}{y^{31}}} $$
+    \textbf{Paaiškinimas:} Tai \textbf{nėra vienanaris}, nes $y$ laipsnio rodiklis yra neigiamas.
+
+    \vspace{0.3cm}
+    \item \textbf{Skaičiavimas be skaičiuotuvo:} \\
+    Skaitiklis: $68^3 + 32^3 = (68 + 32)(68^2 - 68 \cdot 32 + 32^2) = 100 \cdot (68^2 - 68 \cdot 32 + 32^2)$. \\
+    Vardiklis: $0,2^{-2} = \left(\frac{2}{10}\right)^{-2} = \left(\frac{1}{5}\right)^{-2} = 5^2 = 25$. \\
+    Reiškinys skliaustuose: $68 \cdot 36 = 68 \cdot (68 - 32) = 68^2 - 68 \cdot 32$. \\
+    Vardiklis tampa: $25 \cdot (68^2 - 68 \cdot 32 + 32^2)$. \\
+    Padaliję gauname: $\frac{100}{25} = \mathbf{4}$.
+
+    \vspace{0.3cm}
+    \item \textbf{Formulių įrodymai:}
+    \begin{itemize}
+        \item[a)] $\frac{x^m}{y^m} = \frac{\overbrace{x \cdot x \cdot \dots \cdot x}^{m \text{ kartų}}}{\underbrace{y \cdot y \cdot \dots \cdot y}_{m \text{ kartų}}} = \underbrace{\frac{x}{y} \cdot \frac{x}{y} \cdot \dots \cdot \frac{x}{y}}_{m \text{ kartų}} = \mathbf{\left(\frac{x}{y}\right)^m} \text{ arba } \mathbf{(x : y)^m}.$
+        \item[b)] $(x-y)^3 = (x-y)(x-y)^2 = (x-y)(x^2 - 2xy + y^2) = x^3 - 2x^2y + xy^2 - x^2y + 2xy^2 - y^3 = \mathbf{x^3 - 3x^2y + 3xy^2 - y^3}.$
+    \end{itemize}
+
+    \vspace{0.3cm}
+    \item \textbf{Didžiausia ir mažiausia reikšmės:} \\
+    Išskiriame pilnąjį kvadratą iš $-3x^2 + \frac{3}{4}x + 1$:
+    $$ = -3\left(x^2 - \frac{1}{4}x\right) + 1 = -3\left(x^2 - 2 \cdot x \cdot \frac{1}{8} + \frac{1}{64} - \frac{1}{64}\right) + 1 $$
+    $$ = -3\left(\left(x - \frac{1}{8}\right)^2 - \frac{1}{64}\right) + 1 = -3\left(x - \frac{1}{8}\right)^2 + \frac{3}{64} + 1 = \mathbf{-3\left(x - \frac{1}{8}\right)^2 + 1\frac{3}{64}} \quad \text{(arba $\frac{67}{64}$)} $$
+    \textbf{Didžiausia reikšmė:} $\mathbf{1\frac{3}{64}}$ (arba $\frac{67}{64}$), kai $x = \frac{1}{8}$. \\
+    \textbf{Mažiausios nėra} (artėja į $-\infty$).
+
+    \vspace{0.3cm}
+    \item \textbf{Sudėtingesnis reiškinio pertvarkymas:} \\
+    Iškeliame $(x+2)$: $(x+2)\left[ (x+2)^2 - (x+4)^2 \right]$ \\
+    $(x+2) [ (x^2 + 4x + 4) - (x^2 + 8x + 16) ] = (x+2)[ -4x - 12 ] = -4x^2 - 12x - 8x - 24 = -4x^2 - 20x - 24$. \\
+    Išskiriame pilnąjį kvadratą: $-4\left(x^2 + 5x\right) - 24 = -4\left(x^2 + 2 \cdot \frac{5}{2}x + \frac{25}{4} - \frac{25}{4}\right) - 24 = -4\left(x + \frac{5}{2}\right)^2 + 25 - 24 = \mathbf{-4\left(x + 2,5\right)^2 + 1}$. \\
+    Gavome koeficientus: $a = -4$, $b = 2,5$ (arba $\frac{5}{2}$), $c = 1$. \\
+    Skaičiuojame reiškinio po šaknimi reikšmę: \\
+    $\sqrt{-a + 4b + c + 1} = \sqrt{-(-4) + 4(2,5) + 1 + 1} = \sqrt{4 + 10 + 1 + 1} = \sqrt{16} = \mathbf{4}$.
+
+    \vspace{0.3cm}
+    \item \textbf{Nežinomų koeficientų radimas:} \\
+    Kairėje pusėje atskliaudžiame reiškinį ir sugrupuojame narius pagal $x$ laipsnius:
+    $$ (ax+b)(x^2-x+2) + cx = ax^3 - ax^2 + 2ax + bx^2 - bx + 2b + cx $$
+    $$ = ax^3 + (b-a)x^2 + (2a-b+c)x + 2b $$
+    Dešinėje pusėje turime daugianarį: $3x^3 - 5x^2 + 5x - 4$. Sulyginame kairės ir dešinės pusių koeficientus:
+    \begin{itemize}
+        \item Prie $x^3$: $\mathbf{a = 3}$
+        \item Laisvasis narys: $2b = -4 \implies \mathbf{b = -2}$
+        \item Patikriname prie $x^2$: $b - a = -2 - 3 = -5$ (tai atitinka dešinės pusės koeficientą).
+        \item Prie $x$: $2a - b + c = 5 \implies 2(3) - (-2) + c = 5 \implies 8 + c = 5 \implies \mathbf{c = -3}$.
+    \end{itemize}
+    \textbf{Atsakymas:} $\mathbf{a=3}$, $\mathbf{b=-2}$, $\mathbf{c=-3}$.
+
+\end{enumerate}
+
+\end{document}
