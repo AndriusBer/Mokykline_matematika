@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
-\title{Algebra II: Vijeto teorema ir simetrija}
+\title{Algebra: Vijeto teorema ir simetrija}
 \author{Andrius Berniukevičius}
 
 \newenvironment{solution}
@@ -15,12 +15,12 @@
 
 \maketitle
 
-\section{Kaip apgauti Diskriminantą?}
+\section{Kaip apgauti diskriminantą?}
 
 Mokykloje jūs išmokote galingą įrankį – diskriminantą ($D = b^2 - 4ac$). Su juo galite rasti bet kokios kvadratinės lygties $ax^2 + bx + c = 0$ šaknis. 
 
 Tačiau įsivaizduokite olimpiadinį uždavinį: duota lygtis $x^2 - 6x + 2 = 0$. Prašoma rasti jos šaknų kvadratų sumą ($x_1^2 + x_2^2$). 
-Jei skaičiuosite diskriminantą, gausite $D = 36 - 8 = 28$. Šaknys bus negražios: $x_1 = \frac{6 - \sqrt{28}}{2}$ ir $x_2 = \frac{6 + \sqrt{28}}{2}$. Kelti tokius monstrus kvadratu ir juos sudėti yra baisus darbas, kuriame labai lengva padaryti klaidą.
+Jei skaičiuosite diskriminantą, gausite $D = 36 - 8 = 28$. Šaknys bus negražios: $x_1 = \frac{6 - \sqrt{28}}{2}$ ir $x_2 = \frac{6 + \sqrt{28}}{2}$. Kelti tokius monstrus kvadratu ir juos sudėti yra daug energijos kainuojantis darbas, kuriame labai lengva padaryti klaidą.
 
 Olimpiadinėje matematikoje mes šaknų \textbf{neieškome}. Mes ieškome būdo, kaip sužinoti atsakymą išvengiant juodo darbo. Tam mums padeda prancūzų matematiko Fransua Vijeto (François Viète) atradimas.
 
@@ -86,7 +86,7 @@ $x_1 \cdot x_2 = 2$ (laisvasis narys)
 Pertvarkome prašomą rasti reiškinį naudodami pilno kvadrato formulę:
 \[ x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 \]
 Įstatome mūsų Vijeto reikšmes:
-\[ x_1^2 + x_2^2 = 6^2 - 2 \cdot 2 = 36 - 4 = \mathbf{32} \hfill \square \]
+\[ x_1^2 + x_2^2 = 6^2 - 2 \cdot 2 = 36 - 4 = \mathbf{32} \]
 
 \begin{example}[Naujos lygties sudarymas]
 Sukurkite (parašykite) naują kvadratinę lygtį, kurios šaknys būtų atvirkštinės lygties $x^2 - 5x + 3 = 0$ šaknims (t.y. $\frac{1}{x_1}$ ir $\frac{1}{x_2}$).
@@ -103,7 +103,7 @@ Apskaičiuokime naująjį $-p$:
 \[ -p = \frac{1}{x_1} + \frac{1}{x_2} = \frac{x_1 + x_2}{x_1x_2} = \frac{5}{3} \implies p = -\frac{5}{3} \]
 Mūsų naujoji lygtis yra: $x^2 - \frac{5}{3}x + \frac{1}{3} = 0$.
 Kad būtų gražiau, padauginkime viską iš 3:
-\[ \mathbf{3x^2 - 5x + 1 = 0} \hfill \square \]
+\[ \mathbf{3x^2 - 5x + 1 = 0} \]
 \textit{Olimpiadinis pastebėjimas: Jei norime lygties su atvirkštinėmis šaknimis, užtenka tiesiog sukeisti vietomis koeficientus $a$ ir $c$!}
 
 \begin{example}[Asimetrinis reiškinys]
@@ -121,7 +121,7 @@ Sutraukiame panašius narius ($5x_1 - 4x_1$):
 \[ x_1 + x_2 + 2 \]
 Magija! Liko tik šaknų suma, kurią mes žinome iš Vijeto teoremos ($x_1 + x_2 = 5$).
 Įstatome ir gauname atsakymą:
-\[ 5 + 2 = \mathbf{7} \hfill \square \]
+\[ 5 + 2 = \mathbf{7} \]
 
 \vspace{0.5cm}
 
