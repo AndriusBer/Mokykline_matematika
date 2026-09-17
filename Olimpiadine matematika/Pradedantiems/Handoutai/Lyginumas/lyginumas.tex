@@ -243,9 +243,18 @@ Jei padėsime 25 figūras, bendras uždengtų juodų langelių skaičius bus 25 
 % ==========================================
 % 3 STRATEGIJA: GRAFAI
 % ==========================================
-\section{3 strategija: Skaičiuokime viską du kartus (Grafų teorija)}
 
-Tai viena gražiausių lyginumo idėjų, vadinama „Rankų paspaudimų lema“ (Handshake Lemma). Ji naudojama, kai uždavinys kalba apie ryšius tarp objektų (draugystes, laidus, kelius). \textbf{Pagrindinė taisyklė:} kiekvienas ryšys (virvė, kelias) turi DU galus.
+% ==========================================
+% 3 STRATEGIJA: GRAFAI
+% ==========================================
+\section{3 strategija: Taškai ir ryšiai (Grafų teorijos elementai)}
+
+Kai olimpiadinėje matematikoje išgirsite terminą \textbf{„grafas“} ar „grafų teorija“, neišsigąskite. Tai neturi visiškai nieko bendro su funkcijų grafikais ($y = x^2$) ar koordinačių ašimis, kuriuos braižote per pamokas. 
+Olimpiadinis grafas yra pats paprasčiausias piešinys: tai tiesiog \textbf{taškai} (kurie reiškia žmones, miestus, salas, komandas) ir tuos taškus jungiančios \textbf{linijos} (kurios reiškia draugystes, kelius, tiltus, rungtynes). Štai ir visa teorija!
+Ši strategija (taškų ir linijų braižymas) naudojama, kai uždavinys kalba apie ryšius tarp objektų. Čia dažniausiai veikia du galingi olimpiadininko ginklai: ryšių skaičiavimas („Rankų paspaudimų lema“) ir uždarų ratų (ciklų) stebėjimas. 
+
+\textbf{Pagrindinė ryšių taisyklė:} kiekvienas ryšys (tiltas, draugystė, virvė) sujungia du taškus, todėl jis visada turi DU galus.
+\textbf{Pagrindinė ryšių taisyklė:} kiekvienas ryšys (tiltas, draugystė, virvė) sujungia du objektus, todėl jis visada turi DU galus.
 
 \begin{example}[Draugų klasė]
 Klasėje mokosi 15 mokinių. Ar gali būti taip, kad kiekvienas mokinys toje klasėje turi lygiai 3 draugus?
@@ -278,33 +287,6 @@ Kadangi draugysčių skaičius gali būti tik sveikasis skaičius (negalima tur�
 
 Išvada: \textbf{žmonių, turinčių nelyginį draugų skaičių, grupėje visada privalo būti lyginis kiekis.} (Šiame uždavinyje turėjome nelyginį skaičių žmonių (15), iš kurių kiekvienas turi nelyginį skaičių draugų (3), todėl sudaryti tokią klasę yra neįmanoma). \hfill $\square$
 \end{solution}
-
-\vspace{0.5cm}
-
-\begin{example}[Užstrigę krumpliaračiai]
-11 krumpliaračių sujungti į vieną uždarą ratą (pirmas liečiasi su antru, antras su trečiu... 11-as liečiasi su pirmu). Ar ši sistema gali suktis?
-\end{example}
-
-\begin{minipage}{0.6\textwidth}
-\begin{solution}
-\textbf{Sprendimas:}
-\textit{*(Patarimas: Nusipieškite tris krumpliaračius sujungtus ratu ir pabandykite nupiešti sukimosi rodykles. Kas atsitinka su trečiuoju?)}*
-
-Krumpliaračių mechanika remiasi vienu dėsniu: jei vienas krumpliaratis sukasi pagal laikrodžio rodyklę (žymėkime +), su juo besiliečiantis privalo suktis prieš laikrodžio rodyklę (žymėkime –). Tai yra paprastas šachmatinis dažymas!
-Kadangi ratas uždaras, krumpliaračių kryptys privalo kaitaliotis: +, –, +, –, +, ... 
-Tačiau mes turime \textbf{nelyginį} (11) krumpliaračių skaičių. Pirmasis (+) ir 11-asis (+) turės suktis ta pačia kryptimi. Bet jie liečiasi vienas su kitu! Du besiliečiantys ir ta pačia kryptimi besisukantys krumpliaračiai sistemą akimirksniu užblokuoja. \hfill $\square$
-\end{solution}
-\end{minipage}
-\hfill
-\begin{minipage}{0.35\textwidth}
-\centering
-\begin{tikzpicture}[scale=0.4]
-    \foreach \i in {1,...,11} {
-        \draw[thick, fill=gray!20] ({3*cos(360/11*\i+90)}, {3*sin(360/11*\i+90)}) circle (0.8);
-        \node at ({3*cos(360/11*\i+90)}, {3*sin(360/11*\i+90)}) {\i};
-    }
-\end{tikzpicture}
-\end{minipage}
 
 \vspace{0.5cm}
 
@@ -350,6 +332,38 @@ Iš šios logikos plaukia griežta taisyklė: kad būtų įmanoma pereiti visus 
 Mūsų nagrinėjamame mieste iš salos A išeina 5 tiltai, o iš salų B, C ir D – po 3 tiltus. Matome, kad visos 4 salos turi nelyginį tiltų skaičių ($5, 3, 3, 3$). Kadangi nelyginį skaičių turinčių salų yra daugiau nei dvi, rasti kelionės pradžios ir pabaigos taškų, kurie leistų laikytis taisyklių, neįmanoma. Vadinasi, pereiti visus tiltus po vieną kartą yra neįmanoma. \hfill $\square$
 \end{solution}
 
+\vspace{0.8cm}
+
+\noindent \textbf{Nelyginiai ciklai grafuose} \\
+Išmokę stebėti atskirus ryšius, olimpiadininkai atkreipia dėmesį į dar vieną grafų struktūrą – uždarus ciklus (ratus). Čia sugrįžta mūsų antrojoje strategijoje išmokta būsenų kaitaliojimo (dažymo) idėja, tik dabar ji pritaikoma sujungtiems taškams.
+
+\vspace{0.3cm}
+
+\begin{example}[Užstrigę krumpliaračiai]
+11 krumpliaračių sujungti į vieną uždarą ratą (pirmas liečiasi su antru, antras su trečiu... 11-as liečiasi su pirmu). Ar ši sistema gali suktis?
+\end{example}
+
+\begin{minipage}{0.6\textwidth}
+\begin{solution}
+\textbf{Sprendimas:}
+\textit{*(Patarimas: Nusipieškite tris krumpliaračius sujungtus ratu ir pabandykite nupiešti sukimosi rodykles. Kas atsitinka su trečiuoju?)}*
+
+Krumpliaračių mechanika remiasi vienu dėsniu: jei vienas krumpliaratis sukasi pagal laikrodžio rodyklę (žymėkime +), su juo besiliečiantis privalo suktis prieš laikrodžio rodyklę (žymėkime –). Matome tą pačią būsenų kaitaliojimosi taisyklę, kaip ir šachmatų lentoje!
+
+Kadangi ratas uždaras, krumpliaračių kryptys privalo kaitaliotis: +, –, +, –, +, ... 
+Tačiau mes turime \textbf{nelyginį} (11) krumpliaračių skaičių. Pirmasis (+) ir 11-asis (+) turės suktis ta pačia kryptimi. Bet jie liečiasi vienas su kitu! Du besiliečiantys ir ta pačia kryptimi besisukantys krumpliaračiai sistemą akimirksniu užblokuoja. (Ši taisyklė grafų teorijoje skamba taip: nelyginio ilgio ciklai negali būti nuspalvinti dvejomis spalvomis). \hfill $\square$
+\end{solution}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+\centering
+\begin{tikzpicture}[scale=0.4]
+    \foreach \i in {1,...,11} {
+        \draw[thick, fill=gray!20] ({3*cos(360/11*\i+90)}, {3*sin(360/11*\i+90)}) circle (0.8);
+        \node at ({3*cos(360/11*\i+90)}, {3*sin(360/11*\i+90)}) {\i};
+    }
+\end{tikzpicture}
+\end{minipage}
 \vspace{1cm}
 \section*{Olimpiadininko mąstysenos apibendrinimas: Kaip matyti tai, kas nematoma?}
 
@@ -374,42 +388,55 @@ Susidūrę su nauju uždaviniu, kuriame prašoma įrodyti, ar įmanoma pasiekti 
 % UŽDAVINIAI
 % ==========================================
 \newpage
-\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+\section{Uždaviniai savarankiškam sprendimui (43 iššūkiai)}
 
-Sprendžiant šiuos uždavinius jūsų tikslas nėra tik atsakyti „Taip“ arba „Ne“. Jūsų tikslas – rasti invariantą (tai kas nesikeičia) ir juo remiantis pateikti \textbf{griežtą įrodymą}.
+Šie uždaviniai surikiuoti pagal sunkumą (nuo apšilimo iki ekspertinio lygio). Jūsų tikslas nėra tik pasakyti „Taip“ arba „Ne“. Tikslas – atrasti invariantą ir pateikti \textbf{griežtą matematinį įrodymą}.
 
 \begin{enumerate}
     \renewcommand{\labelenumi}{\textbf{\theenumi.}}
     \item Lentoje užrašyti trys nelyginiai skaičiai. Ar gali jų suma būti lygi $100$?
-    \item Sraigė šliaužia medžiu. Dieną ji pakyla į viršų $3$ metrais, o naktį nusileidžia žemyn $1$ metru. Ar gali sraigė po kelių parų atsidurti lygiai $35$ metrų aukštyje nuo pradinio taško?
     \item Plėšydamas knygą mokinys išplėšė $15$ lapų. Suskaičiavus visus išplėštuose lapuose esančius puslapių numerius, gauta suma $2026$. Įrodykite, kad mokinys apsiriko skaičiuodamas.
     \item Ar galima $10$ eurų ($1000$ centų) sumokėti panaudojant lygiai $25$ monetas, kurių nominalai yra tik $1$, $3$ ir $5$ centai?
-    \item Prie apvalaus stalo sėdi $10$ berniukų ir $10$ mergaičių. Kiekvienas iš jų turi po vieną kortelę su skaičiumi: berniukai turi lyginius skaičius, o mergaitės -- nelyginius. Žinoma, kad bet kurių dviejų šalia sėdinčių vaikų skaičių suma yra nelyginė. Įrodykite, kad berniukai ir mergaitės sėdi pakaitomis.
-    \item Lentoje surašyti skaičiai $1, 2, 3, \ldots, 2025$. Vienu ėjimu leidžiama nutrinti bet kokius du skaičius $a$ ir $b$, o vietoje jų parašyti $a+b+2$. Ar gali paskutinis lentoje likęs skaičius būti lyginis?
+    \item Sraigė šliaužia medžiu. Dieną ji pakyla į viršų $3$ metrais, o naktį nusileidžia žemyn $1$ metru. Ar gali sraigė po kelių parų atsidurti lygiai $35$ metrų aukštyje nuo pradinio taško?
     \item Ant tiesės taške $0$ tupi žiogas. Jis šokinėja tik į dešinę arba į kairę, kiekvieną kartą lygiai po $3$ centimetrus arba lygiai po $5$ centimetrus. Ar gali jis po lygiai $25$ šuolių atsidurti taške, koordinatėje $10$?
-    \item Turime $2026$ sveikuosius skaičius. Žinoma, kad bet kurių $2025$ skaičių suma yra lyginė. Įrodykite, kad visi šie skaičiai yra lyginiai.
+    \item Lentoje surašyti visi sveikieji skaičiai nuo $1$ iki $2026$. Ar galima juos suskirstyti į dvi grupes taip, kad abiejų grupių skaičių sumos būtų lygios?
+    \item Prie apvalaus stalo sėdi $10$ berniukų ir $10$ mergaičių. Kiekvienas iš jų turi po vieną kortelę su skaičiumi: berniukai turi lyginius skaičius, o mergaitės -- nelyginius. Žinoma, kad bet kurių dviejų šalia sėdinčių vaikų skaičių suma yra nelyginė. Įrodykite, kad berniukai ir mergaitės sėdi pakaitomis.
     \item Žaidimo metu ant stalo guli $12$ akmenukų krūvelė. Vienu ėjimu žaidėjas gali paimti $1$ arba $3$ akmenukus. Laimi tas, kuris paima paskutinį. Įrodykite, kad antrasis žaidėjas visada gali laimėti, kad ir kaip žaistų pirmasis.
+    \item Žaidėjas turi $3$ monetas, kurios guli ant stalo „Erelio“ puse į viršų. Jam leidžiama vienu ėjimu apversti lygiai $2$ bet kurias monetas. Ar gali jis padaryti taip, kad visos monetos gulėtų „Skaičiaus“ puse į viršų?
     \item Yra $7$ puodeliai, iš pradžių visi apversti dugnu į viršų. Vienu ėjimu leidžiama apversti lygiai $2$ puodelius. Ar įmanoma po kelių tokių ėjimų padaryti taip, kad visi puodeliai stovėtų normaliai?
+    \item Lentoje surašyti skaičiai $1, 2, 3, \ldots, 2025$. Vienu ėjimu leidžiama nutrinti bet kokius du skaičius $a$ ir $b$, o vietoje jų parašyti $a+b+2$. Ar gali paskutinis lentoje likęs skaičius būti lyginis?
+    \item Lentoje surašyti skaičiai $1, 2, 3, \ldots, 2026$. Vienu ėjimu leidžiama išsirinkti bet kokius du skaičius ir prie kiekvieno iš jų pridėti po $1$. Ar po kurio laiko įmanoma pasiekti, kad visi $2026$ skaičiai taptų visiškai lygūs?
+    \item Stebuklingame medyje auga $2026$ obuoliai ir $2027$ kriaušės. Sodininkas vienu ėjimu nuskina du vaisius. Jei jis nuskina du vienodus vaisius (du obuolius arba dvi kriaušes), medyje išauga naujas obuolys. Jei jis nuskina du skirtingus, išauga nauja kriaušė. Galiausiai medyje lieka tik vienas vaisius. Kas tai per vaisius?
+    \item Turime lentą $6 \times 6$, iš kurios išpjauti du priešingi kampai. Ar galima likusius $34$ langelius uždengti $17$ domino kauliukų?
     \item Šachmatų lentoje $4 \times 4$ kairiajame apatiniame kampe stovi žirgas. Ar gali jis aplankyti kiekvieną langelį po lygiai vieną kartą ir baigti kelionę dešiniajame viršutiniame kampe?
+    \item Šachmatų žirgas stovi $8 \times 8$ lentos kairiajame apatiniame kampe (juodame langelyje a1). Jam buvo liepta atlikti lygiai $2027$ ėjimus. Ar gali jis po paskutinio ėjimo atsidurti dešiniajame viršutiniame kampe (langelyje h8)?
+    \item Vabzdys ropoja $5 \times 5$ lentos langeliais, kiekvienu ėjimu pereidamas į gretimą langelį (turintį bendrą kraštinę). Iš pradžių jis buvo centriniame langelyje. Ar gali jis pereiti visus lentos langelius lygiai po vieną kartą ir grįžti į centrą?
+    \item Dvidešimt penkios šaškės išdėliotos $25 \times 25$ dydžio šachmatų lentoje taip, kad jų išdėstymas yra simetriškas vienos iš lentos įstrižainių atžvilgiu. Įrodykite, kad bent viena šaškė stovi ant šios įstrižainės.
+    \item Duotas iškilusis 101-kampis, turintis simetrijos ašį. Įrodykite, kad simetrijos ašis eina per vieną iš jo viršūnių.
+    \item Duoti penki sveikieji skaičiai $a, b, c, d, e$. Įrodykite, kad sandauga $(a-b)(b-c)(c-d)(d-e)(e-a)$ visada yra lyginis skaičius.
+    \item Lentoje užrašyti skaičiai $1, 2, 3, 4, 5, 6, 7$. Sukuriame naujus skaičius pridėdami prie jų bet kokią šių skaičių perstatą (pvz., prie pirmo pridedame $7$, prie antro $1$ ir t.t.). Ar gali gautų $7$ naujų skaičių sandauga būti nelyginė?
+    \item Plėšikas pavogė $2027$ auksines monetas. Jis nori jas padalinti į lygiai $4$ krūvas taip, kad bet kurių dviejų iš šių krūvų monetų sumos būtų lyginiai skaičiai. Ar jam pavyks tai padaryti?
     \item Klasėje yra $25$ mokiniai. Ar gali kiekvienas iš jų klasėje turėti lygiai $5$ draugus?
     \item Duotas iškilusis briaunainis, turintis lygiai $13$ sienų. Ar gali būti taip, kad kiekviena šio briaunainio siena turi lygiai $7$ briaunas?
-    \item Ant plokštumos nubrėžtos $9$ tiesės atkarpos. Ar gali jos kirstis taip, kad kiekviena atkarpa būtų perkirsta lygiai kitų $3$ atkarpų?
-    \item Turime lentą $6 \times 6$, iš kurios išpjauti du priešingi kampai. Ar galima likusius $34$ langelius uždengti $17$ domino kauliukų?
-    \item Sraigė griaužia $3 \times 3 \times 3$ sūrio kubą, sudarytą iš $27$ mažų kubelių. Ji pradeda nuo vieno kampinio kubelio ir kiekvieną kartą pergraužia sieną pereidama į gretimą kubelį. Ar gali ji suvalgyti visus kubelius (kiekviename apsilankydama po lygiai vieną kartą) ir kelionę baigti pačiame centriniame kubelyje?
-    \item Vabzdys ropoja $5 \times 5$ lentos langeliais, kiekvienu ėjimu pereidamas į gretimą langelį (turintį bendrą kraštinę). Iš pradžių jis buvo centriniame langelyje. Ar gali jis pereiti visus lentos langelius lygiai po vieną kartą ir grįžti į centrą?
-    \item Ar galima plokštumoje nubrėžti uždarą laužtę (liniją), sudarytą iš lygiai $11$ atkarpų taip, kad kiekviena atkarpa būtų lygiagreti arba X, arba Y ašiai, ir laužtė pati savęs nekirstų?
-    \item Lentoje užrašyti skaičiai $1, 2, 3, 4, 5, 6, 7$. Sukuriame naujus skaičius pridėdami prie jų bet kokią šių skaičių perstatą (pvz., prie pirmo pridedame $7$, prie antro $1$ ir t.t.). Ar gali gautų $7$ naujų skaičių sandauga būti nelyginė?
-    \item Žaidėjas turi $3$ monetas, kurios guli ant stalo „Erelio“ puse į viršų. Jam leidžiama vienu ėjimu apversti lygiai $2$ bet kurias monetas. Ar gali jis padaryti taip, kad visos monetos gulėtų „Skaičiaus“ puse į viršų?
-    \item Lentoje surašyti visi sveikieji skaičiai nuo $1$ iki $2026$. Ar galima juos suskirstyti į dvi grupes taip, kad abiejų grupių skaičių sumos būtų lygios?
-    \item Ar lygtis $\frac{1}{x} + \frac{1}{y} = \frac{1}{2027}$ turi sprendinių, jeigu reikalaujama, kad ir $x$, ir $y$ būtų nelyginiai sveikieji skaičiai?
-    \item Stebuklingame medyje auga $2026$ obuoliai ir $2027$ kriaušės. Sodininkas vienu ėjimu nuskina du vaisius. Jei jis nuskina du vienodus vaisius (du obuolius arba dvi kriaušes), medyje išauga naujas obuolys. Jei jis nuskina du skirtingus, išauga nauja kriaušė. Galiausiai medyje lieka tik vienas vaisius. Kas tai per vaisius?
     \item Futbolo turnyre dalyvavo $15$ komandų. Kiekviena komanda sužaidė su kiekviena kita komanda lygiai po vieną kartą. Ar gali būti taip, kad pasibaigus turnyrui paaiškėjo, jog kiekviena komanda sužaidė lygiai po $7$ rungtynes lygiosiomis?
-    \item Šachmatų žirgas stovi $8 \times 8$ lentos kairiajame apatiniame kampe (juodame langelyje $a1$). Jam buvo liepta atlikti lygiai $2027$ ėjimus. Ar gali jis po paskutinio ėjimo atsidurti dešiniajame viršutiniame kampe (langelyje $h8$)?
-    \item Duoti penki sveikieji skaičiai $a, b, c, d, e$. Įrodykite, kad sandauga $(a-b)(b-c)(c-d)(d-e)(e-a)$ visada yra lyginis skaičius.
     \item Klasėje mokosi $25$ mokiniai. Ar gali būti taip, kad kiekvienas berniukas šioje klasėje draugauja su lygiai $5$ mergaitėmis, o kiekviena mergaitė draugauja su lygiai $5$ berniukais?
-    \item Plėšikas pavogė $2027$ auksines monetas. Jis nori jas padalinti į lygiai $4$ krūvas taip, kad bet kurių dviejų iš šių krūvų monetų sumos būtų lyginiai skaičiai. Ar jam pavyks tai padaryti?
-    \item Lentoje surašyti skaičiai $1, 2, 3, \ldots, 2026$. Vienu ėjimu leidžiama išsirinkti bet kokius du skaičius ir prie kiekvieno iš jų pridėti po $1$. Ar po kurio laiko įmanoma pasiekti, kad visi $2026$ skaičiai taptų visiškai lygūs?
-    \item Lentelės $25 \times 25$ langeliuose bet kaip surašyti skaičiai $+1$ ir $-1$. Tegu $e_1, e_2, \ldots, e_{25}$ yra kiekvienos eilutės skaičių sandaugos, o $s_1, s_2, \ldots, s_{25}$ – kiekvieno stulpelio skaičių sandaugos. Ar gali visų šių 50-ies atsakymų suma būti lygi $0$? (T.y. ar gali $e_1 + \dots + e_{25} + s_1 + \dots + s_{25} = 0$?)
+    \item Ant plokštumos nubrėžtos $9$ tiesės atkarpos. Ar gali jos kirstis taip, kad kiekviena atkarpa būtų perkirsta lygiai kitų $3$ atkarpų?
+    \item Ar galima nubrėžti uždarą laužtę iš $9$ atkarpų, kurios kiekviena atkarpa kerta lygiai vieną iš kitų atkarpų?
+    \item Visi domino rinkinio kauliukai yra sudėti į vientisą grandinę (laikantis taisyklių). Jei viename grandinės gale yra $5$ taškeliai, kas yra kitame gale?
+    \item Sraigė griaužia $3 \times 3 \times 3$ sūrio kubą, sudarytą iš $27$ mažų kubelių. Ji pradeda nuo vieno kampinio kubelio ir kiekvieną kartą pergraužia sieną pereidama į gretimą kubelį. Ar gali ji suvalgyti visus kubelius ir kelionę baigti pačiame centriniame kubelyje?
+    \item Turime $2026$ sveikuosius skaičius. Žinoma, kad bet kurių $2025$ skaičių suma yra lyginė. Įrodykite, kad visi šie skaičiai yra lyginiai.
+    \item Ar galima plokštumoje nubrėžti uždarą laužtę (liniją), sudarytą iš lygiai $11$ atkarpų taip, kad kiekviena atkarpa būtų lygiagreti arba X, arba Y ašiai, ir laužtė pati savęs nekirstų?
+    \item Sraigė šliaužia plokštuma pastoviu greičiu, kas $15$ minučių pasukdama stačiu kampu (90 laipsnių). Įrodykite, kad sraigė gali grįžti į pradinį tašką tik praėjus sveikam valandų skaičiui.
+    \item Iš domino kauliukų rinkinio pašalinami visi tie, kurie turi bent vieną tuščią pusę (be taškelių). Ar galima likusius domino kauliukus sudėti į vientisą grandinę?
+    \item Būryje yra $100$ kareivių, o kiekvieną vakarą trys iš jų eina budėti. Ar gali atsitikti taip, kad po tam tikro laiko kiekvienas kareivis bus budėjęs su kiekvienu kitu kareiviu lygiai po vieną kartą?
+    \item Aikštelėje guli trys ledo rituliai A, B ir C. Ledo ritulininkas muša vieną iš jų taip, kad šis pračiuožia tarp kitų dviejų. Jis tai padaro $25$ kartus. Ar gali jis grąžinti tris ritulius į jų pradines vietas?
+    \item Trys žiogai žaidžia šokinėjimo žaidimą išilgai tiesės. Kiekvieno ėjimo metu vienas žiogas peršoka per kitą žiogą, bet ne per du iš karto. Ar žiogai gali grįžti į savo pradines pozicijas po $1991$ šuolio?
+    \item Ar galima iškilųjį 13-kampį padalinti į lygiagretėnius?
+    \item Uždarą laužtę sudaro $11$ atkarpų. Ar gali viena tiesė, neinanti per jokią laužtės viršūnę, kirsti kiekvieną iš jos atkarpų?
+    \item Parenkamas 17 skaitmenų skaičius ir jo skaitmenys perrašomi atvirkščia tvarka, gaunant naują skaičių. Šie du skaičiai sudedami. Įrodykite, kad jų sumoje yra bent vienas lyginis skaitmuo.
+    \item Ar galima sudaryti „magiškąjį kvadratą“ iš pirmųjų $36$ pirminių skaičių? (Magiškasis kvadratas čia yra $6 \times 6$ lentelė, kurioje eilučių, stulpelių ir įstrižainių sumos yra vienodos).
+    \item Lentelės $25 \times 25$ langeliuose bet kaip surašyti skaičiai $+1$ ir $-1$. Tegu $e_1, e_2, \ldots, e_{25}$ yra kiekvienos eilutės skaičių sandaugos, o $s_1, s_2, \ldots, s_{25}$ – kiekvieno stulpelio skaičių sandaugos. Ar gali visų šių 50-ies atsakymų suma būti lygi $0$?
+    \item Ar lygtis $\frac{1}{x} + \frac{1}{y} = \frac{1}{2027}$ turi sprendinių, jeigu reikalaujama, kad ir $x$, ir $y$ būtų nelyginiai sveikieji skaičiai?
 \end{enumerate}
 
 \end{document}
