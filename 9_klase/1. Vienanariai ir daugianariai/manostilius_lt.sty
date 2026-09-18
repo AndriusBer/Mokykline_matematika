@@ -162,7 +162,7 @@
 \declaretheorem[style=thmbluebox,name=Lema,sibling=theorem]{lemma}
 \declaretheorem[style=thmbluebox,name=Savybė,sibling=theorem]{property}
 \declaretheorem[style=thmbluebox,name=Teiginys,sibling=theorem]{proposition}
-\declaretheorem[style=thmbluebox,name=Išvada,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Išvada,numberwithin=section]{corollary}
 \declaretheorem[style=thmbluebox,name=Teorema,numbered=no]{theorem*}
 \declaretheorem[style=thmbluebox,name=Lema,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Teiginys,numbered=no]{proposition*}
@@ -178,20 +178,20 @@
 
 %% Standartinės amsthm aplinkos (Apibrėžimai ir užduotys)
 \theoremstyle{definition}
-\newtheorem{conjecture}[theorem]{Hipotezė}
-\newtheorem{definition}[theorem]{Apibrėžimas}
-\newtheorem{fact}[theorem]{Faktas}
-\newtheorem{answer}[theorem]{Atsakymas}
-\newtheorem{ques}[theorem]{Klausimas}
-\newtheorem{exercise}[theorem]{Užduotis}
-\newtheorem{problem}[theorem]{Uždavinys}
-\newtheorem*{conjecture*}{Hipotezė}
-\newtheorem*{definition*}{Apibrėžimas}
-\newtheorem*{fact*}{Faktas}
-\newtheorem*{answer*}{Atsakymas}
-\newtheorem*{ques*}{Klausimas}
-\newtheorem*{exercise*}{Užduotis}
-\newtheorem*{problem*}{Uždavinys}
+\ifcsname conjecture\endcsname\else\newtheorem{conjecture}[theorem]{Hipotezė}\fi
+\ifcsname definition\endcsname\else\newtheorem{definition}[theorem]{Apibrėžimas}\fi
+\ifcsname fact\endcsname\else\newtheorem{fact}[theorem]{Faktas}\fi
+\ifcsname answer\endcsname\else\newtheorem{answer}[theorem]{Atsakymas}\fi
+\ifcsname ques\endcsname\else\newtheorem{ques}[theorem]{Klausimas}\fi
+\ifcsname exercise\endcsname\else\newtheorem{exercise}[theorem]{Užduotis}\fi
+\ifcsname problem\endcsname\else\newtheorem{problem}[theorem]{Uždavinys}\fi
+\ifcsname conjecture*\endcsname\else\newtheorem*{conjecture*}{Hipotezė}\fi
+\ifcsname definition*\endcsname\else\newtheorem*{definition*}{Apibrėžimas}\fi
+\ifcsname fact*\endcsname\else\newtheorem*{fact*}{Faktas}\fi
+\ifcsname answer*\endcsname\else\newtheorem*{answer*}{Atsakymas}\fi
+\ifcsname ques*\endcsname\else\newtheorem*{ques*}{Klausimas}\fi
+\ifcsname exercise*\endcsname\else\newtheorem*{exercise*}{Užduotis}\fi
+\ifcsname problem*\endcsname\else\newtheorem*{problem*}{Uždavinys}\fi
 
 \newcounter{answerssection}
 \newcommand{\answerssection}{%
