@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage{yhmath}
 \usepackage{tikz}
-\usetikzlibrary{angles,quotes,calc,decorations.markings,intersections}
+\usetikzlibrary{angles,quotes,calc,decorations.markings,intersections,arrows.meta}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
 \title{Geometrija: kampų medžioklė apskritime}
@@ -559,8 +559,12 @@ Apskritime nubrėžtos dvi lygiagrečios stygos $AB \parallel CD$. Įrodykite, k
     \draw[thick] (B) -- (C);
     
     % Lygiagretumo rodyklės
-    \draw[thick, -stealth] ($(A)!0.5!(B) - (0.1,0)$) -- ($(A)!0.5!(B) + (0.1,0)$);
-    \draw[thick, -stealth] ($(D)!0.5!(C) - (0.1,0)$) -- ($(D)!0.5!(C) + (0.1,0)$);
+    \fill[black] ($(A)!0.5!(B)+(0.10,0)$) --
+        ($(A)!0.5!(B)+(-0.06,0.08)$) --
+        ($(A)!0.5!(B)+(-0.06,-0.08)$) -- cycle;
+    \fill[black] ($(D)!0.5!(C)+(0.10,0)$) --
+        ($(D)!0.5!(C)+(-0.06,0.08)$) --
+        ($(D)!0.5!(C)+(-0.06,-0.08)$) -- cycle;
     
     \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
     
@@ -594,6 +598,12 @@ Sujungsime Geometrijos I (Euklido bėgiai) ir Geometrijos II (Lankai) žinias!
     \draw[thick] (A) -- (D);
     \draw[thick] (B) -- (C);
     \draw[thick, dashed, blue] (A) -- (C);
+    \fill[black] ($(A)!0.5!(B)+(0.10,0)$) --
+        ($(A)!0.5!(B)+(-0.06,0.08)$) --
+        ($(A)!0.5!(B)+(-0.06,-0.08)$) -- cycle;
+    \fill[black] ($(D)!0.5!(C)+(0.10,0)$) --
+        ($(D)!0.5!(C)+(-0.06,0.08)$) --
+        ($(D)!0.5!(C)+(-0.06,-0.08)$) -- cycle;
     
     \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
     
@@ -625,6 +635,12 @@ Lygiai taip pat, įbrėžtinis kampas $\angle ACD = \alpha$ remiasi į lanką $A
     \draw[thick] (A) -- (B); \draw[thick] (C) -- (D);
     \draw[thick] (A) -- (D); \draw[thick] (B) -- (C);
     \draw[thick, dashed, blue] (A) -- (C);
+    \fill[black] ($(A)!0.5!(B)+(0.10,0)$) --
+        ($(A)!0.5!(B)+(-0.06,0.08)$) --
+        ($(A)!0.5!(B)+(-0.06,-0.08)$) -- cycle;
+    \fill[black] ($(D)!0.5!(C)+(0.10,0)$) --
+        ($(D)!0.5!(C)+(-0.06,0.08)$) --
+        ($(D)!0.5!(C)+(-0.06,-0.08)$) -- cycle;
     
     \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
     
