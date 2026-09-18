@@ -7,7 +7,7 @@
 \usetikzlibrary{angles,quotes,calc,decorations.markings,intersections}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
-\title{Geometrija: Kampų medžioklė apskritime}
+\title{Geometrija: kampų medžioklė apskritime}
 \author{Andrius Berniukevičius}
 
 \newenvironment{solution}
@@ -33,8 +33,8 @@ Pamirškite $C = 2\pi R$ ar ploto formules. Kampų medžioklėje mums rūpi tik 
 
 \subsection*{Bazinės sąvokos}
 
-\begin{definition}[Centrinis kampas]
-Kampas, kurio viršūnė yra apskritimo centras, o kampo kraštinės yra apskritimo spinduliai.
+\begin{definition}
+\vocab{Centrinis kampas} yra kampas, kurio viršūnė yra apskritimo centras, o kampo kraštinės yra apskritimo spinduliai.
 \end{definition}
 
 \begin{center}
@@ -52,7 +52,7 @@ Kampas, kurio viršūnė yra apskritimo centras, o kampo kraštinės yra apskrit
 \end{tikzpicture}
 \end{center}
 
-\begin{definition}[Lanko dydis ir jo žymėjimas]
+\begin{definition}[\vocab{Lanko dydis ir jo žymėjimas}]
 Lanko laipsninis matas yra visada lygus jį atitinkančiam centriniam kampui. Lankas žymimas lenktu ženklu virš jo galų. Jei centrinis kampas $\angle AOB = 120^\circ$, tai į jį besiremiančio lanko $AB$ dydis rašomas taip:
 \[ \wideparen{AB} = 120^\circ \]
 \end{definition}
@@ -73,8 +73,8 @@ Lanko laipsninis matas yra visada lygus jį atitinkančiam centriniam kampui. La
 \end{tikzpicture}
 \end{center}
 
-\begin{definition}[Įbrėžtinis kampas]
-Kampas, kurio viršūnė yra ant apskritimo, o kampo kraštinės yra apskritimo stygos.
+\begin{definition}
+\vocab{Įbrėžtinis kampas} yra kampas, kurio viršūnė yra ant apskritimo, o kampo kraštinės yra apskritimo stygos.
 \end{definition}
 
 \begin{center}
@@ -538,8 +538,116 @@ CM=AM=MB.
 % UŽDAVINIAI
 % ==========================================
 \newpage
-\section{Uždaviniai savarankiškam sprendimui (12 iššūkių)}
+\newpage
+\begin{example}[4. Įbrėžtos trapecijos taisyklė]
+Apskritime nubrėžtos dvi lygiagrečios stygos $AB \parallel CD$. Įrodykite, kad gautas keturkampis $ABCD$ visada yra lygiašonė trapecija (t.y., jo šoninės kraštinės $AD = BC$).
+\end{example}
 
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    
+    \coordinate (A) at (130:2);
+    \coordinate (B) at (50:2);
+    \coordinate (C) at (350:2);
+    \coordinate (D) at (190:2);
+    
+    \draw[thick] (A) -- (B);
+    \draw[thick] (C) -- (D);
+    \draw[thick] (A) -- (D);
+    \draw[thick] (B) -- (C);
+    
+    % Lygiagretumo rodyklės
+    \draw[thick, -stealth] ($(A)!0.5!(B) - (0.1,0)$) -- ($(A)!0.5!(B) + (0.1,0)$);
+    \draw[thick, -stealth] ($(D)!0.5!(C) - (0.1,0)$) -- ($(D)!0.5!(C) + (0.1,0)$);
+    
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    
+    \node[above left] at (A) {$A$};
+    \node[above right] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+    \node[below left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Sprendimas:}\\
+Sujungsime Geometrijos I (Euklido bėgiai) ir Geometrijos II (Lankai) žinias!
+
+\textbf{1 Žingsnis (Pagalbinė linija ir vidaus priešiniai kampai):} Keturkampis $ABCD$ turi dvi lygiagrečias kraštines ($AB \parallel CD$), todėl tai – trapecija. Nubrėžkime jos įstrižainę $AC$. Remdamiesi I-ajame handoute išmokta lygiagrečių tiesių savybe, iškart matome vidaus priešinius kampus:
+\[
+\angle BAC = \angle ACD = \mathbf{\alpha}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    
+    \coordinate (A) at (130:2);
+    \coordinate (B) at (50:2);
+    \coordinate (C) at (350:2);
+    \coordinate (D) at (190:2);
+    
+    \draw[thick] (A) -- (B);
+    \draw[thick] (C) -- (D);
+    \draw[thick] (A) -- (D);
+    \draw[thick] (B) -- (C);
+    \draw[thick, dashed, blue] (A) -- (C);
+    
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    
+    \pic [draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=8mm, angle eccentricity=1.35,
+        pic text options={text=black,text opacity=1}] {angle = C--A--B};
+    \pic [draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=8mm, angle eccentricity=1.35,
+        pic text options={text=black,text opacity=1}] {angle = A--C--D};
+    
+    \node[above left] at (A) {$A$}; \node[above right] at (B) {$B$};
+    \node[below right] at (C) {$C$}; \node[below left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 Žingsnis (Kampų vertimas į lankus):} 
+Įbrėžtinis kampas $\angle BAC = \alpha$ remiasi į lanką $BC$. Vadinasi, lankas dvigubai didesnis: $\wideparen{BC} = 2\alpha$.
+Lygiai taip pat, įbrėžtinis kampas $\angle ACD = \alpha$ remiasi į lanką $AD$. Vadinasi, $\wideparen{AD} = 2\alpha$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    
+    \coordinate (A) at (130:2); \coordinate (B) at (50:2);
+    \coordinate (C) at (350:2); \coordinate (D) at (190:2);
+    
+    \draw[ultra thick, red] (50:2) arc (50:-10:2); % lankas BC
+    \draw[ultra thick, red] (130:2) arc (130:190:2); % lankas AD
+    
+    \draw[thick] (A) -- (B); \draw[thick] (C) -- (D);
+    \draw[thick] (A) -- (D); \draw[thick] (B) -- (C);
+    \draw[thick, dashed, blue] (A) -- (C);
+    
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    
+    \pic [draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=8mm, angle eccentricity=1.35,
+        pic text options={text=black,text opacity=1}] {angle = C--A--B};
+    \pic [draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=8mm, angle eccentricity=1.35,
+        pic text options={text=black,text opacity=1}] {angle = A--C--D};
+        
+    \node[red, right] at (0:2) {$2\alpha$};
+    \node[red, left] at (180:2) {$2\alpha$};
+    
+    \node[above left] at (A) {$A$}; \node[above right] at (B) {$B$};
+    \node[below right] at (C) {$C$}; \node[below left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 Žingsnis (Išvada):} Dabar patys įrodykite, kad $AD = BC$. Pažymėkite apskritimo centrą $O$ ir sujunkite centro tašką $O$ su taškais $A$, $B$, $C$ ir $D$. Kadangi visi šie taškai yra ant to paties apskritimo, turime $OA = OB = OC = OD$. Be to, vienodi lankai $\wideparen{AD}$ ir $\wideparen{BC}$ atitinka vienodus centrinius kampus, todėl $\angle AOD = \angle BOC$. Prisiminkite trikampių lygumo požymį kraštinė–kampas–kraštinė ir įrodykite, kad trikampiai $AOD$ ir $BOC$ yra lygūs. Iš čia gausite:
+\[
+AD = BC.
+\]
+Įrodyta! Olimpiadose galite naudoti šį faktą iškart: \[\textbf{jei trapecija įbrėžta į apskritimą, ji privalo būti lygiašonė}.\] \hfill $\square$
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (13 iššūkių)}
 \begin{enumerate}
     \renewcommand{\labelenumi}{\textbf{\theenumi.}}
     
@@ -560,6 +668,7 @@ CM=AM=MB.
     \item Trikampis $ABC$ įbrėžtas į apskritimą. Pusiaukampinė $AD$ kerta priešingą kraštinę $BC$ taške $D$, o patį apskritimą kerta taške $M$. Įrodykite, kad taškas $M$ yra lanko $BC$ vidurio taškas.
     \item Duotas smailusis trikampis $ABC$. Iš viršūnių $B$ ir $C$ nuleistos aukštinės $BE$ ir $CD$ kerta priešingas kraštines. Įrodykite, kad $\angle ADE = \angle ABC$.
     \item Apskritime nubrėžtos dvi lygiagrečios stygos $AB \parallel CD$. Įrodykite, kad tarp jų esantys lankai $AC$ ir $BD$ yra lygūs. (Vėlgi – naudokite tik atitinkamus įbrėžtinius kampus ir lygiagrečių tiesių savybę iš praeito handouto!).
+\item Smailusis trikampis $ABC$ įbrėžtas į apskritimą. Taškas $M$ yra lanko $AB$ vidurys, o taškas $N$ – lanko $AC$ vidurys. Styga $MN$ kerta kraštines $AB$ ir $AC$ atitinkamai taškuose $X$ ir $Y$. Įrodykite, kad atsiradęs mažasis trikampis $AXY$ yra lygiašonis ($AX = AY$). 
 \end{enumerate}
 
 \end{document}
