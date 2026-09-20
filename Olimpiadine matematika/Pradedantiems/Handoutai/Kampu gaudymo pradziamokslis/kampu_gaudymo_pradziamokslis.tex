@@ -6,7 +6,7 @@
 \usetikzlibrary{angles,quotes,calc,decorations.markings,intersections}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
-\title{Geometrija: Kampų medžioklės pradžiamokslis}
+\title{Geometrija: kampų medžioklės pradžiamokslis}
 \author{Andrius Berniukevičius}
 
 \newenvironment{solution}
@@ -51,6 +51,7 @@ Lygiašonis trikampis yra pats svarbiausias kampų perkėlimo įrankis. Jei mato
     \pic [draw, fill=blue!10, fill opacity=0.35, "$\alpha$", angle radius=8mm,
            pic text options={text=black,text opacity=1,xshift=-1mm}] {angle = A--C--B};
     
+    \foreach \p in {A,B,C} {\filldraw (\p) circle (1.2pt);}
     \node[above] at (A) {$A$};
     \node[below left] at (B) {$B$};
     \node[below right] at (C) {$C$};
@@ -61,7 +62,7 @@ Lygiašonis trikampis yra pats svarbiausias kampų perkėlimo įrankis. Jei mato
 \subsection*{2. Greitkelis: Trikampio priekampis}
 Mokiniai dažnai gaišta laiką skaičiuodami trečiąjį trikampio kampą ($180^\circ - \alpha - \beta$) ir tuomet atimdami jį iš $180^\circ$, kad gautų išorinį. \textbf{Tai neefektyvu!} Mokykitės matyti priekampius: trikampio priekampis (išorinis kampas) \textbf{iškart} lygus dviejų su juo negretimų vidaus kampų sumai.
 \begin{center}
-\begin{tikzpicture}[scale=1.2]
+\begin{tikzpicture}[scale=1.1]
     \coordinate (A) at (1,2.5);
     \coordinate (B) at (0,0);
     \coordinate (C) at (3,0);
@@ -77,6 +78,7 @@ Mokiniai dažnai gaišta laiką skaičiuodami trečiąjį trikampio kampą ($180
         \pic [draw, thick, fill=red!20, fill opacity=0.35, "$\mathbf{\alpha+\beta}$", angle radius=8mm, angle eccentricity=1.5,
             pic text options={text=black,text opacity=1,xshift=-1mm}] {angle=D--C--A};
     
+    \foreach \p in {A,B,C} {\filldraw (\p) circle (1.2pt);}
     \node[above] at (A) {$A$};
     \node[below left] at (B) {$B$};
     \node[below] at (C) {$C$};
@@ -85,8 +87,10 @@ Mokiniai dažnai gaišta laiką skaičiuodami trečiąjį trikampio kampą ($180
 
 \subsection*{3. Euklido bėgiai: Lygiagrečių tiesių savybė}
 Dvi lygiagrečias tieses perkirtus trečiąja, susidarantys vidaus priešiniai kampai yra lygūs.
+
+Šiame pradžiamokslyje lygiagrečias tieses neoficialiai vadinsime \textbf{Euklido bėgiais}. Kai Euklido bėgiais pervažiuojame tiesę, gauname lygius vidaus priešinius kampus.
 \begin{center}
-\begin{tikzpicture}[scale=1.2]
+\begin{tikzpicture}[scale=1.1]
     % Pagalbiniai taškai lygiagrečioms tiesėms (padeda išvengti klaidų žymint kampus)
     \coordinate (L1) at (0,2);
     \coordinate (R1) at (4,2);
@@ -120,72 +124,218 @@ Dvi lygiagrečias tieses perkirtus trečiąja, susidarantys vidaus priešiniai k
 
 Išnagrinėkime, kaip šios geometrinės savybės taikomos kartu: pirmiausia pasinaudosime lygiagrečių tiesių savybe, tuomet išvesime kampų lygybes, o galiausiai sudarysime ir išspręsime algebrinę lygtį.
 
-\begin{example}[1. Trikampio kampų suma]
-Kodėl bet kokio trikampio vidaus kampų suma visada lygi $180^\circ$?
+\begin{example}[Trikampio kampų suma]
+Įrodykte, jog bet kokio trikampio kampų suma lygi $180^\circ$.
+\end{example}
+\textbf{Sprendimas:}\\
+Šią fundamentalią geometrijos tiesą lengvai įrodysime pasitelkę Euklido bėgiais.
+
+\textbf{1 žingsnis.} Iš pradžių nusibraižome bet kokį trikampį $ABC$ ir jo vidinius kampus pažymime atitinkamai $\alpha$, $\beta$ bei $\gamma$.
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+    \coordinate (A) at (1.2,2.8);
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (4.5,0);
+
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=C--B--A};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, pic text options={text=black,text opacity=1,xshift=-1mm}] {angle=A--C--B};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=B--A--C};
+
+    \draw[thick] (B) -- (A) -- (C) -- cycle;
+
+    \foreach \p in {A,B,C} {\filldraw (\p) circle (1.2pt);}
+    \node[above=2mm] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Euklido bėgiais pervažiuojame trikampį per viršūnę $A$ ir kraštinę $BC$: per viršūnę $A$ nubrėžiame pagalbinę tiesę $a$, lygiagrečią trikampio pagrindui $BC$. Kadangi $a \parallel BC$, o kraštinė $AB$ yra kirstinė, susidaro lygūs vidaus priešiniai kampai. Taigi kampo $\angle CBA$ porinis vidaus priešinis kampas prie viršūnės $A$ taip pat lygus $\beta$:
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \coordinate (A) at (1.2,2.8);
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (4.5,0);
+    \coordinate (L) at (-1,2.8);
+    \coordinate (R) at (5.5,2.8);
+
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=C--B--A};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, pic text options={text=black,text opacity=1,xshift=-1mm}] {angle=A--C--B};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=L--A--B};
+
+    \draw[thick] (B) -- (A) -- (C) -- cycle;
+    \draw[thick, <->, blue] (L) -- (R) node[right, text=black] {$a \parallel BC$};
+    \draw[thick, <->, blue] (-1,0) -- (5.5,0);
+
+    \foreach \p in {A,B,C} {\filldraw (\p) circle (1.2pt);}
+    \node[above=2mm] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Dešinėje pusėje kraštinė $AC$ taip pat veikia kaip kirstinė tarp tų pačių lygiagrečių tiesių. Todėl kampo $\angle BCA$ porinis vidaus priešinis kampas prie viršūnės $A$ lygus $\gamma$.
+Matome, kad viršūnėje $A$ trys kampai $\beta$, $\alpha$ ir $\gamma$ susiglaudžia, sudarydami tiesę. Todėl šis ištiestinis kampas yra lygus $180^\circ$:
+$$
+\alpha + \beta + \gamma = 180^\circ
+$$
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+    \coordinate (A) at (1.2,2.8);
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (4.5,0);
+    \coordinate (L) at (-1,2.8);
+    \coordinate (R) at (5.5,2.8);
+
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=C--B--A};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, pic text options={text=black,text opacity=1,xshift=-1mm}] {angle=A--C--B};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle=L--A--B};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, pic text options={text=black,text opacity=1,xshift=1mm,yshift=-0.5mm}] {angle=C--A--R};
+
+    \draw[thick] (B) -- (A) -- (C) -- cycle;
+    \draw[thick, <->, blue] (L) -- (R) node[right, text=black] {$a \parallel BC$};
+    \draw[thick, <->, blue] (-1,0) -- (5.5,0);
+
+    \foreach \p in {A,B,C} {\filldraw (\p) circle (1.2pt);}
+    \node[above=2mm] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+\end{tikzpicture}
+\end{center}
+Įrodyta. \hfill $\square$
+
+
+\newpage
+\begin{example}[ „Bumerangas“]
+Duotas neiškilusis keturkampis $ABCD$ (pavadinkime jį „bumerangu“), kurio trys vidiniai smailieji kampai yra $\angle A = \alpha$, $\angle B = \beta$ ir $\angle C = \gamma$. Įrodykite, kad jo išorinis (įgaubtasis) kampas $\angle ADC$ lygus šių trijų kampų sumai: $\alpha + \beta + \gamma$.
+\end{example}
+\textbf{Sprendimas:}\\
+Šis uždavinys yra klasikinis pavyzdys, demonstruojantis trikampio priekampio savybės taikymą. Gautas rezultatas bus naudingas vėlesniame handoute apie apibrėžtinius keturkampius.
+
+\textbf{1 žingsnis.} Tiksliai nubraižome uždavinio sąlygoje duotą neiškilųjį keturkampį $ABCD$ ir pusiau permatomomis spalvomis pažymime žinomus smailuosius kampus. Ieškomas įgaubtasis kampas $\angle ADC$ pažymėtas oranžine spalva ir klaustuku.
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (A) at (-2,-1);
+    \coordinate (B) at (0,2);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (0,0.2);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=D--A--B};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=A--B--C};
+    \pic[draw, fill=purple!20, fill opacity=0.35, "$\gamma$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--C--D};
+    \pic[draw, fill=orange!20, fill opacity=0.35, "?", angle radius=5mm, angle eccentricity=1.6, pic text options={text=black, text opacity=1}] {angle=A--D--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    \node[left] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \node[right] at (C) {$C$};
+    \node[above left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Pratęsiame atkarpą $AD$ tiesia linija, kol ji kerta priešingą kraštinę $BC$ taške $E$. „Bumerangas“ dabar padalintas į du trikampius: $\triangle ABE$ ir $\triangle CDE$.
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (A) at (-2,-1);
+    \coordinate (B) at (0,2);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (0,0.2);
+    \coordinate (E) at (intersection of A--D and B--C);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=D--A--B};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=A--B--C};
+    \pic[draw, fill=purple!20, fill opacity=0.35, "$\gamma$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--C--D};
+    \pic[draw, fill=orange!20, fill opacity=0.35, "?", angle radius=5mm, angle eccentricity=1.6, pic text options={text=black, text opacity=1}] {angle=A--D--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick, dashed, blue] (D) -- (E);
+
+    \foreach \p in {A,B,C,D,E} {\filldraw (\p) circle (1.2pt);}
+    \node[left] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \node[right] at (C) {$C$};
+    \node[above left] at (D) {$D$};
+    \node[right] at (E) {$E$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Trikampyje $\triangle ABE$ kraštinė $BE$ yra pratęsta tolyn (iki taško $C$). Vadinasi, kampas $\angle AEC$ yra šio trikampio išorinis kampas (priekampis). Pagal priekampio savybę, jis lygus dviejų su juo negretimų vidaus kampų sumai:
+$$
+\angle AEC = \angle A + \angle B = \alpha + \beta
+$$
+Kadangi taškai $A, D, E$ guli vienoje tiesėje, tai $\angle DEC = \angle AEC$.
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (A) at (-2,-1);
+    \coordinate (B) at (0,2);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (0,0.2);
+    \coordinate (E) at (intersection of A--D and B--C);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=D--A--B};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=A--B--C};
+    \pic[draw, fill=purple!20, fill opacity=0.35, "$\gamma$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--C--D};
+    \pic[draw, fill=yellow!35, fill opacity=0.4, "$\alpha+\beta$", angle radius=5mm, angle eccentricity=1.8, pic text options={text=black, text opacity=1, xshift=1.5mm, yshift=-0.5mm}] {angle=A--E--C};
+    \pic[draw, fill=orange!20, fill opacity=0.35, "?", angle radius=5mm, angle eccentricity=1.6, pic text options={text=black, text opacity=1}] {angle=A--D--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick, dashed, blue] (D) -- (E);
+
+    \foreach \p in {A,B,C,D,E} {\filldraw (\p) circle (1.2pt);}
+    \node[left] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \node[right] at (C) {$C$};
+    \node[above left] at (D) {$D$};
+    \node[right] at (E) {$E$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{4 žingsnis.} Nagrinėkime mažąjį trikampį $\triangle CDE$. Jo atkarpa $ED$ yra pratęsta tolyn (iki taško $A$), todėl ieškomas įgaubtas kampas $\angle ADC$ yra ne kas kita, kaip trikampio $\triangle CDE$ išorinis kampas (priekampis) prie viršūnės $D$. Pritaikę priekampio savybę, gauname:
+$$
+\angle ADC = \angle DCE + \angle DEC = \gamma + (\alpha + \beta) = \alpha + \beta + \gamma
+$$
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+    \coordinate (A) at (-2,-1);
+    \coordinate (B) at (0,2);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (0,0.2);
+    \coordinate (E) at (intersection of A--D and B--C);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=D--A--B};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=A--B--C};
+    \pic[draw, fill=purple!20, fill opacity=0.35, "$\gamma$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--C--D};
+    \pic[draw, fill=yellow!35, fill opacity=0.4, "$\alpha+\beta$", angle radius=5mm, angle eccentricity=1.8, pic text options={text=black, text opacity=1, xshift=1.5mm, yshift=-0.5mm}] {angle=A--E--C};
+    \pic[draw, fill=orange!25, fill opacity=0.45, "$\mathbf{\alpha+\beta+\gamma}$", angle radius=5mm, angle eccentricity=1.9, pic text options={text=black, text opacity=1}] {angle=A--D--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+    \draw[thick, dashed, blue] (D) -- (E);
+
+    \foreach \p in {A,B,C,D,E} {\filldraw (\p) circle (1.2pt);}
+    \node[left] at (A) {$A$};
+    \node[above] at (B) {$B$};
+    \node[right] at (C) {$C$};
+    \node[above left] at (D) {$D$};
+    \node[right] at (E) {$E$};
+\end{tikzpicture}
+\end{center}
+Įrodyta. \hfill $\square$
+
+
+\newpage
+\begin{example}[Auksinis trikampis]
+Duotas lygiašonis trikampis $ABC$, kurio kraštinės $AB = AC$. Kraštinėje $AC$ atidėtas taškas $D$ taip, kad $AD = BD = BC$. 
+Įrodykite, kad $\angle A = 36^\circ$.
 \end{example}
 
 \textbf{Sprendimas:}\\
-\textbf{1 Žingsnis.} Nusibraižykime bet kokį trikampį $ABC$ ir pažymėkime jo kampus $\alpha, \beta, \gamma$.
+Spręsdami šį uždavinį pradėsime nuo vieno nežinomo kampo ir, nuosekliai naudodamiesi atkarpų lygybėmis, išreikšime visus kitus brėžinio kampus per tą patį nežinomąjį.
 
-\begin{center}
-\begin{tikzpicture}[scale=1.1]
-    \coordinate (A) at (1.2,2.8); \coordinate (B) at (0,0); \coordinate (C) at (4.5,0);
-    \draw[thick] (B)--(A)--(C)--cycle;
-    \pic[draw,fill=green!20,fill opacity=0.35,"$\beta$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=C--B--A};
-    \pic[draw,fill=blue!20,fill opacity=0.35,"$\gamma$",angle radius=7mm,pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=A--C--B};
-    \pic[draw,fill=red!20,fill opacity=0.35,"$\alpha$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=B--A--C};
-    \node[above=2mm] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$};
-\end{tikzpicture}
-\end{center}
-
-\textbf{2 Žingsnis.} Per viršūnę $A$ nubrėžkime pagalbinę tiesę, lygiagrečią trikampio pagrindui $BC$. Remdamiesi lygiagrečių tiesių savybe, gauname $\angle LAB = \beta$.
-
-\begin{center}
-\begin{tikzpicture}[scale=1.2]
-    \coordinate (A) at (1.2,2.8); \coordinate (B) at (0,0); \coordinate (C) at (4.5,0);
-    \coordinate (L) at (-1,2.8); \coordinate (R) at (5.5,2.8);
-    \draw[thick] (B)--(A)--(C)--cycle;
-    \draw[thick,<->,blue] (L)--(R) node[right,text=black] {$a\parallel BC$};
-    \draw[thick,<->,blue] (-1,0)--(5.5,0);
-    \pic[draw,fill=green!20,fill opacity=0.35,"$\beta$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=C--B--A};
-    \pic[draw,fill=blue!20,fill opacity=0.35,"$\gamma$",angle radius=7mm,pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=A--C--B};
-    \pic[draw,fill=red!20,fill opacity=0.35,"$\alpha$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=B--A--C};
-    \pic[draw,fill=green!20,fill opacity=0.35,"$\beta$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=L--A--B};
-    \node[above=2mm] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$};
-\end{tikzpicture}
-\end{center}
-
-\textbf{3 Žingsnis.} Dešinėje pusėje kraštinė $AC$ veikia kaip kirstinė, todėl vėl pritaikę lygiagrečių tiesių savybę gauname $\angle CAR = \gamma$. Viršūnėje $A$ kampai $\beta$, $\alpha$ ir $\gamma$ sudaro ištiestinį kampą. Todėl:
-\[
-\alpha + \beta + \gamma = 180^\circ.
-\]
-
-\begin{center}
-\begin{tikzpicture}[scale=1.3]
-    \coordinate (A) at (1.2,2.8); \coordinate (B) at (0,0); \coordinate (C) at (4.5,0);
-    \coordinate (L) at (-1,2.8); \coordinate (R) at (5.5,2.8);
-    \draw[thick] (B)--(A)--(C)--cycle;
-    \draw[thick,<->,blue] (L)--(R) node[right,text=black] {$a\parallel BC$};
-    \draw[thick,<->,blue] (-1,0)--(5.5,0);
-    \pic[draw,fill=green!20,fill opacity=0.35,"$\beta$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=C--B--A};
-    \pic[draw,fill=blue!20,fill opacity=0.35,"$\gamma$",angle radius=7mm,pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=A--C--B};
-    \pic[draw,fill=red!20,fill opacity=0.35,"$\alpha$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=B--A--C};
-    \pic[draw,fill=green!20,fill opacity=0.35,"$\beta$",angle radius=6mm,pic text options={text=black,text opacity=1}]{angle=L--A--B};
-    \pic[draw,fill=blue!20,fill opacity=0.35,"$\gamma$",angle radius=7mm,pic text options={text=black,text opacity=1,xshift=1mm,yshift =-0.5mm}]{angle=C--A--R};
-    \node[above=2mm] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$};
-\end{tikzpicture}
-\end{center}
-\hfill $\square$
-
-
-\begin{example}[2. Auksinis trikampis]
-Duotas lygiašonis trikampis $ABC$, kurio kraštinės $AB = AC$. Kraštinėje $AC$ atidėtas taškas $D$ taip, kad $AD = BD = BC$. 
-\textbf{Įrodykite, kad $\angle A = 36^\circ$}.
-\end{example}
-
+\textbf{1 žingsnis.} Nusibraižome trikampį $ABC$ ir kraštinėje $AC$ pažymime tašką $D$. Vienodais brūkšneliais atidedame sąlygoje nurodytas lygias atkarpas. Pirmajai lygių atkarpų grupei ($AD = BD = BC$) naudojame po vieną mėlyną brūkšnelį, o antrajai ($AB = AC$) – po du žalius brūkšnelius.
 \begin{center}
 \begin{tikzpicture}[scale=1.6]
     \coordinate (B) at (0,0);
@@ -196,10 +346,20 @@ Duotas lygiašonis trikampis $ABC$, kurio kraštinės $AB = AC$. Kraštinėje $A
     \draw[thick] (A) -- (B) -- (C) -- cycle;
     \draw[thick] (B) -- (D);
 
+    % Vienodi brūkšneliai pirmai grupei
     \draw[thick, blue] ($(A)!0.5!(D) + (-0.095, -0.031)$) -- ($(A)!0.5!(D) + (0.095, 0.031)$);
     \draw[thick, blue] ($(B)!0.5!(D) + (-0.045, 0.089)$) -- ($(B)!0.5!(D) + (0.045, -0.089)$);
     \draw[thick, blue] (1, -0.1) -- (1, 0.1);
 
+    % Du brūkšneliai antrai grupei
+    \coordinate (mAB) at ($(A)!0.5!(B)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.08, 0.04)$) -- ($(mAB) + (0.08, -0.04)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.04, 0.09)$) -- ($(mAB) + (0.12, 0.01)$);
+    \coordinate (mAC) at ($(A)!0.5!(C)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.08, -0.04)$) -- ($(mAC) + (0.08, 0.04)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.04, -0.09)$) -- ($(mAC) + (0.12, -0.01)$);
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
     \node[above] at (A) {$A$};
     \node[below left] at (B) {$B$};
     \node[below right] at (C) {$C$};
@@ -207,191 +367,158 @@ Duotas lygiašonis trikampis $ABC$, kurio kraštinės $AB = AC$. Kraštinėje $A
 \end{tikzpicture}
 \end{center}
 
-\textbf{Sprendimas:}\\
-Analizuodami brėžinį, ieškokime lygių kampų ir juos atitinkamai žymėkime.
-
-\textbf{1 Žingsnis (Klonavimas):} Pažymėkime viršūnės kampą $\angle A = \alpha$.
-Pagal sąlygą trikampis $ADB$ yra lygiašonis ($AD = BD$), todėl jo kampai prie pagrindo lygūs! Vadinasi:
-\[
-\angle ABD = \angle A = \mathbf{\alpha}.
-\]
-
+\textbf{2 žingsnis.} Pažymime viršūnės kampą $\angle A = \alpha$. Kadangi atkarpos $AD = BD$, trikampis $\triangle ADB$ yra lygiašonis. Todėl jo kampai prie pagrindo $AB$ privalo būti lygūs:
+$$
+\angle ABD = \angle A = \alpha
+$$
 \begin{center}
 \begin{tikzpicture}[scale=1.6]
-    \coordinate (B) at (0,0); \coordinate (C) at (2,0);
-    \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
-    \draw[thick] (A)--(B)--(C)--cycle; \draw[thick] (B)--(D);
-    \draw[thick,blue] ($(A)!0.5!(D)+(-0.095,-0.031)$)--($(A)!0.5!(D)+(0.095,0.031)$);
-    \draw[thick,blue] ($(B)!0.5!(D)+(-0.045,0.089)$)--($(B)!0.5!(D)+(0.045,-0.089)$);
-    \draw[thick,blue] (1,-0.1)--(1,0.1);
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={text=black,text opacity=1,xshift=-1mm,yshift=-0.5mm}]{angle=B--A--C};
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={text=black,text opacity=1,xshift=-1mm,yshift=-0.5mm}]{angle=D--B--A};
-    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
+    \coordinate (B) at (0,0); \coordinate (C) at (2,0); \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1, xshift=2mm, yshift=1mm}] {angle=D--B--A};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle; \draw[thick] (B) -- (D);
+
+    \draw[thick, blue] ($(A)!0.5!(D) + (-0.095, -0.031)$) -- ($(A)!0.5!(D) + (0.095, 0.031)$);
+    \draw[thick, blue] ($(B)!0.5!(D) + (-0.045, 0.089)$) -- ($(B)!0.5!(D) + (0.045, -0.089)$);
+    \draw[thick, blue] (1, -0.1) -- (1, 0.1);
+    \coordinate (mAB) at ($(A)!0.5!(B)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.08, 0.04)$) -- ($(mAB) + (0.08, -0.04)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.04, 0.09)$) -- ($(mAB) + (0.12, 0.01)$);
+    \coordinate (mAC) at ($(A)!0.5!(C)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.08, -0.04)$) -- ($(mAC) + (0.08, 0.04)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.04, -0.09)$) -- ($(mAC) + (0.12, -0.01)$);
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$}; \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
 \end{tikzpicture}
 \end{center}
 
-\textbf{2 Žingsnis (Priekampis):} Žiūrime į trikampį $ADB$. Taške $D$ jis turi išorinį kampą $\angle BDC$. Pagal priekampio savybę, šis kampas lygus dviejų su juo negretimų vidaus kampų sumai:
-\[
-\angle BDC = \angle A + \angle ABD = \alpha + \alpha = \mathbf{2\alpha}.
-\]
-
+\textbf{3 žingsnis.} Kampas $\angle BDC$ yra trikampio $\triangle ADB$ išorinis kampas (priekampis) prie viršūnės $D$. Pagal priekampio savybę jis lygus dviejų su juo negretimų vidaus kampų sumai:
+$$
+\angle BDC = \angle A + \angle ABD = \alpha + \alpha = 2\alpha
+$$
 \begin{center}
 \begin{tikzpicture}[scale=1.6]
-    \coordinate (B) at (0,0); \coordinate (C) at (2,0);
-    \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
-    \draw[thick] (A)--(B)--(C)--cycle; \draw[thick] (B)--(D);
-    \draw[thick,blue] ($(A)!0.5!(D)+(-0.095,-0.031)$)--($(A)!0.5!(D)+(0.095,0.031)$);
-    \draw[thick,blue] ($(B)!0.5!(D)+(-0.045,0.089)$)--($(B)!0.5!(D)+(0.045,-0.089)$);
-    \draw[thick,blue] (1,-0.1)--(1,0.1);
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={xshift=-1mm,yshift=-0.5mm}]{angle=B--A--C};
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={xshift=-1mm,yshift=-0.5mm}]{angle=D--B--A};
-    \pic[draw,fill=red!10,fill opacity=0.35,"$2\alpha$",angle radius=5mm,angle eccentricity=1.4,
-        pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=B--D--C};
-    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
+    \coordinate (B) at (0,0); \coordinate (C) at (2,0); \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1, yshift=2mm}] {angle=D--B--A};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black, text opacity=1}] {angle=B--D--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle; \draw[thick] (B) -- (D);
+
+    \draw[thick, blue] ($(A)!0.5!(D) + (-0.095, -0.031)$) -- ($(A)!0.5!(D) + (0.095, 0.031)$);
+    \draw[thick, blue] ($(B)!0.5!(D) + (-0.045, 0.089)$) -- ($(B)!0.5!(D) + (0.045, -0.089)$);
+    \draw[thick, blue] (1, -0.1) -- (1, 0.1);
+    \coordinate (mAB) at ($(A)!0.5!(B)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.08, 0.04)$) -- ($(mAB) + (0.08, -0.04)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.04, 0.09)$) -- ($(mAB) + (0.12, 0.01)$);
+    \coordinate (mAC) at ($(A)!0.5!(C)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.08, -0.04)$) -- ($(mAC) + (0.08, 0.04)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.04, -0.09)$) -- ($(mAC) + (0.12, -0.01)$);
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$}; \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
 \end{tikzpicture}
 \end{center}
 
-\textbf{3 Žingsnis (Klonavimas Nr. 2):} Pagal sąlygą $BD = BC$, vadinasi, ir trikampis $BDC$ yra lygiašonis! Todėl jo kampai prie pagrindo ($C$ ir $D$) yra lygūs. Gauname:
-\[
-\angle C = \angle BDC = \mathbf{2\alpha}.
-\]
-
+\textbf{4 žingsnis.} Pagal sąlygą turime ir $BD = BC$, vadinasi, mažasis trikampis $\triangle BDC$ taip pat yra lygiašonis. Jo kampai prie pagrindo $DC$ yra lygūs, todėl:
+$$
+\angle C = \angle BDC = 2\alpha
+$$
 \begin{center}
 \begin{tikzpicture}[scale=1.6]
-    \coordinate (B) at (0,0); \coordinate (C) at (2,0);
-    \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
-    \draw[thick] (A)--(B)--(C)--cycle; \draw[thick] (B)--(D);
-    \draw[thick,blue] ($(A)!0.5!(D)+(-0.095,-0.031)$)--($(A)!0.5!(D)+(0.095,0.031)$);
-    \draw[thick,blue] ($(B)!0.5!(D)+(-0.045,0.089)$)--($(B)!0.5!(D)+(0.045,-0.089)$);
-    \draw[thick,blue] (1,-0.1)--(1,0.1);
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={xshift=-1mm,yshift=-0.5mm}]{angle=B--A--C};
-    \pic[draw,"$\alpha$",angle radius=7mm,angle eccentricity=1.5,pic text options={xshift=-1mm,yshift=-0.5mm}]{angle=D--B--A};
-    \pic[draw,fill=red!10,fill opacity=0.35,"$2\alpha$",angle radius=5mm,angle eccentricity=1.4,
-        pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=B--D--C};
-    \pic[draw,fill=red!10,fill opacity=0.35,"$2\alpha$",angle radius=5mm,angle eccentricity=1.4,
-        pic text options={text=black,text opacity=1,xshift=-1mm}]{angle=A--C--B};
-    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
+    \coordinate (B) at (0,0); \coordinate (C) at (2,0); \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=D--B--A};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black, text opacity=1}] {angle=B--D--C};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black, text opacity=1}] {angle=A--C--B};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle; \draw[thick] (B) -- (D);
+
+    \draw[thick, blue] ($(A)!0.5!(D) + (-0.095, -0.031)$) -- ($(A)!0.5!(D) + (0.095, 0.031)$);
+    \draw[thick, blue] ($(B)!0.5!(D) + (-0.045, 0.089)$) -- ($(B)!0.5!(D) + (0.045, -0.089)$);
+    \draw[thick, blue] (1, -0.1) -- (1, 0.1);
+    \coordinate (mAB) at ($(A)!0.5!(B)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.08, 0.04)$) -- ($(mAB) + (0.08, -0.04)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.04, 0.09)$) -- ($(mAB) + (0.12, 0.01)$);
+    \coordinate (mAC) at ($(A)!0.5!(C)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.08, -0.04)$) -- ($(mAC) + (0.08, 0.04)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.04, -0.09)$) -- ($(mAC) + (0.12, -0.01)$);
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$}; \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
 \end{tikzpicture}
 \end{center}
 
-\textbf{4 Žingsnis (Didysis trikampis):} Grįžkime prie didžiojo trikampio $ABC$. Pagal sąlygą jis lygiašonis ($AB = AC$), todėl $\angle B = \angle C$.
-Gauname $\angle ABC = \angle C = \mathbf{2\alpha}$.
+\textbf{5 žingsnis.} Grįžtame prie didžiojo trikampio $ABC$. Dvigubi žali brūkšneliai rodo, kad $AB = AC$, vadinasi, ir jis yra lygiašonis. Todėl visas kampas prie viršūnės $B$ privalo būti lygus kampui prie viršūnės $C$:
+$$
+\angle ABC = \angle C = 2\alpha
+$$
+\begin{center}
+\begin{tikzpicture}[scale=1.6]
+    \coordinate (B) at (0,0); \coordinate (C) at (2,0); \coordinate (A) at (1,3.077); \coordinate (D) at ($(A)!0.618!(C)$);
 
-\textbf{5 Žingsnis (Algebra):} Dabar visi trys trikampio $ABC$ kampai išreikšti dydžiu $\alpha$:
-$\angle A = \alpha$, $\angle B = 2\alpha$, $\angle C = 2\alpha$.
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1}] {angle=B--A--C};
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black, text opacity=1, yshift=2mm}] {angle=D--B--A};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black, text opacity=1}] {angle=B--D--C};
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black, text opacity=1}] {angle=A--C--B};
+    
+    % Visas didysis kampas ABC
+    \pic[draw, fill=red!20, fill opacity=0.35, "$2\alpha$", angle radius=8mm, angle eccentricity=1.15, pic text options={text=black, text opacity=1, xshift=2.5mm, yshift=-1.5mm}] {angle=C--B--A};
 
-Trikampio kampų suma lygi $180^\circ$. Sudarome lygtį:
-\[
-\begin{aligned}
-    \alpha + 2\alpha + 2\alpha &= 180^\circ \\
-    5\alpha &= 180^\circ \\
-    \mathbf{\alpha} &= \mathbf{36^\circ}
-\end{aligned}
-\]
-Įrodyta! \hfill $\square$
+    \draw[thick] (A) -- (B) -- (C) -- cycle; \draw[thick] (B) -- (D);
+
+    \draw[thick, blue] ($(A)!0.5!(D) + (-0.095, -0.031)$) -- ($(A)!0.5!(D) + (0.095, 0.031)$);
+    \draw[thick, blue] ($(B)!0.5!(D) + (-0.045, 0.089)$) -- ($(B)!0.5!(D) + (0.045, -0.089)$);
+    \draw[thick, blue] (1, -0.1) -- (1, 0.1);
+    \coordinate (mAB) at ($(A)!0.5!(B)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.08, 0.04)$) -- ($(mAB) + (0.08, -0.04)$);
+    \draw[thick, green!60!black] ($(mAB) + (-0.04, 0.09)$) -- ($(mAB) + (0.12, 0.01)$);
+    \coordinate (mAC) at ($(A)!0.5!(C)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.08, -0.04)$) -- ($(mAC) + (0.08, 0.04)$);
+    \draw[thick, green!60!black] ($(mAC) + (-0.04, -0.09)$) -- ($(mAC) + (0.12, -0.01)$);
+
+    \foreach \p in {A,B,C,D} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$}; \node[below left] at (B) {$B$}; \node[below right] at (C) {$C$}; \node[right] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{6 žingsnis.} Dabar visi trys didžiojo trikampio $\triangle ABC$ kampai išreikšti dydžiu $\alpha$. Kadangi bet kurio trikampio vidaus kampų suma visada lygi $180^\circ$, gauname:
+$$
+\angle A + \angle ABC + \angle C = 180^\circ
+$$
+$$
+\alpha + 2\alpha + 2\alpha = 180^\circ \implies 5\alpha = 180^\circ \implies \alpha = 36^\circ
+$$
+Įrodyta. \hfill $\square$
 
 
-\begin{example}[3. Pusiaukampinių paslaptis]
-Trikampio $ABC$ kampas $\angle A = \alpha$. Iš viršūnių $B$ ir $C$ nubrėžtos pusiaukampinės susikerta taške $I$. Įrodykite, kad $\angle BIC = 90^\circ + \frac{\alpha}{2}$.
+\newpage
+\begin{example}[Kampas tarp pusiaukampinių]
+Trikampio $ABC$ kampas $\angle A = \alpha$. Iš viršūnių $B$ ir $C$ nubrėžtos pusiaukampinės susikerta taške $I$. Įrodykite, kad kampas tarp jų $\angle BIC = 90^\circ + \frac{\alpha}{2}$.
 \end{example}
-
-\begin{center}
-\begin{tikzpicture}[scale=1.4]
-    \coordinate (B) at (0,0);
-    \coordinate (C) at (5,0);
-    \coordinate (A) at (1.5,3.5);
-    \coordinate (I) at (2.2, 1.2);
-
-    \draw[thick] (A) -- (B) -- (C) -- cycle;
-    \draw[thick, blue] (B) -- (I) -- (C);
-    
-    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, 
-        pic text options={text=black,text opacity=1}] {angle = B--A--C};
-    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5,
-        pic text options={text=black,text opacity=1}] {angle = B--I--C};
-
-    \node[above] at (A) {$A$};
-    \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$};
-    \node[above, yshift=1mm] at (I) {$I$};
-\end{tikzpicture}
-\end{center}
-
 \textbf{Sprendimas:}\\
-Šis pavyzdys tobulai iliustruoja atvirkštinį loginį mąstymą: pradedame nuo to, ko mūsų prašo, ir tuomet ieškome trūkstamų duomenų. 
+Šis pavyzdys tobulai iliustruoja atvirkštinį loginį mąstymą: pradedame nuo to, ko mūsų prašo, ir tuomet ieškome trūkstamų duomenų.
 
-\textbf{1 Žingsnis (Tikslas ir mažasis trikampis):} Ieškomas kampas $\angle BIC$ yra mažajame trikampyje $BIC$.
-Pažymėkime šio trikampio kampus prie pagrindo mažomis raidėmis: $\angle IBC = \beta$ ir $\angle ICB = \gamma$.
-Trikampio kampų suma yra $180^\circ$, todėl ieškomą kampą galime išreikšti taip:
-\[
-\angle BIC = 180^\circ - (\beta + \gamma)
-\]
-Vadinasi, mūsų tikslas – sužinoti, kam lygi suma $\beta + \gamma$.
-
+\textbf{1 žingsnis.} Nusibraižome trikampį $ABC$ ir jo viduje taške $I$ susikertančias pusiaukampines $BI$ bei $CI$. Viršūnės kampą pažymime mėlyna spalva ir $\alpha$. Nors atkarpas žinome esant pusiaukampinėmis, pagal taisykles išankstinių lygybių brėžinyje nežymime. Ieškomą kampą $\angle BIC$ pažymime oranžine spalva su klaustuku.
 \begin{center}
-\begin{tikzpicture}[scale=1.4]
+\begin{tikzpicture}[scale=1.2]
     \coordinate (B) at (0,0);
     \coordinate (C) at (5,0);
     \coordinate (A) at (1.5,3.5);
     \coordinate (I) at (2.2, 1.2);
 
-    \draw[thick, gray, dashed] (A) -- (B);
-    \draw[thick, gray, dashed] (A) -- (C);
-    \draw[thick, blue] (B) -- (C);
-    \draw[thick, blue] (B) -- (I) -- (C);
-    
-    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4,
-        pic text options={text=black,text opacity=1}] {angle = C--B--I};
-    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2,
-        pic text options={text=black,text opacity=1}] {angle = I--C--B};
-    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5,
-        pic text options={text=black,text opacity=1}] {angle = B--I--C};
-
-    \node[below left] at (B) {$B$};
-    \node[below right] at (C) {$C$};
-    \node[above, yshift=1mm] at (I) {$I$};
-\end{tikzpicture}
-\end{center}
-
-\textbf{2 Žingsnis (Paieška ir didysis trikampis):} Iš kur gauti šią sumą? Kadangi $BI$ ir $CI$ yra pusiaukampinės, jos kampus $B$ ir $C$ dalija pusiau. Tai reiškia, kad visas $\angle B = 2\beta$, o visas $\angle C = 2\gamma$.
-Grįžkime prie didžiojo trikampio $ABC$. Jo kampų suma lygi $180^\circ$:
-\[
-\alpha + 2\beta + 2\gamma = 180^\circ
-\]
-Iškelkime dvejetą prieš skliaustus, kad gautume ieškomą sumą:
-\[
-2(\beta + \gamma) = 180^\circ - \alpha
-\]
-Padalykime abi lygties puses iš $2$:
-\[
-\beta + \gamma = 90^\circ - \frac{\alpha}{2}
-\]
-
-\begin{center}
-\begin{tikzpicture}[scale=1.4]
-    \coordinate (B) at (0,0);
-    \coordinate (C) at (5,0);
-    \coordinate (A) at (1.5,3.5);
-    \coordinate (I) at (2.2, 1.2);
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle = B--A--C};
+    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black,text opacity=1}] {angle = B--I--C};
 
     \draw[thick] (A) -- (B) -- (C) -- cycle;
-    \draw[thick, blue] (B) -- (I);
-    \draw[thick, blue] (C) -- (I);
-    
-    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, 
-        pic text options={text=black,text opacity=1}] {angle = B--A--C};
-    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4,
-        pic text options={text=black,text opacity=1}] {angle = C--B--I};
-    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=8mm, angle eccentricity=1.25,
-        pic text options={text=black,text opacity=1}] {angle = I--B--A};
-    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, angle eccentricity=1.35,
-        pic text options={text=black,text opacity=1}] {angle = A--C--I};
-    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2,
-        pic text options={text=black,text opacity=1}] {angle = I--C--B};
+    \draw[thick, blue] (B) -- (I) -- (C);
 
+    \foreach \p in {A,B,C,I} {\filldraw (\p) circle (1.2pt);}
     \node[above] at (A) {$A$};
     \node[below left] at (B) {$B$};
     \node[below right] at (C) {$C$};
@@ -399,15 +526,124 @@ Padalykime abi lygties puses iš $2$:
 \end{tikzpicture}
 \end{center}
 
-\textbf{3 Žingsnis (Sujungimas ir rezultatas):} Grįžtame prie 1-ajame žingsnyje sudarytos lygties ir vietoje $\beta + \gamma$ įstatome gautą išraišką:
-\[
-\angle BIC = 180^\circ - \left( 90^\circ - \frac{\alpha}{2} \right)
-\]
-Atskliaudžiame skliaustus:
-\[
-\angle BIC = 180^\circ - 90^\circ + \frac{\alpha}{2} = \mathbf{90^\circ + \frac{\alpha}{2}}
-\]
-Įrodyta! \hfill $\square$
+\textbf{2 žingsnis.} Kadangi $BI$ ir $CI$ yra pusiaukampinės, jos atitinkamus kampus padalija per pusę. Pažymėkime susidariusias puses vienodomis spalvomis ir raidėmis: kampui $B$ priskirkime $\angle IBC = \angle IBA = \beta$ (geltona), o kampui $C$ – $\angle ICB = \angle ICA = \gamma$ (žalia).
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (5,0);
+    \coordinate (A) at (1.5,3.5);
+    \coordinate (I) at (2.2, 1.2);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle = B--A--C};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black,text opacity=1}] {angle = C--B--I};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=8mm, angle eccentricity=1.25, pic text options={text=black,text opacity=1}] {angle = I--B--A};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, angle eccentricity=1.35, pic text options={text=black,text opacity=1}] {angle = A--C--I};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2, pic text options={text=black,text opacity=1}] {angle = I--C--B};
+    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black,text opacity=1}] {angle = B--I--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (B) -- (I) -- (C);
+
+    \foreach \p in {A,B,C,I} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+    \node[above, yshift=1mm] at (I) {$I$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Nagrinėkime mažąjį trikampį $\triangle BIC$. Jo kampų suma lygi $180^\circ$. Iš šios taisyklės galime išreikšti mūsų ieškomą kampą $\angle BIC$:
+$$
+\angle BIC + \beta + \gamma = 180^\circ \implies \angle BIC = 180^\circ - (\beta + \gamma)
+$$
+Matome, kad norint sužinoti ieškomą kampą, pakanka sužinoti sumą $(\beta + \gamma)$.
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (5,0);
+    \coordinate (A) at (1.5,3.5);
+    \coordinate (I) at (2.2, 1.2);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle = B--A--C};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black,text opacity=1}] {angle = C--B--I};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=8mm, angle eccentricity=1.25, pic text options={text=black,text opacity=1}] {angle = I--B--A};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, angle eccentricity=1.35, pic text options={text=black,text opacity=1}] {angle = A--C--I};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2, pic text options={text=black,text opacity=1}] {angle = I--C--B};
+    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black,text opacity=1}] {angle = B--I--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (B) -- (I) -- (C);
+
+    \foreach \p in {A,B,C,I} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+    \node[above, yshift=1mm] at (I) {$I$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{4 žingsnis.} Dabar pažiūrėkime į visą didįjį trikampį $\triangle ABC$. Jo kampų suma taip pat yra $180^\circ$. Išreiškę visus kampus naudodamiesi pažymėtomis raidėmis turime:
+$$
+\alpha + 2\beta + 2\gamma = 180^\circ
+$$
+Iškelkime dvejetą prieš skliaustus ir iš lygties išreikškime mums reikiamą sumą $(\beta + \gamma)$:
+$$
+2(\beta + \gamma) = 180^\circ - \alpha \implies \beta + \gamma = 90^\circ - \frac{\alpha}{2}
+$$
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (5,0);
+    \coordinate (A) at (1.5,3.5);
+    \coordinate (I) at (2.2, 1.2);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle = B--A--C};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black,text opacity=1}] {angle = C--B--I};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=8mm, angle eccentricity=1.25, pic text options={text=black,text opacity=1}] {angle = I--B--A};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, angle eccentricity=1.35, pic text options={text=black,text opacity=1}] {angle = A--C--I};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2, pic text options={text=black,text opacity=1}] {angle = I--C--B};
+    \pic[draw, fill=orange!20, fill opacity=0.4, "?", angle radius=5mm, angle eccentricity=1.5, pic text options={text=black,text opacity=1}] {angle = B--I--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (B) -- (I) -- (C);
+
+    \foreach \p in {A,B,C,I} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+    \node[above, yshift=1mm] at (I) {$I$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{5 žingsnis.} Grįžtame prie 3-ajame žingsnyje sudarytos lygties ieškomam kampui $\angle BIC$ ir vietoje bloko $(\beta + \gamma)$ įstatome ką tik atrastą jo išraišką:
+$$
+\angle BIC = 180^\circ - \left( 90^\circ - \frac{\alpha}{2} \right) = 180^\circ - 90^\circ + \frac{\alpha}{2} = 90^\circ + \frac{\alpha}{2}
+$$
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (5,0);
+    \coordinate (A) at (1.5,3.5);
+    \coordinate (I) at (2.2, 1.2);
+
+    \pic[draw, fill=blue!20, fill opacity=0.35, "$\alpha$", angle radius=6mm, pic text options={text=black,text opacity=1}] {angle = B--A--C};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=6mm, angle eccentricity=1.4, pic text options={text=black,text opacity=1}] {angle = C--B--I};
+    \pic[draw, fill=yellow!25, fill opacity=0.35, "$\beta$", angle radius=8mm, angle eccentricity=1.25, pic text options={text=black,text opacity=1}] {angle = I--B--A};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=7mm, angle eccentricity=1.35, pic text options={text=black,text opacity=1}] {angle = A--C--I};
+    \pic[draw, fill=green!20, fill opacity=0.35, "$\gamma$", angle radius=9mm, angle eccentricity=1.2, pic text options={text=black,text opacity=1}] {angle = I--C--B};
+    \pic[draw, fill=orange!25, fill opacity=0.45, "$90^\circ + \frac{\alpha}{2}$", angle radius=5mm, angle eccentricity=2.2, pic text options={text=black,text opacity=1}] {angle = B--I--C};
+
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (B) -- (I) -- (C);
+
+    \foreach \p in {A,B,C,I} {\filldraw (\p) circle (1.2pt);}
+    \node[above] at (A) {$A$};
+    \node[below left] at (B) {$B$};
+    \node[below right] at (C) {$C$};
+    \node[above, yshift=1mm] at (I) {$I$};
+\end{tikzpicture}
+\end{center}
+Įrodyta. \hfill $\square$
 
 \vspace{0.5cm}
 
@@ -415,7 +651,7 @@ Atskliaudžiame skliaustus:
 % UŽDAVINIAI
 % ==========================================
 \newpage
-\section{Uždaviniai savarankiškam sprendimui (13 iššūkių)}
+\section{Uždaviniai savarankiškam sprendimui (12 iššūkių)}
 
 \begin{enumerate}
     \renewcommand{\labelenumi}{\textbf{\theenumi.}}
@@ -423,25 +659,6 @@ Atskliaudžiame skliaustus:
     \item Lygiašonio trikampio $ABC$ ($AB=BC$) išorinis kampas prie viršūnės $A$ lygus $140^\circ$. Apskaičiuokite trikampio $ABC$ kampus.
     \item Trikampio $ABC$ $\angle A = 40^\circ$, o $\angle B = 80^\circ$. Iš viršūnės $C$ nubrėžta pusiaukampinė $CD$. Apskaičiuokite $\angle BDC$.
     \item Trikampyje $ABC$ nubrėžta aukštinė $AH$ ir pusiaukampinė $AD$. Žinoma, kad $\angle B = 70^\circ$, o $\angle C = 40^\circ$. Apskaičiuokite kampą tarp aukštinės ir pusiaukampinės ($\angle HAD$).
-    
-    \item „Bumerangas“: Duotas neiškilusis keturkampis, kurio trys vidiniai smailieji kampai yra $\alpha, \beta$ ir $\gamma$. Įrodykite, kad jo išorinis (įgaubtasis) kampas lygus $\alpha + \beta + \gamma$.
-    \begin{center}
-    \begin{tikzpicture}[scale=1.2]
-        \coordinate (A) at (-2,2);
-        \coordinate (B) at (0,0.5);
-        \coordinate (C) at (2,2);
-        \coordinate (D) at (0,-1.5);
-        
-        \draw[thick] (A) -- (D) -- (C) -- (B) -- cycle;
-        
-        \pic[draw, fill=blue!10, "$\alpha$", angle radius=6mm, angle eccentricity=1.5,
-            pic text options={text=black,text opacity=1}] {angle=D--A--B};
-        \pic[draw, fill=green!10, "$\beta$", angle radius=7mm] {angle=C--D--A};
-        \pic[draw, fill=red!10, "$\gamma$", angle radius=6mm, angle eccentricity=1.5,
-            pic text options={text=black,text opacity=1}] {angle=B--C--D};
-        \pic[draw, fill=orange!20, "?", angle radius=5mm, angle eccentricity=1.6] {angle=C--B--A};
-    \end{tikzpicture}
-    \end{center}
     
     \item Tarp dviejų lygiagrečių tiesių $a$ ir $b$ nubrėžta laužtė iš dviejų atkarpų. Pažymėję prie tiesių esančius smailiuosius kampus $\alpha$ ir $\beta$, įrodykite, kad kampas laužtės „smaigalyje“ lygus $\alpha + \beta$.
     \begin{center}
@@ -490,10 +707,11 @@ Atskliaudžiame skliaustus:
     \end{center}
     
     \item Stačiojo trikampio $ABC$ ($\angle C = 90^\circ$) įžambinėje $AB$ atidėti taškai $M$ ir $N$ taip, kad $AM = AC$ ir $BN = BC$. Apskaičiuokite $\angle MCN$.
-    \item Trikampio $ABC$ išorinių kampų prie viršūnių $B$ ir $C$ pusiaukampinės susikerta taške $J$. Remdamiesi 3-iojo pavyzdžio idėjomis, įrodykite, kad $\angle BJC = 90^\circ - \frac{\angle A}{2}$.
+    \item Trikampio $ABC$ išorinių kampų prie viršūnių $B$ ir $C$ pusiaukampinės susikerta taške $J$. Remdamiesi 2-ojo pavyzdžio („Bumerango“ konstrukcijos) idėjomis, įrodykite, kad $\angle BJC = 90^\circ - \frac{\angle A}{2}$.
     \item Kvadrato $ABCD$ viduje nubrėžtas lygiakraštis trikampis $ABE$. Apskaičiuokite $\angle CDE$.
     
     \item Stačiajame trikampyje $ABC$ ($\angle C = 90^\circ$) nubrėžta pusiaukraštinė $CM$. Įrodykite, kad jos ilgis lygus pusei įžambinės ($CM = \frac{AB}{2}$).
     \item Trikampyje $ABC$ $\angle B = 20^\circ$, o $\angle C = 40^\circ$. Kraštinėje $BC$ atidėtas taškas $D$ taip, kad $AD = DC$. Apskaičiuokite $\angle BAD$.
 \end{enumerate}
+
 \end{document}
