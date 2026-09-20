@@ -1,0 +1,368 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+
+\title{Nepilnosios kvadratinės lygtys}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra nepilnoji kvadratinė lygtis?}
+
+\begin{definition}
+\vocab{Pilnoji kvadratinė lygtis} -- tai lygtis, kurią galima užrašyti pavidalu $ax^2+bx+c=0$, kur $a \neq 0$[cite: 2].
+\end{definition}
+
+Jei lygtyje koeficientas $b=0$ arba $c=0$, tokia lygtis vadinama \textbf{nepilnąja kvadratine lygtimi}[cite: 2]. Šiame skyriuje nagrinėsime abiejų tipų nepilnąsias lygtis: kai $b=0$ (lygtys pavidalo $ax^2+c=0$) ir kai $c=0$ (lygtys pavidalo $ax^2+bx=0$)[cite: 2].
+
+\begin{remark}
+Prieš pradedant spręsti lygtis, būtina prisiminti svarbią taisyklę apie kvadratines šaknis. Dažnai daroma klaida manant, kad $\sqrt{9} = \pm 3$. Tai yra netiesa! Pagal kvadratinės šaknies apibrėžimą, aritmetinė kvadratinė šaknis yra \textbf{neneigiamas} skaičius, todėl griežtai $\sqrt{9} = 3$. 
+
+Lygties $x^2 = 9$ sprendiniai yra $x = \pm 3$ dėl to, kad mes ieškome visų skaičių (tiek teigiamų, tiek neigiamų), kuriuos pakėlus kvadratu gauname $9$. Mes tai užrašome kaip $x = \pm\sqrt{9}$, o pati šaknies reikšmė visada išlieka teigiama[cite: 2].
+\end{remark}
+
+\section{Lygties $ax^2+c=0$ sprendimas dviem būdais}
+
+Šio tipo lygtis galima spręsti dviem skirtingais, bet lygiaverčiais būdais: suvedant lygtį į pavidalą $x = \pm\sqrt{d}$ arba skaidant reiškinį dauginamaisiais pagal kvadratų skirtumo formulę[cite: 2]. Šiame skyrelyje ieškosime sprendinių \textbf{realiųjų skaičių aibėje} $\mathbb{R}$.
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ x^2 - 25 = 0 \]
+\end{example}
+\begin{solution}
+\textbf{1 būdas: Suvedant į $x = \pm\sqrt{d}$.}\\
+Perkeliame laisvąjį narį į dešinę pusę:
+\[ x^2 = 25 \]
+Ieškome skaičių, kurių kvadratas lygus $25$. Traukiame šaknį, nepamiršdami $\pm$ ženklo prieš ją:
+\[ x = \pm\sqrt{25} \]
+\[ x = \pm 5 \]
+
+\textbf{2 būdas: Skaidant dauginamaisiais.}\\
+Pritaikome kvadratų skirtumo formulę $a^2 - b^2 = (a-b)(a+b)$:
+\[ x^2 - 5^2 = 0 \]
+\[ (x-5)(x+5) = 0 \]
+Sandauga lygi nuliui tada ir tik tada, kai bent vienas iš dauginamųjų lygus nuliui:
+\[ x-5 = 0 \quad \text{arba} \quad x+5 = 0 \]
+\[ x = 5 \quad \text{arba} \quad x = -5 \]
+\textbf{Atsakymas:} $x = \pm 5$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ 2x^2 - 18 = 0 \]
+\end{example}
+\begin{solution}
+\textbf{1 būdas: Suvedant į $x = \pm\sqrt{d}$.}\\
+Perkeliame skaičių ir padalijame abi puses iš $2$:
+\[
+\begin{aligned}
+2x^2 &= 18 \\
+x^2 &= 9 \\
+x &= \pm\sqrt{9} \\
+x &= \pm 3.
+\end{aligned}
+\]
+
+\textbf{2 būdas: Skaidant dauginamaisiais.}\\
+Iškeliame bendrą dauginamąjį, o tada pritaikome formulę:
+\[
+\begin{aligned}
+2(x^2 - 9) &= 0 \\
+2(x-3)(x+3) &= 0
+\end{aligned}
+\]
+Padaliję iš 2, gauname tuos pačius sprendinius:
+\[ x-3 = 0 \quad \text{arba} \quad x+3 = 0 \]
+\[ x = 3 \quad \text{arba} \quad x = -3 \]
+\textbf{Atsakymas:} $x = \pm 3$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ x^2 + 9 = 0 \]
+\end{example}
+\begin{solution}
+Perkeliame laisvąjį narį į dešinę pusę:
+\[ x^2 = -9 \]
+Kadangi bet kokio realiojo skaičiaus kvadratas yra neneigiamas ($x^2 \ge 0$), nėra tokio realiojo skaičiaus, kurį pakėlus kvadratu gautume neigiamą rezultatą (šiuo atveju $-9$). 
+\textbf{Atsakymas:} realiųjų sprendinių nėra ($\varnothing$).
+\end{solution}
+
+\section{Sudėtingesni koeficientai ir iracionalūs sprendiniai ($ax^2+c=0$)}
+
+Kartais lygties koeficientai gali atrodyti sudėtingai, pavyzdžiui, būti išreikšti paprastosiomis arba mišriosiomis trupmenomis. Tačiau atlikus veiksmus, sprendiniai dažnai gaunami labai gražūs (racionalūs skaičiai).
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ 1\frac{1}{3}x^2 - \frac{3}{4} = 0 \]
+\end{example}
+\begin{solution}
+Pirmiausia mišriąją trupmeną paverčiame netaisyklingąja ir perkeliame laisvąjį narį į dešinę pusę:
+\[ \frac{4}{3}x^2 = \frac{3}{4} \]
+Padalijame abi puses iš $\frac{4}{3}$ (arba padauginame iš $\frac{3}{4}$):
+\[
+\begin{aligned}
+x^2 &= \frac{3}{4} \cdot \frac{3}{4} \\
+x^2 &= \frac{9}{16}
+\end{aligned}
+\]
+Traukiame šaknį:
+\[ x = \pm\sqrt{\frac{9}{16}} \]
+\[ x = \pm\frac{3}{4} \]
+\textbf{Atsakymas:} $x = \pm\frac{3}{4}$.
+\end{solution}
+
+Kita vertus, ne visada ištraukus šaknį gauname sveiką ar racionalų skaičių. Jei skaičius neturi tikslios šaknies, sprendinį paliekame su šaknies ženklu. Tokie sprendiniai vadinami \textbf{iracionaliaisiais}.
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ 2x^2 - 14 = 0 \]
+\end{example}
+\begin{solution}
+Perkeliame laisvąjį narį ir padalijame iš 2:
+\[
+\begin{aligned}
+2x^2 &= 14 \\
+x^2 &= 7
+\end{aligned}
+\]
+Kadangi 7 nėra tikslus kvadratas ir tikslios šaknies neturi, traukdami šaknį gauname iracionaliuosius skaičius:
+\[ x = \pm\sqrt{7} \]
+\textbf{Atsakymas:} $x = \pm\sqrt{7}$.
+\end{solution}
+
+\section{Lygties $ax^2+bx=0$ sprendimas}
+
+Kai lygtyje laisvasis narys $c=0$, gauname lygtį, kurioje abu nariai turi kintamąjį $x$. Tokios lygtys realiųjų skaičių aibėje sprendžiamos \textbf{iškeliant bendrąjį dauginamąjį prieš skliaustus}.
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ x^2 - 7x = 0 \]
+\end{example}
+\begin{solution}
+Iškeliame bendrąjį dauginamąjį $x$ prieš skliaustus:
+\[ x(x - 7) = 0 \]
+Sandauga lygi nuliui, kai bent vienas iš dauginamųjų lygus nuliui:
+\[ x = 0 \quad \text{arba} \quad x - 7 = 0 \]
+Iš antrosios lygties gauname:
+\[ x = 7 \]
+\textbf{Atsakymas:} $x = 0$; $x = 7$.
+\end{solution}
+
+Jei lygties koeficientai yra trupmeniniai, sprendimo eiga išlieka lygiai tokia pati – iškeliame kintamąjį (ir, jei patogu, trupmeninį koeficientą) prieš skliaustus.
+
+\begin{example}
+Išspręskite lygtį realiųjų skaičių aibėje:
+\[ \frac{2}{3}x^2 - 2,4x = 0 \]
+\end{example}
+\begin{solution}
+Pirmiausia dešimtainį skaičių $2,4$ užrašome paprastosios trupmenos pavidalu:
+\[ 2,4 = \frac{12}{5} \]
+Taigi lygtis tampa:
+\[ \frac{2}{3}x^2 - \frac{12}{5}x = 0 \]
+Iškeliame bendrąjį dauginamąjį $x$ prieš skliaustus:
+\[ x\left( \frac{2}{3}x - \frac{12}{5} \right) = 0 \]
+Sandauga lygi nuliui, kai bent vienas dauginamasis lygus nuliui:
+\[ x = 0 \quad \text{arba} \quad \frac{2}{3}x - \frac{12}{5} = 0 \]
+Sprendžiame antrąją lygtį:
+\[ \frac{2}{3}x = \frac{12}{5} \]
+\[ x = \frac{12}{5} \cdot \frac{3}{2} = \frac{36}{10} = 3,6 \]
+\textbf{Atsakymas:} $x = 0$; $x = 3,6$.
+\end{solution}
+
+\section{Kompleksiniai sprendiniai: lygties $x^2 = -a$ atvejis}
+
+Kas nutinka, jei sprendžiant lygtį $ax^2+c=0$, dešinėje pusėje gauname neigiamą skaičių? Kaip ką tik matėme pavyzdyje su lygtimi $x^2 + 9 = 0$, \textbf{realiųjų skaičių aibėje} nerasime skaičiaus, kurio kvadratas būtų neigiamas, todėl tokia lygtis sprendinių neturi. Kad išspręstume tokias lygtis, mums reikia \textbf{kompleksinių skaičių aibės} $\mathbb{C}$.
+
+Naudojant kompleksinius skaičius, lygtis, kurios anksčiau neturėjo sprendinių realiųjų skaičių aibėje, tampa lengvai išsprendžiamos.
+
+\begin{example}
+Išspręskite prieš tai nagrinėtą lygtį kompleksinių skaičių aibėje:
+\[ x^2 + 9 = 0 \]
+\end{example}
+\begin{solution}
+Perkeliame $9$ į dešinę pusę:
+\[ x^2 = -9 \]
+Kaip jau matėme, realiųjų skaičių aibėje sprendinių nėra. Tačiau kompleksinių skaičių aibėje vietoje minuso ženklo įvedame $i^2$:
+\[
+\begin{aligned}
+x^2 &= 9 \cdot (-1) \\
+x^2 &= 9i^2
+\end{aligned}
+\]
+Dabar traukiame kvadratinę šaknį, vėl naudodami $\pm$:
+\[ x = \pm\sqrt{9i^2} \]
+Kadangi $\sqrt{9} = 3$ ir $\sqrt{i^2} = i$, gauname:
+\[ x = \pm 3i \]
+\textbf{Atsakymas:} $x = \pm 3i$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį kompleksinių skaičių aibėje:
+\[ 2x^2 + 50 = 0 \]
+\end{example}
+\begin{solution}
+Pertvarkome lygtį:
+\[
+\begin{aligned}
+2x^2 &= -50 \\
+x^2 &= -25 \\
+x^2 &= 25i^2 \\
+x &= \pm\sqrt{25i^2} \\
+x &= \pm 5i.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $x = \pm 5i$.
+\end{solution}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išspręskite nepilnąsias kvadratines lygtis, skaidydami dauginamaisiais pagal kvadratų skirtumo formulę, realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-16=0$
+    \task $x^2-64=0$
+    \task $x^2 + 9 = 0$
+    \task $5x^2-20=0$
+    \task $x^2 - 5 = 0$
+    \task $-x^2 + 81 = 0$
+    \task $-3x^2 + 27 = 0$
+    \task $3x^2 - 33 = 0$
+    \task $5x^2 - 15 = 0$
+    \task $2x^2 - 10 = 0$
+    \task $3x^2-27=0$
+    \task $2x^2 + 7 = 0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite tas pačias nepilnąsias kvadratines lygtis, suvedant jas į pavidalą $x = \pm\sqrt{d}$, realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-16=0$
+    \task $x^2-64=0$
+    \task $x^2 + 9 = 0$
+    \task $5x^2-20=0$
+    \task $x^2 - 5 = 0$
+    \task $-x^2 + 81 = 0$
+    \task $-3x^2 + 27 = 0$
+    \task $3x^2 - 33 = 0$
+    \task $5x^2 - 15 = 0$
+    \task $2x^2 - 10 = 0$
+    \task $3x^2-27=0$
+    \task $2x^2 + 7 = 0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite nepilnąsias kvadratines lygtis su trupmeniniais koeficientais realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $\frac{1}{2}x^2 - 8 = 0$
+    \task $\frac{2}{5}x^2 - 3\frac{3}{5} = 0$
+    \task $1\frac{7}{9}x^2 - \frac{4}{25} = 0$
+    \task $\frac{3}{7}x^2 - \frac{27}{28} = 0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite nepilnąsias kvadratines lygtis, iškeldami bendrąjį dauginamąjį prieš skliaustus, realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-5x=0$
+    \task $x^2+8x=0$
+    \task $2x^2-10x=0$
+    \task $7x^2+14x=0$
+    \task $\frac{1}{3}x^2 - \frac{4}{3}x = 0$
+    \task $\frac{3}{4}x^2 + 1\frac{1}{2}x = 0$
+    \task $1\frac{1}{5}x^2 - \frac{3}{5}x = 0$
+    \task $\frac{2}{7}x^2 + \frac{4}{7}x = 0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtis kompleksinių skaičių aibėje $\mathbb{C}$:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](4)
+    \task $x^2 = -4$
+    \task $x^2 = -36$
+    \task $x^2+81=0$
+    \task $x^2+100=0$
+    \task $2x^2+18=0$
+    \task $4x^2+64=0$
+    \task $10x^2 = -1000$
+    \task $\frac{1}{2}x^2+8=0$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=\pm 4$;
+    \task $x=\pm 8$;
+    \task Realių sprendinių nėra;
+    \task $x=\pm 2$;
+    \task $x=\pm \sqrt{5}$;
+    \task $x=\pm 9$;
+    \task $x=\pm 3$;
+    \task $x=\pm \sqrt{11}$;
+    \task $x=\pm \sqrt{3}$;
+    \task $x=\pm \sqrt{5}$;
+    \task $x=\pm 3$;
+    \task Realių sprendinių nėra.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=\pm 4$;
+    \task $x=\pm 8$;
+    \task Realių sprendinių nėra;
+    \task $x=\pm 2$;
+    \task $x=\pm \sqrt{5}$;
+    \task $x=\pm 9$;
+    \task $x=\pm 3$;
+    \task $x=\pm \sqrt{11}$;
+    \task $x=\pm \sqrt{3}$;
+    \task $x=\pm \sqrt{5}$;
+    \task $x=\pm 3$;
+    \task Realių sprendinių nėra.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=\pm 4$;
+    \task $x=\pm 3$;
+    \task $x=\pm \frac{3}{10}$;
+    \task $x=\pm \frac{3}{2}$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](4)
+    \task $x=0$, $x=5$;
+    \task $x=0$, $x=-8$;
+    \task $x=0$, $x=5$;
+    \task $x=0$, $x=-2$;
+    \task $x=0$, $x=4$;
+    \task $x=0$, $x=-2$;
+    \task $x=0$, $x=\frac{1}{2}$;
+    \task $x=0$, $x=-2$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](4)
+    \task $x=\pm 2i$;
+    \task $x=\pm 6i$;
+    \task $x=\pm 9i$;
+    \task $x=\pm 10i$;
+    \task $x=\pm 3i$;
+    \task $x=\pm 4i$;
+    \task $x=\pm 10i$;
+    \task $x=\pm 4i$.
+\end{tasks}
+\end{problem}
+
+\end{document}

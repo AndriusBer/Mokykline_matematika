@@ -158,33 +158,33 @@
 ]{thmblackbox}
 
 %% Aplinkos su rėmeliais (thmtools)
-\declaretheorem[style=thmbluebox,name=Teorema,numberwithin=section]{theorem}
-\declaretheorem[style=thmbluebox,name=Lema,sibling=theorem]{lemma}
-\declaretheorem[style=thmbluebox,name=Savybė,sibling=theorem]{property}
-\declaretheorem[style=thmbluebox,name=Teiginys,sibling=theorem]{proposition}
-\declaretheorem[style=thmbluebox,name=Išvada,numberwithin=section]{corollary}
+\declaretheorem[style=thmbluebox,name=Teorema]{theorem}
+\declaretheorem[style=thmbluebox,name=Lema]{lemma}
+\declaretheorem[style=thmbluebox,name=Savybė]{property}
+\declaretheorem[style=thmbluebox,name=Teiginys]{proposition}
+\declaretheorem[style=thmbluebox,name=Išvada]{corollary}
 \declaretheorem[style=thmbluebox,name=Teorema,numbered=no]{theorem*}
 \declaretheorem[style=thmbluebox,name=Lema,numbered=no]{lemma*}
 \declaretheorem[style=thmbluebox,name=Teiginys,numbered=no]{proposition*}
 \declaretheorem[style=thmbluebox,name=Išvada,numbered=no]{corollary*}
-\declaretheorem[style=thmgreenbox,name=Algoritmas,sibling=theorem]{algorithm}
+\declaretheorem[style=thmgreenbox,name=Algoritmas]{algorithm}
 \declaretheorem[style=thmgreenbox,name=Algoritmas,numbered=no]{algorithm*}
-\declaretheorem[style=thmgreenbox,name=Teiginys,sibling=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Teiginys]{claim}
 \declaretheorem[style=thmgreenbox,name=Teiginys,numbered=no]{claim*}
-\declaretheorem[style=thmredbox,name=Pavyzdys,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Pavyzdys]{example}
 \declaretheorem[style=thmredbox,name=Pavyzdys,numbered=no]{example*}
-\declaretheorem[style=thmblackbox,name=Pastaba,sibling=theorem]{remark}
+\declaretheorem[style=thmblackbox,name=Pastaba]{remark}
 \declaretheorem[style=thmblackbox,name=Pastaba,numbered=no]{remark*}
 
 %% Standartinės amsthm aplinkos (Apibrėžimai ir užduotys)
 \theoremstyle{definition}
-\ifcsname conjecture\endcsname\else\newtheorem{conjecture}[theorem]{Hipotezė}\fi
-\ifcsname definition\endcsname\else\newtheorem{definition}[theorem]{Apibrėžimas}\fi
-\ifcsname fact\endcsname\else\newtheorem{fact}[theorem]{Faktas}\fi
-\ifcsname answer\endcsname\else\newtheorem{answer}[theorem]{Atsakymas}\fi
-\ifcsname ques\endcsname\else\newtheorem{ques}[theorem]{Klausimas}\fi
-\ifcsname exercise\endcsname\else\newtheorem{exercise}[theorem]{Užduotis}\fi
-\ifcsname problem\endcsname\else\newtheorem{problem}[theorem]{Uždavinys}\fi
+\ifcsname conjecture\endcsname\else\newtheorem{conjecture}{Hipotezė}\fi
+\ifcsname definition\endcsname\else\newtheorem{definition}{Apibrėžimas}\fi
+\ifcsname fact\endcsname\else\newtheorem{fact}{Faktas}\fi
+\ifcsname answer\endcsname\else\newtheorem{answer}{Atsakymas}\fi
+\ifcsname ques\endcsname\else\newtheorem{ques}{Klausimas}\fi
+\ifcsname exercise\endcsname\else\newtheorem{exercise}{Užduotis}\fi
+\ifcsname problem\endcsname\else\newtheorem{problem}{Uždavinys}[section]\fi
 \ifcsname conjecture*\endcsname\else\newtheorem*{conjecture*}{Hipotezė}\fi
 \ifcsname definition*\endcsname\else\newtheorem*{definition*}{Apibrėžimas}\fi
 \ifcsname fact*\endcsname\else\newtheorem*{fact*}{Faktas}\fi
@@ -197,7 +197,8 @@
 \newcommand{\answerssection}{%
   \setcounter{answerssection}{\value{section}}%
   \section{Atsakymai}%
-  \renewcommand{\theproblem}{\arabic{answerssection}.\arabic{theorem}}%
+  \setcounter{problem}{0}%
+  \renewcommand{\theproblem}{\arabic{answerssection}.\arabic{problem}}%
 }
 
 %% GALUTINIS SPRENDIMAS PROOF APLINKAI
@@ -224,5 +225,14 @@
     #1\@addpunct{.}]\ignorespaces
 }{%
   \popQED\endtrivlist\@endpefalse
+}
+\newenvironment{solution}{\par
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \normalfont\itshape
+    \textit{Sprendimas}\@addpunct{.}]\ignorespaces
+}{%
+  \endtrivlist\@endpefalse
 }
 \makeatother
