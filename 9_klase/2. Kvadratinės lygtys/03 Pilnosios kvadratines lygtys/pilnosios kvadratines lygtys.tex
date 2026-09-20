@@ -1,0 +1,264 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+
+\title{Pilnosios kvadratinės lygtys}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra pilnoji kvadratinė lygtis?}
+
+\begin{definition}
+\vocab{Pilnoji kvadratinė lygtis} -- tai lygtis, kurią galima užrašyti pavidalu $ax^2+bx+c=0$, kur $a \neq 0$, o koeficientai $b$ ir $c$ taip pat nelygūs nuliui.
+\end{definition}
+
+Skirtingai nei nepilnųjų kvadratinių lygčių atveju, čia turime visus tris narius: kvadratinį narį ($ax^2$), tiesinį narį ($bx$) ir laisvąjį narį ($c$). Norint rasti bendrą tokios lygties sprendimo būdą, pasitelkiamas pilnojo kvadrato išskyrimo metodas.
+
+\section{Kvadratinės lygties sprendimo formulės išvedimas}
+
+Išveskime universalią formulę, kuri leis išspręsti bet kokią kvadratinę lygtį $ax^2+bx+c=0$. 
+
+Pirmiausia, kadangi $a \neq 0$, abi lygties puses padauginkime iš $4a$:
+\begin{equation}
+\begin{gathered}
+ax^2+bx+c=0 \;/\cdot 4a \\
+4a^2x^2+4abx+4ac=0 \\
+(2ax)^2+2\cdot 2ax\cdot b+b^2-b^2+4ac=0 \\
+(2ax+b)^2=b^2-4ac \\
+2ax+b=\pm\sqrt{b^2-4ac} \\
+2ax=-b\pm\sqrt{b^2-4ac} \\
+ x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{gathered}
+\end{equation}
+
+\begin{definition}
+Reiškinio  $b ^{2} -4ac $ reikšmė vadinama \vocab{diskriminantu} (lot. \textit{discriminans} -- išskiriantis) ir žymimas didžiąja raide $D$:
+\[ D = b^2 - 4ac \]
+\end{definition}
+
+Iš gautos formulės matyti, jog kvadratinės lygties šaknų formulė yra:
+\[ x = \frac{-b \pm \sqrt{D}}{2a}. \]
+Ši formulė vadinama \textbf{kvadratinės lygties sprendinių arba šaknų formule}.
+
+\section{Diskriminantas ir sprendinių skaičius}
+
+Kvadratinės lygties sprendinių skaičius ir prigimtis tiesiogiai priklauso nuo diskriminanto $D$ ženklo.
+
+\begin{itemize}
+    \item Jei $D > 0$, lygtis turi \textbf{du skirtingus realiuosius sprendinius}: $$x_1 = \frac{-b - \sqrt{D}}{2a} \text{ ir } x_2 = \frac{-b + \sqrt{D}}{2a}.$$
+    \item Jei $D = 0$, lygtis turi \textbf{vieną realųjį sprendinį}: $$x = \frac{-b}{2a}.$$
+    \item Jei $D < 0$, lygtis \textbf{neturi sprendinių realiųjų skaičių aibėje} $\mathbb{R}$. Tačiau \textbf{kompleksinių skaičių aibėje} $\mathbb{C}$ tokia lygtis visada turi \textbf{du kompleksinius sprendinius}, pasitelkiant menamąjį vienetą $i$.
+\end{itemize}
+
+\section{Lygčių sprendimo pavyzdžiai}
+
+\begin{example}
+Išspręskite lygtį:
+\[ x^2 - 5x + 6 = 0 \]
+\end{example}
+\begin{solution}
+Išsirašome koeficientus: $a=1$, $b=-5$, $c=6$.\\
+Skaičiuojame diskriminantą:
+\[
+\begin{aligned}
+D &= b^2 - 4ac \\
+&= (-5)^2 - 4 \cdot 1 \cdot 6 \\
+&= 25 - 24 = 1.
+\end{aligned}
+\]
+Kadangi $D > 0$, lygtis turi du realiuosius sprendinius:
+\[
+\begin{aligned}
+x_1 &= \frac{-(-5) - \sqrt{1}}{2 \cdot 1} = \frac{5 - 1}{2} = 2, \\
+x_2 &= \frac{-(-5) + \sqrt{1}}{2 \cdot 1} = \frac{5 + 1}{2} = 3.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $x=2$; $x=3$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį:
+\[ 4x^2 - 12x + 9 = 0 \]
+\end{example}
+\begin{solution}
+Koeficientai: $a=4$, $b=-12$, $c=9$.\\
+Skaičiuojame diskriminantą:
+\[
+\begin{aligned}
+D &= (-12)^2 - 4 \cdot 4 \cdot 9 \\
+&= 144 - 144 = 0.
+\end{aligned}
+\]
+Kadangi $D = 0$, lygtis turi vieną sprendinį:
+\[ x = \frac{-(-12) \pm \sqrt{0}}{2 \cdot 4} = \frac{12}{8} = 1,5. \]
+\textbf{Atsakymas:} $x=1,5$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį \textbf{kompleksinių skaičių aibėje}:
+\[ x^2 - 4x + 13 = 0 \]
+\end{example}
+\begin{solution}
+Koeficientai: $a=1$, $b=-4$, $c=13$.\\
+Skaičiuojame diskriminantą:
+\[
+\begin{aligned}
+D &= (-4)^2 - 4 \cdot 1 \cdot 13 \\
+&= 16 - 52 = -36.
+\end{aligned}
+\]
+Kadangi $D < 0$, realiųjų sprendinių nėra. Kompleksinių skaičių aibėje traukiame šaknį iš neigiamo skaičiaus: $\sqrt{-36} = \sqrt{36 \cdot i^2} = 6i$.
+Pritaikome šaknų formulę:
+\[
+\begin{aligned}
+x_1 &= \frac{-(-4) - 6i}{2 \cdot 1} = \frac{4 - 6i}{2} = 2 - 3i, \\
+x_2 &= \frac{-(-4) + 6i}{2 \cdot 1} = \frac{4 + 6i}{2} = 2 + 3i.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $x=2-3i$; $x=2+3i$.
+\end{solution}
+
+\begin{example}
+Išspręskite lygtį:
+\[ 2x(x - 3) = x^2 - 8 \]
+\end{example}
+\begin{solution}
+Pirmiausia atskliaudžiame ir visus narius perkeliame į kairę pusę, kad gautume pavidalą $ax^2+bx+c=0$:
+\[
+\begin{aligned}
+2x^2 - 6x &= x^2 - 8 \\
+2x^2 - x^2 - 6x + 8 &= 0 \\
+x^2 - 6x + 8 &= 0
+\end{aligned}
+\]
+Skaičiuojame diskriminantą ($a=1$, $b=-6$, $c=8$):
+\[
+\begin{aligned}
+D &= (-6)^2 - 4 \cdot 1 \cdot 8 \\
+&= 36 - 32 = 4.
+\end{aligned}
+\]
+Randame sprendinius:
+\[
+\begin{aligned}
+x_1 &= \frac{6 - \sqrt{4}}{2} = \frac{6 - 2}{2} = 2, \\
+x_2 &= \frac{6 + \sqrt{4}}{2} = \frac{6 + 2}{2} = 4.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $x=2$; $x=4$.
+\end{solution}
+
+\newpage
+\section{Uždaviniai}
+
+\begin{problem}
+Apskaičiuokite lygties diskriminantą ir nustatykite, kiek sprendinių realiųjų skaičių aibėje turi lygtis:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-7x+10=0$
+    \task $-x^2+6x-9=0$
+    \task $2x^2-3x+5=0$
+    \task $-3x^2+4x-1=0$
+    \task $x^2+x-6=0$
+    \task $2x^2-x-1=0$
+    \task $x^2+10x+25=0$
+    \task $-x^2+2x-1=0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Naudodamiesi šaknų formule, išspręskite kvadratines lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-8x+15=0$
+    \task $-2x^2+5x-2=0$
+    \task $x^2+2x-8=0$
+    \task $-4x^2+12x-9=0$
+    \task $x^2-5x-6=0$
+    \task $-3x^2+x+2=0$
+    \task $x^2-6x+9=0$
+    \task $-2x^2+7x-3=0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite kvadratines lygtis kompleksinių skaičių aibėje $\mathbb{C}$:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2-2x+5=0$
+    \task $-x^2+4x-29=0$
+    \task $2x^2-6x+5=0$
+    \task $-x^2+10x-26=0$
+    \task $x^2-6x+13=0$
+    \task $-x^2+8x-20=0$
+    \task $3x^2-12x+21=0$
+    \task $-x^2+2x-2=0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Pertvarkykite reiškinį ir išspręskite lygtį realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $(2x-3)^3-8(x-2)^2(x+1)=1$
+    \task $(x+2)^3-(x+1)^2(x+3)=0$
+    \task $(x-1)^3-x(x-2)(x+3)=1$
+    \task $\frac{2x+4}{x+3}=\frac{x+2}{x-2}$
+    \task $\frac{x+6}{x-3}=\frac{4x-6}{5-x}$
+    \task $(x-1)^3-(x+2)^3=-3$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $D=9$, du sprendiniai;
+    \task $D=0$, vienas sprendinys;
+    \task $D=-31$, sprendinių nėra;
+    \task $D=4$, du sprendiniai;
+    \task $D=9$, du sprendiniai;
+    \task $D=25$, du sprendiniai;
+    \task $D=0$, vienas sprendinys;
+    \task $D=0$, vienas sprendinys.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=3$, $x=5$;
+    \task $x=0,5$, $x=2$;
+    \task $x=-4$, $x=2$;
+    \task $x=\frac{1}{3}$, $x=1$;
+    \task $x=-1$, $x=6$;
+    \task $x=1$, $x=-\frac{2}{3}$;
+    \task $x=3$;
+    \task $x=\frac{1}{2}$, $x=3$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=1-2i$, $x=1+2i$;
+    \task $x=2-5i$, $x=2+5i$;
+    \task $x=\frac{3}{2}-\frac{1}{2}i$, $x=\frac{3}{2}+\frac{1}{2}i$;
+    \task $x=5-i$, $x=5+i$;
+    \task $x=3-2i$, $x=3+2i$;
+    \task $x=4-2i$, $x=4+2i$;
+    \task $x=2-\sqrt{3}i$, $x=2+\sqrt{3}i$;
+    \task $x=1-i$, $x=1+i$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x=2$, $x=\frac{5}{2}$;
+    \task $x=\frac{-5-\sqrt{5}}{2}$, $x=\frac{-5+\sqrt{5}}{2}$;
+    \task $x=\frac{1}{4}$, $x=2$;
+    \task $x=-2$, $x=7$;
+    \task $x=-\frac{3}{5}$, $x=4$;
+    \task $x=-1$, $x=-\frac{2}{3}$.
+\end{tasks}
+\end{problem}
+
+\end{document}
