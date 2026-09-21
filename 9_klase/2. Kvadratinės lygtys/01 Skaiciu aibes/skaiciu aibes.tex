@@ -260,10 +260,32 @@ Tegul tas ieškomas skaičius, kurio kvadratas yra $-1$, vadinasi $i$ (pirmoji �
 \[ i^2 = -1. \]
 \end{definition}
 
-Iššokę iš tiesės į plokštumą mes gauname naują, pačią didžiausią skaičių aibę. 
+Iki šiol visus skaičius vaizdavome tik ant vienos ar kitos ašies. Tačiau mes turime dvi susikertančias ašis (realiąją ir menamąją), o jos suformuoja ne ką kitą, kaip \textbf{dvimatę koordinačių plokštumą}. Vadinasi, mūsų naujieji skaičiai gali „gyventi“ ne tik ant ašių, bet ir \textbf{visoje plokštumoje}! 
+
+Kaip aprašyti tašką, esantį kažkur plokštumoje? Mes tiesiog sujungiame jo koordinates. Paimame realųjį skaičių $a$ iš horizontalios ašies ir menamąjį skaičių $bi$ iš vertikalios ašies. Jų „susikirtimo“ taškas plokštumoje užrašomas kaip jų suma: $a+bi$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.25]
+    % Realiųjų ir menamųjų skaičių ašys
+    \draw[<->, thick, violet] (-1.5,0) -- (4,0) node[right, text=black] {Re};
+    \draw[<->, thick, cyan!80!black] (0,-1.5) -- (0,3) node[above, text=black] {Im};
+    
+    % Taško koordinatės
+    \draw[thick, violet] (2.5,0.1) -- (2.5,-0.1) node[below] {$a$};
+    \draw[thick, cyan!80!black] (0.1,1.5) -- (-0.1,1.5) node[left] {$bi$};
+    
+    \node[below left] at (0,0) {$0$};
+    
+    % Taškas a+bi
+    \filldraw[red] (2.5,1.5) circle (2pt) node[anchor=south west, font=\bfseries] {$ a + bi$};
+    \draw[thick, red, dashed] (2.5,0) -- (2.5,1.5) -- (0,1.5);
+\end{tikzpicture}
+\end{center}
+
+Šitaip iššokę iš tiesės į plokštumą, mes gauname naują, pačią didžiausią skaičių aibę. 
 
 \begin{definition}
-\vocab{Kompleksiniai skaičiai} -- tai skaičiai, kuriuos galima užrašyti forma $z = a + bi$, kur $a$ ir $b$ yra realieji skaičiai, o $i$ -- menamasis vienetas. Čia $a$ vadinama realiąja dalimi, o $b$ -- menamąja dalimi. Ši aibė žymima raide $\mathbb{C}$ (iš lotynų \textit{complexus} -- sudėtinis, sujungtas iš dviejų dalių).
+\vocab{Kompleksiniai skaičiai} -- tai skaičiai, kuriuos galima užrašyti forma $ a + bi$, kur $a$ ir $b$ yra realieji skaičiai, o $i$ -- menamasis vienetas. Čia $a$ vadinama realiąja dalimi, o $b$ -- menamąja dalimi. Ši aibė žymima raide $\mathbb{C}$ (iš lotynų \textit{complexus} -- sudėtinis, sujungtas iš dviejų dalių).
 \end{definition}
 
 Visi realieji skaičiai yra kompleksinių skaičių atvejis, kai menamoji dalis lygi nuliui. Kitaip tariant, kompleksinis skaičius $z=a+bi$ yra realusis skaičius tada, kai $b=0$, todėl $z=a$.
@@ -433,6 +455,6 @@ Išrašykite šių kompleksinių skaičių koordinates koordinačių plokštumoj
     \task $(0; 5)$;
     \task $(0; -3)$.
 \end{tasks}
-\end{problem}
+\end{problem} 
 
 \end{document}
