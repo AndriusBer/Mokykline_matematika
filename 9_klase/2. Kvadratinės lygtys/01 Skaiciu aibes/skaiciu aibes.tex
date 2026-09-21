@@ -140,9 +140,41 @@ Geometrai greitai susidūrė su problema: kvadrato, kurio kraštinė lygi $1$, �
 \[ x^2 = 2. \]
 Ar egzistuoja tokia trupmena, kurią pakėlus kvadratu gautume tiksliai $2$? 
 
+Norėdami išsiaiškinti, ar $\sqrt{2}$ yra racionalusis skaičius, galime pasirinkti vieną iš dviejų kelių. Pirmasis kelias būtų pabandyti $\sqrt{2}$ išreikšti trupmena ir tiesiogiai rasti tokius skaitiklį bei vardiklį. Tačiau iš anksto nežinome, kokia tai galėtų būti trupmena.
+
+Todėl pasirinksime kitą kelią -- \textbf{prieštaros metodą}. Iš pradžių padarysime prielaidą, kad mūsų teiginys yra priešingas tam, ką norime įrodyti: tarkime, kad $\sqrt{2}$ yra racionalusis skaičius. Jeigu ši prielaida teisinga, iš jos turime gauti logiškai teisingas išvadas. Tačiau jeigu prielaida klaidinga, anksčiau ar vėliau turėtume gauti prieštarą, tai yra neįmanomą arba nelogišką išvadą. Tuomet suprasime, kad pradinė prielaida buvo klaidinga.
+
+Taigi prieštaros metodo schema yra tokia: \textbf{tarkime priešingai, nuosekliai samprotaukime ir, gavę prieštarą, atmeskime pradinę prielaidą}.
+
 \begin{proposition}
 $\sqrt{2}$ nėra racionalusis skaičius.
 \end{proposition}
+
+\begin{proof}
+Pasirinkome prieštaros metodą. Tarkime priešingai: $\sqrt{2}$ yra racionalusis skaičius. Tuomet jį galima užrašyti trupmena
+\[
+\sqrt{2}=\frac{m}{n},
+\]
+kur $m$ ir $n$ yra sveikieji skaičiai, $n\neq 0$, o trupmena yra sutrumpinta iki galo, t. y. $m$ ir $n$ neturi bendrų daliklių, didesnių už $1$.
+
+Pakėlę abi lygybės puses kvadratu, gauname:
+\[
+2=\frac{m^2}{n^2},
+\qquad 2n^2=m^2.
+\]
+Vadinasi, $m^2$ yra lyginis skaičius. Jei skaičiaus kvadratas yra lyginis, tai ir pats skaičius yra lyginis, todėl $m=2k$ su tam tikru sveikuoju skaičiumi $k$.
+
+Įstatę $m=2k$ į lygybę $2n^2=m^2$, gauname:
+\[
+2n^2=(2k)^2=4k^2,
+\qquad n^2=2k^2.
+\]
+Taigi $n^2$ yra lyginis, todėl ir $n$ yra lyginis.
+
+Gavome, kad ir $m$, ir $n$ yra lyginiai. Tačiau pradžioje tarėme, kad skaičiai $m$ ir $n$ neturi bendro daliklio, išskyrus $1$. Dabar matome, kad jų bendras daliklis yra $2$. Tai yra prieštara.
+
+Vadinasi, prielaida, kad $\sqrt{2}$ yra racionalusis skaičius, buvo klaidinga. Todėl $\sqrt{2}$ nėra racionalusis skaičius.
+\end{proof}
 
 Pasirodė, kad skaičių tiesėje tarp trupmenų vis dar yra begalybė „tuščių tarpų“! Šiuos tarpus užpildo iracionalieji skaičiai.
 
