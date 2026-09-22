@@ -94,7 +94,7 @@ Kiekvieną uždavinį spręsime trimis griežtais žingsniais:
 % ==========================================
 \section{Klasika: Indukcija veiksme}
 
-\begin{example}[1. Mažojo Gauso formulė]
+\begin{example}[Mažojo Gauso formulė]
 Vaikystėje genialus matematikas Karlas Frydrichas Gausas per kelias sekundes suskaičiavo sumą nuo 1 iki 100. Jis atrado formulę, kad pirmųjų $n$ natūraliųjų skaičių suma lygi:
 $$ 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2} $$
 Įrodykite, kad ši formulė teisinga visiems natūraliesiems $n$.
@@ -141,7 +141,7 @@ Ką mes gavome? Ogi visiškai tą pačią pradinę Gauso formulę, tik joje viet
 Taigi, jei formulė teisinga, kai $n=1$, ji dėl ką tik įrodyto perėjimo teisinga ir kai $n=2$. Tada iš teisingumo, kai $n=2$, seka teisingumas, kai $n=3$, po to – kai $n=4$ ir taip toliau. Gavome tikrą domino efektą: formulė galioja visiems natūraliesiems $n$.
 
 
-\begin{example}[2. Dalumas]
+\begin{example}[Dalumas]
 Įrodykite, kad su visais natūraliaisiais skaičiais $n$, reiškinys $4^n - 1$ dalijasi iš $3$ be liekanos.
 \end{example}
 
@@ -191,7 +191,7 @@ Kadangi reiškinys susideda iš trejeto, padauginto iš kažkokio sveiko skaiči
 
 Mes jau žinome, kad teiginys teisingas, kai $n=1$. Įrodėme, kad teisingumas, kai $n=k$, visada perduodamas kitam atvejui $n=k+1$. Vadinasi, iš $n=1$ gauname $n=2$, iš $n=2$ gauname $n=3$, iš $n=3$ gauname $n=4$ ir taip be galo. Todėl $4^n-1$ dalijasi iš 3 su kiekvienu natūraliuoju $n$.
 
-\begin{example}[3. Nelyginių skaičių suma]
+\begin{example}[Nelyginių skaičių suma]
 Įrodykite, kad pirmųjų $n$ nelyginių natūraliųjų skaičių suma yra lygi $n^2$:
 $$
 1+3+5+\dots+(2n-1)=n^2.
@@ -224,7 +224,7 @@ Gavome būtent tai, ką turėjome įrodyti. \hfill $\square$
 
 Kadangi bazėje parodėme, jog teiginys teisingas, kai $n=1$, o indukcijos žingsnyje įrodėme perėjimą iš $k$ į $k+1$, teisingumas automatiškai keliauja toliau: $n=1$ leidžia gauti $n=2$, tada $n=3$, $n=4$ ir taip toliau. Vadinasi, pirmųjų $n$ nelyginių skaičių suma lygi $n^2$ visiems natūraliesiems $n$.
 
-\begin{example}[4. Nelygybė]
+\begin{example}[Nelygybė]
 Įrodykite, kad su visais natūraliaisiais skaičiais $n\geq 1$ galioja:
 $$
 2^n>n.
@@ -262,7 +262,7 @@ taigi $2^{k+1}>k+1$. Tikslas pasiektas. \hfill $\square$
 Bazė parodė, kad nelygybė teisinga, kai $n=1$. Indukcijos žingsnis parodė, kad iš teisingumo, kai $n=k$, seka teisingumas, kai $n=k+1$. Todėl gauname grandinę $1\to2\to3\to4\to\cdots$: nelygybė $2^n>n$ galioja kiekvienam natūraliajam $n\geq1$.
 
 
-\begin{example}[5. Tiesės plokštumoje]
+\begin{example}[Tiesės plokštumoje]
 Plokštumoje nubrėžta $n$ tiesių taip, kad jokios dvi nėra lygiagrečios ir jokios trys nesikerta viename taške. Matematinės indukcijos būdu įrodykite, kad šios $n$ tiesių padalina plokštumą į lygiai $\frac{n^2 + n + 2}{2}$ atskirų dalių (sričių).
 \end{example}
 
