@@ -1,7 +1,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{tasks}
+\newcommand{\ats}[1]{\par\noindent\textit{Atsakymas:} #1}
 \usepackage{cancel}
 \usepackage{tikz}
 \usepackage{lmodern} 
@@ -14,6 +14,10 @@
 \usepackage[obeyFinal,textsize=scriptsize,shadow,loadshadowlibrary]{todonotes}
 \usepackage{mathtools}
 \usepackage{microtype}
+
+%%% Paragraph layout
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6\baselineskip}
 
 %%% Colored sections
 \renewcommand*{\sectionformat}%
@@ -235,4 +239,5 @@
 }{%
   \endtrivlist\@endpefalse
 }
+\newcommand{\ans}[1]{\par\noindent\textit{Atsakymas:} #1}
 \makeatother

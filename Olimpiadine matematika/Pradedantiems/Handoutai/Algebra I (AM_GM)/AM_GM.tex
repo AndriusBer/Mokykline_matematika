@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Algebra I: Aritmetinis ir geometrinis vidurkis}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Nelygybės esmė}
+
+Lygčių sprendimas paprastai reiškia tikslių nežinomųjų reikšmių radimą. Nelygybėse dažnai svarbesnė ne konkreti reikšmė, o visų galimų reikšmių įvertinimas: reikia nustatyti, kokių ribų reiškinys negali peržengti.
+
+Olimpiadinėje matematikoje dažnai prašoma įrodyti, kad reiškinys yra teigiamas, ne mažesnis už tam tikrą skaičių, arba rasti jo mažiausią ar didžiausią reikšmę. Tokiose užduotyse svarbu ne spėti atsakymą, o rasti patikimą argumentą, kuris veiktų visais leistinais atvejais.
+
+Šiame skyriuje remsimės pagrindiniu algebros faktu: bet kokio realaus skaičiaus kvadratas yra neneigiamas t.y. $x^2 \ge 0$. Iš šio paprasto fakto išauga visa olimpiadinių nelygybių teorija.
+
+
+% ==========================================
+% BAZINIAI GINKLAI
+% ==========================================
+\section{Pradiniai nelygybių įrankiai}
+
+Nelygybių uždaviniuose svarbu atpažinti reiškinio struktūrą ir parinkti tinkamą įvertinimo būdą. Toliau aptarsime du pagrindinius įrankius: kvadratų išskyrimą ir aritmetinio bei geometrinio vidurkių nelygybę.
+
+\subsection{Kvadratų išskyrimo savybės}
+Jei bet koks skaičius pakeltas kvadratu yra $\ge 0$, vadinasi, ir bet koks skirtumas pakeltas kvadratu yra $\ge 0$:
+$$ (x - y)^2 \ge 0 $$
+Atskliaudę šią formulę gauname $x^2 - 2xy + y^2 \ge 0$. Perkėlę $-2xy$ į kitą pusę, gauname patį paprasčiausią, bet dažniausiai naudojamą nelygybių įrankį:
+$$ {x^2 + y^2 \ge 2xy} $$
+Ši taisyklė sako: dviejų skaičių kvadratų suma \textit{visada} yra didesnė arba lygi jų dvigubai sandaugai. Lygybė ($=$) galioja tik vieninteliu atveju – kai $x = y$.
+
+\subsection{AM-GM nelygybė}
+Tai yra pati garsiausia nelygybė visoje mokyklinėje matematikoje. Jos pavadinimas šifruojamas kaip \textit{Aritmetinis vidurkis $\ge$ Geometrinis vidurkis} (Arithmetic Mean $\ge$ Geometric Mean).
+\begin{remark*}
+AM-GM nelygybė taikoma tik teigiamiems skaičiams.
+\end{remark*}
+
+\begin{proposition}[AM-GM nelygybė dviem skaičiams]
+Jei $a, b > 0$, tai
+$$ \frac{a+b}{2} \geq \sqrt{ab}. $$
+Lygybė pasiekiama tada ir tik tada, kai $a=b$.
+\end{proposition}
+
+\begin{proof}
+Kadangi kiekvieno realiojo skaičiaus kvadratas yra neneigiamas, turime
+$$ (\sqrt{a}-\sqrt{b})^2 \geq 0. $$
+Atskliaudę gauname
+$$ a-2\sqrt{ab}+b \geq 0, $$
+todėl
+$$ a+b \geq 2\sqrt{ab}. $$
+Padaliję abi puses iš $2$, gauname teiginio nelygybę. Lygybė galima tik tada, kai $\sqrt{a}=\sqrt{b}$, t. y. kai $a=b$.
+\end{proof}
+
+Trijų teigiamų skaičių $a, b$ ir $c$ atveju:
+$$ a + b + c \ge 3\sqrt[3]{abc} $$
+
+Bendruoju atveju, jei $a_1, a_2, \ldots, a_n > 0$, tai
+$$
+\frac{a_1+a_2+\cdots+a_n}{n}
+\ge
+\sqrt[n]{a_1a_2\cdots a_n}.
+$$
+Lygybė pasiekiama tada ir tik tada, kai $a_1=a_2=\cdots=a_n$.
+
+\textbf{Kame AM-GM yra magija?} 
+Ji leidžia \textbf{sumą paversti sandauga}. Olimpiadose dažnai gauname sumą reiškinių, kurie dauginant vienas kitą suprastina. Pavyzdžiui, skaičiaus ir jam atvirkštinio skaičiaus suma:
+$$ x + \frac{1}{x} \ge 2\sqrt{x \cdot \frac{1}{x}} \implies x + \frac{1}{x} \ge 2 $$
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+\section{Sprendimų pavyzdžiai}
+
+\begin{example}[Kvadratų atskyrimas]
+Įrodykite, kad bet kokiems realiesiems skaičiams $a, b$ ir $c$ galioja nelygybė:
+$$ a^2 + b^2 + c^2 \ge ab + bc + ca $$
+\end{example}
+\begin{proof}
+
+Matome kvadratus ir dviejų kintamųjų sandaugas. Trūksta tik dvejetų, kad susidarytų pilni kvadratai pagal formulę $(x-y)^2$. Kadangi nelygybes galima padauginti iš teigiamo skaičiaus jų nepakeičiant, padauginkime abi nelygybės puses iš 2:
+$$ 2a^2 + 2b^2 + 2c^2 \ge 2ab + 2bc + 2ca $$
+Sukelkime viską į kairę pusę:
+$$ 2a^2 + 2b^2 + 2c^2 - 2ab - 2bc - 2ca \ge 0 $$
+Dabar „išardykime“ $2a^2$ į $a^2 + a^2$ (taip pat padarykime su $b$ ir $c$) ir pergrupupukime narius taip, kad susidarytų trys pilni kvadratai:
+$$ (a^2 - 2ab + b^2) + (b^2 - 2bc + c^2) + (c^2 - 2ca + a^2) \ge 0 $$
+Suskleiskime kiekvieną grupę pagal skirtumo kvadrato formulę:
+$$ (a - b)^2 + (b - c)^2 + (c - a)^2 \ge 0 $$
+Kadangi bet koks realaus skaičiaus kvadratas yra $\ge 0$, tai ir trijų kvadratų suma visada bus $\ge 0$. Nelygybė teisinga.
+\end{proof}
+
+\begin{example}[Atvirkštinių dydžių minimumas]
+Raskite mažiausią įmanomą reiškinio $x + \frac{16}{x}$ reikšmę, kai žinoma, kad $x > 0$. Su kokia $x$ reikšme šis minimumas pasiekiamas?
+\end{example}
+\begin{solution}
+
+Matome dviejų teigiamų skaičių sumą. Vieno iš jų kintamasis yra skaitiklyje, kito – vardiklyje. Tai tobulas scenarijus AM-GM nelygybei, nes šiuos skaičius sudauginus, $x$ susiprastins ir liks tik skaičius. Pritaikome AM-GM nelygybę $a + b \ge 2\sqrt{ab}$, kur $a = x$, o $b = \frac{16}{x}$:
+$$ x + \frac{16}{x} \ge 2\sqrt{x \cdot \frac{16}{x}} $$
+Susiprastiname sandaugą po šaknimi:
+$$ x + \frac{16}{x} \ge 2\sqrt{16} $$
+$$ x + \frac{16}{x} \ge 2 \cdot 4 $$
+$$ x + \frac{16}{x} \ge 8 $$
+Įrodėme, kad šis reiškinys \textbf{niekada nebus mažesnis už 8}. Tai ir yra jo mažiausia galima reikšmė.
+AM-GM nelygybė tampa lygybe (pasiekia patį dugną, t.y. 8) tik tuo vieninteliu atveju, kai abu sudedamieji nariai yra lygūs:
+$$ x = \frac{16}{x} $$
+Dauginame abi puses iš $x$:
+$$ x^2 = 16 $$
+Kadangi sąlygoje nurodyta $x > 0$, gauname $x = 4$. Minimumas pasiekiamas, kai $x = 4$.\\
+\ats{$8$, kai $x = 4$}
+\end{solution}
+
+\begin{example}[Skliaustų daugyba]
+Teigiami skaičiai $a, b$ ir $c$ tenkina sąlygą. Įrodykite, kad:
+$$ (a+b)(b+c)(c+a) \ge 8abc $$
+\end{example}
+\begin{proof}
+Neskubėkite aklai atskliaudinėti šio reiškinio – gausite 8 narius ir tiesiog pasimesite. Kur kas elegantiškiau yra pritaikyti AM-GM nelygybę kiekvienam skliaustui atskirai.
+Pritaikome AM-GM nelygybę sumai $(a+b)$:
+$$ a+b \ge 2\sqrt{ab} $$
+Lygiai taip pat pritaikome AM-GM antram ir trečiam skliaustui:
+$$ b+c \ge 2\sqrt{bc} $$
+$$ c+a \ge 2\sqrt{ca} $$
+Kadangi visi skaičiai $a, b, c$ yra teigiami, mes galime šias tris nelygybes saugiai sudauginti tarpusavyje (kairę pusę su kaire, dešinę su dešine):
+$$ (a+b)(b+c)(c+a) \ge 2\sqrt{ab} \cdot 2\sqrt{bc} \cdot 2\sqrt{ca} $$
+Sutvarkome dešinę pusę sudaugindami skaičius ir sujungdami viską po viena šaknimi:
+$$ (a+b)(b+c)(c+a) \ge 8\sqrt{a^2b^2c^2} $$
+Ištraukus šaknį iš kvadratų, gauname tai, ką ir reikėjo įrodyti:
+$$ (a+b)(b+c)(c+a) \ge 8abc $$
+\end{proof}
+
+\begin{example}[Vardiklių žudymas triuku „Pridėk ir taikyk AM-GM“]
+Įrodykite, kad bet kokiems teigiamiems skaičiams $a, b, c$ galioja:
+$$ \frac{a^2}{b} + \frac{b^2}{c} + \frac{c^2}{a} \ge a + b + c $$
+\end{example}
+\begin{proof}
+Šis uždavinys iš pirmo žvilgsnio atrodo sunkiai įkandamas, nes kairėje turime trupmenas su kvadratais skaitikliuose, o dešinėje – paprastus skaičius. Jei visą kairę pusę kišime po AM-GM šaknimi, gausime $\sqrt[3]{\frac{a^2b^2c^2}{bca}} = \sqrt[3]{abc}$, kas visai nepanašu į $a+b+c$. Mums reikia „išlaisvinti“ kvadratus.
+Paimkime pirmąją trupmeną $\frac{a^2}{b}$. Kaip joje atsikratyti vardiklio $b$ ir sumažinti laipsnį nuo kvadrato iki paprasto $a$? Ogi pridėjus prie jos patį skaičių $b$ ir pritaikius AM-GM šiai dviejų narių sumai!
+$$ \frac{a^2}{b} + b \ge 2\sqrt{\frac{a^2}{b} \cdot b} $$
+Šaknies viduje $b$ susiprastina, ir lieka $2\sqrt{a^2} = 2a$.
+Gavome tobulą asmeninę nelygybę pirmajai trupmenai:
+$$ \frac{a^2}{b} + b \ge 2a $$
+Analogiškai pritaikome šį „gelbėjimosi“ triuką kitoms dviem trupmenoms:
+$$ \frac{b^2}{c} + c \ge 2b $$
+$$ \frac{c^2}{a} + a \ge 2c $$
+Surenkame visas tris nelygybes ir jas sudedame stulpeliu:
+$$ \left(\frac{a^2}{b} + \frac{b^2}{c} + \frac{c^2}{a}\right) + (a + b + c) \ge 2a + 2b + 2c $$
+Iš abiejų nelygybės pusių atimame po vieną $(a+b+c)$. Kairėje pusėje ši suma pradingsta, o dešinėje iš dvigubos sumos lieka tik vienguba:
+$$ \frac{a^2}{b} + \frac{b^2}{c} + \frac{c^2}{a} \ge a + b + c $$
+Įrodyta elegantiškai ir be varginančio bendravardiklinimo.
+\end{proof}
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (12 iššūkių)}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Įrodykite, kad bet kokiems realiesiems skaičiams $x$ ir $y$ teisinga nelygybė:
+    $$ x^2 + y^2 \ge 2xy $$
+
+    \item Raskite mažiausią įmanomą reiškinio reikšmę, kai žinoma, kad $x > 0$:
+    $$ x + \frac{9}{x} $$
+
+    \item Raskite mažiausią įmanomą reiškinio reikšmę, kai žinoma, kad $a > 0$:
+    $$ 4a + \frac{25}{a} $$
+
+    \item Įrodykite, kad bet kokiems teigiamiems skaičiams $a$ ir $b$ teisinga nelygybė:
+    $$ (a+1)(b+1) \ge 4\sqrt{ab} $$
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+
+    \item Raskite mažiausią įmanomą reiškinio reikšmę, kai $x > 0$:
+    $$ x + \frac{x}{4} + \frac{16}{x^2} $$
+
+    \item Įrodykite, kad bet kokiems realiesiems skaičiams $a, b$ teisinga nelygybė:
+    $$ a^2 + b^2 + 2 \ge 2(a + b) $$
+
+    \item Įrodykite, kad bet kokiems teigiamiems $a, b, c, d$ teisinga:
+    $$ (a+b)(c+d) \ge 4\sqrt{abcd} $$
+
+    \item Įrodykite, kad bet kokiems teigiamiems $x, y, z$ teisinga:
+    $$ \frac{x}{y} + \frac{y}{z} + \frac{z}{x} \ge 3 $$
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{8}
+
+    \item Įrodykite, kad teigiamiems $a, b, c$ teisinga:
+    $$ \frac{a+b}{c} + \frac{b+c}{a} + \frac{c+a}{b} \ge 6 $$
+
+    \item Žinoma, kad teigiamų skaičių suma $x + y = 1$. Įrodykite, kad:
+    $$ \left(x + \frac{1}{x}\right)^2 + \left(y + \frac{1}{y}\right)^2 \ge \frac{25}{2} $$
+
+    \item Įrodykite, kad bet kokiems teigiamiems $a, b, c$ teisinga nelygybė:
+    $$ a^3 + b^3 + c^3 \ge a^2b + b^2c + c^2a $$
+
+    \item \textbf{(Nesbito nelygybė)} Įrodykite legendinę, visame pasaulyje garsią olimpiadinę nelygybę bet kokiems teigiamiems $a, b, c$:
+    $$ \frac{a}{b+c} + \frac{b}{a+c} + \frac{c}{a+b} \ge \frac{3}{2} $$
+\end{enumerate}
+
+
+% ==========================================
+% ATSAKYMAI
+% ==========================================
+
+
+\end{document}

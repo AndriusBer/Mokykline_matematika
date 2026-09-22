@@ -1,0 +1,258 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Algebra I: Lygčių sistemos su dviem kintamaisiais}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Keitimo metodo krachas}
+
+Mokyklinėse lygčių sistemose dažnai pakanka vieną kintamąjį išreikšti per kitą ir jį įstatyti į likusią lygtį. Olimpiadinėse sistemose toks metodas ne visuomet yra veiksmingas: jis gali sukurti aukštų laipsnių lygtis arba nepatogias šaknines išraiškas.
+
+Įsivaizduokite sistemą:
+\[
+\left\{\begin{aligned}
+    x^2 + y^2 &= 13 \\
+    x^3 + y^3 &= 35
+\end{aligned}\right.
+\]
+Jei iš pirmosios lygties išreikštume $y = \sqrt{13-x^2}$ ir šią išraišką įstatytume į antrąją lygtį, gautume gerokai sudėtingesnę lygtį su šaknimis ir aukštais laipsniais.
+
+Todėl svarbu atpažinti sistemos struktūrą ir pasirinkti jai tinkamą metodą: simetrinius reiškinius, pilnųjų kvadratų išskyrimą arba skaidymą dauginamaisiais.
+
+% ==========================================
+% BAZINIAI GINKLAI
+% ==========================================
+\section{Pagrindiniai metodai}
+
+\subsection{Simetriniai reiškiniai}
+Jei sukeitus $x$ ir $y$ vietomis sistemos lygtys nepasikeičia, sistema yra \vocab{simetrinė}. Tuomet patogu ją perrašyti per kintamųjų sumą ir sandaugą:
+$$ u = x + y $$
+$$ v = x y $$
+Naudojame formules:
+$$ x^2 + y^2 = (x+y)^2 - 2xy = u^2 - 2v $$
+$$ x^3 + y^3 = (x+y)(x^2 - xy + y^2) = u(u^2 - 3v) $$
+
+\begin{example}[Simetrinė sistema]
+Išspręskite lygčių sistemą:
+\[
+\left\{\begin{aligned}
+    x + y + xy &= 11 \\
+    x^2 y + x y^2 &= 30
+\end{aligned}\right.
+\]
+\end{example}
+
+\begin{solution}
+Sukeitus $x$ ir $y$ vietomis, abi sistemos lygtys nepasikeičia. Todėl patogu naudoti simetrinius reiškinius
+\[ u=x+y, \qquad v=xy. \]
+Pirmoji lygtis tampa $u+v=11$. Antrojoje iškeliame $xy$:
+\[ x^2y+xy^2=xy(x+y)=uv. \]
+Taigi pradinę sistemą perrašome taip:
+\[
+\left\{\begin{aligned}
+    u+v&=11 \\
+    uv&=30
+\end{aligned}\right.
+\]
+
+Ieškome dviejų skaičių, kurių suma yra $11$, o sandauga $30$. Tai yra skaičiai $5$ ir $6$, todėl galimi du atvejai:
+\[
+\text{1) } u=5,\ v=6, \qquad \text{2) } u=6,\ v=5.
+\]
+
+Pirmuoju atveju turime $x+y=5$ ir $xy=6$. Pagal Vijeto teoremą $x$ ir $y$ yra lygties
+\[
+t^2-5t+6=0
+\]
+šaknys. Išskaidę gauname $(t-2)(t-3)=0$, todėl $(x,y)=(2,3)$ arba $(3,2)$.
+
+Antruoju atveju turime $x+y=6$ ir $xy=5$. Dabar $x$ ir $y$ yra lygties
+\[
+t^2-6t+5=0
+\]
+šaknys. Išskaidę gauname $(t-1)(t-5)=0$, todėl $(x,y)=(1,5)$ arba $(5,1)$.
+
+Visos gautos poros tenkina pradinę sistemą, todėl kitų realių sprendinių nėra.
+
+\ats{$(2,3), (3,2), (1,5), (5,1)$}
+\end{solution}
+
+\subsection{Pilno kvadrato išskyrimas}
+Kartais dvi atskiros lygtys atrodo negražiai, bet jas \textbf{sudėjus} arba \textbf{atėmus}, iš niekur nieko atsiranda tobulas pilnas kvadratas $(x \pm y)^2$. Jūsų akys turi išmokti ieškoti kvadratų ir dvigubų sandaugų ($2xy$) porų.
+
+\begin{example}[Pilno kvadrato konstravimas]
+Išspręskite lygčių sistemą:
+\[
+\left\{\begin{aligned}
+    x^2 + y^2 &= 25 \\
+    xy &= 12
+\end{aligned}\right.
+\]
+\end{example}
+
+\begin{solution}
+Šioje sistemoje turime kvadratų sumą $x^2+y^2$ ir sandaugą $xy$. Padauginę antrąją lygtį iš $2$, gauname
+\[
+2xy=24.
+\]
+
+Sudedame šią lygtį su pirmąja:
+\[
+x^2+y^2+2xy=25+24,
+\]
+\[
+(x+y)^2=49.
+\]
+Todėl
+\[
+x+y=7 \quad\text{arba}\quad x+y=-7.
+\]
+
+Iš pirmosios lygties atimame $2xy=24$:
+\[
+x^2+y^2-2xy=25-24,
+\]
+\[
+(x-y)^2=1.
+\]
+Todėl
+\[
+x-y=1 \quad\text{arba}\quad x-y=-1.
+\]
+
+Išsprendžiame keturias galimas tiesines sistemas:
+\begin{align*}
+    x+y=7,\ x-y=1 &\implies (x,y)=(4,3), \\
+    x+y=7,\ x-y=-1 &\implies (x,y)=(3,4), \\
+    x+y=-7,\ x-y=1 &\implies (x,y)=(-3,-4), \\
+    x+y=-7,\ x-y=-1 &\implies (x,y)=(-4,-3).
+\end{align*}
+
+Kiekviena pora tenkina abi pradines lygtis, todėl gauname visus sprendinius.
+
+\ats{$(4,3), (3,4), (-4,-3), (-3,-4)$}
+\end{solution}
+
+\subsection{Skaidymas dauginamaisiais}
+Jei vienoje lygties pusėje matote nulį (pvz., $x^2 - xy - 2y^2 = 0$), tai yra galingas signalas, kad kairę pusę reikia skaidyti dauginamaisiais. Gavę sandaugą, lygią nuliui, sistemą padalinsite į du labai paprastus atskirus atvejus.
+
+\begin{example}[Skaidymas dauginamaisiais]
+Išspręskite lygčių sistemą:
+\[
+\left\{\begin{aligned}
+    x^2 - xy - 2y^2 &= 0 \\
+    x^2 + 2y^2 &= 18
+\end{aligned}\right.
+\]
+\end{example}
+
+\begin{solution}
+Pirmoji lygtis lygi nuliui, todėl jos kairiąją pusę skaidome dauginamaisiais:
+\begin{align*}
+x^2-xy-2y^2 &= x^2+xy-2xy-2y^2 \\
+             &= x(x+y)-2y(x+y) \\
+             &= (x+y)(x-2y).
+\end{align*}
+Taigi gauname:
+\[
+(x+y)(x-2y)=0.
+\]
+
+Sandauga lygi nuliui tada, kai bent vienas jos dauginamasis lygus nuliui. Todėl nagrinėjame du atvejus.
+
+\textbf{1 atvejis:} $x+y=0$, taigi $x=-y$. Įstatome į antrąją pradinę lygtį:
+\[
+(-y)^2+2y^2=18 \implies 3y^2=18 \implies y^2=6.
+\]
+Vadinasi, $y=\pm\sqrt6$. Atitinkamai gauname:
+\[
+(x,y)=(-\sqrt6,\sqrt6) \quad\text{arba}\quad (\sqrt6,-\sqrt6).
+\]
+
+\textbf{2 atvejis:} $x-2y=0$, taigi $x=2y$. Įstatome į antrąją lygtį:
+\[
+(2y)^2+2y^2=18 \implies 6y^2=18 \implies y^2=3.
+\]
+Vadinasi, $y=\pm\sqrt3$. Atitinkamai gauname:
+\[
+(x,y)=(2\sqrt3,\sqrt3) \quad\text{arba}\quad (-2\sqrt3,-\sqrt3).
+\]
+
+Šie keturi sprendiniai apima abu pirmosios lygties išskaidymo atvejus.
+
+\ats{$(-\sqrt6,\sqrt6), (\sqrt6,-\sqrt6), (2\sqrt3,\sqrt3), (-2\sqrt3,-\sqrt3)$}
+\end{solution}
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI SAVARANKIŠKAM SPRENDIMUI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (20 iššūkių)}
+Išspręskite lygčių sistemas:
+
+\begin{enumerate}
+    \item $\left\{\begin{aligned} x+y&=7 \\ xy&=12 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x-y&=2 \\ xy&=15 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2+y^2&=25 \\ x-y&=1 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} \frac{1}{x} + \frac{1}{y} &= \frac{5}{6} \\ x+y&=5 \end{aligned}\right.$
+
+    \item $\left\{\begin{aligned} x^2+y^2&=34 \\ xy&=15 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2+y^2&=58 \\ x+y&=10 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2-y^2&=9 \\ x-y&=1 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2y - xy^2&=6 \\ x-y&=1 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x+y+xy&=5 \\ x^2+y^2&=5 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^3+y^3&=35 \\ x+y&=5 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} \frac{x}{y} + \frac{y}{x} &= \frac{13}{6} \\ x+y&=5 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2+y^2+x+y&=18 \\ xy&=6 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^3-y^3&=19 \\ x-y&=1 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2-4y^2&=0 \\ x^2+y^2&=5 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2-3xy+2y^2&=0 \\ 2x^2-y^2&=7 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} 2x^2 - 3xy + y^2&=0 \\ x^2-y^2&=-3 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^4+y^4&=17 \\ x+y&=3 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} x^2y+xy^2&=20 \\ x^3+y^3&=65 \end{aligned}\right.$
+    \item $\left\{\begin{aligned} (x+y)(x^2+y^2)&=15 \\ (x-y)(x^2-y^2)&=3 \end{aligned}\right.$
+    \item Raskite sveikuosius lygčių sistemos sprendinius:$$\left\{\begin{aligned} x^2+y^2&=10 \\ x^3+y^3&=26 \end{aligned}\right.$$
+\end{enumerate}
+
+% ==========================================
+% SAVARANKIŠKŲ UŽDAVINIŲ SPRENDIMAI
+% ==========================================
+% ==========================================
+% ATSAKYMAI
+% ==========================================
+\newpage
+\section*{Atsakymai}
+
+\begin{enumerate}
+    \item $(3,4), (4,3)$
+    \item $(5,3), (-3,-5)$
+    \item $(4,3), (-3,-4)$
+    \item $(2,3), (3,2)$
+    \item $(5,3), (3,5), (-5,-3), (-3,-5)$
+    \item $(3,7), (7,3)$
+    \item $(5,4)$
+    \item $(3,2), (-2,-3)$
+    \item $(1,2), (2,1)$
+    \item $(2,3), (3,2)$
+    \item $(2,3), (3,2)$
+    \item $(2,3), (3,2), (-3+\sqrt{3}, -3-\sqrt{3}), (-3-\sqrt{3}, -3+\sqrt{3})$
+    \item $(3,2), (-2,-3)$
+    \item $(2,1), (-2,-1), (-2,1), (2,-1)$
+    \item $(\sqrt{7/3},\sqrt{7/3}), (-\sqrt{7/3},-\sqrt{7/3}), (2,1), (-2,-1)$
+    \item $(1,2), (-1,-2)$
+    \item $(1,2), (2,1)$
+    \item $(1,4), (4,1)$
+    \item $(1,2), (2,1)$
+    \item $(3,-1), (-1,3)$
+\end{enumerate}
+
+\end{document}
