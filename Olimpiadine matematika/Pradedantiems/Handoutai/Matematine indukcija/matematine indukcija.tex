@@ -1,0 +1,451 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes,calc,decorations.markings,intersections}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Matematinė indukcija}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kaip įrodyti kažką begalybei skaičių?}
+
+Matematikoje dažnai susiduriame su teiginiais, kurie priklauso nuo natūraliojo skaičiaus $n$ ($n = 1, 2, 3, \dots$).
+Pavyzdžiui, kažkas teigia:
+\begin{center}
+    \textit{„Skaičius $4^n - 1$ visada dalijasi iš $3$, nesvarbu, kokį natūralųjį skaičių $n$ bepaimtum.“}
+\end{center}
+
+Kaip tai įrodyti? Galime patikrinti:
+Kai $n=1$, $4^1 - 1 = 3$ (dalijasi iš 3).
+Kai $n=2$, $4^2 - 1 = 15$ (dalijasi iš 3).
+Kai $n=3$, $4^3 - 1 = 63$ (dalijasi iš 3).
+
+Atrodo, kad veikia! Bet patikrinę tris, dešimt ar net milijoną skaičių, mes teiginio neįrodome. O gal su $n = 1000001$ taisyklė staiga nustos veikusi? Mes negalime patikrinti visų skaičių iki begalybės, nes mums neužteks gyvenimo. 
+Tam matematikai sukūrė nuostabų įrankį – \textbf{Matematinę indukciją}.
+
+\section{Domino efektas}
+
+Matematinė indukcija veikia lygiai taip pat, kaip krintantys domino kauliukai. Įsivaizduokite be galo ilgą domino kauliukų eilę. Mes norime būti tikri, kad \textbf{nukris visi kauliukai}.
+Kad tai įvyktų, mums tereikia užtikrinti \textbf{dvi} sąlygas:
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    % 1. Bazė
+    \draw[ultra thick, red, ->] (-1.5, 1.5) -- (-0.2, 1.5) node[midway, above] {Pastūmimas};
+    
+    % Krintantys kauliukai
+    \begin{scope}[shift={(0,0.29)}, rotate around={-35:(0,0)}]
+        \draw[thick, fill=blue!20, rounded corners=1pt] (0,0) rectangle (0.5, 3);
+        \node[rotate=-35] at (0.25, 1.5) {$1$};
+    \end{scope}
+    
+    \begin{scope}[shift={(1.2,0.17)}, rotate around={-20:(0,0)}]
+        \draw[thick, fill=blue!20, rounded corners=1pt] (0,0) rectangle (0.5, 3);
+        \node[rotate=-20] at (0.25, 1.5) {$2$};
+    \end{scope}
+
+    \begin{scope}[shift={(2.4,0.09)}, rotate around={-10:(0,0)}]
+        \draw[thick, fill=blue!20, rounded corners=1pt] (0,0) rectangle (0.5, 3);
+        \node[rotate=-10] at (0.25, 1.5) {$3$};
+    \end{scope}
+
+    % 2. Žingsnis (k ir k+1)
+    \draw[thick, fill=green!20, rounded corners=1pt] (4.5,0) rectangle (5.0, 3);
+    \node at (4.75, 1.5) {$k$};
+    
+    \draw[ultra thick, orange, ->] (5.1, 2) -- (5.9, 2) node[midway, above] {};
+    
+    \draw[thick, fill=green!20, rounded corners=1pt] (6.0,0) rectangle (6.5, 3);
+    \node at (6.25, 1.5) {\footnotesize $k\!\!+\!\!1$};
+    
+    \draw[thick, fill=gray!20, rounded corners=1pt] (7.5,0) rectangle (8.0, 3);
+    
+    \node at (8.8, 1.5) {\Large $\dots$};
+    
+    % Pagrindas
+    \draw[thick, gray] (-1.5,0) -- (9.5,0);
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{1 Sąlyga (Indukcijos bazė):} Mes privalome patys pirštu pastumti patį pirmąjį kauliuką.
+    \item \textbf{2 Sąlyga (Indukcijos žingsnis):} Mes privalome įrodyti taisyklę, kad \textit{JEIGU} krinta bet koks vienas kauliukas (pavadinkime jį $k$-tuoju), tai jis virsdamas \textit{BŪTINAI} nuvers sekantį kauliuką (kurio numeris $k+1$).
+\end{itemize}
+
+Jei įvykdėme abi sąlygas, magija suveikia: Pirmas kauliukas krenta (1 sąlyga). Kadangi jis krenta, pagal mūsų taisyklę (2 sąlyga) jis nuverčia antrą. Antras nuverčia trečią. Trečias – ketvirtą... Grandininė reakcija tęsiasi iki begalybės! Teiginys įrodytas visiems natūraliesiems skaičiams.
+
+\subsection*{Formalus matematinės indukcijos algoritmas}
+
+Kiekvieną uždavinį spręsime trimis griežtais žingsniais:
+\begin{enumerate}
+    \item \textbf{Indukcijos bazė:} Patikriname, ar teiginys teisingas, kai $n = 1$. (Pajudiname pirmą kauliuką).
+    \item \textbf{Indukcijos prielaida:} \textit{Tariame}, kad teiginys yra teisingas kažkokiam laisvai pasirinktam skaičiui $n = k$. (Tariame, kad $k$-tasis kauliukas krenta). Mes to neįrodinėjame, mes tiesiog aprašome situaciją grandininės reakcijos viduryje.
+    \item \textbf{Indukcijos žingsnis:} Remdamiesi savo prielaida, matematiškai \textbf{įrodome}, kad teiginys privalo būti teisingas ir sekančiam skaičiui $n = k+1$. (Įrodome, kad $k$ kauliukas nuvers $k+1$ kauliuką).
+\end{enumerate}
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+\section{Klasika: Indukcija veiksme}
+
+\begin{example}[1. Mažojo Gauso formulė]
+Vaikystėje genialus matematikas Karlas Frydrichas Gausas per kelias sekundes suskaičiavo sumą nuo 1 iki 100. Jis atrado formulę, kad pirmųjų $n$ natūraliųjų skaičių suma lygi:
+$$ 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2} $$
+Įrodykite, kad ši formulė teisinga visiems natūraliesiems $n$.
+\end{example}
+
+\textbf{Sprendimas:}\\
+Mes nežinome, ar ši formulė staiga nesulūš pasiekus milijoną. Todėl paleisime indukcijos domino efektą.
+
+\textbf{1 žingsnis (Indukcijos bazė).} Patikriname patį pirmąjį atvejį, kai $n = 1$. Kairėje pusėje turime tik vieną narį (skaičių 1). Dešinėje pusėje į formulę vietoje $n$ įstatome 1:
+$$
+1 = \frac{1(1+1)}{2}
+$$
+$$
+1 = \frac{2}{2} \implies 1 = 1
+$$
+Pirmasis domino kauliukas sėkmingai pastumtas – teiginys su $n=1$ teisingas.
+
+\textbf{2 žingsnis (Indukcijos prielaida).} Dabar persikeliame į domino eilės vidurį. Tiesiog \textit{tariame}, kad formulė veikia kažkokiam skaičiui $n = k$. Tiesiog perrašome sąlygą pakeitę $n$ į $k$. Tai yra mūsų darbinis įrankis („krentantis $k$-tasis kauliukas“), kurį naudosime kitame žingsnyje:
+$$
+1 + 2 + 3 + \dots + k = \frac{k(k+1)}{2} \quad \text{--- (Tai mūsų prielaida)}
+$$
+
+\textbf{3 žingsnis (Indukcijos žingsnis).} Mūsų tikslas – įrodyti, kad jei formulė veikia skaičiui $k$, ji privalo veikti ir sekančiam skaičiui $n = k+1$. 
+Pirmiausia aiškiai užrašykime, ką turime gauti, kai $n=k+1$:
+\begin{equation}
+1+2+3+\cdots+k+(k+1) = \frac{(k+1)(k+2)}{2}.
+\end{equation}
+Tai yra mūsų galutinis tikslas. Dabar parodysime, kad kairioji pusė iš tiesų lygi dešiniajai.
+Čia prasideda indukcijos magija. Pažiūrėkite atidžiai: juk pirmoji šios sumos dalis $(1 + 2 + \dots + k)$ yra lygiai tai, ką mes aprašėme \textbf{2 žingsnyje} savo prielaidoje! 
+Pakeiskime visą šią ilgą sumos pradžią trupmena iš mūsų prielaidos:
+$$
+\underbrace{1 + 2 + 3 + \dots + k}_{\frac{k(k+1)}{2}} + (k+1) = \frac{k(k+1)}{2} + (k+1)
+$$
+Dabar belieka atlikti algebrinius veiksmus ir subendravardiklinti. Pridedame vardiklį 2 antrajam nariui:
+$$
+\frac{k(k+1)}{2} + \frac{2(k+1)}{2} = \frac{k(k+1) + 2(k+1)}{2}
+$$
+Iškeliame bendrą dauginiklį $(k+1)$ prieš skliaustus:
+$$
+\frac{(k+1)(k+2)}{2}
+$$
+Ką mes gavome? Ogi visiškai tą pačią pradinę Gauso formulę, tik joje vietoje $n$ dabar stovi $(k+1)$. Mes įrodėme, kad $k$-tojo kauliuko kritimas nuvertė $(k+1)$-ąjį. \hfill $\square$
+
+Taigi, jei formulė teisinga, kai $n=1$, ji dėl ką tik įrodyto perėjimo teisinga ir kai $n=2$. Tada iš teisingumo, kai $n=2$, seka teisingumas, kai $n=3$, po to – kai $n=4$ ir taip toliau. Gavome tikrą domino efektą: formulė galioja visiems natūraliesiems $n$.
+
+
+\begin{example}[2. Dalumas]
+Įrodykite, kad su visais natūraliaisiais skaičiais $n$, reiškinys $4^n - 1$ dalijasi iš $3$ be liekanos.
+\end{example}
+
+\textbf{Sprendimas:}\\
+Indukcija puikiai tinka ne tik sumoms, bet ir dalumo įrodymams. 
+
+\textbf{1 žingsnis (Indukcijos bazė).} Patikriname teiginį, kai $n = 1$:
+$$
+4^1 - 1 = 3
+$$
+Skaičius 3 tikrai dalijasi iš 3. Bazė teisinga.
+
+\textbf{2 žingsnis (Indukcijos prielaida).} Tariame, kad teiginys yra teisingas pasirinktam skaičiui $n = k$. Tai reiškia, mes \textit{tikime}, kad reiškinys $4^k - 1$ dalijasi iš 3. Matematikoje tai užrašoma įsivedant sveikąjį skaičių $m$:
+$$
+4^k - 1 = 3m \quad \text{--- (Tai mūsų prielaida, kurią panaudosime)}
+$$
+Iš šios prielaidos galime išreikšti patį laipsnį, persikėlę vienetą į kitą pusę:
+$$
+4^k = 3m + 1
+$$
+
+\textbf{3 žingsnis (Indukcijos žingsnis).} Mūsų tikslas parodyti, kad su sekančiu skaičiumi $n = k+1$ reiškinys taip pat dalinsis iš 3. Užrašykime naująjį reiškinį:
+\begin{equation}
+4^{k+1}-1 = 3q \quad \text{su kažkokiu sveikuoju skaičiumi } q.
+\end{equation}
+Tai yra mūsų galutinis tikslas: turime parodyti, kad $4^{k+1}-1$ galima užrašyti kaip 3 kart kažkoks sveikas skaičius. Dabar pertvarkysime reiškinį taip, kad šis trejetas išryškėtų.
+$$
+4^{k+1} - 1
+$$
+Panaudodami laipsnių savybes, atskirkime vieną ketvertą:
+$$
+4^1 \cdot 4^k - 1 = 4 \cdot 4^k - 1
+$$
+Dabar prisiminkime \textbf{2 žingsnį}. Jame mes išreiškėme, kad $4^k = 3m + 1$. Įstatykime tai vietoje $4^k$:
+$$
+4 \cdot (3m + 1) - 1
+$$
+Atskliauskime ir sutraukime panašius narius:
+$$
+12m + 4 - 1 = 12m + 3
+$$
+Matome, kad iš abiejų narių galime iškelti trejetą prieš skliaustus!
+$$
+3(4m + 1)
+$$
+Kadangi reiškinys susideda iš trejeto, padauginto iš kažkokio sveiko skaičiaus, jis \textbf{būtinai} dalijasi iš 3 be liekanos. Taigi, iš prielaidos $n=k$ išplaukia teisingumas sekantiems metams $n=k+1$. Domino kauliukai krenta amžinai. \hfill $\square$
+
+Mes jau žinome, kad teiginys teisingas, kai $n=1$. Įrodėme, kad teisingumas, kai $n=k$, visada perduodamas kitam atvejui $n=k+1$. Vadinasi, iš $n=1$ gauname $n=2$, iš $n=2$ gauname $n=3$, iš $n=3$ gauname $n=4$ ir taip be galo. Todėl $4^n-1$ dalijasi iš 3 su kiekvienu natūraliuoju $n$.
+
+\begin{example}[3. Nelyginių skaičių suma]
+Įrodykite, kad pirmųjų $n$ nelyginių natūraliųjų skaičių suma yra lygi $n^2$:
+$$
+1+3+5+\dots+(2n-1)=n^2.
+$$
+\end{example}
+
+\textbf{Sprendimas:}\
+Šiame pavyzdyje indukcijos žingsnyje turime ne tik pakeisti $n$ į $k+1$, bet ir pastebėti, koks yra kitas nelyginis skaičius.
+
+\textbf{1 žingsnis (Indukcijos bazė).} Kai $n=1$:
+$$
+1=1^2.
+$$
+Bazė teisinga.
+
+\textbf{2 žingsnis (Indukcijos prielaida).} Tarkime, kad kažkokiam natūraliajam $k$:
+$$
+1+3+5+\dots+(2k-1)=k^2.
+$$
+
+\textbf{3 žingsnis (Indukcijos žingsnis).} Pirmiausia užrašykime galutinį tikslą, kurį turime pasiekti:
+\begin{equation}
+1+3+5+\cdots+(2k-1)+(2k+1)=(k+1)^2.
+\end{equation}
+Dabar kairėje pusėje esančią pirmųjų $k$ nelyginių skaičių sumą pakeičiame pagal indukcijos prielaidą:
+$$
+k^2+(2k+1)=k^2+2k+1=(k+1)^2.
+$$
+Gavome būtent tai, ką turėjome įrodyti. \hfill $\square$
+
+Kadangi bazėje parodėme, jog teiginys teisingas, kai $n=1$, o indukcijos žingsnyje įrodėme perėjimą iš $k$ į $k+1$, teisingumas automatiškai keliauja toliau: $n=1$ leidžia gauti $n=2$, tada $n=3$, $n=4$ ir taip toliau. Vadinasi, pirmųjų $n$ nelyginių skaičių suma lygi $n^2$ visiems natūraliesiems $n$.
+
+\begin{example}[4. Nelygybė]
+Įrodykite, kad su visais natūraliaisiais skaičiais $n\geq 1$ galioja:
+$$
+2^n>n.
+$$
+\end{example}
+
+\textbf{Sprendimas:}\
+Šį kartą indukcijos žingsnyje įrodysime ne lygybę, o griežtą nelygybę.
+
+\textbf{1 žingsnis (Indukcijos bazė).} Patikriname teiginį, kai $n=1$:
+$$
+2^1=2>1.
+$$
+Bazė teisinga.
+
+\textbf{2 žingsnis (Indukcijos prielaida).} Tariame, kad teiginys yra teisingas pasirinktam skaičiui $n=k$, kur $k\geq 1$:
+$$
+2^k>k.
+$$
+
+\textbf{3 žingsnis (Indukcijos žingsnis).} Mūsų tikslas parodyti, kad su sekančiu skaičiumi $n = k+1$ teiginys taip pat galios. Pirmiausia užrašykime galutinį tikslą:
+\begin{equation}
+2^{k+1}>k+1.
+\end{equation}
+Tai ir turime įrodyti, remdamiesi prielaida $2^k>k$. Iš jos, padauginę abi puses iš 2, gauname:
+$$
+2^{k+1}=2\cdot 2^k>2k.
+$$
+Kadangi $k\geq 1$, tai $2k\geq k+1$. Vadinasi, sujungę nelygybes turime:
+$$
+2^{k+1}>2k\geq k+1,
+$$
+taigi $2^{k+1}>k+1$. Tikslas pasiektas. \hfill $\square$
+
+Bazė parodė, kad nelygybė teisinga, kai $n=1$. Indukcijos žingsnis parodė, kad iš teisingumo, kai $n=k$, seka teisingumas, kai $n=k+1$. Todėl gauname grandinę $1\to2\to3\to4\to\cdots$: nelygybė $2^n>n$ galioja kiekvienam natūraliajam $n\geq1$.
+
+
+\begin{example}[5. Tiesės plokštumoje]
+Plokštumoje nubrėžta $n$ tiesių taip, kad jokios dvi nėra lygiagrečios ir jokios trys nesikerta viename taške. Matematinės indukcijos būdu įrodykite, kad šios $n$ tiesių padalina plokštumą į lygiai $\frac{n^2 + n + 2}{2}$ atskirų dalių (sričių).
+\end{example}
+
+\textbf{Sprendimas:}\\
+Šis geometrinis uždavinys reikalauja sujungti erdvinį mąstymą su algebra. Jo grožis slypi indukcijos žingsnyje, kuriame turime suprasti, ką tiksliai padaro viena nauja nubrėžta tiesė. Kad būtų vaizdžiau, įsivaizduokime ne begalinę plokštumą, o didelę, uždarą, ranka nubrėžtą sritį.
+
+\textbf{1 žingsnis (Indukcijos bazė).} Pradedame nuo paprasčiausio atvejo, kai plokštumoje nubrėžta viena tiesė ($n = 1$). Akivaizdu, kad ji padalina sritį į dvi lygias dalis. 
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \def\potato{plot [smooth cycle, tension=0.7] coordinates {(-2.5,0) (-1.5,2.2) (1,2.5) (2.3,1) (2.5,-1) (1,-2) (-1.5,-1.8)}}
+    \filldraw[fill=gray!10, draw=black, thick] \potato;
+    \begin{scope}
+        \clip \potato;
+        \draw[thick, blue] (-3, -1.5) -- (3, 1.5);
+    \end{scope}
+    \node at (-1.2, 1.2) {\Large 1 sritis};
+    \node at (1.2, -1) {\Large 2 sritis};
+\end{tikzpicture}
+\end{center}
+Įstatykime $n=1$ į duotą formulę, norėdami patikrinti, ar ji veikia:
+$$ \frac{1^2 + 1 + 2}{2} = \frac{4}{2} = 2 $$
+Formulė veikia nepriekaištingai. Bazė teisinga. Kad geriau suprastume procesą, pabandykime ranka nubrėžti dar vieną, antrą tiesę ($n=2$). Nauja tiesė kerta senąją viename taške, taip padalindama dvi buvusias sritis per pusę – gauname iš viso 4 sritis. Tai vėl atitinka formulę $\frac{2^2+2+2}{2} = 4$.
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \def\potato{plot [smooth cycle, tension=0.7] coordinates {(-2.5,0) (-1.5,2.2) (1,2.5) (2.3,1) (2.5,-1) (1,-2) (-1.5,-1.8)}}
+    \filldraw[fill=gray!10, draw=black, thick] \potato;
+    \begin{scope}
+        \clip \potato;
+        \draw[thick, blue] (-3, -1.5) -- (3, 1.5);
+        \draw[thick, red] (-2, -2.5) -- (1.5, 4.5);
+    \end{scope}
+    \filldraw (-1, -0.5) circle (2pt);
+    \node at (-1.2, 1.5) {\Large 1};
+    \node at (1.2, 1.5) {\Large 2};
+    \node at (0.5, -1.2) {\Large 3};
+    \node at (-1.8, -1.2) {\Large 4};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis (Indukcijos prielaida).} Tariame, kad teiginys yra teisingas laisvai pasirinktam $k$ tiesių skaičiui. Tai yra, mes \textit{tikime}, kad jau nubrėžtos $k$ tiesių padalina plokštumą į tiksliai tiek sričių:
+$$ \frac{k^2 + k + 2}{2} \quad \text{--- (Mūsų turimas esamų sričių skaičius)} $$
+
+\textbf{3 žingsnis (Indukcijos žingsnis).} Mūsų tikslas parodyti, kad su sekančiu skaičiumi $n = k+1$ (nubrėžus dar vieną, naują tiesę) bendras sričių skaičius atitiks nurodytą formulę. 
+Pirmiausia užrašykime galutinį tikslą, kurį turime pasiekti (įsistatome $k+1$):
+\begin{equation}
+\frac{(k+1)^2 + (k+1) + 2}{2} = \frac{k^2 + 2k + 1 + k + 1 + 2}{2} = \frac{k^2 + 3k + 4}{2}.
+\end{equation}
+
+Dabar į mūsų brėžinį brėžiame šią naują, trečiąją tiesę (situacija, kai pridedame tiesę prie $k=2$). Ką ji padaro?
+Kadangi naujoji tiesė nėra lygiagreti nė vienai iš senųjų, ji privalo perkirsti visas senas $k$ tiesių. Jokios trys tiesės nesikerta viename taške, todėl naujoji tiesė kirs senąsias lygiai $k$ skirtingų taškų.
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \def\potato{plot [smooth cycle, tension=0.7] coordinates {(-2.5,0) (-1.5,2.2) (1,2.5) (2.3,1) (2.5,-1) (1,-2) (-1.5,-1.8)}}
+    \filldraw[fill=gray!10, draw=black, thick] \potato;
+    \begin{scope}
+        \clip \potato;
+        % Senosios k=2 tiesės
+        \draw[thick, gray] (-3, -1.5) -- (3, 1.5);
+        \draw[thick, gray] (-2, -2.5) -- (1.5, 4.5);
+        
+        % Nauja (k+1)=3 tiesė padalinta į atkarpas susikirtimo taškų
+        \draw[thick, red] (-1.5, 3) -- (3, -1.5);
+    \end{scope}
+    
+    \filldraw[gray] (-1, -0.5) circle (1.5pt); % Senų susikirtimas
+    \filldraw[red] (0, 1.5) circle (2.5pt) node[above right, text=black] {1}; % Naujos ir antros senos susikirtimas
+    \filldraw[red] (1, 0.5) circle (2.5pt) node[above right, text=black] {2}; % Naujos ir pirmos senos susikirtimas
+\end{tikzpicture}
+\end{center}
+
+Kaip matome brėžinyje, šie $k$ raudonų susikirtimo taškų padalina mūsų naująją tiesę į lygiai $k+1$ atkarpų (įskaitant atkarpas, kurios eina link kraštų). Svarbiausia įžvalga: kiekviena iš šių $k+1$ tiesės dalių tarsi peiliu perpjauna vieną \textit{jau esamą} sritį į dvi dalis. Vadinasi, naujoji tiesė prideda lygiai \textbf{$k+1$ naujų sričių}.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    \def\potato{plot [smooth cycle, tension=0.7] coordinates {(-2.5,0) (-1.5,2.2) (1,2.5) (2.3,1) (2.5,-1) (1,-2) (-1.5,-1.8)}}
+    \filldraw[fill=gray!10, draw=black, thick] \potato;
+    \begin{scope}
+        \clip \potato;
+        \draw[thick, gray] (-3, -1.5) -- (3, 1.5);
+        \draw[thick, gray] (-2, -2.5) -- (1.5, 4.5);
+        
+        % Nauja (k+1)=3 tiesė padalinta į atkarpas
+        \draw[ultra thick, red] (-1.5, 3) -- (0, 1.5);
+        \draw[ultra thick, blue!80!white] (0, 1.5) -- (1, 0.5);
+        \draw[ultra thick, green!70!black] (1, 0.5) -- (3, -1.5);
+    \end{scope}
+    
+    \filldraw[red] (0, 1.5) circle (2pt);
+    \filldraw[red] (1, 0.5) circle (2pt);
+    
+    \node[above right,yshift = -2.5mm, text=red!80!black] at (-0.9, 2.4) {\footnotesize $+1$ sritis};
+    \node[above right, text=blue!80!black] at (0.2, 1.0) {\footnotesize $+1$ sritis};
+    \node[above right, text=green!70!black, xshift = -3.5mm] at (1.5, 0) {\footnotesize $+1$ sritis};
+    
+    % Numbering the 7 regions
+    \node at (0, 0.5) {7};
+    \node at (-0.6, 1.9) {1};
+    \node at (0.9, 1.7) {2};
+    \node at (1.8, 0.5) {3};
+    \node at (0.5, -0.8) {4};
+    \node at (-1.8, -0.5) {5};
+    \node at (-1.6, 0.7) {6};
+\end{tikzpicture}
+\end{center}
+
+Norėdami rasti bendrą sričių skaičių po naujos tiesės nubrėžimo, prie prielaidoje turėto seno sričių skaičiaus pridedame naujai atsiradusias sritis:
+$$ \frac{k^2 + k + 2}{2} + (k+1) $$
+Dabar atliekame algebros veiksmus ir subendravardikliname:
+$$ \frac{k^2 + k + 2}{2} + \frac{2(k+1)}{2} = \frac{k^2 + k + 2 + 2k + 2}{2} = \frac{k^2 + 3k + 4}{2} $$
+Gavome būtent tai, ką turėjome įrodyti. \hfill $\square$
+
+Kadangi bazėje parodėme, jog teiginys teisingas, kai $n=1$, o indukcijos žingsnyje įrodėme perėjimą iš $k$ į $k+1$, teisingumas automatiškai keliauja toliau: $n=1$ leidžia gauti $n=2$, tada $n=3$, $n=4$ ir taip toliau. Vadinasi, formulė galioja visiems natūraliesiems $n$.
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (20 iššūkių)}
+
+\textit{Patarimas: Nesistenkite peršokti žingsnių. Kiekviename uždavinyje tvarkingai, ant atskirų eilučių užrašykite: \textbf{1) Bazę}, \textbf{2) Prielaidą}, \textbf{3) Žingsnį}. Matematinis raštingumas čia toks pat svarbus kaip ir teisingas atsakymas.}
+
+\begin{enumerate}
+    \item Įrodykite, kad pirmųjų $n$ lyginių natūraliųjų skaičių suma yra lygi:
+    $$ 2 + 4 + 6 + \dots + 2n = n(n+1) $$
+    
+    \item Įrodykite, kad dvejeto laipsnių suma tenkina lygybę:
+    $$ 1 + 2 + 4 + 8 + \dots + 2^{n-1} = 2^n - 1 $$
+    
+    \item Įrodykite trejeto laipsnių sumos formulę:
+    $$ 3 + 3^2 + 3^3 + \dots + 3^n = \frac{3}{2}(3^n - 1) $$
+    
+    \item Įrodykite natūraliųjų skaičių kvadratų sumos formulę:
+    $$ 1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{n(n+1)(2n+1)}{6} $$
+    
+    \item Įrodykite natūraliųjų skaičių kubų sumos formulę:
+    $$ 1^3 + 2^3 + 3^3 + \dots + n^3 = \frac{n^2(n+1)^2}{4} $$
+    
+    \item Įrodykite trupmenų sumos taisyklę:
+    $$ \frac{1}{1\cdot 2} + \frac{1}{2\cdot 3} + \dots + \frac{1}{n(n+1)} = \frac{n}{n+1} $$
+    
+    \item Įrodykite gretimų skaičių sandaugų sumą:
+    $$ 1\cdot 2 + 2\cdot 3 + 3\cdot 4 + \dots + n(n+1) = \frac{n(n+1)(n+2)}{3} $$
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{7}
+    \item Įrodykite, kad reiškinys $5^n - 1$ dalijasi iš $4$ su visais natūraliaisiais $n$.
+    
+    \item Įrodykite, kad reiškinys $7^n - 1$ dalijasi iš $6$ su visais natūraliaisiais $n$.
+    
+    \item Įrodykite, kad reiškinys $n^3 - n$ dalijasi iš $3$ su visais natūraliaisiais $n$.
+    
+    \item Įrodykite, kad reiškinys $3^{2n} - 1$ dalijasi iš $8$ su visais natūraliaisiais $n$. 
+
+    
+    \item Įrodykite, kad reiškinys $n^3 + 5n$ dalijasi iš $6$ su visais natūraliaisiais $n$.
+    
+    \item Įrodykite, kad reiškinys $4^n + 15n - 1$ dalijasi iš $9$ su visais natūraliaisiais $n$.
+    
+    \item Įrodykite, kad reiškinys $3^{2n+1} + 2^{n+2}$ dalijasi iš $7$ su visais natūraliaisiais $n$.
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{14}
+    \item Įrodykite nelygybę $3^n > 2n + 1$, galiojančią su visais natūraliaisiais skaičiais $n \ge 2$. \textit{(Atkreipkite dėmesį, kad indukcijos bazė čia pradedama nuo $n=2$!).}
+    
+    \item Įrodykite nelygybę $2^n > n^2$, galiojančią su visais natūraliaisiais skaičiais $n \ge 5$. \textit{(Indukcijos bazė pradedama nuo $n=5$).}
+    
+    \item \textbf{Bernulio nelygybė:} Įrodykite, kad su bet kokiu realiuoju skaičiumi $x \ge -1$ ir visais natūraliaisiais $n$ galioja:
+    $$ (1+x)^n \ge 1 + nx $$
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{17}
+    \item \textbf{(Daugiakampio kampai)} Naudodami indukciją įrodykite, kad iškiliojo $n$-kampio ($n \ge 3$) vidaus kampų suma yra lygi:
+    $$ (n - 2) \cdot 180^\circ $$
+    
+    \item \textbf{(Hanojaus bokštai)} Legendiniame Hanojaus bokštų galvosūkyje turime tris stulpelius. Ant pirmojo stulpelio sumauti $n$ skirtingo dydžio diskų (didžiausias apačioje, mažiausias viršuje). Vienu ėjimu galima perdėti tik po vieną diską ant kito stulpelio, o didesnio disko negalima dėti ant mažesnio. Įrodykite, kad visą $n$ diskų bokštą perkelti ant kito stulpelio prireiks tiksliai $2^n - 1$ ėjimų.
+    
+    \item \textbf{(Sritys apskritime)} Ant apskritimo pažymėta $n$ taškų. Kiekviena taškų pora sujungta tiesės atkarpa. Tarkime, kad jokios trys atkarpos nesikerta viename taške apskritimo viduje. Naudodami indukciją, įrodykite, kad šios atkarpos padalina apskritimo vidų į lygiai:
+    $$ \frac{n^4 - 6n^3 + 23n^2 - 18n + 24}{24} \quad \text{dalių.} $$
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,166 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+
+\title{Kvadratinio trinario skaidymas dauginamaisiais}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kas yra kvadratinis trinaris?}
+
+\begin{definition}
+\vocab{Kvadratinis trinaris} -- tai daugianaris, kurį galima užrašyti pavidalu $ax^2+bx+c$, kur $x$ yra kintamasis, o $a, b, c$ -- skaičiai (koeficientai) ir $a \neq 0$.
+\end{definition}
+
+Kvadratinis trinaris labai panašus į kvadratinę lygtį, tačiau tai nėra lygtis (nėra lygybės ženklo). Kad išskaidytume kvadratinį trinarį dauginamaisiais, pirmiausia turime jį prilyginti nuliui ir išspręsti gautą kvadratinę lygtį $ax^2+bx+c=0$. Šios lygties sprendiniai $x_1$ ir $x_2$ vadinami \textbf{kvadratinio trinario šaknimis}.
+
+\section{Skaidymo dauginamaisiais formulė ir jos įrodymas}
+
+\begin{property}[Kvadratinio trinario skaidymo formulė]
+Jei kvadratinio trinario $ax^2+bx+c$ šaknys yra $x_1$ ir $x_2$, tai šį trinarį galima išskaidyti dauginamaisiais pagal formulę:
+\[ ax^2+bx+c = a(x-x_1)(x-x_2). \]
+\end{property}
+
+Įrodykime šią formulę pasinaudodami Vijeto teorema.
+
+\begin{proof}
+Pirmiausia iš reiškinio $ax^2+bx+c$ iškelkime koeficientą $a$ prieš skliaustus:
+\[ ax^2+bx+c = a\left(x^2 + \frac{b}{a}x + \frac{c}{a}\right). \]
+Prisiminkime Vijeto teoremą, kuri sieja lygties šaknis su jos koeficientais:
+\[
+\begin{aligned}
+x_1 + x_2 &= -\frac{b}{a}, \quad \text{todėl} \quad \frac{b}{a} = -(x_1 + x_2), \\
+x_1 \cdot x_2 &= \frac{c}{a}.
+\end{aligned}
+\]
+Įstatykime šias išraiškas į mūsų skliaustuose esantį reiškinį vietoje $\frac{b}{a}$ ir $\frac{c}{a}$:
+\[ a\left(x^2 - (x_1 + x_2)x + x_1 x_2\right). \]
+Atskliauskime vidinius skliaustus:
+\[ a\left(x^2 - x_1 x - x_2 x + x_1 x_2\right). \]
+Dabar pritaikykime grupavimo būdą -- sugrupuokime pirmus du narius ir paskutinius du narius. Iš pirmų dviejų iškeliame $x$, o iš kitų dviejų iškeliame $-x_2$:
+\[
+\begin{aligned}
+a\left( x(x - x_1) - x_2(x - x_1) \right).
+\end{aligned}
+\]
+Iškeliame bendrą skliaustą $(x - x_1)$:
+\[ a(x - x_1)(x - x_2). \]
+Įrodėme, kad $ax^2+bx+c = a(x-x_1)(x-x_2)$.
+\end{proof}
+
+\begin{remark}
+Jei kvadratinio trinario diskriminantas $D = 0$, jis turi vieną šaknį $x_1$ (arba dvi sutampančias šaknis $x_1 = x_2$). Tuomet formulė atrodo taip: $a(x-x_1)^2$.
+Jei diskriminantas $D < 0$, trinaris realiųjų šaknų neturi ir jo išskaidyti realiaisiais daugikliais \textbf{negalima}.
+\end{remark}
+
+\section{Pavyzdžiai}
+
+\begin{example}
+Išskaidykite dauginamaisiais kvadratinį trinarį:
+\[ x^2 - 7x + 10 \]
+\end{example}
+\begin{solution}
+Prilyginame trinarį nuliui, kad rastume jo šaknis:
+\[ x^2 - 7x + 10 = 0 \]
+Pagal Vijeto teoremą (arba skaičiuojant diskriminantą) randame šaknis:
+\[ x_1 = 2, \quad x_2 = 5. \]
+Kadangi koeficientas $a=1$, taikome formulę $a(x-x_1)(x-x_2)$:
+\[ 1 \cdot (x - 2)(x - 5) = (x - 2)(x - 5). \]
+\textbf{Atsakymas:} $(x - 2)(x - 5)$.
+\end{solution}
+
+\begin{example}
+Išskaidykite dauginamaisiais kvadratinį trinarį:
+\[ -2x^2 + 10x - 12 \]
+\end{example}
+\begin{solution}
+Prilyginame nuliui ir randame šaknis:
+\[ -2x^2 + 10x - 12 = 0 \]
+Padaliję iš $-2$, gauname $x^2 - 5x + 6 = 0$. Šios lygties šaknys yra $x_1 = 2$ ir $x_2 = 3$.
+Pradinio trinario koeficientas $a = -2$. Įstatome viską į formulę:
+\[ -2(x - 2)(x - 3). \]
+\textbf{Atsakymas:} $-2(x - 2)(x - 3)$.
+\end{solution}
+
+\begin{example}
+Išskaidykite dauginamaisiais kvadratinį trinarį:
+\[ 3x^2 + 5x - 2 \]
+\end{example}
+\begin{solution}
+Sprendžiame lygtį $3x^2 + 5x - 2 = 0$. Skaičiuojame diskriminantą:
+\[ D = 5^2 - 4 \cdot 3 \cdot (-2) = 25 + 24 = 49. \]
+\[ x_1 = \frac{-5 - 7}{6} = -2, \quad x_2 = \frac{-5 + 7}{6} = \frac{2}{6} = \frac{1}{3}. \]
+Taikome skaidymo formulę su $a=3$:
+\[ 3(x - (-2))\left(x - \frac{1}{3}\right) = 3(x + 2)\left(x - \frac{1}{3}\right). \]
+Kad atsakymas atrodytų gražiau ir neturėtų trupmenų, daugiklį $3$ galime įkelti į antruosius skliaustus:
+\[ (x + 2)\left(3 \cdot x - 3 \cdot \frac{1}{3}\right) = (x + 2)(3x - 1). \]
+\textbf{Atsakymas:} $(x + 2)(3x - 1)$.
+\end{solution}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išskaidykite dauginamaisiais šiuos kvadratinius trinarius (kai $a=1$):
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^2 - 6x + 8$
+    \task $x^2 + 4x - 5$
+    \task $x^2 - x - 12$
+    \task $x^2 + 8x + 15$
+    \task $x^2 - 9x + 14$
+    \task $x^2 + 3x - 18$
+    \task $2x^2 - 14x + 24$
+    \task $-3x^2 - 6x + 9$
+    \task $2x^2 + 5x - 3$
+    \task $5x^2 - 3x - 2$
+    \task $3x^2 - 7x - 6$
+    \task $-2x^2 + x + 3$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskaidykite kvadratinį trinarį ir suprastinkite algebrines trupmenas:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $\frac{x^2 - 3x - 10}{x - 5}$
+    \task $\frac{x^2 - 9}{x^2 - x - 6}$
+    \task $\frac{2x^2 + x - 1}{x + 1}$
+    \task $\frac{3x^2 - 12x}{x^2 - 2x - 8}$
+    \task $\frac{x^2 - 4x - 12}{x - 6}$
+    \task $\frac{x^2 - 4}{x^2 + x - 6}$
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $(x-2)(x-4)$;
+    \task $(x-1)(x+5)$;
+    \task $(x+3)(x-4)$;
+    \task $(x+3)(x+5)$;
+    \task $(x-2)(x-7)$;
+    \task $(x-3)(x+6)$.
+    \task $2(x-3)(x-4)$;
+    \task $-3(x-1)(x+3)$;
+    \task $(x+3)(2x-1)$;
+    \task $(x-1)(5x+2)$;
+    \task $(3x+2)(x-3)$;
+    \task $(3-2x)(x+1)$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x+2$;
+    \task $\frac{x-3}{x-2}$;
+    \task $2x-1$;
+    \task $\frac{3x}{x+2}$;
+    \task $x+2$;
+    \task $\frac{x+2}{x+3}$.
+\end{tasks}
+\end{problem}
+
+\end{document}
