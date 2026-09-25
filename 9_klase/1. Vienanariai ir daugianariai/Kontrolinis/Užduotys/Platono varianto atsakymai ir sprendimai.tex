@@ -34,11 +34,18 @@
 
     \vspace{0.3cm}
     \item \textbf{Skaičiavimas be skaičiuotuvo:} \\
-    Skaitiklis: $68^3 + 32^3 = (68 + 32)(68^2 - 68 \cdot 32 + 32^2) = 100 \cdot (68^2 - 68 \cdot 32 + 32^2)$. \\
-    Vardiklis: $0,2^{-2} = \left(\frac{2}{10}\right)^{-2} = \left(\frac{1}{5}\right)^{-2} = 5^2 = 25$. \\
-    Reiškinys skliaustuose: $68 \cdot 36 = 68 \cdot (68 - 32) = 68^2 - 68 \cdot 32$. \\
-    Vardiklis tampa: $25 \cdot (68^2 - 68 \cdot 32 + 32^2)$. \\
-    Padaliję gauname: $\frac{100}{25} = \mathbf{4}$.
+    \begin{align*}
+        \frac{68^3+32^3}
+        {0,2^{-2}\left(68\cdot36+32^2\right)}
+        &= \frac{68^3+32^3}
+        {25\left(68\cdot36+32^2\right)} \\
+        &= \frac{(68+32)\left(68^2-68\cdot32+32^2\right)}
+        {25\left(68\cdot36+32^2\right)} \\
+        &= \frac{(68+32)\left(68(68-32)+32^2\right)}
+        {25\left(68\cdot36+32^2\right)} \\
+        &= \frac{100\left(68\cdot36+32^2\right)}
+        {25\left(68\cdot36+32^2\right)} = 4.
+    \end{align*}
 
     \vspace{0.3cm}
     \item \textbf{Formulių įrodymai:}

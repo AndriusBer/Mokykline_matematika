@@ -35,11 +35,18 @@
 
     \vspace{0.3cm}
     \item \textbf{Skaičiavimas be skaičiuotuvo:} \\
-    Skaitiklyje pritaikome kubų sumos formulę $a^3 + b^3 = (a+b)(a^2 - ab + b^2)$:
-    $$ 57^3 + 43^3 = (57 + 43)(57^2 - 57 \cdot 43 + 43^2) = 100 \cdot (57^2 - 57 \cdot 43 + 43^2) $$
-    Vardiklyje apskaičiuojame $0,1^{-2} = \left(\frac{1}{10}\right)^{-2} = 10^2 = 100$. Pastebime, kad $57 \cdot 14 = 57 \cdot (57 - 43) = 57^2 - 57 \cdot 43$. Tada vardiklis tampa:
-    $$ 100 \cdot (57^2 - 57 \cdot 43 + 43^2) $$
-    Skaitiklis ir vardiklis yra visiškai vienodi, todėl viską suprastinus gauname: \textbf{1}.
+    \begin{align*}
+        \frac{57^3+43^3}
+        {0,1^{-2}\left(57\cdot14+43^2\right)}
+        &= \frac{57^3+43^3}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{(57+43)\left(57^2-57\cdot43+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{(57+43)\left(57(57-43)+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{100\left(57\cdot14+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} = 1.
+    \end{align*}
 
     \vspace{0.3cm}
     \item \textbf{Formulių įrodymai:}

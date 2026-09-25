@@ -35,14 +35,20 @@
 
     \vspace{0.3cm}
     \item \textbf{Skaičiavimas be skaičiuotuvo:} \\
-    Skaitiklis: Pastebime pilnąjį kvadratą skliaustuose: $121^2 + 2 \cdot 12 \cdot 121 + 12^2 = (121+12)^2 = 133^2$. \\
-    Vadinasi, skaitiklis yra: $167^3 + 133 \cdot 133^2 = 167^3 + 133^3$. \\
-    Vardiklis: Subendravardikliname paskutiniuosius skliaustus: $34 + \frac{133^2}{167} = \frac{167 \cdot 34 + 133^2}{167}$. \\
-    Taip pat pastebime, kad $167 \cdot 34 = 167 \cdot (167 - 133) = 167^2 - 167 \cdot 133$. \\
-    Tada vardiklis tampa: $167 \cdot (10\sqrt{3})^2 \cdot \frac{167^2 - 167 \cdot 133 + 133^2}{167} = 300 \cdot (167^2 - 167 \cdot 133 + 133^2)$. \\
-    Dabar grįžtame prie skaitiklio ir išskaidome kubų sumą: \\
-    $167^3 + 133^3 = (167+133)(167^2 - 167 \cdot 133 + 133^2) = 300 \cdot (167^2 - 167 \cdot 133 + 133^2)$. \\
-    Padaliję skaitiklį iš vardiklio (kurie yra visiškai vienodi), gauname \textbf{1}.
+    \begin{align*}
+        \frac{167^3 + 133\left(121^2 + 2 \cdot 12 \cdot 121 + 12^2\right)}
+        {167(10\sqrt{3})^2\left(34 + \frac{133^2}{167}\right)}
+        &= \frac{167^3 + 133 \cdot 133^2}
+        {300 \cdot 167\left(34 + \frac{133^2}{167}\right)} \\
+        &= \frac{167^3 + 133^3}
+        {300\left(167 \cdot 34 + 133^2\right)} \\
+        &= \frac{(167+133)\left(167^2-167 \cdot 133+133^2\right)}
+        {300\left(167 \cdot 34 + 133^2\right)} \\
+        &= \frac{(167+133)\left(167(167-133)+133^2\right)}
+        {300\left(167 \cdot 34 + 133^2\right)} \\
+        &= \frac{300\left(167 \cdot 34 + 133^2\right)}
+        {300\left(167 \cdot 34 + 133^2\right)} = 1.
+    \end{align*}
 
     \vspace{0.3cm}
     \item \textbf{Formulių įrodymai:}

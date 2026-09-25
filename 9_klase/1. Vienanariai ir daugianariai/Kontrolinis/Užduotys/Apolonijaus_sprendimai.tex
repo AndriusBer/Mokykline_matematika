@@ -1,93 +1,107 @@
-\documentclass[12pt]{exam}
-\usepackage[T1]{fontenc}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[lithuanian]{babel}
 \usepackage{lmodern}
-\usepackage{graphicx}
-\usepackage[a4paper, left=1cm, right=1cm, top=2.5cm, bottom=1cm]{geometry}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
 \usepackage{amsmath, amssymb}
-\usepackage{tasks}
-
-% Antraštė
-\pagestyle{headandfoot}
-\runningheadrule
-\firstpageheader{Vardas: \rule{4cm}{0.4pt}}{Kontrolinis darbas: \\Daugianariai}{Apolonijaus variantas}
-\runningheader{Daugianariai}{}{}
-\firstpagefooter{}{}{}
-\runningfooter{}{}{}
-\pointsdroppedatright          
-\bracketedpoints               
-\setlength{\rightpointsmargin}{1.6cm} 
-\renewcommand{\points}{taškai} 
-\renewcommand{\pointname}{Taškai:} 
-\marginpointname{\ taškai}     
-\renewcommand{\dottedlinefillheight}{0.7cm}
-\newcommand{\atsakymas}{%
-    \par\vspace{0.3cm}
-    \textbf{Atsakymas:} \framebox[7cm]{\rule{0pt}{0.7cm}}
-}
+\usepackage{enumitem}
 
 \begin{document}
 
-\begin{questions}
-
-\question[3] Nustatykite duotų reiškinių tipus (racionalusis, trupmeninis, sveikas, iracionalusis). Atsakymą pateikite prie kiekvieno reiškinio prirašydami raides pvz. R,S (Racionalus ir Sveikas).
-\begin{tasks}[label-width=1.2em](3)
-    \task $\displaystyle \frac{x^4 - \sqrt{5}}{3}$
-    \task $\displaystyle \frac{4}{x^3 + 2}$
-    \task $\displaystyle x^{-4} + \sqrt{2} x$
-    \task $\displaystyle \sqrt{x^2 - 9}$
-    \task $\displaystyle 2x+3 ^{-2} $
-    \task $\displaystyle \sqrt{2}x-7 $
-\end{tasks}
-\droppoints
-
-\question[4] Suprastinkite reiškinį ir jeigu atsakymas yra vienanaris, nurodykite jo koeficientą ir laipsnį. Jei ne vienanaris, paaiškinkite kodėl.
-$$ \left( -3x^3y^{-2} \right)^3 \cdot \left( 3x^{-4}y^3 \right)^{-2} $$
-\droppoints
-\vspace{2.5cm}
-\atsakymas
-
-\question[4] Nenaudodami prietaiso, kuris homo sapiens paverčia homo babuinus, apskaičiuokite šio reiškinio reikšmę:
- $$\displaystyle \frac{57^3 + 43^3}{0,1 ^{-2} \cdot (57 \cdot 14+43 ^{2} ) } $$ \droppoints
-\vspace{3.5cm}
-\atsakymas
-
-\question Įrodykite formules:
-\begin{parts}
-    \part[2] $\displaystyle x^m \cdot y^m = (x \cdot y)^m $ \droppoints
-    \vspace{2cm}
-    \part[3] $(x-y) ^{3} = x^3 - 3x^2y + 3xy^2 - y^3 $. \droppoints
-\end{parts}
-\newpage
-
-\question[4] Raskite didžiausią ir mažiausią reiškinio $-3x^2 + \frac{3}{4} x + 1$ reikšmes. Nurodykite, su kokia $x$ reikšmėmis jos gaunamos.
-\droppoints
-\vspace{3.5cm}
-\atsakymas
-
-\question[5]  Reiškinį $(x-3) ^{3} -(x-1) ^{2} (x-3)$ užrašę pavidalu $a(x+b)^{2} + c$ apskaičiuote reiškinio $\sqrt{-2a-4b+c+6} $ reikšmę.   
-\droppoints
-\vspace{3.5cm}
-\atsakymas
-
-\question[4] Raskite tokias parametrų $a$, $b$ ir $c$ reikšmes, kad lygybė $(ax+b)(x^2+2x-3) + cx = 2x^3+5x^2-8x-3$ būtų teisinga su visomis $x$ reikšmėmis.
-\droppoints
-\vspace{4.5cm}
-\atsakymas
-
-\end{questions}
-
-\vfill 
-
 \begin{center}
-    \textbf{Vertinimo lentelė (Iš viso: 29 taškai)} \\[0.2cm]
-    \renewcommand{\arraystretch}{1.3} 
-    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-        \hline
-        \textbf{Taškai} & 0--3 & 4--6 & 7--9 & 10--12 & 13--15 & 16--18 & 19--21 & 22--24 & 25--27 & 28--29 \\ \hline
-        \textbf{Pažymys} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\ \hline
-    \end{tabular}
+    \Large \textbf{Kontrolinis darbas: Daugianariai} \\
+    \large \textit{Apolonijaus varianto sprendimai}
 \end{center}
+\vspace{0.5cm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Nustatykite duotų reiškinių tipus (R - racionalusis, T - trupmeninis, S - sveikas, I - iracionalusis).}
+    \begin{enumerate}[label=\alph*)]
+        \item $\displaystyle \frac{x^4 - \sqrt{5}}{3}$ \quad \textbf{Atsakymas: R, S} (nėra kintamojo vardiklyje ar po šaknimi).
+        \item $\displaystyle \frac{4}{x^3 + 2}$ \quad \textbf{Atsakymas: R, T} (kintamasis yra vardiklyje).
+        \item $\displaystyle x^{-4} + \sqrt{2} x$ \quad \textbf{Atsakymas: R, T} (nes $x^{-4} = \frac{1}{x^4}$, kintamasis yra vardiklyje).
+        \item $\displaystyle \sqrt{x^2 - 9}$ \quad \textbf{Atsakymas: I} (kintamasis yra po šaknimi).
+        \item $\displaystyle 2x+3^{-2} $ \quad \textbf{Atsakymas: R, S} (nes $3^{-2} = \frac{1}{9}$, kintamojo vardiklyje nėra).
+        \item $\displaystyle \sqrt{2}x-7 $ \quad \textbf{Atsakymas: R, S} (kintamasis nėra po šaknimi, po šaknimi tik skaičius 2).
+    \end{enumerate}
+
+    \vspace{0.5cm}
+    \item \textbf{Suprastinkite reiškinį ir nurodykite, ar tai vienanaris.}
+    \[ \left( -3x^3y^{-2} \right)^3 \cdot \left( 3x^{-4}y^3 \right)^{-2} \]
+    \textbf{Sprendimas:}
+    \[ = \left( (-3)^3 \cdot (x^3)^3 \cdot (y^{-2})^3 \right) \cdot \left( 3^{-2} \cdot (x^{-4})^{-2} \cdot (y^3)^{-2} \right) \]
+    \[ = \left( -27x^9y^{-6} \right) \cdot \left( \frac{1}{9}x^8y^{-6} \right) = -27 \cdot \frac{1}{9} \cdot x^9 \cdot x^8 \cdot y^{-6} \cdot y^{-6} = -3x^{17}y^{-12} \]
+    \textbf{Atsakymas:} $-3x^{17}y^{-12}$ (arba $\displaystyle -\frac{3x^{17}}{y^{12}}$). Tai \textbf{nėra vienanaris}, nes kintamojo $y$ laipsnio rodiklis yra neigiamas (tai yra trupmeninis reiškinys).
+
+    \vspace{0.5cm}
+    \item \textbf{Apskaičiuokite reiškinio reikšmę:} \\
+    \begin{align*}
+        \frac{57^3+43^3}
+        {0,1^{-2}\left(57\cdot14+43^2\right)}
+        &= \frac{57^3+43^3}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{(57+43)\left(57^2-57\cdot43+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{(57+43)\left(57(57-43)+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} \\
+        &= \frac{100\left(57\cdot14+43^2\right)}
+        {100\left(57\cdot14+43^2\right)} = 1.
+    \end{align*}
+
+    \vspace{0.5cm}
+    \item \textbf{Įrodykite formules:}
+    \begin{enumerate}[label=\alph*)]
+        \item $\displaystyle x^m \cdot y^m = (x \cdot y)^m $
+        \\ \textbf{Įrodymas:} Remiantis laipsnio apibrėžimu, kai $m$ yra natūralusis skaičius: $x^m = \underbrace{x \cdot x \cdots x}_{m \text{ kartų}}$ ir $y^m = \underbrace{y \cdot y \cdots y}_{m \text{ kartų}}$.
+        Sudauginę gauname: $x^m \cdot y^m = (\underbrace{x \cdot x \cdots x}_{m}) \cdot (\underbrace{y \cdot y \cdots y}_{m}) = \underbrace{(xy) \cdot (xy) \cdots (xy)}_{m \text{ kartų}} = (xy)^m$.
+
+        \item $(x-y)^3 = x^3 - 3x^2y + 3xy^2 - y^3$
+        \\ \textbf{Įrodymas:} $(x-y)^3 = (x-y)(x-y)^2 = (x-y)(x^2 - 2xy + y^2) = x(x^2 - 2xy + y^2) - y(x^2 - 2xy + y^2) = x^3 - 2x^2y + xy^2 - x^2y + 2xy^2 - y^3 = x^3 - 3x^2y + 3xy^2 - y^3$.
+    \end{enumerate}
+
+    \vspace{0.5cm}
+    \item \textbf{Raskite didžiausią ir mažiausią reiškinio $-3x^2 + \frac{3}{4} x + 1$ reikšmes.}
+    \\ \textbf{Sprendimas:}
+    \[
+    -3x^2 + \frac{3}{4}x + 1
+    = -3\left(x^2 - \frac{1}{4}x\right) + 1
+    = -3\left(x^2 - 2 \cdot x \cdot \frac{1}{8} + \frac{1}{64} - \frac{1}{64}\right) + 1
+    \]
+    \[
+    = -3\left(\left(x-\frac{1}{8}\right)^2 - \frac{1}{64}\right) + 1
+    = -3\left(x-\frac{1}{8}\right)^2 + \frac{3}{64} + 1
+    = -3\left(x-\frac{1}{8}\right)^2 + \frac{67}{64}
+    \]
+    \textbf{Atsakymas:} Didžiausia reikšmė yra $\frac{67}{64}$, kai $x=\frac{1}{8}$. Mažiausios reikšmės nėra.
+
+    \vspace{0.5cm}
+    \item \textbf{Reiškinį užrašykite pavidalu $a(x+b)^2 + c$ ir apskaičiuokite $\sqrt{-2a-4b+c+6}$.}
+    \\ \textbf{Sprendimas:} Pradinis reiškinys:
+    \[ (x-3)^3 - (x-1)^2(x-3) \]
+    \[ = (x^3-9x^2+27x-27) - (x^3-5x^2+7x-3) \]
+    \[ = x^3-9x^2+27x-27-x^3+5x^2-7x+3 = -4x^2+20x-24 \]
+    \textbf{Išskiriame pilną kvadratą:}
+    \[ -4x^2+20x-24 = -4(x-2,5)^2+1 \]
+    Sulyginę su $a(x+b)^2+c$, gauname: $a=-4$, $b=-2,5$, $c=1$.
+    Apskaičiuojame ieškomos šaknies reikšmę:
+    \[ \sqrt{-2(-4) - 4(-2,5) + 1 + 6} = \sqrt{8 + 10 + 1 + 6} = \sqrt{25} = 5 \]
+    \textbf{Atsakymas:} 5.
+
+    \vspace{0.5cm}
+    \item \textbf{Raskite parametrus $a$, $b$, $c$, kad lygybė $(ax+b)(x^2+2x-3) + cx = 2x^3+5x^2-8x-3$ būtų teisinga.}
+    \\ \textbf{Sprendimas:} Atskliaudžiame kairiąją lygybės pusę:
+    \[ ax^3 + 2ax^2 - 3ax + bx^2 + 2bx - 3b + cx = ax^3 + (2a+b)x^2 + (-3a+2b+c)x - 3b \]
+    Kad daugianariai būtų lygūs su visomis $x$ reikšmėmis, jų koeficientai prie atitinkamų laipsnių turi sutapti su dešinės pusės ($2x^3+5x^2-8x-3$) koeficientais:
+    \begin{itemize}
+        \item Prie $x^3$: \quad $a = 2$
+        \item Laisvasis narys: \quad $-3b = -3 \implies b = 1$
+        \item Prie $x^2$: \quad $2a + b = 5$. Patikriname: $2(2) + 1 = 5$ (sutampa).
+        \item Prie $x$: \quad $-3a + 2b + c = -8$. Įstatome $a$ ir $b$: \\
+        $-3(2) + 2(1) + c = -8 \implies -6 + 2 + c = -8 \implies c - 4 = -8 \implies c = -4$.
+    \end{itemize}
+    \textbf{Atsakymas:} $a = 2$, $b = 1$, $c = -4$.
+\end{enumerate}
 
 \end{document}
