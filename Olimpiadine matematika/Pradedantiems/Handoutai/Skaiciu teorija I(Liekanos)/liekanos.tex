@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
-\title{Skaičių teorija: Dalyba su liekana ir skaičių ciklai}
+\title{Skaičių teorija I: dalyba su liekana ir skaičių ciklai}
 \author{Andrius Berniukevičius}
 
 \begin{document}
@@ -176,31 +176,15 @@ Tame pačiame cikle rodiklis $2026$ taip pat atitinka antrąją vietą, todėl $
 Suma baigiasi skaitmeniu $4+9=13$, vadinasi, jos paskutinis skaitmuo yra $3$.
 \end{proof}
 
-\begin{example}[Ciklas, kurio ilgis nėra $4$]
-Raskite paskutinį skaičiaus \(9^{2026}\) skaitmenį.
-\end{example}
-
-\begin{proof}
-Stebime pirmuosius laipsnius:
-\[
-9^1=9,\qquad 9^2=81,
-\]
-taigi paskutiniai skaitmenys kartojasi ciklu $9,1$. Ciklo ilgis yra $2$. Kadangi
-\[
-2026=2\cdot 1013,
-\]
-rodiklis atitinka antrąją ciklo vietą. Vadinasi, skaičiaus \(9^{2026}\) paskutinis skaitmuo yra $1$.
-\end{proof}
-
 \vspace{0.5cm}
 
 % ==========================================
 % PAVYZDŽIAI
 % ==========================================
 
-\begin{example}[Liekanos išvedimas algebriškai]
-Įrodykite, kad bet kokio nelyginio skaičiaus kvadratą padalijus iš $8$, liekana visada bus lygi $1$.
-\end{example}
+\begin{proposition}[Nelyginio skaičiaus kvadrato liekana dalijant iš $8$]
+Bet kokio nelyginio sveikojo skaičiaus kvadratą padalijus iš $8$, liekana visada yra $1$.
+\end{proposition}
 
 \begin{proof}
 Užuot bandę su skaičiais (\(3^2=9=8+1\), \(5^2=25=24+1\)), įrodykime tai visiems nelyginiams skaičiams iškart. 
@@ -220,6 +204,26 @@ Galime užrašyti \(k(k+1) = 2m\) (kur \(m\) – kažkoks kitas sveikasis skaič
 4 \cdot (2m) + 1 = 8m + 1 
 \end{equation*}
 Gavome algebrinę formą \(8m + 1\). Tai ir reiškia, kad padalijus iš 8, liekana yra \textbf{1}. \hfill \(\square\)
+\end{proof}
+
+\begin{example}[Trijų nelyginių kvadratų suma]
+Įrodykite, kad lygtis
+\[
+x^2+y^2+z^2=2025
+\]
+neturi sprendinių, kai $x$, $y$ ir $z$ yra nelyginiai sveikieji skaičiai.
+\end{example}
+
+\begin{proof}
+Kadangi $x$, $y$ ir $z$ yra nelyginiai, pagal ankstesnį teiginį kiekvieno jų kvadrato liekana, dalijant iš $8$, yra $1$. Todėl kairės pusės liekana yra
+\[
+1+1+1=3.
+\]
+Kita vertus,
+\[
+2025=8\cdot 253+1,
+\]
+taigi dešinės pusės liekana, dalijant iš $8$, yra $1$. Gavome prieštaravimą: ta pati lygybė negali turėti skirtingų liekanų. Vadinasi, tokių sveikųjų skaičių $x$, $y$ ir $z$ nėra.
 \end{proof}
 
 \vspace{0.5cm}
