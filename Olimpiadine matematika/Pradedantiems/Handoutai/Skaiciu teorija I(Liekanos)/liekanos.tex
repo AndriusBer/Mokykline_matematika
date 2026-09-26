@@ -1,0 +1,279 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Skaičių teorija: Dalyba su liekana ir skaičių ciklai}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Begalybės spraudimas į dėžutes}
+
+Iki šiol mes nagrinėjome tas idealias situacijas, kai skaičiai dalijasi tobulai, nepalikdami jokios liekanos. Tačiau realiame pasaulyje (ir olimpiadose) tobulumas yra retas. Ką daryti, kai skaičius nesidalija? 
+
+Įsivaizduokite, kad jums reikia ištirti visus natūraliuosius skaičius. Jų yra begalybė. Kaip įrodyti, pavyzdžiui, kad *joks* tobulasis kvadratas (o jų irgi begalybė) negali baigtis skaitmeniu 3? Patikrinti visų skaičių neįmanoma. 
+
+Čia į pagalbą ateina galingiausia skaičių teorijos idėja – \textbf{„dėžučių“ metafora}. Pasirinkę kokį nors daliklį (pavyzdžiui, 3), mes visą skaičių begalybę galime surūšiuoti į vos 3 „dėžutes“ pagal tai, kokią liekaną jie palieka dalijami iš 3:
+\begin{itemize}
+    \item 0 liekana: \(3, 6, 9, 12, \dots\) (šie skaičiai užrašomi kaip $3k$)
+    \item 1 liekana: \(4, 7, 10, 13, \dots\) (šie skaičiai užrašomi kaip \(3k+1\))
+    \item 2 liekana: \(5, 8, 11, 14, \dots\) (šie skaičiai užrašomi kaip \(3k+2\))
+\end{itemize}
+Užuot tikrinę begalybę skaičių, olimpiadininkai patikrina tik šias tris dėžutes! Šis metodas leidžia „užmušti“ sudėtingiausias lygtis be jokio vargo.
+
+% ==========================================
+% BAZINIAI GINKLAI IR STRATEGIJOS
+% ==========================================
+\section{Pradiniai įrankiai}
+
+Kad galėtume su liekanomis elgtis taip pat patogiai kaip ir su paprastomis lygtimis, mums reikia paversti jas algebra.
+
+\begin{proposition}[Algebrinis liekanos apibrėžimas]
+Kiekvieną sveikąjį skaičių \(n\), dalijant iš natūraliojo skaičiaus \(d\), galima užrašyti pavidalu:
+\begin{equation*} 
+n = d \cdot k + r 
+\end{equation*}
+kur \(k\) yra nepilnas dalmuo, o \(r\) – liekana. 
+Liekana tenkina nelygybę \(0 \le r < d\).
+\end{proposition}
+
+\begin{proof}
+Dalydami $n$ iš $d$, pasirenkame didžiausią sveikąjį $k$, kuriam $dk \le n$. Tada skirtumas $r=n-dk$ yra neneigiamas. Jei būtų $r \ge d$, dar galėtume padidinti $k$ vienetu, todėl privalo galioti $r<d$.
+\end{proof}
+
+\begin{remark*}
+Olimpiadininko triukas: kai uždavinyje matote dalymą, iškart užrašykite skaičių pavidalu \(dk + r\). Pavyzdžiui, jei kalbama apie dalumą iš 4, bet koks skaičius yra $4k$, \(4k+1\), \(4k+2\) arba \(4k+3\). 
+\end{remark*}
+
+\begin{example}[Skaičiaus užrašymas pagal liekaną]
+Užrašykite algebriškai:
+\begin{enumerate}
+    \item skaičių, kuris dalijant iš $4$ palieka liekaną $1$;
+    \item skaičių, kuris dalijant iš $5$ palieka liekaną $2$;
+    \item visus sveikuosius skaičius, kurie dalijant iš $3$ palieka liekaną $2$.
+\end{enumerate}
+\end{example}
+
+\begin{proof}
+Pagal liekanos apibrėžimą skaičius užrašomas kaip daliklio ir sveikojo skaičiaus sandauga, pridėjus liekaną. Todėl:
+\begin{enumerate}
+    \item pirmuoju atveju skaičius yra pavidalo $4k+1$;
+    \item antruoju atveju skaičius yra pavidalo $5k+2$;
+    \item trečiuoju atveju visi skaičiai yra pavidalo $3k+2$.
+\end{enumerate}
+Čia $k$ yra sveikasis skaičius. Pavyzdžiui, skaičiai $1,5,9,13,\ldots$ yra pavidalo $4k+1$, o skaičiai $2,7,12,17,\ldots$ yra pavidalo $5k+2$.
+\end{proof}
+
+\begin{proposition}[Kvadratų ir liekanų ryšys]
+Bet kokio tobulojo kvadrato liekana, dalijant iš $3$, yra $0$ arba $1$.
+\end{proposition}
+
+\begin{proof}
+Bet kuris sveikasis skaičius yra vienos iš trijų formų: $3k$, $3k+1$ arba $3k+2$. Pakėlę jas kvadratu gauname
+\[
+(3k)^2=3(3k^2),\qquad (3k+1)^2=3(3k^2+2k)+1,
+\]
+\[
+(3k+2)^2=3(3k^2+4k+1)+1.
+\]
+Taigi galimos liekanos yra tik $0$ ir $1$.
+\end{proof}
+
+\begin{example}[Lygties atmetimas pagal liekanas]
+Įrodykite, kad lygtis $x^2=3y+2$ neturi sprendinių sveikaisiais skaičiais.
+\end{example}
+
+\begin{proof}
+Pagal 2-ąjį teiginį, dalijant $x^2$ iš $3$, galima gauti tik liekaną $0$ arba $1$.
+Kita vertus, lygties dešinė pusė $3y+2$, dalijama iš $3$, visada palieka liekaną $2$.
+Taigi lygybė negalima: kairė pusė negali turėti tokios pačios liekanos kaip dešinė.
+Vadinasi, lygtis sveikųjų sprendinių neturi.
+\end{proof}
+
+\begin{proposition}[Kvadratų liekanos dalijant iš $4$]
+Bet kokio sveikojo skaičiaus kvadrato liekana, dalijant iš $4$, yra $0$ arba $1$.
+\end{proposition}
+
+\begin{proof}
+Bet kuris sveikasis skaičius yra lyginis arba nelyginis. Jei jis lyginis, jis yra pavidalo $2k$, todėl
+\[
+(2k)^2=4k^2,
+\]
+ir liekana yra $0$. Jei jis nelyginis, jis yra pavidalo $2k+1$, todėl
+\[
+(2k+1)^2=4k^2+4k+1=4k(k+1)+1,
+\]
+ir liekana yra $1$.
+\end{proof}
+
+\begin{example}[Dviejų kvadratų sumos atmetimas]
+Įrodykite, kad lygtis $x^2+y^2=2027$ neturi sprendinių sveikaisiais skaičiais.
+\end{example}
+
+\begin{proof}
+Pagal 3-ąjį teiginį kiekvieno kvadrato liekana, dalijant iš $4$, yra $0$ arba $1$. Todėl $x^2+y^2$ liekana gali būti tik $0$, $1$ arba $2$.
+Tačiau
+\[
+2027=4\cdot 506+3,
+\]
+taigi dešinės pusės liekana, dalijant iš $4$, yra $3$. Tai neįmanoma, todėl lygtis sveikųjų sprendinių neturi.
+\end{proof}
+
+\begin{proposition}[Paskutinio skaitmens laikrodis (ciklai)]
+Keliant natūralųjį skaičių laipsniu, jo paskutiniai skaitmenys nuo tam tikro momento kartojasi ciklu. Todėl, radus ciklo ilgį, didelio laipsnio paskutinį skaitmenį galima nustatyti dalijant laipsnio rodiklį iš ciklo ilgio su liekana.
+\end{proposition}
+
+\begin{proof}
+Paskutinis skaitmuo gali būti tik vienas iš dešimties skaitmenų: $0,1,\ldots,9$. Be to, paskutinis skaitmuo, gautas padauginus iš to paties skaičiaus, priklauso tik nuo ankstesnio paskutinio skaitmens. Todėl, skaičiuodami
+\[
+a^1,\ a^2,\ a^3,\ \ldots,
+\]
+sekame ne visus skaičius, o tik jų paskutinius skaitmenis. Kadangi galimų skaitmenų yra baigtinis skaičius, vienas iš jų anksčiau ar vėliau pasikartos. Nuo pirmojo pasikartojimo tolesni skaitmenys kartosis tuo pačiu ciklu, nes kiekvieną kartą taikoma ta pati daugybos taisyklė.
+
+Jei ciklo ilgis yra $m$, tai laipsnio rodiklio vietą cikle nustatome dalydami jį iš $m$ su liekana.
+\end{proof}
+
+\begin{remark*}
+Paskutinis sandaugos skaitmuo priklauso tik nuo dauginamųjų paskutinių skaitmenų. Todėl skaičiuojant didelius laipsnius pakanka sekti trumpą paskutinių skaitmenų ciklą.
+\end{remark*}
+
+\begin{example}[Paskutinio skaitmens ciklas]
+Koks yra skaičiaus \(7^{2026}\) paskutinis skaitmuo?
+\end{example}
+
+\begin{proof}
+Paskutinis skaitmuo keičiasi pagal ciklą:
+\[
+7,\ 9,\ 3,\ 1.
+\]
+Šio ciklo ilgis yra $4$. Kadangi
+\[
+2026=4\cdot 506+2,
+\]
+turime paimti antrąjį ciklo skaitmenį. Vadinasi, skaičiaus \(7^{2026}\) paskutinis skaitmuo yra $9$.
+\end{proof}
+
+\begin{example}[Dviejų ciklų sudėjimas]
+Raskite paskutinį skaičiaus \(2^{2026}+3^{2026}\) skaitmenį.
+\end{example}
+
+\begin{proof}
+Skaičiaus $2$ laipsnių paskutiniai skaitmenys kartojasi ciklu
+\[
+2,\ 4,\ 8,\ 6,
+\]
+kurio ilgis yra $4$. Kadangi $2026=4\cdot 506+2$, skaičiaus $2^{2026}$ paskutinis skaitmuo yra $4$.
+
+Skaičiaus $3$ laipsnių paskutiniai skaitmenys kartojasi ciklu
+\[
+3,\ 9,\ 7,\ 1.
+\]
+Tame pačiame cikle rodiklis $2026$ taip pat atitinka antrąją vietą, todėl $3^{2026}$ paskutinis skaitmuo yra $9$.
+Suma baigiasi skaitmeniu $4+9=13$, vadinasi, jos paskutinis skaitmuo yra $3$.
+\end{proof}
+
+\begin{example}[Ciklas, kurio ilgis nėra $4$]
+Raskite paskutinį skaičiaus \(9^{2026}\) skaitmenį.
+\end{example}
+
+\begin{proof}
+Stebime pirmuosius laipsnius:
+\[
+9^1=9,\qquad 9^2=81,
+\]
+taigi paskutiniai skaitmenys kartojasi ciklu $9,1$. Ciklo ilgis yra $2$. Kadangi
+\[
+2026=2\cdot 1013,
+\]
+rodiklis atitinka antrąją ciklo vietą. Vadinasi, skaičiaus \(9^{2026}\) paskutinis skaitmuo yra $1$.
+\end{proof}
+
+\vspace{0.5cm}
+
+% ==========================================
+% PAVYZDŽIAI
+% ==========================================
+
+\begin{example}[Liekanos išvedimas algebriškai]
+Įrodykite, kad bet kokio nelyginio skaičiaus kvadratą padalijus iš $8$, liekana visada bus lygi $1$.
+\end{example}
+
+\begin{proof}
+Užuot bandę su skaičiais (\(3^2=9=8+1\), \(5^2=25=24+1\)), įrodykime tai visiems nelyginiams skaičiams iškart. 
+Bet kokį nelyginį skaičių galime užrašyti kaip \(2k+1\) (kur \(k\) – sveikasis skaičius).
+Pakelkime jį kvadratu naudodami greitosios daugybos formulę:
+\begin{equation*} 
+(2k+1)^2 = (2k)^2 + 2 \cdot 2k \cdot 1 + 1^2 = 4k^2 + 4k + 1 
+\end{equation*}
+Iškelkime $4k$ prieš skliaustus iš pirmų dviejų narių:
+\begin{equation*} 
+= 4k(k+1) + 1 
+\end{equation*}
+Pažvelkime į sandaugą \(k(k+1)\). Tai yra dviejų \textbf{iš eilės einančių} sveikųjų skaičių sandauga. Vienas iš jų būtinai yra lyginis, todėl ir jų sandauga \(k(k+1)\) būtinai dalijasi iš $2$. 
+Galime užrašyti \(k(k+1) = 2m\) (kur \(m\) – kažkoks kitas sveikasis skaičius).
+Įstatome atgal:
+\begin{equation*} 
+4 \cdot (2m) + 1 = 8m + 1 
+\end{equation*}
+Gavome algebrinę formą \(8m + 1\). Tai ir reiškia, kad padalijus iš 8, liekana yra \textbf{1}. \hfill \(\square\)
+\end{proof}
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+Pirmieji uždaviniai skirti priprasti prie formulių (algebrinio liekanos apibrėžimo), antrieji – atmetimo metodui (lygčių be sprendinių įrodinėjimui), tretieji – sudėtingesniems ciklams.
+
+\subsection*{Baziniai (Dėžučių atidarymas ir ciklų paieška)}
+\begin{enumerate}
+    \item Kokią liekaną gauname dalijant dviejų lyginio ir nelyginio skaičiaus sumą iš 2? Užrašykite tai algebriškai ($2k$ ir \(2m+1\)).
+    \item Skaičius \(A\) dalijamas iš $5$ duoda liekaną $2$. Užrašykite skaičių \(A\) algebriškai. Kokią liekaną duos skaičius \(A+4\) padalijus iš 5?
+    \item Įrodykite algebriškai, kad bet kokių trijų iš eilės einančių sveikųjų skaičių suma tobulai dalijasi iš 3.
+    \item Raskite skaičiaus \(2^{2026}\) paskutinį skaitmenį.
+    \item Raskite skaičiaus \(3^{2026}\) paskutinį skaitmenį.
+    \item Ar gali skaičius, kurio paskutinis skaitmuo yra 4, būti pirminis? (Išskyrus patį vienženklį, jei toks būtų įmanomas).
+    \item Skaičius \(x\) dalijamas iš $4$ duoda liekaną $1$. Įrodykite, kad jo kvadratas \(x^2\) dalijamas iš $4$ taip pat duoda liekaną $1$.
+    \item Skaičius \(y\) dalijamas iš $4$ duoda liekaną $3$. Įrodykite algebriškai, kad jo kvadratas \(y^2\) dalijamas iš $4$ duoda liekaną $1$.
+    \item Remdamiesi 7 ir 8 uždaviniais bei faktu, kad lyginio skaičiaus kvadratas dalijasi iš 4 be liekanos, padarykite bendrą išvadą: kokias liekanas apskritai gali duoti tobulasis kvadratas dalijant iš 4?
+    \item Kokie gali būti tobulojo kvadrato paskutiniai skaitmenys? (Tiesiog pakelkite skaitmenis nuo 0 iki 9 kvadratu ir surašykite atsakymus). Ar gali skaičius $20262027$ būti tobulasis kvadratas?
+\end{enumerate}
+
+\subsection*{Vidutinio sunkumo (Lygčių žudymas)}
+\setcounter{enumi}{10}
+\begin{enumerate}
+    \item Algebriškai patikrinkite liekanas (įstatydami \(x = 3k, 3k+1, 3k+2\)) ir įrodykite, kad joks tobulasis kvadratas \(x^2\) dalijant iš $3$ nepalieka liekanos $2$.
+    \item Įrodykite, kad lygtis \(x^2 = 3y + 2\) neturi sprendinių sveikaisiais skaičiais.
+    \item Įrodykite, kad lygtis \(x^2 + y^2 = 2023\) neturi sprendinių sveikaisiais skaičiais. (Patarimas: nagrinėkite liekanas dalijant iš 4).
+    \item Ar lygtis \(x^2 + y^2 = 3z^2\) gali turėti sprendinių, kuriuose ne visi \(x, y, z\) dalijasi iš $3$? (Išnagrinėkite abiejų pusių liekanas dalijant iš 3).
+    \item Raskite skaičiaus \(9^{99}\) paskutinį skaitmenį. Kokio ilgio yra devyneto ciklas?
+    \item Koks yra skaičiaus \(3^{4n+1}\) (kur \(n\) – natūralusis skaičius) paskutinis skaitmuo?
+    \item Įrodykite, kad bet kokio sveikojo skaičiaus kubas (\(x^3\)) dalijamas iš $9$ gali duoti tik liekanas $0, 1$ arba $8$.
+    \item Įrodykite, kad lygtis \(x^3 = 9y + 4\) neturi sprendinių sveikaisiais skaičiais.
+    \item Skaičius \(A\) sudarytas tik iš vienetų: \(111111\dots11\). Ar gali šis skaičius (jei jame yra daugiau nei vienas skaitmuo) būti tobulasis kvadratas? (Patarimas: pažiūrėkite, iš ko dalijasi šimtai, tūkstančiai ir pan., ir kokią liekaną šis skaičius palieka dalijant iš 4).
+    \item Šiandien yra šeštadienis. Kokia savaitės diena bus po \(10^{10}\) dienų? (Patarimas: nagrinėkite laipsnių liekanas dalijant iš 7).
+\end{enumerate}
+
+\subsection*{Sunkūs (Nacionalinių olimpiadų triukai)}
+\setcounter{enumi}{20}
+\begin{enumerate}
+    \item Raskite skaičiaus \(7^{7^7}\) paskutinį skaitmenį. (Atsargiai: laipsnio rodiklis yra \(7^7\). Turite rasti, kokią liekaną \(7^7\) duoda dalijant iš ciklo ilgio 4).
+    \item Įrodykite, kad lygtis \(x^2 - 5y^2 = 3\) neturi sprendinių. (Nagrinėkite liekanas dalijant iš 5).
+    \item (Pitagoro trejetų analizė). Žinoma, kad \(a^2 + b^2 = c^2\). Įrodykite, kad bent vienas iš skaičių \(a\) arba \(b\) privalo būti lyginis.
+    \item Remiantis tuo pačiu Pitagoro trejetu (\(a^2 + b^2 = c^2\)), įrodykite, kad bent vienas iš skaičių \(a\) arba \(b\) privalo dalintis iš 3.
+    \item Įrodykite, kad skaičius \(2^n + 1\) (kur \(n\) – natūralusis) niekada nesidalija iš $7$.
+    \item Įrodykite, kad bet koks pirminis skaičius, didesnis už $3$, gali būti užrašytas pavidalu \(6k+1\) arba \(6k+5\). Kodėl kitos liekanos netinka?
+    \item Remdamiesi ankstesnio uždavinio išvada, įrodykite, kad jei $p > 3$ yra pirminis, tai \(p^2 - 1\) dalijasi iš $24$.
+    \item Raskite visus pirminius skaičius \(p\), kuriems esant skaičiai \(p\), \(p+10\) ir \(p+14\) taip pat yra pirminiai. (Patarimas: nagrinėkite liekanas iš 3).
+    \item Skaičių sekos elementai apibrėžti taip: \(a_1 = 2\), \(a_2 = 3\), \(a_n = a_{n-1} + a_{n-2}\). Kokia liekana bus padalijus 100-ąjį sekos narį (\(a_{100}\)) iš 4? (Patarimas: seka taip pat turi ciklus!)
+    \item \textbf{Iššūkis:} Raskite paskutinius \textbf{du} skaičiaus \(7^{2026}\) skaitmenis. (Patarimas: ieškokite liekanos dalijant iš 100. Paskaičiuokite \(7^1, 7^2, 7^3, 7^4\) ir stebėkite kas nutinka su \(7^4\)).
+\end{enumerate}
+
+\end{document}

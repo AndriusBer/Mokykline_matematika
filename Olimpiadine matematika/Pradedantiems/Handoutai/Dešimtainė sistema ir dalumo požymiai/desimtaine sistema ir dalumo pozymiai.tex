@@ -7,10 +7,6 @@
 \title{Skaičių teorija: Skaičių anatomija ir dalumo požymiai}
 \author{Andrius Berniukevičius}
 
-\newenvironment{solution}
-    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
-    {\end{list}}
-
 \begin{document}
 
 \maketitle
@@ -34,17 +30,17 @@ Bet su brūkšniu matematinių veiksmų neatliksi. Norėdami skaičiuoti, mes tu
 \textit{Svarbu atsiminti: pirmasis skaitmuo (pvz., $a$) niekada negali būti nulis, o patys skaitmenys yra sveikieji skaičiai nuo 0 iki 9.}
 
 % ==========================================
-% DALUMO POŽYMIAI KAIP TEOREMOS
+% BAZINIAI GINKLAI / STRATEGIJOS IR PAVYZDŽIAI
 % ==========================================
-\section{Kodėl veikia dalumo požymiai?}
+\section{Pradiniai įrankiai: kodėl veikia dalumo požymiai?}
 
 Mokykloje jūs išmokote taisykles: „skaičius dalijasi iš 3, jei jo skaitmenų suma dalijasi iš 3“. Bet ar kada nors susimąstėte, \textbf{kodėl} tai veikia? Dabar, kai mokate naudoti $a \mid b$ notaciją ir algebrines dalumo savybes, jūs patys galite šią taisyklę įrodyti!
 
-\begin{center}
-\fbox{
-\begin{minipage}{0.9\textwidth}
-\textbf{Dalumo iš 9 (ir iš 3) įrodymas}
+\begin{proposition}[Dalumo iš 9 ir iš 3 požymis]
+Triženklis skaičius $\overline{abc}$ dalijasi iš $9$ (atitinkamai iš $3$) tada ir tik tada, kai jo skaitmenų suma $a+b+c$ dalijasi iš $9$ (atitinkamai iš $3$).
+\end{proposition}
 
+\begin{proof}
 Paimkime bet kokį triženklį skaičių $\overline{abc}$. Išskleiskime jį:
 \[ \overline{abc} = 100a + 10b + c \]
 Gudrybė: atskirkime tuos skaičius, kurie akivaizdžiai dalijasi iš 9. Žinome, kad $100 = 99 + 1$, o $10 = 9 + 1$. Pakeiskime mūsų išraišką:
@@ -53,16 +49,23 @@ Sugrupuokime narius:
 \[ \overline{abc} = (99a + 9b) + (a + b + c) \]
 \[ \overline{abc} = 9(11a + b) + (a + b + c) \]
 
-Pirmasis dėmuo $9(11a + b)$ akivaizdžiai dalijasi iš 9 (ir iš 3). Kad \textbf{visa suma} (mūsų pradinis skaičius) dalintųsi iš 9, pagal Sumos taisyklę privalo dalintis ir antrasis dėmuo, t.y. $(a + b + c)$. O kas yra $(a+b+c)$? Tai yra skaičiaus skaitmenų suma!
-\end{minipage}
-}
-\end{center}
+Pirmasis dėmuo $9(11a + b)$ akivaizdžiai dalijasi iš 9 (ir iš 3). Kad \textbf{visa suma} (mūsų pradinis skaičius) dalintųsi iš 9, pagal sumos taisyklę privalo dalintis ir antrasis dėmuo, t. y. $(a + b + c)$. O kas yra $(a+b+c)$? Tai yra skaičiaus skaitmenų suma.
+\end{proof}
+
+\begin{remark*}
+Šio triuko esmė: kiekvieną dešimtainio užrašo vietą pakeičiame skaičiumi, kuris nuo 1 skiriasi devyneto kartotiniu. Tada visas „sunkus“ dalumas lieka skaitmenų sumai.
+\end{remark*}
 
 \subsection*{Olimpiadininkų ginklas: Dalumas iš 11}
 
 Olimpiadose dalumas iš 9 pasitaiko retai, nes jis per daug žinomas. Tikrasis olimpiadininkų ginklas yra dalumo iš $11$ požymis. 
 
-Pabandykime sukonstruoti jį taip pat, kaip darėme su devynetu. Paimkime keturaženklį $\overline{abcd}$. 
+\begin{proposition}[Dalumo iš 11 požymis]
+Keturaženklis skaičius $\overline{abcd}$ dalijasi iš $11$ tada ir tik tada, kai kaitaliojamų ženklų skaitmenų suma $a-b+c-d$ dalijasi iš $11$.
+\end{proposition}
+
+\begin{proof}
+Pabandykime jį sukonstruoti taip pat, kaip darėme su devynetu. Paimkime keturaženklį $\overline{abcd}$. 
 Mums reikia rasti $10, 100, 1000$ artimiausius kaimynus, kurie dalijasi iš 11.
 Žinome, kad $11 \mid 11$, $11 \mid 99$, $11 \mid 1001$.
 Išskleiskime:
@@ -74,18 +77,20 @@ Pirmasis skliaustas idealiai dalijasi iš 11. Vadinasi, kad visas skaičius dali
 \[ 11 \mid (-a + b - c + d) \quad \text{arba, pakeitus ženklus,} \quad 11 \mid (a - b + c - d) \]
 
 \textbf{Taisyklė:} Skaičius dalijasi iš 11 tada ir tik tada, kai jo skaitmenų suma su kintančiais ženklais (plius, minus, plius, minus...) dalijasi iš 11. Dažnai užtenka, kad ši suma būtų lygi $0$ (nes $11 \mid 0$).
+\end{proof}
+
+\begin{remark*}
+Kai matome dalumą iš $11$, verta iš karto tikrinti kaitaliojamų ženklų sumą. Tai dažnai leidžia išvengti ilgo skaičiaus dauginimo.
+\end{remark*}
 
 % ==========================================
 % PAVYZDŽIAI
 % ==========================================
-\section{Pavyzdžiai: Nuo atradimo iki įrodymo}
-
 \begin{example}[Klasikinis įrodymas]
 Įrodykite, kad bet koks keturaženklis skaičius-palindromas (skaitomas vienodai iš abiejų pusių, pavyzdžiui, $4774$) visada dalijasi iš $11$.
 \end{example}
 
-\begin{solution}
-\textbf{Sprendimas:}\\
+\begin{proof}
 Bet kokį tokį skaičių galime užrašyti kaip $\overline{abba}$ (kur $a \neq 0$).
 Turime du būdus tai įrodyti.
 
@@ -95,16 +100,15 @@ Kadangi $11 \mid 1001$ ($1001 = 11 \cdot 91$) ir $11 \mid 110$ ($110 = 11 \cdot 
 
 \textit{2 būdas (Požymio taikymas):} 
 Pritaikome skaitmenų su kintančiais ženklais sumos taisyklę:
-$a - b + b - a = 0$. Kadangi $11 \mid 0$, skaičius visada dalijasi iš 11. \hfill $\square$
-\end{solution}
+$a - b + b - a = 0$. Kadangi $11 \mid 0$, skaičius visada dalijasi iš 11.
+\end{proof}
 
 
 \begin{example}[Dviženklių magija]
 Dviženklio skaičiaus skaitmenų suma lygi 12. Pakeitus šio skaičiaus skaitmenis vietomis, gaunamas skaičius, kuris yra $54$ didesnis už pradinį. Raskite pradinį skaičių.
 \end{example}
 
-\begin{solution}
-\textbf{Sprendimas:}\\
+\begin{proof}
 Tegu pradinis skaičius yra $\overline{xy}$. Sąlygoje pasakyta, kad $x+y = 12$.
 Apkeitę skaitmenis gauname skaičių $\overline{yx}$.
 Užrašome sąlygą lygtimi:
@@ -117,16 +121,15 @@ Padalinę iš 9, gauname labai paprastą lygtį:
 Dabar turime paprastą sistemą: suma $x+y = 12$, o skirtumas $y-x = 6$.
 Sudėję šias dvi lygtis gauname $2y = 18 \implies y = 9$.
 Tuomet $x = 12 - 9 = 3$.
-Pradinis skaičius buvo $39$ (galime patikrinti: $93 - 39 = 54$). \hfill $\square$
-\end{solution}
+Pradinis skaičius buvo $39$ (galime patikrinti: $93 - 39 = 54$).
+\end{proof}
 
 
 \begin{example}[Paslėpti skaitmenys]
 Kokie skaitmenys $x$ ir $y$ gali būti įrašyti skaičiuje $\overline{5x7y}$, kad jis tobulai dalintųsi iš $45$?
 \end{example}
 
-\begin{solution}
-\textbf{Sprendimas:}\\
+\begin{proof}
 Požymio dalumui iš 45 nėra. Bet $45 = 5 \cdot 9$. Kadangi 5 ir 9 neturi bendrų daliklių, skaičius dalinsis iš 45 tik tada, kai dalinsis ir iš 5, ir iš 9.
 
 1) \textbf{Dalumas iš 5:} Skaičius dalijasi iš 5 tik tada, kai jo paskutinis skaitmuo yra $0$ arba $5$. Vadinasi, $y = 0$ arba $y = 5$.
@@ -136,8 +139,8 @@ Požymio dalumui iš 45 nėra. Bet $45 = 5 \cdot 9$. Kadangi 5 ir 9 neturi bendr
     \item Jei $y = 0$: Skaičius yra $\overline{5x70}$. Skaitmenų suma: $5+x+7+0 = 12+x$. Koks skaitmuo $x$ padarys $(12+x)$ dalų iš 9? Tik $x=6$ (gausime 18). Skaičius: $5670$.
     \item Jei $y = 5$: Skaičius yra $\overline{5x75}$. Skaitmenų suma: $5+x+7+5 = 17+x$. Kad $(17+x)$ dalintųsi iš 9, $x$ privalo būti $1$ (gausime 18). Skaičius: $5175$.
 \end{itemize}
-Atsakymas: Skaičiai gali būti $5670$ ir $5175$. \hfill $\square$
-\end{solution}
+Atsakymas: Skaičiai gali būti $5670$ ir $5175$.
+\end{proof}
 
 \vspace{1cm}
 

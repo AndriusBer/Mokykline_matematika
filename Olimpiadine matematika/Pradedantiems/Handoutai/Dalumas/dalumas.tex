@@ -22,75 +22,99 @@ Svarbi mintis: teiginys apie dalumą slepia lygtį. Kai išskaidome ją pagal ap
 % ==========================================
 \section{Dalumo žymėjimas ir apibrėžimas}
 
-Jeigu skaičius $b$ dalijasi iš skaičiaus $a$ be liekanos, rašome
-\[
+Jeigu skaičius \(b\) dalijasi iš skaičiaus \(a\) be liekanos, rašome
+\begin{equation*}
     a\mid b.
-\]
-Tai skaitoma: „$a$ dalija $b$“ arba „$b$ dalijasi iš $a$“.
+\end{equation*}
+Tai skaitoma: „\(a\) dalija \(b\)“ arba „\(b\) dalijasi iš \(a\)“.
 
 \begin{remark*}
-Žymėjimas $a\mid b$ nėra trupmena – tai teiginys apie skaičius.
+Žymėjimas \(a\mid b\) nėra trupmena – tai teiginys apie skaičius.
 \begin{itemize}
-    \item $\frac{12}{3}=4$ yra skaičiavimo rezultatas.
-    \item $3\mid12$ yra teisingas teiginys: dvylika dalijasi iš trijų.
+    \item \(\frac{12}{3}=4\) yra skaičiavimo rezultatas.
+    \item \(3\mid12\) yra teisingas teiginys: dvylika dalijasi iš trijų.
 \end{itemize}
 Atkreipkime dėmesį į tvarką: kairėje rašome daliklį, dešinėje – skaičių, kurį jis dalija.
 \end{remark*}
 
-Jei dalumo teiginys neteisingas, rašome $a\nmid b$. Pavyzdžiui, $5\nmid12$.
+Jei dalumo teiginys neteisingas, rašome \(a\nmid b\). Pavyzdžiui, \(5\nmid12\).
 
 % ==========================================
 % SAVYBĖS IR ĮRODYMAI
 % ==========================================
 \section{Pirmieji įrankiai: dalumo savybės}
 
-Pradėkime nuo tikslaus apibrėžimo. Toliau raidės $a,b,c,x,y,m,n$ žymi sveikuosius skaičius, o daliklis $a$ yra nelygus nuliui.
+Pradėkime nuo tikslaus apibrėžimo. Toliau raidės \(a,b,c,x,y,m,n\) žymi sveikuosius skaičius, o daliklis \(a\) yra nelygus nuliui.
 
 \begin{definition*}
-Užrašas $a\mid b$ reiškia, kad egzistuoja toks sveikasis skaičius $k$, jog
-\[
+Užrašas \(a\mid b\) reiškia, kad egzistuoja toks sveikasis skaičius \(k\), jog
+\begin{equation*}
     b=ak.
-\]
-Skaičius $k$ parodo, kiek kartų daliklis $a$ telpa į $b$.
+\end{equation*}
+Skaičius \(k\) parodo, kiek kartų daliklis \(a\) telpa į \(b\).
 \end{definition*}
 
-Šis apibrėžimas veikia kaip „išskleidimo raktas“: vietoj paslaptingo simbolio $a\mid b$ galime rašyti lygybę $b=ak$. Iš šios lygybės išplaukia pagrindinės dalumo savybės.
+Šis apibrėžimas veikia kaip „išskleidimo raktas“: vietoj paslaptingo simbolio \(a\mid b\) galime rašyti lygybę \(b=ak\). Iš šios lygybės išplaukia pagrindinės dalumo savybės.
+
+\begin{proposition}[Trivialiosios savybės]
+Kiekvienas nelygus nuliui skaičius dalija pats save (\(a \mid a\)), o vienetas dalija bet kokį skaičių (\(1 \mid a\)). Taip pat kiekvienas nelygus nuliui skaičius dalija nulį (\(a \mid 0\)), nes \(0 = a \cdot 0\).
+\end{proposition}
+\textit{Pavyzdys:} \(7 \mid 7\), nes \(7 = 7 \cdot 1\). Taip pat \(1 \mid 15\), nes \(15 = 1 \cdot 15\). Ir \(5 \mid 0\), nes nulį padalinę iš penkių gauname nulį (liekanos nelieka).
+
+\begin{proposition}[Tranzityvumo savybė (Grandinės taisyklė)]
+Jei \(a \mid b\) ir \(b \mid c\), tai \(a \mid c\). Tai leidžia konstruoti ilgus įrodymus žingsnis po žingsnio.
+\end{proposition}
+\textit{Pavyzdys:} Jei žinome, kad \(3 \mid 12\), o \(12 \mid 60\), tai akivaizdu, jog ir \(3 \mid 60\).
+\begin{proof}
+Pagal apibrėžimą \(b = ak_1\) ir \(c = bk_2\). Įstatę \(b\) išraišką į antrąją lygybę, gauname \(c = (ak_1)k_2 = a(k_1k_2)\). Kadangi \(k_1k_2\) yra sveikasis skaičius, tai \(a \mid c\).
+\end{proof}
+
+\begin{proposition}[Dydžio apribojimo savybė (Nelygybės principas)]
+Jei \(a \mid b\) ir \(b \neq 0\), tai daliklis negali būti didesnis (moduliu) už skaičių, kurį jis dalija. Matematiškai tai užrašoma: \(|a| \le |b|\).
+\end{proposition}
+\textit{Pavyzdys:} Jei ieškome skaičiaus $24$ daliklių, puikiai suprantame, kad joks skaičius, didesnis už $24$ (pavyzdžiui, $25$ ar $100$), jo nepadalins. Didžiausias įmanomas daliklis yra pats $24$.
+\begin{proof}
+Jei \(a \mid b\), tai \(b = ak\) (kur \(k \neq 0\), nes \(b \neq 0\)). Paėmę abiejų pusių modulius, gauname \(|b| = |a||k|\). Kadangi \(k\) yra nenulinis sveikasis skaičius, jis negali būti lygus 0, vadinasi, \(|k| \ge 1\). Todėl \(|b| = |a||k| \ge |a| \cdot 1 = |a|\).
+\end{proof}
 
 \begin{proposition}[Daugybos savybė]
-Jei $a\mid b$, tai $a\mid bc$ kiekvienam sveikajam skaičiui $c$.
+Jei \(a\mid b\), tai \(a\mid bc\) kiekvienam sveikajam skaičiui \(c\).
 \end{proposition}
+\textit{Pavyzdys:} Mes žinome, kad \(4 \mid 12\). Jei tą dvyliktuką padauginsime iš bet kokio skaičiaus, pavyzdžiui, iš $5$, gausime $60$. Ketvertas vis tiek tobulai dalins naująjį skaičių (\(4 \mid 60\)).
 \begin{proof}
-Kadangi $a\mid b$, pagal apibrėžimą egzistuoja sveikasis skaičius $k$, kuriam $b=ak$. Padauginę lygybę iš $c$, gauname
-\[
+Kadangi \(a\mid b\), pagal apibrėžimą egzistuoja sveikasis skaičius \(k\), kuriam \(b=ak\). Padauginę lygybę iš \(c\), gauname
+\begin{equation*}
     bc=(ak)c=a(kc).
-\]
-Kadangi $k$ ir $c$ sveikieji, sandauga $kc$ taip pat sveikasis skaičius. Vadinasi, pagal apibrėžimą $a\mid bc$.
+\end{equation*}
+Kadangi \(k\) ir \(c\) sveikieji, sandauga \(kc\) taip pat sveikasis skaičius. Vadinasi, pagal apibrėžimą \(a\mid bc\).
 \end{proof}
 
 \begin{proposition}[Sumos ir skirtumo savybė]
-Jei $a\mid x$ ir $a\mid y$, tai $a\mid(x+y)$ ir $a\mid(x-y)$.
+Jei \(a\mid x\) ir \(a\mid y\), tai \(a\mid(x+y)\) ir \(a\mid(x-y)\).
 \end{proposition}
+\textit{Pavyzdys:} Žinome, kad \(7 \mid 21\) ir \(7 \mid 35\). Sudėję šiuos skaičius gauname $56$, kas irgi dalijasi iš $7$. Atėmę (\(35 - 21 = 14\)), taip pat gauname skaičių, dalų iš $7$.
 \begin{proof}
-Iš sąlygų ir dalumo apibrėžimo gauname sveikuosius skaičius $k_1,k_2$, kuriems $x=ak_1$ ir $y=ak_2$. Sudėję arba atėmę šias lygybes, turime
-\[
+Iš sąlygų ir dalumo apibrėžimo gauname sveikuosius skaičius \(k_1,k_2\), kuriems \(x=ak_1\) ir \(y=ak_2\). Sudėję arba atėmę šias lygybes, turime
+\begin{equation*}
     x\pm y=ak_1\pm ak_2=a(k_1\pm k_2).
-\]
-Skaičius $k_1\pm k_2$ yra sveikasis, todėl $a$ dalija ir sumą, ir skirtumą.
+\end{equation*}
+Skaičius \(k_1\pm k_2\) yra sveikasis, todėl \(a\) dalija ir sumą, ir skirtumą.
 \end{proof}
 
 \begin{proposition}[Tiesinės kombinacijos savybė]
-Jei $a\mid x$ ir $a\mid y$, tai $a\mid(mx+ny)$ kiekvieniems sveikiesiems skaičiams $m,n$. Vadinasi, dalumas išlieka ir atėmus vieną tokį kartotinį iš kito.
+Jei \(a\mid x\) ir \(a\mid y\), tai \(a\mid(mx+ny)\) kiekvieniems sveikiesiems skaičiams \(m,n\). Vadinasi, dalumas išlieka ir atėmus vieną tokį kartotinį iš kito.
 \end{proposition}
+\textit{Pavyzdys:} Žinome, kad \(5 \mid 10\) ir \(5 \mid 15\). Paimkime du dešimtukus ir tris penkioliktukus: \(2 \cdot 10 + 3 \cdot 15 = 20 + 45 = 65\). Gautas skaičius vis tiek tobulai dalijasi iš penkių (\(5 \mid 65\)).
 \begin{proof}
-Kadangi $a\mid x$ ir $a\mid y$, egzistuoja sveikieji $k_1,k_2$, kuriems $x=ak_1$ ir $y=ak_2$. Tuomet
-\[
+Kadangi \(a\mid x\) ir \(a\mid y\), egzistuoja sveikieji \(k_1,k_2\), kuriems \(x=ak_1\) ir \(y=ak_2\). Tuomet
+\begin{equation*}
     mx+ny=m(ak_1)+n(ak_2)=a(mk_1+nk_2).
-\]
-Skliaustuose esantis skaičius yra sveikasis, taigi $a\mid(mx+ny)$. Pasirinkę neigiamą $m$ arba $n$, gauname ir skirtumo atvejus.
+\end{equation*}
+Skliaustuose esantis skaičius yra sveikasis, taigi \(a\mid(mx+ny)\). Pasirinkę neigiamą \(m\) arba \(n\), gauname ir skirtumo atvejus.
 \end{proof}
 
 \begin{remark*}
-Šių savybių krypties negalima apversti automatiškai. Pavyzdžiui, iš $6\mid(2+4)$ negalima spręsti, kad $6\mid2$ ar $6\mid4$. Tačiau kai žinome, kad daliklis dalija abu dėmenis, jų suma, skirtumas ir bet kuri sveikųjų kartotinių kombinacija taip pat iš jo dalijasi.
+Šių savybių krypties negalima apversti automatiškai. Pavyzdžiui, iš \(6\mid(2+4)\) negalima spręsti, kad \(6\mid2\) ar \(6\mid4\). Tačiau kai žinome, kad daliklis dalija abu dėmenis, jų suma, skirtumas ir bet kuri sveikųjų kartotinių kombinacija taip pat iš jo dalijasi.
 \end{remark*}
 
 % ==========================================
@@ -101,110 +125,222 @@ Skliaustuose esantis skaičius yra sveikasis, taigi $a\mid(mx+ny)$. Pasirinkę n
 Pasižiūrėkime, kaip šie paprasti dėsniai leidžia išspręsti uždavinius, kurie iš pirmo žvilgsnio atrodo neįkandami, nes juose pilna nežinomųjų.
 
 \begin{example}[Žinomo dalumo panaudojimas]
-Sveikasis skaičius $x$ yra toks, kad $5 \mid (2x + 3)$. Įrodykite, kad tuomet penketas būtinai dalija ir reiškinį $(14x + 21)$.
+Sveikasis skaičius \(x\) yra toks, kad \(5 \mid (2x + 3)\). Įrodykite, kad tuomet penketas būtinai dalija ir reiškinį \((14x + 21)\).
 \end{example}
 
 \begin{solution}
-Mums nereikia žinoti, koks tiksliai yra skaičius $x$. 
-Mes žinome, kad teiginys $5 \mid (2x + 3)$ yra tiesa.
+Mums nereikia žinoti, koks tiksliai yra skaičius \(x\). 
+Mes žinome, kad teiginys \(5 \mid (2x + 3)\) yra tiesa.
 Pagal daugybos savybę, jei penketas dalija šį reiškinį, tai dalija ir jo sandaugą su bet kuriuo sveikuoju skaičiumi. Padauginkime reiškinį iš $7$:
-\[ 5 \mid 7 \cdot (2x + 3) \]
+\begin{equation*} 
+5 \mid 7 \cdot (2x + 3) 
+\end{equation*}
 Atskliaudžiame:
-\[ 5 \mid (14x + 21) \]
-Taigi $5\mid(14x+21)$, kaip ir reikėjo įrodyti.
+\begin{equation*} 
+5 \mid (14x + 21) 
+\end{equation*}
+Taigi \(5\mid(14x+21)\), kaip ir reikėjo įrodyti.
 \end{solution}
 
 O dabar – olimpiadinės klasikos perliukas (panašus uždavinys buvo duotas pačioje pirmojoje Tarptautinėje matematikos olimpiadoje 1959 metais!).
 
 \begin{example}[Kintamojo eliminavimas tiesine kombinacija]
-Įrodykite, kad trupmena $\frac{21n + 4}{14n + 3}$ yra nesuprastinama su jokiu sveikuoju skaičiumi $n$.
+Įrodykite, kad trupmena \(\frac{21n + 4}{14n + 3}\) yra nesuprastinama su jokiu sveikuoju skaičiumi \(n\).
 \end{example}
 
 \begin{remark*}
 \textbf{Olimpiadininko triukas – kintamojo eliminavimas.}
 
-Kaip įrodyti, kad trupmena nesuprastinama? Tarkime, kad jos skaitiklis ir vardiklis turi bendrąjį daliklį $d>1$, ir siekime parodyti, jog tai neįmanoma. Norėdami atsikratyti raidės $n$, sudarykime tiesinę kombinaciją, kurioje nario su $n$ koeficientas išnyksta.
+Kaip įrodyti, kad trupmena nesuprastinama? Tarkime, kad jos skaitiklis ir vardiklis turi bendrąjį daliklį \(d>1\), ir siekime parodyti, jog tai neįmanoma. Norėdami atsikratyti raidės \(n\), sudarykime tiesinę kombinaciją, kurioje nario su \(n\) koeficientas išnyksta.
 \end{remark*}
 
 \begin{solution}
-Tarkime, kad trupmena yra suprastinama. Vadinasi, skaitiklis ir vardiklis turi bendrąjį teigiamą daliklį $d>1$. 
+Tarkime, kad trupmena yra suprastinama. Vadinasi, skaitiklis ir vardiklis turi bendrąjį teigiamą daliklį \(d>1\). 
 Užrašome tai savo naująja kalba:
-\[ d \mid (21n + 4) \quad \text{ir} \quad d \mid (14n + 3) \]
+\begin{equation*} 
+d \mid (21n + 4) \quad \text{ir} \quad d \mid (14n + 3) 
+\end{equation*}
 
-Dabar mes norime šiuos du reiškinius atimti, bet jei atimsime tiesiogiai, liks $7n + 1$. Kintamasis $n$ niekur nedingo!
-Turime eliminuoti $n$. Kaip suvienodinti $21n$ ir $14n$? Jų bendras kartotinis yra $42n$.
+Dabar mes norime šiuos du reiškinius atimti, bet jei atimsime tiesiogiai, liks \(7n + 1\). Kintamasis \(n\) niekur nedingo!
+Turime eliminuoti \(n\). Kaip suvienodinti $21n$ ir $14n$? Jų bendras kartotinis yra $42n$.
 
 \begin{enumerate}
     \item Pirmąjį reiškinį padauginkime iš $2$:
-    \[
+    \begin{equation*}
         d\mid 2(21n+4),\qquad\text{taigi }d\mid(42n+8).
-    \]
+    \end{equation*}
     \item Antrąjį reiškinį padauginkime iš $3$:
-    \[
+    \begin{equation*}
         d\mid 3(14n+3),\qquad\text{taigi }d\mid(42n+9).
-    \]
+    \end{equation*}
 \end{enumerate}
 
-Pagal sumos ir skirtumo savybę, jei $d$ dalija abu šiuos naujus reiškinius, tai $d$ dalija ir jų skirtumą. Atimkime mažesnį iš didesnio:
-\[ d \mid (42n + 9) - (42n + 8) \]
-\[ d \mid 1 \]
+Pagal sumos ir skirtumo savybę, jei \(d\) dalija abu šiuos naujus reiškinius, tai \(d\) dalija ir jų skirtumą. Atimkime mažesnį iš didesnio:
+\begin{equation*} 
+d \mid (42n + 9) - (42n + 8) 
+\end{equation*}
+\begin{equation*} 
+d \mid 1 
+\end{equation*}
 
-Vienintelis teigiamas sveikasis skaičiaus $1$ daliklis yra pats $1$, todėl $d=1$. Vadinasi, skaitiklis ir vardiklis neturi bendro daliklio, didesnio už $1$, taigi trupmena nesuprastinama su kiekvienu sveikuoju $n$.
+Vienintelis teigiamas sveikasis skaičiaus $1$ daliklis yra pats $1$, todėl \(d=1\). Vadinasi, skaitiklis ir vardiklis neturi bendro daliklio, didesnio už $1$, taigi trupmena nesuprastinama su kiekvienu sveikuoju \(n\).
 \end{solution}
 \vspace{0.5cm}
 
 \begin{example}[Sveikasis trupmenos reikšmės kriterijus]
-Raskite visus sveikuosius skaičius $n\ne2$, kuriems trupmenos $\frac{n+11}{n-2}$ reikšmė yra sveikasis skaičius.
+Raskite visus sveikuosius skaičius \(n\ne2\), kuriems trupmenos \(\frac{n+11}{n-2}\) reikšmė yra sveikasis skaičius.
 \end{example}
 \begin{solution}
 Sąlyga, kad trupmena yra sveikasis skaičius, mūsų naująja kalba užrašoma taip:
-\[ n-2 \mid n+11 \]
+\begin{equation*} 
+n-2 \mid n+11 
+\end{equation*}
 
-Mes turime vieną teiginį su nežinomuoju $n$. Norėdami rasti $n$, turime juo atsikratyti! Iš kur gauti antrą teiginį? Visada atsiminkite pačią paprasčiausią (ir todėl dažnai pamirštamą) dalumo taisyklę: \textbf{kiekvienas skaičius tobulai dalija pats save}. Vadinasi:
-\[ n-2 \mid n-2 \]
+Mes turime vieną teiginį su nežinomuoju \(n\). Norėdami rasti \(n\), turime juo atsikratyti! Iš kur gauti antrą teiginį? Visada atsiminkite pačią paprasčiausią (ir todėl dažnai pamirštamą) dalumo taisyklę: \textbf{kiekvienas skaičius tobulai dalija pats save}. Vadinasi:
+\begin{equation*} 
+n-2 \mid n-2 
+\end{equation*}
 
 Dabar turime du teiginius:
-1) $n-2 \mid n+11$ (iš sąlygos)
-2) $n-2 \mid n-2$ (akivaizdus faktas)
+1) \(n-2 \mid n+11\) (iš sąlygos)
+2) \(n-2 \mid n-2\) (akivaizdus faktas)
 
 Pritaikome sumos ir skirtumo savybę: atėmę antrąjį dalumo teiginį iš pirmojo, gauname
-\[ n-2 \mid (n+11) - (n-2) \]
-\[ n-2 \mid 13 \]
+\begin{equation*} 
+n-2 \mid (n+11) - (n-2) 
+\end{equation*}
+\begin{equation*} 
+n-2 \mid 13 
+\end{equation*}
 
-Štai ir magija! Kintamasis $n$ dingo. Gavome, kad skaičius $n-2$ privalo būti skaičiaus $13$ daliklis. 
-Kadangi $13$ yra pirminis skaičius, jo sveikieji dalikliai yra $1,-1,13,-13$. Įtraukiame ir neigiamus daliklius, nes $n-2$ gali būti neigiamas.
+Štai ir magija! Kintamasis \(n\) dingo. Gavome, kad skaičius \(n-2\) privalo būti skaičiaus $13$ daliklis. 
+Kadangi $13$ yra pirminis skaičius, jo sveikieji dalikliai yra $1,-1,13,-13$. Įtraukiame ir neigiamus daliklius, nes \(n-2\) gali būti neigiamas.
 
 Sudarome keturias paprastas lygtis:
 \begin{itemize}
-    \item $n-2 = 1 \implies n = 3$
-    \item $n-2 = -1 \implies n = 1$
-    \item $n-2 = 13 \implies n = 15$
-    \item $n-2 = -13 \implies n = -11$
+    \item \(n-2 = 1 \implies n = 3\)
+    \item \(n-2 = -1 \implies n = 1\)
+    \item \(n-2 = 13 \implies n = 15\)
+    \item \(n-2 = -13 \implies n = -11\)
 \end{itemize}
-\ats{$n\in\{-11,1,3,15\}$.}
+\ats{\(n\in\{-11,1,3,15\}\).}
 \end{solution}
 
 \vspace{0.5cm}
 
 \begin{example}[Papildymas iki daliklio kartotinio]
-Sveikieji skaičiai $x$ ir $y$ yra tokie, kad $19 \mid (5x + 3y)$. Įrodykite, kad tuomet $19$ būtinai dalija ir reiškinį $(14x + 16y)$.
+Sveikieji skaičiai \(x\) ir \(y\) yra tokie, kad \(19 \mid (5x + 3y)\). Įrodykite, kad tuomet $19$ būtinai dalija ir reiškinį \((14x + 16y)\).
 \end{example}
 
 \begin{solution}
-Šis uždavinys iš pirmo žvilgsnio atrodo bauginančiai, nes skaičiai nesiskaido taip lengvai kaip pirmame pavyzdyje. Kaip iš $5x + 3y$ padaryti $14x + 16y$? 
+Šis uždavinys iš pirmo žvilgsnio atrodo bauginančiai, nes skaičiai nesiskaido taip lengvai kaip pirmame pavyzdyje. Kaip iš \(5x + 3y\) padaryti \(14x + 16y\)? 
 
 Olimpiadose dažnai veikia \textbf{„papildymo iki modulio“} triukas. 
 Pažiūrėkime, kas atsitiks, jei mes \textbf{sudėsime} tai, ką turime, su tuo, ką norime įrodyti:
-\[ (5x + 3y) + (14x + 16y) = 19x + 19y = 19(x+y) \]
+\begin{equation*} 
+(5x + 3y) + (14x + 16y) = 19x + 19y = 19(x+y) 
+\end{equation*}
 
-Atradome nuostabų ryšį! Jų suma yra $19(x+y)$. 
-Akivaizdu, kad $19 \mid 19(x+y)$, nes šis reiškinys turi daugiklį $19$.
-Sąlygoje pasakyta, kad $19 \mid (5x + 3y)$.
+Atradome nuostabų ryšį! Jų suma yra \(19(x+y)\). 
+Akivaizdu, kad \(19 \mid 19(x+y)\), nes šis reiškinys turi daugiklį $19$.
+Sąlygoje pasakyta, kad \(19 \mid (5x + 3y)\).
 
 Jei $19$ dalija bendrą sumą ir pirmąjį dėmenį, tai pagal sumos ir skirtumo savybę jis dalija ir antrąjį dėmenį:
-\[ 19 \mid 19(x+y) - (5x + 3y) \]
-\[ 19 \mid (14x + 16y) \]
-Taigi $19\mid(14x+16y)$, kaip ir reikėjo įrodyti.
+\begin{equation*} 
+19 \mid 19(x+y) - (5x + 3y) 
+\end{equation*}
+\begin{equation*} 
+19 \mid (14x + 16y) 
+\end{equation*}
+Taigi \(19\mid(14x+16y)\), kaip ir reikėjo įrodyti.
+\end{solution}
+
+\vspace{0.5cm}
+
+\begin{example}[Kintamojo laipsnio mažinimas]
+Raskite visus sveikuosius skaičius \(n \ne 3\), kuriems trupmena \(\frac{n^2 + 1}{n - 3}\) yra sveikasis skaičius.
+\end{example}
+
+\begin{solution}
+Trupmena bus sveikasis skaičius, kai vardiklis tobulai dalins skaitiklį:
+\begin{equation*} 
+n - 3 \mid n^2 + 1 
+\end{equation*}
+
+Mums reikia eliminuoti \(n^2\). Prisiminkime trivialiąją savybę, kad skaičius visada dalija pats save:
+\begin{equation*} 
+n - 3 \mid n - 3 
+\end{equation*}
+
+Pagal daugybos savybę, šį reiškinį galime padauginti iš bet kokio sveikojo skaičiaus, taigi ir iš paties kintamojo \(n\):
+\begin{equation*} 
+n - 3 \mid n(n - 3) 
+\end{equation*}
+\begin{equation*} 
+n - 3 \mid n^2 - 3n 
+\end{equation*}
+
+Dabar turime du reiškinius, kuriuose yra \(n^2\). Pritaikius skirtumo taisyklę, iš pradinės sąlygos atimame mūsų sukonstruotą reiškinį:
+\begin{equation*} 
+n - 3 \mid (n^2 + 1) - (n^2 - 3n) 
+\end{equation*}
+\begin{equation*} 
+n - 3 \mid 3n + 1 
+\end{equation*}
+
+Sumažinome laipsnį nuo kvadrato iki tiesinio! Dabar pritaikome įprastą kintamojo eliminavimo triuką (kaip ankstesniuose pavyzdžiuose). Padauginame bazinį \(n - 3 \mid n - 3\) iš $3$:
+\begin{equation*} 
+n - 3 \mid 3(n - 3) \implies n - 3 \mid 3n - 9 
+\end{equation*}
+
+Ir vėl atimame jį iš mūsų naujo reiškinio:
+\begin{equation*} 
+n - 3 \mid (3n + 1) - (3n - 9) 
+\end{equation*}
+\begin{equation*} 
+n - 3 \mid 10 
+\end{equation*}
+
+Kintamasis visiškai dingo. Skaičius \(n - 3\) privalo būti skaičiaus $10$ daliklis:
+\begin{equation*} 
+n - 3 \in \{-10, -5, -2, -1, 1, 2, 5, 10\} 
+\end{equation*}
+Pridėję $3$ prie kiekvieno varianto gauname:
+\begin{equation*} 
+n \in \{-7, -2, 1, 2, 4, 5, 8, 13\} 
+\end{equation*}
+\ats{\(n \in \{-7, -2, 1, 2, 4, 5, 8, 13\}\).}
+\end{solution}
+
+\vspace{0.5cm}
+
+\begin{example}[Dydžio apribojimas]
+Raskite visus natūraliuosius skaičius \(n\), kuriems esant skaičius \(n^2 + 1\) dalija skaičių \(n + 5\).
+\end{example}
+
+\begin{solution}
+Užrašome sąlygą mūsų notacija:
+\begin{equation*} 
+n^2 + 1 \mid n + 5 
+\end{equation*}
+
+Kadangi kalbame apie natūraliuosius skaičius (\(n \ge 1\)), reiškinys \(n + 5\) visada teigiamas (niekada nebus nulis). Remiantis dydžio apribojimo savybe, daliklis negali būti didesnis už dalinį:
+\begin{equation*} 
+n^2 + 1 \le n + 5 
+\end{equation*}
+
+Ši nelygybė griežtai apriboja galimas \(n\) reikšmes. Sutvarkome nelygybę perkeldami viską į kairę pusę:
+\begin{equation*} 
+n^2 - n - 4 \le 0 
+\end{equation*}
+Galime tiesiog patikrinti kelis pirmuosius natūraliuosius skaičius (nes \(n\) yra sveikas ir teigiamas):
+\begin{itemize}
+    \item Jei \(n = 1\), gauname \(1^2 - 1 - 4 = -4 \le 0\) (teisinga nelygybė). Tikriname dalumą: \(1^2 + 1 \mid 1 + 5 \implies 2 \mid 6\). Tinka!
+    \item Jei \(n = 2\), gauname \(2^2 - 2 - 4 = -2 \le 0\) (teisinga nelygybė). Tikriname dalumą: \(2^2 + 1 \mid 2 + 5 \implies 5 \mid 7\). Netinka, $5$ nedalija $7$.
+    \item Jei \(n = 3\), gauname \(3^2 - 3 - 4 = 2 \le 0\). Tai jau \textbf{neteisinga} nelygybė.
+\end{itemize}
+Visiems didesniems \(n\) reikšmė \(n^2 - n - 4\) tik augs ir bus visada teigiama, todėl daugiau sprendinių būti negali.
+\ats{\(n = 1\).}
 \end{solution}
 
 \vspace{1cm}
@@ -215,39 +351,39 @@ Taigi $19\mid(14x+16y)$, kaip ir reikėjo įrodyti.
 \newpage
 \section{Uždaviniai savarankiškam sprendimui (20 iššūkių)}
 
-Uždaviniai eina nuo pagrindinių savybių taikymo iki sudėtingesnių samprotavimų. Įrodymuose dalumą žymėkite $a\mid b$ notacija ir remkitės apibrėžimu bei įrodytomis savybėmis. Kai reikia nustatyti, kada trupmena yra sveikasis skaičius, pirmiausia užrašykite atitinkamą dalumo sąlygą.
+Uždaviniai eina nuo pagrindinių savybių taikymo iki sudėtingesnių samprotavimų. Įrodymuose dalumą žymėkite \(a\mid b\) notacija ir remkitės apibrėžimu bei įrodytomis savybėmis. Kai reikia nustatyti, kada trupmena yra sveikasis skaičius, pirmiausia užrašykite atitinkamą dalumo sąlygą.
 
 \begin{enumerate}
     \renewcommand{\labelenumi}{\textbf{\theenumi.}}
     \item Prieš pradedant rimtus įrodymus, patikrinkime jūsų intuiciją. Ar teisingos šios „dalumo savybės“? Jei teigiate, kad neteisingos – pateikite konkretų skaičių pavyzdį (kontrpavyzdį), kuris tai įrodo.
     \begin{itemize}
-        \item[a)] Jei $x \mid (a+b)$, tai $x \mid a$ ir $x \mid b$.
-        \item[b)] Jei $x \mid a \cdot b$, tai $x \mid a$ arba $x \mid b$.
-        \item[c)] Jei $x \mid a$ ir $y \mid a$, tai $xy \mid a$.
+        \item[a)] Jei \(x \mid (a+b)\), tai \(x \mid a\) ir \(x \mid b\).
+        \item[b)] Jei \(x \mid a \cdot b\), tai \(x \mid a\) arba \(x \mid b\).
+        \item[c)] Jei \(x \mid a\) ir \(y \mid a\), tai \(xy \mid a\).
     \end{itemize}
-    \item Įrodykite pačią paprasčiausią išvadą: jei $a \mid (x+y)$ ir $a \mid x$, tai būtinai $a \mid y$.
-    \item Žinoma, kad $7 \mid x$ ir $7 \mid y$. Įrodykite, kad tuomet $7 \mid (3x + 4y)$.
-    \item Žinoma, kad $11 \mid (a - 5)$. Įrodykite, kad $11 \mid (2a + 1)$.
-    \item Įrodykite, kad trupmena $\frac{3n + 1}{2n + 1}$ yra nesuprastinama su jokiu sveikuoju skaičiumi $n$.
-    \item Duota, kad $n \mid 3a$ ir $n \mid (12a+5b)$. Įrodykite, kad $n \mid 10b$.
-    \item Duota, kad $n \mid (3a+7b)$ ir $n \mid (2a+5b)$. Įrodykite, kad $n \mid a$ ir $n \mid b$.
-    \item Raskite visus natūraliuosius skaičius $n>1$, kuriems $n-1 \mid 15$.
-    \item Raskite visus sveikuosius skaičius $n\ne-1$, kuriems trupmenos $\frac{n+7}{n+1}$ reikšmė yra sveikasis skaičius.
-    \item Raskite visus sveikuosius skaičius $n\ne-2$, kuriems trupmenos $\frac{3n+16}{n+2}$ reikšmė yra sveikasis skaičius.
-    \item Raskite visus sveikuosius skaičius $n\ne3$, kuriems trupmenos $\frac{2n+9}{n-3}$ reikšmė yra sveikasis skaičius.
+    \item Įrodykite pačią paprasčiausią išvadą: jei \(a \mid (x+y)\) ir \(a \mid x\), tai būtinai \(a \mid y\).
+    \item Žinoma, kad \(7 \mid x\) ir \(7 \mid y\). Įrodykite, kad tuomet \(7 \mid (3x + 4y)\).
+    \item Žinoma, kad \(11 \mid (a - 5)\). Įrodykite, kad \(11 \mid (2a + 1)\).
+    \item Įrodykite, kad trupmena \(\frac{3n + 1}{2n + 1}\) yra nesuprastinama su jokiu sveikuoju skaičiumi \(n\).
+    \item Duota, kad \(n \mid 3a\) ir \(n \mid (12a+5b)\). Įrodykite, kad \(n \mid 10b\).
+    \item Duota, kad \(n \mid (3a+7b)\) ir \(n \mid (2a+5b)\). Įrodykite, kad \(n \mid a\) ir \(n \mid b\).
+    \item Raskite visus natūraliuosius skaičius \(n>1\), kuriems \(n-1 \mid 15\).
+    \item Raskite visus sveikuosius skaičius \(n\ne-1\), kuriems trupmenos \(\frac{n+7}{n+1}\) reikšmė yra sveikasis skaičius.
+    \item Raskite visus sveikuosius skaičius \(n\ne-2\), kuriems trupmenos \(\frac{3n+16}{n+2}\) reikšmė yra sveikasis skaičius.
+    \item Raskite visus sveikuosius skaičius \(n\ne3\), kuriems trupmenos \(\frac{2n+9}{n-3}\) reikšmė yra sveikasis skaičius.
 \end{enumerate}
 
 \begin{enumerate}
     \setcounter{enumi}{10}
-    \item Duota, kad skaičius $(a+4b)$ dalijasi iš $13$. Įrodykite, kad ir $(10a+b)$ dalijasi iš $13$.
-    \item Žinoma, kad $17 \mid (2x + 3y)$. Įrodykite, kad tuomet $17 \mid (15x + 14y)$.
-    \item Žinoma, kad $13 \mid (4x + 7y)$. Įrodykite, kad tuomet $13 \mid (x + 5y)$.
-    \item Žinoma, kad $23 \mid (5x + 2y)$. Įrodykite, kad $23 \mid (18x + 21y)$. 
-    \item Duota, kad $n \mid (a+b)$. Įrodykite, kad $n \mid (a^3+2a+b^3+2b)$.
-    \item Įrodykite, kad trupmena $\frac{12n + 5}{5n + 2}$ yra nesuprastinama jokiems sveikiesiems $n$.
-    \item Raskite visus sveikuosius skaičius $n\ne2$, kuriems trupmenos $\frac{n^2 + 5}{n - 2}$ reikšmė yra sveikasis skaičius.
-    \item Žinoma, kad $41 \mid (3x + 5y)$. Ar tiesa, kad $41 \mid (11x + 19y)$? Jei taip, įrodykite.
-    \item Duota, kad $11 \mid (3x+7y)$ ir $11 \mid (2x+5y)$. Įrodykite, kad $121 \mid (x^2+3y^2)$.
+    \item Duota, kad skaičius \((a+4b)\) dalijasi iš $13$. Įrodykite, kad ir \((10a+b)\) dalijasi iš $13$.
+    \item Žinoma, kad \(17 \mid (2x + 3y)\). Įrodykite, kad tuomet \(17 \mid (15x + 14y)\).
+    \item Žinoma, kad \(13 \mid (4x + 7y)\). Įrodykite, kad tuomet \(13 \mid (x + 5y)\).
+    \item Žinoma, kad \(23 \mid (5x + 2y)\). Įrodykite, kad \(23 \mid (18x + 21y)\). 
+    \item Duota, kad \(n \mid (a+b)\). Įrodykite, kad \(n \mid (a^3+2a+b^3+2b)\).
+    \item Įrodykite, kad trupmena \(\frac{12n + 5}{5n + 2}\) yra nesuprastinama jokiems sveikiesiems \(n\).
+    \item Raskite visus sveikuosius skaičius \(n\ne2\), kuriems trupmenos \(\frac{n^2 + 5}{n - 2}\) reikšmė yra sveikasis skaičius.
+    \item Žinoma, kad \(41 \mid (3x + 5y)\). Ar tiesa, kad \(41 \mid (11x + 19y)\)? Jei taip, įrodykite.
+    \item Duota, kad \(11 \mid (3x+7y)\) ir \(11 \mid (2x+5y)\). Įrodykite, kad \(121 \mid (x^2+3y^2)\).
 \end{enumerate}
 
 \begin{remark*}
