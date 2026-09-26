@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Skaičių teorija: Pirminiai skaičiai ir pilnieji kvadratai}
+\author{Andrius Berniukevičius}
+
+\newenvironment{solution}
+    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
+    {\end{list}}
+
+\begin{document}
+
+\maketitle
+
+\section{Kai algebra susitinka su skaičių teorija}
+
+Iki šiol mes skaičius dalinome, skaidėme pirminiais dauginamaisiais ir ieškojome jų bendrų daliklių. Tačiau tikroji olimpiadinė magija prasideda tada, kai į pagalbą skaičių teorijai ateina \textbf{algebra}. 
+
+Pagalvokite: kuo ypatingas pirminis skaičius $p$? Skirtingai nei sudėtiniai skaičiai, kurie gali būti išskaidyti į daugybę skirtingų kombinacijų ($24 = 6 \cdot 4 = 8 \cdot 3 = 12 \cdot 2$), pirminis skaičius yra visiškai „kietas“. Jį dviejų natūraliųjų skaičių sandauga galime užrašyti \textbf{tik vieninteliu būdu}:
+$$ p = 1 \cdot p $$
+
+Šis, atrodytų, banalus faktas tampa neįtikėtinai galingu ginklu, kai mes jį sujungiame su pilnaisiais kvadratais.
+
+\subsection{Baziniai ginklai: Kvadratų skirtumas}
+
+Daugelis iš jūsų mokykloje išmoko greitosios daugybos formulę – kvadratų skirtumą:
+$$ a^2 - b^2 = (a - b)(a + b) $$
+Mokykloje tai naudojama tiesiog prastinant reiškinius. Olimpiadose tai yra mirtinas ginklas lygtims spręsti. 
+
+Įsivaizduokite, kad turite lygtį: $p = a^2 - b^2$ (kur $p$ – pirminis skaičius, o $a, b$ – natūralieji).
+Išskaidykime ją:
+$$ p = (a - b) \cdot (a + b) $$
+Kairėje pusėje turime pirminį skaičių, o dešinėje – \textit{dviejų} skaičių sandaugą. Bet mes ką tik kalbėjome, kad pirminis skaičius skaidomas tik kaip $1 \cdot p$! Vadinasi, vienas iš šių skliaustų privalo būti lygus $1$, o kitas – $p$. Kadangi $a$ ir $b$ yra natūralieji skaičiai, akivaizdu, kad $(a-b)$ yra mažesnis už $(a+b)$. Todėl mes \textbf{be jokio spėliojimo} gauname griežtą lygčių sistemą:
+$$ a - b = 1 $$
+$$ a + b = p $$
+Šio triuko esmė: \textbf{algebrinis skaidymas verčia mus lyginti dauginamuosius su vienetu ir pačiu pirminiu skaičiumi}.
+
+\subsection{Pilnųjų kvadratų spąstai}
+Dar viena svarbi strategija dirbant su kvadratais – „įkalinimas“. Kiekvienas natūralusis skaičius, esantis griežtai tarp dviejų gretimų pilnųjų kvadratų $k^2$ ir $(k+1)^2$, pats \textbf{niekada} negali būti pilnasis kvadratas. (Juk tarp $25$ ir $36$ nėra kito sveikojo skaičiaus, kurį pakėlus kvadratu gautume sveiką skaičių). Jei įrodysite, kad $x$ yra tarp $k^2$ ir $(k+1)^2$, jūs įrodysite, kad $x$ nėra pilnasis kvadratas.
+
+\section{Uždavinių sprendimo pavyzdžiai}
+
+\begin{example}[Tiesioginis kvadratų skirtumas]
+Raskite pirminį skaičių $p$, jei žinoma, kad $p = n^2 - 25$ (kur $n$ – natūralusis skaičius).
+\end{example}
+\begin{solution}
+\textbf{Idėjos analizė:} Matome pirminį skaičių, lygų išraiškai, kurią galima išskaidyti. Mūsų tikslas – paversti skirtumą sandauga ir mažiausią dauginamąjį prilyginti 1.
+
+\textbf{Sprendimas:}\\
+Taikome kvadratų skirtumo formulę:
+$$ p = (n - 5)(n + 5) $$
+Kadangi $p$ yra pirminis skaičius, vienas iš dauginamųjų dešinėje privalo būti $1$. Kadangi $n$ yra natūralusis skaičius, $(n-5)$ yra mažesnis už $(n+5)$. Vadinasi:
+$$ n - 5 = 1 \implies n = 6 $$
+Dabar, kai radome $n$, įstatome jį atgal, kad rastume $p$:
+$$ p = (6 - 5)(6 + 5) = 1 \cdot 11 = 11 $$
+Būtina patikrinti: ar $11$ yra pirminis skaičius? Taip. 
+Atsakymas: $p = 11$. \hfill $\square$
+\end{solution}
+
+\begin{example}[Kintamųjų perkėlimas]
+Raskite visus pirminius skaičius $p$, kuriems esant reiškinys $7p + 1$ yra pilnasis kvadratas.
+\end{example}
+\begin{solution}
+\textbf{Idėjos analizė:} Sąlyga sako, kad $7p + 1 = k^2$ (kažkokiam natūraliajam $k$). Skirtingai nei pirmame pavyzdyje, čia kvadratų skirtumo tiesiogiai nematome. Bet mes galime jį \textbf{sukurti}, perkėlę vienetą į kitą pusę!
+
+\textbf{Sprendimas:}\\
+Užrašome sąlygą lygtimi:
+$$ 7p + 1 = k^2 $$
+Perkeliame $1$ į dešinę pusę:
+$$ 7p = k^2 - 1 $$
+Pritaikome kvadratų skirtumą:
+$$ 7 \cdot p = (k - 1)(k + 1) $$
+Čia mes turime situaciją, kai dviejų \textit{pirminių} skaičių (7 ir $p$) sandauga lygi dviejų iš eilės einančių lyginių/nelyginių skaičių sandaugai. Skaičius 7 privalo dalinti arba $(k-1)$, arba $(k+1)$.
+Išnagrinėkime mažus $k$ variantus, nes skirtumas tarp skliaustų tėra 2.
+Galimi atvejai, kai vienas skliaustas lygus 7:
+1) Tarkime, $k - 1 = 7 \implies k = 8$. Tuomet antras skliaustas $k+1 = 9$. 
+Gauname $7 \cdot p = 7 \cdot 9 \implies p = 9$. Bet $9$ nėra pirminis skaičius! Šis variantas netinka.
+2) Tarkime, $k + 1 = 7 \implies k = 6$. Tuomet pirmas skliaustas $k-1 = 5$.
+Gauname $7 \cdot p = 5 \cdot 7 \implies p = 5$. Patikriname: 5 yra pirminis skaičius. $7 \cdot 5 + 1 = 36 = 6^2$. Tinka!
+Atsakymas: $p = 5$. \hfill $\square$
+\end{solution}
+
+\begin{example}[Kvadratų spąstai ir išskyrimas]
+Įrodykite, kad bet kokiam natūraliajam skaičiui $n > 1$, skaičius $n^4 + 4$ niekada nebus pirminis.
+\end{example}
+\begin{solution}
+\textbf{Idėjos analizė:} Reiškinys $n^4 + 4$ yra suma, o ne skirtumas, todėl įprasta formulė neveikia. Tai labai garsi Sophie Germain tapatybė. Jos pagrindinė idėja – \textbf{pilnojo kvadrato išskyrimas}. Mes dirbtinai pridėsime narį, kad gautume kvadratą, ir tuomet atimsime jį atgal, sukurdami mums taip reikalingą kvadratų skirtumą.
+
+\textbf{Sprendimas:}\\
+Prisiminkime formulę $(a+b)^2 = a^2 + 2ab + b^2$. Mūsų turimas $n^4 = (n^2)^2$, o $4 = 2^2$. Trūksta vidurinio nario $2 \cdot n^2 \cdot 2 = 4n^2$. Pridėkime jį ir iškart atimkime:
+$$ n^4 + 4 = n^4 + \mathbf{4n^2} + 4 - \mathbf{4n^2} $$
+Sujungiame pirmuosius tris narius į pilnąjį kvadratą:
+$$ = (n^2 + 2)^2 - 4n^2 $$
+Dabar $4n^2$ mes galime užrašyti kaip $(2n)^2$. Gavome nuostabų kvadratų skirtumą!
+$$ = (n^2 + 2)^2 - (2n)^2 = (n^2 + 2 - 2n)(n^2 + 2 + 2n) $$
+Sutvarkome abėcėlės tvarka:
+$$ = (n^2 - 2n + 2)(n^2 + 2n + 2) $$
+Kad pradinis skaičius būtų pirminis, vienas iš šių skliaustų privalo būti lygus $1$. 
+Mažesnysis skliaustas yra $n^2 - 2n + 2$. Išskirkime jame vėl pilnąjį kvadratą:
+$$ n^2 - 2n + 2 = (n - 1)^2 + 1 $$
+Kadangi uždavinio sąlyga teigia, kad $n > 1$, tai $(n-1)^2 \ge 1$. Todėl mažiausia mažesniojo skliausto reikšmė bus $1^2 + 1 = 2$.
+Nei vienas skliaustas negali būti lygus $1$, o tai reiškia, kad $n^4+4$ visada išsiskleis į dviejų didesnių už vienetą skaičių sandaugą. Todėl jis \textbf{niekada nėra pirminis}. \hfill $\square$
+\end{solution}
+
+\vspace{0.5cm}
+
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+Pirmieji 10 uždavinių skirti bazinės technikos įtvirtinimui. Visi sprendimai turi būti argumentuoti lygtimis (skaidymu), o ne atsitiktiniu spėliojimu.
+
+\subsection*{Baziniai (Rankos atmušimas)}
+\begin{enumerate}
+    \item Raskite pirminį skaičių $p$, jei žinoma, kad $p = n^2 - 1$ (kur $n$ – natūralusis skaičius).
+    \item Raskite visus pirminius skaičius $p$, kuriems esant teisinga lygybė $p = n^2 - 9$ (kur $n$ – natūralusis skaičius).
+    \item Išspręskite lygtį natūraliaisiais skaičiais: $x^2 - y^2 = 13$. (Prisiminkite, kad 13 – pirminis).
+    \item Raskite visus pirminius $p$ ir $q$, kuriems teisinga lygybė $p^2 - q^2 = 17$.
+    \item Natūralusis skaičius $N$ turi lygiai $3$ daliklius. Įrodykite, kad šis skaičius privalo būti pirminio skaičiaus kvadratas ($N = p^2$).
+    \item Skaičiaus kanoninis skaidinys yra $A = 2^x \cdot 3^4 \cdot 5^y$. Kokios turi būti kintamųjų $x$ ir $y$ savybės (lyginumas), kad $A$ būtų pilnasis kvadratas?
+    \item Ar egzistuoja toks pirminis skaičius $p$, kuriam esant $p^2 - 4$ yra taip pat pirminis skaičius?
+    \item Įrodykite, kad tarp dviejų gretimų pilnųjų kvadratų $k^2$ ir $(k+1)^2$ nėra jokio kito pilnojo kvadrato. Remiantis tuo, ar gali skaičius $k^2 + 1$ (kai $k \ge 1$) būti pilnasis kvadratas?
+    \item Raskite pirminį skaičių $p$, jei žinoma, kad $p = x^2 - y^2$, o $x$ ir $y$ skiriasi lygiai per $1$.
+    \item Ar gali pirminis skaičius $p > 2$ būti išreikštas dviejų lyginių skaičių kvadratų skirtumu $x^2 - y^2$? Atsakymą pagrįskite.
+\end{enumerate}
+
+\subsection*{Vidutinio sunkumo (Rajoninių olimpiadų lygis)}
+\setcounter{enumi}{10}
+\begin{enumerate}
+    \item Raskite visus pirminius $p$, kuriems esant reiškinys $p^2 + 11$ yra pilnasis kvadratas. (Tarkite, kad $p^2 + 11 = k^2$).
+    \item Raskite visus pirminius $p$, su kuriais skaičius $13p + 1$ yra pilnasis kvadratas.
+    \item Įrodykite, kad joks natūralusis skaičius pavidalo $n^2 + n$ niekada nėra pilnasis kvadratas jokiam natūraliajam $n$. (Patarimas: naudokitės kvadratų spąstais).
+    \item Raskite visus pirminius $p$ ir $q$, kuriems teisinga lygybė $p^2 - q^2 = p+q$.
+    \item Raskite visus pirminius skaičius $p$, su kuriais reiškinys $p^2 - 2p$ yra pilnasis kvadratas.
+    \item Skaičiai $p$ ir $p^2 + 2$ abu yra pirminiai. Raskite visus tokius galimus $p$. (Patarimas: patikrinkite dalumą iš 3 naudodami $p=3k \pm 1$).
+    \item Raskite visus pirminius $p$, su kuriais $3p + 4$ yra pilnasis kvadratas.
+    \item Išspręskite lygtį natūraliaisiais skaičiais: $x^2 - y^2 = 2p$, kur $p$ yra nelyginis pirminis skaičius. Jei sprendinių nėra, griežtai įrodykite kodėl. (Patarimas: apsvarstykite $x$ ir $y$ lyginumą).
+    \item Raskite visus natūraliuosius $n$, su kuriais skaičius $n^2 + 7$ yra pilnasis kvadratas.
+    \item Ar skaičius $p^4 + 4$ gali būti pirminis, jeigu žinoma, kad $p$ pats yra pirminis skaičius?
+\end{enumerate}
+
+\subsection*{Sunkūs (Nacionalinių ir aukštesnių olimpiadų lygis)}
+\setcounter{enumi}{20}
+\begin{enumerate}
+    \item Raskite visus pirminius skaičius $p$ ir $q$, tenkinančius diofantinę lygtį $p^2 - 2q^2 = 1$.
+    \item Raskite visus pirminius skaičius $p$, kuriems reiškinys $p^3 - p + 1$ yra pilnasis kvadratas.
+    \item Raskite visus pirminius $p$, kuriems esant skaičius $8p^2 + 1$ irgi yra pirminis. Įrodykite, kad kitų sprendinių nėra.
+    \item Raskite visus natūraliuosius skaičius $n$, kuriems esant $n^4 + n^2 + 1$ yra pirminis skaičius. (Patarimas: pridėkite ir atimkite $n^2$, pritaikykite Sophie Germain idėją).
+    \item (Fermat) Įrodykite, kad lygtis $x^3 - y^3 = p$ turi sprendinių natūraliaisiais skaičiais $(x, y)$ tik tokiems pirminiams skaičiams $p$, kurie užrašomi forma $p = 3k^2 + 3k + 1$.
+    \item Raskite visus pirminius skaičius $p, q$, su kuriais suma $p^2 + q^2$ yra pilnasis kvadratas. Jei tokių nėra, įrodykite.
+    \item Raskite visus pirminius skaičius $p$, kuriems esant lygtis $p = x^4 + 4y^4$ turi sprendinių natūraliaisiais skaičiais $x, y$.
+    \item Įrodykite, kad jei $p \ge 5$ yra pirminis skaičius, tai reiškinys $p^2 - 1$ visada tobulai dalijasi iš $24$. (Patarimas: naudokite faktą, kad $p$ nesidalija nei iš $2$, nei iš $3$).
+    \item Raskite visus pirminius $p$, su kuriais reiškinys $2^p + p^2$ yra pirminis skaičius.
+    \item (Iššūkis) Raskite visus pirminius skaičius $p$, kuriems esant trupmena $\frac{2^{p-1}-1}{p}$ yra sveikasis skaičius ir tobulas pilnasis kvadratas.
+\end{enumerate}
+
+\end{document}
