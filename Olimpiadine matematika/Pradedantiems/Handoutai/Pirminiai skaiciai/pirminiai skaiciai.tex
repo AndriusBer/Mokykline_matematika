@@ -4,88 +4,148 @@
 \usepackage{amsmath}
 \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
 
-\title{Skaičių teorija: Skaičių „DNR“ ir pirminiai skaičiai}
-\author{Andrius Berniukevičius}
 
-\newenvironment{solution}
-    {\begin{list}{}{\setlength{\leftmargin}{10pt}\setlength{\rightmargin}{10pt}}\item[]}
-    {\end{list}}
+\title{Skaičių teorija I: pirminiai skaičiai ir dalikliai}
+\author{Andrius Berniukevičius}
 
 \begin{document}
 
 \maketitle
 
-\section{Skaičių „DNR“: Pagrindinė aritmetikos teorema}
+\section{Pirminiai skaičiai – natūraliųjų skaičių sandaros pagrindas}
 
-Iki šiol mes mokėmės skaičius išardyti sudėties būdu ($100a + 10b + c$). Tačiau tikroji skaičiaus prigimtis slypi ne sudėtyje, o \textbf{daugyboje}.
+Dešimtainiu užrašu skaičių išskaidome pagal skaitmenų vietas, pavyzdžiui, $347=3\cdot100+4\cdot10+7$. Tačiau nagrinėjant daliklius svarbiausia kita sandara – skaidymas dauginamaisiais.
 
-Įsivaizduokite, kad visi sveikieji skaičiai yra pastatai. Jei skaičių galime padalinti, vadinasi, pastatą galime išardyti į mažesnius blokus. Pavyzdžiui, $60 = 6 \cdot 10$. Bet $6$ ir $10$ dar nėra mažiausios detalės. Ardome toliau: $6 = 2 \cdot 3$, o $10 = 2 \cdot 5$. 
-Dabar turime $60 = 2 \cdot 2 \cdot 3 \cdot 5 = 2^2 \cdot 3 \cdot 5$. 
+Pirminius skaičius galime laikyti natūraliųjų skaičių „statybiniais blokais“: sudėtinį skaičių visada galime išskaidyti į pirminių skaičių sandaugą. Pavyzdžiui, $60=6\cdot10=2\cdot3\cdot2\cdot5=2^2\cdot3\cdot5$.
 
-Skaičiai $2, 3$ ir $5$ toliau nebesiskaido. Tai yra \textbf{pirminiai skaičiai} – patys elementariausi matematikos „atomai“, iš kurių daugybos būdu pastatomas bet koks kitas skaičius.
+Šio skaidymo vienareikšmiškumas yra esminis: būtent jis leidžia iš pirminių laipsnių nustatyti skaičiaus daliklius, jų skaičių ir daugelį kitų savybių.
 
-\begin{center}
-\fbox{
-\begin{minipage}{0.9\textwidth}
-\textbf{Pagrindinė aritmetikos teorema}\\
-Kiekvienas natūralusis skaičius (didesnis už $1$) gali būti išskaidytas pirminių skaičių sandauga, ir toks skaidymas yra \textbf{vienintelis} (neskaitant dauginamųjų tvarkos). \\
-Šis skaidymas $n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k}$ yra unikalus skaičiaus \textbf{„DNR kodas“}.
-\end{minipage}
-}
-\end{center}
+\begin{definition*}
+Natūralusis skaičius, didesnis už $1$, vadinamas \vocab{pirminiu}, jei jis turi tik du teigiamus daliklius: $1$ ir save patį. Jei jis turi daugiau nei du teigiamus daliklius, jis vadinamas \vocab{sudėtiniu}. Skaičius $1$ nėra nei pirminis, nei sudėtinis.
+\end{definition*}
 
-Kodėl tai galinga? Nes skaičiaus DNR pasako viską apie jo savybes. Pavyzdžiui, jei matome skaičių $x^2$ (tobuląjį kvadratą), jo DNR \textbf{visi} pirminių skaičių laipsniai privalo būti lyginiai ($x^2 = p_1^{2a_1} \cdot p_2^{2a_2} \dots$).
+\begin{proposition}[Pagrindinė aritmetikos teorema]
+Kiekvieną natūralųjį skaičių, didesnį už $1$, galima vieninteliu būdu (iki dauginamųjų tvarkos) užrašyti pirminių skaičių sandauga:
+\[
+    n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k},
+\]
+čia $p_1,p_2,\ldots,p_k$ yra skirtingi pirminiai skaičiai, o $a_1,a_2,\ldots,a_k$ – teigiami sveikieji skaičiai.
+\end{proposition}
+
+\begin{remark*}
+Šį vienintelį pirminių laipsnių išskaidymą vadinsime skaičiaus sandaros užrašu. Pavyzdžiui, jei $n$ yra tobulasis kvadratas, jo sandaros užraše visi laipsnių rodikliai yra lyginiai.
+\end{remark*}
 
 % ==========================================
 % DALIKLIŲ SKAIČIUS IR KOMBINATORIKA
 % ==========================================
 \section{Kiek daliklių turi skaičius? (Labas, Kombinatorika!)}
 
-Dažnas olimpiadų klausimas: kiek daliklių turi skaičius $1 000 000$? Bandyti juos išrašyti ranka būtų savižudybė. Bet čia į pagalbą ateina mūsų sena draugė – Kombinatorika.
+Dažnas olimpiadų klausimas: kiek daliklių turi didelis skaičius, pavyzdžiui, $1\,000\,000$? Išrašinėti juos po vieną neefektyvu. Vietoj to pasinaudokime skaičiaus pirminių dauginamųjų skaidiniu ir kombinatorikos daugybos taisykle.
 
-Tarkime, turime skaičių $N$, kurio DNR yra $N = p_1^{a_1} \cdot p_2^{a_2}$.
-Jei kažkoks skaičius $d$ yra mūsų $N$ daliklis, vadinasi $d$ yra pastatytas \textbf{tik} iš tų pačių „atomų“ $p_1$ ir $p_2$, ir jų kiekis negali viršyti to, kiek jų turi $N$.
+Tarkime, skaičiaus $n$ pirminių dauginamųjų skaidinys yra $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$. Kiekvienas teigiamas daliklis gaunamas pasirenkant kiekvieno pirminio daugiklio laipsnį nuo $0$ iki atitinkamo rodiklio: $d=p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}$, kur $0\le b_i\le a_i$.
 
-Taigi, formuodami daliklį, mes \textbf{kombinatorikos daugybos taisykle} darome pasirinkimus:
-\begin{itemize}
-    \item Kiek turime variantų pasirinkti pirminį skaičių $p_1$? Galime jo neimti visai ($0$ vnt.), imti $1$ vnt., $2$ vnt. ir t.t. iki pat $a_1$. Iš viso: \textbf{$(a_1 + 1)$} pasirinkimų.
-    \item Kiek turime variantų pasirinkti $p_2$? Analogiškai, nuo $0$ iki $a_2$. Iš viso: \textbf{$(a_2 + 1)$} pasirinkimų.
-\end{itemize}
+Kiekvienam $p_i$ turime $a_i+1$ pasirinkimų. Pasirinkimai nepriklauso vienas nuo kito, todėl juos sudauginame.
 
-Vadinasi, bendras visų įmanomų daliklių skaičius (žymimas graikiška raide $\tau(n)$ - „tau“) yra lygus šių pasirinkimų sandaugai!
+\begin{proposition}[Daliklių skaičiaus formulė]
+Jei $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$, tai teigiamų skaičiaus $n$ daliklių skaičius yra
+\[
+    \tau(n)=(a_1+1)(a_2+1)\cdots(a_k+1).
+\]
+\end{proposition}
 
-\begin{center}
-\fbox{
-\begin{minipage}{0.9\textwidth}
-\textbf{Daliklių skaičiaus formulė:}\\
-Jei skaičiaus DNR yra $n = p_1^{a_1} \cdot p_2^{a_2} \cdot \dots \cdot p_k^{a_k}$, tai to skaičiaus daliklių kiekis yra:\\
-\[ \tau(n) = (a_1 + 1)(a_2 + 1) \dots (a_k + 1) \]
-\textit{Pastaba: Mes dauginame ne pačius pirminius skaičius, o jų \textbf{laipsnius, padidintus vienetu}!}
-\end{minipage}
-}
-\end{center}
+\begin{proof}
+Išskaidykime $n$ pirminiais dauginamaisiais:
+\[
+    n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}.
+\]
+Norėdami suskaičiuoti daliklius, pirmiausia išsiaiškinkime, kokios sandaros jie gali būti. Jei $d$ dalija $n$, tai daliklio $d$ pirminiai daugikliai gali būti tik tie patys $p_1,p_2,\ldots,p_k$: joks kitas pirminis daugiklis negali atsirasti, nes tada jis dalytų ir $n$. Be to, kiekvieno $p_i$ laipsnis daliklyje negali viršyti jo laipsnio skaičiuje $n$. Todėl kiekvienas daliklis turi pavidalą
+\[
+    d=p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k},\qquad 0\le b_i\le a_i.
+\]
+Ir atvirkščiai, kiekvienas toks pasirinkimas iš tiesų duoda $n$ daliklį, nes
+\[
+    \frac{n}{d}=p_1^{a_1-b_1}p_2^{a_2-b_2}\cdots p_k^{a_k-b_k}
+\]
+yra natūralusis skaičius. Taigi daliklio sudarymas yra tas pats, kas atskirai pasirinkti kiekvieno pirminio daugiklio laipsnį.
 
-\textbf{Pavyzdys:} Kiek daliklių turi skaičius $72$? 
-Skaidome: $72 = 8 \cdot 9 = 2^3 \cdot 3^2$.
-Daliklių skaičius: $(3+1)(2+1) = 4 \cdot 3 = \mathbf{12}$.
+Pirminio daugiklio $p_i$ laipsniui $b_i$ galime rinktis bet kurį sveikąjį skaičių nuo $0$ iki $a_i$, taigi turime $a_i+1$ pasirinkimų. Skirtingi pasirinkimai duoda skirtingus daliklius, nes pirminių dauginamųjų skaidinys yra vienintelis. Pagal kombinatorikos daugybos taisyklę visų pasirinkimų, vadinasi, ir visų teigiamų daliklių, skaičius yra
+\[
+    (a_1+1)(a_2+1)\cdots(a_k+1).
+\]
+Tai ir reikėjo įrodyti.
+\end{proof}
+
+\begin{remark*}
+Dauginame ne pirminius skaičius, o jų laipsnių rodiklius, padidintus vienetu.
+\end{remark*}
+
+\begin{example}[Daliklių skaičiaus formulės taikymas]
+Kiek teigiamų daliklių turi skaičius $3600$?
+\end{example}
+\begin{solution}
+Pirmiausia išskaidome skaičių pirminiais dauginamaisiais:
+\[
+    3600=36\cdot100=(2^2\cdot3^2)(2^2\cdot5^2)=2^4\cdot3^2\cdot5^2.
+\]
+Kiekvieną daliklį gausime pasirinkę dvejeto laipsnį nuo $0$ iki $4$, trejeto laipsnį nuo $0$ iki $2$ ir penketo laipsnį nuo $0$ iki $2$. Taigi atitinkamai turime $5$, $3$ ir $3$ pasirinkimus. Pagal daliklių skaičiaus formulę,
+\[
+    \tau(3600)=(4+1)(2+1)(2+1)=5\cdot3\cdot3=45.
+\]
+\ats{Skaičius $3600$ turi $45$ teigiamus daliklius.}
+\end{solution}
 
 % ==========================================
 % TOBULIEJI KVADRATAI IR LYGINUMAS
 % ==========================================
-\section{Daliklių poros ir stebuklingi kvadratai}
+\section{Daliklių poros ir tobulieji kvadratai}
 
-Pabandykime išrašyti skaičiaus $12$ visus daliklius: $1, 2, 3, 4, 6, 12$. 
-Pastebite dėsningumą? Dalikliai \textbf{visada vaikšto poromis}! 
-Jei išsirinksime bet kokį daliklį $d$, jį padauginę iš „porininko“ ($\frac{12}{d}$) visada gausime pradinį skaičių:
-$1 \cdot 12 = 12, \quad 2 \cdot 6 = 12, \quad 3 \cdot 4 = 12$.
-Kadangi jie vaikšto poromis, daliklių skaičius paprastai būna \textbf{lyginis}.
+Daliklių skaičiaus formulė leidžia pastebėti įdomų ryšį tarp skaičiaus pirminių laipsnių ir jo daliklių skaičiaus lyginumo. Pasirodo, nelyginis daliklių skaičius būdingas ypatingiems skaičiams:
 
-Bet ar kada nors gali nutikti taip, kad daliklių skaičius bus \textbf{nelyginis}?
-Tai įmanoma tik tuo atveju, jei koks nors daliklis $d$ poroje turės \textbf{pats save}! 
-T.y., kai $d \cdot d = N$, arba $N = d^2$. 
-O toks skaičius matematikoje vadinamas \textbf{tobuluoju kvadratu} ($1, 4, 9, 16, 25 \dots$).
+\begin{proposition}
+Natūralusis skaičius turi nelyginį teigiamų daliklių skaičių tada ir tik tada, kai jis yra tobulasis kvadratas.
+\end{proposition}
 
-\textbf{Olimpiadinis faktas:} Natūralusis skaičius turi \textbf{nelyginį} daliklių skaičių tada ir tik tada, kai tas skaičius yra tobulasis kvadratas.
+\begin{proof}[Pirmasis įrodymas (daliklių skaičiaus formule)]
+Jei $n=1$, jis turi vieną teigiamą daliklį ir yra tobulasis kvadratas ($1=1^2$). Toliau tarkime, kad $n>1$, ir užrašykime jo pirminių dauginamųjų skaidinį:
+\[
+    n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}.
+\]
+Pagal daliklių skaičiaus formulę
+\[
+    \tau(n)=(a_1+1)(a_2+1)\cdots(a_k+1).
+\]
+Sandauga yra nelyginė tada ir tik tada, kai visi jos daugikliai yra nelyginiai: jei bent vienas daugiklis lyginis, visa sandauga lyginė, o nelyginių skaičių sandauga nelyginė. Taigi $\tau(n)$ nelyginis tada ir tik tada, kai kiekvienas $a_i+1$ nelyginis. Tai reiškia, kad kiekvienas $a_i$ lyginis, nes vienetu didesnis už lyginį skaičių yra nelyginis ir atvirkščiai.
+
+Paaiškinkime, kodėl visi lyginiai rodikliai tiksliai atitinka tobuląjį kvadratą.
+
+Jei $n$ yra tobulasis kvadratas, tai egzistuoja natūralusis skaičius $m$, kuriam $n=m^2$. Užrašykime $m$ pirminių dauginamųjų sandauga:
+\[
+    m=p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}.
+\]
+Pakėlę kvadratu gauname
+\[
+    n=m^2=p_1^{2b_1}p_2^{2b_2}\cdots p_k^{2b_k}.
+\]
+Pirminių dauginamųjų skaidinys yra vienintelis, todėl pradinio skaidinio rodikliai tenkina $a_i=2b_i$. Vadinasi, kiekvienas $a_i$ yra lyginis.
+
+Ir atvirkščiai: jei visi rodikliai $a_i$ yra lyginiai, kiekvieną jų galime užrašyti dvigubu sveikuoju neneigiamuoju skaičiumi, t. y. $a_i=2b_i$. Tuomet
+\[
+    n=p_1^{2b_1}p_2^{2b_2}\cdots p_k^{2b_k}
+    =\left(p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}\right)^2,
+\]
+taigi $n$ yra tobulasis kvadratas. Vadinasi, $n$ turi nelyginį teigiamų daliklių skaičių tada ir tik tada, kai jis yra tobulasis kvadratas.
+\end{proof}
+
+Antrasis įrodymas remiasi daliklių poromis. Kiekvienam teigiamam skaičiaus $n$ dalikliui $d$ priskirkime daliklį $n/d$. Tai tikrai daliklis, nes iš $d\mid n$ gauname, kad $n/d$ yra sveikasis skaičius, dalijantis $n$. Be to, priskyrimas veikia abiem kryptimis: daliklio $n/d$ porininkas vėl yra $d$, nes $n/(n/d)=d$. Taigi dalikliai susiskirsto į poras, išskyrus atvejus, kai poros narys sutampa pats su savimi. Tokia lygybė galima tik tada, kai $d=n/d$, arba, ekvivalenčiai, $d^2=n$.
+
+\begin{proof}[Antrasis įrodymas (daliklių poromis)]
+Jei $n$ nėra tobulasis kvadratas, lygybė $d=n/d$ negalima nė vienam dalikliui $d$, nes ji reikštų $d^2=n$. Vadinasi, kiekvienas daliklis priklauso porai su kitu, nuo jo skirtingu dalikliu. Kiekviena pora turi lygiai du narius, todėl visų daliklių skaičius yra lyginis.
+
+Jei $n=m^2$, tai $m$ yra skaičiaus $n$ daliklis ir jam priskiriamas pats sau, nes $n/m=m$. Be to, tai vienintelis toks daliklis: iš $d=n/d$ gauname $d^2=m^2$, o teigiamam $d$ tai reiškia $d=m$. Visi kiti dalikliai susiporuoja su skirtingais dalikliais, taigi jų yra lyginis skaičius; pridėjus vienintelį nesuporuotą daliklį $m$, bendras daliklių skaičius tampa nelyginis.
+
+Taigi $n$ turi nelyginį teigiamų daliklių skaičių tada ir tik tada, kai jis yra tobulasis kvadratas.
+\end{proof}
 
 % ==========================================
 % PAVYZDŽIAI
@@ -96,9 +156,9 @@ O toks skaičius matematikoje vadinamas \textbf{tobuluoju kvadratu} ($1, 4, 9, 1
 Įrodykite, kad jei $p$ yra pirminis skaičius, didesnis už $3$ (t.y. $p \ge 5$), tai reiškinys $p^2 - 1$ \textbf{visada} dalijasi iš $24$.
 \end{example}
 
-\begin{solution}
-\textbf{Sprendimas:}\\
-Šis uždavinys – absoliuti 9-10 klasių klasika. Išskaidykime reiškinį dauginamaisiais (taikydami kvadratų skirtumo formulę):
+\begin{proof}
+
+Išskaidykime reiškinį dauginamaisiais (taikydami kvadratų skirtumo formulę):
 \[ p^2 - 1 = (p - 1)(p + 1) \]
 Pastebėkime, kad $(p-1), p, (p+1)$ yra trys paeiliui einantys sveikieji skaičiai.
 
@@ -109,16 +169,15 @@ Kadangi $p \ge 5$ yra pirminis, jis privalo būti nelyginis. Vadinasi, jo kaimyn
 Iš bet kokių trijų paeiliui einančių skaičių \textbf{lygiai vienas} visada dalijasi iš 3. Kadangi $p$ yra pirminis (ir $p \ge 5$), pats $p$ iš 3 dalintis negali. Vadinasi, iš 3 privalo dalintis arba $(p-1)$, arba $(p+1)$. Bet kuriuo atveju, jų sandauga dalinsis iš 3. Vadinasi, $3 \mid (p^2 - 1)$.
 
 \textbf{Išvada:}
-Kadangi $p^2 - 1$ dalijasi ir iš 8, ir iš 3, o skaičiai 8 ir 3 neturi jokių bendrų daliklių (yra tarpusavyje pirminiai), tai $p^2 - 1$ privalo dalintis iš jų sandaugos: $8 \cdot 3 = \mathbf{24}$. \hfill $\square$
-\end{solution}
-
+Kadangi $p^2 - 1$ dalijasi ir iš 8, ir iš 3, o skaičiai 8 ir 3 neturi jokių bendrų daliklių (yra tarpusavyje pirminiai), tai $p^2 - 1$ privalo dalintis iš jų sandaugos: $8 \cdot 3 = \mathbf{24}$. 
+\end{proof}
 
 \begin{example}[Skaičiaus „DNR“ paieška]
 Raskite mažiausią natūralųjį skaičių, turintį lygiai $15$ daliklių.
 \end{example}
 
 \begin{solution}
-\textbf{Sprendimas:}\\
+
 Pasinaudokime daliklių skaičiaus formule $\tau(n) = (a_1 + 1)(a_2 + 1)\dots$
 Mums žinoma, kad ši sandauga turi būti lygi $15$. 
 Kaip galime gauti skaičių $15$ sudauginę sveikuosius skaičius? Yra tik du būdai:
@@ -138,34 +197,140 @@ Gauname: $n = 3^2 \cdot 2^4 = 9 \cdot 16 = \mathbf{144}$.
 Kadangi $144$ yra gerokai mažesnis už $16384$, mažiausias skaičius, turintis lygiai $15$ daliklių, yra $144$. \hfill $\square$
 \end{solution}
 
+\begin{example}[Skaičiaus atkūrimas pagal daliklius ir kvadratus]
+Natūralusis skaičius \(n\) dalijasi tik iš pirminių skaičių $2$ ir $3$, ir turi lygiai $12$ teigiamų daliklių. Be to, žinoma, kad skaičių \(n\) padalinus iš $2$, gaunamas tobulasis kvadratas. Raskite skaičių \(n\).
+\end{example}
+
+\begin{solution}
+Kadangi skaičius dalijasi tik iš $2$ ir $3$, jo pirminių dauginamųjų skaidinys yra pavidalo:
+\begin{equation*} n = 2^a \cdot 3^b, \end{equation*}
+kur \(a\) ir \(b\) yra teigiami sveikieji skaičiai (nes skaičius privalo dalintis iš šių pirminių skaičių, todėl jų laipsniai negali būti nuliai).
+
+Iš daliklių skaičiaus formulės žinome, kad laipsnių rodiklius padidinę vienetu ir sudauginę, gausime $12$:
+\begin{equation*} \tau(n) = (a + 1)(b + 1) = 12. \end{equation*}
+
+Taip pat žinome, kad \(n / 2\) yra tobulasis kvadratas. Padalykime mūsų skaičių iš $2$:
+\begin{equation*} \frac{n}{2} = \frac{2^a \cdot 3^b}{2^1} = 2^{a-1} \cdot 3^b. \end{equation*}
+Kaip išsiaiškinome ankstesniame skyriuje, tobulojo kvadrato pirminių dauginamųjų laipsnių rodikliai \textbf{privalo būti lyginiai}. Vadinasi:
+\begin{itemize}
+    \item \(a - 1\) yra lyginis skaičius. Vadinasi, pats \(a\) privalo būti \textbf{nelyginis}. Tuomet skliaustas \((a + 1)\) yra \textbf{lyginis}.
+    \item \(b\) privalo būti \textbf{lyginis} skaičius. Tuomet skliaustas \((b + 1)\) yra \textbf{nelyginis}.
+\end{itemize}
+
+Grįžkime prie lygties \((a + 1)(b + 1) = 12\). Ieškome dviejų skaičių sandaugos, iš kurių pirmasis yra lyginis, o antrasis – nelyginis. 
+Skaičių $12$ išskaidyti į dviejų skaičių sandaugą galima taip: \(12 = 12 \cdot 1 = 6 \cdot 2 = 4 \cdot 3\).
+
+Kadangi antrasis daugiklis \((b+1)\) turi būti nelyginis ir didesnis už $1$ (nes \(b \ge 1\)), mums tinka vienintelis variantas: \((b+1) = 3\). Tuomet likęs dauginamasis \((a+1)\) privalo būti lygus $4$.
+
+Išsprendžiame laipsnius:
+\begin{itemize}
+    \item \(a + 1 = 4 \implies a = 3\)
+    \item \(b + 1 = 3 \implies b = 2\)
+\end{itemize}
+
+Turėdami laipsnius, grįžtame prie skaičiaus „DNR“ ir jį apskaičiuojame:
+\begin{equation*} n = 2^3 \cdot 3^2 = 8 \cdot 9 = 72. \end{equation*}
+
+(Pasitikriname: \(72 / 2 = 36\), o $36$ yra tobulasis kvadratas \(6^2\). Sąlyga tenkinama!)
+
+\ats{Ieškomas skaičius yra $72$.}
+\end{solution}
+
 \vspace{1cm}
 
 % ==========================================
 % UŽDAVINIAI
 % ==========================================
 \newpage
-\section{Uždaviniai savarankiškam sprendimui (18 iššūkių)}
+\section{Uždaviniai savarankiškam sprendimui (26 iššūkiai)}
 
 \begin{enumerate}
     \renewcommand{\labelenumi}{\textbf{\theenumi.}}
-    \item Raskite du pirminius skaičius $p$ ir $q$, jei žinoma, kad jų suma $p + q = 101$.
-    \item Raskite pirminį skaičių $p$, jeigu žinoma, kad $p^2 + 11$ taip pat yra pirminis skaičius.
-    \item Kiek daliklių turi skaičiai: a) $1000$; \quad b) $2026$; \quad c) $2025$?
-    \item Kuris skaičius turi daugiau daliklių: $5^{20} \cdot 3^{10}$ ar $2^{15} \cdot 7^{15}$?
-    \item Raskite mažiausią natūralųjį skaičių, turintį lygiai $14$ daliklių.
-    \item Įrodykite, kad neegzistuoja toks pirminis skaičius $p$, su kuriuo skaičiai $p, p+2$ ir $p+4$ visi trys kartu būtų pirminiai, išskyrus vienintelį atvejį, kai $p=3$.
-    \item Koridoriuje yra $100$ uždarytų spintelių, sunumeruotų nuo $1$ iki $100$. Pirmas mokinys praeidamas atidaro visas spinteles. Antras mokinys praeidamas pakeičia kas antros spintelės būseną (2, 4, 6... - jei buvo atidaryta, uždaro, jei uždaryta, atidaro). Trečias mokinys keičia kas trečios spintelės būseną (3, 6, 9...), ketvirtas – kas ketvirtos ir t.t., kol praeina $100$ mokinių. Kurios spintelės liks atidarytos po visų $100$ mokinių praėjimo? Kodėl?
-    \item Įrodykite, kad bet kokiems dviem pirminiams skaičiams $p \ge 5$ ir $q \ge 5$, reiškinys $p^2 - q^2$ visada dalijasi iš $24$.
-    \item Skaičius baigiasi vienuolika nulių. Koks mažiausias daliklių skaičius, kurį jis gali turėti?
-    \item Keliu nulių baigiasi skaičius, kuris gaunamas sudauginus visus natūraliuosius skaičius nuo $1$ iki $100$ (t.y. $100!$)?
-    \item Raskite visus pirminius skaičius $p, q, r$, tenkinančius lygtį: $p \cdot q \cdot r = 5(p + q + r)$.
-    \item Jei žinoma, kad $p$ ir $8p^2 + 1$ yra pirminiai skaičiai, raskite $p$. 
-    \item Ar egzistuoja toks natūralusis skaičius $n$, kad jo daliklių skaičius $\tau(n)$ būtų lygus pačiam skaičiui $n$? Jei taip, raskite juos visus.
-    \item Raskite visus natūraliuosius skaičius $x$ ir $y$, tenkinančius lygtį $x^2 - y^2 = 31$.
-    \item Raskite visus natūraliuosius skaičius $x$ ir $y$, tenkinančius lygtį $xy + 2x - 3y = 20$.
-    \item Įrodykite, kad skaičius $2^{100} + 5^{100}$ nėra pirminis.
-    \item Raskite mažiausią skaičių, kuris pusiau padalintas tampa tobuluoju kvadratu, o padalintas iš 3 – tobuluoju kubu.
-    \item \textbf{Iššūkis:} Tegu $d_1, d_2, \dots, d_k$ yra visi skaičiaus $N$ dalikliai (įskaitant 1 ir patį $N$). Įrodykite, kad sandauga $d_1 \cdot d_2 \cdot \dots \cdot d_k = N^{\frac{k}{2}}$.
+    \item Raskite pirminius skaičius \(p\) ir \(q\), jei \(p+q=101\). Jei tokių skaičių nėra, pagrįskite.
+    \item Raskite pirminį skaičių \(p\), jei \(p^2+11\) taip pat turėtų būti pirminis. Jei tokio skaičiaus nėra, paaiškinkite kodėl.
+    \item Kiek teigiamų daliklių turi: a) $1000$; b) $2026$; c) $2025$?
+    \item Kuris skaičius turi daugiau teigiamų daliklių: \(5^{20}\cdot3^{10}\) ar \(2^{15}\cdot7^{15}\)?
+    \item Raskite mažiausią natūralųjį skaičių, turintį lygiai $14$ teigiamų daliklių.
+    \item Įrodykite, kad vienintelė pirminio skaičiaus \(p\) reikšmė, kuriai visi trys skaičiai \(p\), \(p+2\) ir \(p+4\) yra pirminiai, yra \(p=3\).
+    \item Raskite natūraliųjų skaičių \(p\), \(p+8\) ir \(2p^2+43\) sandaugą, jei žinoma, kad visi trys skaičiai yra pirminiai.
+    \item Koridoriuje yra $100$ uždarytų spintelių, sunumeruotų nuo $1$ iki $100$. Pirmasis mokinys pakeičia visų spintelių būseną, antrasis – kas antros, trečiasis – kas trečios ir taip toliau; atidaryta spintelė uždaroma, o uždaryta atidaroma. Kurios spintelės liks atidarytos? Paaiškinkite.
+    \item Įrodykite, kad bet kuriems pirminiams skaičiams \(p,q\ge5\) skaičius \(p^2-q^2\) dalijasi iš $24$.
+    \item Skaičiaus dešimtainis užrašas baigiasi tiksliai vienuolika nulių. Koks mažiausias teigiamų daliklių skaičius galimas?
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item Raskite visus pirminius skaičius \(p,q,r\), tenkinančius lygybę \(pqr=5(p+q+r)\).
+    \item Raskite pirminį skaičių \(p\), jei ir \(p\), ir \(8p^2+1\) yra pirminiai.
+    \item Raskite visus natūraliuosius skaičius \(n\), kuriems teigiamų daliklių skaičius \(\tau(n)\) lygus \(n\).
+    \item Raskite visus teigiamus natūraliuosius skaičius \(x,y\), tenkinančius lygtį \(x^2-y^2=31\).
+    \item Raskite visus tokius natūraliuosius skaičius, kurie turėtų lygiai keturis natūraliuosius daliklius, o tų daliklių aritmetinis vidurkis būtų lygus $10$.
+    \item Natūralusis skaičius \(n\) yra toks, kad \(n^2+26\) dalijasi iš \(n+2\). Raskite visus tokius natūraliuosius skaičius \(n\).
+    \item Raskite mažiausią natūralųjį skaičių \(N\), kuriam \(N/2\) yra tobulasis kvadratas, o \(N/3\) – tobulasis kubas.
+    \item Raskite visus natūraliuosius skaičius, turinčius lygiai tris teigiamus daliklius.
+    \item Įrodykite, kad kiekvieno nelyginio sveikojo skaičiaus kvadratas, dalijamas iš $8$, duoda liekaną $1$.
+    \item Koks mažiausias teigiamų daliklių skaičius gali būti natūraliojo skaičiaus, kuris dalijasi iš $72$? Pateikite tokį skaičių.
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{20}
+    \item Kiek tobulųjų kvadratų yra skaičiaus \(2^5\cdot3^4\cdot5^2\) teigiamų daliklių aibėje?
+    \item Raskite visus natūraliuosius skaičius, turinčius lygiai keturis teigiamus daliklius.
+    \item Tegul \(a,b\) – teigiami sveikieji skaičiai. Raskite visas poras \((a,b)\), jei skaičius \(2^a\cdot3^b\) turi lygiai $12$ teigiamų daliklių.
+    \item Raskite mažiausią natūralųjį skaičių, turintį lygiai $18$ teigiamų daliklių.
+    \item Kelių pirminių (nebūtinai skirtingų) skaičių sandauga yra $10$ kartų didesnė už jų sumą \(S\). Raskite visas galimas skaičiaus \(S\) reikšmes.
+    \item  Tegul \(d_1,d_2,\ldots,d_k\) yra visi teigiami skaičiaus \(N\) dalikliai. Įrodykite, kad
+    \begin{equation*}
+        d_1d_2\cdots d_k=N^{k/2}.
+    \end{equation*}
+\end{enumerate}
+
+% ==========================================
+% ATSAKYMAI
+% ==========================================
+\newpage
+\section{Atsakymai}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+    \item Tokių pirminių skaičių nėra: nelyginę pirminių skaičių sumą sudarantis vienintelis lyginis pirminis skaičius yra $2$, o \(101-2=99\) nėra pirminis.
+    \item Tokio \(p\) nėra. Jei \(p=2\), gauname \(p^2+11=15\); jei \(p\) nelyginis, \(p^2+11\) yra lyginis ir didesnis už $2$.
+    \item a) $16$; b) $4$; c) $15$.
+    \item Daugiau daliklių turi \(2^{15}\cdot7^{15}\): jo daliklių skaičius \(16^2=256\), o pirmojo skaičiaus – \(21\cdot11=231\).
+    \item \(192=2^6\cdot3\).
+    \item Jei \(p>3\), vienas iš trijų skaičių \(p,p+2,p+4\) dalijasi iš $3$ ir yra didesnis už $3$, taigi sudėtinis. Kai \(p=3\), gauname $3,5,7$.
+    \item \(p=3\) (tada \(p+8=11\), \(2p^2+43=61\)). Sandauga yra \(3 \cdot 11 \cdot 61 = 2013\). Jei \(p > 3\), tai \(p\) dalijant iš $3$ duoda liekaną $1$ arba $2$. Jei liekana $1$, tai \(p+8\) dalijasi iš $3$. Jei liekana $2$, tai \(2p^2+43\) dalijasi iš $3$. Todėl kiti variantai netinka.
+    \item Atidarytos liks spintelės, kurių numeriai yra tobulieji kvadratai:
+    \begin{equation*}
+        1,4,9,16,25,36,49,64,81,100.
+    \end{equation*}
+    Spintelės būsenos pakeitimų skaičius lygus jos numerio daliklių skaičiui.
+    \item Abu skaičiai \(p-q\) ir \(p+q\) yra lyginiai, o vienas jų dalijasi iš $4$, todėl jų sandauga dalijasi iš $8$. Vienas iš \(p-q\) ir \(p+q\) dalijasi iš $3$, taigi sandauga dalijasi ir iš $3$. Kadangi $3$ ir $8$ yra tarpusavyje pirminiai, sandauga dalijasi iš $24$.
+    \item Mažiausias galimas daliklių skaičius yra $144$. Skaičius turi dalytis iš \(2^{11}5^{11}\), kurio daliklių skaičius \((11+1)^2=144\).
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item \((p,q,r)=(2,5,7)\) ir visos šio trejeto tvarkos.
+    \item \(p=3\), nes jei pirminis \(p\ne3\), tai \(p^2\equiv1\pmod3\) ir \(8p^2+1\) dalijasi iš $3$; \(p=2\) taip pat netinka, o \(8\cdot3^2+1=73\) yra pirminis.
+    \item \(n=1\) arba \(n=2\).
+    \item \((x,y)=(16,15)\).
+    \item $27$. Skaičius turi $4$ daliklius, todėl jo pavidalo skaidinys yra \(p^3\) arba \(p \cdot q\). Jei \(p \cdot q\), daliklių suma \(1+p+q+pq = 40 \implies (1+p)(1+q)=40\). Geriausi pirminiai \(p=3\) ir \(q=9\) (netinka), \(p=4\) (netinka). Pavidalui \(p^3\) daliklių suma yra \(1+p+p^2+p^3=40\). Tinka \(p=3\). Tuomet skaičius yra \(3^3=27\).
+    \item \(n \in \{1, 3, 4, 8, 13, 28\}\). Pastebime, kad \(n^2+26 = (n^2-4) + 30 = (n-2)(n+2) + 30\). Kadangi \((n-2)(n+2)\) visada dalijasi iš \(n+2\), tai visa suma dalinsis tik tada, kai $30$ dalinsis iš \(n+2\). Išrašę skaičiaus $30$ daliklius ir atėmę $2$, gauname šias natūraliųjų skaičių reikšmes.
+    \item \(N=648\): \(648/2=18^2\), o \(648/3=6^3\).
+    \item \(n=p^2\), kur \(p\) – bet kuris pirminis skaičius.
+    \item Rašome nelyginį skaičių \(2k+1\). Tuomet \((2k+1)^2 = 4k^2+4k+1 = 4k(k+1)+1\). Kadangi \(k(k+1)\) yra dviejų paeiliui einančių skaičių sandauga, ji visada lyginė. Vadinasi, \(4k(k+1)\) dalijasi iš $8$, o padalijus lieka $1$.
+    \item Mažiausiai $12$ daliklių; toks skaičius yra \(72=2^3\cdot3^2\).
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{20}
+    \item $18$: tobulas kvadratas daliklyje turi būti kiekvieno pirminio daugiklio lyginis laipsnis, todėl galimų laipsnių pasirinkimų skaičius yra \(3\cdot3\cdot2=18\).
+    \item \(p^3\) arba \(pq\), kur \(p,q\) – skirtingi pirminiai skaičiai.
+    \item \((a,b)=(1,5),(2,3),(3,2),(5,1)\).
+    \item \(180=2^2\cdot3^2\cdot5\).
+    \item \(S=15\). Kadangi sandauga lygi $10S$, ji dalijasi iš $10$. Vadinasi, tarp pirminių būtinai yra $2$ ir $5$. Kitų pirminių sandaugą pažymėjus \(P\), o sumą \(\Sigma\), gauname lygtį: \(2 \cdot 5 \cdot P = 10 \cdot (2 + 5 + \Sigma) \implies P = 7 + \Sigma\). Išbandę mažiausius pirminius randame, kad tinka tik $3$ ir $5$ (\(3 \cdot 5 = 7 + 3 + 5\)). Visi pirminiai yra $2, 5, 3, 5$, o jų suma \(S = 15\).
+    \item Suporuokime kiekvieną daliklį \(d\) su \(N/d\). Kiekvienos tokios poros sandauga lygi \(N\), o daliklių yra \(k\), taigi iš viso yra \(k/2\) porų ir jų sandauga \(N^{k/2}\). Jei \(N\) yra kvadratas, vidurinis daliklis \(\sqrt N\) yra poruojamas pats su savimi, todėl išvada lieka ta pati.
 \end{enumerate}
 
 \end{document}
