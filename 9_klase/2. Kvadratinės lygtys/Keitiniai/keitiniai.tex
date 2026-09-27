@@ -1,0 +1,410 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+\usepackage{tasks}
+
+\title{Sudėtingesnių lygčių sprendimas įvedant keitinį}
+\author{Matematikos mokytojas}
+
+\begin{document}
+
+\maketitle
+
+\section{Lygčių sprendimas įvedant naują kintamąjį}
+
+Visas šiame dokumente nagrinėjamas lygtis sprendžiame realiųjų skaičių aibėje \(\mathbb{R}\).
+
+\begin{definition}
+\vocab{Keitinio įvedimas} -- tai lygties sprendimo metodas, kai tam tikras pradinės lygties reiškinys pakeičiamas nauju kintamuoju, o lygtis transformuojama į paprastesnę (dažniausiai kvadratinę) formą.
+\end{definition}
+
+Šis sprendimo būdas itin naudingas sprendžiant aukštesnio laipsnio, racionaliąsias, iracionaliąsias, rodiklines ir kitas sudėtingas lygtis. 
+
+\begin{algorithm}[Sprendimo eiga]
+\leavevmode\\
+1. Identifikuojame pasikartojantį reiškinį lygtyje.\\
+2. Įvedame keitinį, išreikšdami tą reiškinį nauja raide (pvz., \(t\)). Įvertiname galimus apribojimus (pvz., jei \(t=x^2\) ar \(t=\sqrt{x}\), tai \(t \ge 0\)).\\
+3. Išsprendžiame gautą supaprastintą lygtį.\\
+4. Grįžtame prie pradinio kintamojo ir randame galutinius sprendinius.
+\end{algorithm}
+
+\section{Lygčių sprendimo su keitiniais pavyzdžiai}
+
+\subsection{Bikvadratinės lygtys}
+
+\begin{example}[Bikvadratinė lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+x^4-13x^2+36=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Ši lygtis mums dar neįprasta: joje yra ketvirtojo laipsnio narys, o kol kas mokame spręsti tik kvadratines lygtis. Ieškokime būdo ją paversti tokia lygtimi. Pastebime, kad reiškinys \(x^2\) kartojasi: \(x^4=(x^2)^2\). Todėl įvedame keitinį \(t=x^2\). Kadangi kvadratas negali būti neigiamas, \(t\ge0\). Tuomet visa lygtis tampa įprasta kvadratine lygtimi:
+\begin{equation*}
+t^2-13t+36=0.
+\end{equation*}
+Sprendžiame diskriminanto formule:
+\begin{equation*}
+D=(-13)^2-4\cdot1\cdot36=25,\qquad
+t_{1,2}=\frac{13\pm\sqrt{25}}{2}.
+\end{equation*}
+Taigi \(t_1=9\) arba \(t_2=4\). Abu sprendiniai neneigiami, todėl tinka. Grįžtame prie pradinio kintamojo \(x\):
+\begin{equation*}
+\begin{aligned}
+x^2&=4 \implies x= \pm2;\\
+x^2&=9 \implies x= \pm3.
+\end{aligned}
+\end{equation*}
+\ats{$x_1=-3,\ x_2=-2,\ x_3=2,\ x_4=3$.}
+\end{solution}
+
+\begin{example}[Bikvadratinė lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+x^4-5x^2+4=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Įvedame keitinį \(t=x^2\), todėl \(t\ge0\). Gauname
+\begin{equation*}
+t^2-5t+4=0,\qquad D=(-5)^2-4\cdot1\cdot4=9.
+\end{equation*}
+Pagal kvadratinės lygties sprendinių formulę
+\begin{equation*}
+t_{1,2}=\frac{5\pm\sqrt9}{2},
+\end{equation*}
+taigi \(t=1\) arba \(t=4\). Abu atvejai tenkina sąlygą \(t\ge0\). Grįžę prie \(x\), gauname \(x^2=1\) arba \(x^2=4\).
+\ats{$x_1=-2,\ x_2=-1,\ x_3=1,\ x_4=2$.}
+\end{solution}
+
+\begin{example}[Bikvadratinė lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+x^4+3x^2+2=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Įvedame keitinį \(t=x^2\), todėl būtinai \(t\ge0\). Gauname
+\begin{equation*}
+t^2+3t+2=0,\qquad D=3^2-4\cdot1\cdot2=1.
+\end{equation*}
+Pagal kvadratinės lygties sprendinių formulę
+\begin{equation*}
+t_{1,2}=\frac{-3\pm\sqrt1}{2},
+\end{equation*}
+taigi \(t_1=-1\) arba \(t_2=-2\). Abu šie sprendiniai neatitinka sąlygos \(t\ge0\), kurią lemia keitinys \(t=x^2\). Todėl nė viena reikšmė negali būti realiojo \(x\) kvadratu.
+\ats{$\emptyset$ (realiųjų sprendinių nėra).}
+\end{solution}
+
+\subsection{Iracionaliosios lygtys su kvadratine šaknimi}
+
+\begin{example}[Iracionalioji lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+x-5\sqrt{x}+4=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Ši lygtis mums dar neįprasta: joje kartu yra \(x\) ir \(\sqrt{x}\), todėl negalime iškart taikyti kvadratinės lygties sprendimo būdo. Norime ją paversti kvadratine lygtimi, kurią jau mokame spręsti. Pastebime, kad \(x=(\sqrt{x})^2\), todėl įvedame keitinį \(t=\sqrt{x}\). Tuomet \(x=t^2\), o lygtis tampa kvadratine:
+\begin{equation*}
+t^2-5t+4=0.
+\end{equation*}
+Diskriminantas \(D=(-5)^2-4\cdot1\cdot4=9\), todėl
+\begin{equation*}
+t_{1,2}=\frac{5\pm\sqrt9}{2}.
+\end{equation*}
+Taigi \(t_1=1\) arba \(t_2=4\). Abu sprendiniai tinka. Grįžtame prie \(x\):
+\begin{equation*}
+\begin{aligned}
+\sqrt{x}&=1 \implies x_1=1;\\
+\sqrt{x}&=4 \implies x_2=16.
+\end{aligned}
+\end{equation*}
+\ats{$x_1=1,\ x_2=16$.}
+\end{solution}
+
+\begin{example}[Iracionalioji lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+x-6\sqrt{x}+8=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Kadangi po šaknimi yra \(x\), privalo būti \(x\ge0\). Įvedame \(t=\sqrt{x}\), todėl \(t\ge0\) ir \(x=t^2\). Gauname
+\begin{equation*}
+t^2-6t+8=0.
+\end{equation*}
+Diskriminantas \(D=(-6)^2-4\cdot1\cdot8=4\), todėl \(t_{1,2}=\frac{6\pm\sqrt4}{2}\), t. y. \(t=2\) arba \(t=4\). Abu sprendiniai leistini, nes neneigiami. Grįžę prie \(x\), gauname \(x=2^2\) arba \(x=4^2\).
+\ats{$x_1=4,\ x_2=16$.}
+\end{solution}
+
+\subsection{Lygtys su pasikartojančiu reiškiniu}
+
+\begin{example}[Lygtis su pasikartojančiu reiškiniu]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+(x^2-4x)^2-2(x^2-4x)-15=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Ši lygtis mums neįprasta: atskliaudę gautume ketvirtojo laipsnio lygtį, kurios spręsti nemokame. Tačiau pastebime, kad reiškinys \(x^2-4x\) kartojasi. Jei jį pakeisime viena raide, lygtis pavirs kvadratine, kurią jau mokame spręsti. Įvedame keitinį \(t=x^2-4x\) ir gauname:
+\begin{equation*}
+t^2-2t-15=0.
+\end{equation*}
+Diskriminantas \(D=(-2)^2-4\cdot1\cdot(-15)=64\), todėl
+\begin{equation*}
+t_{1,2}=\frac{2\pm\sqrt{64}}{2},
+\end{equation*}
+taigi \(t_1=5\) arba \(t_2=-3\). Grįžtame prie \(x\):
+\begin{equation*}
+\begin{aligned}
+\text{1) } &x^2-4x-5=0,\quad D=(-4)^2-4\cdot1\cdot(-5)=36,\\
+&x_{1,2}=\frac{4\pm\sqrt{36}}{2}=5,-1.\\
+\text{2) } &x^2-4x+3=0,\quad D=(-4)^2-4\cdot1\cdot3=4,\\
+&x_{3,4}=\frac{4\pm\sqrt4}{2}=3,1.
+\end{aligned}
+\end{equation*}
+\ats{$x_1=-1,\ x_2=1,\ x_3=3,\ x_4=5$.}
+\end{solution}
+
+\begin{example}[Lygtis su pasikartojančiu reiškiniu]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+(x^2+x+1)^2+3(x^2+x+1)-70=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Įvedame keitinį \(t=x^2+x+1\). Tada pradinė lygtis tampa
+\begin{equation*}
+t^2+3t-70=0,\qquad D=3^2-4\cdot1\cdot(-70)=289.
+\end{equation*}
+Pagal kvadratinės lygties sprendinių formulę
+\begin{equation*}
+t_{1,2}=\frac{-3\pm\sqrt{289}}{2},
+\end{equation*}
+taigi \(t_1=7\) arba \(t_2=-10\).
+
+Kai \(t=7\), gauname
+\begin{equation*}
+x^2+x+1=7\quad\Longrightarrow\quad x^2+x-6=0.
+\end{equation*}
+Šios lygties diskriminantas yra \(D=1^2-4\cdot1\cdot(-6)=25\), todėl
+\begin{equation*}
+x_{1,2}=\frac{-1\pm\sqrt{25}}{2},
+\end{equation*}
+taigi \(x_1=-3\) arba \(x_2=2\).
+Kai \(t=-10\), gauname \(x^2+x+1=-10\), t. y. \(x^2+x+11=0\). Šios lygties diskriminantas \(D=1^2-4\cdot1\cdot11=-43<0\), todėl realiųjų sprendinių nėra.
+\ats{$x_1=-3,\ x_2=2$.}
+\end{solution}
+
+\subsection{Rodiklinės lygtys}
+
+\begin{example}[Rodiklinė lygtis su laipsnių savybėmis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+3^{2x+1}-10 \cdot 3^x+3=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Ši lygtis mums neįprasta: nežinomasis \(x\) yra laipsnio rodiklyje, todėl tai nėra įprasta kvadratinė lygtis , ir diskriminanto formulės negalime iškart naudoti. Ieškokime pasikartojančio reiškinio. Kadangi \(3^{2x+1}=3(3^x)^2\), reiškinys \(3^x\) kartojasi ir lygtį galime paversti kvadratine, kurią jau mokame spręsti:
+\begin{equation*}
+3 \cdot (3^x)^2-10 \cdot 3^x+3=0.
+\end{equation*}
+Įvedame keitinį \(t=3^x\), su sąlyga, kad \(t>0\). Lygtis tampa kvadratine:
+\begin{equation*}
+3t^2-10t+3=0.
+\end{equation*}
+Skaičiuojame diskriminantą:
+\begin{equation*}
+D=(-10)^2-4 \cdot 3 \cdot 3=100-36=64.
+\end{equation*}
+Apskaičiuojame \(t\) reikšmes:
+\begin{equation*}
+t_{1,2}=\frac{10 \pm 8}{6} \implies t_1=3, \quad t_2=\frac{1}{3}.
+\end{equation*}
+Abi reikšmės teigiamos, grįžtame prie pradinio kintamojo:
+\begin{equation*}
+\begin{aligned}
+3^x&=3 \implies x_1=1;\\
+3^x&=\frac{1}{3} \implies 3^x=3^{-1} \implies x_2=-1.
+\end{aligned}
+\end{equation*}
+\ats{$x_1=-1,\ x_2=1$.}
+\end{solution}
+
+\begin{example}[Rodiklinė lygtis]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+2^{2x}-5\cdot2^x+4=0.
+\end{equation*}
+\end{example}
+\begin{solution}
+Kadangi \(2^{2x}=(2^x)^2\), įvedame keitinį \(t=2^x\), kuriam visada \(t>0\). Tuomet
+\begin{equation*}
+t^2-5t+4=0,\qquad D=(-5)^2-4\cdot1\cdot4=9,
+\end{equation*}
+todėl \(t_{1,2}=\frac{5\pm\sqrt9}{2}\), t. y. \(t=1\) arba \(t=4\). Abi reikšmės teigiamos, todėl grįžtame prie pradinio kintamojo: \(2^x=1\) duoda \(x=0\), o \(2^x=4=2^2\) duoda \(x=2\).
+\ats{$x_1=0,\ x_2=2$.}
+\end{solution}
+
+\subsection{Racionaliosios lygtys su atvirkštiniais reiškiniais}
+
+\begin{example}[Trupmeninė lygtis su atvirkštiniais reiškiniais]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+\frac{x^2-3x+1}{x}+\frac{2x}{x^2-3x+1}=3.
+\end{equation*}
+\end{example}
+\begin{solution}
+Ši lygtis mums neįprasta: nežinomasis yra vardikliuose, todėl negalime jos iškart spręsti kaip kvadratinės lygties. Tačiau pastebėkime, kad trupmeninis reiškinys kartojasi — antroji trupmena yra atvirkštinė pirmajai. Jei pirmąjį reiškinį pakeisime nauju kintamuoju, lygtis pavirs kvadratine, kurią jau mokame spręsti. Įvedame keitinį:
+\begin{equation*}
+t=\frac{x^2-3x+1}{x}.
+\end{equation*}
+Tuomet antroji trupmena lygi \(\frac{2}{t}\), todėl gauname
+\begin{equation*}
+t+\frac{2}{t}=3.
+\end{equation*}
+Padauginę iš \(t\) (čia \(t\ne0\)), turime \(t^2-3t+2=0\). Diskriminantas \(D=(-3)^2-4\cdot1\cdot2=1\), todėl \(t_1=1\) arba \(t_2=2\).
+
+Kai \(t=1\), gauname \(x^2-4x+1=0\). Čia \(D=(-4)^2-4\cdot1\cdot1=12\), taigi \(x=2\pm\sqrt3\). Kai \(t=2\), gauname \(x^2-5x+1=0\). Čia \(D=(-5)^2-4\cdot1\cdot1=21\), taigi \(x=\frac{5\pm\sqrt{21}}{2}\).
+\ats{$x_1=2-\sqrt3,\ x_2=2+\sqrt3,\ x_3=\frac{5-\sqrt{21}}{2},\ x_4=\frac{5+\sqrt{21}}{2}$.}
+\end{solution}
+
+\begin{example}[Trupmeninė lygtis su atvirkštiniais reiškiniais]
+Išspręskite lygtį realiųjų skaičių aibėje:
+\begin{equation*}
+\frac{x^2+1}{x}+\frac{x}{x^2+1}=\frac52.
+\end{equation*}
+\end{example}
+\begin{solution}
+Vardiklis negali būti nulis, todėl \(x\ne0\). Įvedame keitinį \(t=\frac{x^2+1}{x}\); tuomet antroji trupmena yra \(\frac1t\) ir \(t\ne0\). Lygtis tampa
+\begin{equation*}
+t+\frac1t=\frac52\quad\Longrightarrow\quad 2t^2-5t+2=0.
+\end{equation*}
+Diskriminantas \(D=(-5)^2-4\cdot2\cdot2=9\), todėl \(t=2\) arba \(t=\frac12\).
+
+Kai \(t=2\), gauname \(x^2-2x+1=0\). Šios lygties diskriminantas lygus nuliui, todėl \(x=1\). Kai \(t=\frac12\), gauname \(2x^2-x+2=0\), kurio diskriminantas \(D=(-1)^2-4\cdot2\cdot2=-15<0\). Taigi šiuo atveju realiųjų \(x\) reikšmių nėra.
+\ats{$x_1=1$.}
+\end{solution}
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išspręskite bikvadratines lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(x^4+5x^2-36=0\)
+    \task \(4x^4-17x^2+4=0\)
+    \task \(9x^4-8x^2-1=0\)
+    \task \(x^4-7x^2-18=0\)
+    \task \(16x^4-40x^2+9=0\)
+    \task \(-2x^4+15x^2+8=0\)
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite iracionaliąsias lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(x+2\sqrt{x}-15=0\)
+    \task \(2x-5\sqrt{x}-3=0\)
+    \task \(-x+3\sqrt{x}+4=0\)
+    \task \(3x-10\sqrt{x}+8=0\)
+    \task \(4x+11\sqrt{x}-3=0\)
+    \task \(2x+\sqrt{x}-15=0\)
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtis, turinčias pasikartojantį bloką (dvinarius arba trinarius), realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \((x^2-3x)^2-2(x^2-3x)-8=0\)
+    \task \((x^2-2x+3)^2-5(x^2-2x+3)+4=0\)
+    \task \(2(x^2+x-1)^2+3(x^2+x-1)-5=0\)
+    \task \((2x^2-3x+1)^2-4(2x^2-3x+1)+3=0\)
+    \task \(-(x^2+2x)^2+6(x^2+2x)+16=0\)
+    \task \((x^2-x-2)^2-14(x^2-x-2)-15=0\)
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite rodiklines lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(3^{2x}-12\cdot 3^x+27=0\)
+    \task \(2^{2x+1}-17\cdot 2^x+8=0\)
+    \task \(5^{2x}+4\cdot 5^x-5=0\)
+    \task \(3 \cdot 9^x-10\cdot 3^x+3=0\)
+    \task \(9^{x+1}-82\cdot 3^x+9=0\)
+    \task \(3\cdot 25^x-14\cdot 5^x-5=0\)
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išspręskite racionaliąsias lygtis su atvirkštinėmis trupmenomis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(\frac{x^2+2}{x} + \frac{3x}{x^2+2} = 4\)
+    \task \(\frac{2x^2-x+1}{x} - \frac{2x}{2x^2-x+1} = 1\)
+    \task \(\frac{x^2-x+2}{2x} + \frac{2x}{x^2-x+2} = \frac{5}{2}\)
+    \task \(\frac{x^2+x-2}{x} - \frac{4x}{x^2+x-2} = 3\)
+    \task \(2 \cdot \frac{x^2+1}{x-1} + 3 \cdot \frac{x-1}{x^2+1} = 5\)
+    \task \(\frac{x^2-2x-3}{x+2} - \frac{6(x+2)}{x^2-2x-3} = 1\)
+\end{tasks}
+\end{problem}
+
+\newpage
+\answerssection
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(\pm 2\);
+    \task \(\pm \frac{1}{2}, \pm 2\);
+    \task \(\pm 1\);
+    \task \(\pm 3\);
+    \task \(\pm \frac{1}{2}, \pm \frac{3}{2}\);
+    \task \(\pm 2\sqrt{2}\).
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $9$;
+    \task $9$;
+    \task $16$;
+    \task \(\frac{16}{9}, 4\);
+    \task \(\frac{1}{16}\);
+    \task \(\frac{25}{4}\).
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task \(-1, 1, 2, 4\);
+    \task \(1 \pm \sqrt{2}\);
+    \task \(-2, 1\);
+    \task \(-\frac{1}{2}, 0, \frac{3}{2}, 2\);
+    \task \(-4, 2\);
+    \task \(\frac{1 \pm \sqrt{5}}{2}, \frac{1 \pm \sqrt{69}}{2}\).
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $1, 2$;
+    \task \(-1, 3\);
+    \task $0$;
+    \task \(-1, 1\);
+    \task \(-2, 2\);
+    \task $1$.
+\end{tasks}
+\end{problem}
+
+\begin{problem} \phantom{text}
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $1, 2$;
+    \task \(\frac{1}{2}, 1\);
+    \task \(\frac{5 \pm \sqrt{17}}{2}\);
+    \task \(-1 \pm \sqrt{3}, \frac{3 \pm \sqrt{17}}{2}\);
+    \task \(\emptyset\);
+    \task \(\frac{5 \pm \sqrt{61}}{2}\).
+\end{tasks}
+\end{problem}
+
+\end{document}

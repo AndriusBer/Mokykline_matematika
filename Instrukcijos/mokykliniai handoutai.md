@@ -42,15 +42,17 @@ Teorinė medžiaga skaidoma į logines dalis, naudojant šias aplinkas:
 - **Pastabos ir įrodymai:** `\begin{remark} ... \end{remark}` arba `\begin{proof} ... \end{proof}`.
 
 ## 4. Matematinių formulių formatavimas
-- Blokinių formulių apibrėžimui griežtai draudžiama naudoti `$$ ... $$`. Privaloma naudoti `\[` ir `\]`.
-- Kelių eilučių lygtims lygiavimo tikslais privaloma naudoti `aligned` aplinką `\[ ... \]` bloko viduje.
+- Blokinių formulių apibrėžimui griežtai draudžiama naudoti `$$ ... $$` ir `\begin{equation*}
+...
+\end{equation*}`. Privaloma naudoti `\begin{equation*} ... \end{equation*}`.
+- Kelių eilučių lygtims lygiavimo tikslais privaloma naudoti `aligned` aplinką `equation*` aplinkos viduje.
   ```latex
-  \[
-  \begin{aligned}
+  \begin{equation*}
+\begin{aligned}
   (a+b)^2 &= (a+b)(a+b) \\
   &= a^2+2ab+b^2.
   \end{aligned}
-  \]
+\end{equation*}
   ```
 
 ## 5. Pavyzdžių formatavimas
@@ -59,7 +61,9 @@ Uždavinių pavyzdžiai ir jų sprendimai privalo būti išskirti į dvi atskira
 ```latex
 \begin{example}
 Užduoties sąlyga:
-\[ matematika \]
+\begin{equation*}
+matematika
+\end{equation*}
 \end{example}
 \begin{solution}
 Sprendimo eiga...
@@ -129,8 +133,12 @@ Dokumentas visada užbaigiamas komanda:
 \end{definition}
 
 Pilnojo kvadrato išskyrimas -- tai daugianario pertvarkymas taip, kad jame atsirastų dvinario kvadratas. Šis būdas remiasi greitosios daugybos formulėmis:
-\[(a+b)^2=a^2+2ab+b^2,\]
-\[(a-b)^2=a^2-2ab+b^2.\]
+\begin{equation*}
+(a+b)^2=a^2+2ab+b^2,
+\end{equation*}
+\begin{equation*}
+(a-b)^2=a^2-2ab+b^2.
+\end{equation*}
 
 
 
@@ -144,9 +152,13 @@ Kad trinarį galėtume užrašyti dvinario kvadratu, pirmasis ir paskutinis jo n
 
 \begin{property}[Pilnojo kvadrato trinaris]
 Jei trinaris yra formos
-\[a^2+2ab+b^2,\]
+\begin{equation*}
+a^2+2ab+b^2,
+\end{equation*}
 tai jis lygus $(a+b)^2$. Jei trinaris yra formos
-\[a^2-2ab+b^2,\]
+\begin{equation*}
+a^2-2ab+b^2,
+\end{equation*}
 tai jis lygus $(a-b)^2$.
 \end{property}
 
@@ -154,67 +166,103 @@ tai jis lygus $(a-b)^2$.
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2+6x+9.\]
+\begin{equation*}
+x^2+6x+9.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis narys yra $x^2$, todėl $a=x$. Paskutinis narys yra $9=3^2$, todėl $b=3$. Patikriname vidurinį narį:
-\[2ab=2\cdot x\cdot3=6x.\]
+\begin{equation*}
+2ab=2\cdot x\cdot3=6x.
+\end{equation*}
 Vidurinis narys sutampa, todėl taikome sumos kvadrato formulę:
-\[x^2+6x+9=x^2+2\cdot x\cdot3+3^2=(x+3)^2.\]
+\begin{equation*}
+x^2+6x+9=x^2+2\cdot x\cdot3+3^2=(x+3)^2.
+\end{equation*}
 \textbf{Atsakymas:} $(x+3)^2$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[4x^2-12x+9.\]
+\begin{equation*}
+4x^2-12x+9.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis narys yra $4x^2=(2x)^2$, o paskutinis narys yra $9=3^2$. Todėl tikriname, ar vidurinis narys yra $-2\cdot2x\cdot3$:
-\[-2\cdot2x\cdot3=-12x.\]
+\begin{equation*}
+-2\cdot2x\cdot3=-12x.
+\end{equation*}
 Vidurinis narys sutampa, todėl gauname skirtumo kvadratą:
-\[4x^2-12x+9=(2x)^2-2\cdot2x\cdot3+3^2=(2x-3)^2.\]
+\begin{equation*}
+4x^2-12x+9=(2x)^2-2\cdot2x\cdot3+3^2=(2x-3)^2.
+\end{equation*}
 \textbf{Atsakymas:} $(2x-3)^2$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[9a^2+24ab+16b^2.\]
+\begin{equation*}
+9a^2+24ab+16b^2.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis ir paskutinis nariai yra kvadratai:
-\[9a^2=(3a)^2, \qquad 16b^2=(4b)^2.\]
+\begin{equation*}
+9a^2=(3a)^2, \qquad 16b^2=(4b)^2.
+\end{equation*}
 Patikriname vidurinį narį:
-\[2\cdot3a\cdot4b=24ab.\]
+\begin{equation*}
+2\cdot3a\cdot4b=24ab.
+\end{equation*}
 Taigi tai yra sumos kvadratas:
-\[9a^2+24ab+16b^2=(3a+4b)^2.\]
+\begin{equation*}
+9a^2+24ab+16b^2=(3a+4b)^2.
+\end{equation*}
 \textbf{Atsakymas:} $(3a+4b)^2$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[4a^2+12ab+9b^2.\]
+\begin{equation*}
+4a^2+12ab+9b^2.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis ir paskutinis nariai yra kvadratai:
-\[4a^2=(2a)^2, \qquad 9b^2=(3b)^2.\]
+\begin{equation*}
+4a^2=(2a)^2, \qquad 9b^2=(3b)^2.
+\end{equation*}
 Patikriname vidurinį narį:
-\[2\cdot2a\cdot3b=12ab.\]
+\begin{equation*}
+2\cdot2a\cdot3b=12ab.
+\end{equation*}
 Taigi tai yra sumos kvadratas:
-\[4a^2+12ab+9b^2=(2a+3b)^2.\]
+\begin{equation*}
+4a^2+12ab+9b^2=(2a+3b)^2.
+\end{equation*}
 \textbf{Atsakymas:} $(2a+3b)^2$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[9m^2n^2-6mny+y^2.\]
+\begin{equation*}
+9m^2n^2-6mny+y^2.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis ir paskutinis nariai yra kvadratai:
-\[9m^2n^2=(3mn)^2, \qquad y^2=y^2.\]
+\begin{equation*}
+9m^2n^2=(3mn)^2, \qquad y^2=y^2.
+\end{equation*}
 Patikriname vidurinį narį:
-\[-2\cdot3mn\cdot y=-6mny.\]
+\begin{equation*}
+-2\cdot3mn\cdot y=-6mny.
+\end{equation*}
 Taigi tai yra skirtumo kvadratas:
-\[9m^2n^2-6mny+y^2=(3mn-y)^2.\]
+\begin{equation*}
+9m^2n^2-6mny+y^2=(3mn-y)^2.
+\end{equation*}
 \textbf{Atsakymas:} $(3mn-y)^2$.
 \end{solution}
 
@@ -228,81 +276,115 @@ Kartais trūksta tik paskutinio nario, kad trinaris taptų pilnojo kvadrato trin
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2+8x.\]
+\begin{equation*}
+x^2+8x.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis narys yra $x^2$, o vidurinis narys $8x$ turi būti lygus $2\cdot x\cdot b$. Randame $b$:
-\[2\cdot x\cdot b=8x, \qquad b=4.\]
+\begin{equation*}
+2\cdot x\cdot b=8x, \qquad b=4.
+\end{equation*}
 Taigi reikia pridėti $4^2=16$. Kad reiškinio reikšmė nepasikeistų, tą patį skaičių ir atimame:
-\[\begin{aligned} x^2+8x &=x^2+8x+16-16\\ &=(x+4)^2-16. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} x^2+8x &=x^2+8x+16-16\\ &=(x+4)^2-16. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $(x+4)^2-16$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2-10x+7.\]
+\begin{equation*}
+x^2-10x+7.
+\end{equation*}
 \end{example}
 \begin{solution}
 Viduriniam nariui $-10x$ gauti reikia $b=5$, nes $-2\cdot x\cdot5=-10x$. Pridedame ir atimame $5^2=25$:
-\[\begin{aligned} x^2-10x+7 &=x^2-10x+25-25+7\\ &=(x-5)^2-18. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} x^2-10x+7 &=x^2-10x+25-25+7\\ &=(x-5)^2-18. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $(x-5)^2-18$.
 \end{solution}
 
 \begin{example}
 \small
 Išskirkite pilnąjį kvadratą:
-\[4x^2+12x+1.\]
+\begin{equation*}
+4x^2+12x+1.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pirmasis narys yra $(2x)^2$. Vidurinį narį gauname pagal formulę $2\cdot2x\cdot b=12x$, todėl $b=3$. Pridedame ir atimame $3^2=9$:
-\[\begin{aligned} 4x^2+12x+1 &=4x^2+12x+9-9+1\\ &=(2x+3)^2-8. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} 4x^2+12x+1 &=4x^2+12x+9-9+1\\ &=(2x+3)^2-8. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $(2x+3)^2-8$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2-\frac{3}{5}x.\]
+\begin{equation*}
+x^2-\frac{3}{5}x.
+\end{equation*}
 \end{example}
 \begin{solution}
-\[\begin{aligned} x^2-\frac{3}{5}x &=x^2-2\cdot\frac{1}{2}\cdot\frac{3}{5}\cdot x \\ &=x^2-2\cdot x\cdot\frac{3}{10} \\ & =\underbrace{x^2-2\cdot x\cdot\frac{3}{10}+\left(\frac{3}{10}\right)^2}_{\left(x-\frac{3}{10}\right)^2}-\left(\frac{3}{10}\right)^2 \\ & =\left(x-\frac{3}{10}\right)^2-\frac{9}{100}. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} x^2-\frac{3}{5}x &=x^2-2\cdot\frac{1}{2}\cdot\frac{3}{5}\cdot x \\ &=x^2-2\cdot x\cdot\frac{3}{10} \\ & =\underbrace{x^2-2\cdot x\cdot\frac{3}{10}+\left(\frac{3}{10}\right)^2}_{\left(x-\frac{3}{10}\right)^2}-\left(\frac{3}{10}\right)^2 \\ & =\left(x-\frac{3}{10}\right)^2-\frac{9}{100}. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $\left(x-\frac{3}{10}\right)^2-\frac{9}{100}$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2+7x+4.\]
+\begin{equation*}
+x^2+7x+4.
+\end{equation*}
 \end{example}
 \begin{solution}
-\[\begin{aligned} x^2+7x+4 &=x^2+2\cdot\frac{1}{2}\cdot7x+4 \\ &=x^2+2\cdot x\cdot\frac{7}{2}+4 \\ &=\underbrace{x^2+2\cdot x\cdot\frac{7}{2}+\left(\frac{7}{2}\right)^2}_{\left(x+\frac{7}{2}\right)^2}-\left(\frac{7}{2}\right)^2+4 \\ &=\left(x+\frac{7}{2}\right)^2-\frac{49}{4}+4 \\ &=\left(x+\frac{7}{2}\right)^2-\frac{33}{4}. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} x^2+7x+4 &=x^2+2\cdot\frac{1}{2}\cdot7x+4 \\ &=x^2+2\cdot x\cdot\frac{7}{2}+4 \\ &=\underbrace{x^2+2\cdot x\cdot\frac{7}{2}+\left(\frac{7}{2}\right)^2}_{\left(x+\frac{7}{2}\right)^2}-\left(\frac{7}{2}\right)^2+4 \\ &=\left(x+\frac{7}{2}\right)^2-\frac{49}{4}+4 \\ &=\left(x+\frac{7}{2}\right)^2-\frac{33}{4}. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $\left(x+\frac{7}{2}\right)^2-\frac{33}{4}$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[x^2+3x+1.\]
+\begin{equation*}
+x^2+3x+1.
+\end{equation*}
 \end{example}
 \begin{solution}
-\[\begin{aligned} x^2+3x+1 &=x^2+2\cdot\frac{1}{2}\cdot3x+1\\ &=x^2+2\cdot x\cdot\frac{3}{2}+1\\ &=\underbrace{x^2+2\cdot x\cdot\frac{3}{2}+\left(\frac{3}{2}\right)^2}_{\left(x+\frac{3}{2}\right)^2}-\left(\frac{3}{2}\right)^2+1\\ &=\left(x+\frac{3}{2}\right)^2-\frac{9}{4}+1\\ &=\left(x+\frac{3}{2}\right)^2-\frac{5}{4}. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} x^2+3x+1 &=x^2+2\cdot\frac{1}{2}\cdot3x+1\\ &=x^2+2\cdot x\cdot\frac{3}{2}+1\\ &=\underbrace{x^2+2\cdot x\cdot\frac{3}{2}+\left(\frac{3}{2}\right)^2}_{\left(x+\frac{3}{2}\right)^2}-\left(\frac{3}{2}\right)^2+1\\ &=\left(x+\frac{3}{2}\right)^2-\frac{9}{4}+1\\ &=\left(x+\frac{3}{2}\right)^2-\frac{5}{4}. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $\left(x+\frac{3}{2}\right)^2-\frac{5}{4}$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[2x^2+\frac{1}{5}x+3.\]
+\begin{equation*}
+2x^2+\frac{1}{5}x+3.
+\end{equation*}
 \end{example}
 \begin{solution}
 Iškeliame $2$ prieš pirmus du narius:
-\[\begin{aligned} 2x^2+\frac{1}{5}x+3 &=2\left(x^2+\frac{1}{10}x\right)+3\\ &=2\left(x^2+2\cdot\frac{1}{2}\cdot\frac{1}{10}x\right)+3\\ &=2\left(x^2+2\cdot x\cdot\frac{1}{20}\right)+3\\ &=2\left(\underbrace{x^2+2\cdot x\cdot\frac{1}{20}+\left(\frac{1}{20}\right)^2}_{\left(x+\frac{1}{20}\right)^2}-\left(\frac{1}{20}\right)^2\right)+3\\ &=2\cdot\left(\left(x+\frac{1}{20}\right)^2-\frac{1}{400}\right)+3\\ &=2\left(x+\frac{1}{20}\right)^2-\frac{1}{200}+3\\ &=2\left(x+\frac{1}{20}\right)^2+\frac{599}{200}. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} 2x^2+\frac{1}{5}x+3 &=2\left(x^2+\frac{1}{10}x\right)+3\\ &=2\left(x^2+2\cdot\frac{1}{2}\cdot\frac{1}{10}x\right)+3\\ &=2\left(x^2+2\cdot x\cdot\frac{1}{20}\right)+3\\ &=2\left(\underbrace{x^2+2\cdot x\cdot\frac{1}{20}+\left(\frac{1}{20}\right)^2}_{\left(x+\frac{1}{20}\right)^2}-\left(\frac{1}{20}\right)^2\right)+3\\ &=2\cdot\left(\left(x+\frac{1}{20}\right)^2-\frac{1}{400}\right)+3\\ &=2\left(x+\frac{1}{20}\right)^2-\frac{1}{200}+3\\ &=2\left(x+\frac{1}{20}\right)^2+\frac{599}{200}. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $2\left(x+\frac{1}{20}\right)^2+\frac{599}{200}$.
 \end{solution}
 
 \begin{example}
 Išskirkite pilnąjį kvadratą:
-\[25a^2b^2+10abc+a.\]
+\begin{equation*}
+25a^2b^2+10abc+a.
+\end{equation*}
 \end{example}
 \begin{solution}
 Pridedame ir atimame $c^2$, kad pirmi trys nariai sudarytų pilnojo kvadrato trinarį:
-\[\begin{aligned} 25a^2b^2+10abc+a &=25a^2b^2+10abc+c^2-c^2+a\\ &=(5ab+c)^2-c^2+a. \end{aligned}\]
+\begin{equation*}
+\begin{aligned} 25a^2b^2+10abc+a &=25a^2b^2+10abc+c^2-c^2+a\\ &=(5ab+c)^2-c^2+a. \end{aligned}
+\end{equation*}
 \textbf{Atsakymas:} $(5ab+c)^2-c^2+a$.
 \end{solution}
 
