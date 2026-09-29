@@ -20,12 +20,47 @@
 * **Tonas:** Draugiškas ir motyvuojantis („mes“, „pažiūrėkime“, „šio triuko esmė“). Venk sauso akademinio stiliaus.
 * **Eiga:** Sprendimo eigoje turi būti įžvalgos, analizė, pamąstymai – kodėl darome būtent taip. Uždaviniai neturi būti sprendžiami aklai.
 
+**Geometrinių uždavinių sprendimo eiga ir brėžiniai (taikoma TIK geometriniams uždaviniams):**
+
+Toliau pateiktos papildomos taisyklės galioja tik tada, kai sprendžiamas uždavinys yra geometrinis. Jos nekeičia algebros, skaičių teorijos, kombinatorikos ar kitų negeometrinių uždavinių sprendimo pateikimo formos.
+
+- Kiekvieną geometrinės figūros viršūnę pažymėk aiškiai matomu tašku.
+- Lygius kampus žymėk ta pačia spalva, o nelygius kampus – skirtingomis spalvomis, kad spalvos nekurtų klaidingo įspūdžio apie jų lygybę. Pavyzdžiui, vieną lygių kampų porą žymėk žaliai, jai nelygų kampą – raudonai, o kitą skirtingą kampą – mėlynai. Kampo simbolį rašyk prie jo lankelio taip, kad būtų aišku, kuriam kampui jis priklauso.
+- TikZ brėžiniuose, naudojant angles bibliotekos žymėjimą angle = A--B--C, taškas B yra kampo viršūnė, o A ir C nurodo kampo kraštines bei lankelio brėžimo kryptį. Patikrink, ar lankelis ir jo žyma yra norimoje kampo srityje; jei pažymėta priešinga sritis, sukeisk kraštinius taškus (C--B--A). Kampo žymą dėk prie atitinkamo lankelio, ne kitoje viršūnės pusėje.
+- Kampą žymėk raide pavyzdžiui, \alpha, \beta ar \gamma tik tada, jei ši žyma bus naudojama tolesniame įrodymo tekste, formulėse ar skaičiavimuose. Jei kampo dydis ar žyma vėliau nenaudojami, raidės prie kampo nerašyk.
+- Lygaus ilgio atkarpas žymėk vienodais, atkarpą statmenai kertančiais brūkšneliais. Skirtingas lygių atkarpų grupes žymėk skirtingu brūkšnelių skaičiumi.
+- Kampų spalvinimui naudok tik pusiau permatomą (transparent) užpildą. Jis negali uždengti ar susilpninti kraštinių, taškų, kampų lankelių, žymėjimų ar teksto; pagrindiniai brėžinio elementai turi likti aiškiai matomi virš užpildo. Nenaudok tos pačios spalvos skirtingiems, nelygiems kampams, jei tai galėtų sudaryti klaidingą įspūdį, kad jie lygūs.
+- Brėžinyje nežymėk lygybių iš anksto. Kampų spalvas, atkarpų brūkšnelius ir kitus lygybės žymėjimus įvesk tik tada, kai atitinkama lygybė duota sąlygoje arba jau išvesta sprendime.
+- Geometrinį sprendimą skaidyk į aiškius, nuoseklius žingsnius. Viename žingsnyhe - vienas naujas faktas ar papildymas. Pirmame žingsnyje pateik pradinį brėžinį, kuriame yra tik tai, kas tiesiogiai duota sąlygoje – dar nepridėk vėliau įvedamų pagalbinių tiesių, taškų, konstrukcijų ar žymėjimų.
+- Po kiekvieno žingsnio pateik atskirą brėžinį. Brėžiniai turi būti kaupiamieji: kiekvienas išsaugo ankstesnę informaciją ir prideda tik tame žingsnyje įvestą naują informaciją. Nepraleisk tarpinių brėžinio būsenų.
+- Kiekvieną žingsnį paaiškink trumpu, rišliu tekstu. Formules pateik centruotai, naudodamas $$ ... $$ arba \[ ... \]. Sprendimo pabaigoje pateik aiškų baigiamąjį teiginį, pavyzdžiui, „Įrodyta. \hfill $\square$“.
+- Geometrinio sprendimo struktūra:
+
+~~~latex
+Sprendimas:\\
+(Trumpai įvardyk pagrindinę sprendimo strategiją.)
+
+1 žingsnis. (Pradinis brėžinys ir tik sąlygoje duoti elementai.)
+\begin{center}
+% TikZ brėžinys
+\end{center}
+
+2 žingsnis. (Rišlus paaiškinimas ir naujas loginis veiksmas.)
+$$\text{Išvedimas}$$
+\begin{center}
+% Atnaujintas kaupiamasis TikZ brėžinys
+\end{center}
+
+% Tęsk analogiškai, kol įrodymas bus baigtas.
+Įrodyta. \hfill $\square$
+~~~
+
 **Techniniai reikalavimai formavimui:**
 * Generuok TIK gryną, kompiliuojamą **LaTeX** kodą.
-* Dokumento preambulėje privalo būti: `\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}`.
-* Naudok šias standartines aplinkas: `\begin{example}`, `\begin{proof}`, `\begin{solution}`, `\begin{proposition}`, `\begin{remark*}`.
-* Matematinėms formulėms naudok `$ ... \(` (inline) ir `\)$ ... $$` arba `\begin{equation}` (display). Niekada nenaudok Unicode simbolių vietoje LaTeX komandų.
-* Naudok vizualius skyrių atskyrimus komentarais (pvz., `% ==========================================`).
+* Dokumento preambulėje privalo būti: \input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}.
+* Naudok šias standartines aplinkas: \begin{example}, \begin{proof}, \begin{solution}, \begin{proposition}, \begin{remark*}.
+* Eilutės matematikai visada naudok $...$ delimitatorius; nenaudok \(...\). Pavyzdžiui: $\angle CAP=\alpha$.
+* Naudok vizualius skyrių atskyrimus komentarais (pvz., % ==========================================).
 
 \documentclass[11pt,a4paper]{scrartcl}
 
