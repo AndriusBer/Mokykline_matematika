@@ -55,7 +55,7 @@ Sprendimas turi būti pateiktas kaip vientisas, natūralus tekstas. Nenaudok jok
 Naudok tiksliai tokią kodo struktūrą:
 
 ```latex
-\textbf{Sprendimas:}\\
+\begin{solution}\\
 (Čia gali būti trumpas įvadinis sakinys, apibūdinantis pagrindinę strategiją ar savybę, kuri bus naudojama).
 
 \textbf{1 žingsnis.} (Tekstas, apibūdinantis pradinius veiksmus ir brėžinį, pvz., "Iš pradžių nusibraižome brėžinį:")
@@ -75,4 +75,5 @@ $$\text{formulė}$$
 % Atnaujintas kaupiamasis TikZ brėžinys
 \end{center}
 
-(Tęskite tiek žingsnių, kiek reikia. Sprendimo pabaigoje visada pateikite baigiamąjį žodį, pvz., "Įrodyta. \hfill $\square$").
+(Tęskite tiek žingsnių, kiek reikia. Sprendimo pabaigoje visada pateikite baigiamąjį žodį, "Įrodyta. \hfill $\square$) jeigu tai buvo įrodymo uždavinys arba \ats{...} jeigu tai buvo uždavinys kur reikėjo kažką apskačiuoti ir gauti atsakymą skaičių.
+\end{solution}

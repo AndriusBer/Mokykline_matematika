@@ -1,0 +1,300 @@
+% !TeX program = lualatex
+\documentclass[11pt, a4paper]{scrreprt}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage[lithuanian, bidi=basic, provide=*]{babel}
+\babelfont{rm}{Noto Sans}
+
+\usepackage[nopkg, nothm, noboxthm, secthm, colorsec]{../../Instrukcijos/evan}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\newenvironment{problem}
+    {\par\medskip\noindent\textbf{Uždavinys.}\par\smallskip}
+    {\par\medskip}
+\usepackage{tikz}
+\usetikzlibrary{calc,angles,quotes,intersections,decorations.markings}
+
+\begin{document}
+
+\chapter*{Lietuvos mokinių matematikos olimpiada 2026}
+
+\section*{9--10 klasė}
+
+\begin{problem}
+$3\times3$ lentelę Benas surašė skaičius 1, 2, \dots, 9, kiekvieną skaičių įrašydamas po lygiai vieną kartą. Jis tai padarė taip, kad kaimyniniuose langeliuose įrašytų skaičių skirtumo modulis yra daugiausiai 4. Raskite visus langelius, kuriuose Benas galėjo įrašyti skaičių 1.
+
+Pastaba. Langeliai laikomi kaimyniniais, jei jie turi bendrą kraštinę.
+\end{problem}
+
+\begin{soln}
+Jeigu langelis yra necentrinis, į jį vienetas gali būti įrašytas. Parodysime, jog kai vienetas įrašytas centriniame langelyje, egzistuoja kaimyninių langelių pora, kurių skaičiai skiriasi bent per penkis vienetus.
+
+Tegu centriniame langelyje įrašytas 1. Tada į kaimyninius langelius turi būti įrašyti skaičiai, ne didesni nei $1+4=5$, taigi skaičiai 2, 3, 4, 5. Neprarasdami bendrumo tarkime, kad dvejetas įrašytas virš vieneto.
+
+Pastebėkime, jog likę neįrašyti skaičiai yra 6, 7, 8, 9. Bent du iš šių skaičių turi būti įrašyti į dvejeto kaimyninį langelį. Tačiau tada bent vienas iš skaičių 7, 8, 9 būtų dvejeto kaimyniniame langelyje, o visi skirtumai (pvz., $7-2=5$) yra didesni nei 4. Gavome prieštarą. Vadinasi, vienetas negali būti centriniame langelyje.
+
+\textbf{Atsakymas:} Visi langeliai, išskyrus centrinį.
+\end{soln}
+
+\vspace{1cm}
+
+\begin{problem}
+Raskite visus tokius realiųjų skaičių trejetus $(x, y, z)$, kad
+\begin{equation*}
+\begin{cases}
+x+z=x^{4},\\ 
+z+y=z^{4},\\ 
+y+x=y^{4}.
+\end{cases}
+\end{equation*}
+\end{problem}
+
+\begin{soln}
+Pradžiai nagrinėkime atvejį, kai $x \ne y$, $y \ne z$ ir $z \ne x$. Įrodysime, kad tada sprendinių nėra.
+Atimkime antrąją lygtį iš pirmosios, trečiąją iš antrosios ir pirmąją iš trečiosios:
+\begin{equation*}
+\begin{cases}
+x-y = x^4 - z^4 = (x-z)(x+z)(x^2+z^2), \\
+z-x = z^4 - y^4 = (z-y)(z+y)(z^2+y^2), \\
+y-z = y^4 - x^4 = (y-x)(y+x)(y^2+x^2).
+\end{cases}
+\end{equation*}
+Sudauginkime aukščiau gautas lygtis ir padalykime iš $(x-z)(z-y)(y-x)$. Gauname:
+\begin{equation*}
+-1 = (x+z)(z+y)(y+x)(x^2+z^2)(z^2+y^2)(y^2+x^2)
+\end{equation*}
+Įrašę pradines lygčių sistemos lygybes, gauname:
+\begin{equation*}
+-1 = y^4 z^4 x^4 (x^2+z^2)(z^2+y^2)(y^2+x^2)
+\end{equation*}
+Dešinėje pusėje visi daugikliai neneigiami, todėl ir sandauga neneigiama. Tačiau kairė pusė neigiama – prieštara. Taigi sprendinių, kai visi skirtingi, nėra.
+
+Liko atvejis, kai bent du iš sprendinių lygūs. Tarkime, $x=y$.
+Jei $y=0$, tai $x=0$, tada $0+z=0 \implies z=0$. Trejetas $(0,0,0)$ tinka.
+Jei $y \ne 0$, tai $2y = y^4 \implies y^3 = 2 \implies y = \sqrt[3]{2} = x$.
+Tada $\sqrt[3]{2} + z = (\sqrt[3]{2})^4 = 2\sqrt[3]{2} \implies z = \sqrt[3]{2}$. 
+\textbf{Atsakymas:} $(0,0,0)$ arba $(\sqrt[3]{2}, \sqrt[3]{2}, \sqrt[3]{2})$.
+\end{soln}
+
+\vspace{1cm}
+
+\begin{problem}
+Duotas smailusis trikampis $ABC$. Agota ant kraštinės $BC$ pažymi tašką $D$, o tada per tašką $D$ nubrėžia statmenį kraštinei $BC$. Šis statmuo kerta tieses $AB$ ir $AC$ taškuose $E$ ir $F$, atitinkamai. Agota pasirinko tašką $D$ taip, kad $DE \cdot DF$ įgytų didžiausią galimą reikšmę. Raskite santykį $BD : DC$.
+\end{problem}
+
+\textbf{Sprendimas:}\\
+Sprendimui naudosime trigonometriją ir geometrinius sąryšius. Parodysime, kad taškas $D$ turi sutapti su $BC$ vidurio tašku $M$.
+
+\textbf{1 žingsnis.} Pradžioje nusibraižome smailųjį trikampį $ABC$ ir tašką $D$ ant $BC$. Iš taško $D$ keliame statmenį, kuris kerta $AB$ taške $E$ ir $AC$ taške $F$.
+\begin{center}
+\begin{tikzpicture}
+    % Viršūnės
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (6,0);
+    \coordinate (A) at (2,4);
+    
+    % Taškas D
+    \coordinate (D) at (2.5,0);
+    
+    % E ir F radimas
+    % AB tiesė y = 2x
+    % AC tiesė
+    \path[name path=lineAB] (B) -- ($(B)!1.5!(A)$);
+    \path[name path=lineAC] (C) -- ($(C)!1.5!(A)$);
+    \path[name path=perpD] (D) -- (2.5, 5);
+    
+    \path [name intersections={of=lineAB and perpD, by=E}];
+    \path [name intersections={of=lineAC and perpD, by=F}];
+    
+    % Braižymas
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (D) -- (F);
+    
+    % Žymėjimai
+    \fill (A) circle (2pt) node[above] {$A$};
+    \fill (B) circle (2pt) node[left] {$B$};
+    \fill (C) circle (2pt) node[right] {$C$};
+    \fill (D) circle (2pt) node[below] {$D$};
+    \fill (E) circle (2pt) node[left] {$E$};
+    \fill (F) circle (2pt) node[right] {$F$};
+    
+    % Status kampas
+    \draw (D) ++(0.3,0) -- ++(0,0.3) -- ++(-0.3,0);
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Nagrinėjame susidariusius stačiuosius trikampius $BDE$ ir $CDF$. 
+Pagal kampo tangento apibrėžimą, turime $\frac{DE}{BD} = \tan(\angle B) \implies DE = BD \cdot \tan(\angle B)$.
+Analogiškai iš trikampio $CDF$ gauname $DF = CD \cdot \tan(\angle C)$.
+Padauginę šias lygybes, gauname išraišką:
+\begin{equation*}
+DE \cdot DF = BD \cdot CD \cdot \tan(\angle B) \cdot \tan(\angle C).
+\end{equation*}
+
+\begin{center}
+\begin{tikzpicture}
+    \coordinate (B) at (0,0);
+    \coordinate (C) at (6,0);
+    \coordinate (A) at (2,4);
+    \coordinate (D) at (2.5,0);
+    
+    \path[name path=lineAB] (B) -- ($(B)!1.5!(A)$);
+    \path[name path=lineAC] (C) -- ($(C)!1.5!(A)$);
+    \path[name path=perpD] (D) -- (2.5, 5);
+    
+    \path [name intersections={of=lineAB and perpD, by=E}];
+    \path [name intersections={of=lineAC and perpD, by=F}];
+    
+    % Spalvoti kampai
+    \fill[red, opacity=0.3] (B) -- (0.5,0) arc (0:63.4:0.5) -- cycle;
+    \node[red] at (0.8, 0.3) {$\beta$};
+    \fill[green, opacity=0.3] (C) -- (5.5,0) arc (180:135:0.5) -- cycle;
+    \node[green!60!black] at (5.2, 0.3) {$\gamma$};
+    
+    % Braižymas
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (D) -- (F);
+    
+    \fill (A) circle (2pt) node[above] {$A$};
+    \fill (B) circle (2pt) node[left] {$B$};
+    \fill (C) circle (2pt) node[right] {$C$};
+    \fill (D) circle (2pt) node[below] {$D$};
+    \fill (E) circle (2pt) node[left] {$E$};
+    \fill (F) circle (2pt) node[right] {$F$};
+    \draw (D) ++(0.3,0) -- ++(0,0.3) -- ++(-0.3,0);
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Kadangi $\angle B$ ir $\angle C$ yra fiksuoti trikampio kampai, sandauga $DE \cdot DF$ įgyja didžiausią reikšmę tik tuomet, kai didžiausią reikšmę įgyja sandauga $BD \cdot CD$.
+Iš algebros žinome, kad dviejų skaičių, kurių suma pastovi ($BD + CD = BC$), sandauga yra didžiausia, kai tie skaičiai yra lygūs. 
+Vadinasi, maksimumas pasiekiamas, kai $BD = CD$. Tokiu atveju taškas $D$ yra atkarpos $BC$ vidurio taškas.
+Santykis tuomet lygus $BD : DC = 1$. \hfill $\blacksquare$
+
+\vspace{1cm}
+
+\section*{11--12 klasė}
+
+\begin{problem}
+Ant smailiojo trikampio $ABC$ ($AB < BC$) kraštinių $AB, BC, CA$ pažymėti atitinkamai taškai $D, E, F$, taip, kad keturkampis $BEFD$ yra įbrėžtinis. Tegu trikampio $ADF$ apibrėžtinio apskritimo centras $O_1$, o trikampio $CEF$ apibrėžtinio apskritimo centras $O_2$. Įrodykite, jog tiesės $AO_1$ ir $CO_2$ yra lygiagrečios.
+\end{problem}
+
+\textbf{Sprendimas:}\\
+Sprendimui naudosime įbrėžtinių keturkampių kampų savybes bei centrinių kampų ryšį su įbrėžtiniais.
+
+\textbf{1 žingsnis.} Nusibraižome trikampį $ABC$, pažymime taškus $D, E, F$. Apibrėžiame nurodytus apskritimus per trikampius $ADF$ ir $CEF$. Pratęsiame tiesę $DF$ iki susikirtimo su apskritimu $CEF$ taške $G$.
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \coordinate (B) at (1,6);
+    \coordinate (A) at (0,0);
+    \coordinate (C) at (8,0);
+    
+    % Arbitrary D, E, F such that BEFD is cyclic.
+    % We will just place them visually correctly for the diagram.
+    \coordinate (D) at (0.4, 2.4); % on AB
+    \coordinate (E) at (5, 2.5); % on BC
+    \coordinate (F) at (3, 0); % on AC
+    \coordinate (O1) at (1.5, 1.2);
+    \coordinate (O2) at (5.5, -1);
+    \coordinate (G) at (6, -2);
+    
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, dashed] (D) -- (E) -- (F) -- cycle;
+    
+    % Apskritimai (iliustratyvūs)
+    \draw[gray] (O1) circle (1.9);
+    \draw[gray] (O2) circle (3.2);
+    
+    \fill (A) circle (2pt) node[left] {$A$};
+    \fill (B) circle (2pt) node[above] {$B$};
+    \fill (C) circle (2pt) node[right] {$C$};
+    \fill (D) circle (2pt) node[left] {$D$};
+    \fill (E) circle (2pt) node[right] {$E$};
+    \fill (F) circle (2pt) node[below] {$F$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Kadangi keturkampis $CEFG$ įbrėžtinis, tai $\angle FGC = 180\dg - \angle FEC = \angle BEF$. Be to, $BEFD$ įbrėžtinis, todėl $\angle BEF = 180\dg - \angle BDF = \angle ADF$. Taigi $\angle FGC = \angle ADF$.
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    \coordinate (B) at (1,6);
+    \coordinate (A) at (0,0);
+    \coordinate (C) at (8,0);
+    \coordinate (D) at (0.4, 2.4); 
+    \coordinate (E) at (5, 2.5); 
+    \coordinate (F) at (3, 0); 
+    
+    \coordinate (O1) at (1.5, 1.2);
+    \coordinate (O2) at (5.5, -1);
+    \coordinate (G) at (5.8, -3.2);
+    
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+    \draw[thick, blue] (D) -- (G);
+    \draw[thick, blue] (C) -- (G);
+    \draw[thick, blue] (E) -- (G);
+    
+    \fill[red, opacity=0.3] (G) -- (5.3, -2.5) arc (125:160:0.8) -- cycle;
+    \node[red] at (5.3,-2.8) {$\alpha$};
+    
+    \fill[red, opacity=0.3] (D) -- (0.2, 1.2) arc (260:310:0.8) -- cycle;
+    \node[red] at (0.7,1.6) {$\alpha$};
+    
+    \fill (A) circle (2pt) node[left] {$A$};
+    \fill (B) circle (2pt) node[above] {$B$};
+    \fill (C) circle (2pt) node[right] {$C$};
+    \fill (D) circle (2pt) node[left] {$D$};
+    \fill (E) circle (2pt) node[right] {$E$};
+    \fill (F) circle (2pt) node[above right] {$F$};
+    \fill (G) circle (2pt) node[below] {$G$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Pagal centrinio ir įbrėžtinio kampų sąryšį turime:
+\begin{equation*}
+\angle FO_2C = 2\angle FGC = 2\angle ADF = \angle AO_1F.
+\end{equation*}
+Trikampiai $CO_2F$ ir $AO_1F$ yra lygiašoniai (nes spinduliai $O_2C=O_2F$ ir $O_1A=O_1F$).
+Vadinasi, kampai prie pagrindo yra lygūs:
+\begin{equation*}
+\angle O_2CF = \frac{180\dg - \angle FO_2C}{2} = \frac{180\dg - \angle AO_1F}{2} = \angle O_1AF.
+\end{equation*}
+Kadangi priešiniai ir atitinkamieji kampai lygūs, tiesės $AO_1$ ir $CO_2$ yra lygiagrečios. \hfill $\blacksquare$
+
+\vspace{1cm}
+
+\begin{problem}
+Duoti realieji skaičiai $c_1, c_2, \dots, c_{2026}$, tenkinantys šias dvi sąlygas:
+\begin{enumerate}[label=(\arabic*)]
+    \ii $c_1 + c_2 + \dots + c_{2026} = 1012$;
+    \ii Kiekviena iš 2026 kvadratinių lygčių $x^2 + \sqrt{\frac{2025+i}{1013}}x + c_i = 0$ turi du skirtingus realiuosius sprendinius.
+\end{enumerate}
+Įrodykite, jog tarp šių lygčių sprendinių egzistuoja bent vienas toks sprendinys $s$, kuriam $|s| > 1$.
+\end{problem}
+
+\begin{soln}
+Pažymėkime $i$-osios lygties sprendinius $a_i$ ir $b_i$. Pagal Vijeto teoremą tada:
+\begin{equation*}
+\begin{cases}
+a_i b_i = c_i, \\
+a_i + b_i = -\sqrt{\frac{2025+i}{1013}}.
+\end{cases}
+\end{equation*}
+Pakėlę antrąją lygybę kvadratu ir įrašę pirmąją, gauname:
+\begin{equation*}
+\frac{2025+i}{1013} = a_i^2 + 2a_i b_i + b_i^2 = a_i^2 + 2c_i + b_i^2.
+\end{equation*}
+Susumavę 2026 tokias lygtis ir pasinaudoję tuo, kad $\sum c_i = 1012$, gauname:
+\begin{equation*}
+\sum_{i=1}^{2026} (a_i^2 + 2c_i + b_i^2) = 2 \cdot 1012 + \sum_{i=1}^{2026} (a_i^2 + b_i^2) = \frac{1}{1013} \sum_{i=1}^{2026} (2025+i).
+\end{equation*}
+Pertvarkę šias lygtis ir pritaikę aritmetinės progresijos sumos formulę, turime:
+\begin{equation*}
+\sum_{i=1}^{2026} (a_i^2 + b_i^2) = 2 \cdot 2025 + \frac{2026 \cdot 2027}{1013 \cdot 2} - 2024 = 4053.
+\end{equation*}
+Vadinasi, visų 4052 sprendinių kvadratų vidurkis yra:
+\begin{equation*}
+\frac{4053}{2 \cdot 2026} = \frac{4052+1}{4052} > 1.
+\end{equation*}
+Kadangi sprendinių kvadratų vidurkis yra didesnis nei 1, tai bent vieno sprendinio $s$ kvadratas $s^2$ privalo būti griežtai didesnis nei 1. Taigi $|s| > 1$. Įrodyta.
+\end{soln}
+
+\end{document}

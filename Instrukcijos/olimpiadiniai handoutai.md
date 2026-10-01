@@ -24,6 +24,8 @@
 
 Toliau pateiktos papildomos taisyklės galioja tik tada, kai sprendžiamas uždavinys yra geometrinis. Jos nekeičia algebros, skaičių teorijos, kombinatorikos ar kitų negeometrinių uždavinių sprendimo pateikimo formos.
 
+- Geometrijos tekstuose vartok terminą „priekampis“ ir formuluotę „trikampio priekampio teorema“. Trikampio kampą, susidarantį pratęsus vieną jo kraštinę, vadink priekampiu; šiai sąvokai nevartok terminų „išorinis kampas“ ar „išorinio kampo teorema“.
+- Apskritimo lankus visada žymėk lenktu brūkšniu virš galinių taškų, naudodamas žymėjimą $\wideparen{AB}$; lankui $AB$ nerašyk vien $AB$ be lanko ženklo.
 - Kiekvieną geometrinės figūros viršūnę pažymėk aiškiai matomu tašku.
 - Lygius kampus žymėk ta pačia spalva, o nelygius kampus – skirtingomis spalvomis, kad spalvos nekurtų klaidingo įspūdžio apie jų lygybę. Pavyzdžiui, vieną lygių kampų porą žymėk žaliai, jai nelygų kampą – raudonai, o kitą skirtingą kampą – mėlynai. Kampo simbolį rašyk prie jo lankelio taip, kad būtų aišku, kuriam kampui jis priklauso.
 - TikZ brėžiniuose, naudojant angles bibliotekos žymėjimą angle = A--B--C, taškas B yra kampo viršūnė, o A ir C nurodo kampo kraštines bei lankelio brėžimo kryptį. Patikrink, ar lankelis ir jo žyma yra norimoje kampo srityje; jei pažymėta priešinga sritis, sukeisk kraštinius taškus (C--B--A). Kampo žymą dėk prie atitinkamo lankelio, ne kitoje viršūnės pusėje.
