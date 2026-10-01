@@ -1,0 +1,438 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{yhmath}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes,calc,decorations.markings,intersections}
+\input{"../../../../9_klase/1. Vienanariai ir daugianariai/manostilius_lt.sty"}
+
+\title{Geometrija I: kampas tarp liestinės ir stygos}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+
+\section{Kai apskritimas liečia tiesę}
+Ankstesniuose skyriuose kampus siejome apskritimo viduje: taikėme įbrėžtinių kampų ir įbrėžtinių keturkampių savybes. Dabar panagrinėsime, kaip kampų ryšiai pasikeičia, kai prie apskritimo nubrėžiame liestinę.
+
+Olimpiadų uždaviniuose dažnai pasitaiko situacija, kai trikampio ar keturkampio apibrėžtinis apskritimas liečia tiesę. Tokiais atvejais liestinė ir styga sudaro kampą, kurį galima susieti su įbrėžtiniu kampu. Ši savybė leidžia perkelti kampo informaciją tarp apskritimo vidaus ir liestinės.
+
+% ==========================================
+% BAZINIAI GINKLAI / STRATEGIJOS IR PAVYZDŽIAI
+% ==========================================
+\section{Pagrindinė teorema}
+
+\begin{definition}
+\vocab{Apskritimo liestinė} vadinama tiesė, turinti su apskritimu tik vieną bendrą tašką. Šis taškas vadinamas lietimosi tašku.
+\end{definition}
+
+\begin{proposition}[Liestinė ir spindulys]
+Jei tiesė $l$ liečia apskritimą taške $A$, o $O$ yra apskritimo centras, tai $OA\perp l$.
+\end{proposition}
+
+\begin{proof}
+Taikysime prieštaros metodą.
+
+\textbf{1 žingsnis. Pradinis brėžinys.} Turime apskritimą su centru $O$ ir tiesę $l$, kuri liečia apskritimą taške $A$. Pagal liestinės apibrėžimą taškas $A$ yra vienintelis bendras tiesės ir apskritimo taškas. Spindulys $OA$ nubrėžtas į lietimosi tašką.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (1.2,1.6);
+    \draw[thick] (O) circle (2);
+    \draw[thick, blue] (O) -- (A);
+    \draw[thick, dashed] ($(A)+(-1.6,1.2)$) -- ($(A)+(1.6,-1.2)$) node[right] {$l$};
+    \filldraw (O) circle (1.2pt) node[below left] {$O$};
+    \filldraw (A) circle (1.2pt) node[above right] {$A$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis. Prieštaros prielaida.} Tarkime, kad $OA$ nėra statmena tiesei $l$. Iš taško $O$ nubrėžkime atkarpą $OH$ į tiesę $l$ ir tarkime, kad ji yra statmena $l$. Kadangi $OA$ nėra šis statmuo, taškai $H$ ir $A$ nesutampa. Trikampis $OHA$ yra statusis, kurio įžambinė yra $OA$, todėl
+\[
+OH<OA.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (1.2,1.6);
+    \coordinate (H) at (0.4,2.2);
+    \draw[thick] (O) circle (2);
+    \draw[thick, blue] (O) -- (A);
+    \draw[thick, dashed] ($(A)+(-1.6,1.2)$) -- ($(A)+(1.6,-1.2)$) node[right] {$l$};
+    \draw[thick, blue] (O) -- (H);
+    \pic [draw=black, fill=black!15, fill opacity=0.45, "$90^\circ$",
+        angle radius=6mm, angle eccentricity=1.5,
+        pic text options={text=black, text opacity=1, font=\bfseries\boldmath}] {angle = O--H--A};
+    \filldraw (O) circle (1.2pt) node[below left] {$O$};
+    \filldraw (A) circle (1.2pt) node[above right] {$A$};
+    \filldraw (H) circle (1.2pt) node[above] {$H$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis. Prieštara.} Brėžinyje matome, kad $OH>OA$: atkarpa $OH$ yra šiek tiek ilgesnė už $OA$. Tačiau trikampis $OHA$ yra statusis, o jo įžambinė turėtų būti $OA$, todėl ji turėtų būti ilgesnė už statinį $OH$. Gavome prieštarą: brėžinyje $OA<OH$, nors stačiajame trikampyje turėtų būti $OA>OH$.
+Taigi $OA$ turi būti statmena tiesei $l$.
+\end{proof}
+
+\begin{proposition}[Kampas tarp liestinės ir stygos]
+Tiesė $l$ liečia apskritimą taške $A$, o $AB$ yra šio apskritimo styga. Jei taškas $C$ priklauso didesniajam lankui $\wideparen{AB}$, tai brėžinyje pažymėtas kampas $\alpha$ tarp $l$ ir $AB$ lygus įbrėžtiniam kampui $\angle ACB$:
+\[
+\angle ACB = \alpha.
+\]
+\end{proposition}
+
+\begin{proof}
+Įrodymui pasitelksime ką tik įrodytą liestinės ir spindulio statumą bei į skersmenį besiremiančio įbrėžtinio kampo savybę.
+
+\textbf{1 žingsnis.} Apskritimo centras yra \(O\), o tiesė \(l\) liečia apskritimą taške \(A\). Iš taško $A$ nubrėžkime stygą $AB$ ir liestinės bei stygos sudarytą kampą pažymėkime $\alpha$. Ant didesniojo lanko $\wideparen{AB}$ pasirinkime tašką $C$. Įrodysime, kad $\angle ACB=\alpha$.
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    \coordinate (A) at (210:2);
+    \coordinate (B) at (330:2);
+    \coordinate (C) at (90:2);
+    
+    % Liestinė
+    \coordinate (T1) at ($(A)+(120:2)$);
+    \coordinate (T2) at ($(A)+(300:2)$);
+    \draw[thick, <->] (T1) -- (T2) node[right] {\(l\)};
+    
+    \draw[thick] (A) -- (B);
+    \draw[thick] (A) -- (C) -- (B);
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = T2--A--B};
+    
+    \foreach \p/\pos in {O/above, A/left, B/below right, C/above} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Spindulys $OA$ yra statmenas liestinei $l$. Per taškus $O$ ir $A$ nubrėžkime skersmenį $AD$. Kadangi $OA$ yra toje pačioje tiesėje kaip $AD$, tai kampas tarp liestinės ir $AD$ yra statusis. Vadinasi, pagal brėžinyje pažymėtą kampą $\alpha$, $\angle BAD=90^\circ-\alpha$:
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    \coordinate (A) at (210:2);
+    \coordinate (B) at (330:2);
+    \coordinate (C) at (90:2);
+    \coordinate (D) at (30:2); % Priešingas A
+    
+    \coordinate (T1) at ($(A)+(120:2)$);
+    \coordinate (T2) at ($(A)+(300:2)$);
+    \draw[thick, <->] (T1) -- (T2) node[right] {\(l\)};
+    
+    \draw[thick] (A) -- (B);
+    \draw[thick] (A) -- (C) -- (B);
+    \draw[thick, dashed, red] (A) -- (D);
+    
+    % Statusis kampas tarp liestinės ir skersmens
+    \coordinate (dirD) at ($(A)!3mm!(D)$);
+    \coordinate (dirT2) at ($(A)!3mm!(T2)$);
+    \coordinate (rect) at ($(dirD) + (dirT2) - (A)$);
+    \draw[thick, fill=red!10] (dirD) -- (rect) -- (dirT2) -- (A) -- cycle;
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = T2--A--B};
+    
+    \foreach \p/\pos in {O/above, A/left, B/below right, C/above, D/above right} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Sujunkime taškus $D$ ir $B$. Kadangi $AD$ yra skersmuo, į jį besiremiantis kampas $\angle ABD$ yra statusis. Trikampyje $\triangle ABD$ kampų suma lygi $180^\circ$, todėl
+\[
+\angle ADB=180^\circ-90^\circ-(90^\circ-\alpha)=\alpha.
+\]
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    \coordinate (A) at (210:2); \coordinate (B) at (330:2); \coordinate (C) at (90:2); \coordinate (D) at (30:2);
+    
+    \coordinate (T1) at ($(A)+(120:2)$); \coordinate (T2) at ($(A)+(300:2)$);
+    \draw[thick, <->] (T1) -- (T2) node[right] {\(l\)};
+    
+    \draw[thick] (A) -- (B); \draw[thick] (A) -- (C) -- (B);
+    \draw[thick, dashed, red] (A) -- (D); \draw[thick, dashed, red] (D) -- (B);
+    
+    \coordinate (dirA_B) at ($(B)!3mm!(A)$); \coordinate (dirD_B) at ($(B)!3mm!(D)$); \coordinate (rectB) at ($(dirA_B) + (dirD_B) - (B)$);
+    \draw[thick, fill=red!10] (dirA_B) -- (rectB) -- (dirD_B) -- (B) -- cycle;
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = T2--A--B};
+    \pic [draw=green!60!black, fill=green!20, fill opacity=0.4, "\(90^\circ-\alpha\)", angle radius=8mm, angle eccentricity=1.6] {angle = D--A--B};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = A--D--B};
+    
+    \foreach \p/\pos in {O/above left, A/above left, B/below right, C/above, D/above right} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{4 žingsnis.} Kampai $\angle ADB$ ir $\angle ACB$ remiasi į tą patį lanką $\wideparen{AB}$, todėl jie lygūs. Kadangi $\angle ADB=\alpha$, gauname $\angle ACB=\alpha$.
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O) at (0,0);
+    \draw[thick] (O) circle (2);
+    \coordinate (A) at (210:2); \coordinate (B) at (330:2); \coordinate (C) at (90:2); \coordinate (D) at (30:2);
+    
+    \coordinate (T1) at ($(A)+(120:2)$); \coordinate (T2) at ($(A)+(300:2)$);
+    \draw[thick, <->] (T1) -- (T2) node[right] {\(l\)};
+    
+    \draw[thick] (A) -- (B); \draw[thick] (A) -- (C) -- (B);
+    \draw[thick, dashed, red] (A) -- (D); \draw[thick, dashed, red] (D) -- (B);
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = T2--A--B};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = A--D--B};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=7mm, angle eccentricity=1.4] {angle = A--C--B};
+    
+    \foreach \p/\pos in {A/above left, B/below right, C/above} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+Įrodyta. Taigi kampas tarp liestinės ir stygos lygus įbrėžtiniam kampui, kuris remiasi į tą pačią stygą. \hfill \(\square\)
+\end{proof}
+
+% ==========================================
+% BENDROJI LIESTINĖ
+% ==========================================
+\section{Pavyzdys: dviejų apskritimų konfigūracija}
+Liestinės ir stygos kampo savybę galima taikyti ir tada, kai uždavinyje nagrinėjami du besiliečiantys apskritimai. Per jų lietimosi tašką nubrėžta bendroji liestinė padeda susieti abiejų apskritimų kampus.
+
+\begin{example}[Besiliečiantys apskritimai ir lygiagrečios stygos]
+Du apskritimai liečiasi išorėje taške \(T\). Per tašką \(T\) nubrėžta kirstinė, kuri kerta pirmąjį apskritimą taške \(A\), o antrąjį – taške \(B\). Iš taškų \(A\) ir \(B\) nubrėžtos liestinės šiems apskritimams (atitinkamai tiesės \(l_1\) ir \(l_2\)). Įrodykite, kad šios liestinės yra lygiagrečios (\(l_1 \parallel l_2\)).
+\end{example}
+
+\begin{proof}
+\textbf{Sprendimas.} Per lietimosi tašką $T$ nubrėšime bendrąją liestinę $m$. Tada nuosekliai pritaikysime liestinės ir stygos kampo savybę abiem apskritimams.
+
+\textbf{1 žingsnis.} Pradiniame brėžinyje turime du apskritimus, jų lietimosi tašką \(T\), kirstinę \(ATB\) ir dvi liestines. Lygiagretumo kol kas nežymime, nes jį reikia įrodyti. Per tašką \(T\) nubrėžkime pagalbinę tiesę \(m\), kuri liečia abu apskritimus (bendroji liestinė).
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O1) at (-1.5, 0);
+    \coordinate (O2) at (1, 0);
+    \draw[thick] (O1) circle (1.5);
+    \draw[thick] (O2) circle (1);
+    
+    \coordinate (T) at (0,0);
+    % Kirstinė per T, kampas pvz 60 laipsnių
+    \coordinate (A) at (-0.75, 1.299); % R1 * cos(120), R1 * sin(120)
+    \coordinate (B) at (0.5, -0.866);   % R2 * cos(300), R2 * sin(300)
+    
+    \draw[thick] (A) -- (B);
+    
+    % Liestinė per A
+    \coordinate (dirA) at ($(A)!1!90:(O1)$);
+    \draw[thick] ($(A)!2cm!(dirA)$) -- ($(A)!-2cm!(dirA)$) node[left] {\(l_1\)};
+    
+    % Liestinė per B
+    \coordinate (dirB) at ($(B)!1!90:(O2)$);
+    \draw[thick] ($(B)!2cm!(dirB)$) -- ($(B)!-2cm!(dirB)$) node[right] {\(l_2\)};
+    
+    % Bendra liestinė m
+    \draw[thick, dashed, blue] (0, 2) -- (0, -2) node[below] {\(m\)};
+    
+    \foreach \p/\pos in {T/above right, A/above left, B/below right} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{2 žingsnis.} Nagrinėkime kairįjį apskritimą. Atkarpa $AT$ yra jo styga, o $l_1$ – liestinė taške $A$. Pažymėkime kampą tarp $l_1$ ir $AT$ raide $\alpha$. Pagal liestinės ir stygos teoremą šis kampas lygus įbrėžtiniam kampui, besiremiančiam į stygą $AT$. Ta pati savybė leidžia lyginti kampus, kuriuos styga $AT$ sudaro su liestinėmis jos galuose. Todėl kampas tarp $AT$ ir bendrosios liestinės $m$ taške $T$ taip pat lygus $\alpha$:
+\begin{equation*}
+\angle (l_1, AT) = \angle (m, AT) = \alpha 
+\end{equation*}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O1) at (-1.5, 0);
+    \coordinate (O2) at (1, 0);
+    \draw[thick] (O1) circle (1.5);
+    \draw[thick] (O2) circle (1);
+    \coordinate (T) at (0,0);
+    \coordinate (A) at (-0.75, 1.299); 
+    \coordinate (B) at (0.5, -0.866);   
+    
+    \draw[thick] (A) -- (B);
+    \coordinate (dirA) at ($(A)!1!90:(O1)$);
+    \coordinate (l1_top) at ($(A)!1.5cm!(dirA)$);
+    \coordinate (l1_bot) at ($(A)!-1.5cm!(dirA)$);
+    \draw[thick] (l1_top) -- (l1_bot) node[left] {\(l_1\)};
+    
+    \coordinate (dirB) at ($(B)!1!90:(O2)$);
+    \draw[thick] ($(B)!1.5cm!(dirB)$) -- ($(B)!-1.5cm!(dirB)$) node[right] {\(l_2\)};
+    
+    \coordinate (m_top) at (0, 1.8);
+    \draw[thick, dashed, blue] (m_top) -- (0, -1.8) node[below] {\(m\)};
+    
+    % Kampai
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = T--A--l1_bot};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = A--T--m_top};
+    
+    \foreach \p/\pos in {T/above right, A/above left, B/below right} {
+        \filldraw (\p) circle (1.2pt) node[\pos] {\(\p\)};
+    }
+\end{tikzpicture}
+\end{center}
+
+\textbf{3 žingsnis.} Tiesės $AB$ ir $m$ susikerta taške $T$, todėl kampas tarp $m$ ir $AT$ lygus jam priešingajam kryžminiam kampui tarp $m$ ir $TB$. Taigi ir dešiniajame apskritime kampas tarp bendrosios liestinės $m$ ir stygos $TB$ yra $\alpha$.
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O1) at (-1.5, 0); \coordinate (O2) at (1, 0);
+    \draw[thick] (O1) circle (1.5); \draw[thick] (O2) circle (1);
+    \coordinate (T) at (0,0); \coordinate (A) at (-0.75, 1.299); \coordinate (B) at (0.5, -0.866);   
+    
+    \draw[thick] (A) -- (B);
+    \coordinate (dirA) at ($(A)!1!90:(O1)$); \coordinate (l1_top) at ($(A)!1.5cm!(dirA)$); \coordinate (l1_bot) at ($(A)!-1.5cm!(dirA)$);
+    \draw[thick] (l1_top) -- (l1_bot);
+    
+    \coordinate (dirB) at ($(B)!1!90:(O2)$); \coordinate (l2_top) at ($(B)!1.5cm!(dirB)$); \coordinate (l2_bot) at ($(B)!-1.5cm!(dirB)$);
+    \draw[thick] (l2_top) -- (l2_bot);
+    
+    \coordinate (m_top) at (0, 1.8); \coordinate (m_bot) at (0, -1.8);
+    \draw[thick, dashed, blue] (m_top) -- (m_bot);
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = T--A--l1_bot};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = A--T--m_top};
+    \pic [draw=green!60!black, fill=green!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = B--T--m_bot};
+    
+    \foreach \p in {T, A, B} {\filldraw (\p) circle (1.2pt);}
+\end{tikzpicture}
+\end{center}
+
+\textbf{4 žingsnis.} Dešiniajame apskritime $m$ yra liestinė taške $T$, o $TB$ – styga. Pagal liestinės ir stygos teoremą kampas tarp $m$ ir $TB$ lygus kampui tarp $TB$ ir liestinės $l_2$ taške $B$. Vadinasi, pastarasis kampas taip pat lygus $\alpha$.
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+    \coordinate (O1) at (-1.5, 0); \coordinate (O2) at (1, 0);
+    \draw[thick] (O1) circle (1.5); \draw[thick] (O2) circle (1);
+    \coordinate (T) at (0,0); \coordinate (A) at (-0.75, 1.299); \coordinate (B) at (0.5, -0.866);   
+    
+    \draw[thick] (A) -- (B);
+    \coordinate (dirA) at ($(A)!1!90:(O1)$); \coordinate (l1_top) at ($(A)!1.5cm!(dirA)$); \coordinate (l1_bot) at ($(A)!-1.5cm!(dirA)$);
+    \draw[thick] (l1_top) -- (l1_bot) node[left] {\(l_1\)};
+    
+    \coordinate (dirB) at ($(B)!1!90:(O2)$); \coordinate (l2_top) at ($(B)!1.5cm!(dirB)$); \coordinate (l2_bot) at ($(B)!-1.5cm!(dirB)$);
+    \draw[thick] (l2_top) -- (l2_bot) node[right] {\(l_2\)};
+    
+    \coordinate (m_top) at (0, 1.8); \coordinate (m_bot) at (0, -1.8);
+    \draw[thick, dashed, blue] (m_top) -- (m_bot) node[below] {\(m\)};
+    
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = T--A--l1_bot};
+    \pic [draw=blue!60!black, fill=blue!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = A--T--m_top};
+    \pic [draw=green!60!black, fill=green!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = B--T--m_bot};
+    \pic [draw=green!60!black, fill=green!20, fill opacity=0.4, "\(\alpha\)", angle radius=6mm, angle eccentricity=1.4] {angle = T--B--l2_top};
+    
+    \foreach \p in {T, A, B} {\filldraw (\p) circle (1.2pt);}
+\end{tikzpicture}
+\end{center}
+
+Kirstinė $AB$ kerta tieses $l_1$ ir $l_2$, o gauti vidaus priešiniai kampai yra lygūs. Todėl pagal lygiagrečių tiesių požymį $l_1\parallel l_2$.
+
+Įrodyta. \hfill \(\square\)
+\end{proof}
+
+\vspace{0.5cm}
+
+% ==========================================
+% UŽDAVINIAI
+% ==========================================
+\newpage
+\section{Uždaviniai savarankiškam sprendimui (30 iššūkių)}
+
+\setlist[enumerate]{itemsep=0.55em, topsep=0.6em, parsep=0pt}
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Apskritimo liestinė ir styga, nubrėžtos iš to paties taško, sudaro \(40^\circ\) kampą. Kokio dydžio yra bet kuris įbrėžtinis kampas, besiremiantis į šią stygą?
+    \item Tiesė \(l\) liečia apskritimą taške \(A\). Styga \(AB\) dalija apskritimą į du lankus. Mažesniojo lanko \(AB\) laipsninis matas yra \(110^\circ\). Koks kampas susidaro tarp stygos \(AB\) ir liestinės \(l\)?
+    \item Trikampis \(ABC\) įbrėžtas į apskritimą. Tiesė liečia apskritimą taške \(A\). Žinoma, kad kampas tarp liestinės ir kraštinės \(AB\) yra \(55^\circ\), o \(\angle C = 55^\circ\). Ką galite pasakyti apie liestinės ir kraštinės \(BC\) tarpusavio padėtį?
+    \item Iš taško \(P\), esančio už apskritimo, nubrėžta liestinė \(PT\) (čia \(T\) – lietimosi taškas) ir kirstinė, kertanti apskritimą taškuose \(A\) ir \(B\). Įrodykite, kad trikampiai \(\triangle PTA\) ir \(\triangle PBT\) turi po vieną vienodą kampą.
+    \item Du apskritimai liečiasi vidiniu būdu taške \(K\). Per tašką \(K\) nubrėžta kirstinė, kertanti mažesnįjį apskritimą taške \(A\), o didesnįjį – taške \(B\). Per taškus \(A\) ir \(B\) nubrėžtos šių apskritimų liestinės. Įrodykite, kad jos yra lygiagrečios.
+    \item Trikampio \(ABC\) apibrėžtinį apskritimą taške \(A\) liečia tiesė \(l\). Žinoma, kad \(l \parallel BC\). Įrodykite, kad trikampis \(ABC\) yra lygiašonis (\(AB=AC\)).
+    \item Apskritimo styga \(CD\) yra lygiagreti liestinei, nubrėžtai per tašką \(T\). Įrodykite, kad trikampis \(TCD\) yra lygiašonis.
+    \item Iš išorinio taško \(P\) nubrėžtos dvi liestinės apskritimui, liečiančios jį taškuose \(A\) ir \(B\). Ant mažesniojo lanko \(AB\) pažymėtas taškas \(C\). Įrodykite, kad \(\angle ACB = 90^\circ + \frac{\angle APB}{2}\).
+    \item Dvi apskritimo stygos \(AB\) ir \(CD\) kertasi taške \(E\). Tiesė, liečianti apskritimą taške \(A\), yra lygiagreti stygai \(CD\). Įrodykite, kad trikampiai \(\triangle ACE\) ir \(\triangle ABE\) turi po vieną vienodą kampą, susijusį su liestine.
+    \item Apskritimai \(\omega_1\) ir \(\omega_2\) liečiasi išoriškai taške \(T\). Per \(T\) nubrėžtos dvi kirstinės: viena kerta apskritimus atitinkamai taškuose \(A\) ir \(B\), kita – taškuose \(C\) ir \(D\). Įrodykite, kad \(AC \parallel BD\).
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item Tiesė liečia apskritimą taške \(A\). Styga \(AB\) ir skersmuo \(AC\) sudaro \(30^\circ\) kampą. Koks kampas yra tarp liestinės ir stygos \(AB\)?
+    \item Trikampio \(ABC\) viduje pažymėtas įbrėžto apskritimo centras \(I\). Tiesė \(AI\) kerta apibrėžtą apskritimą taške \(W\). Per \(W\) nubrėžta liestinė apibrėžtam apskritimui. Įrodykite, kad ši liestinė yra lygiagreti \(BC\).
+    \item Du apskritimai susikerta taškuose \(P\) ir \(Q\). Per tašką \(P\) nubrėžtos abiejų apskritimų liestinės, kurios kerta apskritimus atitinkamai taškuose \(A\) ir \(B\). Įrodykite, kad \(\angle AQP = \angle BQP\).
+    \item Apskritimo styga \(AB\) kerta kitą stygą \(CD\) taške \(K\). Iš taško \(K\) nuleisti statmenys į stygas \(AC\) ir \(BD\). Naudodamiesi įbrėžtiniais ir liestinių kampais įrodykite, kad statmenų pagrindai ir taškas \(K\) sudaro įbrėžtinį keturkampį.
+    \item Trikampio \(ABC\) apibrėžto apskritimo liestinė taške \(C\) kerta tiesę \(AB\) taške \(D\). Žinoma, kad \(CD = CB\). Įrodykite, kad \(\angle ACD = \angle ABC\).
+    \item Taškai \(A, B, C, D\) išsidėstę ant apskritimo. Tiesė \(l\) liečia apskritimą taške \(A\). Jei \(\angle (l, AB) = \angle CAD\), ką galite pasakyti apie stygų \(BC\) ir \(CD\) ilgius?
+    \item Smailiojo trikampio \(ABC\) aukštinės \(BD\) ir \(CE\) susikerta taške \(H\). Įrodykite, kad apibrėžto apskritimo liestinė taške \(A\) yra lygiagreti atkarpai \(DE\).
+    \item Apskritimas \(\omega_1\) liečia apskritimą \(\omega_2\) vidiniu būdu taške \(T\). Apskritimo \(\omega_2\) styga \(AB\) liečia \(\omega_1\) taške \(P\). Įrodykite, kad spindulys \(TP\) yra kampo \(\angle ATB\) pusiaukampinė. (Archimedo lema).
+    \item Keturi taškai \(A, B, C, D\) priklauso apskritimui. Liestinės, nubrėžtos per taškus \(A\) ir \(B\), susikerta taške \(P\). Liestinės, nubrėžtos per taškus \(C\) ir \(D\), susikerta taške \(Q\). Jei \(PQ\) eina per apskritimo centrą, tai \(AB \parallel CD\).
+    \item Iš taško \(P\) nubrėžtos liestinės \(PA\) ir \(PB\) apskritimui \(\omega\). Tiesė \(l\) eina per \(P\) ir kerta apskritimą taškuose \(C\) ir \(D\). Įrodykite, kad atkarpa \(AB\) kerta kampą \(\angle CPD\) pusiau.
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{20}
+    \item Trikampis \(ABC\) įbrėžtas į apskritimą. Liestinė taške \(B\) ir liestinė taške \(C\) susikerta taške \(P\). Per tašką \(P\) nubrėžta tiesė, lygiagreti \(AB\), kerta \(AC\) taške \(Q\). Įrodykite, kad \(BQ=QC\).
+    \item Du apskritimai kertasi taškuose \(A\) ir \(B\). Per tašką \(A\) nubrėžta bendra kirstinė, kertanti apskritimus taškuose \(C\) ir \(D\). Iš taškų \(C\) ir \(D\) nubrėžtos liestinės susikerta taške \(P\). Įrodykite, kad keturkampis \(CBD P\) yra įbrėžtinis.
+    \item Apskritime įbrėžtas lygiakraštis trikampis \(ABC\). Ant mažesniojo lanko \(BC\) pažymėtas taškas \(P\). Liestinė taške \(P\) kerta tieses \(AB\) ir \(AC\) taškuose \(M\) ir \(N\). Įrodykite, kad trikampis \(AMN\) yra panašus į \(\triangle ABC\) (remiantis tik kampais).
+    \item Trikampio \(ABC\) apibrėžtinį apskritimą taške \(A\) liečia tiesė \(l\). Taškas \(D\) yra kraštinėje \(BC\). Jei apskritimas, einantis per \(A, B, D\), liečia \(AC\) taške \(A\), įrodykite, kad \(l \parallel AD\).
+    \item Du apskritimai liečiasi išoriškai taške \(T\). Per tašką \(T\) nubrėžtos dvi kirstinės \(AB\) ir \(CD\) (A ir C ant pirmo, B ir D ant antro). Įrodykite, kad \(\angle ATC + \angle BTD = 180^\circ\) (naudodami bendrąją liestinę).
+    \item Trikampis \(ABC\) yra statusis (\(\angle C = 90^\circ\)). Apskritimas su skersmeniu \(BC\) kerta įžambinę taške \(D\). Liestinė šiam apskritimui taške \(D\) kerta \(AC\) taške \(M\). Įrodykite, kad \(M\) yra atkarpos \(AC\) vidurio taškas.
+    \item Įbrėžtinio keturkampio \(ABCD\) įstrižainės \(AC\) ir \(BD\) susikerta taške \(P\). Apibrėžto apskritimo liestinės taškuose \(A\) ir \(B\) susikerta taške \(K\). Žinoma, kad \(K, P, C, D\) guli ant vieno apskritimo. Ką galite pasakyti apie kampą tarp liestinių?
+    \item Taškas \(P\) priklauso apskritimui. \(PA\) ir \(PB\) yra dvi stygos. Iš taško \(P\) nuleisti statmenys \(PM\) ir \(PN\) į liestines, nubrėžtas taškuose \(A\) ir \(B\). Įrodykite, kad \(PM = PN\).
+    \item Trikampis \(ABC\) įbrėžtas į apskritimą. Liestinės taškuose \(B\) ir \(C\) kertasi taške \(T\). Tiesė \(AT\) kerta \(BC\) taške \(M\). Naudodamiesi kampų tarp liestinių ir stygų savybėmis įrodykite, kad \(AT\) dalija lanką \(BC\) per pusę.
+    \item \textbf{Archimedo dvyniai (Įžanga).} Apskritimas \(\omega\) liečia tiesę \(l\) taške \(T\). Kitas apskritimas \(\omega'\) liečia tiesę \(l\) taške \(T\) ir apskritimą \(\omega\) iš vidaus. Naudodamiesi kampu tarp liestinės ir stygos, įrodykite, kad bet kokios bendros kirstinės kampai yra išsaugomi (apsaugant proporcijas be skaičiavimų).
+\end{enumerate}
+
+\newpage
+\section{Užuominos (Hintai) gelbėjimui}
+
+Jei jauti, kad „įstrigai“ – nepasiduok! Čia rasi po vieną mažą užuominą kiekvienam iš 30 uždavinių. Perskaityk tik to uždavinio užuominą, kurį sprendi, ir bandyk grandinę pratęsti pats.
+
+\begin{enumerate}
+    \renewcommand{\labelenumi}{\textbf{\theenumi.}}
+
+    \item Tai pati tiesioginė teoremos taikymo forma. Jei kampas tarp liestinės ir stygos yra \(40^\circ\), tai toks pat bus ir...
+    \item Prisimink, kaip lanko laipsninis matas susijęs su įbrėžtiniu kampu. Pirmiausia rask įbrėžtinį kampą.
+    \item Jei kampas tarp liestinės ir \(AB\) yra \(55^\circ\), kur „nukeliauja“ šis kampas trikampyje? Palygink gautą kampą su \(\angle C\).
+    \item Ieškok kampo tarp liestinės \(PT\) ir stygos \(TA\). Į kurį trikampio \(\triangle TAB\) kampą jis persikelia?
+    \item Nubrėžk pagalbinę bendrąją liestinę per tašką \(K\). Stygos kampas „šokinės“ nuo vidinio apskritimo į liestinę, o tada atgal į išorinį apskritimą.
+    \item Vienašaliai arba kryžminiai kampai. Kampas tarp liestinės ir stygos \(AB\) keliauja į \(\angle C\). Kadangi tiesės lygiagrečios, šis kampas lygus ir kampui \(\angle B\).
+    \item Panaudok lygiagrečias tieses: kryžminiai kampai lygūs. Tada pritaikyk liestinės ir stygos kampo teoremą.
+    \item Trikampyje \(\triangle PAB\) liestinės \(PA=PB\), tad jis lygiašonis. Išreikšk kampą tarp liestinės ir stygos per \(\angle P\), tada paversk jį įbrėžtiniu kampu ir pritaikyk įbrėžtinio keturkampio savybę.
+    \item Jei tiesės lygiagrečios, kampas tarp liestinės ir \(AB\) lygus atitinkamam kampui tarp stygos \(CD\) ir kirstinės. Tada „teleportuok“ liestinės kampą į vidų.
+    \item Vėl pagalbinė bendroji liestinė per \(T\)! Išreikšk kampus ties \(A\) ir \(B\) per kampus, kuriuos kirstinės sudaro su pagalbine liestine.
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item Skersmuo su liestine visada sudaro \(90^\circ\) kampą. Jei dalis jo yra \(30^\circ\), kiek lieka stygos ir liestinės kampui?
+    \item Lanko vidurio taškas \(W\). Vadinasi, styga \(BW\) lygi \(WC\). Koks kampas susidaro tarp stygos \(BW\) ir liestinės taške \(W\)?
+    \item Trikampiuose \(\triangle PQA\) ir \(\triangle PQB\) pritaikyk liestinės ir stygos kampus iš taško \(P\).
+    \item Tai puikus kryžminių ir liestinių kampų derinys. Surask kampus prie \(K\) ir įrodyk, kad jų suma su priešingais atitinkamų keturkampių kampais yra \(180^\circ\).
+    \item \(CD=CB\) reiškia, kad \(\triangle CDB\) lygiašonis. Pridėk liestinės teoremą, kur kampas tarp liestinės ir stygos \(BC\) lygus \(\angle BAC\).
+    \item Jei kampai lygūs, vadinasi, įbrėžtiniai kampai lygūs, o lygūs įbrėžtiniai kampai remiasi į...
+    \item Susikurkite įbrėžtinį keturkampį \(BCDE\). Kampas \(\angle ADE\) lygus \(\angle C\). Dabar patikrinkite, koks kampas susidaro tarp liestinės taške \(A\) ir stygos \(AC\).
+    \item **Klasika:** per tašką \(P\) nubrėžk pagalbinę liestinę vidiniam apskritimui. Pažiūrėk, kaip kampai „persipila“ tarp apskritimų, įrodant, kad \(\angle ATP = \angle BTP\).
+    \item Simetrija ir liestinės iš vieno taško. Trikampiai \(\triangle PAB\) ir \(\triangle QCD\) yra lygiašoniai. Susiek jų bazinius kampus per apskritimo stygas.
+    \item Liestinių ilgių lygybė ir trikampių išorinių kampų teorema. Atkreipk dėmesį į kampą tarp \(PA\) ir stygos \(AD\).
+\end{enumerate}
+
+\begin{enumerate}
+    \setcounter{enumi}{20}
+    \item Lygiagretumas garantuoja kryžminių kampų lygybę. Liestinės kampas \(\angle PBC\) keliauja į \(\angle BAC\), o tada į \(\angle C\).
+    \item Vėl naudokite bendrą kirstinę \(AB\). Liestinių iš taškų \(C\) ir \(D\) kampai su styga \(CD\) gali būti transformuoti į priešingų kampų sumą \(\angle C + \angle D = 180^\circ\).
+    \item Visi \(\triangle ABC\) kampai po \(60^\circ\). Perkelk kampą tarp liestinės \(M N\) ir stygos \(PB\) į trikampio \(\triangle ABC\) vidų.
+    \item Jei apskritimas liečia kraštinę, kampas tarp jos ir stygos \(AD\) lygus įbrėžtiniam kampui. Naudok apibrėžtinį trikampio \(\triangle ABC\) apskritimą lygiagretumui įrodyti.
+    \item Per tašką \(T\) nubrėžk pagalbinę liestinę. Suskaldyk kampus ties \(T\) ir pastebėk vienašalius kampus tarp lygiagrečių stygų.
+    \item Spindulys į tašką \(D\) ir liestinė. Kadangi kampas status, taškas \(M\) taps lygiašonių trikampių viršūne.
+    \item Keturkampio ir liestinių kampų sąveika. Išreikšk kampą \(\angle K\) per lankus, o įbrėžtinį keturkampį panaudok kaip \(180^\circ\) taisyklės šaltinį.
+    \item Trikampiuose, sudarytuose su statmenimis, naudok atvirkštinę liestinės kampo savybę.
+    \item \(TB=TC\). Naudodamas šį lygiašonį trikampį ir liestinės kampus, stebėk, kur keliauja \(\angle ATB\) padalijimas.
+    \item Nubrėžk bendrąją liestinę taške \(T\). Visos tiesės, kertančios abu apskritimus iš taško \(T\), išlaiko tuos pačius kampus tarp liestinės ir stygų abiejuose apskritimuose.
+\end{enumerate}
+
+\end{document}
