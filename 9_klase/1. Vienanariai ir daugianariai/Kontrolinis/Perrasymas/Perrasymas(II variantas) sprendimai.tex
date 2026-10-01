@@ -1,0 +1,133 @@
+\documentclass[12pt,a4paper]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage[left=1.5cm,right=1.5cm,top=2.4cm,bottom=1.5cm]{geometry}
+\usepackage{amsmath,amssymb,tasks,array}
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{Mokytojo variantas}{\shortstack{Kontrolinis darbas:\\Daugianariai}}{Šviesos variantas}
+\runningheader{Daugianariai}{}{Šviesos variantas}
+\firstpagefooter{}{\thepage}{}
+\runningfooter{}{\thepage}{}
+\pointsdroppedatright
+\bracketedpoints
+\pointname{ tašk.}
+\newcommand{\atsakymas}{\par\medskip\textbf{Atsakymas:}\ \framebox[9cm]{\rule{0pt}{0.7cm}}}
+\begin{document}
+
+\begin{center}\Large\textbf{Sprendimai ir vertinimo kriterijai}\end{center}
+\section*{Taškų paskirstymas ir sunkumas}
+Sunkumas vertinamas mokiniui, kuris jau mokėsi neigiamųjų laipsnių, daugianarių tapatybių ir pilnojo kvadrato išskyrimo.
+\begin{center}\begin{tabular}{|c|c|p{10cm}|}\hline
+Užduotis & Taškai & Sunkumas ir pagrindimas\\\hline
+1 & 6 & Lengva--vidutinė: šeši atskiri klasifikavimo atvejai, svarbu atskirti kintamąjį nuo iracionaliosios konstantos.\\\hline
+2 & 5 & Vidutinė--sunki: keli neigiamieji laipsniai, laipsnių dalyba ir vienanario sąvoka.\\\hline
+3(a) & 7 & Sunki: ilgas suprastinimas, pilnojo kvadrato išskyrimas ir maksimumo pagrindimas.\\\hline
+3(b) & 3 & Vidutinė: didelio rodiklio lyginumas ir parametrų panaudojimas.\\\hline
+4 & 5 & Vidutinė: koeficientų palyginimas ir tapatybės patikra.\\\hline
+5 & 4 & Vidutinė: trijų pilnųjų kvadratų išskyrimas ir minimumo pasiekiamumas.\\\hline
+Iš viso & 30 & \\\hline
+\end{tabular}\end{center}
+\section*{1 užduotis (6 taškai)}
+\begin{center}
+\begin{tabular}{|c|c|p{11cm}|}\hline
+Dalis & Atsakymas & Paaiškinimas\\\hline
+(a) & R, S & Vardiklis $\sqrt7$ yra nenulinė konstanta.\\\hline
+(b) & R, T & $5x^{-3}=5/x^3$, todėl kintamasis yra vardiklyje; $x\ne0$.\\\hline
+(c) & R, T & Kintamasis yra vardiklyje $x+2$; $\sqrt3$ yra konstanta; $x\ne-2$.\\\hline
+(d) & I & Kintamasis yra po šaknimi; $x\leq7/2$.\\\hline
+(e) & R, S & $16^{-5}$ ir $\sqrt{10}$ yra konstantos.\\\hline
+(f) & R, T & Kintamasis yra vardiklyje $x^2$; $x\ne0$.\\\hline
+\end{tabular}\end{center}
+\textbf{Vertinimas:} po 1 tašką už kiekvieną tikslų raidžių rinkinį. Paaiškinimų ir apibrėžimo sričių mokinio sąlyga nereikalauja.
+\section*{2 užduotis (5 taškai)}
+Duotas reiškinys
+$$\frac{(-2x^{11}y^{-3})^8\cdot(16x^{-2}y^5)^{-6}}{(32x^8y^{-9})^5}.$$
+Pradinio reiškinio apibrėžimo sąlygos: $x\ne0$, $y\ne0$.
+\begin{align*}
+(-2x^{11}y^{-3})^8&=2^8x^{88}y^{-24},\\
+(16x^{-2}y^5)^{-6}&=2^{-24}x^{12}y^{-30},\\
+(32x^8y^{-9})^5&=2^{25}x^{40}y^{-45}.
+\end{align*}
+Todėl
+\begin{align*}
+\frac{2^8x^{88}y^{-24}\cdot2^{-24}x^{12}y^{-30}}{2^{25}x^{40}y^{-45}}
+&=2^{8-24-25}x^{88+12-40}y^{-24-30+45}\\
+&=2^{-41}x^{60}y^{-9}=\boxed{\frac{x^{60}}{2^{41}y^9}}.
+\end{align*}
+Pagal mokyklinę vienanario sampratą šis reiškinys \textbf{nėra vienanaris}, nes kintamojo $y$ laipsnio rodiklis yra neigiamas. Vienanario kintamųjų laipsnių rodikliai turi būti neneigiami sveikieji skaičiai.
+\par\textbf{Vertinimas:} po 1 tašką už kiekvieną iš trijų teisingai pakeltų laipsniu daugiklių (3 tšk.); 1 taškas už galutinį supaprastinimą; 1 taškas už išvadą ir jos pagrindimą. Apibrėžimo sritis atskirai nevertinama.
+\section*{3 užduoties (a) dalis (7 taškai)}
+\begin{align*}
+(2x-1)^2(x+1)&=(4x^2-4x+1)(x+1)=4x^3-3x+1,\\
+(x-1)^3&=x^3-3x^2+3x-1,\\
+(x+2)(x-1)(x+3)&=(x^2+x-2)(x+3)=x^3+4x^2+x-6.
+\end{align*}
+Taigi
+\begin{align*}
+E(x)&=4x^3-3x+1-(x^3-3x^2+3x-1)\\
+&\quad-3(x^3+4x^2+x-6)+8x^2-19\\
+&=-x^2-9x+1\\
+&=-\left(x^2+9x+\frac{81}{4}\right)+\frac{81}{4}+1\\
+&=\boxed{-\left(x+\frac92\right)^2+\frac{85}{4}}.
+\end{align*}
+Vadinasi, $a=-1$, $b=9/2$, $c=85/4$.
+Kadangi $(x+9/2)^2\geq0$, tai $E(x)\leq85/4$.
+Lygybė pasiekiama, kai $x=-9/2$.
+\par\textbf{Atsakymas:} didžiausia reikšmė yra $85/4=21{,}25$, ji gaunama, kai $x=-9/2$. Mažiausios reikšmės nėra, nes $E(x)\to-\infty$, kai $|x|\to\infty$.
+\par\textbf{Vertinimas:} po 1 tašką už tris išskleidimus (3 tšk.); 1 taškas už $-x^2-9x+1$; 1 taškas už pilnojo kvadrato išskyrimą; 1 taškas už maksimumo reikšmę ir pagrindimą; 1 taškas už $x=-9/2$.
+\section*{3 užduoties (b) dalis (3 taškai)}
+Pažymėkime $N=1\overbrace{0\ldots0}^{666\text{ nulių}}2$. Šis skaičius yra lyginis, nes baigiasi skaitmeniu 2. Todėl
+$$a^N=(-1)^N=1,\qquad 21{,}25:c=\frac{85}{4}:\frac{85}{4}=1.$$
+Gauname
+$$b(a^N+21{,}25:c)=\frac92(1+1)=\boxed9.$$
+\textbf{Vertinimas:} 1 taškas už laipsnio reikšmę, remiantis rodiklio lyginumu; 1 taškas už dalmens reikšmę; 1 taškas už galutinį atsakymą.
+\section*{4 užduotis (5 taškai)}
+Išskleidžiame kairiąją pusę:
+$$(ax+a)(3x^2-bx+c)=3ax^3+a(3-b)x^2+a(c-b)x+ac.$$
+Palyginę koeficientus, gauname
+$$\begin{cases}3a=-6,\\a(3-b)=4,\\a(c-b)=2,\\ac=-8.\end{cases}$$
+Iš pirmos lygybės $a=-2$. Tuomet
+$$-2(3-b)=4\ \Longrightarrow\ b=5,\qquad -2c=-8\ \Longrightarrow\ c=4.$$
+Patikriname likusią lygybę: $a(c-b)=-2(4-5)=2$. Visi koeficientai sutampa.
+\par\textbf{Atsakymas:} $\boxed{a=-2,\ b=5,\ c=4,\ d\in\mathbb R}$.
+\par\textbf{Vertinimas:} 1 taškas už bendrąjį išskleidimą; po 1 tašką už $a$, $b$, $c$ radimą (3 tšk.); 1 taškas už likusios koeficientų lygybės arba visos tapatybės patikrą.
+\par\textit{Pastaba dėl sąlygos:} parametras $d$ pateiktoje lygybėje nedalyvauja, todėl jis gali būti bet kuris realusis skaičius. Jo paminėjimas laikomas sąlygos netikslumu, už jo aptarimą atskiras taškas neskiriamas.
+\section*{5 užduotis (4 taškai)}
+\begin{align*}
+4x^2+12x&=(2x+3)^2-9,\\
+9y^2-12y&=(3y-2)^2-4,\\
+z^2-10z&=(z-5)^2-25.
+\end{align*}
+Todėl
+\begin{align*}
+&4x^2+9y^2+z^2+12x-12y-10z+40\\
+&\qquad=(2x+3)^2+(3y-2)^2+(z-5)^2+2\geq2.
+\end{align*}
+Visi trys kvadratai vienu metu lygūs nuliui, kai
+$$x=-\frac32,\qquad y=\frac23,\qquad z=5.$$
+\textbf{Atsakymas:} mažiausia reikšmė yra $\boxed2$.
+\par\textbf{Vertinimas:} po 1 tašką už kiekvieną teisingai išskirtą pilnąjį kvadratą (3 tšk.); 1 taškas už minimumą ir jo pasiekiamumo pagrindimą.
+\section*{Bendros vertinimo nuostatos}
+Lygiaverčiai teisingi sprendimo būdai vertinami taip pat. Už tą pačią klaidą pakartotinai taškai neatimami: tolesni metodiškai teisingi žingsniai vertinami pagal mokinio gautą rezultatą, jei klaida iš esmės nesupaprastino užduoties. Tai taikoma ir 3(b) daliai, naudojant 3(a) dalyje gautus parametrus.
+\par\medskip
+
+\begin{center}
+\textbf{Vertinimo lentelė (iš viso 30 taškų)}\par\medskip
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|*{10}{c|}}
+\hline
+Taškai & 0--3 & 4--6 & 7--9 & 10--12 & 13--15 & 16--18 & 19--22 & 23--25 & 26--28 & 29--30\\\hline
+Pažymys & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\\hline
+\end{tabular}
+\end{center}
+Procentinis rezultatas $p=100t/30$, kur $t$ -- surinkti taškai.
+Kai $p<65$, skaičius $p/10$ apvalinamas į didesnę pusę;
+kai $p\geq65$, jis apvalinamas iki artimiausio sveikojo skaičiaus
+(pusė apvalinama į didesnę pusę). Mažiausias pažymys -- 1.
+Procentinis rezultatas prieš skaičiuojant pažymį neapvalinamas.
+
+\end{document}
