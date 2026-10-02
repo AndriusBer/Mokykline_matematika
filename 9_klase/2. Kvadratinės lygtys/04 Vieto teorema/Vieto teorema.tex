@@ -2,6 +2,7 @@
 
 \usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
 \usepackage{tasks}
+\usepackage{booktabs}
 
 \title{Vijeto teorema}
 \author{Andrius Berniukevičius}
@@ -247,6 +248,159 @@ x_1^3 + x_2^3 &= (x_1 + x_2)\big((x_1 + x_2)^2 - 3x_1x_2\big) \\
 \textbf{Atsakymas:} $-72$ .
 \end{solution}
 
+\begin{example}
+Neskaičiuodami lygties $x^2-5x+6=0$ sprendinių, raskite reiškinio $\frac{1}{x_1}+\frac{1}{x_2}$ reikšmę.
+\end{example}
+\begin{solution}
+Pagal Vijeto teoremą $x_1+x_2=5$ ir $x_1x_2=6$. Suveskime trupmenas į bendrą vardiklį:
+\[
+\frac{1}{x_1}+\frac{1}{x_2}
+=\frac{x_2+x_1}{x_1x_2}
+=\frac{x_1+x_2}{x_1x_2}
+=\frac{5}{6}.
+\]
+\textbf{Atsakymas:} $\frac{5}{6}$.
+\end{solution}
+
+\begin{example}
+Neskaičiuodami lygties $x^2+2x-15=0$ sprendinių, raskite reiškinio $x_1^2x_2+x_1x_2^2$ reikšmę.
+\end{example}
+\begin{solution}
+Iškelkime bendrąjį daugiklį $x_1x_2$:
+\[
+x_1^2x_2+x_1x_2^2=x_1x_2(x_1+x_2).
+\]
+Pagal Vijeto teoremą $x_1x_2=-15$ ir $x_1+x_2=-2$, todėl
+\[
+x_1^2x_2+x_1x_2^2=(-15)\cdot(-2)=30.
+\]
+\textbf{Atsakymas:} $30$.
+\end{solution}
+
+\subsection{Kvadratinės lygties sprendinių skirtumo radimas}
+
+Kai reikia rasti sprendinių skirtumą, pirmiausia apskaičiuojame jo kvadratą:
+\[
+(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2.
+\]
+Iš gautos skirtumo kvadrato reikšmės gauname dvi galimas skirtumo reikšmes: teigiamą ir neigiamą. Tinkamą pasirenkame pagal tai, kuri šaknis didesnė.
+
+\begin{example}
+Lygties $x^2-5x+6=0$ sprendiniai yra $x_1$ ir $x_2$, be to, $x_1>x_2$. Neskaičiuodami sprendinių, raskite $x_1-x_2$.
+\end{example}
+\begin{solution}
+Pagal Vijeto teoremą $x_1+x_2=5$ ir $x_1x_2=6$. Todėl
+\[
+(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=5^2-4\cdot6=1.
+\]
+Taigi $x_1-x_2=1$ arba $x_1-x_2=-1$. Kadangi $x_1>x_2$, skirtumas teigiamas, todėl $x_1-x_2=1$.
+\end{solution}
+
+\begin{example}
+Lygties $x^2+2x-8=0$ sprendiniai yra $x_1$ ir $x_2$, be to, $x_1<x_2$. Neskaičiuodami sprendinių, raskite $x_1-x_2$.
+\end{example}
+\begin{solution}
+Pagal Vijeto teoremą $x_1+x_2=-2$ ir $x_1x_2=-8$. Todėl
+\[
+(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=(-2)^2-4\cdot(-8)=36.
+\]
+Taigi $x_1-x_2=6$ arba $x_1-x_2=-6$. Kadangi $x_1<x_2$, skirtumas neigiamas, todėl $x_1-x_2=-6$.
+\end{solution}
+
+\subsection{Laipsnio mažinimo technika}
+
+Kai reikia apskaičiuoti aukštesnį lygties sprendinio laipsnį, dažnai nereikia rasti paties sprendinio. Pakanka pasinaudoti tuo, kad sprendinys tenkina lygtį.
+
+Pavyzdžiui, jei $r$ yra lygties $x^2-3x-1=0$ sprendinys, įrašę $r$ vietoj $x$ gauname $r^2-3r-1=0$, vadinasi,
+\[
+r^2=3r+1.
+\]
+Taigi kiekvieną $r^2$ galime pakeisti į $3r+1$. Jei reiškinyje yra $r^3$, rašome $r^3=r\cdot r^2$ ir šią taisyklę pritaikome vietoj $r^2$. Taip laipsnį mažiname tol, kol lieka tik pirmojo laipsnio sprendiniai; jų sumą ar sandaugą tada randame pagal Vijeto teoremą.
+
+\begin{example}
+Lygties $x^2-3x-1=0$ sprendiniai yra $x_1$ ir $x_2$. Neskaičiuodami sprendinių, raskite $x_1^2+x_2^2$.
+\end{example}
+\begin{solution}
+Kadangi $x_1$ ir $x_2$ yra lygties $x^2-3x-1=0$ sprendiniai, įrašome juos į lygtį:
+\[
+x_1^2-3x_1-1=0, \qquad x_2^2-3x_2-1=0.
+\]
+Iš kiekvienos lygybės išreiškiame kvadratą:
+\[
+x_1^2=3x_1+1, \qquad x_2^2=3x_2+1.
+\]
+Pakeičiame abu kvadratus ir sutraukiame narius:
+\[
+\begin{aligned}
+x_1^2+x_2^2
+&=(3x_1+1)+(3x_2+1)\\
+&=3(x_1+x_2)+2.
+\end{aligned}
+\]
+Pagal Vijeto teoremą $x_1+x_2=3$. Įstatę šią sumą gauname
+\[
+x_1^2+x_2^2=3\cdot3+2=11.
+\]
+\textbf{Atsakymas:} $11$.
+\end{solution}
+
+\begin{example}
+Lygties $x^2+4x+1=0$ sprendiniai yra $x_1$ ir $x_2$. Neskaičiuodami sprendinių, raskite reiškinio $2x_1^2+4x_2^2+8x_2+2$ reikšmę.
+\end{example}
+\begin{solution}
+Kadangi $x_1$ ir $x_2$ yra lygties $x^2+4x+1=0$ sprendiniai, įrašome juos į lygtį:
+\[
+x_1^2+4x_1+1=0, \qquad x_2^2+4x_2+1=0.
+\]
+Iš kiekvienos lygybės išreiškiame kvadratą:
+\[
+x_1^2=-4x_1-1, \qquad x_2^2=-4x_2-1.
+\]
+Ieškomame reiškinyje kvadratas $x_1^2$ padaugintas iš $2$, o $x_2^2$ – iš $4$. Pakeičiame kiekvieną kvadratą atskirai:
+\[
+\begin{aligned}
+2x_1^2+4x_2^2+8x_2+2
+&=2(-4x_1-1)+4(-4x_2-1)+8x_2+2\\
+&=-8x_1-2-16x_2-4+8x_2+2\\
+&=-8x_1-8x_2-4\\
+&=-8(x_1+x_2)-4.
+\end{aligned}
+\]
+Pagal Vijeto teoremą $x_1+x_2=-4$. Įstatome šią sumą:
+\[
+-8(x_1+x_2)-4=-8\cdot(-4)-4=28.
+\]
+\textbf{Atsakymas:} $28$.
+\end{solution}
+
+\begin{example}
+Skaičiai $x$ ir $y$ yra lygties $t^2-2t-3=0$ sprendiniai. Neskaičiuodami jų, raskite $x^3+y^3$.
+\end{example}
+\begin{solution}
+Kadangi $x$ ir $y$ yra lygties $t^2-2t-3=0$ sprendiniai, įrašome juos į lygtį:
+\[
+x^2-2x-3=0, \qquad y^2-2y-3=0,
+\]
+Iš kiekvienos lygybės išreiškiame kvadratą:
+\[
+x^2=2x+3, \qquad y^2=2y+3.
+\]
+Norėdami sumažinti trečiąjį laipsnį, rašome $x^3=x\cdot x^2$ ir $y^3=y\cdot y^2$, tada panaudojame gautas kvadratų išraiškas:
+\[
+\begin{aligned}
+x^3&=x\cdot x^2=x(2x+3)=2x^2+3x\\
+&=2(2x+3)+3x=7x+6,\\[2pt]
+y^3&=y\cdot y^2=y(2y+3)=2y^2+3y\\
+&=2(2y+3)+3y=7y+6.
+\end{aligned}
+\]
+Sudėję šias lygybes gauname $x^3+y^3=7(x+y)+12$. Pagal Vijeto teoremą $x+y=2$, todėl
+\[
+x^3+y^3=7\cdot2+12=26.
+\]
+\textbf{Atsakymas:} $26$.
+\end{solution}
+
 \section{Uždaviniai}
 
 \begin{problem}
@@ -325,6 +479,23 @@ Tarkime, kad $x_1<x_2$ yra lygties sprendiniai. Neskaičiuodami pačių sprendin
     \task $x^2 - 6x + 8 = 0$
     \task $-x^2 + 2x + 8 = 0$
 \end{tasks}
+\end{problem}
+
+\begin{problem}
+Kiekvienoje eilutėje $\alpha$ ir $\beta$ yra duotos lygties sprendiniai. Užpildykite lentelę.
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{l c c c c}
+        \toprule
+        \textbf{Lygtis} & $\boldsymbol{\alpha+\beta}$ & $\boldsymbol{\alpha\beta}$ & $\boldsymbol{\alpha-\beta}$ & $\boldsymbol{\alpha^2+\beta^2}$ \\
+        \midrule
+        $x^2 - 5x + 6 = 0$ & & & & \\
+        $x^2 + 2x - 8 = 0$ & & & & \\
+        $x^2 - px + q = 0$ & & & & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 \end{problem}
 
 \newpage
