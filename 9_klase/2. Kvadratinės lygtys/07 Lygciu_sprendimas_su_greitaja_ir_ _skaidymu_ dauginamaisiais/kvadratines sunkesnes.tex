@@ -1,0 +1,171 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage[lithuanian]{babel}
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+\usepackage{tasks}
+\renewcommand{\theproblem}{\arabic{problem}}
+
+\title{Trečio ir ketvirto laipsnio lygčių sprendimas}
+\author{Andrius Berniukevičius}
+
+\begin{document}
+
+\maketitle
+\section*{Kaip dirbti su uždaviniais?}
+
+Pirmiausia kiekvieną uždavinį pabandykite išspręsti savarankiškai. Neskubėkite ieškoti užuominų — skirkite laiko apgalvoti, ką jau žinote ir kokį sprendimo būdą galėtumėte pritaikyti. Jei įstrigote, atsiverskite atitinkamą „Hintai 1“ užuominą. Pagalvojate. Jei jos nepakanka, tik tada skaitykite „Hintai 2“, o prireikus — „Hintai 3“. Užuominas naudokite palaipsniui, nežiūrėkite jų iš anksto.
+
+Paties pagimdytas sprendimas yra šimtą kartų vertingesnis už įvaikintą sprendimą.
+
+\section{Uždaviniai}
+
+\begin{problem}
+Išspręskite kubines lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](2)
+    \task $x^3 + 5x^2 + 6x = 0$
+    \task $5y^3 - 8y^2 + 3y = 0$
+    \task $-3a^3 + a^2 +2a = 0$
+    \task $-m^3 + 4m^2 +3m = 0$
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+    Raskite daugianario $P(x) = x ^{3} +5x ^{2} -4x-2$ realiąsias šaknis, jei žinoma, kad daugianarį galima užrašyti pavidalu:
+     $$P(x) = (x-1)(x ^{2} +bx+c) $$    
+\end{problem}
+
+\begin{problem}
+    Raskite daugianario $P(x) =x^3+4 x^2+x-6$ realiąsias šaknis, jei žinoma, kad daugianarį galima užrašyti pavidalu:
+     $$P(x) = (x+3)(x ^{2} +bx+c) $$    
+\end{problem}
+
+\begin{problem}
+Išspręskite ketvirtojo laipsnio lygtis realiųjų skaičių aibėje:
+\begin{tasks}[label={(\arabic*)}, label-offset=0.9em](1)
+    \task $(2x ^{2} +3x-5) ^{2} -(x ^{2} +4x-3) ^{2} = 0$
+    \task $(3x+2) ^{2} = (2x ^{2} +2x+1) ^{2} $
+    \task $(x ^{2} -3x+1) ^{2} +2(x-3)(x ^{2} -3x+1)+x ^{2} -6x+9 = 0$
+    \task $(x ^{2} -4) ^{2} -(2x ^{2} -8)(2x ^{2} +x)+4x ^{4}+4x ^{3} +x ^{2} = 0 $
+    \task $6x ^{2} (x ^{2} +3x+2)-3x(x ^{2} +3x+2)+ 2(x ^{2} +3x+2) = 0$
+    \task $(2x+5)(x^2 + 5x + 6)+(3x+10)(x ^{2} +5x+6) = 0$ 
+    \task $(x+1)(x ^{2} +1)(x-1) = 15$
+\end{tasks}
+\end{problem}
+
+\newpage
+\section{Atsakymai}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $x\in\{-3,-2,0\}$
+        \item $y\in\left\{0,\frac35,1\right\}$
+        \item $a\in\left\{-\frac23,0,1\right\}$
+        \item $m\in\{0,2-\sqrt7,2+\sqrt7\}$
+    \end{enumerate}
+    \item
+    $x\in\{1,-3+\sqrt7,-3-\sqrt7\}$
+    \item
+    $x\in\{-3,-2,1\}$
+    \item
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $x\in\left\{-1,2,\frac{-7-\sqrt{145}}6,\frac{-7+\sqrt{145}}6\right\}$
+        \item $x\in\left\{-\frac32,-1,-\frac12,1\right\}$
+        \item $x\in\{1-\sqrt3,1+\sqrt3\}$
+        \item Sprendinių realiųjų skaičių aibėje nėra.
+        \item $x\in\{-2,-1\}$
+        \item $x\in\{-3,-2\}$
+        \item $x\in\{-2,2\}$
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Hintai 1}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item Iškelkite bendrąjį daugiklį už skliaustų.
+    \item Atskliauskite duotą sandaugą ir palyginkite gauto daugianario koeficientus su duotaisiais.
+    \item Atskliauskite duotą sandaugą ir palyginkite gauto daugianario koeficientus su duotaisiais.
+    \item Pirmose keturiose lygtyse pamėginkite pritaikyti kvadratų skirtumo formulę, iškelti bendrąjį daugiklį arba atpažinti pilnąjį kvadratą. Likusiose iškelkite pasikartojančius daugiklius.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Pritaikykite $A^2-B^2=(A-B)(A+B)$.
+        \item Perkelkite viską į vieną lygties pusę ir vėl pritaikykite kvadratų skirtumo formulę.
+        \item Patikrinkite, ar kairioji pusė yra dviejų vienodų reiškinių suma, pakelta kvadratu.
+        \item Pabandykite užrašyti reiškinį kaip $A^2-2AB+B^2$.
+        \item Iškelkite bendrą daugianarį $x^2+3x+2$.
+        \item Iškelkite bendrą daugianarį $x^2+5x+6$.
+        \item Kairėje pusėje sujunkite daugiklius $x+1$ ir $x-1$.
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Hintai 2}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item Iškelkite kintamąjį prieš skliaustus, kad liktų kvadratinis trinaris. Sandauga lygi nuliui, kai bent vienas iš jos dauginamųjų lygus nuliui.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $x(x^2+5x+6)=0$.
+        \item $y(5y^2-8y+3)=0$.
+        \item $a(-3a^2+a+2)=0$.
+        \item $m(-m^2+4m+3)=0$.
+    \end{enumerate}
+        \item Atskliaudus gauname $x^3+(b-1)x^2+(c-b)x-c$.
+        \item Atskliaudus gauname $x^3+(b+3)x^2+(c+3b)x+3c$.
+
+    \item
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Pažymėję $A=2x^2+3x-5$, $B=x^2+4x-3$, gausite $(A-B)(A+B)=0$.
+        \item Pažymėję $A=3x+2$, $B=2x^2+2x+1$, gausite $(A-B)(A+B)=0$.
+        \item Pažymėję $A=x^2-3x+1$, $B=x-3$, gausite $(A+B)^2=0$.
+        \item Pažymėję $A=x^2-4$, $B=2x^2+x$, gausite $(A-B)^2=0$.
+        \item Pažymėję $A=x^2+3x+2$, gausite $A(6x^2-3x+2)=0$.
+        \item Pažymėję $A=x^2+5x+6$, gausite $A(5x+15)=0$.
+        \item Pažymėję $A=x^2-1$, gausite $A(A+2)=15$.
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Hintai 3}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+    \item Išspręskite gautas tiesines arba kvadratines lygtis.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Sprendiniai: $x=-3,-2,0$.
+        \item Sprendiniai: $y=0,\frac35,1$.
+        \item Sprendiniai: $a=-\frac23,0,1$.
+        \item Sprendiniai: $m=0$ arba $m=2\pm\sqrt7$.
+        \end{enumerate}
+        \item $b=6$, $c=2$, todėl $(x-1)(x^2+6x+2)=0$; šaknys: $1,-3\pm\sqrt7$.
+        \item $b=1$, $c=-2$, todėl $(x+3)(x^2+x-2)=0$; šaknys: $-3,-2,1$.
+
+    \item Įstatykite iš „Hintai 2“ gautas išraiškas ir išspręskite lygtis.
+    \begin{enumerate}[label={(\arabic*)}]
+        \item Pažymėję $A-B=x^2-x-2$, $A+B=3x^2+7x-8$, gausite: $$(x-2)(x+1)(3x^2+7x-8)=0.$$ 
+        Sprendiniai $x=2,-1,\frac{-7\pm\sqrt{145}}6$.
+        \item Pažymėję $A-B=-2x^2+x+1$, $A+B=2x^2+5x+3$, gausite:
+        $$(2x+1)(x-1)(2x+3)(x+1)=0.$$
+        Sprendiniai $x=-\frac12,1,-\frac32,-1$.
+
+        \item Pažymėję $A+B=x^2-2x-2$, gausite:
+        $$(x^2-2x-2)^2=0.$$
+        Sprendiniai $x=1\pm\sqrt3$.
+
+        \item Pažymėję $A-B=-x^2-x-4$, gausite:
+        $$(x^2+x+4)^2=0.$$
+        Kadangi šio trinario diskriminantas neigiamas, realiųjų sprendinių nėra.
+
+        \item Pažymėję $A=x^2+3x+2$, gausite:
+        $$A(6x^2-3x+2)=0.$$
+        Antrasis daugiklis neturi realiųjų šaknų, todėl sprendiniai $x=-1,-2$.
+
+        \item Pažymėję $A=x^2+5x+6$, gausite:
+        $$A(5x+15)=0.$$
+        Išskaidę daugiklius, gausite $(x+2)(x+3)^2=0$. Sprendiniai $x=-2,-3$.
+
+        \item Pažymėję $A=x^2-1$, gausite:
+        $$A(A+2)=15.$$
+        Kadangi $A(A+2)=x^4-1$, gausite $x^4=16$. Realieji sprendiniai $x=-2,2$.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
