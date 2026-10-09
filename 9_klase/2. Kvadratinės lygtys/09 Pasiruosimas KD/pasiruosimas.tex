@@ -1,0 +1,357 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{
+    \usepackage[lithuanian]{babel}
+}{
+    \usepackage[provide=*,lithuanian]{babel}
+}
+% Jei asmeninio stiliaus failas neprieinamas, naudojamas paprastas stilius.
+\IfFileExists{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt.sty}{
+    \usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+}{
+    \usepackage{amsmath,amssymb,amsthm}
+    \usepackage[margin=2.5cm]{geometry}
+    \newtheorem{problem}{Uždavinys}
+}
+\usepackage{tasks}
+\renewcommand{\theproblem}{\arabic{problem}}
+
+\title{Pasiruošimas KD}
+\author{Andrius Berniukevičius}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Uždaviniai}
+Visas lygtis spręskite realiųjų skaičių aibėje. Jei nenurodyta kitaip,
+kvadratinių trinarių šaknys ir koeficientai laikomi realiaisiais skaičiais.
+
+\begin{problem}
+Išspręskite lygtį:
+$$ 4\left(x^2-2x\right)^2+5x^2-10x=-1. $$
+\end{problem}
+
+\begin{problem}
+Skaičiai $m$ ir $n$ yra daugianario $x^2-2x-10$ šaknys, o $m<n$.
+Apskaičiuokite:
+\begin{tasks}(2)
+    \task $\frac{1}{m}+\frac{1}{n}$;
+    \task $n^2-m^2$;
+    \task $mn^4+m^4n$;
+    \task $\frac{1}{m+1}+\frac{1}{n+1}$.
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Užrašykite redukuotąją kvadratinę lygtį, kurios sprendiniai yra
+$x_1=5\sqrt{2}$ ir $x_2=-\sqrt{18}$.
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtį:
+$$ \frac{x+4}{x^2+x-2}-\frac{3x^2+3x-6}{x+4}=-\frac{1}{2}. $$
+\end{problem}
+
+\begin{problem}
+Įrodykite, kad kvadratinės lygties $ax^2+bx+c=0$, kur $a\ne0$,
+sprendiniai, kai $b^2-4ac\ge0$, apskaičiuojami pagal formules:
+$$ x_1=\frac{-b-\sqrt{b^2-4ac}}{2a},\qquad
+   x_2=\frac{-b+\sqrt{b^2-4ac}}{2a}. $$
+\end{problem}
+
+\begin{problem}
+Duotas daugianaris $P(x)=2x^2+4x-1$.
+\begin{tasks}(1)
+    \task Raskite visas $a$ reikšmes, kurioms
+    $(2a+1)\cdot P(a-1)=-3$.
+    \task Skaičiai $x_1$ ir $x_2$ yra daugianario $P(x)$ šaknys.
+    Apskaičiuokite $4x_1^2+2x_2^2+5x_1+x_2-7$.
+    \task Skaičiai $\alpha$ ir $\beta$ yra lygties $P(x)=0$ sprendiniai.
+    Apskaičiuokite
+    $2\alpha^3+4\beta^3+5\alpha^2+9\beta^2+5\alpha+4\beta-3$.
+\end{tasks}
+\end{problem}
+
+\begin{problem}
+Išskaidykite daugianarį $x^2+6x+5-4(x+1)(x+2)$ dauginamaisiais.
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtį:
+$$ (x^2-5x+1)^2-(x^2+3x+5)^2=0. $$
+\end{problem}
+
+\begin{problem}
+Duotas kvadratinis trinaris $ax^2+bx+c$, kur $a\ne0$,
+o jo šaknys yra $x_1$ ir $x_2$. Įrodykite, kad
+$$ x_1+x_2=-\frac{b}{a},\qquad x_1x_2=\frac{c}{a}. $$
+\end{problem}
+
+\begin{problem}
+Kvadratinio trinario $x^2+bx+18$ šaknų santykis yra $2:1$.
+Raskite visas galimas koeficiento $b$ reikšmes.
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtį:
+$$ (x^2+x-6)(x^2+x+1)=-12. $$
+\end{problem}
+
+\begin{problem}
+Nustatykite, ar yra tokia realioji $a$ reikšmė, kuriai
+kvadratinio trinario $P(x)=x^2+(a-1)x+a+2$ realiųjų šaknų
+kvadratų suma lygi $9$.
+\end{problem}
+
+\begin{problem}
+Įrodykite, kad daugianaris $P(x)=x^2+2ax+2a^2+2a+2$
+neturi realiųjų šaknų su jokia realiąja $a$ reikšme.
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtį:
+$$ (x^2+x+1)^2+9x^2+6x+1=(6x+2)(x^2+x+1). $$
+\end{problem}
+
+\begin{problem}
+Išskaidykite reiškinį dauginamaisiais:
+$$ 4x^2+12x+9+(2x+3)(3-x)+\frac{16x^4-81}{4x^2+9}. $$
+\end{problem}
+
+\begin{problem}
+Kvadratinio trinario $-x^2+3x+c$ šaknų skirtumo absoliučioji
+vertė lygi $\pi$. Apskaičiuokite koeficiento $c$ reikšmę.
+\end{problem}
+
+\begin{problem}
+Užrašykite visas redukuotąsias kvadratines lygtis, kurių sprendinių
+kvadratų suma lygi $25$, o vienas sprendinys yra vienetu didesnis už kitą.
+\end{problem}
+
+\begin{problem}
+Suprastinkite trupmeną:
+$$ \frac{(3x^2+5x-2)(9x^2-30x+25)}
+{(9x^2-18x+5)(10-6x)}. $$
+\end{problem}
+
+\begin{problem}
+Išspręskite lygtį:
+$$ 4^{x+1}-18\cdot2^x+8=0. $$
+\end{problem}
+
+\begin{problem}
+Kvadratinio trinario $x^2-x-c$ šaknų kubų suma lygi $7$.
+Raskite koeficiento $c$ reikšmę.
+\end{problem}
+
+\clearpage
+\section{Atsakymai}
+Numeriai atitinka uždavinių numerius. Jei yra kartotinė šaknis,
+lygčių atsakymuose ji pateikiama vieną kartą.
+
+\begin{enumerate}
+    \item $x_1=1-\frac{\sqrt{3}}{2},\quad x_2=1,\quad
+    x_3=1+\frac{\sqrt{3}}{2}$.
+    \item a) $-\frac15$; b) $4\sqrt{11}$; c) $-680$; d) $-\frac47$.
+    \item $x^2-2\sqrt{2}\,x-30=0$.
+    \item $x_1=-\frac73,\quad x_2=-\frac32,\quad x_3=0,\quad x_4=2$.
+    \item $- $
+    \item a) $a_1=-\frac32,\quad a_2=0,\quad a_3=1$;
+    b) $2$; c) $-10$.
+    \item $-3(x+1)^2$.
+    \item $x=-\frac12$.
+    \item $-$
+    \item $b_1=-9,\quad b_2=9$.
+    \item $x_1=\frac{-1-\sqrt{13}}2,\quad x_2=-2,\quad
+    x_3=1,\quad x_4=\frac{-1+\sqrt{13}}2$.
+    \item $a=-2$.
+    \item $P(x)=(x+a)^2+(a+1)^2+1>0$ visiems realiesiems $x$ ir $a$.
+    \item $x_1=0,\quad x_2=2$.
+    \item $3(2x+3)(x+1)$; reiškinys apibrėžtas visiems $x\in\mathbb R$.
+    \item $c=\frac{\pi^2-9}{4}$.
+    \item $x^2-7x+12=0$ arba $x^2+7x+12=0$.
+    \item $-\frac{x+2}{2}$.
+    \item $x_1=-1,\quad x_2=2$.
+    \item $c=2$.
+\end{enumerate}
+
+\clearpage
+\section{Hintai 1}
+\begin{enumerate}
+    \item Pastebėkite pasikartojantį reiškinį $x^2-2x$.
+    \item Taikykite Vijeto teoremą. Skaičių $m$ ir $n$ iš karto
+    skaičiuoti nebūtina.
+    \item Redukuotojoje kvadratinėje lygtyje koeficientai išreiškiami
+    šaknų suma ir sandauga.
+    \item Pirmiausia nustatykite apibrėžimo sritį. Atkreipkite dėmesį
+    į du vienas kitam atvirkštinius reiškinius.
+    \item Abi lygties puses padauginkite iš $4a$.
+    \item a) Apskaičiuokite $P(a-1)$.
+    b), c) Kiekviena šaknis tenkina lygybę $2t^2+4t-1=0$.
+    \item Išskaidykite $x^2+6x+5$ ir ieškokite bendrojo daugiklio.
+    \item Taikykite kvadratų skirtumo formulę.
+    \item Prisiminkite diskriminanto formulę: kam lygūs
+    $x_1$ ir $x_2$?
+    \item Šaknis pažymėkite $2t$ ir $t$. Nepamirškite neigiamųjų šaknų.
+    \item Pastebėkite abiejuose daugikliuose pasikartojantį reiškinį.
+    \item Pagal Vijeto teoremą išreikškite šaknų kvadratų sumą
+    per jų sumą ir sandaugą.
+    \item Išskirkite pilnąjį kvadratą kintamojo $x$ atžvilgiu.
+    \item Pastebėkite, kad $9x^2+6x+1$ yra pilnasis kvadratas.
+    \item Atpažinkite pilnąjį kvadratą ir kvadratų skirtumą.
+    \item Šaknų skirtumo kvadratą išreikškite jų suma ir sandauga.
+    \item Iš duotų sąlygų raskite šaknų sandaugą.
+    \item Išskaidykite visus skaitiklio ir vardiklio daugiklius.
+    \item Išreikškite $4^{x+1}$ per $2^x$.
+    \item Šaknų kubų sumą išreikškite jų suma ir sandauga.
+\end{enumerate}
+
+\section{Hintai 2}
+\begin{enumerate}
+    \item Pažymėkite $t=x^2-2x$. Gausite $4t^2+5t+1=0$.
+    \item $m+n=2$, $mn=-10$.
+    Naudokite $n^2-m^2=(n-m)(n+m)$ ir
+    $mn^4+m^4n=mn(n^3+m^3)$.
+    \item Jei šaknys yra $r$ ir $s$, lygtis yra
+    $x^2-(r+s)x+rs=0$.
+    \item $x\ne-4,-2,1$. Pažymėkite
+    $t=\frac{x+4}{x^2+x-2}$; čia $t\ne0$.
+    \item Išskirkite pilnąjį kvadratą kairėje pusėje ir perkelkite
+    likusius narius į dešinę.
+    \item a) $P(a-1)=2a^2-3$.
+    b), c) Kiekvienai šakniai $t$ galioja
+    $t^2=-2t+\frac12$, o $t^3=\frac92t-1$.
+    \item $x^2+6x+5=(x+1)(x+5)$.
+    \item Gausite $(-8x-4)(2x^2-2x+6)=0$.
+    \item Įstatykite kvadratinės formulės išraiškas į
+    $x_1+x_2$ ir $x_1x_2$. Sumai supaprastinkite priešingus
+    kvadratinės šaknies narius, o sandaugai pritaikykite
+    skirtumo kvadrato formulę.
+    \item Pagal Vijeto teoremą $2t^2=18$ ir $3t=-b$.
+    \item Pažymėkite $t=x^2+x$. Gausite $(t-6)(t+1)=-12$.
+    \item Pagal Vijeto teoremą
+    $x_1+x_2=1-a$ ir $x_1x_2=a+2$. Todėl
+    \[
+    x_1^2+x_2^2=(1-a)^2-2(a+2).
+    \]
+    Šią išraišką prilyginkite $9$.
+    \item $P(x)=(x+a)^2+a^2+2a+2$.
+    \item Pažymėkite $A=x^2+x+1$, $B=3x+1$.
+    Lygtis yra $A^2+B^2=2AB$.
+    \item $4x^2+12x+9=(2x+3)^2$, o
+    $16x^4-81=(4x^2-9)(4x^2+9)$.
+    \item $x_1+x_2=3$, $x_1x_2=-c$ ir
+    $(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2$.
+    \item Kadangi $(x_1-x_2)^2=1$, naudokite tapatybę
+    \[
+    (x_1-x_2)^2=x_1^2+x_2^2-2x_1x_2
+    \]
+    ir raskite šaknų sandaugą.
+    \item $3x^2+5x-2=(3x-1)(x+2)$,
+    $9x^2-18x+5=(3x-1)(3x-5)$.
+    \item Pažymėkite $t=2^x>0$. Gausite $4t^2-18t+8=0$.
+    \item Jei šaknys yra $r$ ir $s$, tai
+    $r^3+s^3=(r+s)^3-3rs(r+s)$.
+\end{enumerate}
+
+\section{Hintai 3}
+\begin{enumerate}
+    \item $(4t+1)(t+1)=0$. Atskirai spręskite
+    $x^2-2x=-\frac14$ ir $x^2-2x=-1$.
+    \item a) Naudokite $\frac{m+n}{mn}$.
+    b) $n-m=\sqrt{(m+n)^2-4mn}$, nes $n>m$.
+    c) $m^3+n^3=(m+n)^3-3mn(m+n)$.
+    d) Naudokite $\frac{m+n+2}{mn+m+n+1}$.
+    \item Šaknų suma lygi $2\sqrt2$, o sandauga lygi $-30$.
+    \item $2t^2+t-6=(2t-3)(t+2)=0$.
+    Grįžę prie $x$, gausite $3x^2+x-14=0$ arba $2x^2+3x=0$.
+    Patikrinkite apibrėžimo sritį.
+    \item Kadangi $a\ne0$, lygties abi puses galime padauginti iš
+    $4a$:
+    \[
+    4a^2x^2+4abx+4ac=0.
+    \]
+    Prie pirmųjų dviejų narių pridėję ir atėmę $b^2$, gauname
+    \[
+    (2ax+b)^2=b^2-4ac.
+    \]
+    Kai $b^2-4ac\ge0$, ištraukiame kvadratinę šaknį:
+    \[
+    2ax+b=\pm\sqrt{b^2-4ac}.
+    \]
+    Kadangi $2a\ne0$, išreiškiame $x$:
+    \[
+    x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
+    \]
+    Taigi gauname abi nurodytas sprendinių formules.
+    \item a) Lygtis susiveda į $2a(2a+3)(a-1)=0$.
+    b) Reiškinys susiveda į $-3(x_1+x_2)-4$.
+    c) Reiškinys susiveda į $4(\alpha+\beta)-2$.
+    Abiem atvejais šaknų suma lygi $-2$.
+    \item Iškelkite $(x+1)$:
+    $(x+1)\bigl((x+5)-4(x+2)\bigr)$.
+    \item $2x^2-2x+6=2\left(x-\frac12\right)^2+\frac{11}{2}>0$.
+    Todėl turi būti $-8x-4=0$.
+    \item Pažymėkime $D=b^2-4ac$. Pagal kvadratinę formulę
+    \[
+    x_1=\frac{-b-\sqrt D}{2a},\qquad
+    x_2=\frac{-b+\sqrt D}{2a}.
+    \]
+    Tada
+    \[
+    x_1+x_2
+    =\frac{-b-\sqrt D-b+\sqrt D}{2a}
+    =-\frac ba,
+    \]
+    o
+    \[
+    x_1x_2
+    =\frac{(-b-\sqrt D)(-b+\sqrt D)}{4a^2}
+    =\frac{b^2-D}{4a^2}
+    =\frac{4ac}{4a^2}
+    =\frac ca.
+    \]
+    \item $t^2=9$, taigi $t=3$ arba $t=-3$.
+    Kiekvieną reikšmę įstatykite į $b=-3t$.
+    \item $(t-2)(t-3)=0$. Spręskite $x^2+x=2$ ir $x^2+x=3$.
+    \item Iš lygybės
+    \[
+    (1-a)^2-2(a+2)=9
+    \]
+    gauname $a^2-4a-12=0$, todėl $a=6$ arba $a=-2$.
+    Patikriname, kuri reikšmė duoda realiąsias šaknis:
+    \[
+    D=(a-1)^2-4(a+2).
+    \]
+    Kai $a=6$, $D=-7<0$, tad šaknys nėra realiosios.
+    Kai $a=-2$, $D=9\ge0$, o trinaris yra
+    $P(x)=x^2-3x=x(x-3)$, kurio šaknys $0$ ir $3$.
+    Jų kvadratų suma lygi $0^2+3^2=9$, todėl atsakymas $a=-2$.
+    \item Užbaikite pertvarkymą:
+    $P(x)=(x+a)^2+(a+1)^2+1$. Abu kvadratai neneigiami.
+    \item $(A-B)^2=0$, todėl $x^2-2x=0$.
+    \item Suprastinta trupmena lygi $4x^2-9=(2x-3)(2x+3)$.
+    Iškelkite $(2x+3)$ iš viso reiškinio:
+    $(2x+3)\bigl((2x+3)+(3-x)+(2x-3)\bigr)$.
+    \item Iš $\pi^2=9+4c$ išreikškite $c$.
+    Patikrinkite, kad gautasis trinaris turi realiąsias šaknis.
+    \item Tegul šaknys yra $x_1$ ir $x_2$. Iš sąlygų gauname
+    \[
+    x_1x_2=\frac{25-1}{2}=12,\qquad
+    (x_1+x_2)^2=25+2\cdot12=49.
+    \]
+    Vadinasi, $x_1+x_2=7$ arba $x_1+x_2=-7$. Pagal Vijeto teoremą
+    atitinkamos lygtys yra $x^2-7x+12=0$ ir $x^2+7x+12=0$.
+    Jų šaknys atitinkamai $3,4$ ir $-3,-4$, tad abiejose lygtyse
+    šaknų kvadratų suma yra $25$, o skirtumo absoliučioji vertė — $1$.
+    \item $9x^2-30x+25=(3x-5)^2$ ir $10-6x=-2(3x-5)$.
+    Sutraukite bendruosius daugiklius.
+    \item $4t^2-18t+8=2(2t-1)(t-4)$.
+    Spręskite $2^x=\frac12$ ir $2^x=4$.
+    \item Pagal Vijeto teoremą $r+s=1$, $rs=-c$.
+    Todėl kubų sumos sąlyga virsta $1+3c=7$.
+\end{enumerate}
+\end{document}
