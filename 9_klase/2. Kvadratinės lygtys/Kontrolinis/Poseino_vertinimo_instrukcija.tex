@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\setlength{\emergencystretch}{1.5em}
+\usepackage{amsmath,amssymb,array,tabularx,enumitem,fancyhdr}
+\usepackage[a4paper,margin=1.7cm,headheight=15pt]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=2pt,topsep=3pt}
+\pagestyle{fancy}\fancyhf{}
+\lhead{Kvadratinės lygtys: vertinimo instrukcija}\rhead{Mokytojui}
+\cfoot{\thepage}
+\newcommand{\uzd}[3]{\subsection*{#1 uždavinys \hfill #2 taškai}\textit{Sąlyga.} #3\par}
+\newcommand{\kriterijai}{\textbf{Taškų skyrimas:}}
+\newcommand{\balas}[2]{\item \textbf{#1 t.} #2}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Vertinimo instrukcija}\par
+{\large Poseidono variantas}\par
+Varianto maksimumas -- \textbf{40 taškų}.
+\end{center}
+\textbf{Šaltinis.} Instrukcija parengta pagal paskutinėje žinutėje pateiktas uždavinių sąlygas, atsižvelgiant į vėlesnį Apolono 6 uždavinio patikslinimą. Išlaikyti jose nurodyti uždavinių taškai; jų vidinis paskirstymas sudarytas pagal vertinamus gebėjimus. Lygiaverčiai teisingi sprendimo būdai vertinami tuo pačiu maksimumu.
+
+\section*{Bendrosios taisyklės}
+\begin{itemize}
+\item Taškai skiriami už parodytą matematinį turinį, ne už formulių ar eilučių kiekį. Sujungti, bet aiškiai pagrįsti žingsniai gauna visus atitinkamus taškus.
+\item Vertinama atskirai kiekviename \textbf{savarankiškame vertinimo vienete}: visas uždavinys, o uždaviniuose su dalimis -- kiekviena a), b), c) dalis. Taigi antroji klaida vienoje dalyje nepanaikina teisingai išspręstos kitos dalies taškų. Tai šioje instrukcijoje pasirinkta klaidų taisyklės taikymo apimtis.
+\item \textbf{Viena aritmetinė klaida.} Jei po vienos skaičiavimo klaidos mokinys nuosekliai ir matematiškai teisingai tęsia sprendimą su savo gautais skaičiais, atimamas tik \textbf{1 taškas} tame vertinimo vienete. Tos klaidos sukeltas neteisingas galutinis atsakymas papildomai nebaudžiamas.
+\item \textbf{Antroji nepriklausoma aritmetinė klaida.} Jei tame pačiame vienete pasitaiko dar viena neištaisyta aritmetinė klaida, skiriami tik taškai už teisingai atliktus kriterijus \textbf{iki pirmosios aritmetinės klaidos}. Už pirmąją klaidą dar vienas taškas papildomai neatimamas. Už vėlesnę sprendimo dalį taškų neskiriama.
+\item \textbf{Klaidos pasekmė nėra nauja klaida.} Pavyzdžiui, klaidinga šaknų suma, iš jos teisingai apskaičiuota kvadratų suma ir iš jos teisingai sudaryta lygtis -- viena klaida. Nauja klaida būtų neteisingai suskaičiuota paties mokinio gauta skaičių išraiška.
+\item Aiškiai ištaisyta klaida nelaikoma neištaisyta klaida. Vertinamas galutinis, aiškiai pasirinktas sprendimo kelias. Jei pateikti keli prieštaringi atsakymai ir nė vienas nepasirinktas, galutinio atsakymo kriterijus neįvykdytas.
+\item \textbf{Metodinė klaida} (neteisinga formulė, neteisėtas dalijimas, neteisingas keitinys, nepagrįstas sprendinių atmetimas) nevertinama kaip vien aritmetinė. Taškai už klaidingą metodą ir nuo jo priklausomas nepagrįstas išvadas neskiriami; nepriklausomi teisingi žingsniai gali būti įskaityti.
+\item Vienos klaidos taisyklė nesuteikia taškų už neparodytus gebėjimus: jei klaida uždavinį supaprastino ir mokinys nebetikrino šakų ar sąlygų, neparodyti kriterijai neįskaitomi. Vertinimo minimumas -- 0 taškų.
+\end{itemize}
+
+\textbf{Tik atsakymas.} Be sprendimo galima skirti tik aiškiai atsakymui numatytus taškus. Išimtis -- tiesioginis skaidymo dauginamaisiais užrašas: teisinga pilna sandauga pati parodo prašytą rezultatą ir gauna visus tai daliai skirtus taškus.
+
+\newpage
+\section*{Kaip praktiškai taikyti klaidų taisyklę}
+\textbf{Viena klaida:} nustatomas balas už parodytus teisingus metodus, vertinant vėlesnį skaičiavimą pagal mokinio gautus skaičius; iš šio balo atimamas 1 taškas. To paties klaidingo skaičiaus pasikartojimai ar klaidingas atsakymas antrą kartą nebaudžiami.
+
+\textbf{Dvi klaidos:} grįžtama prie pirmosios klaidos vietos ir susumuojami tik iki jos teisingai įvykdyti kriterijai. Jei kriterijus reikalauja ir metodo, ir rezultato, o rezultatas iki pirmos klaidos dar negautas, už tą kriterijų taškas neskiriamas. Kai eilutėje numatyti 2 ar 3 taškai, jų vidinis paskirstymas žemiau nurodytas atskirai.
+
+\subsection*{Pavyzdys: Apolono 5 uždavinys (5 t.)}
+Teisingai reikia gauti $S=x_1+x_2=6$, $P=x_1x_2=4$, naują sumą $S^2-2P=28$ ir naują sandaugą $P^2=16$.
+\begin{itemize}
+\item Mokinys teisingai užrašo $S=6$, $P=4$, bet apskaičiuoja $36-8=30$. Toliau teisingai gauna naują sandaugą $16$ ir užrašo $y^2-30y+16=0$. \textbf{4/5 t.}: viena aritmetinė klaida, tolesnis metodas teisingas.
+\item Tas pats mokinys papildomai užrašo $4^2=12$. \textbf{3/5 t.}: iki pirmos klaidos teisingai nustatė $S$ (1 t.), $P$ (1 t.) ir naujos sumos formulę $S^2-2P$ (1 t.). Taškai už vėlesnį darbą nebeskiriami.
+\item Mokinys užrašo $x_1^2+x_2^2=(x_1+x_2)^2$. Tai \textbf{metodinė klaida}: praleistas $-2x_1x_2$ narys. Vieno taško aritmetinės klaidos lengvata čia netaikoma.
+\end{itemize}
+
+\subsection*{Kiti svarbūs sprendimo požymiai}
+\begin{itemize}
+\item Taškas už diskriminantą nėra privalomas sprendžiant skaidymu ar Vijeto teorema: jis pakeičiamas lygiaverčiu teisingu šaknų nustatymo žingsniu.
+\item Už teisingas šaknis nereikalaujama dar ir įstatymo į pradinę lygtį, jei visas kelias buvo ekvivalentus ir apibrėžimo sritis nepažeista.
+\item Sąlygose „neskaičiuodami sprendinių“ tikslas -- įvertinti darbą su suma ir sandauga. Vien tik aiškiai apskaičiuotų šaknų naudojimas nesuteikia taškų už prašytą šaknų neskaičiavimo metodą; galutinio rezultato taškai gali būti skiriami.
+\item Galutinio atsakymo kriterijus suteikiamas vieną kartą. Jei du sprendiniai numatyti viename 1 taško kriterijuje, reikia abiejų; dalinis sprendinių radimas gali būti įskaitytas ankstesniame metodo kriterijuje.
+\end{itemize}
+
+\subsection*{Pažymio skyrimas}
+\begin{center}\small
+\begin{tabular}{|c|*{10}{c|}}\hline
+Taškai&0--4&5--8&9--12&13--16&17--20&21--24&25--29&30--33&34--37&38--40\\\hline
+Pažymys&1&2&3&4&5&6&7&8&9&10\\\hline
+\end{tabular}\end{center}
+
+\newpage
+\section*{Poseidono variantas: 1--4 uždaviniai}
+\uzd{1}{3}{$7x=4+3x^2$.}
+\textbf{Sprendimas.} $3x^2-7x+4=0$, $(3x-4)(x-1)=0$. Atsakymas: $x=1$ arba $x=\frac43$.
+\kriterijai\begin{itemize}
+\balas{1}{Gauna $3x^2-7x+4=0$.}
+\balas{1}{Teisingai skaido arba taiko kvadratinės lygties sprendimo metodą.}
+\balas{1}{Pateikia abu sprendinius $1$ ir $4/3$.}
+\end{itemize}
+\uzd{2}{2}{Sudaryti redukuotą kvadratinę lygtį su šaknimis $\frac13,-5$.}
+\textbf{Sprendimas.} $(x-\frac13)(x+5)=0\iff x^2+\frac{14}{3}x-\frac53=0$.
+\kriterijai\begin{itemize}
+\balas{1}{Teisingai nustato sumą $-14/3$ ir sandaugą $-5/3$ arba užrašo šaknų sandaugos formą.}
+\balas{1}{Pateikia redukuotą lygtį $x^2+\frac{14}{3}x-\frac53=0$.}
+\end{itemize}
+\textit{Vertinimo pastaba.} $3x^2+14x-5=0$ yra lygiavertė, bet neredukuota lygtis: jei tik toks galutinis užrašas, daugiausia 1/2 t. Teisinga redukuota lygtis iš karto -- 2 t.
+\uzd{3}{7}{a) $-2x^2+3x+5$; b) $x^3-5x^2-4x+20$; c) $x^3+2x^2-3$.}
+\textbf{Sprendimas.} \textbf{a)} $-(2x-5)(x+1)$.\par\textbf{b)} $(x-5)(x^2-4)=(x-5)(x-2)(x+2)$.\par\textbf{c)} $x^3-1+2(x^2-1)=(x-1)(x^2+x+1)+2(x-1)(x+1)=(x-1)(x^2+3x+3)$. Pastarojo kvadratinio daugiklio $D=-3<0$.
+\kriterijai\begin{itemize}
+\balas{2}{a): 1 t. už tinkamas šaknis arba skaidymo pradžią; 1 t. už pilną sandaugą.}
+\balas{2}{b): 1 t. už $(x-5)(x^2-4)$; 1 t. už pilną skaidymą.}
+\balas{3}{c): 1 t. už šaknies $1$ atpažinimą ar tinkamą grupavimą; 1 t. už kvadratinio dalmens radimą; 1 t. už galutinę sandaugą $(x-1)(x^2+3x+3)$.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Pilna teisinga sandauga iš karto gauna visus atitinkamos dalies taškus. c) nereikalaujama atskirai įrodinėti, kad kvadratinis daugiklis nebeskaidomas realiaisiais tiesiniais daugikliais.
+\uzd{4}{4}{$P(x)=x^2+bx+9$ šaknų skirtumas $8$; rasti $b$.}
+\textbf{Sprendimas.} Pagal Vijeto teoremą $S=-b$, $P=9$. Tada $(x_1-x_2)^2=S^2-4P=b^2-36=64$. Todėl $b^2=100$, $b=\pm10$. Abiem atvejais $D=64>0$.
+\kriterijai\begin{itemize}
+\balas{1}{Užrašo šaknų sumą $-b$ ir sandaugą $9$ arba naudoja formulę skirtumui per diskriminantą.}
+\balas{1}{Gauna $(x_1-x_2)^2=b^2-36$.}
+\balas{1}{Iš sąlygos gauna $b^2-36=64$, taigi $b^2=100$.}
+\balas{1}{Pateikia abi reikšmes $b=-10$ ir $b=10$.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Lygiavertis kelias: šaknų skirtumas yra $\sqrt D$, nes lygtis redukuota; todėl $\sqrt{b^2-36}=8$. Viena iš dviejų reikšmių nepakanka paskutiniam taškui.
+\newpage
+\section*{Poseidono variantas: 5--6 uždaviniai}
+\uzd{5}{5}{$(x^2-5x)^2=2(x-2)(x-3)+12$.}
+\textbf{Sprendimas.} $t=x^2-5x$, o dešinė pusė $2t+24$. Todėl $t^2-2t-24=0$, $(t-6)(t+4)=0$. Kai $t=6$, $x^2-5x-6=0$, $x=-1,6$. Kai $t=-4$, $x^2-5x+4=0$, $x=1,4$. Atsakymas: $x\in\{-1,1,4,6\}$.
+\kriterijai\begin{itemize}
+\balas{1}{Įveda keitinį ir gauna $t^2=2t+24$.}
+\balas{1}{Randa abi reikšmes $t=6,-4$.}
+\balas{1}{Teisingai išsprendžia šaką $t=6$: $x=-1,6$.}
+\balas{1}{Teisingai išsprendžia šaką $t=-4$: $x=1,4$.}
+\balas{1}{Pateikia visus keturis sprendinius.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Jei išsprendžiama tik viena šaka, įskaitomi jos ir bendri pradžios kriterijai; pilno atsakymo taškas neskiriamas.
+\uzd{6}{7}{$P(x)=-x^2+6x-3$, šaknys $m,n$; a) $m^2+n^2$; b) $1/m^3+1/n^3$; c) $m^2-n^2$, kai $m<n$.}
+\textbf{Sprendimas.} $S=m+n=6$, $P=mn=3$.\par\textbf{a)} $S^2-2P=36-6=30$.\par\textbf{b)} $\dfrac{m^3+n^3}{(mn)^3}=\dfrac{S^3-3PS}{P^3}=\dfrac{216-54}{27}=6$.\par\textbf{c)} $(m-n)^2=S^2-4P=24$, todėl $m-n=-2\sqrt6$ ir $m^2-n^2=(m-n)S=-12\sqrt6$.
+\kriterijai\begin{itemize}
+\balas{2}{a): 1 t. už teisingą tapatybę su $S=6,P=3$; 1 t. už $30$.}
+\balas{3}{b): 1 t. už bendrą vardiklį ir formulę kubų sumai; 1 t. už skaitiklį $162$ bei vardiklį $27$; 1 t. už rezultatą $6$.}
+\balas{2}{c): 1 t. už neigiamo skirtumo nustatymą $m-n=-2\sqrt6$; 1 t. už $-12\sqrt6$.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Kiekviena dalis yra atskiras klaidų taisyklės vienetas. Jei viena bendra aritmetinė klaida pradžioje paveikia kelias dalis, 1 t. už ją atimamas tik kartą visame uždavinyje; tos pačios klaidos pasekmės kitose dalyse nebaudžiamos. Pradinės klaidos priskyrimą fiksuoti vertinimo pastaboje.
+\newpage
+\section*{Poseidono variantas: 7--8 uždaviniai}
+\uzd{7}{6}{$\dfrac{6-x}{x^2-4x+6}-\dfrac{4x^2-16x+24}{2x-12}=3$.}
+\textbf{Sprendimas.} $Q=x^2-4x+6=(x-2)^2+2>0$, $x\ne6$. Imame $t=\frac{6-x}{Q}\ne0$. Kadangi antras narys su minusu lygus $\frac{2Q}{6-x}$, gauname $t+\frac2t=3$, $(t-1)(t-2)=0$.\par Kai $t=1$: $6-x=Q$, $x^2-3x=0$, $x=0,3$. Kai $t=2$: $6-x=2Q$, $2x^2-7x+6=0$, $x=\frac32,2$. Visi priklauso apibrėžimo sričiai. Atsakymas: $x\in\{0,\frac32,2,3\}$.
+\kriterijai\begin{itemize}
+\balas{1}{Nustato apibrėžimo sritį $x\ne6$; pagrindžia, kad $Q$ nelygus nuliui.}
+\balas{1}{Pasirenka keitinį ir teisingai gauna $t+2/t=3$.}
+\balas{1}{Gauna abi reikšmes $t=1,2$.}
+\balas{1}{Išsprendžia pirmą šaką: $x=0,3$.}
+\balas{1}{Išsprendžia antrą šaką: $x=3/2,2$.}
+\balas{1}{Pateikia visus keturis tinkamus sprendinius, neįtraukdamas draudžiamų reikšmių.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Galima be keitinio, padauginus iš vardiklių, gauti sandaugą $(Q-(6-x))(2Q-(6-x))=0$. Taškus priskirti atitinkamiems lygiaverčiams žingsniams.
+\uzd{8}{6}{$x^2-mx+9-m=0$ turi realiąsias šaknis ir $x_1^2+x_2^2+x_1^2x_2^2=39$; rasti $m$ neskaičiuojant šaknų.}
+\textbf{Sprendimas.} $S=m$, $P=9-m$. Sąlyga $S^2-2P+P^2=39$, todėl $m^2-2(9-m)+(9-m)^2=39$, $2m^2-16m+24=0$. Gauname $m=2,6$. Diskriminantas $D=m^2+4m-36$. Kai $m=2$, $D=-24<0$; kai $m=6$, $D=24>0$. Atsakymas: $m=6$.
+\kriterijai\begin{itemize}
+\balas{1}{Nustato sumą $S=m$ ir sandaugą $P=9-m$.}
+\balas{1}{Perrašo sąlygą kaip $S^2-2P+P^2=39$.}
+\balas{1}{Gauna $2m^2-16m+24=0$.}
+\balas{1}{Randa abi kandidatines reikšmes $m=2,6$.}
+\balas{1}{Patikrina realiųjų šaknų sąlygą: $D(2)=-24$, $D(6)=24$.}
+\balas{1}{Atmeta $m=2$ ir pateikia vienintelį atsakymą $m=6$.}
+\end{itemize}
+\textit{Vertinimo pastaba.} Jei parašyta $m=2$ arba $m=6$, bet netikrintas realumas, maksimumas -- 4/6 t. Vien apskaičiuojant pačias šaknis -- neįskaitomi pirmų dviejų kriterijų taškai už prašytą metodą.
+\end{document}
