@@ -1,0 +1,256 @@
+\documentclass[11pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=0pt]{geometry}
+\usepackage{tikz}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Kompiliavimas: pdfLaTeX.
+% Spausdinti horizontaliame A4 lape, mastelis 100 % (tikrasis dydis).
+% Perkirpus per vidurį gaunami du statūs A5 dydžio lapeliai.
+% A4 pusės plotis yra 148,5 mm; standartinio A5 nominalus plotis – 148 mm.
+
+% Tuščias stačiakampis: plotis ir aukštis.
+\newcommand{\remelis}[2]{%
+  \tikz[baseline={([yshift=-0.6ex]current bounding box.center)}]\draw[line width=0.5pt]
+    (0,0) rectangle (#1,#2);}
+
+% Viena užduotis. Numeris ir sąlyga įrašomi kaip du argumentai.
+% Jei reikia daugiau vietos sąlygai, didinkite 25 mm eilutės aukštį.
+% Keičiant užduočių skaičių patikrinkite, ar turinys telpa į lapelį.
+\newcommand{\uzduotis}[2]{%
+  \begin{minipage}[t][25mm][t]{\linewidth}
+    \textbf{#1.}\enspace #2\par
+    \vspace{3mm}
+    \remelis{50.4mm}{12mm}\par
+  \end{minipage}\par
+}
+
+% Vieno A5 lapelio turinys.
+% #1 – varianto pavadinimas; #2 – užduočių sąrašas.
+\newcommand{\lapelis}[2]{%
+  \begin{minipage}[t][190mm][t]{128.5mm}
+    \small
+    \textbf{Mokinio kodas}\enspace\remelis{32mm}{8mm}%
+    \hfill\textbf{#1}\par
+    \vspace{6mm}
+    {\centering\normalsize\textbf{Bazinių įgūdžių testas 1}\par}
+    \vspace{2mm}
+    {\centering\small Į rėmelius įrašykite tik atsakymus.\par}
+    \vspace{7mm}
+    \normalsize
+    #2
+  \end{minipage}%
+}
+
+\newcommand{\stulpeliai}[2]{%
+  \begin{minipage}[t]{60mm}#1\end{minipage}\hfill
+  \begin{minipage}[t]{60mm}#2\end{minipage}%
+}
+
+\newcommand{\papildomaslapas}[4]{%
+  \newpage
+  \null
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[dash pattern=on 2pt off 3pt,line width=0.4pt]
+      (current page.north) -- (current page.south);
+    \node[anchor=north west,inner sep=0pt]
+      at ([xshift=10mm,yshift=-10mm]current page.north west)
+      {\lapelis{#1}{#2}};
+    \node[anchor=north west,inner sep=0pt]
+      at ([xshift=10mm,yshift=-10mm]current page.north)
+      {\lapelis{#3}{#4}};
+  \end{tikzpicture}%
+}
+
+\begin{document}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  % Punktyrinė kirpimo linija tiksliai A4 lapo viduryje.
+  \draw[dash pattern=on 2pt off 3pt,line width=0.4pt]
+    (current page.north) -- (current page.south);
+
+  % Kairysis A5 lapelis: 10 mm paraštės.
+  \node[anchor=north west,inner sep=0pt]
+    at ([xshift=10mm,yshift=-10mm]current page.north west) {%
+      \lapelis{Kantrybės variantas}{%
+        \begin{minipage}[t]{60mm}
+          \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(2x^2+8x+3\)}
+          \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-3x^2+18x-4\)}
+          \uzduotis{3}{Atskliauskite:\\\((3x+4)^2\)}
+          \uzduotis{4}{Atskliauskite:\\\((5x-2)^2\)}
+          \uzduotis{5}{Atskliauskite:\\\((2x+3)^3\)}
+          \uzduotis{6}{Atskliauskite:\\\((3x-1)^3\)}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{60mm}
+          \uzduotis{7}{Atskliauskite:\\\((2x-3)(2x+3)\)}
+          \uzduotis{8}{Atskliauskite:\\\((x-4)(x^2+4x+16)\)}
+          \uzduotis{9}{Atskliauskite:\\\((3x+2)(9x^2-6x+4)\)}
+          \uzduotis{10}{Atskliauskite:\\\((4x+7)^2\)}
+          \uzduotis{11}{Atskliauskite:\\\((6x-5)^2\)}
+          \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(8x^3-125\)}
+        \end{minipage}
+      }%
+    };
+
+  % Dešinysis A5 lapelis.
+  \node[anchor=north west,inner sep=0pt]
+    at ([xshift=10mm,yshift=-10mm]current page.north) {%
+      \lapelis{Dosnumo variantas}{%
+        \begin{minipage}[t]{60mm}
+          \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(3x^2-12x+7\)}
+          \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-2x^2-12x+5\)}
+          \uzduotis{3}{Atskliauskite:\\\((5x+3)^2\)}
+          \uzduotis{4}{Atskliauskite:\\\((4x-7)^2\)}
+          \uzduotis{5}{Atskliauskite:\\\((3x+2)^3\)}
+          \uzduotis{6}{Atskliauskite:\\\((2x-5)^3\)}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{60mm}
+          \uzduotis{7}{Atskliauskite:\\\((3x-5)(3x+5)\)}
+          \uzduotis{8}{Atskliauskite:\\\((2x-3)(4x^2+6x+9)\)}
+          \uzduotis{9}{Atskliauskite:\\\((x+5)(x^2-5x+25)\)}
+          \uzduotis{10}{Atskliauskite:\\\((7x+2)^2\)}
+          \uzduotis{11}{Atskliauskite:\\\((6x-1)^2\)}
+          \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(27x^3-64\)}
+        \end{minipage}
+      }%
+    };
+\end{tikzpicture}
+\papildomaslapas{Drąsos variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(4x^2+8x-3\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-2x^2+16x+1\)}
+    \uzduotis{3}{Atskliauskite:\\\((2x+7)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((3x-5)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((2x+5)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((4x-1)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((5x-2)(5x+2)\)}
+    \uzduotis{8}{Atskliauskite:\\\((3x-2)(9x^2+6x+4)\)}
+    \uzduotis{9}{Atskliauskite:\\\((x+4)(x^2-4x+16)\)}
+    \uzduotis{10}{Atskliauskite:\\\((6x+1)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((4x-3)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(64x^3-27\)}
+  }%
+}{Išminties variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(2x^2-12x+9\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-5x^2-10x+6\)}
+    \uzduotis{3}{Atskliauskite:\\\((4x+5)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((7x-2)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((3x+4)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((2x-1)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((4x-7)(4x+7)\)}
+    \uzduotis{8}{Atskliauskite:\\\((x-5)(x^2+5x+25)\)}
+    \uzduotis{9}{Atskliauskite:\\\((2x+1)(4x^2-2x+1)\)}
+    \uzduotis{10}{Atskliauskite:\\\((3x+8)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((5x-6)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(125x^3-8\)}
+  }%
+}
+\papildomaslapas{Teisingumo variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(5x^2+20x+2\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-3x^2+6x-8\)}
+    \uzduotis{3}{Atskliauskite:\\\((6x+5)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((2x-9)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((4x+1)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((3x-5)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((7x-3)(7x+3)\)}
+    \uzduotis{8}{Atskliauskite:\\\((2x-5)(4x^2+10x+25)\)}
+    \uzduotis{9}{Atskliauskite:\\\((x+6)(x^2-6x+36)\)}
+    \uzduotis{10}{Atskliauskite:\\\((5x+2)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((4x-1)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(27x^3-125\)}
+  }%
+}{Saikingumo variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(3x^2-18x+4\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-4x^2-16x+7\)}
+    \uzduotis{3}{Atskliauskite:\\\((7x+4)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((5x-3)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((2x+7)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((5x-2)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((3x-8)(3x+8)\)}
+    \uzduotis{8}{Atskliauskite:\\\((x-6)(x^2+6x+36)\)}
+    \uzduotis{9}{Atskliauskite:\\\((4x+1)(16x^2-4x+1)\)}
+    \uzduotis{10}{Atskliauskite:\\\((2x+5)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((6x-7)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(8x^3-343\)}
+  }%
+}
+\papildomaslapas{Darbštumo variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(2x^2+16x-5\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-5x^2+20x+3\)}
+    \uzduotis{3}{Atskliauskite:\\\((4x+3)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((7x-5)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((5x+1)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((2x-7)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((6x-5)(6x+5)\)}
+    \uzduotis{8}{Atskliauskite:\\\((4x-1)(16x^2+4x+1)\)}
+    \uzduotis{9}{Atskliauskite:\\\((2x+5)(4x^2-10x+25)\)}
+    \uzduotis{10}{Atskliauskite:\\\((3x+7)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((5x-4)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(125x^3-64\)}
+  }%
+}{Sąžiningumo variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(4x^2-24x+1\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-2x^2-4x-9\)}
+    \uzduotis{3}{Atskliauskite:\\\((5x+7)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((3x-8)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((3x+5)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((4x-3)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((2x-9)(2x+9)\)}
+    \uzduotis{8}{Atskliauskite:\\\((x-7)(x^2+7x+49)\)}
+    \uzduotis{9}{Atskliauskite:\\\((3x+1)(9x^2-3x+1)\)}
+    \uzduotis{10}{Atskliauskite:\\\((8x+1)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((6x-3)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(64x^3-125\)}
+  }%
+}
+\papildomaslapas{Kuklumo variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(5x^2-10x+8\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-3x^2-24x+2\)}
+    \uzduotis{3}{Atskliauskite:\\\((2x+9)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((4x-5)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((2x+1)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((5x-3)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((5x-4)(5x+4)\)}
+    \uzduotis{8}{Atskliauskite:\\\((3x-4)(9x^2+12x+16)\)}
+    \uzduotis{9}{Atskliauskite:\\\((x+7)(x^2-7x+49)\)}
+    \uzduotis{10}{Atskliauskite:\\\((6x+7)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((3x-2)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(216x^3-1\)}
+  }%
+}{Atjautos variantas}{%
+  \stulpeliai{%
+    \uzduotis{1}{Išskirkite pilnąjį kvadratą:\\\(3x^2+24x-7\)}
+    \uzduotis{2}{Išskirkite pilnąjį kvadratą:\\\(-4x^2+8x+5\)}
+    \uzduotis{3}{Atskliauskite:\\\((3x+5)^2\)}
+    \uzduotis{4}{Atskliauskite:\\\((6x-1)^2\)}
+    \uzduotis{5}{Atskliauskite:\\\((4x+3)^3\)}
+    \uzduotis{6}{Atskliauskite:\\\((2x-3)^3\)}
+  }{%
+    \uzduotis{7}{Atskliauskite:\\\((7x-2)(7x+2)\)}
+    \uzduotis{8}{Atskliauskite:\\\((2x-1)(4x^2+2x+1)\)}
+    \uzduotis{9}{Atskliauskite:\\\((3x+4)(9x^2-12x+16)\)}
+    \uzduotis{10}{Atskliauskite:\\\((5x+6)^2\)}
+    \uzduotis{11}{Atskliauskite:\\\((4x-9)^2\)}
+    \uzduotis{12}{Išskaidykite dauginamaisiais:\\\(8x^3-729\)}
+  }%
+}
+\end{document}

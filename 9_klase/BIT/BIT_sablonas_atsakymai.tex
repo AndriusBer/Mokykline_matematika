@@ -1,0 +1,104 @@
+\documentclass[11pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=0pt]{geometry}
+\usepackage{tikz}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Kompiliavimas: pdfLaTeX.
+% Spausdinti horizontaliame A4 lape, mastelis 100 % (tikrasis dydis).
+% Perkirpus per vidurį gaunami du statūs A5 dydžio lapeliai.
+% A4 pusės plotis yra 148,5 mm; standartinio A5 nominalus plotis – 148 mm.
+
+% Tuščias stačiakampis: plotis ir aukštis.
+\newcommand{\remelis}[2]{%
+  \tikz[baseline={([yshift=-0.6ex]current bounding box.center)}]\draw[line width=0.5pt]
+    (0,0) rectangle (#1,#2);}
+
+% Viena užduotis. Numeris ir sąlyga įrašomi kaip du argumentai.
+% Jei reikia daugiau vietos sąlygai, didinkite 24 mm eilutės aukštį.
+% Keičiant užduočių skaičių patikrinkite, ar turinys telpa į lapelį.
+\newcommand{\uzduotis}[2]{%
+  \begin{minipage}[t][24mm][t]{\linewidth}
+    \textbf{#1.}\enspace #2\par
+    \vspace{3mm}
+    \remelis{42mm}{10mm}\par
+  \end{minipage}\par
+}
+
+% Vieno A5 lapelio turinys.
+% #1 – varianto pavadinimas; #2 – užduočių sąrašas.
+\newcommand{\lapelis}[2]{%
+  \begin{minipage}[t][190mm][t]{128.5mm}
+    \small
+    \textbf{Mokinio kodas}\enspace\remelis{32mm}{8mm}%
+    \hfill\textbf{#1}\par
+    \vspace{6mm}
+    {\centering\normalsize\textbf{Trumpa apklausa}\par}
+    \vspace{2mm}
+    {\centering\small Į rėmelius įrašykite tik atsakymus.\par}
+    \vspace{7mm}
+    \normalsize
+    #2
+  \end{minipage}%
+}
+
+\begin{document}
+\null
+\begin{tikzpicture}[remember picture,overlay]
+  % Punktyrinė kirpimo linija tiksliai A4 lapo viduryje.
+  \draw[dash pattern=on 2pt off 3pt,line width=0.4pt]
+    (current page.north) -- (current page.south);
+
+  % Kairysis A5 lapelis: 10 mm paraštės.
+  \node[anchor=north west,inner sep=0pt]
+    at ([xshift=10mm,yshift=-10mm]current page.north west) {%
+      \lapelis{I variantas}{%
+        \begin{minipage}[t]{60mm}
+          \uzduotis{1}{Užduoties sąlyga.}
+          \uzduotis{2}{Užduoties sąlyga.}
+          \uzduotis{3}{Užduoties sąlyga.}
+          \uzduotis{4}{Užduoties sąlyga.}
+          \uzduotis{5}{Užduoties sąlyga.}
+          \uzduotis{6}{Užduoties sąlyga.}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{60mm}
+          \uzduotis{7}{Užduoties sąlyga.}
+          \uzduotis{8}{Užduoties sąlyga.}
+          \uzduotis{9}{Užduoties sąlyga.}
+          \uzduotis{10}{Užduoties sąlyga.}
+          \uzduotis{11}{Užduoties sąlyga.}
+          \uzduotis{12}{Užduoties sąlyga.}
+        \end{minipage}
+      }%
+    };
+
+  % Dešinysis A5 lapelis.
+  \node[anchor=north west,inner sep=0pt]
+    at ([xshift=10mm,yshift=-10mm]current page.north) {%
+      \lapelis{II variantas}{%
+        \begin{minipage}[t]{60mm}
+          \uzduotis{1}{Užduoties sąlyga.}
+          \uzduotis{2}{Užduoties sąlyga.}
+          \uzduotis{3}{Užduoties sąlyga.}
+          \uzduotis{4}{Užduoties sąlyga.}
+          \uzduotis{5}{Užduoties sąlyga.}
+          \uzduotis{6}{Užduoties sąlyga.}
+        \end{minipage}\hfill
+        \begin{minipage}[t]{60mm}
+          \uzduotis{7}{Užduoties sąlyga.}
+          \uzduotis{8}{Užduoties sąlyga.}
+          \uzduotis{9}{Užduoties sąlyga.}
+          \uzduotis{10}{Užduoties sąlyga.}
+          \uzduotis{11}{Užduoties sąlyga.}
+          \uzduotis{12}{Užduoties sąlyga.}
+        \end{minipage}
+      }%
+    };
+\end{tikzpicture}
+\end{document}

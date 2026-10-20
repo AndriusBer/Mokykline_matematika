@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1.8cm,top=1.6cm,bottom=1.7cm]{geometry}
+\usepackage{enumitem,fancyhdr,multicol}
+\usepackage{microtype}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\setlist[enumerate]{leftmargin=0.7cm,label=\textbf{\arabic*.},itemsep=0.6em,topsep=0.6em}
+\begin{document}
+\begin{center}
+{\Large\bfseries Kvadratinio daugianario didžiausia\\[2pt] ir mažiausia reikšmė}\par
+\vspace{0.4em}
+{\small 26 uždaviniai}
+\end{center}
+\begin{enumerate}
+
+
+
+
+\item Užrašykite daugianarį $P(x)=ax^2+bx+c$, kurio:
+\begin{enumerate}[label=(\alph*),leftmargin=1cm,itemsep=0.35em,topsep=0pt]
+\item didžiausia reikšmė lygi $8$, kai $x=5$;
+\item mažiausia reikšmė lygi $1$, kai $x=-4$;
+\item didžiausia reikšmė lygi $-4$, kai $x=-3$;
+\item mažiausia reikšmė lygi $2$, kai $x=9$.
+\end{enumerate}
+\item Įrodykite, kad su kiekviena realiąja $x$ reikšme duotasis kvadratinis trinaris yra:
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*),leftmargin=1cm,itemsep=0.35em,topsep=0pt]
+\item $x^2-6x+11$ -- teigiamas;
+\item $2x^2+8x+11$ -- teigiamas;
+\item $3x^2-12x+13$ -- teigiamas;
+\item $5x^2+10x+7$ -- teigiamas;
+\item $4x^2-12x+11$ -- teigiamas;
+\item $-x^2+8x-18$ -- neigiamas;
+\item $-2x^2-12x-20$ -- neigiamas;
+\item $-3x^2+6x-5$ -- neigiamas;
+\item $-4x^2-20x-27$ -- neigiamas;
+\item $-5x^2+20x-23$ -- neigiamas.
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+\begin{enumerate}[start=3]
+\item \begin{minipage}[t]{\linewidth}Įrodykite, kad kvadratinį daugianarį $ax^2+bx+c$, kur $a,b,c\in\mathbb{R}$ ir $a\ne0$, galima užrašyti pavidalu
+\[
+a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a},
+\]
+kur $D=b^2-4ac$ yra diskriminantas.\end{minipage}
+
+\textbf{Išvada 1.} Jei $a>0$, tai daugianario $ax^2+bx+c$ mažiausia reikšmė lygi $-\frac{D}{4a}$, kai $x=-\frac{b}{2a}$.\\ \\
+\textbf{Išvada 2.} Jei $a<0$, tai daugianario $ax^2+bx+c$ didžiausia reikšmė lygi $-\frac{D}{4a}$, kai $x=-\frac{b}{2a}$.
+
+\item Neišskirdami pilnojo kvadrato, nustatykite kiekvieno daugianario mažiausią arba didžiausią reikšmę, kai $x\in\mathbb{R}$, ir nurodykite $x$ reikšmę, su kuria ji gaunama:
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*),leftmargin=1cm,itemsep=0.35em,topsep=0pt]
+\item $x^2-8x+19$;
+\item $-x^2+6x-5$;
+\item $2x^2+6x+7$;
+\item $-3x^2-12x+1$;
+\item $5x^2-10x$;
+\item $-2x^2+5x+3$;
+\item $\frac12x^2+3x-2$;
+\item $-\frac34x^2+6x-7$;
+\item $4x^2-9$;
+\item $-5x^2+2x$.
+\end{enumerate}
+\end{multicols}
+
+\item \begin{minipage}[t]{\linewidth}Įrodykite, kad jei $D<0$ ir $a>0$, tai kvadratinis daugianaris $ax^2+bx+c >0$, kai $x \in \mathbb{R}$.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Įrodykite, kad jei $D<0$ ir $a<0$, tai kvadratinis daugianaris $ax^2+bx+c <0$, kai $x \in \mathbb{R}$.\end{minipage}
+
+\item Naudodamiesi tik vyriausiuoju koeficientu ir diskriminantu, nustatykite, kurie daugianariai yra tik teigiami arba neigiami su visomis realiosiomis $x$ reikšmėmis. Atsakymus pagrįskite:
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*),leftmargin=1cm,itemsep=0.35em,topsep=0pt]
+\item $2x^2-4x+5$;
+\item $-x^2+3x+4$;
+\item $-3x^2+6x-5$;
+\item $x^2+2x-8$;
+\item $-2x^2-4x-7$;
+\item $3x^2+2x+2$;
+\item $-2x^2+5x-2$;
+\item $4x^2-12x+11$;
+\item $2x^2-7x+3$;
+\item $-4x^2-4x-3$.
+\end{enumerate}
+\end{multicols}
+\item Nustatykite kiekvieno daugianario didžiausią ir mažiausią reikšmes nurodytame intervale ir nurodykite visas $x$ reikšmes, su kuriomis jos gaunamos:
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*),leftmargin=1cm,itemsep=0.35em,topsep=0pt]
+\item $P(x)=x^2-4x+7,\quad x\in[-1;5]$;
+\item $P(x)=-2x^2+4x+3,\quad x\in[2;5]$;
+\item $P(x)=3x^2+6x-2,\quad x\in[-4;0]$;
+\item $P(x)=x^2+6x+5,\quad x\in[-2;2]$;
+\item $P(x)=-x^2+8x-10,\quad x\in[1;6]$;
+\item $P(x)=2x^2-12x+11,\quad x\in[-1;2]$;
+\item $P(x)=-3x^2-6x+4,\quad x\in[0;3]$;
+\item $P(x)=2x^2-2x+3,\quad x\in[-1;2]$;
+\item $P(x)=-2x^2+12x-7,\quad x\in[0;2]$;
+\item $P(x)=-x^2-4x+1,\quad x\in[-5;0]$.
+\end{enumerate}
+\end{multicols}
+\item \begin{minipage}[t]{\linewidth}Stačiakampiam daržui aptverti turima 40 m tvoros. Viena daržo kraštinė bus prie pastato sienos, todėl aptverti reikės tik tris kraštines. Kokie turi būti daržo matmenys, kad jo plotas būtų didžiausias? Koks tas plotas?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Kai bilietas į mokyklos spektaklį kainuoja 6~€, jį perka 180 žiūrovų. Organizatoriai numato, kad kiekvieną kartą padidinus kainą 1~€, žiūrovų sumažės dešimčia. Kiek turėtų kainuoti bilietas, kad pajamos būtų didžiausios? Kiek pajamų tada būtų surinkta?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Nuo 15 m aukščio platformos į viršų mestas kamuoliukas. Jo aukštį metrais po $t$ sekundžių nusako formulė
+\[h(t)=-5t^2+20t+15.\]
+Po kiek sekundžių kamuoliukas pakils aukščiausiai? Kokį didžiausią aukštį jis pasieks?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Dvidešimt mokinių reikia padalyti į dvi netuščias grupes. Kiekvienas pirmosios grupės mokinys su kiekvienu antrosios grupės mokiniu sužais po vieną šachmatų partiją. Tos pačios grupės mokiniai tarpusavyje nežais. Kaip padalyti mokinius, kad partijų būtų daugiausia? Kiek jų būtų?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Turima 48 cm ilgio viela. Ji perkerpama į dvi dalis ir iš kiekvienos dalies išlankstomas kvadratas. Kaip reikia perkirpti vielą, kad abiejų kvadratų plotų suma būtų mažiausia? Raskite šią sumą.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Sode auga 30 obelų, kiekviena vidutiniškai užaugina po 40 kg obuolių. Sodininkas numato, kad pasodinus papildomų obelų kiekviena papildoma obelis visų sodo obelų vidutinį derlių sumažins po 1 kg. Kiek papildomų obelų verta pasodinti, kad bendras derlius būtų didžiausias? Koks būtų šis derlius?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Turimas stačiakampis kartono lapas, kurio matmenys yra 30 cm ir 20 cm. Iš jo iškerpama kvadratinė nuotrauka. Už kiekvieną jos kraštinės ilgio centimetrą skiriama 40 taškų, o už kiekvieną nuotraukos ploto kvadratinį centimetrą atimamas 1 taškas. Kokio dydžio nuotrauka surinktų daugiausia taškų? Kiek taškų ji surinktų?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Stačiakampio gėlyno ilgis yra 18 m, o plotis -- 6 m. Planuojama jo ilgį sumažinti, o plotį padidinti tokiu pačiu metrų skaičiumi. Kiek metrų reikia pakeisti abu matmenis, kad naujojo gėlyno plotas būtų didžiausias? Kiek jis būtų didesnis už pradinį plotą?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Dviejų neneigiamų skaičių suma lygi 30. Prie pirmojo skaičiaus pridedama 6, o prie antrojo -- 2. Kokius skaičius reikia pasirinkti, kad gautųjų skaičių sandauga būtų didžiausia? Raskite šią sandaugą.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Mokinių bendrovė pagamino 100 marškinėlių. Vienų marškinėlių pagaminimas kainavo 8~€. Numatoma, kad parduodant po 12~€ būtų parduoti visi marškinėliai, o kiekvieną kartą kainą padidinus 1~€ būtų parduodama penkiais marškinėliais mažiau. Likę marškinėliai pajamų neatneštų. Kokią sveiką kainą eurais pasirinkti, kad pelnas būtų didžiausias? Koks būtų šis pelnas?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Vienas dviratininkas yra sankryžoje ir važiuoja į rytus 12 km/h greičiu. Tuo pačiu metu kitas yra 10 km į šiaurę nuo sankryžos ir važiuoja jos link 6 km/h greičiu. Po kiek laiko atstumas tarp jų bus mažiausias? \textit{Nagrinėkite atstumo kvadratą.}\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Iš 40 cm pločio ilgos skardos juostos gaminamas latakas: abu juostos kraštai užlenkiami į viršų stačiu kampu vienodu atstumu nuo kraštų. Kokio aukščio turi būti latako sienelės, kad jo stačiakampio skerspjūvio plotas būtų didžiausias? Raskite šį plotą.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Dviejų neneigiamų skaičių suma lygi 36. Prie pirmojo skaičiaus kvadrato pridedamas dvigubas antrojo skaičiaus kvadratas. Kokius skaičius reikia pasirinkti, kad gautoji suma būtų mažiausia? Raskite šią sumą.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Parduotuvė numato, kad, vieną puodelį parduodant po 10~€, per savaitę būtų parduota 100 puodelių. Kiekvieną kartą kainą padidinus 1~€, būtų parduodama dešimčia puodelių mažiau. Vieno puodelio įsigijimas parduotuvei kainuoja 6~€, o kitos savaitės išlaidos sudaro 100~€. Puodeliai įsigyjami pagal parduodamą kiekį. Kokią kainą pasirinkti, kad savaitės pelnas būtų didžiausias? Raskite didžiausią pelną.\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Stačiakampio sklypo vienos kraštinės tvora kainuoja 30~€ už metrą, o likusių trijų kraštinių -- po 10~€ už metrą. Visai tvorai skiriama 800~€. Kokie turi būti sklypo matmenys, kad, panaudojus visą biudžetą, būtų aptvertas didžiausias plotas?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Reikia pasirinkti du neneigiamus skaičius, kurių suma lygi 24. Prie pirmojo skaičiaus pridedama 4, o prie antrojo -- 8. Kokius skaičius reikia pasirinkti, kad gautųjų skaičių sandauga būtų didžiausia? Kokia ši sandauga?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}24 stovyklos dalyviai padalijami į dvi netuščias grupes. Kiekvienoje grupėje kiekviena dalyvių pora turi pasikalbėti po vieną kartą. Skirtingų grupių dalyviai tarpusavyje nesikalba. Kaip padalyti dalyvius, kad bendras pokalbių skaičius būtų mažiausias? Kiek pokalbių įvyktų?\end{minipage}
+\item \begin{minipage}[t]{\linewidth}Dviejų neneigiamų skaičių suma lygi 40. Iš pirmojo skaičiaus atimama 3, o prie antrojo pridedama 5. Kokius skaičius reikia pasirinkti, kad gautųjų skaičių sandauga būtų didžiausia? Raskite šią sandaugą.\end{minipage}
+\end{enumerate}
+\end{document}
