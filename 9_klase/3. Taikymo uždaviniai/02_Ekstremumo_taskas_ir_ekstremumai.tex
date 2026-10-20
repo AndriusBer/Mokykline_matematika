@@ -1,0 +1,925 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage[provide=*,lithuanian]{babel}
+
+\usepackage{../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+
+\usepackage{multicol}
+
+\usepackage{tasks}
+
+\usepackage[left=2.15cm,right=2.15cm,top=2.2cm,bottom=2.2cm,headheight=16pt]{geometry}
+
+\numberwithin{exercise}{section}
+
+\makeatletter
+
+\renewenvironment{exercise}{\@thm{\th@definition}{exercise}{}}{\@endtheorem}
+
+\makeatother
+
+\titlehead{}
+
+\title{Kvadratinio daugianario ekstremumo taškas ir ekstremumai}
+
+\subtitle{2 mokomasis lapas}
+
+\author{Andrius Berniukevičius}
+
+\setlength{\emergencystretch}{2em}
+
+\hypersetup{colorlinks=true,linkcolor=MidnightBlue}
+
+\newcommand{\pagalba}[1]{{\small\itshape Jei kyla sunkumų, žr. \ref{#1} pavyzdį.}}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-1cm}
+
+\section{Ekstremumo taškas, minimumas ir maksimumas}
+
+\subsection{Teorija}
+
+Pirmoje temoje įrodėme: kai $a\ne0$ ir $D=b^2-4ac$,
+
+\[P(x)=ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}.\]
+
+Žymėjimas $P(x)$ nusako daugianarį ir kad kintamasis yra $x$, o pvz. $P(1)$ -- jo reikšmę įrašius $x=1$. 
+
+\begin{definition}\label{ap:ekstremumai}
+
+\vocab{Minimumas} -- mažiausia daugianario reikšmė: visos jo reikšmės yra ne mažesnės už ją ir su bent viena $x$ reikšme ji pasiekiama. \vocab{Maksimumas} -- didžiausia daugianario reikšmė: visos jo reikšmės yra ne didesnės už ją ir su bent viena $x$ reikšme ji pasiekiama. Minimumą ir maksimumą bendrai vadiname \vocab{ekstremumais}.
+
+\end{definition}
+
+\begin{definition}\label{ap:ekstremumo_taskas}
+
+Kvadratinio daugianario $P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}$ \vocab{ekstremumo taškas} yra tokia kintamojo reikšmė, kuriai reiškinys skliaustuose lygus nuliui. Iš $x+\dfrac{b}{2a}=0$ gauname
+
+\[
+\boxed{x=-\frac{b}{2a}}.
+\]
+
+Apibendrinant: kvadratinio trinario ekstremumo taškas yra $-\frac{b}{2a}$, o ekstremumo reikšmė -- $-\frac{D}{4a}$.
+
+\end{definition}
+
+\begin{theorem}\label{th:ekstremumai}
+
+Jei $a>0$, tai $P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}$ mažiausią reikšmę įgyja tada, kai $x=-\frac{b}{2a}$, ir ši reikšmė lygi $-\frac{D}{4a}$.
+
+Jei $a<0$, tas pats reiškinys didžiausią reikšmę įgyja tada, kai
+$x=-\frac{b}{2a}$, ir ši reikšmė taip pat lygi $-\frac{D}{4a}$.
+
+\end{theorem}
+
+\begin{proof}
+
+Visada
+\[
+\left(x+\frac{b}{2a}\right)^2\geq0,
+\]
+o šis kvadratas lygus nuliui tada ir tik tada, kai
+\[
+x+\frac{b}{2a}=0,\qquad x=-\frac{b}{2a}.
+\]
+
+Jei $a>0$, padauginę nelygybę iš $a$, gauname
+\[
+a\left(x+\frac{b}{2a}\right)^2\geq0.
+\]
+Pridėję $-\frac{D}{4a}$, gauname
+\[
+P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}
+\geq-\frac{D}{4a}.
+\]
+Lygybė pasiekiama tada ir tik tada, kai
+$x=-\frac{b}{2a}$, todėl tai yra mažiausia reikšmė.
+
+Jei $a<0$, padauginę nelygybę iš $a$, apverčiame jos ženklą:
+\[
+a\left(x+\frac{b}{2a}\right)^2\leq0.
+\]
+Pridėję $-\frac{D}{4a}$, gauname
+\[
+P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}
+\leq-\frac{D}{4a}.
+\]
+Lygybė pasiekiama tada ir tik tada, kai
+$x=-\frac{b}{2a}$, todėl tai yra didžiausia reikšmė.
+
+\end{proof}
+
+\subsection{Išspręsti pavyzdžiai}
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:riba_lygybe}
+Užpildykite tarpus taip, kad nelygybės būtų teisingos, ir nurodykite, kada pasiekiama lygybė:
+\[
+P(x)=3(x+2)^2-7\geq\ldots,
+\qquad
+Q(x)=-2(x-4)^2+5\leq\ldots.
+\]
+\end{example}
+
+\begin{solution}
+Kadangi $(x+2)^2\geq0$, tai $3(x+2)^2\geq0$. Pridėję $-7$, gauname
+\[
+P(x)=3(x+2)^2-7\geq-7.
+\]
+Lygybė pasiekiama tada, kai $(x+2)^2=0$, t. y. kai $x=-2$.
+
+Taip pat $(x-4)^2\geq0$, todėl, padauginę iš neigiamo skaičiaus $-2$, nelygybės ženklą apverčiame:
+\[
+-2(x-4)^2\leq0.
+\]
+Pridėję $5$, gauname
+\[
+Q(x)=-2(x-4)^2+5\leq5.
+\]
+Lygybė pasiekiama tada, kai $(x-4)^2=0$, t. y. kai $x=4$.
+
+\ats{$P(x)\geq-7$, lygybė pasiekiama, kai $x=-2$; $Q(x)\leq5$, lygybė pasiekiama, kai $x=4$.}
+\end{solution}
+
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:palyginti_reiksmes}
+Duota $P(x)=2(x-3)^2-4$ ir $Q(x)=-2(x+1)^2+3$. Įrašykite ženklą $<$, $>$ arba $=$, neskaičiuodami atskirų daugianario reikšmių:
+\[
+\begin{aligned}
+P(4)&\ \ldots\ P(6),\\
+P(1)&\ \ldots\ P(5),\\
+P(-1)&\ \ldots\ P(4),\\
+Q(-2)&\ \ldots\ Q(2),\\
+Q(-3)&\ \ldots\ Q(1),\\
+Q(4)&\ \ldots\ Q(0).
+\end{aligned}
+\]
+\end{example}
+
+\begin{solution}
+Palygindami reikšmes, pakanka palyginti kvadratus, nes prie jų visada pridedamas tas pats skaičius.
+
+Kai $P(x)=2(x-3)^2-4$, kvadratas padaugintas iš teigiamo skaičiaus $2$. Todėl didesnis kvadratas duoda didesnę reikšmę:
+\begin{itemize}
+\item Kai $x=4$ ir $x=6$, gauname atitinkamai $(4-3)^2=1$ ir $(6-3)^2=9$. Kadangi $1<9$, tai $P(4)<P(6)$.
+\item Kai $x=1$ ir $x=5$, gauname atitinkamai $(1-3)^2=4$ ir $(5-3)^2=4$. Kvadratai lygūs, todėl $P(1)=P(5)$.
+\item Kai $x=-1$ ir $x=4$, gauname atitinkamai $(-1-3)^2=16$ ir $(4-3)^2=1$. Kadangi $16>1$, tai $P(-1)>P(4)$.
+\end{itemize}
+
+Kai $Q(x)=-2(x+1)^2+3$, kvadratas padaugintas iš neigiamo skaičiaus $-2$. Didesnį kvadratą padauginus iš neigiamo skaičiaus gaunama mažesnė reikšmė:
+\begin{itemize}
+\item Kai $x=-2$ ir $x=2$, gauname atitinkamai $(-2+1)^2=1$ ir $(2+1)^2=9$. Kadangi $1<9$, tai $Q(-2)>Q(2)$.
+\item Kai $x=-3$ ir $x=1$, gauname atitinkamai $(-3+1)^2=4$ ir $(1+1)^2=4$. Kvadratai lygūs, todėl $Q(-3)=Q(1)$.
+\item Kai $x=4$ ir $x=0$, gauname atitinkamai $(4+1)^2=25$ ir $(0+1)^2=1$. Kadangi $25>1$, tai $Q(4)<Q(0)$.
+\end{itemize}
+\ats{$P(4)<P(6)$, $P(1)=P(5)$, $P(-1)>P(4)$; $Q(-2)>Q(2)$, $Q(-3)=Q(1)$, $Q(4)<Q(0)$.}
+\end{solution}
+
+\Needspace{8\baselineskip}
+
+\begin{example}\label{pv:pavidalas}
+
+Nustatykite ekstremumo tašką ir ekstremumą:
+
+\begin{tasks}[label=\alph*),label-width=1.4em,label-offset=0.1em,item-indent=1.5em](1)
+
+\task $P(x)=2(x+3)^2-4$;
+
+\task $Q(x)=-3(x-2)^2+7$.
+
+\end{tasks}
+
+\end{example}
+
+\begin{solution}\hfill\par
+
+\text{a)} Kvadratas lygus nuliui, kai $x+3=0$, taigi ekstremumo taškas yra $x=-3$. Kadangi $a=2>0$, tai $P(x)\geq-4$ ir lygybė pasiekiama, kai $x=-3$. \emph{Minimumas lygus $-4$; maksimumo nėra.}
+
+
+
+\text{b)} Kvadratas lygus nuliui, kai $x-2=0$, taigi ekstremumo taškas yra $x=2$. Kadangi $a=-3<0$, tai $Q(x)\leq7$ ir lygybė pasiekiama, kai $x=2$. \emph{Maksimumas lygus $7$; minimumo nėra.}
+
+\ats{\begin{tasks}[label=\alph*),label-width=1.4em,label-offset=0.1em,item-indent=1.5em](1)
+
+\task Ekstremumo taškas $x=-3$, minimumas $-4$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=2$, maksimumas $7$; minimumo nėra.
+
+\end{tasks}}
+
+\end{solution}
+
+\Needspace{8\baselineskip}
+
+\begin{example}\label{pv:trinaris}
+
+Raskite ekstremumo tašką ir ekstremumą:
+
+\begin{tasks}[label=\alph*),label-width=1.4em,label-offset=0.1em,item-indent=1.5em](1)
+
+\task $P(x)=2x^2-6x+7$;
+
+\task $Q(x)=-x^2-4x+1$.
+
+\end{tasks}
+
+\end{example}
+
+\begin{solution}\hfill\break
+
+\textbf{a)} $a=2$, $b=-6$, $c=7$, todėl
+
+\[D=36-56=-20,\quad x=-\frac{-6}{4}=\frac32,
+\quad P\left(\frac32\right)=-\frac{-20}{8}=\frac52.\]
+
+Kadangi $a>0$, tai minimumas. Galime patikrinti išskyrę kvadratą: $$P(x)=2\left(x-\frac{3}{2}\right)^2+\frac{5}{2}.$$ 
+
+\emph{Ekstremumo taškas $x=\frac32$, minimumas $\frac52$; maksimumo nėra.}
+
+
+
+\textbf{b)} $a=-1$, $b=-4$, $c=1$, todėl
+
+\[D=16+4=20,\quad x=-\frac{-4}{-2}=-2,
+\quad Q(-2)=-\frac{20}{-4}=5.\]
+
+Kadangi $a<0$, tai maksimumas. Iš tiesų $Q(x)=-(x+2)^2+5$. 
+
+\emph{Ekstremumo taškas $x=-2$, maksimumas $5$; minimumo nėra.}
+
+\ats{\begin{tasks}[label=\alph*),label-width=1.4em,label-offset=0.1em,item-indent=1.5em](1)
+
+\task Ekstremumo taškas $x=\frac32$, minimumas $\frac52$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-2$, maksimumas $5$; minimumo nėra.
+
+\end{tasks}}
+
+\end{solution}
+
+\Needspace{8\baselineskip}
+
+\begin{example}\label{pv:atkurti}
+
+Raskite kvadratinį daugianarį $P(x)$, jei jo ekstremumo taškas yra $x=-1$, ten pasiekiamas minimumas $-3$, o $P(1)=5$.
+
+\end{example}
+
+\begin{solution}
+
+Ekstremumo taškas ir minimumo reikšmė nurodo pavidalą $P(x)=a(x+1)^2-3$, tačiau dar nežinome $a$. Sąlyga $P(1)=5$ reiškia, kad, įrašę $x=1$, turime gauti $5$:
+
+\[a(1+1)^2-3=5,\qquad 4a=8,\qquad a=2.\]
+
+Koeficientas teigiamas, todėl nurodytas ekstremumas tikrai yra minimumas. Gauname
+
+\[\boxed{P(x)=2(x+1)^2-3=2x^2+4x-1.}\]
+
+Patikra: $P(1)=8-3=5$; kvadratas lygus nuliui, kai $x=-1$, o ten daugianario reikšmė lygi $-3$.
+
+
+
+
+
+
+\ats{$P(x)=2(x+1)^2-3=2x^2+4x-1$.}
+
+\end{solution}
+
+\section{Sunkesnių uždavinių sprendimas}
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:sunk_diskriminantas_vienodos}
+Raskite kvadratinį trinarį $P(x)$, jei jo diskriminantas lygus
+$-128$, ekstremumas lygus $4$, o $P(-1)=P(5)$.
+\end{example}
+
+\begin{solution}
+Ekstremumo reikšmė lygi
+\[
+-\frac{D}{4a}.
+\]
+Įrašę duotus skaičius, gauname
+\[
+4=-\frac{-128}{4a}=\frac{32}{a},
+\qquad a=8.
+\]
+Gavome $a=8>0$, todėl ekstremumas yra minimumas.
+
+Ekstremumo tašką pažymėkime $h$. Tuomet
+\[
+P(x)=8(x-h)^2+4.
+\]
+Sąlyga $P(-1)=P(5)$ reiškia, kad
+\[
+8(-1-h)^2+4=8(5-h)^2+4.
+\]
+Atėmę iš abiejų pusių $4$ ir padaliję iš $8$, gauname
+\[
+(-1-h)^2=(5-h)^2.
+\]
+Išskleidžiame kvadratus:
+\[
+1+2h+h^2=25-10h+h^2.
+\]
+Todėl
+\[
+12h=24,\qquad h=2.
+\]
+Vadinasi,
+\[
+P(x)=8(x-2)^2+4=8x^2-32x+36.
+\]
+
+Patikriname duomenis:
+\[
+D=(-32)^2-4\cdot8\cdot36=-128,
+\]
+\[
+P(-1)=76,\qquad P(5)=76.
+\]
+Be to, $8(x-2)^2+4\ge4$, o lygybė pasiekiama, kai $x=2$,
+taigi minimumas tikrai lygus $4$.
+
+\ats{$P(x)=8x^2-32x+36$; ekstremumas yra minimumas.}
+\end{solution}
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:sunk_du_variantai}
+Raskite visus kvadratinius trinarius $P(x)$, kurių diskriminantas
+lygus $-72$, ekstremumas lygus $-3$, o $P(1)=-27$.
+\end{example}
+
+\begin{solution}
+Ekstremumo reikšmė lygi $-\dfrac{D}{4a}$, todėl
+\[
+-3=-\frac{-72}{4a}=\frac{18}{a},
+\qquad a=-6.
+\]
+Gavome $a=-6<0$, todėl ekstremumas yra maksimumas.
+
+Ekstremumo tašką pažymėję $h$, rašome
+\[
+P(x)=-6(x-h)^2-3.
+\]
+Pasinaudojame sąlyga $P(1)=-27$:
+\[
+-6(1-h)^2-3=-27,
+\]
+\[
+6(1-h)^2=24,
+\qquad (1-h)^2=4.
+\]
+Skaičiaus kvadratas lygus $4$ tada ir tik tada, kai pats skaičius
+lygus $2$ arba $-2$. Todėl būtina išnagrinėti abu atvejus:
+\[
+1-h=2 \quad\text{arba}\quad 1-h=-2.
+\]
+Gauname
+\[
+h=-1 \quad\text{arba}\quad h=3.
+\]
+
+Jei $h=-1$, tai
+\[
+P(x)=-6(x+1)^2-3=-6x^2-12x-9.
+\]
+Jei $h=3$, tai
+\[
+P(x)=-6(x-3)^2-3=-6x^2+36x-57.
+\]
+
+
+
+\ats{$P(x)=-6x^2-12x-9$ arba $P(x)=-6x^2+36x-57$; ekstremumas yra maksimumas.}
+\end{solution}
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:sunk_koeficientu_rysiai}
+Kvadratinio trinario $P(x)=ax^2+bx+c$ koeficientai tenkina sąlygas
+\[
+a+c=13,\qquad ac=36,\qquad P(1)=7.
+\]
+Raskite visus tokius trinarius ir jų ekstremumo taškus.
+\end{example}
+
+\begin{solution}
+Įrašę $x=1$ į trinario išraišką, gauname
+\[
+P(1)=a+b+c.
+\]
+Todėl
+\[
+a+b+c=7.
+\]
+Kadangi $a+c=13$, tai
+\[
+13+b=7,\qquad b=-6.
+\]
+
+Lieka rasti $a$ ir $c$. Iš $a+c=13$ išreiškiame
+\[
+c=13-a.
+\]
+Įrašę į sąlygą $ac=36$, gauname
+\[
+a(13-a)=36,
+\]
+\[
+a^2-13a+36=0,
+\]
+\[
+(a-4)(a-9)=0.
+\]
+Vadinasi, $a=4$ arba $a=9$.
+
+\fbox{\textbf{1 atvejis:}} $a=4$. Tuomet $c=9$, todėl
+\[
+P(x)=4x^2-6x+9.
+\]
+Kadangi $a>0$, tai ekstremumo taškas yra
+\[
+x=-\frac{-6}{2\cdot4}=\frac34.
+\]
+
+\fbox{\textbf{2 atvejis:}} $a=9$. Tuomet $c=4$, todėl
+\[
+P(x)=9x^2-6x+4.
+\]
+Kadangi ir šiuo atveju $a>0$, ekstremumo taškas yra
+\[
+x=-\frac{-6}{2\cdot9}=\frac13.
+\]
+
+Patikriname: abiem atvejais $a+c=13$, $ac=36$, o
+\[
+P(1)=a+b+c=13-6=7.
+\]
+
+\ats{$P(x)=4x^2-6x+9$, ekstremumo taškas $x=\frac34$;
+arba $P(x)=9x^2-6x+4$, ekstremumo taškas $x=\frac13$.}
+\end{solution}
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:sunk_trys_reiksmes}
+Žinoma, kad kvadratinio trinario $P(x)$ reikšmės yra
+\[
+P(0)=8,\qquad P(1)=-1,\qquad P(2)=-4.
+\]
+Raskite trinario ekstremumo tašką ir nustatykite,
+ar jame pasiekiamas minimumas, ar maksimumas.
+\end{example}
+
+\begin{solution}
+Užrašome
+\[
+P(x)=ax^2+bx+c.
+\]
+Kadangi $P(0)=c$, iš pirmosios sąlygos iš karto gauname
+\[
+c=8.
+\]
+Įrašę $x=1$ ir $x=2$, gauname dar dvi lygybes:
+\[
+a+b+8=-1,
+\qquad
+4a+2b+8=-4.
+\]
+Sutvarkome:
+\[
+\begin{cases}
+a+b=-9,\\
+4a+2b=-12.
+\end{cases}
+\]
+Pirmąją lygybę padauginame iš $2$:
+\[
+2a+2b=-18.
+\]
+Atimame ją iš antrosios lygybės:
+\[
+(4a+2b)-(2a+2b)=-12-(-18),
+\]
+\[
+2a=6,\qquad a=3.
+\]
+Tuomet
+\[
+3+b=-9,\qquad b=-12.
+\]
+Taigi
+\[
+P(x)=3x^2-12x+8.
+\]
+
+Kadangi $a=3>0$, trinaris turi minimumą. Ekstremumo taškas:
+\[
+x=-\frac{b}{2a}
+=-\frac{-12}{2\cdot3}=2.
+\]
+Galime patikrinti išskyrę pilnąjį kvadratą:
+\[
+P(x)=3(x^2-4x)+8
+=3\bigl((x-2)^2-4\bigr)+8
+=3(x-2)^2-4.
+\]
+Kvadratas $(x-2)^2$ yra neneigiamas ir lygus nuliui tik kai $x=2$.
+Todėl minimumas pasiekiamas būtent šiame taške.
+
+\ats{Ekstremumo taškas $x=2$; minimumas.}
+\end{solution}
+
+\section{Formuojame automatizmą}
+
+\begin{exercise}\label{uz:riba_lygybe}
+Užpildykite tarpus taip, kad nelygybės būtų teisingos, ir nurodykite, kada pasiekiama lygybė.
+
+\par\pagalba{pv:riba_lygybe}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](1)
+
+\task $P(x)=3(x+2)^2-7\geq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $Q(x)=-2(x-4)^2+5\leq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $R(x)=4(x-1)^2+3\geq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $S(x)=-5(x+3)^2-2\leq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $T(x)=\frac12(x-6)^2-4\geq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $U(x)=-\frac13(x+1)^2+8\leq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $V(x)=7(x+2)^2\geq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $W(x)=-4(x-5)^2+1\leq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $F(x)=2(x-3)^2-9\geq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\task $G(x)=-6(x+1)^2-4\leq\ldots$; lygybė pasiekiama, kai $x=\ldots$.
+
+\end{tasks}
+\end{exercise}
+\new
+\begin{exercise}\label{uz:pavidalas}
+
+Nurodykite daugianario ekstremumo tašką ir ekstremumo reikšmę. Parašykite, ar tai minimumas, ar maksimumas, ir nurodykite, kurios rūšies ekstremumo nėra. Pavyzdžiui: „Ekstremumo taškas $x=\ldots$, minimumas lygus $\ldots$, maksimumo nėra.“
+
+\par\pagalba{pv:pavidalas}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](2)
+
+\task $P(x)=2\left(x-3\right)^2-5$.
+
+\task $P(x)=-\left(x+2\right)^2+8$.
+
+\task $P(x)=3\left(x+4\right)^2+1$.
+
+\task $P(x)=-2\left(x-5\right)^2-3$.
+
+\task $P(x)=\frac{1}{2}\left(x+1\right)^2-6$.
+
+\task $P(x)=-4\left(x+3\right)^2$.
+
+\task $P(x)=\left(x-\frac{3}{2}\right)^2+\frac{7}{4}$.
+
+\task $P(x)=-3\left(x+\frac{1}{2}\right)^2+\frac{5}{2}$.
+
+\task $P(x)=5x^2-7$.
+
+\task $P(x)=-x^2-4$.
+
+\end{tasks}
+
+\end{exercise}
+
+\begin{exercise}\label{uz:palyginti_reiksmes}
+Įrašykite ženklą $<$, $>$ arba $=$, neskaičiuodami atskirų daugianario reikšmių.
+
+\par\pagalba{pv:palyginti_reiksmes}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](1)
+
+\task $P(x)=2(x-3)^2-4$: \quad $P(4)\ \ldots\ P(6)$, \quad $P(1)\ \ldots\ P(5)$, \quad $P(-1)\ \ldots\ P(4)$.
+
+\task $Q(x)=-3(x+2)^2+5$: \quad $Q(-1)\ \ldots\ Q(1)$, \quad $Q(-5)\ \ldots\ Q(1)$, \quad $Q(2)\ \ldots\ Q(-2)$.
+
+\task $R(x)=\frac12(x-1)^2+2$: \quad $R(0)\ \ldots\ R(3)$, \quad $R(-1)\ \ldots\ R(3)$, \quad $R(4)\ \ldots\ R(0)$.
+
+\task $S(x)=-2(x-4)^2+1$: \quad $S(3)\ \ldots\ S(6)$, \quad $S(2)\ \ldots\ S(6)$, \quad $S(0)\ \ldots\ S(5)$.
+
+\task $T(x)=5(x+1)^2-3$: \quad $T(-2)\ \ldots\ T(1)$, \quad $T(-4)\ \ldots\ T(2)$, \quad $T(3)\ \ldots\ T(0)$.
+
+\task $U(x)=-\frac14(x-2)^2+7$: \quad $U(1)\ \ldots\ U(4)$, \quad $U(-1)\ \ldots\ U(5)$, \quad $U(6)\ \ldots\ U(2)$.
+
+\task $V(x)=3(x-5)^2$: \quad $V(4)\ \ldots\ V(7)$, \quad $V(3)\ \ldots\ V(7)$, \quad $V(0)\ \ldots\ V(6)$.
+
+\task $W(x)=-6(x+3)^2-2$: \quad $W(-2)\ \ldots\ W(0)$, \quad $W(-5)\ \ldots\ W(-1)$, \quad $W(2)\ \ldots\ W(-3)$.
+
+\task $F(x)=\frac32(x-2)^2-8$: \quad $F(1)\ \ldots\ F(4)$, \quad $F(-1)\ \ldots\ F(5)$, \quad $F(6)\ \ldots\ F(0)$.
+
+\task $G(x)=-2(x-1)^2+6$: \quad $G(0)\ \ldots\ G(3)$, \quad $G(-2)\ \ldots\ G(4)$, \quad $G(5)\ \ldots\ G(1)$.
+
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}\label{uz:trinaris}
+
+Raskite daugianario ekstremumo tašką ir ekstremumo reikšmę. Nurodykite, ar tai minimumas, ar maksimumas, ir kuri ekstremumo rūšis neegzistuoja.
+
+\par\pagalba{pv:trinaris}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](2)
+
+\task $P(x)=x^2-4x+19$.
+
+\task $P(x)=x^2+6x+5$.
+
+\task $P(x)=2x^2-8x+3$.
+
+\task $P(x)=-x^2+10x-7$.
+
+\task $P(x)=3x^2+6x+8$.
+
+\task $P(x)=-2x^2-4x+9$.
+
+\task $P(x)=4x^2+4x+3$.
+
+\task $P(x)=-3x^2+3x+2$.
+
+\task $P(x)=2x^2-5$.
+
+\task $P(x)=-2x^2+6x$.
+
+\end{tasks}
+
+\end{exercise}
+
+\newpage
+
+\begin{exercise}\label{uz:atkurti}
+
+Kiekvienu atveju raskite kvadratinį daugianarį $P(x)=ax^2+bx+c$, kai duotas jo ekstremumo taškas, ten pasiekiamas minimumas arba maksimumas ir papildoma daugianario reikšmė.
+
+\par\pagalba{pv:atkurti}
+
+\begin{tasks}[label=(\arabic*), label-width=2em](2)
+
+\task Ekstremumo taškas $x=2$, minimumas $3$, $P(1)=5$.
+
+\task Ekstremumo taškas $x=-1$, maksimumas $9$, $P(1)=5$.
+
+\task Ekstremumo taškas $x=3$, minimumas $1$, $P(0)=10$.
+
+\task Ekstremumo taškas $x=0$, maksimumas $8$, $P(2)=-4$.
+
+\task Ekstremumo taškas $x=-2$, minimumas $\frac{1}{2}$, $P(0)=\frac{5}{2}$.
+
+\task Ekstremumo taškas $x=4$, maksimumas $23$, $P(2)=15$.
+
+\task Ekstremumo taškas $x=-3$, minimumas $-11$, $P(-1)=-7$.
+
+\task Ekstremumo taškas $x=-1$, maksimumas $7$, $P(0)=\frac{13}{2}$.
+
+\task Ekstremumo taškas $x=3$, minimumas $-3$, $P(2)=-1$.
+
+\task Ekstremumo taškas $x=2$, maksimumas $9$, $P(0)=-7$.
+
+\end{tasks}
+
+\end{exercise}
+
+\section{Kūrybiškumo formavimas}
+
+\begin{exercise} Kiekvienu atveju raskite trinarį $P(x) = ax ^{2} +bx+c$.
+
+\begin{tasks}[label=(\arabic*),label-width=1.8em,label-offset=0.1em,item-indent=2em](1)
+
+\task Trinario diskriminantas lygus $-64$, minimumas lygus $4$ ir pasiekiamas, kai $x=3$.
+
+\task Trinario diskriminantas lygus $-144$, minimumas lygus $6$, o $P(0)=P(4)$.
+
+\task Trinario diskriminantas lygus $-100$, ekstremumo taškas yra $x=2$, o minimumas lygus $5$.
+
+\task Trinario diskriminantas lygus $-81$, minimumas lygus $9$, o $P(1)=P(3)$.
+
+\task Trinario diskriminantas lygus $64$, ekstremumas lygus $-4$ ir pasiekiamas, kai $x=3$.
+
+\task Trinario diskriminantas lygus $144$, ekstremumas lygus $-6$, o $P(0)=P(4)$. Raskite trinarį ir nustatykite, ar ekstremumas yra minimumas, ar maksimumas.
+
+\task Trinario diskriminantas lygus $100$, ekstremumas lygus $5$, o $P(0)=5$. Raskite trinarį ir nustatykite, ar ekstremumas yra minimumas, ar maksimumas.
+
+\task Trinario ekstremumas lygus $-8$, diskriminantas lygus $144$, o $P(0)=10$.
+
+\task Trinario diskriminantas lygus $144$, ekstremumas lygus $-9$, o $P(3)=0$.
+
+\task Trinario diskriminantas lygus $64$, ekstremumas lygus $4$, o $P(2)=-5$.
+
+\task Trinario diskriminantas lygus $81$, ekstremumas lygus $9$, o $P(1)=0$.
+
+\task Trinario diskriminantas lygus $100$, ekstremumas lygus $-5$, o $P(1)=P(5)+20$.
+
+\task Trinario koeficientai tenkina lygybes $a+c=10$, $ac=21$, $P(1)=6$.
+
+\task Trinario diskriminantas lygus $36$, ekstremumas lygus $-3$, o $P(1)=9$.
+
+\task Žinoma, kad $P(1)-P(-1)=8$, $ac=3$, $P(2)=15$.
+
+\task Trinario koeficientai tenkina lygybes $\sqrt{a}+\sqrt{c}=5$, $ac=36$, $P(1)=0$.
+
+\task Žinoma, kad
+\[
+\begin{cases}
+b-\sqrt{ac}=2,\\
+b+\sqrt{ac}=8,
+\end{cases}
+\]
+o trinario mažiausioji reikšmė lygi $\frac{11}{4}$.
+
+\task Trinario diskriminantas lygus $100$, ekstremumas lygus $-5$, o $P(1)+P(3)=10$.
+
+\task Trinario ekstremumas lygus $-9$ ir pasiekiamas, kai $x=2$. Be to, $P(0)\cdot P(4)=25$.
+
+\task Trinario koeficientas $a>0$, diskriminantas lygus $80$, o $P(1)=P(5)$, $P(0)=8$.
+
+\task Trinario diskriminantas lygus nuliui. Be to, $P(1)=4$, $P(3)=16$.
+
+\task Abi trinario šaknys yra realiosios, nelygios nuliui, o jų sandauga lygi $1$. Be to, $P(1)=-1$, $D=9$.
+
+\task Žinoma, kad
+\[
+\begin{cases}
+P(1)+P(-1)=20,\\
+P(1)\cdot P(-1)=64,\\
+ac=21.
+\end{cases}
+\]
+
+\task Trinario koeficientai tenkina lygybes $b^2=ac$, $P(1)=6$, $P(-1)=2$.
+
+\end{tasks}
+\end{exercise}
+
+\begin{exercise}\label{uz:taskas_vienodos_reiksmes}
+Žinoma, kad trinario $P(x)=ax^2+bx+c$ koeficientas $a>0$, o $P(-2)=P(8)$. Raskite trinario ekstremumo tašką.
+\end{exercise}
+
+\begin{exercise}\label{uz:taskas_saknys}
+Trinario $P(x)=ax^2+bx+c$ koeficientas $a<0$. Jo realiosios šaknys $x_1$, $x_2$ tenkina sąlygas $x_1+x_2=10$, $x_1x_2=16$. Raskite trinario ekstremumo tašką.
+\end{exercise}
+
+\begin{exercise}\label{uz:taskas_trys_reiksmes}
+Žinoma, kad kvadratinio trinario $P(x)$ reikšmės yra $P(0)=7$, $P(1)=2$, $P(2)=1$. Raskite trinario ekstremumo tašką ir nustatykite, ar jame pasiekiamas minimumas, ar maksimumas.
+\end{exercise}
+
+\begin{exercise}\label{uz:taskas_diskriminantas}
+Trinario diskriminantas lygus $36$, minimumas lygus $-3$, o $P(1)=9$. Raskite visas galimas trinario ekstremumo taško reikšmes.
+\end{exercise}
+
+\begin{exercise}\label{uz:taskas_koeficientai}
+Trinario $P(x)=ax^2+bx+c$ koeficientai tenkina sąlygas $a+c=10$, $ac=21$, $P(1)=6$. Raskite visas galimas trinario ekstremumo taško reikšmes ir kiekvienu atveju nustatykite, ar ten pasiekiamas minimumas, ar maksimumas.
+\end{exercise}
+
+\newpage
+
+\section{Atsakymai}
+
+Visi ekstremumo taškai nurodyti, kai $x\in\RR$. Kai trinaris turi minimumą, maksimumo nėra; kai turi maksimumą, minimumo nėra.
+
+\par
+
+\textbf{\ref{uz:riba_lygybe} užduotis.}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](1)
+
+\task $P(x)\geq-7$; lygybė pasiekiama, kai $x=-2$.
+
+\task $Q(x)\leq5$; lygybė pasiekiama, kai $x=4$.
+
+\task $R(x)\geq3$; lygybė pasiekiama, kai $x=1$.
+
+\task $S(x)\leq-2$; lygybė pasiekiama, kai $x=-3$.
+
+\task $T(x)\geq-4$; lygybė pasiekiama, kai $x=6$.
+
+\task $U(x)\leq8$; lygybė pasiekiama, kai $x=-1$.
+
+\task $V(x)\geq0$; lygybė pasiekiama, kai $x=-2$.
+
+\task $W(x)\leq1$; lygybė pasiekiama, kai $x=5$.
+
+\task $F(x)\geq-9$; lygybė pasiekiama, kai $x=3$.
+
+\task $G(x)\leq-4$; lygybė pasiekiama, kai $x=-1$.
+
+\end{tasks}
+
+\textbf{\ref{uz:pavidalas} užduotis.}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](2)
+
+\task Ekstremumo taškas $x=3$, minimumas $-5$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-2$, maksimumas $8$; minimumo nėra.
+
+\task Ekstremumo taškas $x=-4$, minimumas $1$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=5$, maksimumas $-3$; minimumo nėra.
+
+\task Ekstremumo taškas $x=-1$, minimumas $-6$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-3$, maksimumas $0$; minimumo nėra.
+
+\task Ekstremumo taškas $x=\frac32$, minimumas $\frac74$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-\frac12$, maksimumas $\frac52$; minimumo nėra.
+
+\task Ekstremumo taškas $x=0$, minimumas $-7$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=0$, maksimumas $-4$; minimumo nėra.
+
+\end{tasks}
+
+\textbf{\ref{uz:palyginti_reiksmes} užduotis.}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](1)
+
+\task $P(4)<P(6)$, $P(1)=P(5)$, $P(-1)>P(4)$.
+
+\task $Q(-1)>Q(1)$, $Q(-5)=Q(1)$, $Q(2)<Q(-2)$.
+
+\task $R(0)<R(3)$, $R(-1)=R(3)$, $R(4)>R(0)$.
+
+\task $S(3)>S(6)$, $S(2)=S(6)$, $S(0)<S(5)$.
+
+\task $T(-2)=T(1)$, $T(-4)=T(2)$, $T(3)>T(0)$.
+
+\task $U(1)>U(4)$, $U(-1)=U(5)$, $U(6)<U(2)$.
+
+\task $V(4)<V(7)$, $V(3)=V(7)$, $V(0)>V(6)$.
+
+\task $W(-2)>W(0)$, $W(-5)=W(-1)$, $W(2)<W(-3)$.
+
+\task $F(1)<F(4)$, $F(-1)=F(5)$, $F(6)>F(0)$.
+
+\task $G(0)>G(3)$, $G(-2)=G(4)$, $G(5)<G(1)$.
+
+\end{tasks}
+
+\textbf{\ref{uz:trinaris} užduotis.}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](2)
+
+\task Ekstremumo taškas $x=2$, minimumas $15$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-3$, minimumas $-4$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=2$, minimumas $-5$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=5$, maksimumas $18$; minimumo nėra.
+
+\task Ekstremumo taškas $x=-1$, minimumas $5$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=-1$, maksimumas $11$; minimumo nėra.
+
+\task Ekstremumo taškas $x=-\frac12$, minimumas $2$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=\frac12$, maksimumas $\frac{11}{4}$; minimumo nėra.
+
+\task Ekstremumo taškas $x=0$, minimumas $-5$; maksimumo nėra.
+
+\task Ekstremumo taškas $x=\frac32$, maksimumas $\frac92$; minimumo nėra.
+
+\end{tasks}
+
+\textbf{\ref{uz:atkurti} užduotis.}
+
+\begin{tasks}[label=(\arabic*),label-width=2em](2)
+
+\task $P(x)=2x^2-8x+11$.
+
+\task $P(x)=-x^2-2x+8$.
+
+\task $P(x)=x^2-6x+10$.
+
+\task $P(x)=-3x^2+8$.
+
+\task $P(x)=\frac{1}{2}x^2+2x+\frac{5}{2}$.
+
+\task $P(x)=-2x^2+16x-9$.
+
+\task $P(x)=x^2+6x-2$.
+
+\task $P(x)=-\frac{1}{2}x^2-x+\frac{13}{2}$.
+
+\task $P(x)=2x^2-12x+15$.
+
+\task $P(x)=-4x^2+16x-7$.
+
+\end{tasks}
+
+\end{document}
