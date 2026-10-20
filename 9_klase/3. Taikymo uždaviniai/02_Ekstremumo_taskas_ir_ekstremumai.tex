@@ -40,7 +40,7 @@
 
 \section{Ekstremumo taškas, minimumas ir maksimumas}
 
-\subsection{Teorija}
+\subsection{Ekstremumo taškas, minimumas ir maksimumas}
 
 Pirmoje temoje įrodėme: kai $a\ne0$ ir $D=b^2-4ac$,
 
@@ -112,8 +112,6 @@ $x=-\frac{b}{2a}$, todėl tai yra didžiausia reikšmė.
 
 \end{proof}
 
-\subsection{Išspręsti pavyzdžiai}
-
 \Needspace{8\baselineskip}
 \begin{example}\label{pv:riba_lygybe}
 Užpildykite tarpus taip, kad nelygybės būtų teisingos, ir nurodykite, kada pasiekiama lygybė:
@@ -144,40 +142,6 @@ Lygybė pasiekiama tada, kai $(x-4)^2=0$, t. y. kai $x=4$.
 \ats{$P(x)\geq-7$, lygybė pasiekiama, kai $x=-2$; $Q(x)\leq5$, lygybė pasiekiama, kai $x=4$.}
 \end{solution}
 
-
-\Needspace{8\baselineskip}
-\begin{example}\label{pv:palyginti_reiksmes}
-Duota $P(x)=2(x-3)^2-4$ ir $Q(x)=-2(x+1)^2+3$. Įrašykite ženklą $<$, $>$ arba $=$, neskaičiuodami atskirų daugianario reikšmių:
-\[
-\begin{aligned}
-P(4)&\ \ldots\ P(6),\\
-P(1)&\ \ldots\ P(5),\\
-P(-1)&\ \ldots\ P(4),\\
-Q(-2)&\ \ldots\ Q(2),\\
-Q(-3)&\ \ldots\ Q(1),\\
-Q(4)&\ \ldots\ Q(0).
-\end{aligned}
-\]
-\end{example}
-
-\begin{solution}
-Palygindami reikšmes, pakanka palyginti kvadratus, nes prie jų visada pridedamas tas pats skaičius.
-
-Kai $P(x)=2(x-3)^2-4$, kvadratas padaugintas iš teigiamo skaičiaus $2$. Todėl didesnis kvadratas duoda didesnę reikšmę:
-\begin{itemize}
-\item Kai $x=4$ ir $x=6$, gauname atitinkamai $(4-3)^2=1$ ir $(6-3)^2=9$. Kadangi $1<9$, tai $P(4)<P(6)$.
-\item Kai $x=1$ ir $x=5$, gauname atitinkamai $(1-3)^2=4$ ir $(5-3)^2=4$. Kvadratai lygūs, todėl $P(1)=P(5)$.
-\item Kai $x=-1$ ir $x=4$, gauname atitinkamai $(-1-3)^2=16$ ir $(4-3)^2=1$. Kadangi $16>1$, tai $P(-1)>P(4)$.
-\end{itemize}
-
-Kai $Q(x)=-2(x+1)^2+3$, kvadratas padaugintas iš neigiamo skaičiaus $-2$. Didesnį kvadratą padauginus iš neigiamo skaičiaus gaunama mažesnė reikšmė:
-\begin{itemize}
-\item Kai $x=-2$ ir $x=2$, gauname atitinkamai $(-2+1)^2=1$ ir $(2+1)^2=9$. Kadangi $1<9$, tai $Q(-2)>Q(2)$.
-\item Kai $x=-3$ ir $x=1$, gauname atitinkamai $(-3+1)^2=4$ ir $(1+1)^2=4$. Kvadratai lygūs, todėl $Q(-3)=Q(1)$.
-\item Kai $x=4$ ir $x=0$, gauname atitinkamai $(4+1)^2=25$ ir $(0+1)^2=1$. Kadangi $25>1$, tai $Q(4)<Q(0)$.
-\end{itemize}
-\ats{$P(4)<P(6)$, $P(1)=P(5)$, $P(-1)>P(4)$; $Q(-2)>Q(2)$, $Q(-3)=Q(1)$, $Q(4)<Q(0)$.}
-\end{solution}
 
 \Needspace{8\baselineskip}
 
@@ -288,6 +252,42 @@ Patikra: $P(1)=8-3=5$; kvadratas lygus nuliui, kai $x=-1$, o ten daugianario rei
 
 \ats{$P(x)=2(x+1)^2-3=2x^2+4x-1$.}
 
+\end{solution}
+
+\subsection{Daugianario reikšmių palyginimas}
+
+Jei daugianaris užrašytas pavidalu $P(x)=a(x-h)^2+k$, įrašius skaičių $u$ vietoje $x$ gaunama $P(u)=a(u-h)^2+k$. Lyginant dvi reikšmes, pakanka palyginti atitinkamus kvadratus: kai $a>0$, didesnis kvadratas duoda didesnę reikšmę, o kai $a<0$ -- mažesnę. Jei kvadratai lygūs, daugianario reikšmės taip pat lygios.
+
+\Needspace{8\baselineskip}
+\begin{example}\label{pv:palyginti_reiksmes}
+Duota $P(x)=2(x-3)^2-4$ ir $Q(x)=-2(x+1)^2+3$. Įrašykite ženklą $<$, $>$ arba $=$, neskaičiuodami atskirų daugianario reikšmių:
+\[
+\begin{aligned}
+P(4)&\ \ldots\ P(6),\\
+P(1)&\ \ldots\ P(5),\\
+P(-1)&\ \ldots\ P(4),\\
+Q(-2)&\ \ldots\ Q(2),\\
+Q(-3)&\ \ldots\ Q(1),\\
+Q(4)&\ \ldots\ Q(0).
+\end{aligned}
+\]
+\end{example}
+
+\begin{solution}
+Kai $P(x)=2(x-3)^2-4$, kvadratas padaugintas iš teigiamo skaičiaus $2$. Todėl didesnis kvadratas duoda didesnę reikšmę:
+\begin{itemize}
+\item Kai $x=4$ ir $x=6$, gauname atitinkamai $(4-3)^2=1$ ir $(6-3)^2=9$. Kadangi $1<9$, tai $P(4)<P(6)$.
+\item Kai $x=1$ ir $x=5$, gauname atitinkamai $(1-3)^2=4$ ir $(5-3)^2=4$. Kvadratai lygūs, todėl $P(1)=P(5)$.
+\item Kai $x=-1$ ir $x=4$, gauname atitinkamai $(-1-3)^2=16$ ir $(4-3)^2=1$. Kadangi $16>1$, tai $P(-1)>P(4)$.
+\end{itemize}
+
+Kai $Q(x)=-2(x+1)^2+3$, kvadratas padaugintas iš neigiamo skaičiaus $-2$. Didesnį kvadratą padauginus iš neigiamo skaičiaus gaunama mažesnė reikšmė:
+\begin{itemize}
+\item Kai $x=-2$ ir $x=2$, gauname atitinkamai $(-2+1)^2=1$ ir $(2+1)^2=9$. Kadangi $1<9$, tai $Q(-2)>Q(2)$.
+\item Kai $x=-3$ ir $x=1$, gauname atitinkamai $(-3+1)^2=4$ ir $(1+1)^2=4$. Kvadratai lygūs, todėl $Q(-3)=Q(1)$.
+\item Kai $x=4$ ir $x=0$, gauname atitinkamai $(4+1)^2=25$ ir $(0+1)^2=1$. Kadangi $25>1$, tai $Q(4)<Q(0)$.
+\end{itemize}
+\ats{$P(4)<P(6)$, $P(1)=P(5)$, $P(-1)>P(4)$; $Q(-2)>Q(2)$, $Q(-3)=Q(1)$, $Q(4)<Q(0)$.}
 \end{solution}
 
 \section{Sunkesnių uždavinių sprendimas}
@@ -564,7 +564,7 @@ Užpildykite tarpus taip, kad nelygybės būtų teisingos, ir nurodykite, kada p
 
 \end{tasks}
 \end{exercise}
-\new
+\newpage
 \begin{exercise}\label{uz:pavidalas}
 
 Nurodykite daugianario ekstremumo tašką ir ekstremumo reikšmę. Parašykite, ar tai minimumas, ar maksimumas, ir nurodykite, kurios rūšies ekstremumo nėra. Pavyzdžiui: „Ekstremumo taškas $x=\ldots$, minimumas lygus $\ldots$, maksimumo nėra.“
@@ -667,7 +667,7 @@ Kiekvienu atveju raskite kvadratinį daugianarį $P(x)=ax^2+bx+c$, kai duotas jo
 
 \par\pagalba{pv:atkurti}
 
-\begin{tasks}[label=(\arabic*), label-width=2em](2)
+\begin{tasks}[label=(\arabic*), label-width=1.8em](2)
 
 \task Ekstremumo taškas $x=2$, minimumas $3$, $P(1)=5$.
 
@@ -693,7 +693,7 @@ Kiekvienu atveju raskite kvadratinį daugianarį $P(x)=ax^2+bx+c$, kai duotas jo
 
 \end{exercise}
 
-\section{Kūrybiškumo formavimas}
+\section{Sudėtingesni uždaviniai}
 
 \begin{exercise} Kiekvienu atveju raskite trinarį $P(x) = ax ^{2} +bx+c$.
 
