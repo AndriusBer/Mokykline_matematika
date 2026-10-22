@@ -1,0 +1,241 @@
+\documentclass[11pt,a4paper]{scrartcl}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+\usepackage[margin=20mm,headheight=15pt,headsep=7mm,footskip=10mm]{geometry}
+\usepackage{multicol,booktabs,needspace}
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\hypersetup{hidelinks,pdftitle={Kvadratinio trinario reikšmių simetrija},pdfauthor={Andrius Berniukevičius}}
+\title{Trinario reikšmių simetrija}
+\titlehead{}
+\setlength{\parskip}{4pt}
+\setlist[enumerate]{leftmargin=*,itemsep=7pt,topsep=4pt}
+\setlength{\columnsep}{9mm}
+\newcommand{\pagetitle}[2]{\begin{center}{\Large\bfseries #1}\\[3pt]{\small #2}\end{center}\vspace{3mm}}
+\newcommand{\pv}[2]{\begin{example}\label{#1}#2\end{example}}
+\newcommand{\hint}[1]{{\small\itshape Jei kyla sunkumų, žr. #1 pavyzdžius.}\par}
+\newcommand{\numberlinefig}[6]{%
+\begin{center}\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+\draw[->,gray] (-.6,0)--(8.6,0);
+\foreach \x/\t in {0/{#1},4/{#2},8/{#3}}{\draw (\x,-.09)--(\x,.09);\node[below=4pt] at (\x,0){$\t$};}
+\fill[MidnightBlue] (0,0) circle(2pt) (8,0) circle(2pt);
+\fill (4,0) circle(2pt);
+\draw[<->,MidnightBlue] (0,.55)--node[above]{#4}(4,.55);
+\draw[<->,MidnightBlue] (4,.55)--node[above]{#5}(8,.55);
+\node[below=20pt,font=\small] at (4,0){#6};
+\end{tikzpicture}\end{center}}
+\begin{document}
+
+% TEORIJA
+\pagetitle{Kvadratinio trinario reikšmių simetrija}{Atstumai nuo ekstremumo taško · teorija ir pavyzdžiai}
+\textbf{Pradinės žinios.} Pilnojo kvadrato išskyrimas; kvadratinio trinario ekstremumo taškas, minimumas ir maksimumas; skaičių tiesė.
+
+\section{Atstumas nuo ekstremumo taško}
+Imkime kvadratinį trinarį
+\[P(x)=2(x-5)^2+3.\]
+Jo minimumo taškas yra $x_{\min}=5$, o minimumas $P_{\min}=3$.
+Skaičiai $3$ ir $7$ nuo $5$ nutolę po du vienetus, tik į skirtingas puses. Todėl skirtumai $3-5=-2$ ir $7-5=2$ yra priešingi, o jų kvadratai lygūs:
+\[P(3)=2\cdot(-2)^2+3=11,\qquad P(7)=2\cdot2^2+3=11.\]
+\numberlinefig{3}{5}{7}{2 vienetai}{2 vienetai}{$P(3)=P(7)$}
+\begin{center}\begin{tabular}{ccc}\toprule
+Kintamojo reikšmės & Atstumas nuo $5$ & Trinario reikšmė\\\midrule
+$4$ ir $6$ & $1$ & $5$\\
+$3$ ir $7$ & $2$ & $11$\\
+$2$ ir $8$ & $3$ & $21$\\\bottomrule
+\end{tabular}\end{center}
+Trinario reikšmei svarbus atstumas nuo minimumo taško. Kurioje jo pusėje pasirinktas skaičius, įtakos neturi. Pagrįskime tai bendruoju atveju.
+
+\begin{property}\label{prop:sym}
+Jei dvi kintamojo reikšmės vienodu atstumu nutolusios nuo kvadratinio trinario ekstremumo taško, tai atitinkamos trinario reikšmės yra lygios.
+\end{property}
+\begin{proof}
+Išskyrę pilnąjį kvadratą, užrašome $P(x)=a(x-h)^2+k$, kur $a\ne0$, o $h$ yra ekstremumo taškas. Jei atstumas nuo pasirinkto skaičiaus iki $h$ yra $d\ge0$, tai $x-h=d$ arba $x-h=-d$. Abiem atvejais $(x-h)^2=d^2$, todėl $P(x)=ad^2+k$. Taigi vienodiems atstumams atitinka vienodos trinario reikšmės.
+\end{proof}
+Trumpai ši savybė užrašoma taip:
+\[\boxed{P(h-d)=P(h+d).}\]
+Ji galioja tiek minimumo, tiek maksimumo atveju.
+
+\newpage
+\section{Kaip rasti tokią pačią trinario reikšmę?}
+\pv{pv:positive}{Trinario ekstremumo taškas yra $5$, o $P(2)=9$. Raskite $P(8)$.}
+\begin{solution}
+Nuo $2$ iki $5$ yra trys vienetai. Nuo $5$ iki $8$ taip pat trys vienetai. Atstumai nuo ekstremumo taško vienodi, todėl $P(8)=P(2)=9$.
+\end{solution}
+\pv{pv:negative}{Trinario ekstremumo taškas yra $-2$. Raskite kitą kintamojo reikšmę, su kuria trinario reikšmė tokia pati kaip su $x=3$.}
+\begin{solution}
+Skaičius $3$ yra penkiais vienetais dešiniau už $-2$. Penkiais vienetais kairiau už $-2$ yra skaičius $-7$. Todėl $P(-7)=P(3)$.
+\end{solution}
+\numberlinefig{-7}{-2}{3}{5 vienetai}{5 vienetai}{$P(-7)=P(3)$}
+
+\begin{property}\label{prop:reverse}
+Jei su dviem skirtingomis kintamojo reikšmėmis gaunamos vienodos kvadratinio trinario reikšmės, tai ekstremumo taškas yra per vidurį tarp tų skaičių.
+\end{property}
+\begin{proof}
+Tegu $P(x)=a(x-h)^2+k$, o $P(u)=P(v)$ ir $u\ne v$. Atėmę $k$ ir padaliję iš $a\ne0$, gauname $(u-h)^2=(v-h)^2$. Vadinasi, atstumų nuo $u$ ir $v$ iki $h$ kvadratai lygūs. Patys atstumai taip pat lygūs, nes jie neneigiami. Skirtingi skaičiai toje pačioje $h$ pusėje negali būti vienodai nuo jo nutolę. Todėl $u$ ir $v$ yra skirtingose $h$ pusėse, o $h$ yra jų vidurys.
+\end{proof}
+\pv{pv:midpoint}{Žinoma, kad $P(8)=P(14)$. Raskite ekstremumo tašką ir kitą skaičių, su kuriuo trinario reikšmė lygi $P(9)$.}
+\begin{solution}
+Tarp $8$ ir $14$ yra šeši vienetai; pusė šio atstumo yra trys vienetai. Ekstremumo taškas yra $8+3=11$. Skaičius $9$ yra dviem vienetais kairiau už $11$, o $13$ -- dviem vienetais dešiniau. Todėl $P(9)=P(13)$.
+\end{solution}
+\textbf{Pastaba.} Sąlyga, kad skaičiai skirtingi, būtina. Lygybė $P(8)=P(8)$ ekstremumo taško nenusako.
+
+\newpage
+\section{Vienodų reikšmių paieška ir reikšmių palyginimas}
+\pv{pv:equation}{Trinario ekstremumo taškas yra $4$. Išspręskite lygtį $P(x)=P(1)$.}
+\begin{solution}
+Skaičius $1$ nuo $4$ nutolęs trimis vienetais į kairę. Tuo pačiu atstumu į dešinę yra $7$. Todėl tinka $x=1$ ir $x=7$. Kitų sprendinių nėra: pagal \ref{prop:reverse} savybę kiekvienas nuo $1$ skirtingas sprendinys turi būti simetriškas jam ekstremumo taško atžvilgiu. Atsakymas: $x=1$ arba $x=7$.
+\end{solution}
+Jei lygties dešinėje būtų $P(4)$, vienintelis sprendinys būtų $x=4$. Nuliniu atstumu nuo ekstremumo taško nutolęs tik pats ekstremumo taškas.
+
+\begin{property}\label{prop:compare}
+Kai trinaris turi minimumą, didesniam atstumui nuo minimumo taško atitinka didesnė trinario reikšmė. Kai trinaris turi maksimumą, didesniam atstumui nuo maksimumo taško atitinka mažesnė trinario reikšmė.
+\end{property}
+\begin{proof}
+Su atstumu $d$ trinario reikšmė lygi $ad^2+k$. Didėjant neneigiamam atstumui, jo kvadratas didėja. Kai $a>0$, dauginant iš $a$ tvarka išlieka, o kai $a<0$ -- apsiverčia. Pridėjus $k$, tvarka nesikeičia.
+\end{proof}
+\pv{pv:min}{Trinario minimumo taškas yra $4$. Palyginkite $P(1)$ ir $P(6)$.}
+\begin{solution}
+Skaičius $1$ nuo $4$ nutolęs trimis vienetais, o $6$ -- dviem. Toliau nuo minimumo taško gaunama didesnė trinario reikšmė, todėl $P(1)>P(6)$.
+\end{solution}
+\pv{pv:max}{Žinoma, kad $P(2)=P(10)$, o trinaris turi maksimumą. Palyginkite $P(3)$ ir $P(8)$.}
+\begin{solution}
+Ekstremumo taškas yra $6$. Skaičius $3$ nuo jo nutolęs trimis vienetais, o $8$ -- dviem. Toliau nuo maksimumo taško gaunama mažesnė trinario reikšmė, todėl $P(3)<P(8)$.
+\end{solution}
+\textbf{Pastaba.} Vien lygybės $P(2)=P(10)$ nepakanka skirtingiems atstumams atitinkančioms reikšmėms palyginti. Reikia žinoti, ar trinaris turi minimumą, ar maksimumą.
+
+\newpage
+\section{Kaip sujungti kelias savybes?}
+\pv{pv:restore}{Raskite kvadratinį trinarį, jei $P(1)=P(7)=5$, o $P(4)=-4$.}
+\begin{solution}
+Ekstremumo taškas yra per vidurį tarp $1$ ir $7$, taigi jis lygus $4$. Kadangi $P(4)=-4$, tai
+\[P(x)=a(x-4)^2-4.\]
+Skaičius $1$ nuo ekstremumo taško nutolęs trimis vienetais. Jo atstumo kvadratas lygus $9$, todėl $5=9a-4$. Gauname $a=1$. Vadinasi,
+\[P(x)=(x-4)^2-4=x^2-8x+12.\]
+\end{solution}
+\pv{pv:distance-square}{Trinario minimumo taškas yra $5$, $P(5)=2$, o $P(6)=5$. Raskite $P(3)$.}
+\begin{solution}
+Vieno vieneto atstumu nuo minimumo taško trinario reikšmė už minimumą didesnė $5-2=3$. Dviejų vienetų atstumo kvadratas yra keturis kartus didesnis už vieno vieneto atstumo kvadratą. Iš pavidalo $ad^2+k$ matyti, kad skirtumas nuo minimumo taip pat keturis kartus didesnis. Todėl
+\[P(3)=2+4\cdot3=14.\]
+Dauginame skirtumą nuo minimumo, o ne pačią trinario reikšmę.
+\end{solution}
+
+\subsection*{Ką verta įsidėmėti?}
+\begin{enumerate}
+\item Vienodu atstumu nuo ekstremumo taško nutolusiems skaičiams atitinka vienodos trinario reikšmės.
+\item Dvi skirtingos kintamojo reikšmės, su kuriomis trinaris įgyja tą pačią reikšmę, yra skirtingose ekstremumo taško pusėse. Jų vidurys yra ekstremumo taškas.
+\item Lygindami reikšmes, pirmiausia raskite atstumus nuo ekstremumo taško, tada atsižvelkite į tai, ar trinaris turi minimumą, ar maksimumą.
+\end{enumerate}
+\textbf{Formulių apibendrinimas.} Jei ekstremumo taškas yra $h$, tai skaičiui $u$ simetriškas skaičius yra $2h-u$. Jei $P(u)=P(v)$ ir $u\ne v$, tai $h=\frac{u+v}{2}$. Šios formulės užrašo jau aptartus samprotavimus apie atstumus ir vidurį.
+
+
+% UZDAVINIAI
+\newpage
+\pagetitle{Uždaviniai}{Visur $P(x)$ yra kvadratinis trinaris; $a$ -- jo pirmasis koeficientas.}
+\textit{Samprotaukite per atstumus. Kai prašoma palyginti ar pagrįsti, nurodykite ekstremumo tašką ir reikalingus atstumus.}
+\subsection*{A. Vienodi atstumai}
+\hint{\ref{pv:positive} ir \ref{pv:negative}}
+\begin{multicols}{2}\begin{enumerate}
+\item Ekstremumo taškas yra $5$. Užbaikite: a) $P(3)=P(\ldots)$; b) $P(9)=P(\ldots)$; c) $P(-2)=P(\ldots)$.
+\item Ekstremumo taškas yra $-3$. Užbaikite: a) $P(-5)=P(\ldots)$; b) $P(2)=P(\ldots)$; c) $P(0)=P(\ldots)$.
+\item Ekstremumo taškas yra $4$, $P(-1)=12$. Raskite $P(9)$.
+\item Ekstremumo taškas yra $-2$, $P(-6)=-7$. Raskite $P(2)$.
+\item $P(x)=-3(x+2)^2+8$. Prie kiekvieno skaičiaus $0$, $3$, $-7$ parašykite kitą skaičių, su kuriuo trinario reikšmė tokia pati.
+\item Ekstremumo taškas yra $\frac12$. Raskite skaičiui $-\frac32$ simetrišką skaičių.
+\end{enumerate}\end{multicols}\subsection*{B. Vidurio radimas ir vienodų reikšmių paieška}\hint{\ref{pv:midpoint} ir \ref{pv:equation}}\begin{multicols}{2}\begin{enumerate}[start=7]
+\item Raskite ekstremumo tašką: a) $P(1)=P(9)$; b) $P(-7)=P(3)$; c) $P(4)=P(5)$.
+\item $P(-2)=P(8)$. Raskite $t\ne0$, su kuriuo $P(t)=P(0)$.
+\item $P(3)=P(11)$. Kurios lygybės teisingos: a) $P(6)=P(8)$; b) $P(0)=P(14)$; c) $P(5)=P(10)$?
+\item Ekstremumo taškas yra $3$. Išspręskite: a) $P(x)=P(1)$; b) $P(x)=P(8)$; c) $P(x)=P(3)$.
+\item $P(-4)=P(6)$. Išspręskite $P(x)=P(3)$.
+\item Ekstremumo taškas yra $-1$. Išspręskite $P(x)=P(2)$.
+\end{enumerate}\end{multicols}\newpage\subsection*{C. Reikšmių palyginimas}\hint{\ref{pv:min} ir \ref{pv:max}}\begin{multicols}{2}\begin{enumerate}[start=13]
+\item Minimumo taškas yra $5$. Palyginkite: a) $P(4)$ ir $P(8)$; b) $P(2)$ ir $P(8)$; c) $P(5)$ ir $P(6)$.
+\item Maksimumo taškas yra $-2$. Palyginkite: a) $P(-5)$ ir $P(0)$; b) $P(-4)$ ir $P(0)$; c) $P(-2)$ ir $P(1)$.
+\item $P(2)=P(10)$, $a<0$. Išdėstykite didėjimo tvarka $P(6)$, $P(5)$, $P(2)$.
+\item $P(-3)=P(5)$, $a>0$. Palyginkite $P(-1)$ ir $P(4)$.
+\end{enumerate}\end{multicols}\subsection*{D. Ar pakanka duomenų? Ar tai įmanoma?}\begin{multicols}{2}\begin{enumerate}[start=17]
+\item Ar iš $P(8)=P(12)$ galima nustatyti, kuri reikšmė didesnė: $P(9)$ ar $P(13)$? Kokios informacijos pakaktų?
+\item Ar iš $P(4)=P(4)$ galima spręsti, kad ekstremumo taškas yra $4$? Pateikite kontrpavyzdį.
+\item Ar gali kvadratinis trinaris tenkinti abi sąlygas: $P(1)=P(7)$ ir $P(2)=P(8)$?
+\item Ar kvadratinis trinaris gali įgyti tą pačią reikšmę su trimis skirtingais skaičiais? Pagrįskite.
+\end{enumerate}\end{multicols}\newpage\subsection*{E. Kelių savybių taikymas}\hint{\ref{pv:restore} ir \ref{pv:distance-square}}\begin{enumerate}[start=21]
+\item $P(0)=P(6)=10$, $P(3)=1$. Raskite $P(x)$.
+\item $P(-1)=P(5)=4$, $P(2)=13$. Raskite $P(x)$.
+\item $P(2)=P(8)$, $P(4)=7$, $P(5)=5$. Raskite $P(6)$ ir $P(3)$.
+\item Minimumo taškas $-1$, $P(-1)=-3$, $P(0)=2$. Raskite $P(-3)$.
+\end{enumerate}\subsection*{F. Savarankiškas samprotavimas}\begin{enumerate}[start=25]
+\item $P(1)=P(9)$. Įrodykite, kad $P(2)+P(8)=2P(2)$.
+\item $P(2)=P(10)$, $P(3)+P(9)=18$. Raskite $P(3)$.
+\item $P(1)=P(7)$ ir $P(2)>P(3)$. Ar trinaris turi minimumą, ar maksimumą?
+\item $P(u)=P(v)$, $u<v$. Įrodykite, kad kiekvienam skaičiui $t$ galioja $P(u+t)=P(v-t)$.
+\end{enumerate}
+\subsection*{Trumpas pasitikrinimas vėliau}
+Uždenkite atsakymus. Dar kartą išspręskite 2, 8, 14 ir 27 uždavinius. Kiekviename sprendime aiškiai pasakykite, kokį vaidmenį atlieka atstumas nuo ekstremumo taško.
+
+
+% ATSAKYMAI
+\newpage\pagetitle{Atsakymai}{Trumpi atsakymai į 1--28 uždavinius}\begin{multicols}{2}\begin{enumerate}
+\item a) $7$; b) $1$; c) $12$.
+\item a) $-1$; b) $-8$; c) $-6$.
+\item $12$.
+\item $-7$.
+\item Atitinkamai $-4$, $-7$, $3$.
+\item $\frac52$.
+\item a) $5$; b) $-2$; c) $\frac92$.
+\item $t=6$.
+\item a) ir b); c) neteisinga.
+\item a) $1$, $5$; b) $-2$, $8$; c) $3$.
+\item $x=-1$ arba $x=3$.
+\item $x=-4$ arba $x=2$.
+\item a) $<$; b) $=$; c) $<$.
+\item a) $<$; b) $=$; c) $>$.
+\item $P(2)<P(5)<P(6)$.
+\item $P(-1)<P(4)$.
+\item Nepakanka; pakaktų $a$ ženklo.
+\item Ne; pvz., $P(x)=x^2+1$.
+\item Negali.
+\item Negali.
+\item $P(x)=(x-3)^2+1$.
+\item $P(x)=-(x-2)^2+13$.
+\item $P(6)=7$, $P(3)=13$.
+\item $17$.
+\item Lygybė teisinga, nes $P(2)=P(8)$.
+\item $9$.
+\item Minimumą.
+\item Teiginys teisingas.
+\end{enumerate}\end{multicols}
+
+
+% SPRENDIMAI
+\newpage\pagetitle{Mokytojo sprendimai}{Atstumais pagrįsti visų uždavinių sprendimai}\begin{enumerate}
+\item Atstumai nuo $5$ yra atitinkamai $2$, $4$, $7$. Į kitą pusę tiek pat nutolę skaičiai yra $7$, $1$, $12$.
+\item Atstumai nuo $-3$ yra $2$, $5$, $3$. Kitoje pusėje gauname $-1$, $-8$, $-6$.
+\item Abu skaičiai nuo $4$ nutolę po $5$ vienetus, todėl $P(9)=P(-1)=12$.
+\item Atstumai nuo $-2$ lygūs $4$, todėl $P(2)=P(-6)=-7$.
+\item Ekstremumo taškas $-2$. Atstumai yra $2$, $5$, $5$; kitoje pusėje gauname $-4$, $-7$, $3$.
+\item Nuo $-\frac32$ iki $\frac12$ yra $2$ vienetai. Pridėję $2$ prie $\frac12$, gauname $\frac52$.
+\item Randame atstumų puses: a) $1+8:2=5$; b) $-7+10:2=-2$; c) $4+1:2=\frac92$.
+\item Ekstremumo taškas $3$. Nulis yra $3$ vienetais kairiau, o $6$ -- tiek pat dešiniau.
+\item Ekstremumo taškas $7$. a) atstumai $1$ ir $1$; b) $7$ ir $7$; c) $2$ ir $3$. Skirtingi atstumai duoda skirtingas reikšmes pagal \ref{prop:compare} savybę.
+\item a) Atstumas $2$, todėl tinka $1$ ir $5$. b) Atstumas $5$, todėl tinka $-2$ ir $8$. c) Atstumas $0$, todėl tinka tik $3$.
+\item Ekstremumo taškas $1$. Nuo $3$ iki jo yra $2$ vienetai. Kitoje pusėje yra $-1$.
+\item Skaičius $2$ nuo $-1$ nutolęs $3$ vienetais. Tiek pat į kairę nutolęs $-4$.
+\item Atstumai nuo minimumo taško: a) $1<3$; b) $3=3$; c) $0<1$. Didesnis atstumas duoda didesnę reikšmę.
+\item Atstumai: a) $3>2$; b) $2=2$; c) $0<3$. Toliau nuo maksimumo taško reikšmė mažesnė.
+\item Maksimumo taškas $6$. Atstumai $4$, $1$, $0$. Kadangi $a<0$, didžiausiam atstumui atitinka mažiausia reikšmė.
+\item Minimumo taškas $1$. Atstumai iki $-1$ ir $4$ yra $2$ ir $3$. Pirmasis mažesnis.
+\item Ekstremumo taškas $10$, atstumai $1$ ir $3$. Kai $a>0$, $P(9)<P(13)$; kai $a<0$, $P(9)>P(13)$. Abu atvejai suderinami su duota lygybe.
+\item Lygybė su tuo pačiu skaičiumi teisinga visada. Trinario $x^2+1$ ekstremumo taškas $0$, nors $P(4)=P(4)$.
+\item Pirmoji sąlyga duoda ekstremumo tašką $4$, antroji -- $5$. Tačiau pavidale $a(x-h)^2+k$ ekstremumo taškas yra vienintelis: tik kai $x=h$ atstumo kvadratas lygus nuliui.
+\item Tai pačiai trinario reikšmei turi atitikti tas pats atstumas nuo ekstremumo taško. Duotu teigiamu atstumu skaičių tiesėje yra tik du skaičiai, o nuliniu -- vienas.
+\item Ekstremumo taškas $3$, ekstremumas $1$. Todėl $P(x)=a(x-3)^2+1$. Atstumas nuo $0$ iki $3$ yra $3$, tad $10=9a+1$ ir $a=1$.
+\item Ekstremumo taškas $2$, ekstremumas $13$. Atstumas iki $-1$ yra $3$, todėl $4=9a+13$ ir $a=-1$.
+\newpage
+\item Ekstremumo taškas $5$. Skaičiai $4$ ir $6$ nuo jo nutolę po $1$, todėl $P(6)=7$. Vieno vieneto atstumu skirtumas nuo ekstremumo lygus $7-5=2$. Dviejų vienetų atstumu skirtumas keturis kartus didesnis, todėl $P(3)=5+4\cdot2=13$.
+\item Vieno vieneto atstumu skirtumas nuo minimumo yra $2-(-3)=5$. Skaičius $-3$ nutolęs $2$ vienetais, todėl $P(-3)=-3+4\cdot5=17$.
+\item Ekstremumo taškas $5$. Skaičiai $2$ ir $8$ nuo jo nutolę po $3$, todėl jų reikšmės lygios. Jų suma lygi dvigubai vienai iš jų.
+\item Ekstremumo taškas $6$. Skaičiai $3$ ir $9$ nuo jo nutolę po $3$, todėl jų reikšmės lygios. Kiekviena lygi pusei sumos: $18:2=9$.
+\item Ekstremumo taškas $4$. Skaičius $2$ nutolęs $2$ vienetais, o $3$ -- vienu. Tolimesniam skaičiui atitinka didesnė reikšmė. Maksimumo atveju būtų priešingai, todėl trinaris turi minimumą.
+\item Ekstremumo taškas yra $h=(u+v)/2$. Skirtumai nuo jo yra priešingi: $(u+t)-h=-(v-t-h)$. Todėl atstumai nuo $h$ vienodi, net jei pasirinkti skaičiai peržengia ekstremumo tašką. Pagal simetrijos savybę jų trinario reikšmės lygios.
+\end{enumerate}
+
+\end{document}
