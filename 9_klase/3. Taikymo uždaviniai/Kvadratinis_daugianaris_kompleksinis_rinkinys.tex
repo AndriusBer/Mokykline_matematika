@@ -1,0 +1,330 @@
+\documentclass[11pt,a4paper]{article}
+
+% Kompiliuoti su PDFLaTeX.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1.9cm,headheight=15pt,headsep=12pt]{geometry}
+\usepackage{enumitem,multicol,array,tabularx,longtable}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{booktabs}
+
+\definecolor{mainblue}{HTML}{20385C}
+\definecolor{muted}{HTML}{5C6470}
+\definecolor{lightline}{HTML}{DCE2E8}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\columnsep}{20pt}
+\setlist[enumerate,1]{label=\textbf{\alph*)},leftmargin=1.0cm,itemsep=.4em,topsep=.35em}
+\setlist[itemize]{leftmargin=1.0cm,itemsep=.18em,topsep=.2em}
+\renewcommand{\arraystretch}{1.16}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{muted}Kvadratinis daugianaris}
+\fancyhead[R]{\small\color{muted}9 klasė}
+\fancyfoot[C]{\small\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}{\large\bfseries\color{mainblue}}{\thesection.}{.6em}{}
+\titlespacing{\section}{0pt}{1.35em}{.5em}
+\titleformat{\subsection}{\normalsize\bfseries\color{mainblue}}{}{0pt}{}
+\titlespacing{\subsection}{0pt}{1em}{.35em}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\kom}[1]{\par\smallskip{\small\color{muted}\textit{#1}}\par}
+\newcommand{\uzd}[2]{\needspace{7\baselineskip}\section{#1}\textit{#2}\par\smallskip}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{mainblue} Kvadratinis daugianaris}\\[4pt]
+{\large Pavidalai, savybės ir vidiniai ryšiai}\\[4pt]
+{\small Kompleksinis užduočių rinkinys \(\cdot\) 9 klasė}
+\end{center}
+\vspace{3pt}
+\noindent\textbf{Mokinio kodas:}\ \rule{4cm}{0.4pt}
+\hfill\textbf{Klasė:}\ \rule{2.1cm}{0.4pt}
+\vspace{4pt}
+\hrule height .45pt
+\vspace{4pt}
+
+\textbf{Naudinga prisiminti.} Jei $P(x)=ax^2+bx+c$ ir $a\neq 0$, tai
+\[
+D=b^2-4ac,\qquad h=-\frac{b}{2a},\qquad
+P(x)=a(x-h)^2+m,\qquad m=-\frac{D}{4a}.
+\]
+Skaičius $h$ yra ekstremumo taškas, o $m$ -- ekstremumas (mažiausioji arba
+ didžiausioji reikšmė, žiūrint į $a$ ženklą).
+
+\uzd{Trys pavidalai -- vienas daugianaris}{Iš vienos išraiškos išskaitykite kuo daugiau informacijos.}
+Duotas kvadratinis daugianaris
+\[
+P(x)=-2x^2+12x-10.
+\]
+\begin{enumerate}
+\item Užrašykite šį daugianarį dar dviem pavidalais:
+\[
+P(x)=a(x-x_1)(x-x_2),\qquad P(x)=a(x-h)^2+m.
+\]
+\item Remdamiesi gautais pavidalais nustatykite daugianario šaknis, ekstremumo
+ tašką, ekstremumą ir jo tipą (minimumas ar maksimumas).
+\item Raskite didžiausiąją ir mažiausiąją daugianario reikšmę \emph{kiekviename}
+ iš intervalų
+\[
+[2;4]\qquad\text{ir}\qquad[4;6].
+\]
+Kiekvienu atveju nurodykite, su kuriomis $x$ reikšmėmis šios reikšmės
+ pasiekiamos.
+\item Nustatykite, su kuriomis realiosiomis $x$ reikšmėmis
+ $P(x)>0$, o su kuriomis $P(x)<0$.
+\item Paaiškinkite, kuris iš trijų pavidalų patogiausias šaknims,
+ kuris ekstremumui, o kuris koeficientams nustatyti.
+\end{enumerate}
+
+\uzd{Įrodykite, kad ženklas nesikeičia}{Įrodymas turi galioti visoms realiosioms $x$ reikšmėms.}
+Duoti kvadratiniai daugianariai
+\[
+P(x)=2x^2-8x+11,\qquad Q(x)=-3x^2-12x-16.
+\]
+\begin{enumerate}
+\item Įrodykite, kad $P(x)>0$ su kiekviena $x\in\R$.
+\item Įrodykite, kad $Q(x)<0$ su kiekviena $x\in\R$.
+\item Ar šie daugianariai turi realiųjų šaknų? Pagrįskite.
+\item Ar a) ir b) įrodymams būtina apskaičiuoti diskriminantą?
+ Pateikite įrodymą išskirdami pilnąjį kvadratą.
+\end{enumerate}
+
+\uzd{Atpažinkite daugianario ženklus}{Svarbu suprasti daugianario pavidalą, o ne atlikti nereikalingus veiksmus.}
+Duota dešimt kvadratinių daugianarių:
+\begin{multicols}{2}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=0.8cm,itemsep=.65em]
+\item $2(x-1)^2+3$
+\item $(x+4)(x-2)$
+\item $-2(x+3)^2$
+\item $-3(x+2)^2-4$
+\item $2(x-5)^2$
+\item $-2(x-1)(x-6)$
+\item $(x+1)^2$
+\item $3(x+3)(x-1)$
+\item $-4(x-2)^2$
+\item $-(x+2)(x-5)$
+\end{enumerate}
+\end{multicols}
+\begin{enumerate}
+\item \textbf{Neatskliausdami ir nespręsdami kvadratinių lygčių}, kiekvienam
+ daugianariui nustatykite:
+\begin{itemize}
+\item ar jis turi realiųjų šaknų ir, jei turi, kokios jos;
+\item su kuriomis $x$ reikšmėmis daugianaris teigiamas;
+\item su kuriomis $x$ reikšmėmis daugianaris neigiamas;
+\item su kuriomis $x$ reikšmėmis jis lygus nuliui.
+\end{itemize}
+\item Nenustatydami tikslios diskriminanto reikšmės nurodykite, kurių
+ daugianarių diskriminantai teigiami, neigiami arba lygūs nuliui.
+ Paaiškinkite, kaip tai nustatėte.
+\item Antrąjį ir šeštąjį daugianarius pažymėkime atitinkamai $P(x)$ ir $Q(x)$.
+ Raskite visas $x$ reikšmes, su kuriomis:
+\begin{itemize}
+\item abu daugianariai teigiami;
+\item pirmasis neigiamas, o antrasis teigiamas;
+\item pirmasis teigiamas, o antrasis neigiamas.
+\end{itemize}
+\end{enumerate}
+
+\uzd{Sukonstruokite daugianarį}{Kiekvienu atveju paaiškinkite, kaip nustatėte koeficientus.}
+Kiekvienoje dalyje raskite kvadratinį daugianarį
+$P(x)=ax^2+bx+c$, kur $a\neq0$, tenkinantį nurodytas sąlygas.
+\begin{enumerate}
+\item \textbf{Simetrija ir ekstremumas.}
+ Žinoma, kad $P(1)=P(5)=9$, o mažiausioji reikšmė yra $1$.
+ Sukonstruokite daugianarį.
+\item \textbf{Šaknys ir viena reikšmė.}
+ Daugianario šaknys yra $-2$ ir $4$. Be to, $P(0)=-16$.
+ Sukonstruokite daugianarį.
+\item \textbf{Diskriminantas ir ekstremumo taškas.}
+ Žinoma, kad $a=1$, $D=36$, o ekstremumo taškas yra $x=2$.
+ Sukonstruokite daugianarį.
+\item \textbf{Daugianario ženklai.}
+ Sukonstruokite daugianarį, kuris teigiamas tik tada, kai $2<x<6$,
+ neigiamas, kai $x<2$ arba $x>6$, ir tenkina $P(4)=8$.
+\item \textbf{Simetrija ir diskriminantas.}
+ Žinoma, kad $P(1)=P(5)$, $a=2$ ir $D=32$.
+ Sukonstruokite daugianarį.
+\item \textbf{Šaknys ir diskriminantas.}
+ Daugianario šaknys yra $-1$ ir $5$, jo diskriminantas lygus $144$,
+ o aukščiausiojo laipsnio koeficientas neigiamas.
+ Sukonstruokite daugianarį.
+\item \textbf{Ar daugianaris nustatomas vienareikšmiškai?}
+ Sukonstruokite tris skirtingus kvadratinius daugianarius, kuriems
+\[
+P(x)>0\quad\text{kai }x<1\text{ arba }x>5,\qquad
+P(x)<0\quad\text{kai }1<x<5.
+\]
+Ar sąlygos vienareikšmiškai nustato daugianarį? Jei ne, pateikite
+ \emph{visų} tokių daugianarių formulę.
+\end{enumerate}
+
+\uzd{Įrodykite, kad taip būti negali}{Suraskite prieštarą duotoms daugianario savybėms.}
+Kiekvienoje dalyje pateikta informacija apie kvadratinį daugianarį
+$P(x)=ax^2+bx+c$ ir jai prieštaraujantis teiginys. Įrodykite, kad
+ teiginys negali būti teisingas. Vien kelių konkrečių reikšmių patikrinimo nepakanka.
+\begin{enumerate}
+\item Žinoma, kad $a>0$ ir $D<0$.
+ Mokinys teigia, jog egzistuoja $x\in\R$, kuriam $P(x)<0$.
+ Įrodykite, kad jis klysta.
+\item Žinoma, kad $a<0$ ir $D>0$.
+ Mokinys teigia, jog didžiausioji daugianario reikšmė neigiama.
+ Įrodykite, kad taip būti negali.
+\item Žinoma, kad $a>0$ ir $b>0$.
+ Mokinys teigia, kad ekstremumo taškas yra teigiamas skaičius.
+ Įrodykite, kad taip būti negali.
+\item Žinoma, kad $a>0$ ir $c<0$.
+ Mokinys teigia, jog diskriminantas neigiamas.
+ Įrodykite, kad taip būti negali. Pateikite \emph{du skirtingus argumentus}.
+\item Žinoma, kad $a>0$ ir $P(1)=P(7)$.
+ Mokinys teigia, jog $P(4)>P(3)$.
+ Įrodykite, kad teiginys klaidingas.
+\item Žinoma, kad $a=2$ ir $D=32$.
+ Mokinys teigia, kad mažiausioji daugianario reikšmė yra $3$.
+ Įrodykite, kad taip būti negali.
+\item Žinoma, kad $a>0$, $b>0$ ir $D>0$.
+ Mokinys teigia, kad abi daugianario šaknys teigiamos.
+ Įrodykite, kad taip būti negali.
+\item Žinoma, kad $a<0$ ir $P(2)=P(8)$.
+ Mokinys teigia, jog $P(5)<P(7)$.
+ Įrodykite, kad taip būti negali.
+\end{enumerate}
+
+\clearpage
+\begin{center}
+{\LARGE\bfseries\color{mainblue} Atsakymai ir sprendimų gairės}\\[3pt]
+{\small Ši dalis skirta savarankiškam pasitikrinimui ir mokytojui.}
+\end{center}
+\vspace{8pt}
+
+\section*{1 užduotis}
+\[
+P(x)=-2(x-1)(x-5)=-2(x-3)^2+8.
+\]
+Šaknys: $x_1=1$, $x_2=5$. Ekstremumo taškas: $x=3$.
+ Maksimumas: $8$ (pasiekiamas, kai $x=3$).
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Intervalas & Mažiausioji reikšmė & Didžiausioji reikšmė \\
+\midrule
+$[2;4]$ & $6$, kai $x=2$ arba $x=4$ & $8$, kai $x=3$ \\
+$[4;6]$ & $-10$, kai $x=6$ & $6$, kai $x=4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$P(x)>0$, kai $1<x<5$; $P(x)<0$, kai $x<1$ arba $x>5$.
+ Išskaidytasis pavidalas patogiausias šaknims, pilnojo kvadrato pavidalas --
+ ekstremumui, o išskleistasis -- koeficientams nuskaityti.
+
+\section*{2 užduotis}
+\[
+P(x)=2(x-2)^2+3>0,\qquad Q(x)=-3(x+2)^2-4<0
+\quad\text{su visais }x\in\R.
+\]
+Kadangi kvadratas neneigiamas, pirmasis daugianaris visada ne mažesnis
+ už $3$, o antrasis visada ne didesnis už $-4$.
+ Todėl nė vienas neturi realiųjų šaknų.
+
+\section*{3 užduotis}
+Žemiau kiekvienam daugianariui pateikta visa ženklų analizė.
+ Pažymėjimas $\R\setminus\{u\}$ reiškia visus realiuosius skaičius,
+ išskyrus $u$.
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=0.85cm,itemsep=.6em]
+\item $D<0$, šaknų nėra. $P>0$ su visais $x\in\R$; $P<0$ niekada;
+ $P=0$ niekada.
+\item $D>0$, šaknys $-4$ ir $2$.
+ $P>0$: $x<-4$ arba $x>2$;
+ $P<0$: $-4<x<2$;
+ $P=0$: $x=-4$ arba $x=2$.
+\item $D=0$, šaknis $-3$ (dviguba).
+ $P>0$ niekada; $P<0$: $x\neq -3$; $P=0$: $x=-3$.
+\item $D<0$, šaknų nėra. $P>0$ niekada;
+ $P<0$ su visais $x\in\R$; $P=0$ niekada.
+\item $D=0$, šaknis $5$ (dviguba).
+ $P>0$: $x\neq5$; $P<0$ niekada; $P=0$: $x=5$.
+\item $D>0$, šaknys $1$ ir $6$.
+ $P>0$: $1<x<6$;
+ $P<0$: $x<1$ arba $x>6$;
+ $P=0$: $x=1$ arba $x=6$.
+\item $D=0$, šaknis $-1$ (dviguba).
+ $P>0$: $x\neq -1$; $P<0$ niekada; $P=0$: $x=-1$.
+\item $D>0$, šaknys $-3$ ir $1$.
+ $P>0$: $x<-3$ arba $x>1$;
+ $P<0$: $-3<x<1$;
+ $P=0$: $x=-3$ arba $x=1$.
+\item $D=0$, šaknis $2$ (dviguba).
+ $P>0$ niekada; $P<0$: $x\neq2$; $P=0$: $x=2$.
+\item $D>0$, šaknys $-2$ ir $5$.
+ $P>0$: $-2<x<5$;
+ $P<0$: $x<-2$ arba $x>5$;
+ $P=0$: $x=-2$ arba $x=5$.
+\end{enumerate}
+\textbf{c) dalis.} Kai $P(x)=(x+4)(x-2)$, o
+$Q(x)=-2(x-1)(x-6)$:
+\begin{itemize}
+\item abu teigiami: $2<x<6$;
+\item $P(x)<0$, $Q(x)>0$: $1<x<2$;
+\item $P(x)>0$, $Q(x)<0$: $x<-4$ arba $x>6$.
+\end{itemize}
+
+\section*{4 užduotis}
+\begin{enumerate}
+\item $P(x)=2(x-3)^2+1$.
+ Vienodų reikšmių $P(1)=P(5)$ argumentai simetriški taško $3$ atžvilgiu,
+ todėl $h=3$. Iš $P(1)=9$ gauname $4a+1=9$, taigi $a=2$.
+\item $P(x)=2(x+2)(x-4)$.
+ Iš šaknų gauname $a(x+2)(x-4)$; sąlyga $P(0)=-16$ duoda $-8a=-16$.
+\item $P(x)=x^2-4x-5$.
+ Kadangi $-b/(2a)=2$ ir $a=1$, turime $b=-4$;
+ iš $D=b^2-4ac=36$ gauname $c=-5$.
+\item $P(x)=-2(x-2)(x-6)$.
+ Pagal ženklus šaknys yra $2$ ir $6$, o $a<0$.
+ Iš $P(4)=8$ gauname $-4a=8$, todėl $a=-2$.
+\item $P(x)=2(x-3)^2-4$.
+ Iš $P(1)=P(5)$ gauname $h=3$;
+ iš $m=-D/(4a)$ gauname $m=-4$.
+\item $P(x)=-2(x+1)(x-5)$.
+ Čia $D=a^2(x_2-x_1)^2=36a^2=144$.
+ Todėl $|a|=2$, o kadangi $a<0$, tai $a=-2$.
+\item Pavyzdžiui, $(x-1)(x-5)$, $2(x-1)(x-5)$ ir
+ $3(x-1)(x-5)$. Visi atsakymai:
+ \[
+ P(x)=a(x-1)(x-5),\qquad a>0.
+ \]
+\end{enumerate}
+
+\section*{5 užduotis}
+\begin{enumerate}
+\item Iš formulės $m=-D/(4a)$ gauname $m>0$, nes $D<0$ ir $a>0$.
+ Tai minimumas, todėl $P(x)\ge m>0$ visiems $x\in\R$.
+\item Kadangi $a<0$, skaičius $m=-D/(4a)>0$ yra maksimumas.
+ Jis negali būti neigiamas.
+\item Ekstremumo taškas $h=-b/(2a)<0$, nes $a,b>0$.
+\item Pirmas argumentas: $D=b^2-4ac>0$, nes $b^2\ge0$ ir $-4ac>0$.
+ Antras argumentas: $P(0)=c<0$. Jei $a>0$ ir $D<0$,
+ tai pagal pilnojo kvadrato pavidalą $P(x)>0$ visiems $x$, prieštara.
+\item Iš $P(1)=P(7)$ gauname $h=4$.
+ Kadangi $a>0$, taške $4$ yra minimumas, todėl $P(4)<P(3)$.
+\item Mažiausioji reikšmė $m=-D/(4a)=-32/8=-4$, o ne $3$.
+\item Pagal Vijetos teoremą šaknų suma yra $-b/a<0$.
+ Dvi teigiamos šaknys turėtų teigiamą sumą -- prieštara.
+\item Iš $P(2)=P(8)$ gauname $h=5$.
+ Kadangi $a<0$, taške $5$ yra maksimumas, todėl $P(5)>P(7)$.
+\end{enumerate}
+
+\end{document}

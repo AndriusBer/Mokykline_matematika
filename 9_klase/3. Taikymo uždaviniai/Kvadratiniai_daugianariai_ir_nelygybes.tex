@@ -1,0 +1,528 @@
+\documentclass[11pt,a4paper]{article}
+
+% LuaLaTeX ir XeLaTeX naudoja Noto Serif; pdfLaTeX -- numatytąjį šriftą.
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Noto Serif}
+\fi
+\usepackage[lithuanian]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlist[enumerate,1]{label=\alph*),leftmargin=2.2em,itemsep=0.45em,topsep=0.4em}
+\setlist[enumerate,2]{label=\alph*),leftmargin=2.1em,itemsep=0.2em,topsep=0.3em}
+\setlist[itemize]{topsep=0.2em,itemsep=0.1em}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Kvadratiniai daugianariai ir nelygybės}
+\fancyhead[R]{\small Užduočių rinkinys}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\newcounter{uzd}
+\newcommand{\uzdavinys}[1][]{%
+  \refstepcounter{uzd}%
+  \par\medskip\noindent\textbf{\theuzd\ uždavinys\if\relax\detokenize{#1}\relax\else. #1\fi.}\quad
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Kvadratiniai daugianariai ir nelygybės}\par
+  \vspace{0.3em}
+  {\large Užduočių rinkinys}\par
+\end{center}
+
+\noindent\textit{Visuose uždaviniuose laikykite, kad $x\in\mathbb{R}$. Sprendimus pagrįskite.}
+
+\uzdavinys
+Mokytojas lentoje užrašė kvadratinį daugianarį
+\[
+  P(x)=x^2-6x+13, \text{ kur } x \in \mathbb{R}.
+\]
+ir paklausė Petriuko:
+
+\begin{quote}
+--- Kam lygi šio daugianario šaknų suma?
+
+Petriukas, prisiminęs Vijeto teoremą, nedvejodamas atsakė:
+
+--- Šešiems!
+
+Mokytojas atsakė:
+
+--- Sėsk, du!
+\end{quote}
+
+Pasipiktinęs Petriukas nusprendė paduoti matematikos mokytoją į teismą. Kokie Petriuko šansai laimėti bylą? Atsakymą pagrįskite matematiškai.
+
+\uzdavinys
+Mokytojas pateikė daugianarį
+\[
+  P(x)=2x^2-10x+8
+\]
+ir paprašė nustatyti jo šaknų sumą ir sandaugą.
+
+Kaziukas atsakė:
+\[
+  x_1+x_2=10,\qquad x_1x_2=8.
+\]
+\begin{quote}
+Mokytojas pasakė:
+
+--- Sėsk, du!
+\end{quote}
+
+Ar mokytojas sadistas, ar Kaziukas žioplas? Atsakymą pagrįskite.
+
+\uzdavinys
+Mokytojas pateikė kvadratinį daugianarį $P(x)$, kurio diskriminantas neigiamas ir kuris turi minimumą. Be to, žinoma, kad $P(2)=P(8)$.
+
+\begin{quote}
+Mokytojas paklausė:
+
+--- Kam lygu $P(5)$?
+
+Stasiukas atsakė:
+
+--- Minus keturiems!
+
+Mokytojas pasakė:
+
+--- Sėsk, du!
+\end{quote}
+
+Kodėl Stasiukas gavo dvejetą? Atsakymą pagrįskite.
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=2x^2-4x-6.
+\]
+\begin{enumerate}
+  \item Nustatykite daugianario šaknis.
+  \item Užrašykite šį daugianarį dar dviem skirtingais pavidalais.
+  \item Nustatykite daugianario ekstremumo tašką, ekstremumą ir jo tipą.
+  \item Nustatykite, su kuriomis $x$ reikšmėmis daugianario reikšmės yra:
+  \begin{itemize}[label=--,leftmargin=1.5em]
+    \item teigiamos;
+    \item neigiamos;
+    \item neteigiamos;
+    \item neneigiamos.
+  \end{itemize}
+\end{enumerate}
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=-2(x+1)^2+8.
+\]
+\begin{enumerate}
+  \item Nustatykite daugianario šaknis.
+  \item Užrašykite šį daugianarį dar dviem skirtingais pavidalais.
+  \item Nustatykite daugianario ekstremumo tašką, ekstremumą ir jo tipą.
+  \item Nustatykite, su kuriomis $x$ reikšmėmis daugianario reikšmės yra:
+  \begin{itemize}[label=--,leftmargin=1.5em]
+    \item teigiamos;
+    \item neigiamos;
+    \item neteigiamos;
+    \item neneigiamos.
+  \end{itemize}
+\end{enumerate}
+
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=2x^2-12x.
+\]
+\begin{enumerate}
+  \item Nustatykite daugianario šaknis.
+  \item Užrašykite šį daugianarį dar dviem skirtingais pavidalais.
+  \item Nustatykite daugianario ekstremumo tašką, ekstremumą ir jo tipą.
+  \item Nustatykite, su kuriomis $x$ reikšmėmis daugianario reikšmės yra:
+  \begin{itemize}[label=--,leftmargin=1.5em]
+    \item teigiamos;
+    \item neigiamos;
+    \item neteigiamos;
+    \item neneigiamos.
+  \end{itemize}
+\end{enumerate}
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=3x^2-12.
+\]
+\begin{enumerate}
+  \item Nustatykite daugianario šaknis.
+  \item Užrašykite šį daugianarį dar dviem skirtingais pavidalais.
+  \item Nustatykite daugianario ekstremumo tašką, ekstremumą ir jo tipą.
+  \item Nustatykite, su kuriomis $x$ reikšmėmis daugianario reikšmės yra:
+  \begin{itemize}[label=--,leftmargin=1.5em]
+    \item teigiamos;
+    \item neigiamos;
+    \item neteigiamos;
+    \item neneigiamos.
+  \end{itemize}
+\end{enumerate}
+
+\uzdavinys
+Išskaidę kairiąją pusę dauginamaisiais, nustatykite visas realiąsias $x$ reikšmes, su kuriomis teisingos nelygybės:
+\begin{multicols}{2}
+\begin{enumerate}
+  \item $2x^2-2x-12>0$;
+  \item $-3x^2+12x-9\geq 0$.
+  \item $x^2-5x<0$;
+  \item $x^2-9<0$;
+  \item $4x^2-25>0$;
+  \item $3x ^{2} +2 > 0$ 
+  \item $2x^2-4x+2\leq 0$;
+  \item $3x^2+12x+12<0$;
+  \item $-2x^2+12x-18\geq 0$;
+  \item $-3x^2-6x-3>0$.
+\end{enumerate}
+\end{multicols}
+
+\uzdavinys
+Mokytojas pakvietė prie lentos Jonuką rasti visas $x$ reikšmes, su kuriomis nelygybė yra teisinga:
+\[
+  (x-2)(x+3)>0.
+\]
+\begin{quote}
+Jonukas sako:
+
+--- Easy! Padalijame abi puses iš $(x-2)$, gauname $x+3>0$, taigi $x>-3$.
+
+Mokytojas sako:
+
+--- Sėsk, du!
+\end{quote}
+
+Kur problema Jonuko sprendime? Atsakymą pagrįskite ir išspręskite nelygybę teisingai.
+
+\uzdavinys
+Mokytojas, pamatęs, kad Jonukas apsiverkė, nusprendė suteikti jam progą pasitaisyti ir ištrinti dvejetą. Tam reikėjo išspręsti lygtį:
+\[
+  x^2=16.
+\]
+Jonukas apsidžiaugė, ištraukė kvadratinę šaknį iš abiejų lygties pusių ir parašė:
+\[
+  x=4.
+\]
+Mokytojas, susiėmęs už širdies, išėjo pas direktorių ir parašė prašymą išeiti iš darbo...
+
+Kas Jonuko sprendime privertė mokytoją išeiti iš darbo? Atsakymą pagrįskite ir išspręskite lygtį teisingai.
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=2x^2-8x+11.
+\]
+Dviem skirtingais būdais įrodykite, kad $P(x)>0$ su visomis realiosiomis $x$ reikšmėmis:
+\begin{enumerate}
+  \item išskirdami pilnąjį kvadratą;
+  \item remdamiesi tik daugianario koeficientais $a,b,c$ ir diskriminantu.
+\end{enumerate}
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=-3x^2+12x-15.
+\]
+Dviem skirtingais būdais įrodykite, kad $P(x)<0$ su visomis realiosiomis $x$ reikšmėmis:
+\begin{enumerate}
+  \item išskirdami pilnąjį kvadratą;
+  \item remdamiesi tik daugianario koeficientais $a,b,c$ ir diskriminantu.
+\end{enumerate}
+
+
+\uzdavinys
+Duotas reiškinys
+\[
+  T(x)=\sqrt{x^2-5x+4}.
+\]
+\begin{enumerate}
+  \item Apskaičiuokite $T(0)$, $T(2)$, $T(1)$, jeigu šios reikšmės apibrėžtos realiųjų skaičių aibėje.
+  \item Nustatykite visas realiąsias $x$ reikšmes, kurias galima įstatyti į reiškinį $T(x)$, kad gautume realųjį skaičių.
+\end{enumerate}
+
+\uzdavinys
+Duotas reiškinys
+\[
+  T(x)=\frac{\sqrt{-x^2+6x+7}}{7-x}.
+\]
+\begin{enumerate}
+  \item Apskaičiuokite $T(3)$, $T(7)$, $T(8)$, jeigu šios reikšmės apibrėžtos realiųjų skaičių aibėje.
+  \item Nustatykite visas realiąsias $x$ reikšmes, kurias galima įstatyti į reiškinį $T(x)$, kad gautume realųjį skaičių.
+\end{enumerate}
+
+
+\uzdavinys
+Duota nelygybė
+\[
+  3x^2+5x-4>2x^2+4x+2.
+\]
+\begin{enumerate}
+  \item Pertvarkykite nelygybę į pavidalą $ax^2+bx+c>0$.
+  \item Išspręskite gautą nelygybę.
+\end{enumerate}
+
+\uzdavinys
+Duota nelygybė
+\[
+  (2x+1)^2-9x-6<(1-x)^2.
+\]
+\begin{enumerate}
+  \item Pertvarkykite nelygybę į pavidalą $ax^2+bx+c<0$.
+  \item Išspręskite gautą nelygybę.
+\end{enumerate}
+
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=-2x^2+3x+5
+\]
+ir tiesinis daugianaris
+\[
+  Q(x)=x+1.
+\]
+Nustatykite visas realiąsias $x$ reikšmes, su kuriomis $P(x)>Q(x)$.
+
+\uzdavinys
+Duotas kvadratinis daugianaris
+\[
+  P(x)=2(x+2)(x-1)
+\]
+ir tiesinis daugianaris
+\[
+  Q(x)=-2x+2.
+\]
+Su kuriomis realiosiomis $x$ reikšmėmis daugianario $P(x)$ reikšmės yra \textbf{ne didesnės} už daugianario $Q(x)$ reikšmes?
+
+
+\uzdavinys
+Duoti du kvadratiniai daugianariai:
+\[
+  P(x)=x^2-4,\qquad Q(x)=x^2-3x.
+\]
+\begin{enumerate}
+  \item Nustatykite intervalus, kuriuose daugianaris $P(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+  \item Nustatykite intervalus, kuriuose daugianaris $Q(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+  \item Raskite bendrus intervalus, kuriuose abu daugianariai yra teigiami.
+  \item Raskite bendrus intervalus, kuriuose abu daugianariai yra neigiami.
+  \item Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neneigiami.
+  \item Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neteigiami.
+\end{enumerate}
+
+
+\uzdavinys
+Duoti du kvadratiniai daugianariai:
+\[
+  P(x)=-x^2+x+6,\qquad Q(x)=x^2-4.
+\]
+\begin{enumerate}
+  \item Nustatykite intervalus, kuriuose daugianaris $P(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+  \item Nustatykite intervalus, kuriuose daugianaris $Q(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+  \item Raskite bendrus intervalus, kuriuose abu daugianariai yra teigiami.
+  \item Raskite bendrus intervalus, kuriuose abu daugianariai yra neigiami.
+  \item Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neneigiami.
+  \item Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neteigiami.
+  \item Raskite bendrus intervalus, kuriuose $P(x)>0$ ir $Q(x)<0$.
+  \item Raskite bendrus intervalus, kuriuose $P(x)<0$ ir $Q(x)>0$.
+\end{enumerate}
+c)--h) dalyse raskite atitinkamų sprendinių aibių sankirtą.
+
+\uzdavinys
+Kvadratinis daugianaris $P(x)=ax^2+bx+c$ nagrinėjamas uždarame intervale $x\in[1;10]$. Žinoma, kad $P(2)=P(6)$ ir $b>0$. Nustatykite, su kuria $x$ reikšme šiame intervale $P(x)$ įgyja mažiausią reikšmę ir su kuria -- didžiausią.
+
+\uzdavinys
+Kvadratinis daugianaris $P(x)=ax^2+bx+c$ nagrinėjamas uždarame intervale $x\in[0;4]$. Žinoma, kad $P(3)=P(7)$ ir $b<0$. Nustatykite, su kuria $x$ reikšme šiame intervale $P(x)$ įgyja mažiausią reikšmę ir su kuria -- didžiausią.
+
+\uzdavinys
+Kvadratinis daugianaris $P(x)=ax^2+bx+c$ nagrinėjamas uždarame intervale $x\in[1;9]$. Žinoma, kad $P(3)=P(7)$, diskriminantas $D>0$, o ekstremumas lygus $\pi$. Nustatykite visas $x$ reikšmes, su kuriomis šiame intervale $P(x)$ įgyja mažiausią reikšmę, ir visas $x$ reikšmes, su kuriomis įgyja didžiausią.
+
+\uzdavinys
+Sukurkite kvadratinį daugianarį $P(x)$, kuris tenkina abi sąlygas:
+\begin{enumerate}
+  \item $P(x)<0$ tada ir tik tada, kai $1<x<5$;
+  \item $P(0)=10$.
+\end{enumerate}
+Užrašykite gautą daugianarį pavidalu $P(x)=ax^2+bx+c$.
+
+\uzdavinys
+Sukurkite kvadratinį daugianarį $P(x)$, kuris tenkina abi sąlygas:
+\begin{enumerate}
+  \item $P(x)>0$ tada ir tik tada, kai $x<-2$ arba $x>4$;
+  \item daugianario ekstremumas lygus $-18$.
+\end{enumerate}
+Užrašykite gautą daugianarį pavidalu $P(x)=ax^2+bx+c$.
+
+\uzdavinys
+Sukurkite kvadratinį daugianarį
+\[
+  P(x)=ax^2+bx+c,
+\]
+kuris tenkina abi sąlygas:
+\begin{enumerate}
+  \item $P(x)>0$ su visomis realiosiomis $x$ reikšmėmis, išskyrus $x=4$;
+  \item $P(1)=18$.
+\end{enumerate}
+
+\clearpage
+\fancyhead[R]{\small Atsakymai}
+\section*{Atsakymai}
+\noindent\textit{Pateikiami galutiniai atsakymai ir trumpi pagrindimai ten, kur reikia įrodyti teiginį.}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.6em,itemsep=0.85em,topsep=0.55em]
+
+\item $D=(-6)^2-4\cdot 1\cdot13=-16<0$, todėl realiųjų šaknų nėra ir jų sumos apibrėžti negalima. Sąlygoje aiškiai nurodyta, kad $x\in\mathbb{R}$, taigi kalbama tik apie realiąsias šaknis. Petriuko atsakymas neteisingas, todėl laimėti bylą jis neturi jokių šansų.
+
+\item Kaziukas suklydo: taikydamas Vijeto teoremą, nepadalijo iš vyriausiojo koeficiento $a=2$. Kadangi $D=(-10)^2-4\cdot2\cdot8=36>0$, yra dvi realiosios šaknys. Jų suma $x_1+x_2=-\frac{b}{a}=\frac{10}{2}=5$, o sandauga $x_1x_2=\frac{c}{a}=\frac{8}{2}=4$. Taigi mokytojas pagrįstai nurodė klaidą; taigi mokytojas nėra sadistas.
+
+\item Iš $P(2)=P(8)$ gauname, kad ekstremumo taškas yra $x=\frac{2+8}{2}=5$. Kadangi daugianaris turi minimumą, tai $a>0$. Todėl
+  \[
+    P(5)=-\frac{D}{4a}>0,
+  \]
+  nes $D<0$. Vadinasi, $P(5)$ negali būti lygu $-4$, todėl Stasiuko atsakymas neteisingas. Tikslios $P(5)$ reikšmės iš pateiktų duomenų nustatyti negalima.
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $x_1=-1$, $x_2=3$.
+  \item $P(x)=2(x+1)(x-3)=2(x-1)^2-8$.
+  \item Ekstremumo taškas $x=1$; minimumas $P_{\min}=-8$.
+  \item $P(x)>0$, kai $x\in(-\infty;-1)\cup(3;+\infty)$;\\
+        $P(x)<0$, kai $x\in(-1;3)$;\\
+        $P(x)\le0$, kai $x\in[-1;3]$;\\
+        $P(x)\ge0$, kai $x\in(-\infty;-1]\cup[3;+\infty)$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $x_1=-3$, $x_2=1$.
+  \item $P(x)=-2x^2-4x+6=-2(x+3)(x-1)$.
+  \item Ekstremumo taškas $x=-1$; maksimumas $P_{\max}=8$.
+  \item $P(x)>0$, kai $x\in(-3;1)$;\\
+        $P(x)<0$, kai $x\in(-\infty;-3)\cup(1;+\infty)$;\\
+        $P(x)\le0$, kai $x\in(-\infty;-3]\cup[1;+\infty)$;\\
+        $P(x)\ge0$, kai $x\in[-3;1]$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $x_1=0$, $x_2=6$.
+  \item $P(x)=2x(x-6)=2(x-3)^2-18$.
+  \item Ekstremumo taškas $x=3$; minimumas $-18$.
+  \item $P(x)>0$, kai $x\in(-\infty;0)\cup(6;+\infty)$;\\
+        $P(x)<0$, kai $x\in(0;6)$;\\
+        $P(x)\le0$, kai $x\in[0;6]$;\\
+        $P(x)\ge0$, kai $x\in(-\infty;0]\cup[6;+\infty)$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $x_1=-2$, $x_2=2$.
+  \item $P(x)=3(x-2)(x+2)=3(x-0)^2-12$.
+  \item Ekstremumo taškas $x=0$; minimumas $-12$.
+  \item $P(x)>0$, kai $x\in(-\infty;-2)\cup(2;+\infty)$;\\
+        $P(x)<0$, kai $x\in(-2;2)$;\\
+        $P(x)\le0$, kai $x\in[-2;2]$;\\
+        $P(x)\ge0$, kai $x\in(-\infty;-2]\cup[2;+\infty)$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $x\in(-\infty;-2)\cup(3;+\infty)$;
+  \item $x\in[1;3]$;
+  \item $x\in(0;5)$;
+  \item $x\in(-3;3)$;
+  \item $x\in\left(-\infty;-\frac52\right)\cup\left(\frac52;+\infty\right)$;
+  \item $x\in\mathbb{R}$;
+  \item $x=1$;
+  \item Sprendinių nėra ($\varnothing$);
+  \item $x=3$;
+  \item Sprendinių nėra ($\varnothing$).
+\end{enumerate}
+
+\item Jonukas dalijo iš reiškinio $x-2$, neatsižvelgęs į jo ženklą. Kai $x>2$, dalijame iš teigiamo skaičiaus, todėl nelygybės ženklas nesikeičia: gauname $x+3>0$, o kartu su $x>2$ tai duoda $x>2$. Kai $x<2$, dalijame iš neigiamo skaičiaus, todėl ženklą būtina apversti: gauname $x+3<0$, taigi $x<-3$. Kai $x=2$, dalyti negalima, o pradinė nelygybė neteisinga, nes sandauga lygi nuliui. Atsakymas:
+  \[
+    x\in(-\infty;-3)\cup(2;+\infty).
+  \]
+
+\item Yra du skaičiai, kuriuos pakėlę kvadratu gauname $16$: $4$ ir $-4$. Sprendimas turėjo būti $x=\pm\sqrt{16}=\pm4$. Jonukas prarado sprendinį $x=-4$.
+
+\item a) $P(x)=2(x-2)^2+3\ge 3>0$.\\
+      b) $a=2>0$, todėl daugianaris turi minimumą. Apskaičiuojame $D=(-8)^2-4\cdot2\cdot11=-24$. Minimumas lygus
+      \[
+        -\frac{D}{4a}=-\frac{-24}{4\cdot2}=3.
+      \]
+      Kadangi $3>0$, tai $P(x)\geq 3>0$ visiems $x\in\mathbb{R}$.
+
+\item a) $P(x)=-3(x-2)^2-3\le -3<0$.\\
+      b) $a=-3<0$, todėl daugianaris turi maksimumą. Apskaičiuojame $D=12^2-4\cdot(-3)\cdot(-15)=-36$. Maksimumas lygus
+      \[
+        -\frac{D}{4a}=-\frac{-36}{4\cdot(-3)}=-3.
+      \]
+      Kadangi $-3<0$, tai $P(x)\leq -3<0$ visiems $x\in\mathbb{R}$.
+
+\item a) $T(0)=2$; $T(2)$ neapibrėžta realiųjų skaičių aibėje; $T(1)=0$.\\
+      b) $x\in(-\infty;1]\cup[4;+\infty)$.
+
+\item a) $T(3)=1$; $T(7)$ ir $T(8)$ neapibrėžtos realiųjų skaičių aibėje.\\
+      b) $x\in[-1;7)$.
+
+\item a) $x^2+x-6>0$.\quad b) $x\in(-\infty;-3)\cup(2;+\infty)$.
+
+\item a) $3x^2-3x-6<0$.\quad b) $x\in(-1;2)$.
+
+\item $x\in(-1;2)$.
+
+\item $x\in[-3;1]$.
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $P(x)>0$, kai $x\in(-\infty;-2)\cup(2;+\infty)$; $P(x)<0$, kai $x\in(-2;2)$.
+  \item $Q(x)>0$, kai $x\in(-\infty;0)\cup(3;+\infty)$; $Q(x)<0$, kai $x\in(0;3)$.
+  \item $x\in(-\infty;-2)\cup(3;+\infty)$;
+  \item $x\in(0;2)$;
+  \item $x\in(-\infty;-2]\cup[3;+\infty)$;
+  \item $x\in[0;2]$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em,topsep=0.2em]
+  \item $P(x)>0$, kai $x\in(-2;3)$; $P(x)<0$, kai $x\in(-\infty;-2)\cup(3;+\infty)$.
+  \item $Q(x)>0$, kai $x\in(-\infty;-2)\cup(2;+\infty)$; $Q(x)<0$, kai $x\in(-2;2)$.
+  \item $x\in(2;3)$;
+  \item Sprendinių nėra ($\varnothing$);
+  \item $x\in\{-2\}\cup[2;3]$;
+  \item $x=-2$;
+  \item $x\in(-2;2)$;
+  \item $x\in(-\infty;-2)\cup(3;+\infty)$.
+\end{enumerate}
+
+\item Iš $P(2)=P(6)$ gauname, kad ekstremumo taškas yra $x=\frac{2+6}{2}=4$. Kadangi $-\frac{b}{2a}=4$, tai $b=-8a$. Iš $b>0$ gauname $a<0$, todėl didžiausia reikšmė įgyjama, kai $x=4$. Kuo toliau nuo $4$, tuo daugianario reikšmė mažesnė. Intervalo galų atstumai nuo $4$ yra $4-1=3$ ir $10-4=6$. Tolimiausias intervalo skaičius yra $10$, todėl mažiausia reikšmė įgyjama, kai $x=10$.
+
+\item Iš $P(3)=P(7)$ gauname, kad ekstremumo taškas yra $x=\frac{3+7}{2}=5$. Jis nepriklauso intervalui $[0;4]$. Kadangi $-\frac{b}{2a}=5$, tai $b=-10a$. Iš $b<0$ gauname $a>0$, todėl kuo toliau nuo $5$, tuo daugianario reikšmė didesnė. Šiame intervale arčiausiai $5$ yra skaičius $4$ (atstumas $1$), o toliausiai -- skaičius $0$ (atstumas $5$). Todėl mažiausia reikšmė intervale įgyjama, kai $x=4$, o didžiausia -- kai $x=0$.
+
+\item Iš $P(3)=P(7)$ gauname, kad ekstremumo taškas yra $x=5$. Ekstremumas lygus $-\frac{D}{4a}=\pi>0$. Kadangi $D>0$, tai $a<0$, todėl ekstremumas yra maksimumas. Didžiausia reikšmė $\pi$ įgyjama, kai $x=5$. Kuo toliau nuo $5$, tuo daugianario reikšmė mažesnė. Abu intervalo galai nuo $5$ nutolę po $4$ vienetus ir yra tolimiausi intervalo skaičiai. Todėl mažiausia reikšmė įgyjama, kai $x=1$ ir kai $x=9$.
+
+\item $P(x)=2(x-1)(x-5)=\boxed{2x^2-12x+10}$.
+
+\item $P(x)=2(x+2)(x-4)=\boxed{2x^2-4x-16}$.
+
+\item $P(x)=2(x-4)^2=\boxed{2x^2-16x+32}$.
+\end{enumerate}
+
+\end{document}
