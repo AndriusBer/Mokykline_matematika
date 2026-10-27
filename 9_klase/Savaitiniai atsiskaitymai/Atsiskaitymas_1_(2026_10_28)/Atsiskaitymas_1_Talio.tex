@@ -1,0 +1,109 @@
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,graphicx,xcolor,tikz}
+\usepackage[a4paper,left=1cm,right=1cm,top=2.5cm,bottom=1cm,footskip=12pt]{geometry}
+\usepackage{amsmath,amssymb,tasks}
+\newcommand{\irasolaukas}[1]{\begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{3pt}\fcolorbox{black!35}{white}{\rule{0pt}{0.45cm}\hspace{#1}}\endgroup}
+\newcommand{\sprendimas}[1]{\par\smallskip\noindent\textit{Sprendimas:}\par\nobreak\vspace{0.1cm}\noindent\begin{tikzpicture}\path[use as bounding box](0,0) rectangle (\linewidth,{-0.7*#1});\foreach \i in {1,...,#1}{\draw[draw=black!25,line width=0.3pt](0,{-0.7*\i}) -- (\linewidth,{-0.7*\i});}\end{tikzpicture}\par\smallskip}
+\newcommand{\atsakymas}[1][9]{\par\smallskip\noindent\textit{Atsakymas:}\framebox[#1cm]{\rule{0pt}{0.5cm}}\par}
+\pagestyle{headandfoot}\runningheadrule
+\pointsdroppedatright\bracketedpoints\setlength{\rightpointsmargin}{1.6cm}
+\pointpoints{taškas}{taškai}
+\makeatletter
+\renewcommand{\points}{%
+  \begingroup
+    \ifnum\@points=1
+      taškas%
+    \else
+      \ifnum\numexpr\@points-100*(\@points/100)\relax>9
+        \ifnum\numexpr\@points-100*(\@points/100)\relax<20
+          taškų%
+        \else
+          \ifnum\numexpr\@points-10*(\@points/10)\relax=1
+            taškas%
+          \else
+            \ifnum\numexpr\@points-10*(\@points/10)\relax>0
+              taškai%
+            \else
+              taškų%
+            \fi
+          \fi
+        \fi
+      \else
+        \ifnum\numexpr\@points-10*(\@points/10)\relax=1
+          taškas%
+        \else
+          \ifnum\numexpr\@points-10*(\@points/10)\relax>0
+            taškai%
+          \else
+            taškų%
+          \fi
+        \fi
+      \fi
+    \fi
+  \endgroup
+}
+\makeatother
+\pointname{ \points}
+\marginpointname{ \points}
+\firstpagefooter{}{\thepage}{45 min. / 32 taškai}
+\runningfooter{}{\thepage}{45 min. / 32 taškai}
+\setlength{\parindent}{0pt}
+\firstpageheader{\small\begin{tabular}{@{}l@{\hspace{0.2cm}}l@{}}Mokinio kodas: & \irasolaukas{2.3cm} \\[0.15cm] Klasė: & \irasolaukas{2.3cm}\end{tabular}}{\small\textbf{Atsiskaitymas 1}\\2026.10.28}{Talio variantas}
+\runningheader{\small Kvadratiniai daugianariai ir nelygybės}{}{\small Talio variantas}
+\begin{document}
+\begin{center}\textbf{Kvadratiniai daugianariai ir nelygybės}\end{center}
+Visuose uždaviniuose laikykite, kad $x\in\mathbb R$. Sprendimus pagrįskite.
+\medskip
+\begin{questions}
+\question[3] Mokytojas pateikė daugianarį\droppoints
+\[P(x)=3 x^{2} - 18 x + 24\]
+ir paprašė nustatyti jo šaknų sumą ir sandaugą.\par
+Kaziukas atsakė:
+\[x_1+x_2=18,\qquad x_1x_2=24.\]
+Mokytojas pasakė:\par
+\hspace{0.5cm}--- Sėsk, du!\par\medskip
+Ar mokytojas sadistas, ar Kaziukas žioplas? Atsakymą pagrįskite.
+\sprendimas{4}\atsakymas[10]
+\medskip
+\question[11] Duotas kvadratinis daugianaris $P(x)=-2(x+4)^2+18$.\droppoints
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task Nustatykite daugianario šaknis.
+\task Užrašykite šį daugianarį dar dviem skirtingais pavidalais.
+\task Nustatykite daugianario ekstremumo tašką, ekstremumą ir jo tipą.
+\task Nustatykite, su kuriomis $x$ reikšmėmis daugianario reikšmės yra:\\ teigiamos; neigiamos; neteigiamos; neneigiamos.
+\end{tasks}
+\sprendimas{7}\atsakymas[12]
+\newpage
+\question[5] Duotas reiškinys $\displaystyle T(x)=\sqrt{x^{2} - 7 x + 10}$.\droppoints
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task Apskaičiuokite $T(1)$, $T(3)$, $T(2)$, jeigu šios reikšmės apibrėžtos realiųjų skaičių aibėje.
+\task Nustatykite visas realiąsias $x$ reikšmes, kurias galima įstatyti į reiškinį $T(x)$, kad gautume realųjį skaičių.
+\end{tasks}
+\sprendimas{7}\atsakymas[12]
+\vspace{0.35cm}
+\question[4] Duota nelygybė\droppoints
+\[(2x+2)^2-18x-9<(2-x)^2.\]
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task Pertvarkykite nelygybę į pavidalą $ax^2+bx+c<0$.
+\task Išspręskite gautą nelygybę.
+\end{tasks}
+\sprendimas{8}\atsakymas[12]
+\newpage
+\question[5] Kvadratinis daugianaris $P(x)=ax^2+bx+c$ nagrinėjamas uždarame intervale $x\in[1;5]$. Žinoma, kad $P(4)=P(8)$ ir $b<0$. Nustatykite, su kuria $x$ reikšme šiame intervale $P(x)$ įgyja mažiausią reikšmę ir su kuria -- didžiausią.\droppoints
+\sprendimas{7}\atsakymas[10]
+\vspace{0.35cm}
+\question[4] Sukurkite kvadratinį daugianarį\droppoints
+\[P(x)=ax^2+bx+c,\]
+kuris tenkina abi sąlygas:
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task $P(x)>0$ su visomis realiosiomis $x$ reikšmėmis, išskyrus $x=3$;
+\task $P(1)=8$.
+\end{tasks}
+\sprendimas{7}\atsakymas[10]
+\end{questions}
+\newpage
+\begin{center}\large\textbf{Juodraštis}\end{center}
+\end{document}

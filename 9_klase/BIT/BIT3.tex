@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper,landscape]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[provide=*,lithuanian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=0pt]{geometry}
+\usepackage{tikz}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Spausdinti horizontaliame A4 lape, mastelis 100 %.
+% Perkirpus per vidurį gaunami du statūs A5 dydžio lapeliai.
+\newcommand{\remelis}[2]{%
+  \tikz[baseline={([yshift=-0.6ex]current bounding box.center)}]\draw[line width=0.5pt]
+    (0,0) rectangle (#1,#2);}
+
+\newcommand{\uzduotis}[2]{%
+  \begin{minipage}[t][37mm][t]{\linewidth}
+    \textbf{#1.}\enspace #2\par
+    \vfill
+    \remelis{90mm}{9mm}\par
+    \vspace{3mm}
+  \end{minipage}\par
+}
+
+\newcommand{\uzduotys}[4]{%
+  \uzduotis{1}{Išskirkite pilnąjį kvadratą: $P(x)=#1$.}
+  \uzduotis{2}{Išskirkite pilnąjį kvadratą: $P(x)=#2$.}
+  \uzduotis{3}{Išskirkite pilnąjį kvadratą: $P(x)=#3$.}
+  \uzduotis{4}{Atskliauskite naudodamiesi greitosios daugybos formule:\\$#4$.}
+}
+
+\newcommand{\lapelis}[3]{%
+  \begin{minipage}[t][190mm][t]{128.5mm}
+    \small
+    \textbf{#1 klasė}\hfill\textbf{#2 variantas}\par
+    \vspace{3mm}
+    \textbf{Mokinio kodas}\enspace\remelis{32mm}{8mm}\par
+    \vspace{4mm}
+    {\centering\normalsize\textbf{Bazinių įgūdžių testas 3}\par}
+    \vspace{2mm}
+    {\centering\small Po užduotimis palikta vieta sprendimams.\\
+      Į rėmelius įrašykite atsakymus.\par}
+    \vspace{4mm}
+    \normalsize
+    #3
+  \end{minipage}%
+}
+
+\newcommand{\lapas}[5]{%
+  \null
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[dash pattern=on 2pt off 3pt,line width=0.4pt]
+      (current page.north) -- (current page.south);
+    \node[anchor=north west,inner sep=0pt]
+      at ([xshift=10mm,yshift=-10mm]current page.north west)
+      {\lapelis{#1}{#2}{#3}};
+    \node[anchor=north west,inner sep=0pt]
+      at ([xshift=10mm,yshift=-10mm]current page.north)
+      {\lapelis{#1}{#4}{#5}};
+  \end{tikzpicture}%
+}
+
+\begin{document}
+\lapas{Ia}{Kantrybės}{%
+  \uzduotys{x^2+8x}{3x^2+6x+1}{-2x^2+8x-3}{(1-2x)^3}
+}{Dosnumo}{%
+  \uzduotys{x^2-6x}{2x^2+8x+3}{-3x^2-6x-1}{(1-3x)^3}
+}
+\newpage
+\lapas{Ib}{Drąsos}{%
+  \uzduotys{x^2+4x}{3x^2-6x+2}{-2x^2-6x+1}{(2- x)^3}
+}{Išminties}{%
+  \uzduotys{x^2-10x}{2x^2-4x+1}{-3x^2+12x-2}{(1-2x)^3}
+}
+\newpage
+\lapas{Ic}{Teisingumo}{%
+  \uzduotys{x^2+12x}{4x^2+8x+1}{-2x^2+6x-2}{(1-3x)^3}
+}{Saikingumo}{%
+  \uzduotys{x^2-8x}{3x^2+6x+2}{-2x^2-4x-1}{(2- x)^3}
+}
+\newpage
+\lapas{Id}{Darbštumo}{%
+  \uzduotys{x^2+6x}{2x^2+8x+1}{-3x^2-12x-2}{(1-2x)^3}
+}{Sąžiningumo}{%
+  \uzduotys{x^2-4x}{4x^2-8x+3}{-2x^2+10x-1}{(1-3x)^3}
+}
+\newpage
+\lapas{Ie}{Kuklumo}{%
+  \uzduotys{x^2+10x}{3x^2-12x+1}{-2x^2-6x-3}{(2- x)^3}
+}{Atjautos}{%
+  \uzduotys{x^2-12x}{2x^2+4x+3}{-3x^2+6x-2}{(1-2x)^3}
+}
+\end{document}

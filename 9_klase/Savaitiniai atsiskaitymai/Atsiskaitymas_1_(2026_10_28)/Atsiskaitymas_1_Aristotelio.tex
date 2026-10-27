@@ -1,0 +1,112 @@
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,graphicx,xcolor,tikz}
+\usepackage[a4paper,left=1cm,right=1cm,top=2.5cm,bottom=1cm,footskip=12pt]{geometry}
+\usepackage{amsmath,amssymb,tasks}
+\newcommand{\irasolaukas}[1]{\begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{3pt}\fcolorbox{black!35}{white}{\rule{0pt}{0.45cm}\hspace{#1}}\endgroup}
+\newcommand{\sprendimas}[1]{\par\smallskip\noindent\textit{Sprendimas:}\par\nobreak\vspace{0.1cm}\noindent\begin{tikzpicture}\path[use as bounding box](0,0) rectangle (\linewidth,{-0.7*#1});\foreach \i in {1,...,#1}{\draw[draw=black!25,line width=0.3pt](0,{-0.7*\i}) -- (\linewidth,{-0.7*\i});}\end{tikzpicture}\par\smallskip}
+\newcommand{\atsakymas}[1][9]{\par\smallskip\noindent\textit{Atsakymas:}\framebox[#1cm]{\rule{0pt}{0.5cm}}\par}
+\pagestyle{headandfoot}\runningheadrule
+\pointsdroppedatright\bracketedpoints\setlength{\rightpointsmargin}{1.6cm}
+\pointpoints{taškas}{taškai}
+\makeatletter
+\renewcommand{\points}{%
+  \begingroup
+    \ifnum\@points=1
+      taškas%
+    \else
+      \ifnum\numexpr\@points-100*(\@points/100)\relax>9
+        \ifnum\numexpr\@points-100*(\@points/100)\relax<20
+          taškų%
+        \else
+          \ifnum\numexpr\@points-10*(\@points/10)\relax=1
+            taškas%
+          \else
+            \ifnum\numexpr\@points-10*(\@points/10)\relax>0
+              taškai%
+            \else
+              taškų%
+            \fi
+          \fi
+        \fi
+      \else
+        \ifnum\numexpr\@points-10*(\@points/10)\relax=1
+          taškas%
+        \else
+          \ifnum\numexpr\@points-10*(\@points/10)\relax>0
+            taškai%
+          \else
+            taškų%
+          \fi
+        \fi
+      \fi
+    \fi
+  \endgroup
+}
+\makeatother
+\pointname{ \points}
+\marginpointname{ \points}
+\firstpagefooter{}{\thepage}{45 min. / 30 taškų}
+\runningfooter{}{\thepage}{45 min. / 30 taškų}
+\setlength{\parindent}{0pt}
+\firstpageheader{\small\begin{tabular}{@{}l@{\hspace{0.2cm}}l@{}}Mokinio kodas: & \irasolaukas{2.3cm} \\[0.15cm] Klasė: & \irasolaukas{2.3cm}\end{tabular}}{\small\textbf{Atsiskaitymas 1}\\2026.10.28}{Aristotelio variantas}
+\runningheader{\small Kvadratiniai daugianariai ir nelygybės}{}{\small Aristotelio variantas}
+\begin{document}
+\begin{center}\textbf{Kvadratiniai daugianariai ir nelygybės}\end{center}
+Visuose uždaviniuose laikykite, kad $x\in\mathbb R$. Sprendimus pagrįskite.
+\medskip
+\begin{questions}
+\question[2] Mokytojas pateikė kvadratinį daugianarį $P(x)$, kurio diskriminantas neigiamas ir kuris turi minimumą. Be to, žinoma, kad $P(2)=P(8)$.\droppoints
+\par\medskip Mokytojas paklausė:\par
+\hspace{0.5cm}--- Kam lygu $P(5)$?\par
+Stasiukas atsakė:\par
+\hspace{0.5cm}--- Minus aštuoniems!\par
+Mokytojas pasakė:\par
+\hspace{0.5cm}--- Sėsk, du!\par\medskip
+Kodėl Stasiukas gavo dvejetą? Atsakymą pagrįskite.
+\sprendimas{6}\atsakymas[11]
+\vspace{0.3cm}
+\question[3] Duotas kvadratinis daugianaris\droppoints
+\[P(x)=2(x+4)(x-3)\]
+ir tiesinis daugianaris
+\[Q(x)=-2x+6.\]
+Su kuriomis realiosiomis $x$ reikšmėmis daugianario $P(x)$ reikšmės yra ne didesnės už daugianario $Q(x)$ reikšmes?
+\sprendimas{7}\atsakymas[11]
+\newpage
+\question[10] Duoti du kvadratiniai daugianariai:\droppoints
+\[P(x)=- x^{2} + 2 x + 15,\qquad Q(x)=x^{2} - 9.\]
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task Nustatykite intervalus, kuriuose daugianaris $P(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+\task Nustatykite intervalus, kuriuose daugianaris $Q(x)$ yra teigiamas, ir intervalus, kuriuose jis yra neigiamas.
+\task Raskite bendrus intervalus, kuriuose abu daugianariai yra teigiami.
+\task Raskite bendrus intervalus, kuriuose abu daugianariai yra neigiami.
+\task Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neneigiami.
+\task Raskite visas $x$ reikšmes, su kuriomis abu daugianariai yra neteigiami.
+\task Raskite bendrus intervalus, kuriuose $P(x)>0$ ir $Q(x)<0$.
+\task Raskite bendrus intervalus, kuriuose $P(x)<0$ ir $Q(x)>0$.
+\end{tasks}
+
+\sprendimas{10}\atsakymas[12]
+\question[5] Duotas kvadratinis daugianaris $P(x)=- 2 x^{2} + 12 x - 20$.\droppoints
+\par\medskip Dviem skirtingais būdais įrodykite, kad $P(x)<0$ su visomis realiosiomis $x$ reikšmėmis:
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task išskirdami pilnąjį kvadratą;
+\task remdamiesi tik daugianario koeficientais $a$, $b$, $c$ ir diskriminantu.
+\end{tasks}
+\sprendimas{6}
+\vspace{0.35cm}
+\question[5] Kvadratinis daugianaris $P(x)=ax^2+bx+c$ nagrinėjamas uždarame intervale $x\in[2;8]$. Žinoma, kad $P(3)=P(7)$, diskriminantas $D>0$, o ekstremumas lygus $9$. Nustatykite visas $x$ reikšmes, su kuriomis šiame intervale $P(x)$ įgyja mažiausią reikšmę, ir visas $x$ reikšmes, su kuriomis įgyja didžiausią.\droppoints
+\sprendimas{7}\atsakymas[11]
+\question[5] Sukurkite kvadratinį daugianarį $P(x)$, kuris tenkina abi sąlygas:\droppoints
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task $P(x)>0$ tada ir tik tada, kai $x<-2$ arba $x>4$;
+\task daugianario ekstremumas lygus $-27$.
+\end{tasks}
+Užrašykite gautą daugianarį pavidalu $P(x)=ax^2+bx+c$.
+\sprendimas{8}\atsakymas[12]
+\end{questions}
+\newpage
+\begin{center}\large\textbf{Juodraštis}\end{center}
+\end{document}

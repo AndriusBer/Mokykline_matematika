@@ -1,0 +1,76 @@
+% !TeX program = lualatex
+\documentclass[12pt]{article}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\section*{Font Awesome piktogramų katalogas}
+
+\noindent Naudojimas: \verb|\faIcon{pavadinimas}|. Piktogramos pavadinimas
+pateiktas šalia simbolio.\medskip
+
+\small
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{1cm}
+
+\directlua{
+  local file = kpse.find_file("fontawesome5-mapping.def")
+  if not file then
+    error("Nepavyko rasti Font Awesome piktogramu saraso.")
+  end
+  local input = assert(io.open(file, "r"))
+  local icons = { free = {}, brands = {} }
+  local left = string.char(123)
+  local right = string.char(125)
+  for line in input:lines() do
+    if line:find("__fontawesome_def_icon:nnnnn", 1, true) then
+      local fields = {}
+      local start = 1
+      while true do
+        local a, b = line:find(left, start, true)
+        if not a then break end
+        local c, d = line:find(right, b + 1, true)
+        if not c then break end
+        table.insert(fields, line:sub(b + 1, c - 1))
+        start = d + 1
+      end
+      local name = fields[2]
+      local family = fields[3]
+      if name and family then
+        local group = family:sub(1, 4) == "free" and "free"
+          or family:sub(1, 6) == "brands" and "brands"
+        if group then
+          table.insert(icons[group], name)
+        end
+      end
+    end
+  end
+  input:close()
+  table.sort(icons.free)
+  table.sort(icons.brands)
+  local slash = string.char(92)
+  local function print_group(title, list)
+    tex.sprint(slash .. "section*{" .. title .. "}")
+    tex.sprint(slash .. "begin{multicols}{3}")
+    for _, name in ipairs(list) do
+      if name == "link" then
+        tex.sprint(slash .. "href{https://drive.google.com/file/d/1K_VWxzg5jwKyv5-phhwlEzPQp0TV2cES/view?usp=sharing}{"
+          .. slash .. "faIcon{link}} "
+          .. slash .. "texttt{link}"
+          .. slash .. slash)
+      else
+        tex.sprint(slash .. "faIcon{" .. name .. "} "
+          .. slash .. "texttt{" .. name .. "}"
+          .. slash .. slash)
+      end
+    end
+    tex.sprint(slash .. "end{multicols}")
+  end
+  print_group("Paprastos piktogramos", icons.free)
+  print_group("Prekių ženklų piktogramos", icons.brands)
+}
+
+\end{document}

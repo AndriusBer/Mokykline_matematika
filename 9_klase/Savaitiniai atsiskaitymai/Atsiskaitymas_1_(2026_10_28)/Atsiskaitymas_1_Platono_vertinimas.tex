@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,booktabs,array,tabularx,enumitem}
+\usepackage[a4paper,margin=1.6cm]{geometry}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}\setlength{\emergencystretch}{2em}
+\setlist[itemize]{itemsep=2pt,topsep=3pt,parsep=0pt}
+\newcommand{\sk}[1]{\par\medskip\textbf{#1}\par}
+\begin{document}
+\setlength{\abovedisplayskip}{6pt}\setlength{\belowdisplayskip}{6pt}
+\begin{center}\Large\textbf{Atsiskaitymas 1 (2026.10.28)}\\\large Platono variantas: sprendimai ir vertinimas\end{center}
+\textbf{Matematinė klasė. 6 uždaviniai; 30 taškų; 45 min.}
+
+\sk{1 uždavinys -- 2 taškai}
+Daugianaris turi minimumą, taigi $a>0$. Kadangi $D<0$, realiųjų šaknų nėra, o daugianario ženklas visur sutampa su $a$ ženklu. Vadinasi, $P(x)>0$ visiems realiesiems $x$, todėl $P(4)$ negali būti $-6$.
+
+Simetrija papildomai parodo, kad $h=(1+7)/2=4$ ir $P(4)$ yra minimumas. Tikslaus jo dydžio iš duomenų nustatyti negalima. Pavyzdžiui, $(x-4)^2+1$ ir $(x-4)^2+2$ abu atitinka sąlygą, bet jų minimumai skiriasi.
+\begin{itemize}
+\item \textbf{1 taškas už} koeficiento ženklo $a>0$ pagrindimą iš minimumo sąlygos.
+\item \textbf{1 taškas už} pagrįstą išvadą iš $D<0$ ir $a>0$, kad $P(x)>0$, todėl Stasiuko atsakymas $P(4)=-6$ klaidingas.
+\end{itemize}
+Vien teiginio „Stasiukas suklydo“ nepakanka. Simetrijos, tikslaus minimumo nenustatomumo ar pavyzdžių papildomai reikalauti nereikia: Stasiuko atsakymą atmeta ir teigiamumo visiems $x$ įrodymas. Lygiavertis įrodymas per minimumą $-D/(4a)>0$ vertinamas 2 taškais.\par\textbf{Suma: 1 + 1 = 2 taškai.}
+
+\sk{2 uždavinys -- 3 taškai}
+Reikia $P(x)\le Q(x)$, t.\,y. $P(x)-Q(x)\le0$. Išskaidydami bendrą daugiklį gauname
+\[P(x)-Q(x)=2(x-2)(x+3)+2(x-2)=2(x-2)(x+4).\]
+Išskleidus tai $2 x^{2} + 4 x - 16$. Ribiniai taškai $-4$ ir $2$. Vyriausiasis koeficientas teigiamas, todėl daugianaris neteigiamas tarp šaknų ir ties jomis:
+\[\boxed{x\in[-4;2]}.\]
+\begin{itemize}
+\item \textbf{1 taškas už} pradinių daugianarių skirtumo teisingą pertvarkymą: $P-Q=2 x^{2} + 4 x - 16$ arba $2(x-2)(x+4)$. Vien užrašo $P\le Q$ nepakanka.
+\item \textbf{1 taškas už} abu teisingus ribinius taškus $-4$ ir $2$ arba juos tiesiogiai patvirtinantį išskaidymą.
+\item \textbf{1 taškas už} galutinę aibę $[-4;2]$, įtraukiant abu galus.
+\end{itemize}
+Teisinga skirtumo sandauga patvirtina ir pirmą, ir antrą kriterijų -- atskiro išskleidimo nereikalauti. Sandauga kartu su teisingu intervalu pagrindžia ženklus. Vien teisingas atsakymas be eigos -- 1 taškas.\par\textbf{Suma: 1 + 1 + 1 = 3 taškai.}\newpage
+
+\sk{3 uždavinys -- 10 taškų}
+Duota $P(x)=- x^{2} + 2 x + 8$, $Q(x)=x^{2} - 4$.
+\[P(x)=-(x+2)(x-4),\qquad Q(x)=(x+2)(x-2).\]
+$P$ šaknys $-2$ ir $4$, vyriausiasis koeficientas neigiamas; $Q$ šaknys $-2$ ir $2$, vyriausiasis koeficientas teigiamas. Todėl:
+\[\begin{array}{lll} &\text{Teigiamumo aibė}&\text{Neigiamumo aibė}\\
+P&(-2;4)&(-\infty;-2)\cup(4;+\infty)\\
+Q&(-\infty;-2)\cup(2;+\infty)&(-2;2)
+\end{array}\]
+Likusioms dalims imame būtent reikalaujamų aibių sankirtas:
+\begin{align*}
+\text{c)}\quad &(-2;4)\cap\bigl((-\infty;-2)\cup(2;+\infty)\bigr)=(2;4);\\
+\text{d)}\quad &\bigl((-\infty;-2)\cup(4;+\infty)\bigr)\cap(-2;2)=\varnothing;\\
+\text{e)}\quad &[-2;4]\cap\bigl((-\infty;-2]\cup[2;+\infty)\bigr)=\{-2\}\cup[2;4];\\
+\text{f)}\quad &\bigl((-\infty;-2]\cup[4;+\infty)\bigr)\cap[-2;2]=\{-2\};\\
+\text{g)}\quad &(-2;4)\cap(-2;2)=(-2;2);\\
+\text{h)}\quad &\bigl((-\infty;-2)\cup(4;+\infty)\bigr)\cap\bigl((-\infty;-2)\cup(2;+\infty)\bigr)\\
+&\hspace{3cm}=(-\infty;-2)\cup(4;+\infty).
+\end{align*}
+Bendras nulinis taškas $-2$ nepriklauso griežtoms ženklų aibėms, bet priklauso abiem e) ir f) dalių sankirtoms. Būtent jis sudaro atskirą tašką e) dalyje ir visą f) dalies atsakymą.
+
+\sk{3 uždavinio taškai pagal visas dalis}
+\textbf{a) 2 taškai.}\begin{itemize}
+\item \textbf{1 taškas už} $P(x)=-(x+2)(x-4)$ arba abi šaknis $-2$, $4$.
+\item \textbf{1 taškas už} abi teisingas $P$ ženklų aibes kartu: $P>0$ aibėje $(-2;4)$, $P<0$ aibėje $(-\infty;-2)\cup(4;+\infty)$.
+\end{itemize}
+\textbf{a) suma: 1 + 1 = 2 taškai.}
+\par\textbf{b) 2 taškai.}\begin{itemize}
+\item \textbf{1 taškas už} $Q(x)=(x+2)(x-2)$ arba abi šaknis $-2$, $2$.
+\item \textbf{1 taškas už} abi teisingas $Q$ ženklų aibes kartu: $Q>0$ aibėje $(-\infty;-2)\cup(2;+\infty)$, $Q<0$ aibėje $(-2;2)$.
+\end{itemize}
+\textbf{b) suma: 1 + 1 = 2 taškai.}
+\par\textbf{c) 1 taškas už} visą teisingą sankirtą: $(2;4)$. \textbf{c) suma: 1 taškas.}
+\par\textbf{d) 1 taškas už} visą teisingą sankirtą: $\varnothing$. \textbf{d) suma: 1 taškas.}
+\par\textbf{e) 1 taškas už} visą teisingą sankirtą: $\{-2\}\cup[2;4]$. \textbf{e) suma: 1 taškas.}
+\par\textbf{f) 1 taškas už} visą teisingą sankirtą: $\{-2\}$. \textbf{f) suma: 1 taškas.}
+\par\textbf{g) 1 taškas už} visą teisingą sankirtą: $(-2;2)$. \textbf{g) suma: 1 taškas.}
+\par\textbf{h) 1 taškas už} visą teisingą sankirtą: $(-\infty;-2)\cup(4;+\infty)$. \textbf{h) suma: 1 taškas.}
+\par Šaknų ir vyriausiojo koeficiento ženklas arba ženklų schema pakankamai pagrindžia a), b) dalis. c)--h) dalyse priimami ir tiesiogiai pažymėti bendri intervalai ar taškai bendroje skaičių ašyje. Už kiekvieną iš šių dalių gaunamas vienas nedalomas taškas; būtina nurodyti visą aibę su teisingais galais. Vien galutinės a) ar b) ženklų aibės be ribinių taškų nustatymo eigos -- po 1 tašką.\par\textbf{Suma: a) 2 + b) 2 + c) 1 + d) 1 + e) 1 + f) 1 + g) 1 + h) 1 = 10 taškų.}\newpage
+
+\sk{4 uždavinys -- 5 taškai}
+a) Išskiriame pilnąjį kvadratą:
+\[P(x)=- 2 x^{2} + 8 x - 10=-2\bigl((x-2)^2-4\bigr)-10=-2(x-2)^2-2.\]
+Kadangi $(x-2)^2\ge0$, tai $P(x)\le-2<0$ visiems realiesiems $x$.
+
+b) $a=-2<0$; $D=(8)^2-4\cdot(-2)\cdot(-10)=-16<0$. Realiųjų šaknų nėra, o ženklas sutampa su $a$ ženklu, taigi $P(x)<0$ visiems realiesiems $x$.
+\textbf{a) 3 taškai.}\begin{itemize}
+\item \textbf{1 taškas už} teisingą kvadrato išskyrimo pertvarkymą $-2((x-2)^2-4)-10$.
+\item \textbf{1 taškas už} galutinį pavidalą $-2(x-2)^2-2$.
+\item \textbf{1 taškas už} pagrindimą, kad dėl kvadrato neneigiamumo $P(x)\le-2<0$.
+\end{itemize}
+Teisingas galutinis kvadrato pavidalas patvirtina abu pertvarkymo taškus; išvada apie ženklą vertinama atskirai.\par\textbf{a) suma: 1 + 1 + 1 = 3 taškai.}\par\textbf{b) 2 taškai.}\begin{itemize}
+\item \textbf{1 taškas už} teisingai apskaičiuotą diskriminantą $D=-16$.
+\item \textbf{1 taškas už} pagrįstą išvadą iš $a<0$ ir $D<0$, kad daugianaris visur neigiamas.
+\end{itemize}
+Priimamas ir įrodymas, kad maksimumas $-D/(4a)=-2<0$. Vienu būdu įrodžius teiginį už kitą būdą taškai neskiriami.\par\textbf{b) suma: 1 + 1 = 2 taškai.}\par\textbf{4 uždavinio suma: a) 3 + b) 2 = 5 taškai.}
+
+\sk{5 uždavinys -- 5 taškai}
+Iš $P(2)=P(6)$ pagal simetriją ekstremumo taškas yra $h=(2+6)/2=4$. Daugianarį galima užrašyti $P(x)=a(x-4)^2+4$. Jo diskriminantas $D=-4a\cdot4$; kadangi $D>0$ ir $4>0$, tai $a<0$. Vadinasi, ekstremumas yra maksimumas. Lygiavertis ženklų argumentas: ekstremumas $-D/(4a)=4>0$ kartu su $D>0$ duoda $a<0$.
+
+Didžiausia reikšmė pasiekiama tik ties $x=4$. Intervalo $[1;7]$ galai vienodai nutolę nuo $4$ po $3$ vienetus ir yra tolimiausi jo taškai. Kai $a<0$, didesnis atstumas atitinka mažesnę reikšmę. Todėl mažiausia reikšmė pasiekiama abiejuose galuose: $x=1$ ir $x=7$.
+\begin{itemize}
+\item \textbf{1 taškas už} pagrįstai rastą ekstremumo tašką $h=4$.
+\item \textbf{1 taškas už} ženklo $a<0$ pagrindimą iš abiejų duomenų: $D>0$ ir ekstremumo $4>0$.
+\item \textbf{1 taškas už} didžiausios reikšmės vietą $x=4$.
+\item \textbf{1 taškas už} pagrindimą, kad abu intervalo galai yra tolimiausi, jų atstumai vienodi (po 3), todėl, kai $a<0$, abiejuose pasiekiama mažiausia reikšmė.
+\item \textbf{1 taškas už} abi mažiausios reikšmės vietas kartu: $x=1$ ir $x=7$.
+\end{itemize}
+Vienas iš dviejų minimumą duodančių galų paskutinio taško neuždirba. Pačios mažiausios reikšmės apskaičiuoti nereikia ir iš duomenų jos vienareikšmiškai nustatyti negalima. Abu galutiniai atsakymai be pagrindimo -- daugiausia 2 taškai.\par\textbf{Suma: 1 + 1 + 1 + 1 + 1 = 5 taškai.}\newpage
+
+\sk{6 uždavinys -- 5 taškai}
+Iš teigiamumo sąlygos gauname šaknis $-1$ ir $5$, o $a>0$, todėl
+\[P(x)=a(x+1)(x-5).\]
+Pagal šaknų vidurkį ir simetriją ekstremumo taškas
+\[h=\frac{(-1)+5}2=2.\]
+Šiame taške $(h+1)(h-5)=3\cdot(-3)=-9$. Ekstremumo sąlyga duoda
+\[-9a=-18,\qquad a=2.\]
+Taigi
+\[\boxed{P(x)=2(x+1)(x-5)=2 x^{2} - 8 x - 10}.\]
+Patikra: šaknys $-1$ ir $5$, $a=2>0$ -- daugianaris teigiamas tik už šaknų; $P(2)=-18$, tai minimumas. Kvadrato pavidalas $P(x)=2(x-2)^2-18$ taip pat patvirtina ekstremumą.
+\begin{itemize}
+\item \textbf{1 taškas už} iš ženklo sąlygos sudarytą pavidalą $P(x)=a(x+1)(x-5)$, $a>0$.
+\item \textbf{1 taškas už} pagrįstai rastą ekstremumo tašką $h=2$.
+\item \textbf{1 taškas už} ekstremumo duomens pritaikymą: $-9a=-18$ arba lygiavertę teisingą lygtį koeficientui nustatyti.
+\item \textbf{1 taškas už} koeficiento rezultatą $a=2$.
+\item \textbf{1 taškas už} galutinį bendrąjį pavidalą $P(x)=2 x^{2} - 8 x - 10$.
+\end{itemize}
+$a>0$ nebūtina užrašyti atskirai, jei gautas teigiamas koeficientas ir visas sprendimas atitinka ženklo sąlygą. Sandaugos ar kvadrato formos neišskleidus prarandamas tik paskutinis taškas. a), b) yra duomenų sąlygos, kurios kartu apibrėžia vieną konstravimo užduotį. Taškų kilmė: a) sandaugos pavidalas -- 1; b) ekstremumo taškas, duomens pritaikymas ir koeficientas -- 3; bendrasis pavidalas -- 1.\par\textbf{Suma: 1 + 1 + 1 + 1 + 1 = 5 taškai.}\par\textbf{Visas darbas: 2 + 3 + 10 + 5 + 5 + 5 = 30 taškų.}
+
+\sk{Šio varianto aritmetinių klaidų pavyzdys}
+6 uždavinyje mokinys teisingai sudaro $P(x)=a(x+1)(x-5)$, randa $h=2$ ir gauna $-9a=-18$, bet parašo $a=3$. Jei teisingai tęsia ir išskleidžia iki $3 x^{2} - 12 x - 15$, skiriama \textbf{4 iš 5 taškų} -- viena aritmetinė klaida ir jos pasekmės kainuoja tik 1 tašką.
+
+Jei mokinys dar klaidingai apskaičiuoja $3\cdot4=9$ ir išskleisdamas gauna $3 x^{2} - 9 x - 15$, tai antra nepriklausoma aritmetinė klaida. Skiriama \textbf{3 iš 5 taškų} -- už sandaugos pavidalą, ekstremumo tašką ir lygtį $-9a=-18$, gautus iki pirmosios klaidos. Papildomas 1 taškas neatimamas.
+\newpage
+\sk{Bendrosios vertinimo taisyklės}
+Už kitą matematiškai teisingą, pakankamai pagrįstą sprendimo būdą taškai neatimami. Kriterijus pritaikykite lygiaverčiams mokinio metodo žingsniams, nereikalaudami jo metodui nereikalingų veiksmų. Vidurkis ir simetrija -- tik pavyzdinių sprendimų pasirinkimas. Teisingas įstatymas į bendrąjį pavidalą vertinamas visais atitinkamais taškais.
+
+Išlaikykite sąlygos reikalavimus: 4 uždavinyje būtini du nurodyti įrodymo būdai. Pagrindimo taškai neskiriami už vien nepagrįstą atsakymą. Nepriskirkite neparodyto darbo, tačiau nereikalaukite iš užrašo tiesiogiai matomų tarpinių veiksmų. Teisingo galutinio pavidalo patvirtinami kriterijai nurodyti prie uždavinių.
+\sk{Aritmetinių klaidų taisyklė}
+Taikymo vienetas -- vienas numeruotas uždavinys su visomis dalimis. Kitame uždavinyje klaidos skaičiuojamos iš naujo.
+\begin{itemize}
+\item Viena aritmetinė klaida: jei metodas teisingas ir su klaidingu skaičiumi toliau dirbama teisingai, dėl klaidos ir jos pasekmių prarandamas tik 1 taškas. Vėlesni veiksmai ir atsakymas už tą pačią klaidą papildomai nebaudžiami.
+\item Antra nepriklausoma aritmetinė klaida tame pačiame uždavinyje: skiriami tik kriterijų taškai, uždirbti iki pirmosios klaidos. Už pirmosios klaidos veiksmą ir visą vėlesnę eigą taškai nebeskiriami. Papildomas 1 taškas neatimamas.
+\item Klaidingo skaičiaus nuoseklus naudojimas nėra nauja klaida. Išbrauktos ir aiškiai ištaisytos klaidos neskaičiuojamos.
+\end{itemize}
+Už neatliktą darbą, nepagrįstas išvadas ir nepriklausomas metodo klaidas taškai skiriami pagal kriterijus. Vienos aritmetinės klaidos taisyklė neatkuria taškų už neatliktą darbą. Įvertinimas negali būti neigiamas.
+
+Aritmetinė klaida -- neteisingas skaitinis veiksmas taikant teisingą metodą. Neteisinga formulė, tapatybė, nelygybės ženklo keitimas, aibių sąjungos pasirinkimas vietoj sankirtos ar apibrėžimo srities nepaisymas yra metodo ar loginė klaida, ne automatinis $-1$ taškas.
+\sk{Pažymio skaičiavimas}
+Kai $s$ -- surinkti taškai, $M=30$:
+\[p=\frac{100s}{30}\quad\text{(procentai)},\qquad n=\frac{10s}{30}\quad\text{(neapvalintas pažymys)}.\]
+Jei $p<70$, $n$ apvalinti aukštyn mokinio naudai; sveikasis nekeičiamas. Jei $p\ge70$, apvalinti matematiškai: trupmeninė dalis $<0{,}5$ -- žemyn, $\ge0{,}5$ -- aukštyn. Pažymys 1--10, mažiausias -- 1. Ribą tikrinti pagal tikslią taškų dalį. Procentų iš anksto neapvalinti, pažymį apvalinti vieną kartą pabaigoje.
+
+Pavyzdžiai: $62\%\to7$; $32\%\to4$; $70\%\to7$; $92\%\to9$; $83\%\to8$; $85\%\to9$. Tai bendros taisyklės iliustracijos; ne visi šie procentai gaunami iš sveikojo 30 taškų darbo rezultato.
+\newpage
+\sk{Atrankos pagrindimas ir mokinio laikas}
+Šaltinis -- naujai pridėtas PDF „Kvadratiniai daugianariai ir nelygybės“. Užduotys šiai porai atrinktos iš jo iš naujo. Visos pasirinktos uždavinių dalys ir reikalavimai išlaikyti, keisti tik skaitiniai duomenys. Darbo numeris 1 ir data 2026.10.28 palikti kaip ankstesniuose šio atsiskaitymo variantuose.
+\begin{center}\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}crXrr@{}}\toprule
+Darbe & PDF Nr. & Tikrinamas gebėjimas & Min. & Taškai\\\midrule
+1 & 3 & Loginių duomenų derinimas: $D<0$, minimumas ir klaidingos neigiamos reikšmės atmetimas & 4 & 2\\
+2 & 18 & Daugianarių palyginimas: skirtumo pertvarkymas ir negriežta nelygybė & 6 & 3\\
+3 & 20 & Dviejų ženklų aibių sankirtos; griežti ir negriežti ženklai; tuščia aibė ir izoliuotas bendras nulinis taškas & 12 & 10\\
+4 & 12 & Du visuotinį neigiamumą įrodantys būdai; kvadrato pavidalo ir diskriminanto ryšys & 6 & 5\\
+5 & 23 & Simetrija, $a$ ženklo išvada iš $D>0$ ir teigiamo ekstremumo; dvi minimumo vietos intervale & 6 & 5\\
+6 & 25 & Daugianario konstravimas iš teigiamumo aibės ir ekstremumo & 7 & 5\\\midrule
+ & & Sprendimui & 41 & 30\\
+ & & Patikrai & 4 & \\
+ & & Visa trukmė & 45 & \\\bottomrule
+\end{tabularx}\end{center}
+Darbas matematinei klasei sunkinamas samprotavimo pobūdžiu: ženklų sąlygas reikia derinti, įvertinti ribinius taškus, atskirti pakankamus duomenis nuo trūkstamų ir atkurti daugianarį. Vengta vien mechaninių šaknų radimo bei vieno daugianario keturių ženklų užduočių rinkinio. 4 uždavinys skirtas argumentuoto įrodymo kultūrai ir metodų palyginimui.
+
+Numatytas mokinio, ne mokytojo, darbo tempas; į laiką įtrauktas sąlygų skaitymas ir sprendimų užrašymas. Stipriausi mokiniai gali baigti greičiau. Pagal šaltinį tai mokyklinio lygio darbas su sunkesne užduočių atranka; naujų olimpiadinių sąlygų ar temų nepridėta.
+
+\sk{Papildoma patikra}
+Abiejų variantų visos dalys perspręstos. 2 uždavinio skirtumas simboliškai sutikrintas išskleidžiant; galai ir trys ženklų intervalai patikrinti atskirai. 3 uždavinio abi šaknų poros patikrintos įstatymu; visoms šešioms sankirtoms atskirai patikrinti intervalų vidaus taškai ir ribos $-2$, $2$, $4$, įskaitant e) izoliuotą tašką ir f) vienintelį tašką. 4 uždavinio pavidalas sutikrintas išskleidimu, $D=-16$ apskaičiuotas nepriklausomai.
+
+5 uždavinio sąlygų suderinamumą patvirtina, pavyzdžiui, $P(x)=4-(x-4)^2$: jo $D>0$, ekstremumas $4$, o reikalaujamos simetriškos reikšmės vienodos. Pavyzdys rodo, kad abu intervalo galai vienodai mažiausi; bendras įrodymas pateiktas sprendime. 6 uždavinio atsakymui patikrintos abi šaknys, teigiamumo aibė ir ekstremumas $P(2)=-18$.
+
+Kriterijų sumos: $2+3+(2+2+1+1+1+1+1+1)+(3+2)+5+5=30$. Atitinkamų variantų matematiniai atvejai, išimtys, laikas ir taškai sutampa.
+\end{document}

@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,array,tabularx,booktabs}
+\usepackage[a4paper,margin=1.6cm]{geometry}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcommand{\antraste}[1]{\begin{center}\Large\textbf{Atsiskaitymas 1 (2026.10.28)}\\\large #1\\\normalsize Euklido variantas\end{center}}
+\newcommand{\sk}[1]{\par\medskip\textbf{#1}\par}
+\newenvironment{rubrika}{\small\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}p{0.9cm}Xr@{}}\toprule Dalis & Už ką skiriamas taškas & Tšk.\\\midrule}{\bottomrule\end{tabularx}\normalsize}
+\setlength{\emergencystretch}{2em}\begin{document}
+\antraste{Perspręsti uždaviniai: Euklido variantas}
+\textbf{Iš viso 35 taškai.} Taškų seka: 11, 7, 5, 3, 5, 4.
+\sk{1 uždavinys (11 tšk.)}
+a) $2x^2-8x-10=0\iff x^2-4x-5=0$. $D=16+20=36$, todėl
+$x=(4\pm6)/2$: $x_1=-1$, $x_2=5$.
+
+b) $P(x)=2(x+1)(x-5)$;
+$P(x)=2(x^2-4x-5)=2((x-2)^2-9)=2(x-2)^2-18$.
+
+c) Šaknys yra $-1$ ir $5$. Dėl simetrijos ekstremumo taškas yra jų vidurkis: $h=(-1+5)/2=2$. Kadangi $a>0$, tai minimumo taškas $x_{\min}=2$. Iš b) dalies $P(2)=-18$, todėl $P_{\min}=-18$.
+
+d) Kadangi $a>0$, daugianaris teigiamas už šaknų, neigiamas tarp šaknų:
+\[
+\begin{array}{ll}
+P(x)>0:&x\in(-\infty;-1)\cup(5;+\infty),\\
+P(x)<0:&x\in(-1;5),\\
+P(x)\le0:&x\in[-1;5],\\
+P(x)\ge0:&x\in(-\infty;-1]\cup[5;+\infty).
+\end{array}
+\]
+\sk{2 uždavinys (7 tšk.)}
+a) $T(2)=\sqrt{-4+8+5}/(5-2)=3/3=1$.
+$T(5)$ neapibrėžta, nes vardiklis $0$ (nors pošaknis irgi $0$).
+$T(6)$ neapibrėžta realiųjų skaičių aibėje, nes pošaknis $-36+24+5=-7<0$.
+
+b) Reikia $-x^2+4x+5\ge0$ ir $5-x\ne0$.
+Iš $-(x+1)(x-5)\ge0$ gauname $x\in[-1;5]$; atmetę $5$, gauname
+$\boxed{x\in[-1;5)}$.
+\sk{3 uždavinys (5 tšk.)}
+a) $P(x)=2(x^2-2x)+5=2(x-1)^2+3\ge3>0$.
+
+b) $D=(-4)^2-4\cdot2\cdot5=-24<0$, $a=2>0$.
+Realiųjų šaknų nėra, o daugianario ženklas sutampa su $a$ ženklu, todėl $P(x)>0$ visiems $x\in\mathbb R$.
+\sk{4 uždavinys (3 tšk.)}
+Jonukas neatsižvelgė į $x-3$ ženklą. Kai $x<3$, dalijant nelygybės ženklas apsiverčia; kai $x=3$, dalyti negalima.
+Sandauga teigiama, kai abu daugikliai teigiami arba abu neigiami.
+Gauname $x>3$ arba $x<-1$, t.\,y. $\boxed{x\in(-\infty;-1)\cup(3;+\infty)}$.
+\sk{5 uždavinys (5 tšk.)}
+Iš $P(1)=P(5)$ žinome, kad $1$ ir $5$ yra simetriški ekstremumo taško atžvilgiu. Todėl $h=(1+5)/2=3$. Kadangi $h>0$ ir $b>0$, iš ryšio $h=-b/(2a)$ nustatome $a<0$ (šis ryšys čia naudojamas tik $a$ ženklui nustatyti).
+Taigi $P(x)=a(x-3)^2+P(3)$: didžiausia reikšmė pasiekiama ties $x=3$.
+Atstumai nuo $3$ iki intervalo galų: $3-0=3$ ir $9-3=6$.
+Tolimiausias galas $9$, todėl mažiausia reikšmė pasiekiama ties $x=9$.
+\sk{6 uždavinys (4 tšk.)}
+Ženklo sąlyga duoda šaknis $2$, $6$ ir $a>0$, todėl $P(x)=a(x-2)(x-6)$.
+$P(0)=12a=24$, vadinasi, $a=2$.
+$\boxed{P(x)=2x^2-16x+24}$.
+Patikra: $P(0)=24$; kai $a>0$, $P(x)<0$ tik intervale $(2;6)$.
+\newpage
+\antraste{Bendrosios vertinimo instrukcijos}\small
+\sk{Taškų persvarstymo rezultatas}
+\begin{center}\begin{tabular}{lrrrrrrr}\toprule Uždavinys&1&2&3&4&5&6&Iš viso\\\midrule
+Anksčiau&12&7&5&4&6&6&40\\
+Dabar&11&7&5&3&5&4&35\\\bottomrule\end{tabular}\end{center}
+Taškas siejamas su atpažįstamu matematiniu rezultatu ar pagrindimu. Vien už formulės perrašymą, uždavinio duomenų nusirašymą ar tą patį argumentą kitaip užrašius papildomi taškai neskiriami.
+1 uždavinyje mažinamas bendras svoris, 4 ir 5 uždaviniuose atsisakoma perteklinių taškų už trumpus veiksmus, 6 uždavinyje keturi nuoseklūs žingsniai vertinami po vieną tašką.
+
+\sk{Aritmetinių klaidų taisyklė}
+\textbf{Taikymo vienetas -- vienas numeruotas uždavinys su visomis jo dalimis.} Klaidos skaičiuojamos iš naujo pradedant kitą numeruotą uždavinį. Vertinama mokinio pateikto galutinio sprendimo eiga; išbraukti ir aiškiai ištaisyti skaičiavimai klaidomis nelaikomi.
+\begin{enumerate}
+\item \textbf{Viena aritmetinė klaida.} Jei metodas teisingas ir su klaidingu skaičiumi toliau dirbama teisingai, dėl šios klaidos prarandamas \textbf{tik 1 taškas}. Taškas atimamas vieną kartą, klaidos atsiradimo žingsnyje. Jos pasekmės vėlesniuose veiksmuose ir atsakyme papildomai nebaudžiamos.
+\item \textbf{Antra aritmetinė klaida tame pačiame uždavinyje.} Visa uždavinio eiga pervertinama: skiriami tik tie kriterijų taškai, kurie uždirbti \textbf{iki pirmosios aritmetinės klaidos}. Už veiksmą, kuriame atsirado pirmoji klaida, ir visą tolesnį sprendimą taškai nebeskiriami. Papildomai dar 1 taškas neatimamas.
+\item \textbf{Klaidos pasekmė nėra nauja klaida.} Klaidingai gauto skaičiaus nuoseklus naudojimas kituose veiksmuose nėra antra aritmetinė klaida. Antra klaida -- naujas nepriklausomas neteisingas skaičiavimas.
+\end{enumerate}
+Jei be pirmosios klaidos yra praleistų veiksmų ar kitų, ne aritmetinių, klaidų, už juos taškai skiriami pagal kriterijus. Taisyklė neatkuria taškų už neatliktą ar nepagrįstą darbą. Viena aritmetinė klaida negali lemti didesnio kaip 1 taško nuostolio dėl jos pačios ir jos pasekmių; uždavinio įvertinimas negali būti neigiamas.
+
+\sk{Kas laikoma aritmetine klaida?}
+Aritmetinė klaida -- neteisingas skaitinio veiksmo rezultatas taikant teisingą metodą, pvz., $16+20=25$ arba $12a=24\Rightarrow a=3$.
+Metodo ar loginės klaidos: neteisinga diskriminanto formulė, neteisinga greitosios daugybos tapatybė, dalijimas iš galimai nulinio reiškinio, neteisingas nelygybės ženklo keitimas, šaknies iš neigiamo skaičiaus pripažinimas realiuoju skaičiumi, vardiklio nulio neatmetimas. Jos vertinamos pagal pažeistus kriterijus, o ne automatiškai kaip $-1$ taškas.
+
+\sk{Kaip taisyklę taikyti praktiškai?}
+6 uždavinyje mokinys teisingai sudaro $P(x)=a(x-2)(x-6)$ ir $12a=24$, bet parašo $a=3$. Jei toliau teisingai gauna $3x^2-24x+36$, skiriama \textbf{3 iš 4 taškų}. Jei dar neteisingai atskliaudžia, pvz., gauna $3x^2-21x+36$, skiriami \textbf{2 iš 4 taškų}: už sandaugos pavidalą ir lygtį $12a=24$, atliktus iki pirmos klaidos.
+
+\sk{Kiti sprendimai ir pagrindimas}
+\textbf{Už kitą matematiškai teisingą sprendimo būdą taškai neatimami.} Jei sprendimas pakankamai pagrįstas ir gauti teisingi atsakymai, skiriami visi atitinkamos dalies taškai. Kriterijų taškai priskiriami lygiaverčiams mokinio metodo žingsniams: neprivaloma atlikti būtent pavyzdyje nurodytų tarpinių veiksmų. Vidurkis ir simetrija yra tik pavyzdinio sprendimo pasirinkimas, o ne privalomas vertinimo reikalavimas. Nereikalaujama būtent čia pateiktos veiksmų tvarkos ar diskriminanto, jei šaknys rastos kitaip. Teisingas pavidalas gali kartu pagrįsti šaknis ar ekstremumą, o teisinga ženklų schema -- intervalus. Vien teisingas galutinis atsakymas neįrodo neatliktų tarpinių metodinių žingsnių; skiriami tik aiškiai parodyti ar iš užrašo tiesiogiai matomi kriterijų taškai. Taškai neskiriami už nepateiktus spėjamus skaičiavimus.
+\normalsize\newpage
+\antraste{Aiškus taškų paskirstymas: 1 uždavinys}
+\textbf{Euklido varianto vertinimo instrukcijos.}
+\sk{1 uždavinys -- iš viso 11 taškų}
+\textbf{a) Šaknys -- 2 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už pirmąją teisingą šaknį: $-1$.
+\item \textbf{1 taškas} už antrąją teisingą šaknį: $5$.
+\end{itemize}
+\textbf{a) suma: $1+1=2$ taškai.} Šaknų užrašymo tvarka nesvarbi.
+
+\textbf{b) Du kiti daugianario pavidalai -- 3 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už sandaugos pavidalą su koeficientu $2$:
+\[2(x+1)(x-5)\]
+\item \textbf{1 taškas} už teisingą pilnojo kvadrato išskyrimą:
+\[2((x-2)^2-9)\]
+\item \textbf{1 taškas} už galutinį ekstremumo pavidalą:
+\[2(x-2)^2-18\]
+\end{itemize}
+\textbf{b) suma: $1+1+1=3$ taškai.} Pateikus teisingą galutinį ekstremumo pavidalą be tarpinio užrašo, už šį pavidalą skiriami abu jam numatyti taškai (2). Tarpinio užrašo nereikalaujama, jei rezultatas tiesiogiai patikrinamas išskleidžiant.
+
+\textbf{c) Ekstremumo taškas, reikšmė ir tipas -- 2 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už teisingai rastą ekstremumo tašką (pavyzdyje -- per šaknų vidurkį ir simetriją): $x_{\min}=2$.
+\item \textbf{1 taškas} už abu teisingus teiginius kartu: ekstremumo reikšmė $-18$, jo tipas -- minimumas.
+\end{itemize}
+\textbf{c) suma: $1+1=2$ taškai.}
+
+\textbf{d) Daugianario ženklų aibės -- 4 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už visą teigiamumo aibę:
+$(-\infty;-1)\cup(5;+\infty)$.
+\item \textbf{1 taškas} už visą neigiamumo aibę: $(-1;5)$.
+\item \textbf{1 taškas} už visą neteigiamumo aibę: $[-1;5]$.
+\item \textbf{1 taškas} už visą neneigiamumo aibę:
+$(-\infty;-1]\cup[5;+\infty)$.
+\end{itemize}
+\textbf{d) suma: $1+1+1+1=4$ taškai.} Vertinami ir intervalų galai. Aibėms pagrįsti pakanka šaknų, $a>0$ ir teisingos ženklų schemos arba trumpo paaiškinimo.
+
+\begin{center}\fbox{\textbf{1 uždavinys: a) 2 + b) 3 + c) 2 + d) 4 = 11 taškų.}}\end{center}
+\newpage
+\antraste{Aiškus taškų paskirstymas: 2 ir 3 uždaviniai}
+\sk{2 uždavinys -- iš viso 7 taškai}
+\textbf{a) Trys reiškinio reikšmės -- 3 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už apskaičiuotą reikšmę $T(2)=1$.
+\item \textbf{1 taškas} už nurodymą, kad $T(5)$ neapibrėžta, nes vardiklis lygus nuliui.
+\item \textbf{1 taškas} už nurodymą, kad $T(6)$ neapibrėžta realiųjų skaičių aibėje, nes pošaknis neigiamas ($-7$).
+\end{itemize}
+\textbf{a) suma: $1+1+1=3$ taškai.} Vien žodžio „neapibrėžta“ be priežasties atitinkamam taškui nepakanka.
+
+\textbf{b) Apibrėžimo sritis -- 4 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už pošaknio sąlygą:
+$-x^2+4x+5\ge0$.
+\item \textbf{1 taškas} už teisingai išspręstą pošaknio nelygybę:
+$x\in[-1;5]$.
+\item \textbf{1 taškas} už vardiklio apribojimą: $x\ne5$.
+\item \textbf{1 taškas} už abiejų sąlygų suderinimą ir galutinę sritį:
+$x\in[-1;5)$.
+\end{itemize}
+\textbf{b) suma: $1+1+1+1=4$ taškai.} Sąlygos gali būti rašomos ir sprendžiamos nuosekliai; sistemos užrašas nereikalingas.
+
+\begin{center}\fbox{\textbf{2 uždavinys: a) 3 + b) 4 = 7 taškai.}}\end{center}
+\sk{3 uždavinys -- iš viso 5 taškai}
+\textbf{a) Įrodymas išskiriant pilnąjį kvadratą -- 3 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už teisingą pilnojo kvadrato išskyrimo žingsnį:
+$2((x-1)^2-1)+5$.
+\item \textbf{1 taškas} už teisingą galutinį pavidalą:
+$2(x-1)^2+3$.
+\item \textbf{1 taškas} už pagrindimą, kad kvadratas neneigiamas, todėl
+$P(x)\ge3>0$ su visomis realiosiomis $x$ reikšmėmis.
+\end{itemize}
+\textbf{a) suma: $1+1+1=3$ taškai.} Teisingas galutinis pilnojo kvadrato pavidalas patvirtina abu pertvarkymo kriterijus (2 taškai), net jei tarpinis žingsnis praleistas. Išvada apie teigiamumą vertinama atskirai.
+
+\textbf{b) Įrodymas pagal koeficientus ir diskriminantą -- 2 taškai.}
+\begin{itemize}
+\item \textbf{1 taškas} už teisingą diskriminanto skaičiavimą ir rezultatą $D=-24$.
+\item \textbf{1 taškas} už pagrįstą išvadą: $a=2>0$ ir $D<0$, todėl $P(x)>0$ visiems realiesiems $x$.
+\end{itemize}
+\textbf{b) suma: $1+1=2$ taškai.} Pateikus tik vieną įrodymo būdą, už kitą taškai neskiriami.
+
+\begin{center}\fbox{\textbf{3 uždavinys: a) 3 + b) 2 = 5 taškai.}}\end{center}
+\newpage
+\antraste{Aiškus taškų paskirstymas: 4--6 uždaviniai}
+\sk{4 uždavinys -- iš viso 3 taškai}
+\begin{itemize}
+\item \textbf{1 taškas} už esminės Jonuko klaidos paaiškinimą: daliklis gali būti neigiamas, o tuomet dalijant nelygybės ženklas turi apsiversti.
+\item \textbf{1 taškas} už teisingą abiejų teigiamumo atvejų nagrinėjimą: abu daugikliai teigiami arba abu neigiami. Tinka ir teisinga ženklų schema.
+\item \textbf{1 taškas} už visą galutinę sprendinių aibę be galinių taškų:
+$(-\infty;-1)\cup(3;+\infty)$.
+\end{itemize}
+\textit{Pastaba.} Vien pastebėjimas, kad dalyti iš nulio negalima, nepaaiškina esminės ženklo klaidos. Už teisingą atsakymą be pagrindimo -- daugiausia 1 taškas.
+\begin{center}\fbox{\textbf{4 uždavinys: 1 + 1 + 1 = 3 taškai.}}\end{center}
+
+\sk{5 uždavinys -- iš viso 5 taškai}
+\begin{itemize}
+\item \textbf{1 taškas} už pagrįstai rastą ekstremumo tašką bet kuriuo teisingu būdu (pavyzdyje -- per vidurkį ir simetriją):
+$h=(1+5)/2=3$.
+\item \textbf{1 taškas} už $a<0$ nustatymą iš $b>0$, jau rasto $h>0$ ir ryšio $h=-b/(2a)$.
+\item \textbf{1 taškas} už didžiausios reikšmės vietą:
+$x=3$.
+\item \textbf{1 taškas} už intervalo galų atstumų nuo $h$ palyginimą: atstumai yra $3$ ir $6$, todėl dešinysis galas tolimesnis.
+\item \textbf{1 taškas} už mažiausios reikšmės vietą:
+$x=9$.
+\end{itemize}
+\textit{Pastaba.} Didžiausios ir mažiausios reikšmių skaičiuoti nereikia -- klausiama jų pasiekimo vietų. Už abu teisingus atsakymus be pagrindimo -- daugiausia 2 taškai. Pavyzdyje taikomi vidurkis ir simetrija. Kiti teisingi būdai, įskaitant įstatymą į bendrąjį pavidalą, vertinami visais atitinkamais taškais.
+\begin{center}\fbox{\textbf{5 uždavinys: 1 + 1 + 1 + 1 + 1 = 5 taškai.}}\end{center}
+
+\sk{6 uždavinys -- iš viso 4 taškai}
+\begin{itemize}
+\item \textbf{1 taškas} už iš ženklo sąlygos sudarytą sandaugos pavidalą:
+$P(x)=a(x-2)(x-6)$, $a>0$.
+\item \textbf{1 taškas} už teisingą sąlygos $P(0)$ pritaikymą:
+$12a=24$.
+\item \textbf{1 taškas} už teisingai rastą koeficientą $a=2$.
+\item \textbf{1 taškas} už teisingą galutinį bendrąjį pavidalą:
+$P(x)=2x^2-16x+24$.
+\end{itemize}
+\textit{Pastaba.} $a>0$ nebūtina užrašyti atskirai, jei gautas teigiamas koeficientas ir visas sprendimas atitinka ženklo sąlygą. Teisingos sandaugos neišskleidus prarandamas tik paskutinis taškas.
+\begin{center}\fbox{\textbf{6 uždavinys: 1 + 1 + 1 + 1 = 4 taškai.}}\end{center}
+\medskip\textbf{Viso darbo suma: $11+7+5+3+5+4=35$ taškai.}
+
+Visiems šiems kriterijams taikoma 2 puslapyje pateikta aritmetinių klaidų taisyklė.
+\newpage
+\antraste{Pažymio skaičiavimas ir apvalinimas}
+\textbf{Darbo didžiausia taškų suma -- 35 taškai.}
+
+Pirmiausia pagal uždavinių kriterijus ir aritmetinių klaidų taisyklę susumuojami mokinio taškai $s$. Apskaičiuojama procentinė darbo dalis ir neapvalintas pažymys:
+\[
+ p=\frac{s}{35}\cdot100\%,\qquad n=\frac{s}{35}\cdot10.
+\]
+\sk{Apvalinimo taisyklė}
+\begin{itemize}
+\item \textbf{Surinkus mažiau nei 70\%,} neapvalintas pažymys $n$ apvalinamas \textbf{į didesnę pusę mokinio naudai} -- iki artimiausio ne mažesnio sveikojo skaičiaus. Jei $n$ jau sveikasis, jis nekeičiamas.
+\item \textbf{Surinkus 70\% ar daugiau,} $n$ apvalinamas \textbf{pagal įprastas matematines apvalinimo taisykles}: trupmeninė dalis mažesnė už $0{,}5$ -- žemyn, lygi $0{,}5$ arba didesnė -- aukštyn.
+\end{itemize}
+Ties 70\% riba taikoma antroji taisyklė: $n=7$, todėl pažymys yra $7$.
+Pažymys rašomas 1--10 skalėje (mažiausias pažymys -- 1).
+
+\sk{Pavyzdžiai}
+\begin{center}\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{clcl}\toprule
+Rezultatas & Neapvalintas pažymys & Pažymys & Taikoma taisyklė\\\midrule
+62\% & $6{,}2$ & \textbf{7} & Aukštyn mokinio naudai\\
+32\% & $3{,}2$ & \textbf{4} & Aukštyn mokinio naudai\\
+70\% & $7{,}0$ & \textbf{7} & Matematinis apvalinimas\\
+92\% & $9{,}2$ & \textbf{9} & Matematinis apvalinimas\\
+83\% & $8{,}3$ & \textbf{8} & Matematinis apvalinimas\\
+85\% & $8{,}5$ & \textbf{9} & Matematinis apvalinimas\\\bottomrule
+\end{tabular}\end{center}
+
+\sk{Skaičiavimo tikslumas}
+Procentų ir neapvalinto pažymio iš anksto neapvalinti. 70\% ribą tikrinti pagal tikslią taškų dalį, o pažymį apvalinti tik vieną kartą -- pabaigoje.
+Pavyzdžiai lentelėje iliustruoja bendrą taisyklę; ne kiekvienas joje nurodytas procentas gaunamas iš sveikojo 35 taškų darbo rezultato.
+
+\textbf{Ši apvalinimo taisyklė vienodai taikoma Euklido ir Pitagoro variantams.}
+\end{document}
