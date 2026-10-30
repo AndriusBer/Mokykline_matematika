@@ -1,0 +1,51 @@
+\documentclass[12pt]{exam}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,graphicx,xcolor,tikz}
+\usepackage[a4paper,left=1cm,right=1cm,top=2.5cm,bottom=1cm,footskip=12pt]{geometry}
+\usepackage{amsmath,amssymb,tasks}
+\newcommand{\irasolaukas}[1]{\begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{3pt}\fcolorbox{black!35}{white}{\rule{0pt}{0.45cm}\hspace{#1}}\endgroup}
+\newcommand{\sprendimas}[1]{\par\smallskip\noindent\textit{Sprendimas:}\par\nobreak\vspace{0.1cm}\noindent\begin{tikzpicture}\path[use as bounding box] (0,0) rectangle (\linewidth,{-0.7*#1});\foreach \i in {1,...,#1}{\draw[draw=black!25,line width=0.3pt] (0,{-0.7*\i}) -- (\linewidth,{-0.7*\i});}\end{tikzpicture}\par\smallskip}
+\newcommand{\atsakymas}[1][9]{\par\smallskip\noindent\textit{Atsakymas:} \framebox[#1cm]{\rule{0pt}{0.5cm}}\par}
+\pagestyle{headandfoot}\runningheadrule
+\pointsdroppedatright\bracketedpoints\setlength{\rightpointsmargin}{1.6cm}
+\pointpoints{taškas}{taškai}
+\pointname{ tšk.}\marginpointname{ tšk.}
+\firstpagefooter{}{\thepage}{}
+\runningfooter{}{\thepage}{}
+\setlength{\parindent}{0pt}
+\firstpageheader{\small\begin{tabular}{@{}l@{\hspace{0.2cm}}l@{}}Mokinio kodas: & \irasolaukas{2.3cm} \\[0.15cm] Klasė: & \irasolaukas{2.3cm}\end{tabular}}{\small\textbf{Kontrolinio darbo perrašymas}\\45 min.}{\small Šviesos variantas}
+\runningheader{\small Kvadratinės lygtys}{}{\small Šviesos variantas}
+\begin{document}
+\begin{center}\textbf{Kvadratinės lygtys}\end{center}
+Visuose uždaviniuose laikykite, kad $x\in\mathbb R$. Sprendimus pagrįskite. Iš viso -- 40 taškų.
+\medskip
+\begin{questions}
+\question[6] Išspręskite lygtį, pirmiausia pertvarkydami ją į pavidalą $ax^2+bx+c=0$:\droppoints
+\[(x+4)(x-1)=2x-2.\]
+\sprendimas{7}\atsakymas[12]
+\question[4] Lygties $2x^2-2x-4=0$ šaknys yra $x_1$ ir $x_2$. Nerasdami šaknų, apskaičiuokite $x_1^3+x_2^3$.\droppoints
+\sprendimas{6}\atsakymas[12]
+\newpage
+\question[8] Raskite visas parametro $m$ reikšmes, su kuriomis lygties\droppoints
+\[x^2-(m+3)x+3m=0\]
+realiosios šaknys $x_1$ ir $x_2$ tenkina sąlygą $x_1^2+x_2^2=18$. Patikrinkite, ar gautos $m$ reikšmės užtikrina realiųjų šaknų egzistavimą.
+\sprendimas{12}\atsakymas[12]
+\question[7] Įvesdami tinkamą keitinį, išspręskite lygtį:\droppoints
+\[x^4-10x^2+9=0.\]
+\sprendimas{8}\atsakymas[12]
+\newpage
+\question[9] Įvesdami tinkamą keitinį, išspręskite lygtį:\droppoints
+\[\frac{x-1}{x+2}-3\frac{x+2}{x-1}=2.\]
+\sprendimas{9}\atsakymas[12]
+\question[6] Išskaidykite dauginamaisiais:\droppoints
+\begin{tasks}[label=\alph*),label-width=1.2em](1)
+\task $3x^2-10x+3$;
+\task $x^3+2x^2-9x-18$
+\end{tasks}
+\sprendimas{7}\atsakymas[12]
+\end{questions}
+\newpage
+\begin{center}\large\textbf{Juodraštis}\end{center}
+\end{document}

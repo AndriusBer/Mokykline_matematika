@@ -1,0 +1,551 @@
+\documentclass[11pt,a4paper]{scrartcl}
+\usepackage{../../1.\space Vienanariai\space ir\space daugianariai/manostilius_lt}
+\usepackage{tasks}
+\usepackage{needspace}
+\usepackage{array}
+\settasks{label={(\arabic*)},label-width=1.5em,label-offset=.6em,after-item-skip=.8em}
+\emergencystretch=2em
+\title{Daugianarių dalyba ir jos taikymai}
+\author{Andrius Berniukevičius}
+\newcommand{\uzd}[1]{\Needspace{5\baselineskip}\begin{problem}#1\end{problem}}
+\begin{document}
+\maketitle
+\section{Prisiminkime skaičių dalybą kampu}
+Padaliję \(84\) iš \(7\), gauname dalmenį \(12\) ir liekaną \(0\). Jei vietoje \(84\) imame \(86\), dalmuo lieka \(12\), o liekana tampa \(2\):
+\[
+\begin{minipage}[t]{.46\linewidth}\centering
+\textbf{Be liekanos}\par\smallskip
+\(\renewcommand{\arraystretch}{1.18}
+\begin{array}{r|l}
+84&7\\\cline{2-2}
+-70&12\\\cline{1-1}
+14&\\
+-14&\\\cline{1-1}
+0&
+\end{array}\)
+\end{minipage}\hfill
+\begin{minipage}[t]{.46\linewidth}\centering
+\textbf{Su liekana}\par\smallskip
+\(\renewcommand{\arraystretch}{1.18}
+\begin{array}{r|l}
+86&7\\\cline{2-2}
+-70&12\\\cline{1-1}
+16&\\
+-14&\\\cline{1-1}
+2&
+\end{array}\)
+\end{minipage}
+\]
+Abiem atvejais pirmiausia randame dalmens dešimtį: \(7\cdot10=70\). Atimame, o likusį skaičių dalijame iš \(7\): \(14:7=2\), bet \(16:7=2\) su liekana \(2\). Todėl
+\[84=7\cdot12+0,\qquad 86=7\cdot12+2,\quad 0\le2<7.\]
+\begin{remark*}
+Daugianarių dalyboje darysime \emph{tą patį}: parinksime dalmens narį, padauginsime iš daliklio, atimsime ir kartosime. Skaičių dalyboje liekana mažesnė už daliklį; daugianarių dalyboje liekanos \emph{laipsnis} mažesnis už daliklio laipsnį.
+\end{remark*}
+\clearpage
+\section{Daugianarių dalybos prasmė}
+Šio konspekto tikslas -- išmokti dalyti daugianarius stulpeliu ir šį veiksmą taikyti skaidant daugianarius dauginamaisiais, sprendžiant lygtis, nelygybes bei kitus uždavinius. Dirbame su realiaisiais koeficientais ir realiaisiais nežinomojo skaičiais.
+\begin{definition}
+Daugianarį \(P(x)\) padalyti iš nenulinio daugianario \(D(x)\) -- tai rasti \vocab{dalmenį} \(Q(x)\) ir \vocab{liekaną} \(R(x)\), kad
+\[
+P(x)=D(x)Q(x)+R(x),
+\]
+kur \(R(x)=0\) arba liekanos laipsnis mažesnis už daliklio laipsnį.
+\end{definition}
+Kai \(R(x)=0\), sakome, kad \(P(x)\) \emph{dalijasi iš \(D(x)\) be liekanos}. Dalijant iš pirmojo laipsnio daugianario, liekana yra skaičius.
+\begin{algorithm}[Dalybos stulpeliu eiga]
+\leavevmode\par
+\begin{enumerate}[label=\arabic*.,leftmargin=*,nosep]
+\item Narius surašome mažėjančių laipsnių tvarka. Trūkstamas vietas užpildome nariais su nuliniu koeficientu.
+\item Dalijame pirmąjį esamo dalinio narį iš pirmojo daliklio nario. Gautą narį įrašome į dalmenį.
+\item Iš gauto nario padauginame \emph{visą} daliklį.
+\item Gautą daugianarį atimame ir perkeliame kitą dalinio narį.
+\item Kartojame, kol liekanos laipsnis tampa mažesnis už daliklio laipsnį. Patikriname tapatybę \(P=DQ+R\).
+\end{enumerate}
+\end{algorithm}
+\begin{remark*}
+Atimdami daugianarį pakeičiame \emph{visų} jo narių ženklus. Pavyzdžiui,
+\((2x^2-5x)-(2x^2-4x)=-x\), o ne \(-9x\).
+\end{remark*}
+
+\clearpage
+\section{Dalybos stulpeliu pavyzdžiai}
+\begin{example}[Dalyba be liekanos]
+Padalykite \(x^3+2x^2-5x-6\) iš \(x-2\).
+\end{example}
+\begin{solution}
+Pirmiausia \(x^3:x=x^2\), todėl pirmasis dalmens narys yra \(x^2\). Padauginame: \(x^2(x-2)=x^3-2x^2\). Atimame ir perkeliame \(-5x\):
+\[(x^3+2x^2)-(x^3-2x^2)-5x=4x^2-5x.\]
+Toliau \(4x^2:x=4x\). Atimame \(4x(x-2)=4x^2-8x\) ir perkeliame \(-6\): gauname \(3x-6\). Galiausiai \(3x:x=3\), o \((3x-6)-3(x-2)=0\).
+\[
+\renewcommand{\arraystretch}{1.15}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&+2x^2&-5x&-6&x-2\\\cline{6-6}
+ -&x^3&-2x^2&&&x^2+4x+3\\\cline{2-3}
+ &&4x^2&-5x&&\\
+ -&&4x^2&-8x&&\\\cline{3-4}
+ &&&3x&-6&\\
+ -&&&3x&-6&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Lentelės kairėje esantis minusas reiškia, kad atimama visa toje eilutėje įrašyta išraiška.
+\ats{\(Q(x)=x^2+4x+3\), liekana \(0\).}
+\end{solution}
+\begin{example}[Trūkstamas narys ir nenulinė liekana]
+Padalykite \(2x^3-3x+5\) iš \(x+1\).
+\end{example}
+\begin{solution}
+Dalinį užrašome \(2x^3+0x^2-3x+5\), kad visi laipsniai būtų savo vietose. Kampu dalijame taip:
+\[
+\renewcommand{\arraystretch}{1.15}
+\begin{array}{r@{\;}rrrr|l}
+ &2x^3&+0x^2&-3x&+5&x+1\\\cline{6-6}
+ -&2x^3&+2x^2&&&2x^2-2x-1\\\cline{2-3}
+ &&-2x^2&-3x&&\\
+ -&&-2x^2&-2x&&\\\cline{3-4}
+ &&&-x&+5&\\
+ -&&&-x&-1&\\\cline{4-5}
+ &&&&6&
+\end{array}
+\]
+Čia pirmąjį dalmens narį \(2x^2\) gavome iš \(2x^3:x\). Po kiekvieno atėmimo dalijame pirmąjį naujai gauto daugianario narį. Kaip skaičių dalyboje \(86=7\cdot12+2\), taip čia \(P(x)=(x+1)Q(x)+6\).
+Liekana \(6\) yra nulinio laipsnio, todėl toliau nedalijame. Patikrinimas:
+\[(x+1)(2x^2-2x-1)+6=2x^3-3x+5.\]
+\ats{\(Q(x)=2x^2-2x-1\), liekana \(6\).}
+\end{solution}
+
+\subsection{Aukštesnio laipsnio daugianariai}
+Algoritmas nepriklauso nuo to, ar dalinys yra trečiojo, ketvirtojo, ar penktojo laipsnio. Dalijant iš tiesinio daugianario, dalmuo bus vienu laipsniu žemesnis už dalinį. Jei kurių nors laipsnių trūksta, jų vietose rašome nulius.
+\begin{example}[Ketvirtojo laipsnio daugianaris be liekanos]
+Padalykite \(x^4-1\) iš \(x-1\).
+\end{example}
+\begin{solution}
+Dalinį užrašome kaip \(x^4+0x^3+0x^2+0x-1\). Pradėję nuo \(x^4:x=x^3\), toliau dalijame kiekvieną naujai gautą pirmąjį narį:
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrrr|l}
+ &x^4&+0x^3&+0x^2&+0x&-1&x-1\\\cline{7-7}
+ -&x^4&-x^3&&&&x^3+x^2+x+1\\\cline{2-3}
+ &&x^3&+0x^2&&&\\
+ -&&x^3&-x^2&&&\\\cline{3-4}
+ &&&x^2&+0x&&\\
+ -&&&x^2&-x&&\\\cline{4-5}
+ &&&&x&-1&\\
+ -&&&&x&-1&\\\cline{5-6}
+ &&&&&0&
+\end{array}
+\]
+Keturis kartus padalijome pirmąjį narį iš \(x\); liekana lygi nuliui. Patikrinimas:
+\[(x-1)(x^3+x^2+x+1)=x^4-1.\]
+\ats{\(Q(x)=x^3+x^2+x+1\), \(R=0\).}
+\end{solution}
+\begin{example}[Penktojo laipsnio daugianaris su liekana]
+Padalykite \(x^5-x^3+5x^2+1\) iš \(x+2\).
+\end{example}
+\begin{solution}
+Prieš dalydami įrašome trūkstamus narius \(0x^4\) ir \(0x\). Pirmasis dalmens narys bus \(x^5:x=x^4\). Toliau kartojame tuos pačius daugybos ir atimties veiksmus:
+\[
+\renewcommand{\arraystretch}{1.1}
+\begin{array}{r@{\;}rrrrrr|l}
+ &x^5&+0x^4&-x^3&+5x^2&+0x&+1&x+2\\\cline{8-8}
+ -&x^5&+2x^4&&&&&x^4-2x^3+3x^2-x+2\\\cline{2-3}
+ &&-2x^4&-x^3&&&&\\
+ -&&-2x^4&-4x^3&&&&\\\cline{3-4}
+ &&&3x^3&+5x^2&&&\\
+ -&&&3x^3&+6x^2&&&\\\cline{4-5}
+ &&&&-x^2&+0x&&\\
+ -&&&&-x^2&-2x&&\\\cline{5-6}
+ &&&&&2x&+1&\\
+ -&&&&&2x&+4&\\\cline{6-7}
+ &&&&&&-3&
+\end{array}
+\]
+Kai lieka \(-3\), sustojame: šios liekanos laipsnis \(0\), o daliklio \(x+2\) laipsnis \(1\). Patikrinimas:
+\[x^5-x^3+5x^2+1=(x+2)(x^4-2x^3+3x^2-x+2)-3.\]
+\ats{\(Q(x)=x^4-2x^3+3x^2-x+2\), \(R=-3\).}
+\end{solution}
+
+\section{Liekana ir daugianario šaknis}
+\begin{theorem}[Liekanos teorema]
+Daugianarį \(P(x)\) dalijant iš \(x-a\), liekana lygi \(P(a)\).
+\end{theorem}
+\begin{remark*}[Kodėl liekana yra skaičius?]
+Daliklio \(x-a\) laipsnis yra \(1\). Dalyba baigta tik tada, kai liekanos laipsnis \emph{mažesnis} už daliklio laipsnį. Nenulinio daugianario laipsnis, mažesnis už \(1\), gali būti tik \(0\): tai pastovusis daugianaris, kitaip tariant, skaičius \(r\). Liekaną \(0\) taip pat laikome skaičiumi. Jei liktų narys su \(x\), dalybą dar galėtume tęsti.
+\end{remark*}
+\begin{proof}
+Pagal dalybos apibrėžimą ką tik nustatėme, kad liekana yra skaičius \(r\). Vadinasi,
+\[P(x)=(x-a)Q(x)+r.\]
+Įrašę \(x=a\), gauname \(P(a)=0\cdot Q(a)+r=r\).
+\end{proof}
+\begin{corollary}[Šaknies ir daugiklio ryšys]
+\(P(a)=0\) tada ir tik tada, kai \(P(x)\) dalijasi iš \(x-a\) be liekanos.
+\end{corollary}
+\begin{proof}
+Pagal liekanos teoremą abiem atvejais liekana lygi nuliui.
+\end{proof}
+\begin{example}[Liekana nedalijant stulpeliu]
+Raskite liekaną, gaunamą \(P(x)=x^3-2x^2+4x-7\) dalijant iš \(x-2\).
+\end{example}
+\begin{solution}
+Daliklis yra \(x-2\), todėl skaičiuojame \(P(2)\):
+\[P(2)=8-8+8-7=1.\]
+\ats{Liekana lygi \(1\).}
+\end{solution}
+\begin{example}[Daliklis \(x+2\)]
+Patikrinkite, ar \(P(x)=x^3+x^2-4x-4\) dalijasi iš \(x+2\).
+\end{example}
+\begin{solution}
+Užrašome \(x+2=x-(-2)\), todėl tikriname \(P(-2)\), o ne \(P(2)\):
+\[P(-2)=-8+4+8-4=0.\]
+Taigi dalijasi. Dalydami kampu gauname:
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&+x^2&-4x&-4&x+2\\\cline{6-6}
+ -&x^3&+2x^2&&&x^2-x-2\\\cline{2-3}
+ &&-x^2&-4x&&\\
+ -&&-x^2&-2x&&\\\cline{3-4}
+ &&&-2x&-4&\\
+ -&&&-2x&-4&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Dalmuo \(Q(x)=x^2-x-2\), todėl
+\[P(x)=(x+2)(x^2-x-2)=(x+2)(x-2)(x+1).\]
+\ats{Taip, dalijasi; dalmuo \(x^2-x-2\).}
+\end{solution}
+\begin{remark*}
+Šaknis \(a\) atitinka daugiklį \(x-a\). Todėl šakniai \(-1\) atitinka \(x+1\), o šakniai \(2\) -- \(x-2\).
+\end{remark*}
+
+\section{Kubinių daugianarių skaidymas dauginamaisiais}
+\begin{algorithm}[Vienos šaknies paieška]
+\leavevmode\par
+\begin{enumerate}[label=\arabic*.,leftmargin=*,nosep]
+\item Patikriname \(1,-1,2,-2\). Šiuose pratimuose bent vienas jų bus šaknis.
+\item Radę \(P(a)=0\), padalijame \(P(x)\) iš \(x-a\).
+\item Gautą kvadratinį trinarį, jei įmanoma, išskaidome dauginamaisiais.
+\item Patikriname sandaugą arba rastas šaknis.
+\end{enumerate}
+\end{algorithm}
+\begin{remark*}
+Skaičiai \(\pm1,\pm2\) nėra visų kubinių daugianarių šaknys. Pavyzdžiui, \((x-3)(x-4)(x-5)\) neturi nė vienos iš šių šaknų. Bendresnei paieškai: daugianario su sveikaisiais koeficientais sveikoji šaknis turi dalyti jo laisvąjį narį. Jei laisvasis narys nulis, pirmiausia iškeliame \(x\).
+\end{remark*}
+\newpage
+\begin{example}[Šaknis \(-1\)]
+Išskaidykite \(P(x)=x^3-4x^2+x+6\) dauginamaisiais.
+\end{example}
+\begin{solution}
+Tikriname: \(P(1)=4\ne0\), bet \(P(-1)=-1-4-1+6=0\). Taigi vienas daugiklis yra \(x+1\).
+Dalybos kampas parodo, kaip gauname kvadratinį dalmenį:
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&-4x^2&+x&+6&x+1\\\cline{6-6}
+ -&x^3&+x^2&&&x^2-5x+6\\\cline{2-3}
+ &&-5x^2&+x&&\\
+ -&&-5x^2&-5x&&\\\cline{3-4}
+ &&&6x&+6&\\
+ -&&&6x&+6&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Todėl \(P(x)=(x+1)(x^2-5x+6)\). Ieškome dviejų skaičių, kurių suma \(-5\), o sandauga \(6\): tai \(-2\) ir \(-3\).
+\ats{\(P(x)=(x+1)(x-2)(x-3)\).}
+\end{solution}
+\begin{example}[Ne visos šaknys sveikosios]
+Išskaidykite \(P(x)=2x^3+x^2-5x+2\) dauginamaisiais.
+\end{example}
+\begin{solution}
+\(P(1)=2+1-5+2=0\), todėl dalijame iš \(x-1\):
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &2x^3&+x^2&-5x&+2&x-1\\\cline{6-6}
+ -&2x^3&-2x^2&&&2x^2+3x-2\\\cline{2-3}
+ &&3x^2&-5x&&\\
+ -&&3x^2&-3x&&\\\cline{3-4}
+ &&&-2x&+2&\\
+ -&&&-2x&+2&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Gavome dalmenį \(2x^2+3x-2\) ir liekaną \(0\). Tada
+\[2x^2+3x-2=2x^2+4x-x-2=(x+2)(2x-1).\]
+\ats{\(P(x)=(x-1)(x+2)(2x-1)\).}
+\end{solution}
+\newpage
+\section{Taikymo pavyzdžiai}
+\subsection{Koeficiento nustatymas pagal dalumo sąlygą}
+\begin{example}[Nežinomas koeficientas]
+Su kuria \(a\) reikšme \(P(x)=x^3+ax^2-4x+4\) dalijasi iš \(x-2\) be liekanos?
+\end{example}
+\begin{solution}
+Dalyba be liekanos reiškia \(P(2)=0\). Todėl
+\[8+4a-8+4=0\quad\Longrightarrow\quad4a+4=0\quad\Longrightarrow\quad a=-1.\]
+\ats{\(a=-1\).}
+\end{solution}
+\subsection{Racionaliųjų reiškinių prastinimas}
+\begin{example}[Prastinant apribojimai išlieka]
+Suprastinkite \(\displaystyle\frac{x^3-4x^2+x+6}{x^2-4}\) ir nurodykite leistinąsias \(x\) reikšmes.
+\end{example}
+\begin{solution}
+Pradinio reiškinio vardiklis nelygus nuliui, todėl \(x\ne-2\) ir \(x\ne2\). Skaitiklį jau išskaidėme ankstesniame pavyzdyje, o vardiklis yra kvadratų skirtumas. Vadinasi,
+\[
+\frac{(x+1)(x-2)(x-3)}{(x-2)(x+2)}
+=\frac{(x+1)(x-3)}{x+2},\qquad x\ne\pm2.
+\]
+\ats{\(\displaystyle\frac{(x+1)(x-3)}{x+2}\), kai \(x\ne-2,2\).}
+\end{solution}
+\subsection{Dalies išskyrimas iš netaisyklingosios trupmenos}
+\begin{example}[Daugianaris ir taisyklingoji trupmena]
+Išskirkite daugianarinę reiškinio \(\displaystyle\frac{2x^3-3x+5}{x+1}\) dalį.
+\end{example}
+\begin{solution}
+Vėl atliekame dalybą kampu (nepamirštame nario \(0x^2\)):
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &2x^3&+0x^2&-3x&+5&x+1\\\cline{6-6}
+ -&2x^3&+2x^2&&&2x^2-2x-1\\\cline{2-3}
+ &&-2x^2&-3x&&\\
+ -&&-2x^2&-2x&&\\\cline{3-4}
+ &&&-x&+5&\\
+ -&&&-x&-1&\\\cline{4-5}
+ &&&&6&
+\end{array}
+\]
+Kaip skaičių dalyboje \(86=7\cdot12+2\), taip čia
+\[2x^3-3x+5=(x+1)(2x^2-2x-1)+6.\]
+Abi puses dalijame iš \(x+1\), kai \(x\ne-1\).
+\ats{\(\displaystyle 2x^2-2x-1+\frac6{x+1}\), kai \(x\ne-1\).}
+\end{solution}
+
+\subsection{Kubinių lygčių sprendimas}
+\begin{example}[Sandauga lygi nuliui]
+Išspręskite \(x^3-2x^2-5x+6=0\).
+\end{example}
+\begin{solution}
+Tegu \(P(x)=x^3-2x^2-5x+6\). Kadangi \(P(1)=0\), dalijame iš \(x-1\):
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&-2x^2&-5x&+6&x-1\\\cline{6-6}
+ -&x^3&-x^2&&&x^2-x-6\\\cline{2-3}
+ &&-x^2&-5x&&\\
+ -&&-x^2&+x&&\\\cline{3-4}
+ &&&-6x&+6&\\
+ -&&&-6x&+6&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Dalmuo \(x^2-x-6=(x-3)(x+2)\). Taigi
+\[(x-1)(x-3)(x+2)=0.\]
+Sandauga lygi nuliui tada ir tik tada, kai bent vienas daugiklis lygus nuliui: \(x=1\), \(x=3\) arba \(x=-2\).
+\ats{\(x\in\{-2,1,3\}\).}
+\end{solution}
+\subsection{Kubinių nelygybių sprendimas}
+\begin{example}[Kartotinė šaknis]
+Išspręskite \(x^3-3x^2+4\ge0\).
+\end{example}
+\begin{solution}
+Tegu \(P(x)=x^3-3x^2+4\). Kadangi \(P(-1)=-1-3+4=0\), dalijame iš \(x+1\). Trūkstamą narį žymime \(0x\):
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&-3x^2&+0x&+4&x+1\\\cline{6-6}
+ -&x^3&+x^2&&&x^2-4x+4\\\cline{2-3}
+ &&-4x^2&+0x&&\\
+ -&&-4x^2&-4x&&\\\cline{3-4}
+ &&&4x&+4&\\
+ -&&&4x&+4&\\\cline{4-5}
+ &&&&0&
+\end{array}
+\]
+Dalmuo \(x^2-4x+4=(x-2)^2\). Todėl
+\[(x+1)(x-2)^2\ge0.\]
+Kai \(x\ne2\), kvadratas teigiamas, todėl sandaugos ženklą lemia \(x+1\). Tuomet reikia \(x\ge-1\). Kai \(x=2\), sandauga lygi nuliui; ši reikšmė taip pat priklauso gautam intervalui.
+\ats{\(x\in[-1;+\infty)\).}
+\end{solution}
+\subsection{Dalyba iš antrojo laipsnio daugianario}
+\begin{example}[Tas pats algoritmas]
+Padalykite \(x^3+2x^2+3x+4\) iš \(x^2+1\).
+\end{example}
+\begin{solution}
+Pirmiausia \(x^3:x^2=x\), po to \(2x^2:x^2=2\). Kiekvienąkart dauginame iš \emph{viso} daliklio ir atimame:
+\[
+\renewcommand{\arraystretch}{1.12}
+\begin{array}{r@{\;}rrrr|l}
+ &x^3&+2x^2&+3x&+4&x^2+1\\\cline{6-6}
+ -&x^3&+0x^2&+x&&x+2\\\cline{2-4}
+ &&2x^2&+2x&+4&\\
+ -&&2x^2&+0x&+2&\\\cline{3-5}
+ &&&2x&+2&
+\end{array}
+\]
+Liekanos laipsnis \(1<2\), todėl sustojame:
+\[x^3+2x^2+3x+4=(x^2+1)(x+2)+(2x+2).\]
+\ats{\(Q(x)=x+2\), \(R(x)=2x+2\).}
+\end{solution}
+
+\clearpage
+\section{Uždaviniai}
+\uzd{Padalykite stulpeliu. Nurodykite dalmenį ir liekaną; patikrinkite tapatybę \(P=DQ+R\).
+\begin{tasks}(2)
+\task \((x^3+3x^2-x-3):(x-1)\).
+\task \((x^3-3x^2-4x+12):(x+2)\).
+\task \((2x^3-5x^2+x+2):(x-2)\).
+\task \((x^3-4x+1):(x+1)\).
+\task \((3x^3+2x^2-5x+7):(x-1)\).
+\task \((2x^3+x^2+3):(x+2)\).
+\task \((x^4-1):(x-1)\).
+\task \((x^3+3x^2+2x+5):(x^2+1)\).
+\end{tasks}}
+\uzd{Padalykite aukštesnio laipsnio daugianarius iš tiesinio daugianario kampu. Nurodykite dalmenį ir liekaną.
+\begin{tasks}(1)
+\task \((x^4-1):(x-1)\).
+\task \((x^4+1):(x+1)\).
+\task \((x^4-2x^3+3x-5):(x-2)\).
+\task \((2x^4+x^3-4x^2+2):(x+1)\).
+\task \((x^5-x^3+5x^2+1):(x+2)\).
+\task \((x^5-1):(x-1)\).
+\end{tasks}}
+\uzd{Išskaidykite kubinius daugianarius dauginamaisiais. Bent viena šaknis yra \(1,-1,2\) arba \(-2\). Jei kvadratinio daugiklio negalima išskaidyti į realiuosius tiesinius daugiklius, jį palikite.
+\begin{tasks}(2)
+\task \(x^3-6x^2+11x-6\).
+\task \(x^3+2x^2-5x-6\).
+\task \(x^3+x^2-4x-4\).
+\task \(2x^3-5x^2+x+2\).
+\task \(x^3-3x^2+4\).
+\task \(x^3-x^2-2x+2\).
+\task \(x^3-x^2-x-2\).
+\task \(2x^3+3x^2+x+6\).
+\end{tasks}}
+\uzd{Nedalydami stulpeliu raskite liekaną:
+\begin{tasks}(2)
+\task \((x^3+2x^2-3x+5):(x-1)\).
+\task \((2x^3-x^2+4x-1):(x+1)\).
+\task \((x^4-3x^2+2x-7):(x-2)\).
+\task \((x^5+x^3-2x+4):(x+2)\).
+\end{tasks}}
+\uzd{Nustatykite koeficientus:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.3em]
+\item \(x^3+ax^2-5x+6\) dalijasi iš \(x-1\) be liekanos.
+\item \(2x^3+ax^2-3x+4\) dalijasi iš \(x+2\) be liekanos.
+\item \(x^3+ax+1\) dalijant iš \(x-2\), liekana lygi \(5\).
+\item \(x^3+ax^2+bx+6\) dalijasi ir iš \(x-1\), ir iš \(x+2\) be liekanos.
+\end{enumerate}}
+
+\clearpage
+\uzd{Suprastinkite reiškinius ir nurodykite visas pradinio reiškinio leistinąsias \(x\) reikšmes.
+\begin{tasks}(2)
+\task \(\displaystyle\frac{x^3-6x^2+11x-6}{x^2-3x+2}\).
+\task \(\displaystyle\frac{x^3+2x^2-5x-6}{x^2-4}\).
+\task \(\displaystyle\frac{2x^3-5x^2+x+2}{x^2-1}\).
+\task \(\displaystyle\frac{x^3-3x^2+4}{x^2-4}\).
+\end{tasks}}
+\uzd{Išspręskite lygtis realiųjų skaičių aibėje.
+\begin{tasks}(2)
+\task \(x^3-6x^2+11x-6=0\).
+\task \(x^3+x^2-4x-4=0\).
+\task \(x^3-x^2-2x+2=0\).
+\task \(2x^3-5x^2+x+2=0\).
+\task \(x^3-x^2-x-2=0\).
+\task \(x^3-3x^2+4=0\).
+\task \(x^3-2x^2-x+2=0\).
+\task \(2x^3+3x^2+x+6=0\).
+\end{tasks}}
+\uzd{Išspręskite nelygybes realiųjų skaičių aibėje.
+\begin{tasks}(1)
+\task \(x^3-6x^2+11x-6>0\).
+\task \(x^3+x^2-4x-4\le0\).
+\task \(x^3-3x^2+4<0\).
+\task \(x^3-x^2-2x+2\ge0\).
+\end{tasks}}
+\uzd{Mišrūs taikymo uždaviniai.
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.4em]
+\item Išskirkite daugianarinę dalį: \(\displaystyle\frac{x^3-4x+1}{x+1}\).
+\item Išspręskite \(\displaystyle\frac{x^3-6x^2+11x-6}{x-1}=0\).
+\item Stačiakampio plotas lygus \(x^3+2x^2-5x-6\), o vienos kraštinės ilgis \(x-2\), kai \(x>2\). Raskite kitos kraštinės ilgį ir perimetrą.
+\item Raskite liekaną, kai \(x^3+2x^2+3x+4\) dalijamas iš \(x^2+1\).
+\end{enumerate}}
+\begin{remark*}[Papildomas iššūkis]
+Daugianarį \(P(x)\) dalijant iš \(x-1\), liekana lygi \(2\), o dalijant iš \(x+2\) -- \(5\). Raskite liekaną dalijant \(P(x)\) iš \((x-1)(x+2)\). Patarimas: ieškoma liekana turi pavidalą \(ux+v\).
+\end{remark*}
+
+\clearpage
+\answerssection
+\uzd{Dalybos dalmenys ir liekanos:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.3em]
+\item \(Q=x^2+4x+3\), \(R=0\).
+\item \(Q=x^2-5x+6\), \(R=0\).
+\item \(Q=2x^2-x-1\), \(R=0\).
+\item \(Q=x^2-x-3\), \(R=4\).
+\item \(Q=3x^2+5x\), \(R=7\).
+\item \(Q=2x^2-3x+6\), \(R=-9\).
+\item \(Q=x^3+x^2+x+1\), \(R=0\).
+\item \(Q=x+3\), \(R=x+2\).
+\end{enumerate}}
+\uzd{Aukštesnio laipsnio dalybos dalmenys ir liekanos:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.3em]
+\item \(Q=x^3+x^2+x+1\), \(R=0\).
+\item \(Q=x^3-x^2+x-1\), \(R=2\).
+\item \(Q=x^3+3\), \(R=1\).
+\item \(Q=2x^3-x^2-3x+3\), \(R=-1\).
+\item \(Q=x^4-2x^3+3x^2-x+2\), \(R=-3\).
+\item \(Q=x^4+x^3+x^2+x+1\), \(R=0\).
+\end{enumerate}}
+\uzd{Skaidiniai:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.3em]
+\item \((x-1)(x-2)(x-3)\).
+\item \((x-2)(x+1)(x+3)\).
+\item \((x+1)(x-2)(x+2)\).
+\item \((x-1)(x-2)(2x+1)\).
+\item \((x+1)(x-2)^2\).
+\item \((x-1)(x-\sqrt2)(x+\sqrt2)\).
+\item \((x-2)(x^2+x+1)\).
+\item \((x+2)(2x^2-x+3)\).
+\end{enumerate}}
+\uzd{Liekanos: (1) \(5\); (2) \(-8\); (3) \(1\); (4) \(-32\).}
+\uzd{Koeficientai: (1) \(a=-2\); (2) \(a=\tfrac32\); (3) \(a=-2\); (4) \(a=-2\), \(b=-5\).}
+
+\uzd{Suprastinti reiškiniai:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.3em]
+\item \(x-3\), kai \(x\ne1,2\).
+\item \(\displaystyle\frac{(x+1)(x+3)}{x+2}\), kai \(x\ne-2,2\).
+\item \(\displaystyle\frac{(x-2)(2x+1)}{x+1}\), kai \(x\ne-1,1\).
+\item \(\displaystyle\frac{(x+1)(x-2)}{x+2}\), kai \(x\ne-2,2\).
+\end{enumerate}}
+
+\uzd{Lygčių sprendiniai:
+\begin{tasks}(2)
+\task \(1,2,3\).
+\task \(-2,-1,2\).
+\task \(-\sqrt2,1,\sqrt2\).
+\task \(-\tfrac12,1,2\).
+\task \(2\).
+\task \(-1,2\).
+\task \(-1,1,2\).
+\task \(-2\).
+\end{tasks}}
+\uzd{Nelygybių sprendiniai:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.5em]
+\item \((1;2)\cup(3;+\infty)\).
+\item \((-\infty;-2]\cup[-1;2]\).
+\item \((-\infty;-1)\).
+\item \([-\sqrt2;1]\cup[\sqrt2;+\infty)\).
+\end{enumerate}}
+\uzd{Mišrūs uždaviniai:
+\begin{enumerate}[label=(\arabic*),leftmargin=*,itemsep=.5em]
+\item \(\displaystyle x^2-x-3+\frac4{x+1}\), kai \(x\ne-1\).
+\item \(x=2\) arba \(x=3\). Reikšmė \(x=1\) neleistina.
+\item Kita kraštinė: \(x^2+4x+3\). Perimetras: \(2x^2+10x+2\), kai \(x>2\).
+\item \(2x+2\).
+\end{enumerate}}
+\subsection*{Papildomo iššūkio sprendimas}
+Liekana turi pavidalą \(R(x)=ux+v\). Iš tapatybės
+\(P(x)=(x-1)(x+2)Q(x)+ux+v\), įrašę \(x=1\) ir \(x=-2\), gauname
+\[u+v=2,\qquad -2u+v=5.\]
+Atėmę lygtis, turime \(3u=-3\), todėl \(u=-1\) ir \(v=3\).
+\ats{Liekana \(R(x)=-x+3\).}
+\end{document}
