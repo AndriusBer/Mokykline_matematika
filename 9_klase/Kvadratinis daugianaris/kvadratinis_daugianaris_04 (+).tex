@@ -35,13 +35,12 @@ Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teis
 \item Ar diskriminantas gali būti teigiamas, lygus nuliui arba neigiamas? Kiekvienam atvejui nurodykite pavyzdį iš a) dalies.
 \item Apskaičiuodamas $D$ daugianariui $-x^2+2x-5$, mokinys rašo $D=2^2-4\cdot1\cdot(-5)$. Raskite ir pataisykite klaidą.
 \end{enumerate}
-\item $\star$ Įrodykite, kad kiekvienam $a\ne0$
+\item $\star$ Prisiminę pilnojo kvadrato išskyrimą, įrodykite, kad, kai $a\ne0$,
 \[
 P(x)=ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a},\qquad D=b^2-4ac.
 \]
-Iškelkite $a$ iš pirmųjų dviejų narių ir išskirkite pilnąjį kvadratą. Paaiškinkite, kodėl šie pertvarkymai nepakeičia daugianario reikšmių.
 \par\medskip
-\textbf{Sustokite ir apibendrinkite.} Kurioje pilnojo kvadrato formulės dalyje matomas diskriminantas? Kaip pertvarkymai parodo, kad gautoji išraiška lygi pradiniam daugianariui?
+\textbf{Sustokite ir apibendrinkite.} Kaip pilnojo kvadrato pavidalas susijęs su diskriminantu?
 \item $\star$ Remdamiesi 2 uždaviniu ir 3 tema, įrodykite, kad ekstremumo taškas $x_{\mathrm e}$ ir ekstremumas $P_{\mathrm e}$ tenkina
 \[
 \boxed{x_{\mathrm e}=-\frac{b}{2a}},\qquad
@@ -193,17 +192,19 @@ Pirmiausia užversk teorijos santrauką ir savarankiškai išspręsk uždavinį.
 \textbf{b)} Taip: atitinkamai $P$, $Q$ ir $R$.
 
 \textbf{c)} Vyriausiasis koeficientas yra $a=-1$, ne $1$. Todėl $D=2^2-4\cdot(-1)\cdot(-5)=-16$.
-\item Kadangi $a\ne0$, galime iškelti $a$ ir taikyti 2 temos lygybę:
+\item Pilnasis kvadratas jau išskirtas 2 temos 15 uždavinyje. Lieka perrašyti tik narius už kvadrato:
+\[
+c-\frac{b^2}{4a}=\frac{4ac-b^2}{4a}
+=-\frac{b^2-4ac}{4a}=-\frac{D}{4a}.
+\]
+Todėl
 \[
 \begin{aligned}
-P(x)&=a\left(x^2+\frac{b}{a} x\right)+c\\
-&=a\left[\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a^2}\right]+c\\
-&=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a}+c\\
-&=a\left(x+\frac{b}{2a}\right)^2+\frac{-b^2+4ac}{4a}\\
+P(x)&=a\left(x+\frac{b}{2a}\right)^2+c-\frac{b^2}{4a}\\
 &=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}.
 \end{aligned}
 \]
-Kiekviena lygybė galioja visiems realiesiems $x$: iškėlėme bendrą daugiklį ir atlikome lygiaverčius pertvarkymus.
+Minusas atsiranda todėl, kad $4ac-b^2=-(b^2-4ac)=-D$. Tai tas pats 2 temoje gautas pilnojo kvadrato pavidalas, tik laisvoji jo dalis užrašyta naudojant diskriminantą.
 \item Pagal 2 uždavinį daugianario pilnojo kvadrato pavidalas yra
 \[
 P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}
