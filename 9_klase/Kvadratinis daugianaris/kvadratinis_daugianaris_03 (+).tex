@@ -1,0 +1,332 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\emergencystretch=3em
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=7pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(zenklas.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (zenklas) {#1};}
+\newcommand{\svarbu}{\tikz[baseline=(zenklas.base)]\node[circle,draw=blue!50!black,line width=0.6pt,minimum size=4.5mm,inner sep=0pt,font=\sffamily\bfseries\small,text=blue!50!black] (zenklas) {!};}
+\begin{document}
+\begin{center}
+{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]
+{\small\sffamily 3 TEMA}\\[4pt]
+{\Large\bfseries Ekstremumo taškas ir ekstremumas}\\[7pt]
+{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]
+\rule{0.72\textwidth}{0.4pt}
+\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Išmoksi atskirti daugianario ekstremumo tašką nuo ekstremumo, nustatyti minimumą arba maksimumą iš pilnojo kvadrato pavidalo ir sudaryti daugianarį pagal žinomas jo savybes.
+
+\textbf{Prieš pradėdamas:} žinok kvadratinio daugianario sąvoką ir žymėjimą $P(x)$ (1 tema), mokėk išskirti pilnąjį kvadratą (2 tema) ir spręsti paprasčiausias lygtis $t^2=c$. Visuose uždaviniuose $x$ yra realusis skaičius, nebent nurodyta kitaip.
+\begin{enumerate}
+\item Atsakykite į klausimus ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Kodėl kiekvienam realiajam skaičiui $t$ galioja $t^2\ge0$? Kada $t^2=0$, o kada $t^2>0$?
+\item Kokia mažiausia $t^2+3$ reikšmė? Su kokia $t$ reikšme ji gaunama?
+\item Kokia mažiausia $3t^2-5$ reikšmė? Su kokia $t$ reikšme ji gaunama?
+\item Kokia didžiausia $-2t^2+5$ reikšmė? Su kokia $t$ reikšme ji gaunama?
+\item Ar $t^2+3$ gali turėti reikšmę $2$? Ar $5-2t^2$ gali turėti reikšmę $6$? Paaiškinkite.
+\end{enumerate}
+\item Duotas daugianaris $P(x)=(x-2)^2+3$.
+\begin{enumerate}
+\item Apskaičiuokite $P(2)$, $P(1)$, $P(3)$ ir $P(0)$.
+\item Įrodykite, kad $P(x)\ge3$ visiems $x\in\mathbb R$.
+\item Raskite visas $x$ reikšmes, su kuriomis $P(x)=3$. Kodėl nėra kitų?
+\item Kokia yra mažiausia šio daugianario reikšmė ir kada ji pasiekiama? Ar daugianario reikšmė gali būti mažesnė už $3$?
+\end{enumerate}
+\item $\star$ Jeigu egzistuoja toks skaičius $x_0$, kad visiems $x\in\mathbb R$ galioja $P(x)\ge P(x_0)$, tai $P(x_0)$ vadinama \textbf{mažiausiąja reikšme}, arba \textbf{minimumu}, o $x_0$ – \textbf{minimumo tašku}. Žymime $x_{\min}=x_0$ ir $P_{\min}=P(x_{\min})$.
+
+Jeigu egzistuoja toks skaičius $x_0$, kad visiems $x\in\mathbb R$ galioja $P(x)\le P(x_0)$, tai $P(x_0)$ vadinama \textbf{didžiausiąja reikšme}, arba \textbf{maksimumu}, o $x_0$ – \textbf{maksimumo tašku}. Žymime $x_{\max}=x_0$ ir $P_{\max}=P(x_{\max})$.
+
+Minimumas ir maksimumas kartu vadinami \textbf{ekstremumais}, o minimumo ir maksimumo taškai – \textbf{ekstremumo taškais}.
+
+\textit{Pastaba.} Ekstremumo taškas – tai $x$ reikšmė, su kuria pasiekiamas ekstremumas. Jis yra realusis skaičius, o ne skaičių pora. Ekstremumas yra su šia $x$ reikšme gaunama daugianario reikšmė. Kvadratinio daugianario ekstremumo taškas yra vienintelis; tai pagrįsime 5 uždavinyje.
+\begin{enumerate}
+\item Remdamiesi apibrėžimu užrašykite 2 uždavinio atsakymą naudodami $x_{\min}$ ir $P_{\min}$.
+\item Ką reiškia lygybės $x_{\min}=2$ ir $P_{\min}=3$? Kuris skaičius yra $x$ reikšmė, o kuris – daugianario reikšmė?
+\item Ar norint įrodyti, kad $3$ yra minimumas, pakanka vien parodyti $P(2)=3$? Kokį teiginį dar reikia pagrįsti?
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kuo skiriasi minimumo taškas ir minimumas? Kodėl nepakanka parodyti vien to, kad $P(x_0)$ lygi siūlomai mažiausiajai reikšmei?
+\item Duotas daugianaris $Q(x)=-2(x+1)^2+5$.
+\begin{enumerate}
+\item Įrodykite, kad $Q(x)\le5$ visiems realiesiems $x$.
+\item Nustatykite visas $x$ reikšmes, su kuriomis $Q(x)=5$.
+\item Nurodykite ekstremumo rūšį, ekstremumo tašką ir ekstremumą vartodami $x_{\max}$ bei $Q_{\max}$.
+\item Mokinys sako: „Maksimumas yra $-1$, o maksimumo taškas – $5$.“ Paaiškinkite jo klaidą.
+\end{enumerate}
+\item $\star$ Tegul $P(x)=a(x-h)^2+k$, kur $a\ne0$. Įrodykite:
+\begin{enumerate}
+\item jeigu $a>0$, tai $x_{\min}=h$ ir $P_{\min}=k$;
+\item jeigu $a<0$, tai $x_{\max}=h$ ir $P_{\max}=k$.
+\end{enumerate}
+Abiem atvejais pagrįskite nelygybę su visomis realiosiomis $x$ reikšmėmis ir parodykite, kada gaunama lygybė.
+
+Paaiškinkite ir atvirkštinį ryšį:
+\begin{enumerate}[start=3]
+\item Tegul $a<0$ ir $x_0$ – bet kuris realusis skaičius. Pažymėkite $r=x_0-h$, pasirinkite $t=r^2+1$ ir įrodykite, kad $t^2>r^2$. Palyginkite $P(h+t)$ su $P(x_0)$. Kodėl daugianaris neturi minimumo? Ką analogiškai galima pasakyti, kai $a>0$?
+\item Remdamiesi šiomis išvadomis paaiškinkite, kodėl kvadratinį daugianarį, kurio minimumo taškas yra $x_{\min}$, o minimumas $P_{\min}$, galima užrašyti $P(x)=a(x-x_{\min})^2+P_{\min}$, kur $a>0$. Suformuluokite analogišką maksimumo atvejį.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip iš $a(x-h)^2+k$ nustatyti ekstremumo rūšį, tašką ir ekstremumą? Kaip pagrįsti savo išvadą?
+\item Nustatykite ekstremumo rūšį, tašką ir ekstremumą. Atsakymus užrašykite tinkamais žymenimis.
+\begin{multicols}{2}\begin{enumerate}
+\item $P(x)=(x-4)^2+2$;
+\item $P(x)=3(x+2)^2-1$;
+\item $P(x)=-2(x-5)^2+7$;
+\item $P(x)=-(x+3)^2-4$;
+\item $P(x)=5x^2-6$;
+\item $P(x)=4-3(x-1)^2$;
+\item $P(x)=\frac{1}{2}(x+1)^2+3$;
+\item $P(x)=-(x-2)^2$.
+\end{enumerate}\end{multicols}
+\item Išskirkite pilnąjį kvadratą, tada nustatykite ekstremumo rūšį, ekstremumo tašką ir ekstremumą.
+\begin{multicols}{2}\begin{enumerate}
+\item $P(x)=x^2-6x+5$;
+\item $P(x)=x^2+4x+1$;
+\item $P(x)=-x^2+8x-10$;
+\item $P(x)=2x^2-8x+3$;
+\item $P(x)=-2x^2-8x+1$;
+\item $P(x)=3x^2+6x-1$.
+\end{enumerate}\end{multicols}
+\item Patikrinkite, ar teiginiai teisingi. Neteisingus pataisykite ir paaiškinkite.
+\begin{enumerate}
+\item Daugianario $P(x)=(x-4)^2+2$ minimumas yra $4$.
+\item Jei $Q(x)=-3(x+2)^2+1$, tai $x_{\max}=-2$ ir $Q_{\max}=1$.
+\item Jei $P(3)=2$, tai $P_{\min}=2$.
+\item Jei $P_{\min}=0$, tai $P(x)>0$ visiems realiesiems $x$.
+\end{enumerate}
+\item Duotas $P(x)=2(x-1)^2+3$.
+\begin{enumerate}
+\item Ar yra toks realusis $x$, kad $P(x)=2$? O kad $P(x)=3$?
+\item Raskite visas $x$ reikšmes, su kuriomis $P(x)=11$.
+\item Ar daugianaris gali įgyti reikšmę $5$? Pateikite visas tinkamas $x$ reikšmes.
+\end{enumerate}
+\item $\star$ \begin{enumerate}
+\item Sudarykite du skirtingus kvadratinius daugianarius, kurių $x_{\min}=3$ ir $P_{\min}=1$.
+\item Užrašykite visus kvadratinius daugianarius, tenkinančius šias dvi sąlygas. Paaiškinkite, kokią sąlygą turi tenkinti jų vyriausiasis koeficientas.
+\item Ar egzistuoja kvadratinis daugianaris, kurio $x_{\max}=3$ ir $P_{\max}=1$, bet $P(0)=2$? Pagrįskite.
+\end{enumerate}
+\item $\star$ Sudarykite kvadratinį daugianarį, jeigu $x_{\min}=2$, $P_{\min}=-3$ ir $P(0)=5$. Patikrinkite visas sąlygas.
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip žinant ekstremumo tašką, ekstremumą ir dar vieną daugianario reikšmę nustatyti koeficientą $a$?
+\item Sudarykite kvadratinį daugianarį, jeigu $x_{\max}=-1$, $P_{\max}=5$ ir $P(1)=-3$. Patikrinkite visas sąlygas.
+\item Kiekvienu atveju nustatykite, ar egzistuoja kvadratinis daugianaris, tenkinantis sąlygas. Jei taip, raskite jį; jei ne, paaiškinkite kodėl.
+\begin{enumerate}
+\item $x_{\min}=1$, $P_{\min}=2$, $P(3)=1$;
+\item $x_{\min}=1$, $P_{\min}=2$, $P(3)=2$;
+\item $x_{\min}=1$, $P_{\min}=2$, $P(1)=2$.
+\end{enumerate}
+Jei atsakymas nėra vienintelis, užrašykite visus tinkamus daugianarius.
+\item Kvadratinio daugianario $P(x)=ax^2+bx+c$ reikšmės yra $P(0)=2$, $P(1)=0$ ir $P(-1)=8$.
+\begin{enumerate}
+\item Raskite koeficientus $a$, $b$, $c$ ir užrašykite $P(x)$.
+\item Išskirkite pilnąjį kvadratą. Nustatykite ekstremumo rūšį, tašką ir ekstremumą.
+\item Ar daugianario reikšmė gali būti lygi $-1$? Atsakymą pagrįskite.
+\end{enumerate}
+\item Antrojo laipsnio daugianario $P(x)=x^2+bx+c$ reikšmės tenkina $P(1)=4$ ir $P(-1)=8$.
+\begin{enumerate}
+\item Raskite $b$, $c$ ir $P(0)$.
+\item Išskirkite pilnąjį kvadratą; raskite ekstremumo tašką ir ekstremumą.
+\item Raskite visas $x$ reikšmes, su kuriomis $P(x)=5$.
+\end{enumerate}
+\item Daugianario $P(x)=ax^2+bx+c$ maksimumo taškas yra $x_{\max}=2$, maksimumas $P_{\max}=5$, o $P(0)=-3$.
+\begin{enumerate}
+\item Sudarykite daugianarį ir užrašykite jį pavidalu $ax^2+bx+c$.
+\item Raskite $P(1)$ ir $P(-1)$. Patikrinkite, kad $P(1)-P(-1)=2b$.
+\item Išskirkite pilnąjį kvadratą gautajame $ax^2+bx+c$ ir patikrinkite duotą ekstremumą.
+\end{enumerate}
+\item Tegul $P(x)=ax^2+bx+c$ ir $P(0)=1$, $P(1)=4$, $P(-1)=-2$.
+\begin{enumerate}
+\item Pagal duotas reikšmes raskite $a$, $b$, $c$.
+\item Ar gautasis reiškinys yra kvadratinis daugianaris? Ar yra sąlygas tenkinantis kvadratinis daugianaris? Paaiškinkite.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia atrama ir grįžk prie vietų, kurios kelia klausimų.
+\begin{tcolorbox}[colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1mm,colbacktitle=blue!8,coltitle=black,title={\svarbu\quad\bfseries Svarbiausios temos išvados}]
+\textbf{1. Minimumas ir maksimumas.} Minimumas $P_{\min}$ yra mažiausia daugianario reikšmė, o minimumo taškas $x_{\min}$ – tokia $x$ reikšmė, kuriai ji pasiekiama. Maksimumas $P_{\max}$ yra didžiausia daugianario reikšmė, o maksimumo taškas $x_{\max}$ – tokia $x$ reikšmė, kuriai ji pasiekiama.
+
+\textbf{2. Kaip pagrįsti ekstremumą?} Reikia parodyti, kad siūloma reikšmė yra pasiekiama ir kad jokia kita daugianario reikšmė nėra mažesnė už siūlomą minimumą arba didesnė už siūlomą maksimumą.
+
+\textbf{3. Pilnojo kvadrato pavidalas.} Jei $P(x)=a(x-h)^2+k$, kur $a\ne0$, tai:
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=1pt]
+\item kai $a>0$, $P(x)\ge k$, $x_{\min}=h$, $P_{\min}=k$;
+\item kai $a<0$, $P(x)\le k$, $x_{\max}=h$, $P_{\max}=k$.
+\end{itemize}
+Abiem atvejais lygybė pasiekiama tik tada, kai $x=h$. Kai $a>0$, maksimumo nėra; kai $a<0$, minimumo nėra. Todėl kiekvienas kvadratinis daugianaris turi vieną ekstremumą ir vienintelį jo tašką.
+
+\textbf{4. Sudarymas.} Žinodami ekstremumo tašką $h$ ir ekstremumą $k$, rašome $P(x)=a(x-h)^2+k$ ir parenkame $a$ ženklą pagal ekstremumo rūšį. Įrašę dar vieną duotą reikšmę galime nustatyti $a$, jeigu ši sąlyga suteikia pakankamai informacijos. Patikriname, ar gautas koeficientas tinka.
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk: faktą, jo galiojimo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Daugianariui $P(x)=-3(x+2)^2+4$ nurodykite ekstremumo rūšį, tašką ir ekstremumą. Įrodykite, kad gautoji reikšmė tikrai yra ekstremumas.
+\item Išskirkite pilnąjį kvadratą ir nustatykite daugianario $Q(x)=x^2-4x-1$ ekstremumo tašką ir ekstremumą.
+\item Sudarykite kvadratinį daugianarį $R$, jei $x_{\min}=1$, $R_{\min}=-2$ ir $R(3)=6$. Patikrinkite visas sąlygas.
+\item Ar egzistuoja kvadratinis daugianaris $S$, kurio $x_{\max}=0$, $S_{\max}=2$ ir $S(1)=3$? Paaiškinkite.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} Teigiamo arba neigiamo skaičiaus kvadratas yra teigiamas, o $0^2=0$. Taigi $t^2\ge0$; jis lygus $0$ tik kai $t=0$, ir teigiamas, kai $t\ne0$.
+
+\textbf{b)} $t^2\ge0$. Pridėję po $3$ prie abiejų nelygybės pusių gauname $t^2+3\ge3$. Lygybė pasiekiama, kai $t=0$, todėl mažiausia reikšmė yra $3$.
+
+\textbf{c)} $t^2\ge0$. Padauginę abi puses iš teigiamo skaičiaus $3$, gauname $3t^2\ge0$. Atėmę iš abiejų pusių po $5$, gauname $3t^2-5\ge-5$. Kai $t=0$, reiškinio reikšmė lygi $-5$, todėl tai jo mažiausia reikšmė.
+
+\textbf{d)} $t^2\ge0$. Padauginę abi puses iš $-2$, pakeičiame nelygybės ženklą: $-2t^2\le0$. Pridėję prie abiejų pusių po $5$, gauname $-2t^2+5\le5$. Kai $t=0$, reiškinio reikšmė lygi $5$, todėl tai jo didžiausia reikšmė.
+
+\textbf{e)} Negali: pirmasis reiškinys yra ne mažesnis už $3$, o antrasis – ne didesnis už $5$.
+\item \textbf{a)} $P(2)=3$, $P(1)=4$, $P(3)=4$, $P(0)=7$.
+
+\textbf{b)} Visiems realiesiems $x$ galioja $(x-2)^2\ge0$. Pridėję po $3$ prie abiejų nelygybės pusių gauname $(x-2)^2+3\ge3$. Kadangi $P(x)=(x-2)^2+3$, tai $P(x)\ge3$ visiems $x$.
+
+\textbf{c)} $P(x)=3$ tada ir tik tada, kai $(x-2)^2=0$, taigi kai $x=2$.
+
+\textbf{d)} Mažiausia reikšmė yra $3$, ji pasiekiama, kai $x=2$. Mažesnės reikšmės nėra pagal b) dalį.
+\item \textbf{a)} $x_{\min}=2$, $P_{\min}=3$.
+
+\textbf{b)} Pirmoji lygybė nurodo $x$ reikšmę, kuriai pasiekiamas minimumas, antroji – pačią mažiausią daugianario reikšmę: $P(2)=3$.
+
+\textbf{c)} Nepakanka: būtina dar įrodyti, kad $P(x)\ge3$ visiems realiesiems $x$. Pavyzdžiui, $R(x)=(x-3)^2+2$ tenkina $R(2)=3$, tačiau jo reikšmė $R(3)=2$ yra mažesnė.
+\item \textbf{a)} $(x+1)^2\ge0$. Padauginę abi puses iš $-2$, pakeičiame nelygybės ženklą: $-2(x+1)^2\le0$. Pridėję po $5$, gauname $Q(x)=-2(x+1)^2+5\le5$.
+
+\textbf{b)} Lygybė $Q(x)=5$ lygiavertė $(x+1)^2=0$, taigi vienintelė reikšmė – $x=-1$.
+
+\textbf{c)} Maksimumo taškas $x_{\max}=-1$, maksimumas $Q_{\max}=5$.
+
+\textbf{d)} Supainiota $x$ reikšmė ir daugianario reikšmė: $-1$ nurodo, kada pasiekiamas maksimumas, o $5$ yra didžiausia reikšmė.
+\item \textbf{a)} Visiems $x$ turime $(x-h)^2\ge0$. Kadangi $a>0$, padauginę abi puses iš $a$ nelygybės ženklo nekeičiame: $a(x-h)^2\ge0$. Pridėję po $k$, gauname $P(x)=a(x-h)^2+k\ge k$. Kai $x=h$, kvadratas lygus nuliui ir $P(h)=k$. Be to, lygybė galima tik kai $x=h$. Pagal apibrėžimą $x_{\min}=h$, $P_{\min}=k$.
+
+\textbf{b)} Visiems $x$ turime $(x-h)^2\ge0$. Kadangi $a<0$, daugindami abi puses iš $a$ pakeičiame nelygybės ženklą: $a(x-h)^2\le0$. Pridėję po $k$, gauname $P(x)=a(x-h)^2+k\le k$. Lygybė gaunama tik kai $x=h$. Taigi $x_{\max}=h$, $P_{\max}=k$.
+\textbf{c)} Tarkime, kad $a<0$, ir pasirinkime bet kurią $x_0$ reikšmę. Pagal sąlygą $r=x_0-h$, todėl $P(x_0)=ar^2+k$. Pasirinkę $t=r^2+1$, gauname
+\[
+t^2-r^2=(r^2+1)^2-r^2=r^4+r^2+1>0.
+\]
+Taigi $t^2>r^2$. Padauginę abi puses iš neigiamo $a$, pakeičiame nelygybės ženklą: $at^2<ar^2$. Pridėję po $k$, gauname $P(h+t)=at^2+k<ar^2+k=P(x_0)$. Kad ir kokį $x_0$ parinktume, randame mažesnę reikšmę, todėl minimumo nėra.
+
+Kai $a>0$, tos pačios $t^2>r^2$ nelygybės ženklas dauginant iš $a$ nesikeičia, todėl $P(h+t)>P(x_0)$. Vadinasi, maksimumo nėra.
+
+\textbf{d)} Pagal 2 temą bet kurį kvadratinį daugianarį galima užrašyti $P(x)=a(x-h)^2+k$, kur $a\ne0$. Jei daugianaris turi minimumą, pagal c) dalį $a$ negali būti neigiamas, todėl $a>0$. Pagal a) dalį jo vienintelis minimumo taškas yra $h$, o minimumas $k$. Vadinasi, $h=x_{\min}$, $k=P_{\min}$ ir $P(x)=a(x-x_{\min})^2+P_{\min}$, kur $a>0$.
+
+Analogiškai, jei daugianaris turi maksimumą, tai $a<0$, $h=x_{\max}$, $k=P_{\max}$, todėl $P(x)=a(x-x_{\max})^2+P_{\max}$, kur $a<0$.
+\item \textbf{a)} Kadangi $(x-4)^2\ge0$, tai $P(x)=(x-4)^2+2\ge2$. $x_{\min}=4$, $P_{\min}=2$.
+
+\textbf{b)} Kadangi $3(x+2)^2\ge0$, tai $P(x)=3(x+2)^2-1\ge-1$. $x_{\min}=-2$, $P_{\min}=-1$.
+
+\textbf{c)} Kadangi $-2(x-5)^2\le0$, tai $P(x)=-2(x-5)^2+7\le7$. $x_{\max}=5$, $P_{\max}=7$.
+
+\textbf{d)} Kadangi $-(x+3)^2\le0$, tai $P(x)=-(x+3)^2-4\le-4$. $x_{\max}=-3$, $P_{\max}=-4$.
+
+\textbf{e)} Kadangi $5x^2\ge0$, tai $P(x)=5x^2-6\ge-6$. $x_{\min}=0$, $P_{\min}=-6$.
+
+\textbf{f)} Kadangi $-3(x-1)^2\le0$, tai $P(x)=4-3(x-1)^2\le4$. $x_{\max}=1$, $P_{\max}=4$.
+
+\textbf{g)} Kadangi $\frac{1}{2}(x+1)^2\ge0$, tai $P(x)=\frac{1}{2}(x+1)^2+3\ge3$. $x_{\min}=-1$, $P_{\min}=3$.
+
+\textbf{h)} Kadangi $-(x-2)^2\le0$, tai $P(x)=-(x-2)^2\le0$. $x_{\max}=2$, $P_{\max}=0$.
+\item \textbf{a)} $P(x)=(x-3)^2-4$; $x_{\min}=3$, $P_{\min}=-4$.
+
+\textbf{b)} $P(x)=(x+2)^2-3$; $x_{\min}=-2$, $P_{\min}=-3$.
+
+\textbf{c)} $P(x)=-(x-4)^2+6$; $x_{\max}=4$, $P_{\max}=6$.
+
+\textbf{d)} $P(x)=2(x-2)^2-5$; $x_{\min}=2$, $P_{\min}=-5$.
+
+\textbf{e)} $P(x)=-2(x+2)^2+9$; $x_{\max}=-2$, $P_{\max}=9$.
+
+\textbf{f)} $P(x)=3(x+1)^2-4$; $x_{\min}=-1$, $P_{\min}=-4$.
+\item \textbf{a)} Neteisinga: $x_{\min}=4$, o $P_{\min}=2$.
+
+\textbf{b)} Teisinga: kvadrato koeficientas neigiamas, o kvadratas tampa nuliu, kai $x=-2$.
+
+\textbf{c)} Neteisinga: vien žinojimo, kad $P(3)=2$, nepakanka. Pavyzdžiui, $P(x)=(x-3)^2+2$ šią sąlygą tenkina ir turi minimumą $2$, o $Q(x)=-(x-3)^2+2$ tenkina tą pačią sąlygą, tačiau $Q(4)=1<2$.
+
+\textbf{d)} Neteisinga: jei minimumas lygus $0$, tai visoms $x$ reikšmėms $P(x)\ge0$, o minimumo taške lygybė $P(x)=0$ yra pasiekiama.
+\item \textbf{a)} $P(x)\ge3$, todėl $P(x)=2$ neįmanoma. Lygybė $P(x)=3$ gaunama tik kai $x=1$.
+
+\textbf{b)} $2(x-1)^2+3=11$, todėl $(x-1)^2=4$. Vadinasi, $x-1=2$ arba $x-1=-2$, taigi $x=3$ arba $x=-1$.
+
+\textbf{c)} $2(x-1)^2+3=5$ duoda $(x-1)^2=1$. Taigi $x-1=1$ arba $x-1=-1$, todėl $x=2$ arba $x=0$. Abi reikšmės tinkamos.
+\item \textbf{a)} Pavyzdžiui, $P(x)=(x-3)^2+1$ ir $Q(x)=2(x-3)^2+1$.
+
+\textbf{b)} Išskyrus pilnąjį kvadratą, kvadratinį daugianarį galima užrašyti $P(x)=a(x-h)^2+k$, kur $a\ne0$. Pagal 5 uždavinį, jeigu jo minimumo taškas yra $3$, o minimumas $1$, tai $h=3$, $k=1$ ir $a>0$. Vadinasi, daugianaris turi būti pavidalo
+\[
+P(x)=a(x-3)^2+1,\qquad a>0.
+\]
+Kodėl tinka bet kuris $a>0$? Kadangi $(x-3)^2\ge0$, tai ir $a(x-3)^2\ge0$. Pridėję po $1$ gauname $P(x)\ge1$, o lygybė pasiekiama, kai $x=3$. Taigi kiekvienas toks daugianaris tenkina abi sąlygas.
+
+\textbf{c)} Ne. Jei maksimumas yra $1$, kiekvienam $x$ turi galioti $P(x)\le1$, tačiau sąlyga $P(0)=2$ tam prieštarauja.
+\item Kadangi $x_{\min}=2$, $P_{\min}=-3$, rašome $P(x)=a(x-2)^2-3$, kur $a>0$. Iš $P(0)=5$ gauname $4a-3=5$, todėl $a=2$ ir
+\[
+P(x)=2(x-2)^2-3=2x^2-8x+5.
+\]
+Patikra: $P(0)=5$; kvadratas neneigiamas, todėl $P(x)\ge-3$, o lygybė gaunama tik kai $x=2$.
+\item Rašome $P(x)=a(x+1)^2+5$, kur $a<0$. Iš $P(1)=-3$ gauname $4a+5=-3$, todėl $a=-2$ ir
+\[
+P(x)=-2(x+1)^2+5=-2x^2-4x+3.
+\]
+Patikra: $P(1)=-3$; $P(x)\le5$, o lygybė pasiekiama tik kai $x=-1$.
+\item \textbf{a)} Neegzistuoja: minimumas $2$ reiškia, kad visiems realiesiems $x$ yra $P(x)\ge2$, tačiau duota $P(3)=1$.
+
+\textbf{b)} Neegzistuoja: tokiam daugianariui $P(x)=a(x-1)^2+2$, kur $a>0$. Tuomet $P(3)=4a+2>2$, o sąlygoje nurodyta $P(3)=2$.
+
+\textbf{c)} Egzistuoja be galo daug: visi $P(x)=a(x-1)^2+2$, kur $a>0$. Kiekvienam jų $P(1)=2$; ši paskutinė sąlyga naujos informacijos nesuteikia, todėl $a$ vienareikšmiškai nenustatomas.
+\item \textbf{a)} Iš $P(0)=2$ gauname $c=2$. Įrašę $x=1$ ir $x=-1$, gauname
+\[
+\begin{cases}a+b+2=0,\\a-b+2=8.\end{cases}
+\]
+Sudėję lygtis randame $2a+4=8$, todėl $a=2$. Tada $b=-4$, taigi $P(x)=2x^2-4x+2$.
+
+\textbf{b)} $P(x)=2(x^2-2x+1)=2(x-1)^2$. Kadangi $(x-1)^2\ge0$, tai $P(x)=2(x-1)^2\ge0$. Lygybė gaunama tik kai $x=1$, todėl $x_{\min}=1$, $P_{\min}=0$.
+
+\textbf{c)} Ne: pagal b) dalies nelygybę $P(x)\ge0$ visiems realiesiems $x$, todėl $P(x)=-1$ neįmanoma.
+\item \textbf{a)} Iš sąlygų $1+b+c=4$ ir $1-b+c=8$ gauname $b+c=3$, $-b+c=7$. Sudėję lygtis randame $c=5$, tada $b=-2$. Taigi $P(x)=x^2-2x+5$, o $P(0)=5$.
+
+\textbf{b)} $P(x)=(x-1)^2+4$. Kadangi $(x-1)^2\ge0$, pridėję po $4$ gauname $P(x)\ge4$. Lygybė gaunama tik kai $x=1$, todėl $x_{\min}=1$, $P_{\min}=4$.
+
+\textbf{c)} $(x-1)^2+4=5$ lygiavertė $(x-1)^2=1$. Vadinasi, $x-1=1$ arba $x-1=-1$, todėl $x=2$ arba $x=0$.
+\item \textbf{a)} Rašome $P(x)=a(x-2)^2+5$, kur $a<0$. Įrašę $x=0$ gauname $4a+5=-3$, taigi $a=-2$. Todėl $P(x)=-2(x-2)^2+5=-2x^2+8x-3$; koeficientai $a=-2$, $b=8$, $c=-3$.
+
+\textbf{b)} $P(1)=3$, $P(-1)=-13$. Todėl $P(1)-P(-1)=3-(-13)=16=2b$.
+
+\textbf{c)} Išskyrus pilnąjį kvadratą gauname $P(x)=-2(x-2)^2+5$. Kadangi $(x-2)^2\ge0$, padauginę abi puses iš $-2$ pakeičiame nelygybės ženklą: $-2(x-2)^2\le0$. Pridėję po $5$ gauname $P(x)\le5$. Lygybė gaunama tik kai $x=2$, todėl $x_{\max}=2$, $P_{\max}=5$.
+\item \textbf{a)} $P(0)=1$ duoda $c=1$. Kitos sąlygos duoda $a+b+1=4$ ir $a-b+1=-2$, arba $a+b=3$ ir $a-b=-3$. Sudėję lygtis gauname $2a=0$, taigi $a=0$, $b=3$, $c=1$.
+
+\textbf{b)} Gautasis reiškinys yra $P(x)=3x+1$; jis nėra kvadratinis, nes $a=0$. Kadangi iš sąlygų koeficientai nustatomi vienareikšmiškai, jas tenkinančio kvadratinio daugianario nėra, todėl jo ekstremumo ieškoti nereikia.
+\item \textbf{a)} Visiems realiesiems $x$ galioja $(x+2)^2\ge0$. Padauginę abi puses iš $-3$, pakeičiame nelygybės ženklą: $-3(x+2)^2\le0$. Pridėję po $4$ gauname $P(x)\le4$. Lygybė pasiekiama, kai $x=-2$, todėl $x_{\max}=-2$, $P_{\max}=4$.
+
+\textbf{b)} Išskiriame pilnąjį kvadratą:
+\[
+Q(x)=x^2-4x-1=(x-2)^2-4-1=(x-2)^2-5.
+\]
+Kadangi $(x-2)^2\ge0$, tai $Q(x)\ge-5$. Lygybė gaunama, kai $x=2$, todėl $x_{\min}=2$, $Q_{\min}=-5$.
+
+\textbf{c)} Pagal duotą minimumo tašką ir minimumą rašome $R(x)=a(x-1)^2-2$, kur $a>0$. Įrašę $x=3$ ir $R(3)=6$, gauname $4a-2=6$, todėl $a=2$. Taigi $R(x)=2(x-1)^2-2=2x^2-4x$. Patikra: $R(3)=6$, $R(x)\ge-2$, o lygybė gaunama tik kai $x=1$.
+
+\textbf{d)} Neegzistuoja. Jei $S_{\max}=2$, pagal maksimumo apibrėžimą $S(x)\le2$ su visomis realiosiomis $x$ reikšmėmis. Sąlyga $S(1)=3$ tam prieštarauja.
+\end{enumerate}
+\end{document}

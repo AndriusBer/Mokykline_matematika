@@ -1,0 +1,365 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.4cm]{geometry}
+\raggedbottom\emergencystretch=2em
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=8pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(z.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (z) {#1};}
+\begin{document}
+\begin{center}{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]{\small\sffamily 7 TEMA}\\[4pt]{\LARGE\bfseries Vijeto teorema}\\[7pt]{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]\rule{0.72\textwidth}{0.4pt}\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Atrasi ir įrodysi Vijeto teoremą, išmoksi ja naudotis skaičiuodamas šaknų sumą, sandaugą ir simetrinius reiškinius. Pamatysi, kaip ši teorema padeda rasti kitą šaknį ir kartu su ankstesnių temų žiniomis konstruoti daugianarius.
+
+\textbf{Prieš pradėdamas:} prisimink kvadratinio daugianario šaknies apibrėžimą, diskriminantą ir šaknų radimo formulę (6 tema). Konstrukcijų uždaviniams pakartok ekstremumo tašką ir ekstremumą (3–4 temos), taip pat reikšmių simetriją (5 tema). Visur nagrinėjami realieji skaičiai, o kvadratinio daugianario vyriausiasis koeficientas $a\ne0$. Prisimink: ekstremumo taškas yra kintamojo $x$ reikšmė, su kuria daugianaris įgyja mažiausią arba didžiausią reikšmę; pati ši reikšmė vadinama minimumu arba maksimumu.
+
+\textbf{I dalis. Vijeto teorema ir jos tiesioginis taikymas.} Šios dalies uždaviniai nuosekliai veda nuo teoremos atradimo iki jos taikymo simetriniams reiškiniams ir ankstesnių temų ryšiams.
+\begin{enumerate}[series=uzdaviniai]
+\item Kiekvieno daugianario šaknis raskite pagal formulę. Tada apskaičiuokite šaknų sumą ir sandaugą bei palyginkite jas su koeficientais $b$ ir $c$.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-5x+6$; \item $x^2+x-6$; \item $x^2-7x+10$; \item $x^2+4x+3$.
+\end{enumerate}\end{multicols}
+Ką pastebite apie šaknų sumą ir sandaugą, kai $a=1$? Suformuluokite spėjimą.
+\item Duoti daugianariai $P(x)=2x^2-10x+12$ ir $Q(x)=3x^2+3x-18$.
+\begin{enumerate}
+\item Paaiškinkite, kodėl $P$ šaknys sutampa su 1a daugianario šaknimis, o $Q$ šaknys – su 1b daugianario šaknimis.
+\item Raskite abiejų daugianarių šaknų sumą ir sandaugą. Ar jos atitinkamai lygios $-b$ ir $c$?
+\item Palyginkite šaknų sumą su $-\frac{b}{a}$, o sandaugą su $\frac{c}{a}$. Pasiūlykite bendresnį spėjimą.
+\item Nagrinėkite daugianarius $x^2-5x+6$, $2x^2-10x+12$ ir $-3x^2+15x-18$. Kodėl jų šaknys tos pačios? Palyginkite koeficientus ir jų santykius $\frac{b}{a}$, $\frac{c}{a}$.
+\item Tarkime, žinoma tik, kad realiųjų šaknų suma yra $5$, o sandauga $6$. Ar iš to galima vienareikšmiškai nustatyti $a$, $b$ ir $c$? Kokia papildoma informacija leistų atskirti bent du d dalies daugianarius?
+\end{enumerate}
+\needspace{9cm}
+\item $\star$ Tarkime, kad $P(x)=ax^2+bx+c$, $a\ne0$, $D\geq0$. Kai $D>0$, skirtingas realiąsias šaknis žymime $x_1$, $x_2$. Kai $D=0$, vienintelę realiąją šaknį $r=-\frac{b}{2a}$ vadiname \textbf{dvigubąja šaknimi}; tada žymime $x_1=x_2=r$. Tai viena šaknis: abu žymenys nurodo tą patį skaičių. Iš anksčiau gautos tapatybės $P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}$ matome, kad šiuo atveju $P(x)=a(x-r)^2=a(x-r)(x-r)$. Dauginamasis $x-r$ pasikartoja du kartus, todėl šaknis vadinama dvigubąja. Tai vis tiek yra viena realioji šaknis; skaidymą dauginamaisiais išsamiau nagrinėsime 9 temoje.
+
+Įrodykite Vijeto teoremą:
+\[x_1+x_2=-\frac{b}{a},\qquad x_1x_2=\frac{c}{a}.\]
+\begin{enumerate}
+\item Ką apie realiąsias šaknis garantuoja sąlyga $D\geq0$? Užrašykite abi šaknis pagal šaknų formulę, įskaitant atvejį $D=0$.
+\item Sudėkite šaknų išraiškas ir suprastinkite.
+\item Sudauginkite šaknų išraiškas. Pritaikykite kvadratų skirtumo formulę ir vietoj $D$ įrašykite $b^2-4ac$.
+\item Įsitikinkite, kad gauti rezultatai sutampa su 1 ir 2 uždavinių spėjimais.
+\end{enumerate}
+\textbf{Sustok ir apibendrink.} Kada galima taikyti Vijeto teoremą? Ką reiškia jos formulės, kai šaknis viena?
+\needspace{4cm}
+\item Kiekvienu atveju, pirmiausia nustatę diskriminanto ženklą, pasakykite, ar yra realiųjų šaknų. Jei jų yra, apskaičiuokite jų sumą ir sandaugą pagal Vijeto teoremą. Kai šaknis viena, Vijeto formulėse žymėkite ją $x_1=x_2$.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-6x+5$; \item $x^2-4x+4$; \item $x^2+2x+5$; \item $-2x^2+3x+2$.
+\end{enumerate}\end{multicols}
+\item Duota, kad $2x^2-7x+3$ šaknys yra $x_1$ ir $x_2$.
+\begin{enumerate}
+\item Nerasdami šaknų apskaičiuokite $x_1+x_2$ ir $x_1x_2$.
+\item Raskite šaknis pagal formulę ir patikrinkite gautas sumos bei sandaugos reikšmes.
+\item Ar šaknų sukeitimas vietomis pakeistų sumą ar sandaugą? Paaiškinkite.
+\end{enumerate}
+\item Duota, kad kiekvienas daugianaris turi dvi realiąsias šaknis $x_1$, $x_2$. Nerasdami šaknų apskaičiuokite jų sumą ir sandaugą. Kadangi realiųjų šaknų egzistavimas duotas, diskriminanto skaičiuoti nereikia.
+\begin{multicols}{2}\begin{enumerate}
+\item $3x^2+5x-2$; \item $-2x^2-7x+4$; \item $4x^2-4x-3$; \item $-5x^2+2x+3$; \item $x^2+2x$; \item $-3x^2+12$.
+\end{enumerate}\end{multicols}
+\item Kvadratinio daugianario $2x^2-7x+3$ viena šaknis yra $3$.
+\begin{enumerate}
+\item Patikrinkite, kad $3$ yra šaknis, ir pagrįskite, kad yra dar viena realioji šaknis.
+\item Pagal Vijeto teoremą raskite kitą šaknį naudodamiesi šaknų suma.
+\item Raskite ją naudodamiesi šaknų sandauga ir patikrinkite įrašydami į daugianarį.
+\end{enumerate}
+\item Raskite kitą šaknį, naudodamiesi Vijeto teorema. Pirmiausia patikrinkite nurodytą šaknį ir nustatykite, ar yra nuo jos skirtinga realioji šaknis.
+\begin{enumerate}
+\item $x^2-7x+10$, viena šaknis $2$; \item $3x^2+5x-2$, viena šaknis $-2$; \item $2x^2-5x$, viena šaknis $0$; \item $x^2-6x+9$, viena šaknis $3$: ar yra \emph{skirtinga} nuo jos kita šaknis?
+\end{enumerate}
+\item Tarkime, $P(x)=ax^2+bx$, $a\ne0$.
+\begin{enumerate}
+\item Kodėl $0$ yra šaknis? Išspręskite lygtį $P(x)=0$ iškeldami $x$ prieš skliaustus.
+\item Paaiškinkite, kaip kitą šaknį gauti iš Vijeto sumos formulės. Ką apie kitą šaknį pasako iš sandaugos gauta lygtis $0\cdot x_2=0$? Kodėl negalima dalyti iš nulio?
+\item Kaip keičiasi atsakymas, jei $b=0$?
+\end{enumerate}
+\item\label{simetrines-tapatybes} $\star$ Tarkime, $x_1+x_2=S$, $x_1x_2=T$.
+\begin{enumerate}
+\item Atskliauskite $(x_1+x_2)^2$ ir įrodykite, kad $x_1^2+x_2^2=S^2-2T$.
+\item Atskliauskite $(x_1-x_2)^2$ ir įrodykite, kad $(x_1-x_2)^2=S^2-4T$.
+\item Jei $T\ne0$, įrodykite, kad $\frac{1}{x_1}+\frac{1}{x_2}=\frac{S}{T}$. Kodėl reikia sąlygos $T\ne0$?
+\item Atskliauskite $(x_1+x_2)^3$, sugrupuokite vidurinius narius ir įrodykite, kad $x_1^3+x_2^3=S^3-3TS$.
+\end{enumerate}
+\textbf{Sustok ir apibendrink.} Kaip apskaičiuoti šaknų kvadratų sumą nežinant pačių šaknų? Kada galima skaičiuoti atvirkštinių šaknų sumą?
+\needspace{4cm}
+\item Daugianario $2x^2-7x+3$ šaknys yra $x_1$, $x_2$. Nerasdami pačių šaknų apskaičiuokite:
+\begin{multicols}{2}\begin{enumerate}
+\item $x_1^2+x_2^2$; \item $(x_1-x_2)^2$; \item $\frac{1}{x_1}+\frac{1}{x_2}$; \item $x_1^3+x_2^3$.
+\end{enumerate}\end{multicols}
+\item Reiškinį vadiname \emph{simetriniu} šaknų $x_1$ ir $x_2$ atžvilgiu, jeigu sukeitus $x_1$ ir $x_2$ vietomis reiškinio reikšmė nepasikeičia.
+\begin{enumerate}
+\item Kurie iš šių reiškinių yra simetriniai: $x_1+x_2$, $x_1-x_2$, $(x_1-x_2)^2$, $x_1^2x_2+x_1x_2^2$? Pagrįskite.
+\item Patikrinkite savo atsakymą pasirinkę $x_1=2$, $x_2=3$. Kodėl vien tokio pavyzdžio nepakanka simetriškumui įrodyti?
+\end{enumerate}
+\item Kiekvieno daugianario šaknis pažymėkite $x_1$, $x_2$. Patikrinkite, kad šaknys realiosios, ir, jų nerasdami, apskaičiuokite $x_1+x_2$, $x_1x_2$, $x_1^2+x_2^2$ ir $x_1^3+x_2^3$.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-5x+6$; \item $x^2+x-6$; \item $2x^2-3x-2$; \item $x^2-4x+4$.
+\end{enumerate}\end{multicols}
+Pasinaudokite \ref{simetrines-tapatybes} uždavinyje įrodyta kubų sumos lygybe.
+\item Duotos daugianario $x^2-4x+3$ šaknys $x_1$, $x_2$. Nerasdami šaknų apskaičiuokite:
+\begin{multicols}{2}\begin{enumerate}
+\item $\frac{1}{x_1}+\frac{1}{x_2}$; \item $\frac{1}{x_1^2}+\frac{1}{x_2^2}$; \item $\frac{x_1}{x_2}+\frac{x_2}{x_1}$; \item $(x_1+1)(x_2+1)$.
+\end{enumerate}\end{multicols}
+Prieš skaičiuodami paaiškinkite, kodėl reiškiniai su trupmenomis yra apibrėžti.
+\item Tarkime, $x_1+x_2=S$, $x_1x_2=T$.
+\begin{enumerate}
+\item Įrodykite, kad $x_1^4+x_2^4=(S^2-2T)^2-2T^2$.
+\item Naudodamiesi šia lygybe, nerasdami šaknų, apskaičiuokite $x_1^4+x_2^4$, kai $x_1$, $x_2$ yra $x^2-3x+2$ šaknys.
+\item Tą patį padarykite, kai jos yra $2x^2-3x-2$ šaknys. Pirmiausia patikrinkite, kad abiejų daugianarių šaknys realiosios.
+\end{enumerate}
+\item Tarkime, kad $x_1$, $x_2$ yra realiosios daugianario $ax^2+bx+c$ šaknys, $a\ne0$. Jei šaknis viena, laikykite $x_1=x_2$.
+\begin{enumerate}
+\item Nerasdami šaknų, išreikškite $x_1^2+x_2^2$ koeficientais $a$, $b$, $c$.
+\item Kai $c\ne0$, išreikškite $\frac{1}{x_1}+\frac{1}{x_2}$ tais pačiais koeficientais. Kodėl šiuo atveju trupmenos apibrėžtos?
+\item Pritaikykite abi išvadas daugianariui $3x^2+5x-2$, pirmiausia patikrinę, kad jo šaknys realiosios.
+\end{enumerate}
+\item Žinoma, kad daugianaris turi dvi \emph{skirtingas} realiąsias šaknis.
+\begin{enumerate}
+\item Jei jų sandauga neigiama, ką galima pasakyti apie jų ženklus? Jei sandauga teigiama?
+\item Jei sandauga teigiama ir suma teigiama, kokie šaknų ženklai? O jei sandauga teigiama ir suma neigiama?
+\item Nerasdami šaknų nustatykite jų ženklus: $x^2-5x+6$; $x^2+5x+6$; $2x^2+x-3$.
+\end{enumerate}
+\item Mokinys teigia: „Daugianario $x^2+2x+5$ šaknų suma yra $-2$, o sandauga $5$, nes taip sako Vijeto teorema.“ Ar šis samprotavimas teisingas? Kuri sąlyga čia svarbi?
+\item $\star$ 6 temos 12e punkte šaknų ir ekstremumo taško ryšį gavome remdamiesi šaknų formule. Dabar pagrįskite jį kitu būdu – naudodamiesi Vijeto teorema. Tarkime, kad $P(x)=ax^2+bx+c$ turi dvi realiąsias šaknis $x_1,x_2$; kai šaknis viena, laikykime $x_1=x_2$.
+\begin{enumerate}
+\item Pasinaudokite Vijeto teorema ir parodykite, kad $\frac{x_1+x_2}{2}=-\frac{b}{2a}$.
+\item Ką ši lygybė pasako apie ekstremumo tašką? Palyginkite su anksčiau nagrinėta reikšmių simetrija.
+\item Patikrinkite išvadą daugianariui $x^2-6x+5$.
+\end{enumerate}
+\end{enumerate}
+\textbf{Sustok ir apibendrink.} Kaip šaknų suma susijusi su ekstremumo tašku? Kodėl šaknų suma ir sandauga dar nenusako vienintelio daugianario?
+\needspace{4cm}
+\textbf{II dalis. Vijeto teoremos taikymas konstruojant daugianarius.} Čia jungiamos ankstesnių temų idėjos. Prieš pradėdamas pakartok 2 uždavinį: šaknų suma ir sandauga nustato koeficientų santykius, bet vien jų nepakanka konkretiems koeficientams nustatyti. Šią dalį gali spręsti atskiru metu. Konstruodamas pirmiausia nustatyk, kokias sąlygas ieškomas daugianaris privalo tenkinti, o tada patikrink, kad gautasis daugianaris iš tiesų tenkina visas sąlygas.
+\begin{enumerate}[resume=uzdaviniai]
+\item Raskite kvadratinį daugianarį $P(x)=ax^2+bx+c$, jeigu jo šaknų suma lygi $5$, šaknų sandauga lygi $6$, o $P(0)=12$.
+\begin{enumerate}
+\item Pagal Vijeto teoremą išreikškite $b$ ir $c$ koeficientu $a$.
+\item Pasinaudokite $P(0)$ ir raskite $a$, tada užrašykite $P(x)$.
+\item Patikrinkite, kad rastasis daugianaris turi realiąsias šaknis ir tenkina visas sąlygas.
+\end{enumerate}
+\item Raskite kvadratinį daugianarį $P(x)$, kurio realiųjų šaknų suma lygi $6$, sandauga lygi $5$, o $P(2)=-6$. Pirmiausia pagal Vijeto teoremą išreikškite daugianario koeficientus per $a$.
+\item Kvadratinio daugianario $P(x)$ ekstremumo taškas yra $x=2$, realiųjų šaknų sandauga lygi $3$, o $P(0)=-6$. Raskite $P(x)$ ir jo ekstremumą. Kodėl ekstremumo taško žinojimas leidžia rasti šaknų sumą?
+\item Kvadratinio daugianario $P(x)$ realiosios šaknys $x_1$, $x_2$ tenkina $x_1+x_2=4$ ir $x_1^2+x_2^2=10$. Taip pat žinoma, kad $D=16$ ir $a<0$. Raskite $P(x)$. Kodėl, jei sąlygos $a<0$ nebūtų, gautume daugiau nei vieną atsakymą?
+\item Kvadratinio daugianario $P(x)$ realiųjų šaknų suma lygi $2$, sandauga lygi $-3$, o minimumas yra $-6$. Raskite $P(x)$. Naudokite ryšį tarp šaknų vidurkio ir ekstremumo taško.
+\item Kvadratinio daugianario $P(x)$ viena šaknis lygi $1$, jo laisvasis narys lygus $6$, o $P(2)=-2$. Raskite $P(x)$. Pagal Vijeto teoremą raskite kitą šaknį ir patikrinkite ją.
+\item Raskite \emph{visus} kvadratinius daugianarius $P(x)$, kurių realiųjų šaknų suma lygi $4$, sandauga lygi $3$ ir $P(1)=0$. Ar šių duomenų pakanka vienam daugianariui nustatyti? Atsakymą pagrįskite.
+\item Ar egzistuoja kvadratinis daugianaris, kurio realiųjų šaknų suma lygi $4$, o šaknų sandauga lygi $5$? Atsakymą pagrįskite naudodamiesi šaknų skirtumo kvadratu.
+\item Kvadratinio daugianario $P(x)$ dvi skirtingos realiosios šaknys $x_1$, $x_2$ tenkina $x_1^2+x_2^2=34$. Be to, $P(1)=P(7)$ ir $P(0)=30$. Raskite $P(x)$. Pasinaudokite daugianario reikšmių simetrija ir Vijeto teorema.
+\item Kvadratinio daugianario $P(x)$ maksimumo taškas yra $x=2$, maksimumas lygus $0$, o $P(0)=-8$. Raskite $P(x)$. Paaiškinkite, kokias šaknis šiuo atveju naudojate Vijeto formulėse.
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas, pabandyk pats prisiminti ir savais žodžiais paaiškinti pagrindines šios temos išvadas. Tada palygink jas su pateiktomis.
+\begin{tcolorbox}[title=Svarbiausios temos išvados,colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm]
+\begin{enumerate}
+\item \textbf{Vijeto teorema.} Jeigu $P(x)=ax^2+bx+c$, $a\ne0$, turi realiąsias šaknis $x_1$, $x_2$, tai
+\[x_1+x_2=-\frac{b}{a},\qquad x_1x_2=\frac{c}{a}.\]
+Kai $D=0$, yra viena šaknis $r$; formulėse žymime $x_1=x_2=r$. Kai $D<0$, realiųjų šaknų nėra ir jų sumos bei sandaugos neskaičiuojame.
+\item \textbf{Koeficientų santykiai.} Realiųjų šaknų suma ir sandauga nusako $b/a$ ir $c/a$, tačiau savaime nenusako $a$. Todėl jos nebūtinai vienareikšmiškai nustato daugianarį.
+\item \textbf{Simetriniai reiškiniai.} Pažymėję $S=x_1+x_2$, $T=x_1x_2$, gauname $x_1^2+x_2^2=S^2-2T$ ir $(x_1-x_2)^2=S^2-4T$. Jeigu $T\ne0$, tai $\frac1{x_1}+\frac1{x_2}=\frac ST$.
+\item \textbf{Ryšys su ekstremumo tašku.} Kai šaknys realiosios, jų vidurkis yra ekstremumo taškas: $\frac{x_1+x_2}{2}=-\frac{b}{2a}$. Vienintelės šaknies atveju ji sutampa su ekstremumo tašku.
+\item \textbf{Tikrink sąlygas.} Prieš naudodamas teoremą įsitikink, kad šaknys realiosios: jeigu tai duota sąlygoje, papildomai tikrinti nereikia; jeigu nežinoma, gali nustatyti diskriminanto ženklą. Konstruodamas daugianarį patikrink $a\ne0$ ir visas duotas sąlygas. Dalydamas patikrink, ar daliklis nelygus nuliui.
+\end{enumerate}
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume=uzdaviniai]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Daugianario $2x^2+x-6$ šaknys yra realiosios. Nerasdami šaknų, apskaičiuokite jų sumą, sandaugą ir kvadratų sumą.
+\item Mokinys teigia, kad $x^2-2x+5$ realiųjų šaknų suma lygi $2$. Įvertinkite teiginį.
+\item Daugianario $3x^2-12x$ viena šaknis lygi $0$. Raskite visas jo šaknis ir paaiškinkite, kodėl jų sandauga viena pati neleidžia rasti kitos šaknies.
+\item Sudarykite kvadratinį daugianarį, kurio realiųjų šaknų suma yra $2$, sandauga $-3$, o $P(0)=6$. Patikrinkite sąlygas.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} $D=25-24=1$, todėl šaknys $2$ ir $3$; suma $5=-b$, sandauga $6=c$.
+
+\textbf{b)} $D=1+24=25$, šaknys $-3$ ir $2$; suma $-1=-b$, sandauga $-6=c$.
+
+\textbf{c)} $D=49-40=9$, šaknys $2$ ir $5$; suma $7=-b$, sandauga $10=c$.
+
+\textbf{d)} $D=16-12=4$, šaknys $-3$ ir $-1$; suma $-4=-b$, sandauga $3=c$. Spėjimas: kai $a=1$ ir šaknys realiosios, jų suma lygi $-b$, sandauga lygi $c$.
+\item \textbf{a)} $P(x)=2(x^2-5x+6)$, o $Q(x)=3(x^2+x-6)$. Daugyba iš nelygaus nuliui skaičiaus nepakeičia to, su kuriomis $x$ reikšmėmis reiškinys lygus nuliui.
+
+\textbf{b)} $P$ atveju suma $5$, sandauga $6$, tačiau $-b=10$, $c=12$. $Q$ atveju suma $-1$, sandauga $-6$, tačiau $-b=-3$, $c=-18$. Taigi ankstesnis spėjimas čia netinka.
+
+\textbf{c)} $P$ atveju $-\frac{b}{a}=5$, $\frac{c}{a}=6$; $Q$ atveju $-\frac{b}{a}=-1$, $\frac{c}{a}=-6$. Spėjame: suma yra $-\frac{b}{a}$, sandauga $\frac{c}{a}$.
+
+\textbf{d)} Antrasis ir trečiasis daugianariai gaunami pirmąjį padauginus atitinkamai iš $2$ ir $-3$. Daugyba iš nelygaus nuliui skaičiaus šaknų nekeičia. Koeficientų trejetai atitinkamai yra $a=1$, $b=-5$, $c=6$; $a=2$, $b=-10$, $c=12$; $a=-3$, $b=15$, $c=-18$. Visais atvejais $\frac{b}{a}=-5$, $\frac{c}{a}=6$.
+
+\textbf{e)} Ne: visi trys d dalies daugianariai turi tas pačias šaknis, tačiau skirtingus koeficientus. Šaknų suma ir sandauga nustato santykius $\frac{b}{a}=-5$, $\frac{c}{a}=6$, todėl $b=-5a$, $c=6a$, bet ne patį $a$. Pavyzdžiui, papildomai žinodami $P(0)$, atskirtume šiuos tris daugianarius: jų reikšmės yra $6$, $12$ ir $-18$.
+\item \textbf{a)} Pagal 6 temos išvadą iš $D\geq0$ žinome, kad yra realiųjų šaknų. Pagal šaknų formulę
+\[x_1=\frac{-b+\sqrt{D}}{2a},\qquad x_2=\frac{-b-\sqrt{D}}{2a}.\]
+Jei $D=0$, abi išraiškos duoda vienintelę šaknį, todėl $x_1=x_2$.
+
+\textbf{b)} Sudedame:
+\[x_1+x_2=\frac{-b+\sqrt D-b-\sqrt D}{2a}=\frac{-2b}{2a}=-\frac{b}{a}.\]
+
+\textbf{c)} Sudauginame ir naudojame $D=b^2-4ac$:
+\[x_1x_2=\frac{(-b+\sqrt D)(-b-\sqrt D)}{4a^2}=\frac{b^2-D}{4a^2}=\frac{b^2-(b^2-4ac)}{4a^2}=\frac{c}{a}.\]
+Dalyti galima, nes $a\ne0$.
+
+\textbf{d)} Kai $a=1$, formulės tampa $x_1+x_2=-b$, $x_1x_2=c$. Jos taip pat patvirtina bendresnį 2 uždavinio spėjimą.
+\item \textbf{a)} $D=16>0$: dvi šaknys, suma $6$, sandauga $5$.
+
+\textbf{b)} $D=0$: viena šaknis; laikant ją dviem sutampančiomis, suma $4$, sandauga $4$. Šaknis lygi $2$.
+
+\textbf{c)} $D=-16<0$: realiųjų šaknų nėra, todėl realiųjų šaknų sumos ir sandaugos čia nenustatome.
+
+\textbf{d)} $D=25>0$: dvi šaknys, suma $\frac{3}{2}$, sandauga $-1$.
+\item \textbf{a)} $x_1+x_2=\frac{7}{2}$, $x_1x_2=\frac{3}{2}$.
+
+\textbf{b)} $D=49-24=25$, todėl $x_1=3$, $x_2=\frac{1}{2}$. Jų suma $3+\frac{1}{2}=\frac{7}{2}$, sandauga $3\cdot\frac{1}{2}=\frac{3}{2}$.
+
+\textbf{c)} Nepakeistų: sudėties ir daugybos rezultatai nuo dėmenų ar dauginamųjų tvarkos nepriklauso.
+\item Rašome porą „suma; sandauga“:
+
+\textbf{a)} $-\frac{5}{3}$; $-\frac{2}{3}$.
+
+\textbf{b)} $-\frac{7}{2}$; $-2$.
+
+\textbf{c)} $1$; $-\frac{3}{4}$.
+
+\textbf{d)} $\frac{2}{5}$; $-\frac{3}{5}$.
+
+\textbf{e)} $-2$; $0$.
+
+\textbf{f)} $0$; $-4$. Visur naudota $-\frac{b}{a}$ ir $\frac{c}{a}$, įskaitant neigiamą $a$ ir nulinius koeficientus.
+\item \textbf{a)} $2\cdot3^2-7\cdot3+3=18-21+3=0$. Be to, $D=25>0$, todėl yra dvi skirtingos realiosios šaknys.
+
+\textbf{b)} Jų suma $\frac{7}{2}$, todėl kita šaknis yra $\frac{7}{2}-3=\frac{1}{2}$.
+
+\textbf{c)} Jų sandauga $\frac{3}{2}$, tad kita šaknis yra $\frac{3}{2}:3=\frac{1}{2}$. Patikra: $2\cdot\frac{1}{4}-7\cdot\frac{1}{2}+3=0$.
+\item \textbf{a)} $2^2-7\cdot2+10=0$, $D=9>0$. Suma $7$, kita šaknis $5$.
+
+\textbf{b)} $3(-2)^2+5(-2)-2=0$, $D=49>0$. Suma $-\frac{5}{3}$, kita šaknis $-\frac{5}{3}+2=\frac{1}{3}$.
+
+\textbf{c)} $P(0)=0$, $D=25>0$. Suma $\frac{5}{2}$, kita šaknis $\frac{5}{2}$.
+
+\textbf{d)} $P(3)=0$, tačiau $D=0$: skirtingos kitos šaknies nėra. Skaičiuodami pagal Vijeto teoremą laikome $x_1=x_2=3$.
+\item \textbf{a)} $P(0)=0$. Iškėlę $x$ gauname $x(ax+b)=0$, todėl $x=0$ arba $ax+b=0$, t. y. $x=-\frac{b}{a}$.
+
+\textbf{b)} Šaknų suma lygi $-\frac{b}{a}$; viena šaknis yra $0$, tad kita $-\frac{b}{a}$. Iš sandaugos formulės gauname $0\cdot x_2=0$. Šią lygybę tenkina kiekvienas realusis skaičius $x_2$, todėl vien ši lygybė kitos šaknies nenustato. Daugianaris vis dėlto turi konkrečią kitą pagal formulę nurodomą reikšmę $-\frac{b}{a}$. Dalyti iš nulio negalima: reiškinys $\frac{0}{0}$ nėra apibrėžtas. Iš tiesų nėra vienintelio skaičiaus, kuris padaugintas iš nulio duotų nulį.
+
+\textbf{c)} Abi išraiškos duoda $0$: lygtis $ax^2=0$ turi vieną šaknį, kuri Vijeto formulėse laikoma dviem sutampančiomis.
+\item \textbf{a)} $S^2=(x_1+x_2)^2=x_1^2+2x_1x_2+x_2^2=x_1^2+x_2^2+2T$. Atėmę $2T$ gauname reikiamą lygybę.
+
+\textbf{b)} $(x_1-x_2)^2=x_1^2-2T+x_2^2=S^2-2T-2T=S^2-4T$.
+
+\textbf{c)} Kadangi $T=x_1x_2\ne0$, abi šaknys nelygios nuliui ir trupmenos apibrėžtos. Todėl $\frac{1}{x_1}+\frac{1}{x_2}=\frac{x_1+x_2}{x_1x_2}=\frac{S}{T}$.
+
+\textbf{d)} Atskliaudę ir sugrupavę vidurinius narius gauname
+\[(x_1+x_2)^3=x_1^3+3x_1^2x_2+3x_1x_2^2+x_2^3=x_1^3+x_2^3+3x_1x_2(x_1+x_2).\]
+Kadangi $x_1+x_2=S$ ir $x_1x_2=T$, tai $S^3=x_1^3+x_2^3+3TS$. Atėmę $3TS$ gauname $x_1^3+x_2^3=S^3-3TS$.
+\item Pagal Vijeto teoremą $S=\frac{7}{2}$, $T=\frac{3}{2}$.
+
+\textbf{a)} $S^2-2T=\frac{49}{4}-3=\frac{37}{4}$.
+
+\textbf{b)} $S^2-4T=\frac{49}{4}-6=\frac{25}{4}$.
+
+\textbf{c)} $T\ne0$, todėl $\frac{S}{T}=\frac{7}{3}$.
+
+\textbf{d)} Pagal \ref{simetrines-tapatybes} uždavinio d punktą $S^3-3TS=\frac{343}{8}-\frac{63}{4}=\frac{217}{8}$.
+\item \textbf{a)} $x_1+x_2$ yra simetrinis, nes sudėties tvarka nesvarbi. Reiškinys $x_1-x_2$ apskritai nėra simetrinis: sukeitus gauname $x_2-x_1$. Reiškinys $(x_1-x_2)^2$ simetrinis, nes pakeitus skirtumo ženklą jo kvadratas nesikeičia. Taip pat simetrinis $x_1^2x_2+x_1x_2^2$: sukeitus šaknis dėmenys susikeičia vietomis.
+
+\textbf{b)} Kai $x_1=2$, $x_2=3$, gauname atitinkamai $5$, $-1$, $1$, $30$; sukeitę gauname $5$, $1$, $1$, $30$. Pavyzdys parodo, kad skirtumas ne visada išlieka toks pat, tačiau sutapimas vienam pavyzdžiui neįrodo lygybės visoms reikšmėms.
+\item Pažymėkime $S=x_1+x_2$, $T=x_1x_2$. Pagal \ref{simetrines-tapatybes} uždavinį kubų suma lygi $S^3-3TS$. Kvadratų suma lygi $S^2-2T$.
+
+\textbf{a)} $D=1>0$, $S=5$, $T=6$; kvadratų suma $25-12=13$, kubų suma $125-90=35$.
+
+\textbf{b)} $D=25>0$, $S=-1$, $T=-6$; kvadratų suma $1+12=13$, kubų suma $-1-18=-19$.
+
+\textbf{c)} $D=25>0$, $S=\frac{3}{2}$, $T=-1$; kvadratų suma $\frac{17}{4}$, kubų suma $\frac{27}{8}+\frac{9}{2}=\frac{63}{8}$.
+
+\textbf{d)} $D=0$, todėl vienintelę šaknį laikome dviem sutampančiomis. $S=4$, $T=4$; kvadratų suma $16-8=8$, kubų suma $64-48=16$.
+\item $D=16-12=4>0$, tad šaknys realiosios. Pagal Vijeto teoremą $S=4$, $T=3$. Kadangi $T\ne0$, abi šaknys nelygios nuliui, todėl trupmenos apibrėžtos. Be to, $x_1^2+x_2^2=S^2-2T=10$.
+
+\textbf{a)} $\frac{1}{x_1}+\frac{1}{x_2}=\frac{S}{T}=\frac{4}{3}$.
+
+\textbf{b)} $\frac{1}{x_1^2}+\frac{1}{x_2^2}=\frac{x_1^2+x_2^2}{(x_1x_2)^2}=\frac{10}{9}$.
+
+\textbf{c)} $\frac{x_1}{x_2}+\frac{x_2}{x_1}=\frac{x_1^2+x_2^2}{x_1x_2}=\frac{10}{3}$.
+
+\textbf{d)} Atskliaudę gauname $(x_1+1)(x_2+1)=x_1x_2+x_1+x_2+1=T+S+1=8$.
+\item \textbf{a)} Iš lygybės $(x_1^2+x_2^2)^2=x_1^4+2x_1^2x_2^2+x_2^4$ gauname $x_1^4+x_2^4=(x_1^2+x_2^2)^2-2(x_1x_2)^2=(S^2-2T)^2-2T^2$.
+
+\textbf{b)} $D=9-8=1>0$, $S=3$, $T=2$. Ketvirtųjų laipsnių suma lygi $(3^2-2\cdot2)^2-2\cdot2^2=17$.
+
+\textbf{c)} $D=25>0$, $S=\frac{3}{2}$, $T=-1$. Ketvirtųjų laipsnių suma lygi $\left(\frac{17}{4}\right)^2-2=\frac{257}{16}$.
+\item \textbf{a)} Pagal Vijeto teoremą $S=-\frac{b}{a}$ ir $T=\frac{c}{a}$, todėl
+\[x_1^2+x_2^2=S^2-2T=\frac{b^2}{a^2}-\frac{2c}{a}=\frac{b^2-2ac}{a^2}.\]
+
+\textbf{b)} Kadangi $T=\frac{c}{a}\ne0$, nė viena šaknis nelygi nuliui ir abi trupmenos apibrėžtos. Todėl
+\[\frac{1}{x_1}+\frac{1}{x_2}=\frac{S}{T}=\frac{-\frac{b}{a}}{\frac{c}{a}}=-\frac{b}{c}.\]
+
+\textbf{c)} $D=25+24=49>0$, $a=3$, $b=5$, $c=-2$. Pagal gautas formules kvadratų suma yra $\frac{25+12}{9}=\frac{37}{9}$, o atvirkštinių šaknų suma yra $-\frac{5}{-2}=\frac{5}{2}$.
+\item \textbf{a)} Neigiama sandauga rodo, kad ženklai priešingi; teigiama – kad abu ženklai vienodi. Nė viena šaknis tuomet nėra nulis.
+
+\textbf{b)} Jei vienodo ženklo skaičių suma teigiama, abu teigiami; jei suma neigiama, abu neigiami.
+
+\textbf{c)} Pirmojo suma $5$, sandauga $6$: abi šaknys teigiamos. Antrojo suma $-5$, sandauga $6$: abi neigiamos. Trečiojo sandauga $-\frac{3}{2}$: ženklai priešingi. Sąlygoje žinoma, kad šaknys realiosios ir skirtingos.
+\item Samprotavimas neteisingas: $D=2^2-4\cdot1\cdot5=-16<0$, todėl realiųjų šaknų nėra. Vijeto teorema sieja \emph{esamas} realiąsias šaknis su koeficientais; vien užrašius $-b$ ir $c$ negalima teigti, kad realiosios šaknys egzistuoja.
+\item \textbf{a)} Pagal Vijeto teoremą $x_1+x_2=-\frac{b}{a}$, todėl padaliję iš $2$ gauname $\frac{x_1+x_2}{2}=-\frac{b}{2a}$.
+
+\textbf{b)} Dešinioji pusė yra ekstremumo taškas. Taigi jis yra šaknų vidurkis: dvi skirtingos šaknys nuo jo vienodai nutolusios. Jei šaknis viena, ji sutampa su ekstremumo tašku.
+
+\textbf{c)} Šaknys yra $1$ ir $5$, jų vidurkis $\frac{1+5}{2}=3$. Ekstremumo taškas taip pat $-\frac{-6}{2}=3$.
+\item Pagal Vijeto teoremą $-\frac{b}{a}=5$ ir $\frac{c}{a}=6$, todėl $b=-5a$, $c=6a$. Kadangi $P(0)=c=12$, gauname $a=2$, $b=-10$, $c=12$. Vadinasi,
+\[P(x)=2x^2-10x+12.\]
+Patikra: $D=100-96=4>0$, taigi šaknys realiosios. Jų suma yra $-\frac{-10}{2}=5$, sandauga $\frac{12}{2}=6$, o $P(0)=12$. Visos sąlygos tenkinamos.
+\item Pagal Vijeto teoremą $b=-6a$, $c=5a$, todėl $P(x)=a(x^2-6x+5)$. Įrašę $x=2$ gauname $P(2)=a(4-12+5)=-3a=-6$, taigi $a=2$. Atsakymas: $P(x)=2x^2-12x+10$.
+
+Patikra: $D=144-80=64>0$; realiųjų šaknų suma $\frac{12}{2}=6$, sandauga $\frac{10}{2}=5$, o $P(2)=8-24+10=-6$.
+\item Ekstremumo taškas yra šaknų vidurkis, todėl $\frac{x_1+x_2}{2}=2$ ir $x_1+x_2=4$. Pagal Vijeto teoremą $b=-4a$, $c=3a$. Iš $P(0)=c=-6$ gauname $3a=-6$, taigi $a=-2$, $b=8$, $c=-6$.
+
+Todėl $P(x)=-2x^2+8x-6=-2(x-2)^2+2$. Kadangi $-2(x-2)^2\leq0$, maksimumas yra $2$. Patikra: $D=64-48=16>0$, taigi šaknys realiosios, jų sandauga $\frac{-6}{-2}=3$, ekstremumo taškas $2$, o $P(0)=-6$.
+\item Tegul $S=x_1+x_2=4$, $T=x_1x_2$. Iš $x_1^2+x_2^2=S^2-2T$ gauname $10=16-2T$, todėl $T=3$. Pagal Vijeto teoremą $b=-4a$, $c=3a$. Tuomet
+\[D=b^2-4ac=16a^2-12a^2=4a^2.\]
+Kadangi $D=16$, tai $a^2=4$. Iš $a<0$ gauname $a=-2$, todėl $P(x)=-2x^2+8x-6$. Patikra: $D=16>0$, šaknų suma $4$, sandauga $3$, tad kvadratų suma $16-6=10$.
+
+Jei ženklo sąlygos nebūtų, tiktų ir $a=2$: antrasis daugianaris būtų $2x^2-8x+6$. Jo šaknų suma, sandauga ir diskriminantas tokie patys.
+\item Pagal Vijeto teoremą $b=-2a$, $c=-3a$, todėl $P(x)=a(x^2-2x-3)$. Ekstremumo taškas yra šaknų vidurkis $\frac{2}{2}=1$. Kadangi minimumas lygus $-6$, tai $P(1)=-4a=-6$ ir $a=\frac{3}{2}$. Taigi
+\[P(x)=\frac{3}{2}x^2-3x-\frac{9}{2}=\frac{3}{2}(x-1)^2-6.\]
+Kadangi $a>0$, minimumas iš tikrųjų yra $-6$. Be to, $D=36>0$, o šaknų suma ir sandauga atitinkamai yra $2$ ir $-3$.
+\item Iš $P(0)=c=6$ ir $P(1)=0$ gauname $a+b+6=0$, t. y. $a+b=-6$. Iš $P(2)=-2$ gauname $4a+2b+6=-2$, t. y. $2a+b=-4$. Atėmę pirmąją lygybę iš antrosios randame $a=2$, tada $b=-8$. Taigi $P(x)=2x^2-8x+6$.
+
+Kadangi $D=64-48=16>0$, yra dvi realiosios šaknys. Jų suma pagal Vijeto teoremą lygi $4$, todėl, kai viena šaknis yra $1$, kita lygi $3$. Patikra: $P(1)=2-8+6=0$, $P(3)=18-24+6=0$, $P(2)=8-16+6=-2$ ir $c=6$.
+\item Pagal Vijeto teoremą $b=-4a$, $c=3a$, todėl kiekvienas ieškomas daugianaris turi pavidalą
+\[P(x)=a(x^2-4x+3),\qquad a\ne0.\]
+Atvirkščiai, kiekvienam $a\ne0$ skaičiai $1$ ir $3$ yra šaknys, nes juos įrašę gauname nulį. Jų suma yra $4$, sandauga $3$, ir $P(1)=0$. Taigi tinka visi nurodyto pavidalo daugianariai. Duomenų vienam daugianariui nustatyti nepakanka: pavyzdžiui, tinka ir $a=1$, ir $a=2$.
+\item Tarkime, tokios realiosios šaknys $x_1$, $x_2$ egzistuoja. Tada
+\[(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=4^2-4\cdot5=-4.\]
+Realaus skaičiaus kvadratas negali būti neigiamas, todėl gavome prieštaravimą. Tokio kvadratinio daugianario nėra.
+\item Kadangi $1\ne7$ ir $P(1)=P(7)$, ekstremumo taškas yra $\frac{1+7}{2}=4$. Pagal šaknų simetriją arba Vijeto teoremą jų suma $S=2\cdot4=8$. Iš $x_1^2+x_2^2=S^2-2T$ gauname $34=64-2T$, todėl šaknų sandauga $T=15$.
+
+Vadinasi, $b=-8a$, $c=15a$. Kadangi $P(0)=c=30$, tai $a=2$, $b=-16$, $c=30$. Ieškomas daugianaris yra $P(x)=2x^2-16x+30$.
+
+Patikra: $D=256-240=16>0$, šaknys $3$ ir $5$, todėl jų kvadratų suma $9+25=34$. Be to, $P(1)=16$, $P(7)=16$ ir $P(0)=30$.
+\item Kadangi maksimumas yra $0$ ir jis pasiekiamas tik kai $x=2$, vienintelė šaknis yra $2$. Vijeto formulėse laikome $x_1=x_2=2$, todėl $-\frac{b}{a}=4$ ir $\frac{c}{a}=4$, t. y. $b=-4a$, $c=4a$. Iš $P(0)=c=-8$ gauname $a=-2$, $b=8$, $c=-8$.
+
+Taigi $P(x)=-2x^2+8x-8=-2(x-2)^2$. Kadangi kvadratas neneigiamas, maksimumas yra $0$ kai $x=2$; taip pat $P(0)=-8$. Visos sąlygos tenkinamos.
+\item \textbf{a)} Pagal Vijeto teoremą $S=-\frac12$, $T=-3$. Todėl $x_1^2+x_2^2=S^2-2T=\frac14+6=\frac{25}{4}$.
+
+\textbf{b)} Teiginys nepagrįstas: $D=(-2)^2-4\cdot1\cdot5=-16<0$, todėl realiųjų šaknų nėra.
+
+\textbf{c)} Pagal Vijeto teoremą šaknų suma yra $-\frac{-12}{3}=4$. Kadangi viena šaknis yra $0$, kita lygi $4$. Patikra: $P(0)=0$, $P(4)=3\cdot16-12\cdot4=0$. Sandaugos lygybė $0\cdot x_2=0$ tenkinama su bet kuriuo $x_2$, todėl šaknies ji nenustato.
+
+\textbf{d)} Iš Vijeto teoremos $b=-2a$ ir $c=-3a$. Kadangi $c=P(0)=6$, gauname $a=-2$, $b=4$, todėl $P(x)=-2x^2+4x+6$. Patikra: $D=64>0$, taigi šaknys realiosios; jų suma $-\frac{4}{-2}=2$, sandauga $\frac6{-2}=-3$, o $P(0)=6$.
+\end{enumerate}
+\end{document}

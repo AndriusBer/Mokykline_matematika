@@ -1,0 +1,369 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.4cm]{geometry}
+\raggedbottom\emergencystretch=2em
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=6pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(z.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (z) {#1};}
+\begin{document}
+\begin{center}{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]{\small\sffamily 8 TEMA}\\[4pt]{\LARGE\bfseries Atvirkštinė Vijeto teorema}\\[7pt]{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]\rule{0.72\textwidth}{0.4pt}\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Atrasi ir įrodysi atvirkštinę Vijeto teoremą, mokysiesi pagal skaičių sumą ir sandaugą pagrįsti daugianario šaknis, sudaryti redukuotąsias kvadratines lygtis bei spręsti dviejų skaičių sumos ir sandaugos sistemas.
+
+\textbf{Kaip susijusios 7–9 temos?} 7 temoje iš šaknų gavome jų sumos ir sandaugos ryšį su koeficientais. Šioje temoje nagrinėsime atvirkštinį klausimą: kaip pagal skaičių sumą ir sandaugą pagrįsti, kad jie yra šaknys. 9 temoje šiuos ryšius susiesime su daugianario skaidymu dauginamaisiais.
+
+\textbf{Prieš pradėdamas:} prisimink daugianario šaknies apibrėžimą, diskriminantą, šaknų formulę (6 tema), Vijeto teoremą ir simetrinių reiškinių tapatybes (7 tema). Ekstremumo uždaviniui pravers ekstremumo taško formulė (4 tema). Visi skaičiai šioje temoje yra realieji, kvadratinio daugianario vyriausiasis koeficientas $a\ne0$.
+\begin{enumerate}[series=uzdaviniai]
+\item Kvadratinio daugianario $P(x)=x^2-5x+6$ šaknys yra $2$ ir $3$.
+\begin{enumerate}
+\item Patikrinkite įrašydami, kad $2$ ir $3$ yra šaknys; apskaičiuokite jų sumą ir sandaugą.
+\item Ką apie šaknų sumą ir sandaugą pasakytų Vijeto teorema, jei šaknis jau žinotume?
+\item Tarkime, žinome tik tai, kad skaičių $2$ ir $3$ suma yra $5$, o sandauga $6$. Kokią išvadą apie juos ir daugianarį $P$ galima numanyti? Kuo ši samprotavimo kryptis skiriasi nuo b dalies?
+\end{enumerate}
+\item Apskaičiuokite nurodytų skaičių sumą ir sandaugą; palyginkite jas atitinkamai su $-\frac{b}{a}$ ir $\frac{c}{a}$. Tada apskaičiuokite daugianario reikšmes, įrašę kiekvieną nurodytą skaičių. Ką pastebite?
+\begin{enumerate}
+\item $P(x)=x^2+x-6$, skaičiai $2$ ir $-3$; \item $Q(x)=x^2-4x+4$, skaičiai $2$ ir $2$; \item $R(x)=2x^2-7x+3$, skaičiai $3$ ir $\frac{1}{2}$.
+\end{enumerate}
+\needspace{6cm}
+\item\label{atzingsnis} $\star$ Tarkime, $u+v=S$, $uv=T$.
+\begin{enumerate}
+\item Įrašykite $x=u$ į reiškinį $x^2-Sx+T$; vietoj $S$ ir $T$ įrašykite $u+v$ ir $uv$. Atskliaudę suprastinkite.
+\item Tą patį padarykite, kai $x=v$.
+\item Ką šie skaičiavimai pasako apie $u$, $v$ ir daugianarį $x^2-Sx+T$? Ar samprotavimas tinka, kai $u=v$?
+\item Atskliauskite $(x-u)(x-v)$ ir palyginkite rezultatą su $x^2-Sx+T$. Remdamiesi sandaugos lygybės nuliui taisykle paaiškinkite, kodėl $u$ ir $v$ yra visos šio daugianario šaknys. Ką gaunate, kai $u=v$?
+\end{enumerate}
+\needspace{7cm}
+\item\label{atteorema} $\star$ Tarkime, kad $P(x)=ax^2+bx+c$, $a\ne0$, o realieji skaičiai $u$, $v$ tenkina
+\[u+v=-\frac{b}{a},\qquad uv=\frac{c}{a}.\]
+\begin{enumerate}
+\item Padaliję $P(x)$ iš $a$, išreikškite $\frac{P(x)}{a}$ per $u$, $v$.
+\item Remdamiesi 3 uždaviniu, įrodykite, kad $P(u)=P(v)=0$.
+\item Suformuluokite \textbf{atvirkštinę Vijeto teoremą}. Paaiškinkite, ką ji teigia, kai $u\ne v$, ir ką – kai $u=v$. Norėdami išnagrinėti atvejį $u=v$, iš sąlygų išreikškite $b$ ir $c$ per $a$, $u$, $v$ ir parodykite, kad $D=a^2(u-v)^2$.
+\item Naudodamiesi 3d punktu, paaiškinkite, kodėl šio daugianario šaknys yra tik $u$ ir $v$. Palyginkite su 6 temos išvada apie kvadratinio daugianario šaknų skaičių.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kuo skiriasi Vijeto teoremos ir atvirkštinės Vijeto teoremos sąlygos bei išvados? Kodėl reikia patikrinti ir sumą, ir sandaugą?
+\item Paaiškinkite, kuriame teiginyje taikoma Vijeto teorema, o kuriame – atvirkštinė Vijeto teorema.
+\begin{enumerate}
+\item $x_1$, $x_2$ yra $x^2-7x+12$ šaknys, todėl jų suma lygi $7$, o sandauga $12$.
+\item $3+4=7$ ir $3\cdot4=12$, todėl $3$ ir $4$ yra $x^2-7x+12$ šaknys.
+\item Mokinys sako: „$1+6=7$, todėl $1$ ir $6$ yra $x^2-7x+12$ šaknys.“ Ko mokinys nepatikrino? Patikrinkite jo išvadą įrašydami.
+\end{enumerate}
+\item Kiekvienu atveju pasirinkite porą, kurios skaičiai yra visos nurodyto daugianario šaknys. Pagrįskite pasirinkimą patikrindami sumą ir sandaugą. Atmesdami kitą porą, remkitės Vijeto teorema arba patikrinkite įrašydami.
+\begin{enumerate}
+\item $x^2-5x+6$: $(2;3)$ ar $(1;4)$? \item $x^2+x-6$: $(-3;2)$ ar $(-2;3)$?
+\item $2x^2-7x+3$: $(3;\frac{1}{2})$ ar $(3;1)$? \item $x^2-4x+4$: $(2;2)$ ar $(-2;-2)$?
+\end{enumerate}
+\item Pagal šaknų sumą ir sandaugą raskite visas realiąsias šaknis. Pirmiausia užrašykite, kokia turi būti ieškomų skaičių suma, kokia sandauga, ir parinkite porą. Patikrinkite abi lygybes, taikykite atvirkštinę teoremą ir paaiškinkite, kodėl kitų šaknų nėra. Jei poros pastebėti nepavyksta, galite naudotis ir šaknų formule.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-9x+20$; \item $x^2+7x+12$; \item $x^2-x-12$; \item $x^2+2x-15$; \item $x^2-6x+9$; \item $x^2-5x$.
+\end{enumerate}\end{multicols}
+\item Raskite realiąsias šaknis. Prieš ieškodami skaičių poros, kiekvieną daugianarį padalykite iš jo vyriausiojo koeficiento ir paaiškinkite, kodėl šaknys nesikeičia.
+\begin{multicols}{2}\begin{enumerate}
+\item $2x^2-10x+12$; \item $3x^2+3x-18$; \item $-2x^2+10x-8$; \item $2x^2-7x+3$.
+\end{enumerate}\end{multicols}
+\item Mokinys nori rasti $2x^2-7x+3$ šaknis ir teigia: „Ieškau skaičių, kurių suma $7$, o sandauga $3$.“ Paaiškinkite klaidą. Kokios sumos ir sandaugos iš tiesų reikia ieškoti?
+\needspace{4cm}
+\item Daugianaris $P(x)=x^2+px+q$ turi šaknis $-2$ ir $5$.
+\begin{enumerate}
+\item Pagal Vijeto teoremą raskite $p$ ir $q$.
+\item Įrodykite, kad gautasis daugianaris turi nurodytas šaknis, taikydami atvirkštinę teoremą.
+\item Ar galėtų būti kitas toks daugianaris su vyriausiuoju koeficientu $1$? Paaiškinkite.
+\end{enumerate}
+\item\label{atlygtis} $\star$ Kvadratinė lygtis, kurios vyriausiasis koeficientas yra $1$, vadinama \textbf{redukuotąja kvadratine lygtimi}; jos pavidalas yra $x^2+px+q=0$.
+\begin{enumerate}
+\item Tarkime, kad jos realiosios šaknys yra $r$ ir $s$. Pagal Vijeto teoremą išreikškite $p$ ir $q$ per $r$ ir $s$.
+\item Parodykite, kad ieškoma lygtis yra $x^2-(r+s)x+rs=0$. Kodėl ji vienintelė?
+\item Remdamiesi atvirkštine Vijeto teorema pagrįskite, kad ši lygtis tikrai turi šaknis $r$ ir $s$. Aptarkite ir atvejį $r=s$.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip iš dviejų duotų realiųjų skaičių sudaryti vienintelę redukuotąją lygtį, kurios šaknys jie yra? Kodėl ji tinka ir kai skaičiai sutampa?
+\item Kiekvienu atveju sudarykite redukuotąją kvadratinę lygtį, kurios šaknys yra duotieji skaičiai. Raskite jų sumą ir sandaugą; pagrįskite atsakymą atvirkštine Vijeto teorema.
+\begin{multicols}{2}\begin{enumerate}
+\item $2$ ir $5$; \item $-3$ ir $4$; \item $-2$ ir $-6$; \item $0$ ir $-5$; \item $3$ ir $3$; \item $2$ ir $\frac{1}{2}$.
+\end{enumerate}\end{multicols}
+\item Kiekvienu atveju sudarykite redukuotąją kvadratinę lygtį, kurios realiųjų šaknų suma yra $S$, o sandauga yra $T$. Jei duomenys prieštaringi, paaiškinkite, kodėl tokios lygties su realiosiomis šaknimis nėra.
+\begin{multicols}{2}\begin{enumerate}
+\item $S=7$, $T=10$; \item $S=-2$, $T=-8$; \item $S=6$, $T=9$; \item $S=2$, $T=5$.
+\end{enumerate}\end{multicols}
+Pirmiausia užrašykite vienintelį galimą lygties pavidalą; paskui patikrinkite, kiek jis turi realiųjų šaknų.
+\item Skaičiai $r$ ir $s$ yra realiosios ieškomos redukuotosios kvadratinės lygties šaknys. Žinoma, kad $r+s=6$ ir $r^2+s^2=20$.
+\begin{enumerate}
+\item Atskliaudę $(r+s)^2$ raskite $rs$.
+\item Sudarykite lygtį. Patikrinkite, kad jos šaknys realiosios ir tenkina abi duotas sąlygas.
+\end{enumerate}
+\item Tarkime, $r$ ir $s$ yra daugianario $x^2-4x+1$ šaknys.
+\begin{enumerate}
+\item Nerasdami $r$ ir $s$, apskaičiuokite jų sumą ir sandaugą.
+\item Sudarykite redukuotąją kvadratinę lygtį, kurios šaknys yra $r+1$ ir $s+1$.
+\item Sudarykite redukuotąją kvadratinę lygtį, kurios šaknys yra $r^2$ ir $s^2$.
+\item Kodėl $\frac{1}{r}$ ir $\frac{1}{s}$ yra apibrėžti? Sudarykite redukuotąją kvadratinę lygtį, kurios šaknys yra šie skaičiai. Palyginkite ją su pradine lygtimi. Ką pastebite ir kodėl taip yra?
+\end{enumerate}
+\needspace{4cm}
+\item Redukuotosios kvadratinės lygties $x^2+px+q=0$ kairėje pusėje esančio daugianario ekstremumo taškas yra $x=2$, o laisvasis narys lygus $3$.
+\begin{enumerate}
+\item Raskite $p$ ir sudarykite lygtį. Ką apie jos šaknų sumą pasako Vijeto teorema?
+\item Raskite šaknis ir patikrinkite, kad jos tenkina lygtį bei yra simetriškos ekstremumo taško atžvilgiu.
+\end{enumerate}
+\needspace{7cm}
+\item $\star$ Raskite \emph{visas sutvarkytąsias} realiųjų skaičių poras $(u;v)$, tenkinančias sistemą. Pasinaudokite atvirkštine Vijeto teorema:
+\[\begin{cases}u+v=5,\\uv=4.\end{cases}\]
+\begin{enumerate}
+\item Koks daugianaris turi šaknis $u$ ir $v$? Pagrįskite atvirkštine Vijeto teorema.
+\item Raskite jo šaknis ir abi galimas poras. Kodėl reikia nurodyti abi?
+\item Patikrinkite abi poras pradinėje sistemoje.
+\item Iš pirmosios lygties išreikškite $v$ ir įrašykite į antrąją. Kokią kvadratinę lygtį gaunate? Palyginkite jos kairę pusę su a dalyje sudarytu daugianariu.
+\end{enumerate}
+\item Raskite visas realiąsias sprendinių poras. Pasinaudokite atvirkštine Vijeto teorema ir pagrįskite, kodėl sistemos sprendiniai yra būtent gautos poros. Sprendinius taip pat galite rasti keitimo būdu ir palyginti abu būdus.
+\begin{multicols}{2}\begin{enumerate}
+\item $\begin{cases}u+v=7,\\uv=12;\end{cases}$ \item $\begin{cases}u+v=-5,\\uv=6;\end{cases}$
+\item $\begin{cases}u+v=1,\\uv=-12;\end{cases}$ \item $\begin{cases}u+v=6,\\uv=9;\end{cases}$
+\item $\begin{cases}u+v=2,\\uv=5;\end{cases}$ \item $\begin{cases}u+v=-3,\\uv=0.\end{cases}$
+\end{enumerate}\end{multicols}
+\item $\star$ Tarkime, kad $S$ ir $T$ yra duoti realieji skaičiai. Nagrinėkite sistemą
+\[\begin{cases}u+v=S,\\uv=T.\end{cases}\]
+\begin{enumerate}
+\item Paaiškinkite, kodėl kiekvienos sprendinių poros nariai yra $x^2-Sx+T$ šaknys.
+\item Tarkime, kad šis daugianaris turi dvi skirtingas realiąsias šaknis $r$ ir $s$. Kodėl abi poros $(r;s)$ ir $(s;r)$ tenkina sistemą ir kitų porų nėra? Kurią teoremą naudojate šioje dalyje?
+\item Kiek sprendinių porų yra, kai $S^2-4T>0$, kai $S^2-4T=0$ ir kai $S^2-4T<0$? Paaiškinkite.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip skaičių sumos ir sandaugos sistema susijusi su redukuotąja lygtimi? Kodėl reikia tikrinti ir porų tvarką?
+\item Duota, kad $u+v=4$, o $u^2+v^2=10$.
+\begin{enumerate}
+\item Atskliauskite $(u+v)^2$ ir naudodamiesi duotomis reikšmėmis raskite sandaugą $uv$.
+\item Remdamiesi rasta suma ir sandauga, nustatykite galimas poras $(u;v)$.
+\item Patikrinkite gautas poras pradinėse lygybėse ir paaiškinkite, kodėl kitų nėra.
+\end{enumerate}
+\item Duota, kad $u+v=5$, o $u^3+v^3=35$.
+\begin{enumerate}
+\item Prisiminkite 7 temos 10d punkto tapatybę. Pabandykite ją atkurti atskliausdami $(u+v)^3$ ir parodykite, kad $u^3+v^3=(u+v)^3-3uv(u+v)$.
+\item Pasinaudokite šia lygybe ir raskite $uv$.
+\item Remdamiesi skaičių suma ir sandauga, raskite visas realiąsias poras $(u;v)$. Patikrinkite jas pradinėse lygybėse.
+\end{enumerate}
+\item Duoto kvadratinio daugianario $P(x)$ šaknys yra $2$ ir $-3$, o $P(0)=-12$. Raskite $P(x)$, įrodykite, kad jis tenkina sąlygas, ir paaiškinkite, kodėl kito tokio daugianario nėra.
+\item Raskite visus realiuosius $m$, su kuriais daugianario $P(x)=x^2-(m+2)x+2m$ šaknys yra $2$ ir $m$. Ar kuri nors $m$ reikšmė duoda tik vieną šaknį? Paaiškinkite naudodamiesi atvirkštine Vijeto teorema.
+\item Mokinys teigia: „Jeigu ieškomų skaičių suma yra $2$, o sandauga $5$, tai jie yra $x^2-2x+5$ šaknys. Kadangi gavau kvadratinį daugianarį, tokie realieji skaičiai būtinai egzistuoja.“ Įvertinkite samprotavimą. Kurioje vietoje jis teisingas, o kurioje – klaidingas?
+\item \textbf{Papildomas uždavinys.} Raskite visas sutvarkytąsias realiųjų skaičių poras $(x;y)$, tenkinančias sistemą
+\[\begin{cases}x+y+xy=11,\\x^2y+xy^2=30.\end{cases}\]
+Pirmiausia atkreipkite dėmesį, kad $x^2y+xy^2=xy(x+y)$. Pažymėkite $S=x+y$, $T=xy$ ir išnagrinėkite, kokias sąlygas tenkina $S$ ir $T$.
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas, pabandyk pats prisiminti ir savais žodžiais paaiškinti pagrindines šios temos išvadas. Tada palygink jas su pateiktomis.
+\begin{tcolorbox}[title=Svarbiausios temos išvados,colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm]
+\begin{enumerate}
+\item \textbf{Dvi teoremos kryptys.} Jei $u$ ir $v$ yra kvadratinio daugianario $ax^2+bx+c$, $a\ne0$, realiosios šaknys (vienos šaknies atveju $u=v$), Vijeto teorema duoda $u+v=-\frac ba$ ir $uv=\frac ca$. Atvirkštinė teorema teigia: jeigu realieji skaičiai $u$, $v$ tenkina šias abi lygybes, tai jie yra daugianario šaknys. Kai $u=v$, gaunama viena dviguboji šaknis.
+\item \textbf{Redukuotoji lygtis.} Dviem duotiems realiesiems skaičiams $r$, $s$ vienintelė redukuotoji lygtis, kurios šaknys jie yra, yra $x^2-(r+s)x+rs=0$. Kai $r=s$, ji turi vieną dvigubąją šaknį.
+\item \textbf{Skaičių suma ir sandauga.} Jei realieji $u$, $v$ tenkina $u+v=S$, $uv=T$, tai jie yra $x^2-Sx+T$ šaknys. Ir atvirkščiai, dvi skirtingos realiosios šaknys $r$, $s$ duoda poras $(r;s)$ ir $(s;r)$; viena dviguboji šaknis $r$ duoda vieną porą $(r;r)$.
+\item \textbf{Egzistavimo patikra.} Vien sumos $S$ ir sandaugos $T$ užrašas negarantuoja, kad tokie realieji skaičiai egzistuoja. Jei realieji $u$, $v$ juos tenkina, tai pagal 7 temą $S^2-4T=(u-v)^2\ge0$: ši sąlyga būtina. Ji ir pakankama, nes kai $S^2-4T\ge0$, atitinkamas kvadratinis daugianaris turi realiųjų šaknų, kurių suma ir sandauga yra $S$ ir $T$. Daugianario $x^2-Sx+T$ diskriminantas yra $S^2-4T$: kai jis teigiamas, gaunamos dvi sutvarkytosios poros, kai lygus nuliui – viena, kai neigiamas – nė vienos.
+\end{enumerate}
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume=uzdaviniai]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Ar skaičiai $-2$ ir $4$ yra daugianario $2x^2-4x-16$ šaknys? Pagrįskite atvirkštine Vijeto teorema ir nurodykite, kodėl kitų realiųjų šaknų nėra.
+\item Sudarykite redukuotąją lygtį, kurios šaknys yra $-1$ ir $5$. Pagrįskite, kad lygtis tinka ir yra vienintelė.
+\item Raskite visas sutvarkytąsias realiųjų skaičių poras $(u;v)$, kurioms $u+v=-4$ ir $uv=3$. Paaiškinkite, kodėl kitų porų nėra.
+\item Ar egzistuoja realieji skaičiai, kurių suma $0$, o sandauga $1$? Pagrįskite.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} $P(2)=4-10+6=0$, $P(3)=9-15+6=0$. Suma $2+3=5$, sandauga $2\cdot3=6$.
+
+\textbf{b)} Jei $x_1,x_2$ yra šaknys, pagal Vijeto teoremą $x_1+x_2=5$, $x_1x_2=6$.
+
+\textbf{c)} Galime spėti, kad $2$ ir $3$ yra $P$ šaknys. Čia iš žinomų sumos ir sandaugos siekiame nustatyti, kad skaičiai yra šaknys; b dalyje iš žinomų šaknų nustatome jų sumą ir sandaugą. Spėjimą pagrindžia 3–4 uždaviniai.
+\item \textbf{a)} $2+(-3)=-1=-\frac{b}{a}$, $2\cdot(-3)=-6=\frac{c}{a}$; $P(2)=4+2-6=0$, $P(-3)=9-3-6=0$.
+
+\textbf{b)} $2+2=4=-\frac{b}{a}$, $2\cdot2=4=\frac{c}{a}$; $Q(2)=4-8+4=0$. Abu žymenys rodo tą pačią šaknį $2$.
+
+\textbf{c)} $3+\frac{1}{2}=\frac{7}{2}=-\frac{b}{a}$, $3\cdot\frac{1}{2}=\frac{3}{2}=\frac{c}{a}$; $R(3)=18-21+3=0$, $R(\frac{1}{2})=\frac{1}{2}-\frac{7}{2}+3=0$. Visais atvejais sumos ir sandaugos santykis su koeficientais atitinka Vijeto formules, o nurodyti skaičiai yra šaknys.
+\item \textbf{a)} $u^2-Su+T=u^2-(u+v)u+uv=u^2-u^2-uv+uv=0$.
+
+\textbf{b)} $v^2-Sv+T=v^2-(u+v)v+uv=v^2-uv-v^2+uv=0$.
+
+\textbf{c)} Pagal šaknies apibrėžimą $u$ ir $v$ yra $x^2-Sx+T$ šaknys. Skaičiavimuose nereikalavome $u\ne v$. Jei $u=v$, tai $S=2u$, $T=u^2$, todėl daugianaris yra $x^2-2ux+u^2=(x-u)^2$. Jo reikšmė lygi nuliui tik kai $x=u$. Taigi šiuo atveju yra viena šaknis, kuri formulėse žymima abiem simboliais.
+
+\textbf{d)} Atskliaudę gauname $(x-u)(x-v)=x^2-ux-vx+uv=x^2-(u+v)x+uv=x^2-Sx+T$. Sandauga lygi nuliui tada ir tik tada, kai $x-u=0$ arba $x-v=0$, taigi $x=u$ arba $x=v$. Todėl kitų šaknų nėra. Jei $u=v$, abu užrašai nurodo vieną šaknį.
+\item \textbf{a)} Kadangi $-\frac{b}{a}=u+v$ ir $\frac{c}{a}=uv$, tai
+\[\frac{P(x)}{a}=x^2+\frac{b}{a}x+\frac{c}{a}=x^2-(u+v)x+uv.\]
+
+\textbf{b)} Pagal 3 uždavinį įrašę $u$ arba $v$ į dešiniąją pusę gauname $0$. Vadinasi, $P(u)=a\cdot0=0$ ir $P(v)=a\cdot0=0$.
+
+\textbf{c)} Atvirkštinė Vijeto teorema: jei realieji skaičiai $u$, $v$ tenkina $u+v=-\frac{b}{a}$ ir $uv=\frac{c}{a}$, tai jie yra $ax^2+bx+c$ šaknys. Kai $u\ne v$, tai dvi skirtingos šaknys.
+
+Kad išnagrinėtume atvejį $u=v$, pirmiausia iš duotų sąlygų, kai $a\ne0$, išreiškiame koeficientus:
+\[b=-a(u+v),\qquad c=auv.\]
+Įrašę juos į diskriminanto formulę ir atskliaudę gauname
+\begin{align*}
+D&=b^2-4ac\\
+ &=\bigl(-a(u+v)\bigr)^2-4a\cdot auv\\
+ &=a^2\bigl((u+v)^2-4uv\bigr)\\
+ &=a^2(u^2+2uv+v^2-4uv)\\
+ &=a^2(u^2-2uv+v^2)=a^2(u-v)^2.
+\end{align*}
+Kai $u=v$, gauname $D=0$. Pagal 6 temos išvadą tuomet yra tik viena realioji šaknis; 7 temoje ją vadinome dvigubąja. Abu žymenys $u$ ir $v$ nurodo tą patį skaičių.
+
+\textbf{d)} Pagal 3d punktą $\frac{P(x)}a=(x-u)(x-v)$. Kadangi $a\ne0$, lygybė $P(x)=0$ tenkinama tada ir tik tada, kai $(x-u)(x-v)=0$, t. y. kai $x=u$ arba $x=v$. Jei $u=v$, tai viena šaknis. Tai sutampa su 6 temos išvada, kad kvadratinis daugianaris turi ne daugiau kaip dvi skirtingas realiąsias šaknis.
+\item \textbf{a)} Vijeto teorema: iš to, kad $x_1$ ir $x_2$ yra šaknys, gauname jų sumą ir sandaugą.
+
+\textbf{b)} Atvirkštinė Vijeto teorema: iš abiejų lygybių gauname šaknis.
+
+\textbf{c)} Nepatikrinta sandauga: $1\cdot6=6\ne12$. Iš tiesų $P(1)=1-7+12=6$ ir $P(6)=36-42+12=6$, tad nė vienas nėra šaknis.
+\item Tinkamą porą patvirtina atvirkštinė Vijeto teorema. Kitą porą atmetame pagal Vijeto teoremą: jeigu jos nariai būtų visos šaknys, jų suma ir sandauga turėtų sutapti su reikiamomis.
+
+\textbf{a)} $(2;3)$: suma $5$, sandauga $6$. $(1;4)$ netinka, nes sandauga $4\ne6$.
+
+\textbf{b)} $(-3;2)$: suma $-1$, sandauga $-6$. $(-2;3)$ suma yra $1$, todėl pora netinka.
+
+\textbf{c)} $(3;\frac{1}{2})$: suma $\frac{7}{2}$, sandauga $\frac{3}{2}$. $(3;1)$ netinka, nes suma $4$, o sandauga $3$.
+
+\textbf{d)} $(2;2)$: suma $4$, sandauga $4$. $(-2;-2)$ suma yra $-4$, todėl pora netinka. Pagal atvirkštinę teoremą tinkamos poros skaičiai yra šaknys.
+\item \textbf{a)} $4+5=9$, $4\cdot5=20$: šaknys $4$, $5$.
+
+\textbf{b)} $-3+(-4)=-7$, $(-3)(-4)=12$: šaknys $-3$, $-4$.
+
+\textbf{c)} $4+(-3)=1$, $4(-3)=-12$: šaknys $4$, $-3$.
+
+\textbf{d)} $3+(-5)=-2$, $3(-5)=-15$: šaknys $3$, $-5$.
+
+\textbf{e)} $3+3=6$, $3\cdot3=9$: vienintelė šaknis $3$. Pagal šaknų formulę $D=36-36=0$.
+
+\textbf{f)} $0+5=5$, $0\cdot5=0$: šaknys $0$, $5$. Kiekvienu atveju abi lygybės pagrindžia šaknis atvirkštine teorema, o kitų skirtingų šaknų nėra pagal šaknų formulę.
+\item Daugianario padauginimas ar padalijimas iš nelygaus nuliui skaičiaus nekeičia tų $x$ reikšmių, su kuriomis jis lygus nuliui.
+
+\textbf{a)} Gauname $x^2-5x+6$: $2+3=5$, $2\cdot3=6$; šaknys $2$, $3$.
+
+\textbf{b)} Gauname $x^2+x-6$: $2+(-3)=-1$, $2(-3)=-6$; šaknys $2$, $-3$.
+
+\textbf{c)} Gauname $x^2-5x+4$: $1+4=5$, $1\cdot4=4$; šaknys $1$, $4$.
+
+\textbf{d)} Gauname $x^2-\frac{7}{2}x+\frac{3}{2}$: $3+\frac{1}{2}=\frac{7}{2}$, $3\cdot\frac{1}{2}=\frac{3}{2}$; šaknys $3$, $\frac{1}{2}$. Pagal atvirkštinę teoremą tai šaknys, o daugiau jų nėra.
+\item Mokinys neatsižvelgė į $a=2$. Pagal Vijeto formules ir atvirkštinę teoremą reikia ieškoti skaičių, kurių suma $-\frac{-7}{2}=\frac{7}{2}$, o sandauga $\frac{3}{2}$. Tai $3$ ir $\frac{1}{2}$.
+\item \textbf{a)} Šaknų suma $-2+5=3=-p$, todėl $p=-3$. Sandauga $(-2)\cdot5=-10=q$.
+
+\textbf{b)} Gautas $P(x)=x^2-3x-10$. Kadangi $-2+5=3=-(-3)$ ir $(-2)5=-10$, atvirkštinė Vijeto teorema patvirtina abi šaknis.
+
+\textbf{c)} Ne: Vijeto formulės vienareikšmiškai nustato $p=-3$ ir $q=-10$, kai vyriausiasis koeficientas $1$.
+\item \textbf{a)} Pagal Vijeto teoremą $r+s=-p$ ir $rs=q$, todėl $p=-(r+s)$, $q=rs$.
+
+\textbf{b)} Įrašę gautus koeficientus gauname $x^2-(r+s)x+rs=0$. Jeigu kita redukuotoji lygtis turėtų tas pačias šaknis, Vijeto teorema verstų jos koeficientus būti tais pačiais $p$ ir $q$, todėl lygtis vienintelė.
+
+\textbf{c)} Šių dviejų skaičių suma yra $r+s$, sandauga $rs$, todėl jie tenkina atvirkštinės Vijeto teoremos sąlygas ir yra lygties šaknys. Jei $r=s$, abu žymenys reiškia tą patį skaičių; lygtis tampa $x^2-2rx+r^2=(x-r)^2=0$, tad šaknis viena, dviguboji.
+\item Pagal ankstesnę išvadą iš šaknų sumos $S$ ir sandaugos $T$ sudarome $x^2-Sx+T=0$. Kiekvienu atveju atvirkštinė Vijeto teorema patvirtina, kad duoti skaičiai yra šaknys.
+
+\textbf{a)} $S=2+5=7$, $T=2\cdot5=10$; $x^2-7x+10=0$.
+
+\textbf{b)} $S=-3+4=1$, $T=(-3)\cdot4=-12$; $x^2-x-12=0$.
+
+\textbf{c)} $S=-2-6=-8$, $T=(-2)(-6)=12$; $x^2+8x+12=0$.
+
+\textbf{d)} $S=0-5=-5$, $T=0\cdot(-5)=0$; $x^2+5x=0$.
+
+\textbf{e)} $S=3+3=6$, $T=3\cdot3=9$; $x^2-6x+9=0$. Tai viena dviguboji šaknis $3$.
+
+\textbf{f)} $S=2+\frac{1}{2}=\frac{5}{2}$, $T=2\cdot\frac{1}{2}=1$; $x^2-\frac{5}{2}x+1=0$.
+\item Jei lygtis su tokiomis realiosiomis šaknimis egzistuoja, pagal Vijeto teoremą ji būtinai yra $x^2-Sx+T=0$. Belieka patikrinti, ar ši lygtis turi realiųjų šaknų.
+
+\textbf{a)} $x^2-7x+10=0$, $D=49-40=9>0$; šaknys $2$ ir $5$, jų suma $7$, sandauga $10$.
+
+\textbf{b)} $x^2+2x-8=0$, $D=4+32=36>0$; šaknys $2$ ir $-4$, jų suma $-2$, sandauga $-8$.
+
+\textbf{c)} $x^2-6x+9=0$, $D=0$; viena dviguboji šaknis $3$. Vijeto formulėse $x_1=x_2=3$, todėl suma $6$, sandauga $9$.
+
+\textbf{d)} Vienintelė galimybė būtų $x^2-2x+5=0$, bet $D=4-20=-16<0$. Ji neturi realiųjų šaknų, taigi redukuotosios lygties su tokia realiųjų šaknų suma ir sandauga nėra.
+\item \textbf{a)} Kadangi $(r+s)^2=r^2+2rs+s^2$, tai $6^2=20+2rs$, todėl $2rs=16$ ir $rs=8$.
+
+\textbf{b)} Pagal Vijeto teoremą vienintelė galima lygtis yra $x^2-6x+8=0$. Kadangi $2+4=6$, $2\cdot4=8$, atvirkštinė Vijeto teorema rodo, kad jos šaknys yra $2$ ir $4$. Jos realiosios ir tenkina $2+4=6$, $2^2+4^2=20$.
+\item \textbf{a)} $D=16-4=12>0$, todėl $r$ ir $s$ yra realiosios šaknys. Pagal Vijeto teoremą $r+s=4$, $rs=1$.
+
+\textbf{b)} Naujųjų skaičių suma yra $(r+1)+(s+1)=4+2=6$, o sandauga $(r+1)(s+1)=rs+r+s+1=1+4+1=6$. Todėl ieškoma lygtis yra $x^2-6x+6=0$.
+
+\textbf{c)} Naujųjų skaičių suma yra $r^2+s^2=(r+s)^2-2rs=16-2=14$, sandauga $r^2s^2=(rs)^2=1$. Todėl lygtis yra $x^2-14x+1=0$.
+
+\textbf{d)} Kadangi $rs=1\ne0$, abi šaknys nelygios nuliui. Atvirkštinių skaičių suma yra $\frac{1}{r}+\frac{1}{s}=\frac{r+s}{rs}=4$, o sandauga $\frac{1}{rs}=1$. Ieškoma lygtis yra $x^2-4x+1=0$: ji sutampa su pradine. Taip yra todėl, kad iš $rs=1$ gauname $\frac{1}{r}=s$ ir $\frac{1}{s}=r$: atvirkštiniai skaičiai yra tos pačios šaknys, tik sukeistos vietomis. Visose dalyse atvirkštinė Vijeto teorema patvirtina gautų lygčių šaknis, o redukuotoji lygtis su duotomis šaknimis yra vienintelė.
+\item \textbf{a)} Pagal ekstremumo taško formulę $-\frac{p}{2}=2$, todėl $p=-4$. Duota $q=3$, tad ieškoma lygtis yra $x^2-4x+3=0$. Jei $x_1$, $x_2$ yra jos realiosios šaknys, pagal Vijeto teoremą jų suma lygi $4$.
+
+\textbf{b)} Kadangi $1+3=4$, $1\cdot3=3$, atvirkštinė Vijeto teorema rodo, kad šaknys yra $1$ ir $3$. Tiesioginė patikra: $1-4+3=0$, $9-12+3=0$. Skaičiai $1$ ir $3$ nuo ekstremumo taško $2$ nutolę per $1$, todėl jie simetriški jo atžvilgiu.
+\item \textbf{a)} Jei pora tenkina sistemą, tai $u+v=5$, $uv=4$. Pagal atvirkštinę Vijeto teoremą jos nariai yra $x^2-5x+4$ šaknys.
+
+\textbf{b)} Kadangi $1+4=5$ ir $1\cdot4=4$, pagal atvirkštinę teoremą šaknys yra $1$ ir $4$; kitų nėra. Galimos sutvarkytosios poros $(1;4)$ ir $(4;1)$. Jos skirtingos, nes skiriasi jų pirmieji nariai.
+
+\textbf{c)} Abiem atvejais suma $5$, sandauga $4$. Taigi abi poros tenkina sistemą, o kitų porų nėra.
+
+\textbf{d)} Iš pirmosios lygties $v=5-u$. Įrašę į antrąją gauname $u(5-u)=4$, todėl $u^2-5u+4=0$. Kairėje pusėje – tas pats daugianaris, kurį sudarėme a dalyje. Kai $u=1$, gauname $v=4$; kai $u=4$, gauname $v=1$. Abu būdai duoda tas pačias poras.
+\item Pažymėkime sistemoje duotą sumą $S$, o sandaugą $T$. Jei pora tenkina sistemą, atvirkštinė Vijeto teorema užtikrina, kad jos nariai yra $x^2-Sx+T$ šaknys. Radus šaknis dar reikia patikrinti, kad nurodytos poros tenkina abi pradines lygybes; šios patikros pateiktos toliau.
+
+\textbf{a)} $x^2-7x+12$: $3+4=7$, $3\cdot4=12$; poros $(3;4)$, $(4;3)$.
+
+\textbf{b)} $x^2+5x+6$: $-2+(-3)=-5$, $(-2)(-3)=6$; poros $(-2;-3)$, $(-3;-2)$.
+
+\textbf{c)} $x^2-x-12$: $4+(-3)=1$, $4(-3)=-12$; poros $(4;-3)$, $(-3;4)$.
+
+\textbf{d)} $x^2-6x+9$: $D=0$, vienintelė šaknis $3$; viena pora $(3;3)$, nes $3+3=6$, $3\cdot3=9$.
+
+\textbf{e)} $x^2-2x+5$: $D=4-20=-16<0$, todėl realiųjų šaknų ir sistemos sprendinių nėra.
+
+\textbf{f)} $x^2+3x$: šaknys $0$ ir $-3$, nes jų suma $-3$, sandauga $0$; poros $(0;-3)$, $(-3;0)$.
+\item \textbf{a)} Jei $u+v=S$ ir $uv=T$, atvirkštinė Vijeto teorema teigia, kad $u$ ir $v$ yra $x^2-Sx+T$ šaknys.
+
+\textbf{b)} Pagal \emph{Vijeto teoremą} skirtingų šaknų suma yra $S$, sandauga $T$, todėl abi poros tenkina sistemą. Pagal a dalį kiekvienos sprendinių poros nariai turi būti šaknys $r$ arba $s$. Poros $(r;r)$ ir $(s;s)$ netinka: jų suma sutaptų su $r+s$ tik jei $r=s$. Taigi kitų porų nėra.
+
+\textbf{c)} Kai $S^2-4T>0$, yra dvi skirtingos šaknys ir dvi poros. Kai $S^2-4T=0$, yra viena dviguboji šaknis $r$ ir viena pora $(r;r)$; ją tenkina $2r=S$, $r^2=T$ pagal Vijeto teoremą. Kai $S^2-4T<0$, realiųjų šaknų nėra, todėl nėra ir realiųjų porų.
+\item \textbf{a)} Atskliaudę gauname $(u+v)^2=u^2+2uv+v^2$. Įrašę duotas reikšmes randame $4^2=10+2uv$, t. y. $16=10+2uv$, todėl $uv=3$.
+
+\textbf{b)} Kiekviena ieškoma pora turi tenkinti $u+v=4$, $uv=3$, todėl pagal atvirkštinę Vijeto teoremą jos nariai yra $x^2-4x+3$ šaknys. Kadangi $1+3=4$ ir $1\cdot3=3$, šaknys yra $1$ ir $3$; kitų nėra. Galimos poros $(1;3)$ ir $(3;1)$.
+
+\textbf{c)} Abiejų porų narių suma yra $4$, o kvadratų suma $1^2+3^2=10$, taigi jos tenkina pradines sąlygas. Kitų porų nėra, nes iš pradinių sąlygų būtina gauti sumą $4$ ir sandaugą $3$, o jas atitinkantis daugianaris turi tik šaknis $1$ ir $3$.
+\item \textbf{a)} Prisiminkime 7 temos 10d punkto tapatybę. Ją galime atkurti atskliaudę kubą:
+\[(u+v)^3=u^3+3u^2v+3uv^2+v^3=u^3+v^3+3uv(u+v).\]
+Atėmę $3uv(u+v)$ iš abiejų pusių, įrodome reikiamą tapatybę:
+\[u^3+v^3=(u+v)^3-3uv(u+v).\]
+
+\textbf{b)} Įrašę sąlygoje duotas reikšmes gauname $35=5^3-3uv\cdot5$, taigi $15uv=90$ ir $uv=6$.
+
+\textbf{c)} Pagal atvirkštinę Vijeto teoremą ieškomi skaičiai yra $x^2-5x+6$ šaknys. Kadangi $2+3=5$ ir $2\cdot3=6$, tai yra šaknys $2$ ir $3$; kitų nėra. Todėl galimos tik poros $(2;3)$ ir $(3;2)$. Patikra: abiejų porų suma $5$, kubų suma $2^3+3^3=8+27=35$, taigi abi poros tenkina pradines sąlygas.
+\item Tegul $P(x)=ax^2+bx+c$. Pagal Vijeto teoremą $-\frac{b}{a}=2+(-3)=-1$, $\frac{c}{a}=2(-3)=-6$, todėl $b=a$, $c=-6a$. Kadangi $P(0)=c=-12$, gauname $a=2$, $b=2$, $c=-12$. Taigi $P(x)=2x^2+2x-12$.
+
+Patikra pagal atvirkštinę teoremą: $2+(-3)=-1=-\frac{2}{2}$, $2(-3)=-6=\frac{-12}{2}$, todėl tai šaknys; $P(0)=-12$. Gauti koeficientai būtini ir vieninteliai, tad kito tokio daugianario nėra.
+\item Tinka kiekvienas $m\in\mathbb R$: skaičių $2$ ir $m$ suma yra $m+2=-b$, sandauga $2m=c$. Pagal atvirkštinę Vijeto teoremą jie yra šaknys. Jei $m\ne2$, tai dvi skirtingos šaknys; jei $m=2$, gauname $P(x)=x^2-4x+4$ su viena dvigubąja šaknimi $2$.
+\item Pirmoji dalis teisinga kaip sąlyginis teiginys: \emph{jeigu} realieji skaičiai su tokia suma ir sandauga egzistuotų, pagal atvirkštinę teoremą jie būtų $x^2-2x+5$ šaknys. Antroji dalis klaidinga: šio daugianario $D=4-20=-16<0$, todėl realiųjų šaknų nėra. Taigi tokių realiųjų skaičių nėra.
+\item Pažymėkime $S=x+y$, $T=xy$. Kadangi $x^2y+xy^2=xy(x+y)$, pradinės sistemos lygybės duoda
+\[S+T=11,\qquad ST=30.\]
+Pagal atvirkštinę Vijeto teoremą $S$ ir $T$ yra $z^2-11z+30$ šaknys. Skaičiai $5$ ir $6$ turi reikiamą sumą bei sandaugą, todėl tai abi šio daugianario šaknys. Galimi du atvejai:
+
+\textbf{1 atvejis.} $S=5$, $T=6$. Tuomet $x+y=5$, $xy=6$, todėl $x$ ir $y$ yra $t^2-5t+6$ šaknys: $2$ ir $3$. Gauname poras $(2;3)$ ir $(3;2)$.
+
+\textbf{2 atvejis.} $S=6$, $T=5$. Tuomet $x+y=6$, $xy=5$, todėl $x$ ir $y$ yra $t^2-6t+5$ šaknys: $1$ ir $5$. Gauname poras $(1;5)$ ir $(5;1)$.
+
+\textbf{Patikra.} Pirmųjų dviejų porų narių suma ir sandauga yra $5$ ir $6$, todėl $x+y+xy=5+6=11$, o $x^2y+xy^2=6\cdot5=30$. Kitų dviejų porų suma ir sandauga yra $6$ ir $5$, todėl gauname $6+5=11$ ir $5\cdot6=30$. Visos keturios poros tinka. Kitų nėra, nes išnagrinėjome abu galimus $S$ ir $T$ ir kiekvienu atveju visas jų šaknų poras.
+\item \textbf{a)} Čia $a=2$, $b=-4$, $c=-16$. Kadangi $-2+4=2=-\frac ba$ ir $(-2)\cdot4=-8=\frac ca$, pagal atvirkštinę Vijeto teoremą abu skaičiai yra šaknys. Jos skirtingos, o kvadratinis daugianaris turi ne daugiau kaip dvi skirtingas realiąsias šaknis.
+
+\textbf{b)} Suma $-1+5=4$, sandauga $(-1)\cdot5=-5$, todėl lygtis yra $x^2-4x-5=0$. Pagal atvirkštinę Vijeto teoremą abu duoti skaičiai yra jos šaknys. Pagal tiesioginę teoremą bet kurios redukuotosios lygties su tomis šaknimis koeficientai turi būti $-4$ ir $-5$, tad lygtis vienintelė.
+
+\textbf{c)} Jeigu pora tenkina sąlygas, jos nariai pagal atvirkštinę teoremą yra $x^2+4x+3$ šaknys. Kadangi $-1+(-3)=-4$ ir $(-1)(-3)=3$, šaknys yra $-1$ ir $-3$; kitų nėra. Galimos poros $(-1;-3)$ ir $(-3;-1)$. Abi jų tenkina abi pradines lygybes, o kitų nėra, nes kiekvienos sprendinių poros nariai turi būti šios dvi šaknys ir jų suma yra $-4$.
+
+\textbf{d)} Jeigu tokie realieji skaičiai egzistuotų, pagal atvirkštinę Vijeto teoremą jie būtų $x^2+1$ šaknys. Tačiau $D=0^2-4\cdot1\cdot1=-4<0$, todėl realiųjų šaknų nėra. Vadinasi, tokių skaičių nėra.
+\end{enumerate}
+\end{document}

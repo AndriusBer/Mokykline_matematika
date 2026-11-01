@@ -1,0 +1,328 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.4cm]{geometry}
+\raggedbottom\emergencystretch=2em
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=8pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(z.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (z) {#1};}
+\newcommand{\svarbu}{\tikz[baseline=(zenklas.base)]\node[circle,draw=blue!50!black,line width=0.6pt,minimum size=4.5mm,inner sep=0pt,font=\sffamily\bfseries\small,text=blue!50!black] (zenklas) {!};}
+\begin{document}
+\begin{center}{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]{\small\sffamily 6 TEMA}\\[4pt]{\LARGE\bfseries Kvadratinio daugianario šaknys\\ ir jų radimo formulė}\\[7pt]{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]\rule{0.72\textwidth}{0.4pt}\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Suprasi daugianario šaknies apibrėžimą, mokysiesi spręsti lygtis, kai $b=0$ arba $c=0$, išvesi ir taikysi šaknų formulę bei išsiaiškinsi diskriminanto ir realiųjų šaknų skaičiaus ryšį.
+\textbf{Prieš pradėdamas:} mokėk apskaičiuoti daugianario reikšmes (1 tema), išskirti pilnąjį kvadratą (2 tema), rasti ekstremumą (3–4 temos). Visur $a$, $b$, $c$, $x$ ir kiti kintamieji yra realieji skaičiai, o kvadratiniame daugianaryje $a\ne0$. Šaknų ieškome realiųjų skaičių aibėje. Grafikų nenagrinėjame.
+\begin{enumerate}
+\item $\star$ \textbf{Apibrėžimas.} Realusis skaičius $r$ vadinamas daugianario $P(x)$ \textbf{šaknimi}, jeigu įrašę $x=r$ gauname $P(r)=0$.
+\begin{enumerate}
+\item Ką reiškia teiginys „$3$ yra daugianario $P$ šaknis“? Užrašykite lygybę.
+\item Jei $P(-2)=0$, ką galima pasakyti apie $-2$? Ar $4$ yra šaknis, jei $P(4)=7$?
+\item Jei $P(0)=0$, ar $0$ yra šaknis? Ar iš $P(0)\ne0$ galima teigti, kad daugianaris neturi šaknų? Pagrįskite pavyzdžiu.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Ką reiškia, kad skaičius yra daugianario šaknis? Kaip patikrinti pasiūlytą šaknį?
+\item Duotas daugianaris $P(x)=x^2-5x+6$.
+\begin{enumerate}
+\item Apskaičiuokite $P(0)$, $P(1)$, $P(2)$, $P(3)$ ir nustatykite, kurie iš šių skaičių yra šaknys.
+\item Paaiškinkite, kodėl daugianario šaknų paieška yra lygties $P(x)=0$ sprendimas.
+\item Ar vien patikrinę, kad $P(2)=P(3)=0$, jau įrodėme, kad kitų šaknų nėra? Paaiškinkite, ką dar reikėtų pagrįsti.
+\end{enumerate}
+\item \textbf{Kai $b=c=0$.} Raskite visas daugianarių šaknis. Kiekvieną atsakymą patikrinkite.
+\begin{multicols}{2}\begin{enumerate}
+\item $P(x)=x^2$; \item $Q(x)=3x^2$; \item $R(x)=-2x^2$; \item $S(x)=\frac{1}{2}x^2$.
+\end{enumerate}\end{multicols}
+Kiek šaknų turi kiekvienas daugianaris? Kodėl dalijimas iš vyriausiojo koeficiento šiame uždavinyje galimas?
+\needspace{4cm}
+\item \textbf{Kai $b=0$.} Raskite visas realiąsias šaknis arba pagrįskite, kad jų nėra. Kiekvienu atveju pirmiausia išreikškite $x^2$.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-9$; \item $x^2+4$; \item $2x^2-8$; \item $-3x^2+12$; \item $4x^2-1$; \item $-x^2-9$.
+\end{enumerate}\end{multicols}
+\item $\star$ Nagrinėjamos lygtys $x^2=t$, kur $t$ yra realusis skaičius.
+\begin{enumerate}
+\item Kiek sprendinių yra, kai $t>0$? Paaiškinkite, kodėl reikia abiejų skaičių $\sqrt t$ ir $-\sqrt t$.
+\item Kiek sprendinių yra, kai $t=0$? O kai $t<0$? Pagrįskite.
+\item Mokinys iš $x^2=9$ gavo tik $x=3$. Patikrinkite jo atsakymą ir paaiškinkite, kodėl vien patikros nepakanka parodyti, kad rasti visi sprendiniai.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip $t$ ženklas lemia lygties $x^2=t$ sprendinių skaičių? Kodėl neužtenka patikrinti tik vieną galimą sprendinį?
+\textit{Prisiminkite:} realiųjų skaičių sandauga $A\cdot B$ lygi nuliui tada ir tik tada, kai $A=0$ arba $B=0$.
+\item $\star$ \textbf{Kai $c=0$.} Raskite visas daugianarių šaknis. Iškelkite bendrąjį daugiklį ir patikrinkite atsakymus.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-4x$; \item $x^2+5x$; \item $2x^2-6x$; \item $-3x^2-6x$; \item $4x^2-2x$; \item $-x^2+x$.
+\end{enumerate}\end{multicols}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip spręsti lygtį $ax^2+bx=0$? Kodėl dalijant iš $x$ būtina atskirai apsvarstyti $x=0$?
+\item Mokinys ieško daugianario $P(x)=x^2-4x$ šaknų ir rašo:
+\[
+\begin{aligned}x^2-4x&=0\quad\mid :x,\\x-4&=0,\\x&=4.\end{aligned}
+\]
+Jis teigia, kad $4$ – vienintelė šaknis. Patikrinkite $P(4)$, raskite klaidą ir visas šaknis. Kodėl negalima dalyti iš $x$ neišnagrinėjus atvejo $x=0$?
+\item Raskite visas realiąsias šaknis. Pirmiausia nustatykite $a$, $b$, $c$ ir nuspręskite, kurį ankstesnį būdą patogu taikyti.
+\begin{multicols}{2}\begin{enumerate}
+\item $3x^2+12x$; \item $-2x^2+18$; \item $5x^2$; \item $x^2+16$; \item $6x^2-x$; \item $-4x^2-8x$.
+\end{enumerate}\end{multicols}
+\item \textbf{Žingsnis prie bendrojo atvejo.} Raskite visas daugianario $P(x)=x^2-6x+8$ šaknis.
+\begin{enumerate}
+\item Išskirkite pilnąjį kvadratą reiškinyje $x^2-6x$: $x^2-6x=(x-3)^2-9$.
+\item Parodykite, kad $P(x)=(x-3)^2-1$, ir lygtį $P(x)=0$ pertvarkykite į $(x-3)^2=1$.
+\item Raskite abi šaknis ir patikrinkite jas įrašydami. Kodėl jų daugiau nėra?
+\end{enumerate}
+\item Išskirdami pilnąjį kvadratą, raskite visas realiąsias šaknis arba pagrįskite, kad jų nėra. Patikrinkite kiekvieną rastą šaknį.
+\begin{enumerate}
+\item $x^2-4x+3$; \item $x^2-4x+4$; \item $x^2-4x+5$; \item $2x^2-8x+6$.
+\end{enumerate}
+Kuriuo atveju gavote dvi šaknis, kuriuo – vieną, o kuriuo šaknų nėra?
+\item \textbf{Prisiminkite pilnojo kvadrato išskyrimą.} 4 temos 2 uždavinyje įrodėme: jeigu $P(x)=ax^2+bx+c$, $a\ne0$ ir $D=b^2-4ac$, tai
+\[
+P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}.
+\]
+\begin{enumerate}
+\item Išskirkite pilnąjį kvadratą daugianaryje $P(x)=2x^2+8x+3$ ir apskaičiuokite $D$.
+\item Patikrinkite, kad pagal primintą tapatybę gaunamas tas pats reiškinys. Kurioje jo vietoje panaudojamas diskriminantas?
+\end{enumerate}
+\item\label{formules-irodymas} $\star$ \textbf{Šaknų formulės įrodymas.} Įrodysime, kad jei $D>0$, lygties
+\[
+ax^2+bx+c=0,\qquad a\ne0,
+\]
+sprendiniai yra $x=\dfrac{-b\pm\sqrt D}{2a}$. Nuosekliai atlikite šiuos žingsnius.
+\begin{enumerate}
+\item Remdamiesi ankstesne tapatybe, parodykite, kad pradinė lygtis lygiavertė
+\[
+a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}=0.
+\]
+\item Pridėkite po $\frac{D}{4a}$ prie abiejų lygties pusių ir padalykite iš $a$. Įrodykite, kad gaunate
+\[
+\left(x+\frac{b}{2a}\right)^2=\frac{D}{4a^2}.
+\]
+\item Kai $D>0$, patikrinkite, kad $\left(\frac{\sqrt D}{2a}\right)^2=\frac{D}{4a^2}$. Pasinaudokite tuo, kad skaičiai, kurių kvadratai lygūs, yra lygūs arba priešingi, ir paaiškinkite, kodėl
+\[
+x+\frac{b}{2a}=\pm\frac{\sqrt D}{2a}.
+\]
+Kodėl abi reikšmės tinka ir tada, kai $a<0$?
+\item Išreikškite $x$: iš pradžių gaukite $x=-\frac{b}{2a}\pm\frac{\sqrt D}{2a}$, o tada užrašykite formulę su vienu vardikliu. Kodėl dvi gautos šaknys skirtingos?
+\item Palyginkite dvi šaknis su ekstremumo tašku $x_{\mathrm e}=-\frac{b}{2a}$. Raskite jų vidurkį ir atstumą nuo kiekvienos šaknies iki ekstremumo taško. Kaip ši išvada susijusi su 5 tema?
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kodėl formulėje yra ženklas $\pm$? Kodėl abu sprendiniai tinka ir kai $a<0$?
+\needspace{5cm}
+\item $\star$ \textbf{Ką pasako diskriminantas?} Remkitės \ref{formules-irodymas} uždavinio lygtimi $\left(x+\frac{b}{2a}\right)^2=\frac{D}{4a^2}$.
+\begin{enumerate}
+\item Kodėl $4a^2>0$? Koks yra dešiniosios pusės ženklas, kai $D>0$, $D=0$ ir $D<0$?
+\item Kiek realiųjų šaknų yra kiekvienu iš šių atvejų? Kai $D=0$, raskite šaknį ir paaiškinkite, kaip ji gaunama iš abiejų formulės užrašų.
+\item Paaiškinkite, kaip atvejis $D=0$ susijęs su 4 temos 7 uždavinio išvada apie vieną šaknį ir ekstremumą.
+\item Apskaičiuokite 10 uždavinio a), b), c) daugianarių diskriminantus ir patikrinkite, ar išvados sutampa su išskiriant pilnąjį kvadratą gautais atsakymais.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip $D$ ženklas lemia realiųjų šaknų skaičių? Kodėl pakanka išnagrinėti lygties $\left(x+\frac{b}{2a}\right)^2=\frac{D}{4a^2}$ dešiniosios pusės ženklą?
+\item Raskite visas realiąsias daugianarių šaknis pagal formulę. Pirmiausia nurodykite $a$, $b$, $c$ ir apskaičiuokite $D$. Kiekvieną rastą šaknį patikrinkite įrašydami.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-7x+10$; \item $-x^2+4x+5$; \item $2x^2+3x-2$; \item $3x^2-2x-1$;
+\item $4x^2+4x+1$; \item $x^2+x+1$; \item $x^2-4x+1$; \item $-2x^2+x+3$.
+\end{enumerate}\end{multicols}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kada patogiau išreikšti $x^2$, kada iškelti $x$ prieš skliaustus, o kada taikyti šaknų formulę? Kada gali būti naudinga išskirti pilnąjį kvadratą?
+\item Tik pagal diskriminanto ženklą nustatykite realiųjų šaknų skaičių. Apskaičiuokite $D$ ir paaiškinkite savo išvadą.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-5x+6$; \item $x^2-4x+4$; \item $x^2+2x+5$; \item $-x^2+4x-3$; \item $-2x^2+4x-2$; \item $-x^2+2x-5$.
+\end{enumerate}\end{multicols}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia atrama ir grįžk prie vietų, kurios kelia klausimų.
+\begin{tcolorbox}[colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1mm,colbacktitle=blue!8,coltitle=black,title={\svarbu\quad\bfseries Svarbiausios temos išvados}]
+\textbf{1. Daugianario šaknis.} Realusis skaičius $r$ yra daugianario $P$ šaknis tada ir tik tada, kai $P(r)=0$. Norėdami rasti visas šaknis sprendžiame lygtį $P(x)=0$. Patikrinus atskiras reikšmes dar reikia pagrįsti, kad kitų šaknų nėra.
+
+\textbf{2. Paprasčiausi atvejai.} Lygtis $x^2=t$ turi du realiuosius sprendinius $\pm\sqrt t$, kai $t>0$; vieną sprendinį $0$, kai $t=0$; neturi realiųjų sprendinių, kai $t<0$. Lygtyje $ax^2+bx=0$ iškeliame bendrąjį daugiklį: $x(ax+b)=0$. Dalijant iš $x$ ir neišnagrinėjus atvejo $x=0$, galima prarasti šaknį.
+
+\textbf{3. Šaknų formulė.} Kai $P(x)=ax^2+bx+c$, $a\ne0$, $D=b^2-4ac$ ir $D>0$, dvi skirtingos šaknys yra
+\[
+x_1=\frac{-b+\sqrt D}{2a},\qquad x_2=\frac{-b-\sqrt D}{2a}.
+\]
+Kai $a<0$, abi formulės vis tiek tinka; šaknų žymėjimo tvarka pasirenkama laisvai.
+
+\textbf{4. Diskriminantas ir realiųjų šaknų skaičius.} Kai $D>0$, yra dvi skirtingos šaknys; kai $D=0$, yra viena šaknis $x=-\frac b{2a}$ ir abu formulės su $+$ bei $-$ užrašai sutampa; kai $D<0$, realiųjų šaknų nėra. Ši išvada remiasi lygtimi $\left(x+\frac b{2a}\right)^2=\frac D{4a^2}$. Kai $D>0$, dvi šaknys yra simetriškos ekstremumo taško atžvilgiu.
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Raskite visas daugianario $P(x)=-2x^2+8x-6$ realiąsias šaknis. Patikrinkite kiekvieną šaknį.
+\item Nustatykite daugianario $Q(x)=x^2-6x+9$ realiųjų šaknų skaičių ir raskite jo šaknį.
+\item Nustatykite, ar daugianaris $R(x)=x^2+2x+5$ turi realiųjų šaknų. Paaiškinkite.
+\item Mokinys sprendžia lygtį $x^2-5x=0$: padalija abi puses iš $x$ ir gauna vienintelę šaknį $x=5$. Raskite klaidą ir visas šaknis.
+\end{enumerate}
+\end{enumerate}
+\newpage\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} $P(3)=0$.
+
+\textbf{b)} $-2$ yra šaknis, nes $P(-2)=0$. Skaičius $4$ nėra šaknis, nes $P(4)=7\ne0$.
+
+\textbf{c)} Taip, $0$ yra šaknis. Jei $P(0)\ne0$, žinome tik tai, kad $0$ nėra šaknis. Pavyzdžiui, $P(x)=x^2-1$: $P(0)=-1$, tačiau $P(1)=0$.
+\item \textbf{a)} $P(0)=6$, $P(1)=2$, $P(2)=0$, $P(3)=0$. Iš pateiktų skaičių šaknys yra $2$ ir $3$.
+
+\textbf{b)} Pagal apibrėžimą šaknis yra tokia $x$ reikšmė, su kuria $P(x)=0$. Todėl ieškome visų tos lygties sprendinių.
+
+\textbf{c)} Ne: patikrinome tik dvi reikšmes. Pagal 5 temos 9 uždavinį bet kuri reikšmė, su kuria gaunamas $P(2)$, yra arba $2$, arba vienintelis jam simetriškas skaičius. Kadangi $3\ne2$ taip pat tinka, kitų šaknų nėra. Vėliau šį faktą dar patikrinsime nagrinėdami diskriminantą.
+\item \textbf{a)} $x=0$.
+
+\textbf{b)} $x=0$.
+
+\textbf{c)} $x=0$.
+
+\textbf{d)} $x=0$. Kiekvienu atveju lygtį $ax^2=0$ dalijame iš $a\ne0$ ir gauname $x^2=0$, todėl $x=0$. Įrašę $0$ į kiekvieną daugianarį gauname $0$; kitų šaknų nėra.
+\item \textbf{a)} $x^2=9$, todėl $x=-3$ arba $x=3$.
+
+\textbf{b)} $x^2=-4$ negalima, todėl realiųjų šaknų nėra.
+
+\textbf{c)} $2x^2=8$, todėl $x^2=4$ ir $x=-2$ arba $x=2$.
+
+\textbf{d)} $-3x^2=-12$, todėl $x^2=4$ ir $x=-2$ arba $x=2$.
+
+\textbf{e)} $4x^2=1$, todėl $x^2=\frac{1}{4}$ ir $x=-\frac{1}{2}$ arba $x=\frac{1}{2}$.
+
+\textbf{f)} $-x^2=9$, todėl $x^2=-9$; realiųjų šaknų nėra. Rastų šaknų patikra: atitinkamai kvadratai yra $9$, $4$, $4$ ir $\frac{1}{4}$; juos įrašę į pradinius daugianarius gauname nulį.
+\item \textbf{a)} Kai $t>0$, yra du sprendiniai $x=\sqrt t$ ir $x=-\sqrt t$: abu pakelti kvadratu duoda $t$. Jei $x^2=t=(\sqrt t)^2$, pagal 5 temos 6c išvadą $x=\sqrt t$ arba $x=-\sqrt t$, todėl kitų sprendinių nėra.
+
+\textbf{b)} Kai $t=0$, vienintelis sprendinys yra $0$. Kai $t<0$, realiųjų sprendinių nėra, nes kvadratas neneigiamas.
+
+\textbf{c)} $3^2=9$, todėl $3$ tikrai yra sprendinys, tačiau $(-3)^2=9$. Patikrinus tik $3$ nesužinome, ar nėra kitų sprendinių; šiuo atveju dar tinka $-3$.
+\item \textbf{a)} $x(x-4)=0$, todėl $x=0$ arba $x=4$.
+
+\textbf{b)} $x(x+5)=0$, todėl $x=0$ arba $x=-5$.
+
+\textbf{c)} $2x(x-3)=0$, todėl $x=0$ arba $x=3$.
+
+\textbf{d)} $-3x(x+2)=0$, todėl $x=0$ arba $x=-2$.
+
+\textbf{e)} $2x(2x-1)=0$, todėl $x=0$ arba $x=\frac{1}{2}$.
+
+\textbf{f)} $-x(x-1)=0$, todėl $x=0$ arba $x=1$. Kiekvienu atveju įrašant vieną iš nurodytų reikšmių bent vienas sandaugos daugiklis lygus nuliui; taisyklė apie sandaugą parodo, kad kitų šaknų nėra.
+\item $P(4)=16-16=0$, taigi $4$ yra šaknis. Tačiau $P(0)=0$, todėl yra ir šaknis $0$. Dalijant iš $x$ būtina $x\ne0$: neišnagrinėję atvejo $x=0$ jį prarandame. Teisingai: $x(x-4)=0$, vadinasi, $x=0$ arba $x=4$; kitų šaknų nėra.
+\item \textbf{a)} $a=3$, $b=12$, $c=0$; $3x(x+4)=0$, šaknys $0$ ir $-4$.
+
+\textbf{b)} $a=-2$, $b=0$, $c=18$; $x^2=9$, šaknys $-3$ ir $3$.
+
+\textbf{c)} $a=5$, $b=0$, $c=0$; vienintelė šaknis $0$.
+
+\textbf{d)} $a=1$, $b=0$, $c=16$; $x^2=-16$ negalima, šaknų nėra.
+
+\textbf{e)} $a=6$, $b=-1$, $c=0$; $x(6x-1)=0$, šaknys $0$ ir $\frac{1}{6}$.
+
+\textbf{f)} $a=-4$, $b=-8$, $c=0$; $-4x(x+2)=0$, šaknys $0$ ir $-2$.
+\item \textbf{a)} $(x-3)^2=x^2-6x+9$, todėl $x^2-6x=(x-3)^2-9$.
+
+\textbf{b)} Pridėję $8$ gauname $P(x)=(x-3)^2-9+8=(x-3)^2-1$. Tad $P(x)=0$ lygiavertė $(x-3)^2=1$.
+
+\textbf{c)} $x-3=1$ arba $x-3=-1$, todėl $x=4$ arba $x=2$. Patikra: $P(4)=16-24+8=0$, $P(2)=4-12+8=0$. Kvadratą $1$ turi tik $1$ ir $-1$, todėl kitų šaknų nėra.
+\item \textbf{a)} $x^2-4x+3=(x-2)^2-1$. Iš $(x-2)^2=1$ gauname $x=1$ arba $x=3$. Patikra: $1-4+3=0$, $9-12+3=0$.
+
+\textbf{b)} $x^2-4x+4=(x-2)^2$. Iš $(x-2)^2=0$ gauname vienintelę šaknį $x=2$. Patikra: $4-8+4=0$.
+
+\textbf{c)} $x^2-4x+5=(x-2)^2+1$. Lygtis $(x-2)^2=-1$ negalima, todėl realiųjų šaknų nėra.
+
+\textbf{d)} $2x^2-8x+6=2(x^2-4x)+6=2\bigl((x-2)^2-4\bigr)+6=2(x-2)^2-2$. Iš $2(x-2)^2=2$ gauname $(x-2)^2=1$, todėl $x=1$ arba $x=3$. Patikra: $2-8+6=0$, $18-24+6=0$.
+\item \textbf{a)} Išskyrę pilnąjį kvadratą gauname
+\[
+P(x)=2(x^2+4x)+3=2\bigl((x+2)^2-4\bigr)+3=2(x+2)^2-5.
+\]
+Diskriminantas $D=8^2-4\cdot2\cdot3=40$.
+
+\textbf{b)} Į 4 temos tapatybę įrašome $a=2$, $b=8$ ir $D=40$:
+\[
+P(x)=2\left(x+\frac{8}{2\cdot2}\right)^2-\frac{40}{4\cdot2}
+=2(x+2)^2-5.
+\]
+Diskriminantas naudojamas apskaičiuojant narį $-\frac{D}{4a}$.
+\item \textbf{a)} Į lygtį $ax^2+bx+c=0$ įrašę ankstesnėje dalyje įrodytą pavidalą, gauname $a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}=0$. Kadangi reiškiniai tapačiai lygūs, lygtys lygiavertės.
+
+\textbf{b)} Pridėję po $\frac{D}{4a}$, o tada padaliję iš $a\ne0$, gauname
+\[
+a\left(x+\frac{b}{2a}\right)^2=\frac{D}{4a},\qquad
+\left(x+\frac{b}{2a}\right)^2=\frac{D}{4a^2}.
+\]
+Šie veiksmai grįžtami.
+
+\textbf{c)} Kai $D>0$, skaičius $\frac{\sqrt D}{2a}$ yra nenulinis ir jo kvadratas lygus $\frac{D}{4a^2}$. Todėl $x+\frac{b}{2a}=\frac{\sqrt D}{2a}$ arba $x+\frac{b}{2a}=-\frac{\sqrt D}{2a}$. Kai $a<0$, pirmoji trupmena yra neigiama, tačiau ji ir jai priešingas skaičius vis tiek sudaro abi galimas reikšmes.
+
+\textbf{d)} Atėmę po $\frac{b}{2a}$ gauname $x=-\frac{b}{2a}\pm\frac{\sqrt D}{2a}=\frac{-b\pm\sqrt D}{2a}$. Dvi šaknys skirtingos, nes $\sqrt D>0$ ir jų skirtumas yra $\frac{\sqrt D}{a}\ne0$.
+
+\textbf{e)} Kai $D>0$, pažymėkime $x_1=-\frac{b}{2a}+\frac{\sqrt D}{2a}$, $x_2=-\frac{b}{2a}-\frac{\sqrt D}{2a}$. Jų vidurkis yra
+\[
+\frac{x_1+x_2}{2}=-\frac{b}{2a}=x_{\mathrm e}.
+\]
+Atstumas nuo kiekvienos šaknies iki ekstremumo taško lygus $\left|\frac{\sqrt D}{2a}\right|=\frac{\sqrt D}{2|a|}$. Taigi šaknys yra simetriškos ekstremumo taško atžvilgiu, kaip ir nustatyta 5 temoje.
+\item \textbf{a)} Kadangi $a\ne0$, tai $a^2>0$ ir $4a^2>0$. Taigi $\frac{D}{4a^2}$ ženklas sutampa su $D$ ženklu.
+
+\textbf{b)} Kai $D>0$, kvadratas lygus teigiamam skaičiui, todėl yra dvi skirtingos šaknys. Kai $D=0$, gauname $x+\frac{b}{2a}=0$, taigi yra viena šaknis $x=-\frac{b}{2a}$. Abu formulės su $+$ ir $-$ užrašai duoda tą pačią reikšmę. Kai $D<0$, kvadratas turėtų būti neigiamas, todėl realiųjų šaknų nėra.
+
+\textbf{c)} Kai $D=0$, abu formulės užrašai duoda tą pačią reikšmę: $\frac{-b+\sqrt0}{2a}=\frac{-b-\sqrt0}{2a}=-\frac b{2a}$. Pagal 4 temos 7 uždavinį daugianaris turi vieną realiąją šaknį tada ir tik tada, kai jo ekstremumas lygus nuliui; 4 temos formulė $P_{\mathrm e}=-\frac D{4a}$ sieja tai su $D=0$.
+
+\textbf{d)} 10 a) $D=(-4)^2-4\cdot1\cdot3=4>0$ – dvi šaknys. 10 b) $D=16-16=0$ – viena. 10 c) $D=16-20=-4<0$ – nėra. Išvados sutampa su 10 uždavinio atsakymais.
+\item \textbf{a)} $a=1$, $b=-7$, $c=10$, $D=(-7)^2-4\cdot1\cdot10=9$. Todėl
+\[
+x_1=\frac{7+3}{2}=5,\qquad x_2=\frac{7-3}{2}=2.
+\]
+Patikra: $5^2-7\cdot5+10=0$, $2^2-7\cdot2+10=0$.
+
+\textbf{b)} $a=-1$, $b=4$, $c=5$, $D=16-4(-1)\cdot5=36$. Tuomet
+\[
+x_1=\frac{-4+6}{-2}=-1,\qquad x_2=\frac{-4-6}{-2}=5.
+\]
+Patikra: $-(-1)^2+4(-1)+5=0$, $-5^2+4\cdot5+5=0$.
+
+\textbf{c)} $a=2$, $b=3$, $c=-2$, $D=9+16=25$, todėl $x_1=\frac{-3+5}{4}=\frac12$, $x_2=\frac{-3-5}{4}=-2$. Patikra: $2\cdot\frac14+\frac32-2=0$, $2\cdot4-6-2=0$.
+
+\textbf{d)} $a=3$, $b=-2$, $c=-1$, $D=4+12=16$, todėl $x_1=\frac{2+4}{6}=1$, $x_2=\frac{2-4}{6}=-\frac13$. Patikra: $3-2-1=0$, $3\cdot\frac19+\frac23-1=0$.
+
+\textbf{e)} $a=4$, $b=4$, $c=1$, $D=16-16=0$. Vienintelė šaknis $x=-\frac4{8}=-\frac12$. Patikra: $4\cdot\frac14+4\cdot(-\frac12)+1=0$.
+
+\textbf{f)} $a=1$, $b=1$, $c=1$, $D=1-4=-3<0$, todėl realiųjų šaknų nėra.
+
+\textbf{g)} $a=1$, $b=-4$, $c=1$, $D=16-4=12>0$. Šaknys $x=\frac{4\pm\sqrt{12}}2=2\pm\sqrt3$. Jų patikra: $(2\pm\sqrt3)^2-4(2\pm\sqrt3)+1=7\pm4\sqrt3-8\mp4\sqrt3+1=0$.
+
+\textbf{h)} $a=-2$, $b=1$, $c=3$, $D=1+24=25$. Šaknys $x_1=\frac{-1+5}{-4}=-1$, $x_2=\frac{-1-5}{-4}=\frac32$. Patikra: $-2-1+3=0$, $-2\cdot\frac94+\frac32+3=0$.
+
+Esant $D>0$, formulės išvedimas pagrindžia, kad kitų realiųjų šaknų nėra.
+\item \textbf{a)} $D=25-24=1>0$: dvi realiosios šaknys.
+
+\textbf{b)} $D=16-16=0$: viena realioji šaknis.
+
+\textbf{c)} $D=4-20=-16<0$: realiųjų šaknų nėra.
+
+\textbf{d)} $D=16-12=4>0$: dvi realiosios šaknys.
+
+\textbf{e)} $D=16-16=0$: viena realioji šaknis.
+
+\textbf{f)} $D=4-20=-16<0$: realiųjų šaknų nėra.
+\item \textbf{a)} $a=-2$, $b=8$, $c=-6$. Diskriminantas $D=8^2-4\cdot(-2)\cdot(-6)=16>0$, todėl yra dvi skirtingos šaknys:
+\[
+x_1=\frac{-8+4}{-4}=1,\qquad x_2=\frac{-8-4}{-4}=3.
+\]
+Patikra: $P(1)=-2+8-6=0$, $P(3)=-18+24-6=0$.
+
+\textbf{b)} $D=(-6)^2-4\cdot1\cdot9=0$, todėl šaknis viena: $x=-\frac{-6}{2\cdot1}=3$. Patikra: $Q(3)=9-18+9=0$.
+
+\textbf{c)} $D=2^2-4\cdot1\cdot5=-16<0$, todėl realiųjų šaknų nėra. Tą patį matome iš $R(x)=(x+1)^2+4\ge4>0$.
+
+\textbf{d)} Padalijus iš $x$ nebuvo atskirai išnagrinėtas atvejis $x=0$, todėl ši šaknis prarasta. Iškeliame bendrąjį daugiklį: $x(x-5)=0$. Sandauga lygi nuliui, kai $x=0$ arba $x-5=0$, todėl visos šaknys yra $x=0$ ir $x=5$. Patikrinus abi pradinio daugianario reikšmės lygios nuliui.
+\end{enumerate}
+\end{document}

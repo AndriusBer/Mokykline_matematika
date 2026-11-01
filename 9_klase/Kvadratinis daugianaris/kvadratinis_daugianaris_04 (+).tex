@@ -1,0 +1,345 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\emergencystretch=3em
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=7pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(z.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (z) {#1};}
+\newcommand{\svarbu}{\tikz[baseline=(zenklas.base)]\node[circle,draw=blue!50!black,line width=0.6pt,minimum size=4.5mm,inner sep=0pt,font=\sffamily\bfseries\small,text=blue!50!black] (zenklas) {!};}
+\begin{document}
+\begin{center}{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]{\small\sffamily 4 TEMA}\\[4pt]{\Large\bfseries Ekstremumo taško ir ekstremumo formulės}\\[7pt]{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]\rule{0.72\textwidth}{0.4pt}\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Susipažinsi su diskriminantu, išvesi ir išmoksi taikyti ekstremumo taško ir ekstremumo formules. Jomis remdamasis tirsi koeficientų ženklus, sąlygų suderinamumą ir sudarysi kvadratinius daugianarius.
+
+\textbf{Prieš pradėdamas:} mokėk nustatyti koeficientus ir daugianario reikšmes (1 tema), išskirti pilnąjį kvadratą (2 tema), suprask ekstremumą ir jo tašką (3 tema), mokėk spręsti paprasčiausias lygtis $t^2=c$. Visoje temoje $x,a,b,c\in\mathbb R$ ir $a\ne0$, nebent nurodyta kitaip. Funkcijų ir grafikų nenagrinėjame.
+\begin{enumerate}
+\item Kvadratinio daugianario $P(x)=ax^2+bx+c$ skaičius $D=b^2-4ac$ vadinamas \textbf{diskriminantu}.
+\begin{enumerate}
+\item Apskaičiuokite $D$, kai $P(x)=x^2-5x+6$, $Q(x)=2x^2-4x+2$ ir $R(x)=-x^2+2x-5$.
+\item Ar diskriminantas gali būti teigiamas, lygus nuliui arba neigiamas? Kiekvienam atvejui nurodykite pavyzdį iš a) dalies.
+\item Apskaičiuodamas $D$ daugianariui $-x^2+2x-5$, mokinys rašo $D=2^2-4\cdot1\cdot(-5)$. Raskite ir pataisykite klaidą.
+\end{enumerate}
+\item $\star$ Įrodykite, kad kiekvienam $a\ne0$
+\[
+P(x)=ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a},\qquad D=b^2-4ac.
+\]
+Iškelkite $a$ iš pirmųjų dviejų narių ir išskirkite pilnąjį kvadratą. Kodėl gautas reiškinys yra tas pats daugianaris?
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip pilnojo kvadrato pavidale atsiranda diskriminantas ir kodėl pertvarkyta išraiška lygi pradiniam daugianariui?
+\item $\star$ Remdamiesi 2 uždaviniu ir 3 tema, įrodykite, kad ekstremumo taškas $x_{\mathrm e}$ ir ekstremumas $P_{\mathrm e}$ tenkina
+\[
+\boxed{x_{\mathrm e}=-\frac{b}{2a}},\qquad
+\boxed{P_{\mathrm e}=-\frac{D}{4a}}.
+\]
+Atskirai įvardykite, kada $x_{\mathrm e}=x_{\min}$, $P_{\mathrm e}=P_{\min}$ ir kada $x_{\mathrm e}=x_{\max}$, $P_{\mathrm e}=P_{\max}$. Paaiškinkite, kodėl ekstremumas pasiekiamas.
+
+\textit{Pastaba.} Praktikoje ekstremumą galima rasti ir kitu būdu: pirmiausia apskaičiuoti ekstremumo tašką $x_{\mathrm e}=-\frac{b}{2a}$, tada įrašyti jį į daugianarį ir apskaičiuoti $P(x_{\mathrm e})$. Taip gaunamas tas pats ekstremumas kaip ir pagal formulę $P_{\mathrm e}=-\frac{D}{4a}$.
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip iš koeficientų apskaičiuoti ekstremumo tašką ir ekstremumą? Kodėl vien taško reikšmės įrašymas į daugianarį taip pat leidžia rasti ekstremumą?
+\item Apskaičiuokite $D$, nustatykite ekstremumo rūšį ir pagal formules raskite ekstremumo tašką bei ekstremumą. Patikrinkite įrašydami ekstremumo tašką į $P(x)$. Palyginkite a)–f) atsakymus su 3 temos 7 uždaviniu: kaip ten rasti tie patys ekstremumai? Kuris būdas šiais atvejais jums patogesnis ir kodėl?
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-6x+5$; \item $x^2+4x+1$; \item $2x^2-8x+3$; \item $-x^2+8x-10$; \item $-2x^2-8x+1$; \item $3x^2+6x-1$; \item $2x^2+4x+2$; \item $-x^2-4$.
+\end{enumerate}\end{multicols}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kada patogiau taikyti formules, o kada išskirti pilnąjį kvadratą? Kada naudinga ekstremumo tašką įrašyti į pradinį daugianarį?
+\item Duotas $P(x)=2x^2-8x+3$. Mokinys apskaičiavo $D=40$ ir teigia: „Kadangi $D>0$, ekstremumas yra teigiamas ir lygus $5$.“ Patikrinkite skaičiavimą ir išvadas. Ką reikia žinoti, kad nuspręstume apie ekstremumo ženklą?
+\item $\star$ Tegul $P(x)=ax^2+bx+c$. Įrodykite teiginius ir pateikite po vieną pavyzdį.
+\begin{enumerate}
+\item Kai $D\ne0$ ir $a>0$, minimumo ženklas yra priešingas $D$ ženklui; kai $D\ne0$ ir $a<0$, maksimumo ženklas sutampa su $D$ ženklu. Kas nutinka, jei $D=0$?
+\item Ekstremumas yra lygus nuliui tada ir tik tada, kai $D=0$.
+\item Ekstremumo taškas lygus nuliui tada ir tik tada, kai $b=0$.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip $a$ ir $D$ ženklai susiję su ekstremumo ženklu? Kas nutinka, kai $D=0$?
+\item \begin{enumerate}
+\item Įrodykite, kad kvadratinis daugianaris $P(x)$ turi lygiai vieną realiąją $x$ reikšmę, su kuria $P(x)=0$, tada ir tik tada, kai jo ekstremumas lygus nuliui.
+\item Neskaičiuodami diskriminanto nustatykite, ar yra realusis $x$, kuriam $3(x-5)^2+2=0$. Atsakymą pagrįskite ekstremumo savybėmis.
+\end{enumerate}
+\item Nustatykite ekstremumo rūšį ir ženklą. Jei jis lygus nuliui, tai nurodykite. Atsakymus pagrįskite.
+\begin{multicols}{2}\begin{enumerate}
+\item $a>0$, $D>0$; \item $a>0$, $D<0$; \item $a<0$, $D>0$; \item $a<0$, $D<0$; \item $a>0$, $D=0$; \item $a<0$, $D=0$.
+\end{enumerate}\end{multicols}
+\item Nustatykite ekstremumo taško ženklą, jei:
+\begin{multicols}{2}\begin{enumerate}
+\item $a>0$, $b>0$; \item $a>0$, $b<0$; \item $a<0$, $b>0$; \item $a<0$, $b<0$; \item $b=0$.
+\end{enumerate}\end{multicols}
+\item Duotas $P(x)=x^2-6x+5$; jo minimumo taškas yra $x_{\min}=3$, o minimumas $P_{\min}=-4$.
+\begin{enumerate}
+\item Padidinkite $c$ dešimčia, nekeisdami $a$ ir $b$. Raskite naujojo daugianario minimumo tašką ir minimumą. Kas pasikeitė?
+\item Tegul $Q(x)=P(x)+t$, kur $t\in\mathbb R$. Remdamiesi ekstremumo formulėmis nustatykite ir pagrįskite, kaip pakinta ekstremumo taškas ir ekstremumas. Ar pasikeičia ekstremumo rūšis?
+\end{enumerate}
+\item $\star$ Duoti daugianariai $P(x)=ax^2+bx+c$ ir $Q(x)=-ax^2-bx-c$, kur $a\ne0$.
+\begin{enumerate}
+\item Įrodykite, kad jų diskriminantai lygūs.
+\item Įrodykite, kad ekstremumo taškai sutampa, o vieno daugianario minimumo taškas yra kito maksimumo taškas.
+\item Įrodykite, kad jų ekstremumai yra priešingi skaičiai. Paaiškinkite tai ir kitu būdu – naudodamiesi lygybe $Q(x)=-P(x)$.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip pasikeičia ekstremumo taškas ir ekstremumas, kai daugianaris padauginamas iš $-1$?
+\item Kiekvienoje dalyje nuspręskite, ar egzistuoja kvadratinis daugianaris, vienu metu tenkinantis visas toje dalyje nurodytas sąlygas. Jei taip, pateikite pavyzdį; jei ne, paaiškinkite.
+\begin{enumerate}
+\item $a>0$, $D>0$, $P_{\min}>0$;
+\item $a<0$, $D<0$, $P_{\max}<0$;
+\item $a>0$, $b>0$, $x_{\min}>0$;
+\item $a<0$, $b>0$, $x_{\max}>0$;
+\item $a>0$, $c<0$, $P_{\min}>0$;
+\item $a<0$, $c>0$, $P_{\max}<0$;
+\item $D=0$, $c<0$, $a>0$;
+\item $D=0$, $c<0$, $a<0$.
+\end{enumerate}
+\item Ar egzistuoja kvadratinis daugianaris? Jei taip, pateikite pavyzdį ir patikrinkite visas sąlygas.
+\begin{enumerate}
+\item $x_{\min}=0$, $b=2$;
+\item $x_{\max}=0$, $b=0$, $c=-2$;
+\item $x_{\min}=2$, $P_{\min}=3$, $c=1$;
+\item $x_{\max}=-1$, $P_{\max}=4$, $c=3$;
+\item $x_{\min}=1$, $P_{\min}=0$, $c=1$;
+\item $x_{\min}=2$, $P_{\min}=1$, $D<0$.
+\end{enumerate}
+\item Paaiškinkite, ką apie $D$ galima pasakyti, jei $ac<0$. Ar atvirkštinis teiginys teisingas? Jei ne, pateikite pavyzdį.
+\item Raskite visas realiąsias $k$ reikšmes, su kuriomis galioja nurodytos sąlygos.
+\begin{enumerate}
+\item $P(x)=x^2-4x+k$ ir $P_{\min}>0$;
+\item $P(x)=-x^2+2x+k$ ir $P_{\max}=0$;
+\item $P(x)=2x^2+kx+2$ ir $P_{\min}=0$;
+\item $P(x)=kx^2-2x+1$ turi minimumą ir $x_{\min}=1$.
+\end{enumerate}
+\item Sudarykite kvadratinį daugianarį ir patikrinkite sąlygas.
+\begin{enumerate}
+\item $x_{\min}=-1$, $P_{\min}=2$, $P(0)=5$;
+\item $x_{\max}=2$, $P_{\max}=4$, $P(0)=-4$;
+\item $a=2$, $x_{\min}=-1$, $P_{\min}=3$;
+\item $b=-4$, $x_{\min}=1$, $P_{\min}=2$;
+\item $c=3$, $x_{\max}=1$, $P_{\max}=5$.
+\end{enumerate}
+\item Kvadratinio daugianario $P$ reikšmės yra $P(0)=2$, $P(1)=0$, $P(-1)=8$. Palyginkite šį uždavinį su 3 temos 14 uždaviniu: kuo skiriasi ekstremumo nustatymo būdai?
+\begin{enumerate}
+\item Raskite $a$, $b$, $c$ ir $D$.
+\item Pagal formules raskite ekstremumo tašką ir ekstremumą.
+\item Išskirkite pilnąjį kvadratą ir kitu būdu patikrinkite savo išvadas.
+\end{enumerate}
+\item Nuspręskite, ar duomenų pakanka kvadratiniam daugianariui vienareikšmiškai nustatyti. Jei ne, užrašykite visus tinkamus daugianarius.
+\begin{enumerate}
+\item $x_{\min}=2$, $P_{\min}=1$;
+\item $x_{\max}=0$, $P_{\max}=3$, $P(0)=3$;
+\item $x_{\min}=1$, $P_{\min}=-2$, $P(2)=1$.
+\end{enumerate}
+\item Kiekvienu atveju sudarykite \textbf{visus} sąlygas tenkinančius kvadratinius daugianarius $P(x)=ax^2+bx+c$. Patikrinkite jų diskriminantus ir kitas sąlygas.
+\begin{enumerate}
+\item $a=1$, $b=-4$, $D=4$;
+\item $a=2$, $c=2$, $D=0$;
+\item $a=1$, $D=16$, $x_{\min}=2$;
+\item $b=-6$, $x_{\min}=1$, $D=12$;
+\item $a=-2$, $P(0)=1$, $D=24$;
+\item $D=24$, $P_{\min}=-2$, $x_{\min}=2$;
+\item $D=-24$, $P_{\min}=2$, $x_{\min}=-1$. Palyginkite gautą daugianarį su 16a punkto atsakymu. Kodėl, nors sąlygos skirtingos, gaunamas tas pats daugianaris?
+\item $D=16$, $P_{\max}=4$, $P(0)=3$;
+\item $D=8$, $P_{\min}=2$, $x_{\min}=1$.
+\end{enumerate}
+\item Ar egzistuoja kvadratinis daugianaris, kurio $a=1$, $c=2$, $D=-10$? Jei taip, raskite visus tokius daugianarius; jei ne, paaiškinkite kodėl.
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia atrama ir grįžk prie vietų, kurios kelia klausimų.
+\begin{tcolorbox}[colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1mm,colbacktitle=blue!8,coltitle=black,title={\svarbu\quad\bfseries Svarbiausios temos išvados}]
+\textbf{1. Diskriminantas.} Kvadratinio daugianario $P(x)=ax^2+bx+c$ diskriminantas yra $D=b^2-4ac$, kur $a\ne0$.
+
+\textbf{2. Pilnojo kvadrato pavidalas ir ekstremumas.} Su visomis realiosiomis $x$ reikšmėmis
+\[
+P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a},\qquad
+x_{\mathrm e}=-\frac{b}{2a},\qquad P_{\mathrm e}=-\frac{D}{4a}.
+\]
+Kai $a>0$, tai minimumo taškas ir minimumas; kai $a<0$ – maksimumo taškas ir maksimumas. Jeigu duotas pilnojo kvadrato pavidalas, ekstremumą galima nuskaityti iš jo. Jei žinomas ekstremumo taškas, ekstremumą taip pat galima rasti apskaičiavus $P(x_{\mathrm e})$. Pasirinkite būdą pagal duotą pavidalą ir skaičiavimų patogumą.
+
+\textbf{3. Ženklai.} Kai $D\ne0$ ir $a>0$, ekstremumo ženklas priešingas $D$ ženklui; kai $a<0$, ženklai sutampa. Ekstremumas lygus nuliui tada ir tik tada, kai $D=0$; ekstremumo taškas lygus nuliui tada ir tik tada, kai $b=0$.
+
+\textbf{4. Koeficientų pokyčiai.} Jei $Q(x)=P(x)+t$, ekstremumo taškas ir rūšis nepasikeičia, o ekstremumas pakinta $t$. Jei $Q(x)=-P(x)$, diskriminantai ir ekstremumo taškai sutampa, ekstremumai yra priešingi, o ekstremumų rūšys priešingos.
+
+\textbf{5. Sudarymas.} Pasinaudok formulėmis ir duotomis sąlygomis, rask galimus koeficientus, patikrink, ar $a\ne0$, ar $a$ ženklas atitinka nurodytą ekstremumo rūšį, ir patikrink visas kitas sąlygas. Sąlygos gali nustatyti kelis daugianarius arba būti nesuderinamos.
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, sąlygas, kodėl jis teisingas, ir savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Daugianariui $P(x)=2x^2-8x+5$ raskite $D$, ekstremumo rūšį, ekstremumo tašką ir ekstremumą. Patikrinkite apskaičiuodami $P(x_{\mathrm e})$.
+\item Mokinys sako: „Jei diskriminantas teigiamas, tai daugianario ekstremumas būtinai teigiamas.“ Ar jis teisus? Pateikite pavyzdį ir paaiškinkite.
+\item Sudarykite visus kvadratinius daugianarius, kurių $D=12$, $x_{\min}=1$ ir $P_{\min}=-3$. Patikrinkite sąlygas.
+\item Ar egzistuoja kvadratinis daugianaris, kurio $b=0$, $c>0$ ir $P_{\max}<0$? Paaiškinkite, kurių sąlygų pakanka atsakymui pagrįsti.
+\end{enumerate}
+\end{enumerate}
+\newpage\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} $D_P=25-24=1$; $D_Q=16-16=0$; $D_R=4-20=-16$.
+
+\textbf{b)} Taip: atitinkamai $P$, $Q$ ir $R$.
+
+\textbf{c)} Vyriausiasis koeficientas yra $a=-1$, ne $1$. Todėl $D=2^2-4\cdot(-1)\cdot(-5)=-16$.
+\item Kadangi $a\ne0$, galime iškelti $a$ ir taikyti 2 temos lygybę:
+\[
+\begin{aligned}
+P(x)&=a\left(x^2+\frac{b}{a} x\right)+c\\
+&=a\left[\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a^2}\right]+c\\
+&=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2}{4a}+c\\
+&=a\left(x+\frac{b}{2a}\right)^2+\frac{-b^2+4ac}{4a}\\
+&=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}.
+\end{aligned}
+\]
+Kiekviena lygybė galioja visiems realiesiems $x$: iškėlėme bendrą daugiklį ir atlikome lygiaverčius pertvarkymus.
+\item Pagal 2 uždavinį daugianario pilnojo kvadrato pavidalas yra
+\[
+P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}
+=a\left(x-\left(-\frac{b}{2a}\right)\right)^2+\left(-\frac{D}{4a}\right).
+\]
+Palyginę su $a(x-h)^2+k$, randame $h=-\frac{b}{2a}$ ir $k=-\frac{D}{4a}$. Pagal 3 temos 5 uždavinį, kai $a>0$, tai minimumo taškas ir minimumas; kai $a<0$ – maksimumo taškas ir maksimumas. Ekstremumas pasiekiamas, nes įrašius $x=h$ kvadratas lygus nuliui. Todėl $x_{\mathrm e}=-\frac{b}{2a}$ ir $P_{\mathrm e}=-\frac{D}{4a}$.
+\item \textbf{a)} $D=16$, $x_{\min}=3$, $P_{\min}=-4$; $P(3)=-4$.
+
+\textbf{b)} $D=12$, $x_{\min}=-2$, $P_{\min}=-3$; $P(-2)=-3$.
+
+\textbf{c)} $D=40$, $x_{\min}=2$, $P_{\min}=-5$; $P(2)=-5$.
+
+\textbf{d)} $D=24$, $x_{\max}=4$, $P_{\max}=6$; $P(4)=6$.
+
+\textbf{e)} $D=72$, $x_{\max}=-2$, $P_{\max}=9$; $P(-2)=9$.
+
+\textbf{f)} $D=48$, $x_{\min}=-1$, $P_{\min}=-4$; $P(-1)=-4$.
+
+\textbf{g)} $D=0$, $x_{\min}=-1$, $P_{\min}=0$; $P(-1)=0$.
+
+\textbf{h)} $D=-16$, $x_{\max}=0$, $P_{\max}=-4$; $P(0)=-4$.
+\item $D$ apskaičiuotas teisingai: $64-24=40$. Klaida yra išvada apie ženklą ir ekstremumo reikšmę: $P_{\min}=-\frac{40}{4\cdot2}=-5$. Ekstremumo ženklą lemia ir $D$, ir $a$ ženklai; $D>0$ vienas pats jo nenustato.
+\item \textbf{a)} Iš $P_{\mathrm e}=-\frac D{4a}$: kai $a>0$, vardiklis teigiamas ir ženklas priešingas $D$ ženklui; kai $a<0$, vardiklis neigiamas ir ženklas sutampa su $D$ ženklu. Pavyzdžiui, $x^2-1$ turi $a>0$, $D=4$, minimumą $-1$; $-x^2+1$ turi $a<0$, $D=4$, maksimumą $1$. Jei $D=0$, ir ekstremumas lygus nuliui.
+
+\textbf{b)} Kadangi $4a\ne0$, lygybė $-\frac D{4a}=0$ lygiavertė $D=0$. Pavyzdys: $(x-1)^2$ turi $D=0$ ir minimumą $0$.
+
+\textbf{c)} Kadangi $2a\ne0$, lygybė $-\frac b{2a}=0$ lygiavertė $b=0$. Pavyzdys: $2x^2+3$ turi $b=0$, $x_{\min}=0$.
+\item \textbf{a)} Išskyrę pilnąjį kvadratą rašome $P(x)=a(x-h)^2+k$, kur $a\ne0$, $h$ yra ekstremumo taškas, o $k$ – ekstremumas. Lygtis $P(x)=0$ lygiavertė
+\[
+(x-h)^2=-\frac{k}{a}.
+\]
+Jei $k=0$, gauname $(x-h)^2=0$, todėl vienintelė reikšmė yra $x=h$. Jei $k\ne0$, dešinė pusė nelygi nuliui. Jeigu ji neigiama, realiųjų sprendinių nėra; jeigu teigiama, gauname du skirtingus sprendinius $x=h\pm\sqrt{-\frac{k}{a}}$. Taigi lygiai vienas sprendinys galimas tik kai $k=0$. Įrodytos abi teiginio kryptys.
+
+\textbf{b)} Kadangi $(x-5)^2\ge0$, tai $3(x-5)^2\ge0$. Pridėję po $2$ gauname $3(x-5)^2+2\ge2>0$, todėl reikšmė $0$ nepasiekiama. Iš 7a žinome, kad kai ekstremumas nelygus nuliui, lygybė $P(x)=0$ neturi lygiai vieno sprendinio. Kad šiame pavyzdyje sprendinių nėra visai, išplaukia iš to, jog minimumas yra teigiamas.
+\item \textbf{a)} Minimumas neigiamas. \textbf{b)} Minimumas teigiamas. \textbf{c)} Maksimumas teigiamas. \textbf{d)} Maksimumas neigiamas. \textbf{e)} Minimumas $0$. \textbf{f)} Maksimumas $0$. Visais atvejais remiamės $P_{\mathrm e}=-\frac D{4a}$ ir $a$ ženklu.
+\item \textbf{a)} Neigiamas. \textbf{b)} Teigiamas. \textbf{c)} Teigiamas. \textbf{d)} Neigiamas. \textbf{e)} Nulis. Išvada gaunama nagrinėjant $-\frac b{2a}$ ženklą.
+\item \textbf{a)} Naujas daugianaris $Q(x)=x^2-6x+15=(x-3)^2+6$. Kadangi $(x-3)^2\ge0$, tai $Q(x)\ge6$, o lygybė gaunama, kai $x=3$. Taigi $x_{\min}=3$, $Q_{\min}=6$: taškas nepasikeitė, minimumas padidėjo $10$.
+
+\textbf{b)} $Q(x)=ax^2+bx+(c+t)$. Koeficientai $a$ ir $b$ nepasikeitė, todėl $x_{\mathrm e}=-\frac{b}{2a}$ lieka tas pats. Naujasis diskriminantas $D_Q=b^2-4a(c+t)=D_P-4at$, tad
+\[
+Q_{\mathrm e}=-\frac{D_Q}{4a}
+=-\frac{D_P-4at}{4a}
+=-\frac{D_P}{4a}+t=P_{\mathrm e}+t.
+\]
+Ekstremumas pakinta $t$, o jo rūšis nekinta, nes nesikeičia $a$ ženklas. Tai matyti ir iš $Q(x)=P(x)+t$.
+\item \textbf{a)} $Q$ koeficientai yra $-a$, $-b$, $-c$, todėl
+\[
+D_Q=(-b)^2-4(-a)(-c)=b^2-4ac=D_P.
+\]
+
+\textbf{b)} $Q$ ekstremumo taškas yra $-\frac{-b}{2(-a)}=-\frac{b}{2a}$, taigi jis sutampa su $P$ ekstremumo tašku. Kadangi $a$ ir $-a$ yra priešingų ženklų, vienas daugianaris turi minimumą, o kitas – maksimumą.
+
+\textbf{c)} Naudodamiesi $D_Q=D_P$, gauname $Q_{\mathrm e}=-\frac{D_Q}{4(-a)}=\frac{D_P}{4a}=-P_{\mathrm e}$. Kitaip: sutampančiame ekstremumo taške $Q(x)=-P(x)$, todėl jų reikšmės yra priešingos.
+\item \textbf{a)} Ne: kai $a>0$ ir $D>0$, minimumas neigiamas.
+
+\textbf{b)} Taip: $P(x)=-x^2-1$; $a=-1$, $D=-4$, $P_{\max}=-1$.
+
+\textbf{c)} Ne: $x_{\min}=-\frac b{2a}<0$.
+
+\textbf{d)} Taip: $P(x)=-(x-1)^2=-x^2+2x-1$; $a=-1$, $b=2$, $x_{\max}=1>0$.
+
+\textbf{e)} Ne: $P(0)=c<0$, todėl minimumas negali būti teigiamas.
+
+\textbf{f)} Ne: $P(0)=c>0$, todėl maksimumas negali būti neigiamas.
+
+\textbf{g)} Ne: $D=b^2-4ac=0$ reikštų $b^2=4ac<0$, o kvadratas negali būti neigiamas.
+
+\textbf{h)} Taip: $P(x)=-(x-1)^2=-x^2+2x-1$; $D=0$, $c=-1$, $a=-1$.
+\item \textbf{a)} Ne: iš $x_{\min}=0$ išplaukia $b=0$.
+
+\textbf{b)} Taip: $P(x)=-x^2-2$; $b=0$, $c=-2$, $x_{\max}=0$.
+
+\textbf{c)} Ne: $P(0)=c=1$ mažiau už tariamą minimumą $3$.
+
+\textbf{d)} Taip: $P(x)=-(x+1)^2+4=-x^2-2x+3$; $x_{\max}=-1$, $P_{\max}=4$, $c=3$.
+
+\textbf{e)} Taip: $P(x)=(x-1)^2=x^2-2x+1$; minimumas $0$ pasiekiamas, kai $x=1$, $c=1$.
+
+\textbf{f)} Taip: $P(x)=(x-2)^2+1=x^2-4x+5$; minimumas $1$ pasiekiamas, kai $x=2$, $D=16-20=-4<0$.
+\item Jei $ac<0$, tai $-4ac>0$, o $b^2\ge0$, todėl $D=b^2-4ac>0$. Atvirkštinis teiginys neteisingas: $P(x)=x^2-5x+6$ turi $D=1>0$, bet $ac=6>0$.
+\item \textbf{a)} $x^2-4x+k=(x-2)^2+k-4$, tad $P_{\min}=k-4>0$ ir $k>4$.
+
+\textbf{b)} $-x^2+2x+k=-(x-1)^2+k+1$, tad $P_{\max}=k+1=0$ ir $k=-1$.
+
+\textbf{c)} $D=k^2-16$. Minimumas lygus nuliui tada ir tik tada, kai $D=0$, todėl $k=4$ arba $k=-4$.
+
+\textbf{d)} Minimumui reikia $k>0$. Kadangi $x_{\min}=\frac{2}{2k}=\frac{1}{k}=1$, tai $k=1$, ir ši reikšmė tenkina $k>0$.
+\item \textbf{a)} Pagal minimumo tašką ir minimumą rašome $P(x)=a(x+1)^2+2$, kur $a>0$. Iš $P(0)=5$ gauname $a+2=5$, todėl $a=3$. Taigi $P(x)=3(x+1)^2+2=3x^2+6x+5$. Patikra: $P(0)=5$, o kadangi $3(x+1)^2\ge0$, minimumas $2$ pasiekiamas tik kai $x=-1$.
+
+\textbf{b)} Rašome $P(x)=a(x-2)^2+4$, kur $a<0$. Iš $P(0)=-4$ gauname $4a+4=-4$, todėl $a=-2$. Taigi $P(x)=-2(x-2)^2+4=-2x^2+8x-4$. Patikra: $P(0)=-4$, o kadangi $-2(x-2)^2\le0$, maksimumas $4$ pasiekiamas tik kai $x=2$.
+
+\textbf{c)} $P(x)=2(x+1)^2+3=2x^2+4x+5$. Sąlygos tenkinamos pagal kvadrato pavidalą ir $a=2$.
+
+\textbf{d)} $x_{\min}=-\frac b{2a}=\frac4{2a}=1$, tad $a=2$. Todėl $P(x)=2(x-1)^2+2=2x^2-4x+4$; visos sąlygos tenkinamos.
+
+\textbf{e)} $P(x)=a(x-1)^2+5$. Kadangi $c=P(0)=3$, tai $a+5=3$, todėl $a=-2$. Gauname $P(x)=-2(x-1)^2+5=-2x^2+4x+3$; $a<0$, taigi duotas maksimumas tikrai pasiekiamas.
+\item \textbf{a)} $c=2$; iš $a+b+2=0$ ir $a-b+2=8$ gauname $a=2$, $b=-4$. Tad $D=16-16=0$.
+
+\textbf{b)} $x_{\min}=-\frac{-4}{2\cdot2}=1$, $P_{\min}=-\frac0{4\cdot2}=0$.
+
+\textbf{c)} $P(x)=2x^2-4x+2=2(x-1)^2\ge0$, lygybė gaunama tik kai $x=1$. Tai patvirtina minimumą ir jo tašką.
+\item \textbf{a)} Duomenų nepakanka: visi $P(x)=a(x-2)^2+1$, kur $a>0$.
+
+\textbf{b)} Duomenų nepakanka: visi $P(x)=ax^2+3$, kur $a<0$. Sąlyga $P(0)=3$ jau išplaukia iš ekstremumo taško ir reikšmės.
+
+\textbf{c)} Pakanka: $P(x)=a(x-1)^2-2$, o $P(2)=1$ duoda $a-2=1$, todėl $a=3$ ir vienintelis daugianaris yra $3(x-1)^2-2=3x^2-6x+1$. Kadangi $3>0$, nurodytas minimumas iš tiesų egzistuoja.
+\item \textbf{a)} Iš $D=(-4)^2-4\cdot1\cdot c=4$ gauname $16-4c=4$, taigi $c=3$. Vienintelis daugianaris yra $P(x)=x^2-4x+3$; patikra: $D=16-12=4$.
+
+\textbf{b)} $D=b^2-4\cdot2\cdot2=0$, todėl $b^2=16$ ir $b=4$ arba $b=-4$. Gauname du daugianarius: $P(x)=2x^2+4x+2$ ir $P(x)=2x^2-4x+2$. Abiejų diskriminantas $16-16=0$.
+
+\textbf{c)} Iš $x_{\min}=-\frac{b}{2a}=2$ ir $a=1$ gauname $b=-4$. Tada $D=16-4c=16$, todėl $c=0$. Vienintelis daugianaris $P(x)=x^2-4x$; patikra: $D=16$, o $a=1>0$ ir $x_{\min}=2$.
+
+\textbf{d)} Kadangi $b=-6$ ir $x_{\min}=1$, iš $-\frac{b}{2a}=1$ gauname $\frac{6}{2a}=1$, todėl $a=3>0$. Tada iš $D=b^2-4ac$ gauname $12=36-12c$, taigi $c=2$. Vienintelis daugianaris yra $P(x)=3x^2-6x+2$. Patikra: $D=36-24=12$, o $P(x)=3(x-1)^2-1$ turi minimumo tašką $1$.
+
+\textbf{e)} Kadangi $P(0)=c$, tai $c=1$. Iš $D=b^2-4\cdot(-2)\cdot1=24$ gauname $b^2=16$, todėl $b=4$ arba $b=-4$. Visi tinkami daugianariai: $P(x)=-2x^2+4x+1$ ir $P(x)=-2x^2-4x+1$. Kiekvieno jų $P(0)=1$, $a=-2$ ir $D=16+8=24$.
+
+\textbf{f)} Pagal $P_{\min}=-\frac{D}{4a}$ turime $-2=-\frac{24}{4a}$, todėl $a=3>0$. Iš $x_{\min}=-\frac{b}{2a}=2$ gauname $b=-12$. Įrašę į $D=b^2-4ac$, randame $24=144-12c$, taigi $c=10$. Vienintelis daugianaris $P(x)=3x^2-12x+10$. Patikra: $D=144-120=24$ ir $P(x)=3(x-2)^2-2$, todėl $x_{\min}=2$, $P_{\min}=-2$.
+
+\textbf{g)} Iš $2=-\frac{-24}{4a}$ gauname $a=3>0$. Kadangi $-\frac{b}{6}=-1$, tai $b=6$. Iš $-24=36-12c$ randame $c=5$. Vienintelis daugianaris $P(x)=3x^2+6x+5$. Patikra: $D=36-60=-24$ ir $P(x)=3(x+1)^2+2$.
+
+Palyginimas su 16a punktu: ten pagal $x_{\min}=-1$, $P_{\min}=2$ ir $P(0)=5$ gavome tą patį daugianarį $3(x+1)^2+2$, kurio $a=3$. Jo diskriminantas $D=-4aP_{\min}=-4\cdot3\cdot2=-24$, taigi jis tenkina ir visas 19g sąlygas. Atvirkščiai, 19g sąlygos vienareikšmiškai nustato $a=3$ ir pavidalą $3(x+1)^2+2$, o jo $P(0)=5$. Todėl abi sąlygų grupės nusako tą patį vienintelį daugianarį.
+
+\textbf{h)} Iš $4=-\frac{16}{4a}$ gauname $a=-1<0$, o iš $P(0)=3$ – $c=3$. Sąlyga $D=16$ duoda $b^2+12=16$, taigi $b=2$ arba $b=-2$. Gauname du daugianarius: $P(x)=-x^2+2x+3$ ir $P(x)=-x^2-2x+3$. Abiem atvejais $D=16$, $P(0)=3$, o maksimumas $-\frac{16}{4\cdot(-1)}=4$.
+
+\textbf{i)} Jei toks daugianaris egzistuotų, iš $2=-\frac{8}{4a}$ gautume $a=-1$. Tačiau kai $a<0$, daugianaris turi maksimumą. Taigi sąlygos nesuderinamos ir tokio daugianario nėra.
+\item Neegzistuoja. Jei $a=1$ ir $c=2$, tai $D=b^2-8$. Sąlyga $D=-10$ duotų $b^2-8=-10$, t. y. $b^2=-2$. Realiojo skaičiaus kvadratas negali būti neigiamas, todėl realiojo $b$ nėra.
+\item \textbf{a)} $a=2$, $b=-8$, $c=5$, todėl $D=(-8)^2-4\cdot2\cdot5=24$. Kadangi $a>0$, yra minimumas:
+\[
+x_{\min}=-\frac{-8}{2\cdot2}=2,\qquad P_{\min}=-\frac{24}{4\cdot2}=-3.
+\]
+Patikra: $P(2)=2\cdot4-8\cdot2+5=-3$.
+
+\textbf{b)} Neteisus. Pavyzdžiui, $P(x)=x^2-1$ turi $D=4>0$, bet jo minimumas yra $-1$. Ekstremumo ženklą kartu lemia ir $a$ ženklas: $P_{\mathrm e}=-\frac{D}{4a}$.
+
+\textbf{c)} Iš $-3=-\frac{12}{4a}$ gauname $a=1>0$. Žinodami minimumo tašką ir minimumą, rašome $P(x)=(x-1)^2-3=x^2-2x-2$. Duomenys vienareikšmiškai nustato $a$ ir šį pavidalą, todėl kitų daugianarių nėra. Patikra: $D=(-2)^2-4\cdot1\cdot(-2)=12$, $x_{\min}=1$, $P_{\min}=-3$.
+
+\textbf{d)} Neegzistuoja. Jau iš $c>0$ gauname $P(0)=c>0$. Jei maksimumas būtų neigiamas, visos daugianario reikšmės turėtų būti neigiamos, o tai prieštarauja $P(0)>0$. Atsakymui pakanka sąlygų $c>0$ ir $P_{\max}<0$; sąlygos $b=0$ neprireikė.
+\end{enumerate}
+\end{document}

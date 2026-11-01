@@ -1,0 +1,388 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.4cm]{geometry}
+\raggedbottom\emergencystretch=2em
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=6pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=3pt}
+\newcommand{\zingsnis}[1]{\tikz[baseline=(z.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (z) {#1};}
+\begin{document}
+\begin{center}{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]{\small\sffamily 9 TEMA}\\[4pt]{\LARGE\bfseries Kvadratinio daugianario\\[8pt] skaidymas dauginamaisiais}\\[7pt]{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]\rule{0.72\textwidth}{0.4pt}\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+\textbf{Temos esmė ir tikslas.} Atrasi ir įrodysi kvadratinio daugianario skaidymo dauginamaisiais formulę. Išmoksi susieti šaknis su sandaugos pavidalu, pasirinkti pavidalą pagal žinomą informaciją ir pereiti nuo vieno daugianario pavidalo prie kito. Sandaugos pavidalą susiesi su 7–8 temose nagrinėtomis Vijeto teoremomis.
+
+\textbf{Prieš pradėdamas:} prisimink daugianario šaknis ir diskriminantą (6 tema), Vijeto ir atvirkštinę Vijeto teoremas (7–8 temos), pilnojo kvadrato išskyrimą (2 tema), ekstremumo sąvokas ir formules (3–4 temos), reikšmių simetriją (5 tema). Visur koeficientai, kintamieji ir šaknys yra realieji skaičiai; kvadratiniame daugianaryje $a\ne0$. Šioje temoje ieškome skaidinio, kurį sudaro pastovus nelygus nuliui skaičius ir \emph{tiesiniai} dauginamieji $x-r$.
+\begin{enumerate}[series=uzdaviniai]
+\item Atskliauskite ir sutraukite panašiuosius narius:
+\begin{multicols}{2}\begin{enumerate}
+\item $(x-2)(x-3)$; \item $(x+2)(x-3)$; \item $2(x-2)(x-3)$; \item $-3(x+1)(x-2)$.
+\end{enumerate}\end{multicols}
+Kiekvienu atveju nustatykite, su kuriomis $x$ reikšmėmis \emph{duotoji sandauga} lygi nuliui, ir patikrinkite jas gautame daugianaryje.
+\item \textbf{Prisiminkite:} sandauga $A\cdot B$ lygi nuliui tada ir tik tada, kai $A=0$ arba $B=0$.
+\begin{enumerate}
+\item Kokios yra daugianario $P(x)=4(x-1)(x+2)$ šaknys? Paaiškinkite, kodėl kitų nėra.
+\item Kuris koeficientas lygus $4$ atskliaustame daugianaryje? Patikrinkite atskliaudę.
+\item Mokinys teigia: „$P(x)$ šaknys yra $1$ ir $2$.“ Raskite ir paaiškinkite klaidą.
+\end{enumerate}
+\item\label{skaidymo-formule} $\star$ \begin{enumerate}
+\item Prisiminkite 8 temos 3d punktą, atskliauskite $(x-r)(x-s)$ ir parodykite, kad gaunate $x^2-(r+s)x+rs$.
+\item Padauginkite šią lygybę iš $a\ne0$. Kuris skaičius bus koeficientas prie $x^2$?
+\item Tarkime, $r$, $s$ yra $P(x)=ax^2+bx+c$ realiosios šaknys. Pagal Vijeto teoremą išreikškite $r+s$ ir $rs$.
+\item Įrašę šiuos reiškinius į b dalies rezultatą įrodykite, kad $P(x)=a(x-r)(x-s)$. Paaiškinkite, kodėl įrodymas tinka ir tuo atveju, kai šaknis dviguboji: $r=s$.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kaip iš šaknų ir vyriausiojo koeficiento užrašyti daugianarį sandaugos pavidalu? Ką formulėje reiškia $r=s$?
+\needspace{4cm}
+\item Tegul $P(x)=2x^2-7x+3$.
+\begin{enumerate}
+\item Raskite $D$ ir šaknis $x_1$, $x_2$.
+\item Remdamiesi 3 uždaviniu užrašykite $P(x)=2(x-x_1)(x-x_2)$; įrašykite šaknis.
+\item Patikrinkite skaidinį atskliausdami. Ar iš sandaugos matyti abi šaknys?
+\end{enumerate}
+\item Išskaidykite tiesiniais dauginamaisiais, pirmiausia rasdami šaknis. Gautas lygybes patikrinkite atskliausdami.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-7x+12$; \item $x^2+x-6$; \item $x^2-5x$; \item $x^2-9$; \item $x^2+6x+9$; \item $x^2$.
+\end{enumerate}\end{multicols}
+\item Išskaidykite tiesiniais dauginamaisiais ir patikrinkite atskliausdami. Atkreipkite dėmesį į vyriausiąjį koeficientą.
+\begin{multicols}{2}\begin{enumerate}
+\item $2x^2-10x+12$; \item $-3x^2-3x+18$; \item $2x^2-7x+3$; \item $-2x^2+5x+3$; \item $4x^2-12x+9$; \item $-2x^2+8$.
+\end{enumerate}\end{multicols}
+\item \begin{enumerate}
+\item Išskaidykite $x^2-2$ suradę realiąsias šaknis. Patikrinkite skaidinį atskliausdami.
+\item Išskaidykite $2x^2-3$, naudodamiesi šaknų formule arba iš pradžių išreikšdami $x^2$. Ar šaknys turi būti sveikieji skaičiai?
+\end{enumerate}
+\item Duotas $P(x)=3x^2-12x+12$.
+\begin{enumerate}
+\item Apskaičiuokite diskriminantą ir raskite šaknį.
+\item Taikydami skaidymo formulę užrašykite $P(x)$ sandaugos pavidalu. Kaip ją galima užrašyti trumpiau?
+\item Išskirkite pilnąjį kvadratą ir palyginkite rezultatus. Kiek skirtingų realiųjų šaknų turi $P$?
+\end{enumerate}
+\item Mokiniai pateikė skaidinius. Nustatykite, kurie teisingi; kitus pataisykite. Paaiškinkite klaidas ir patikrinkite atskliausdami.
+\begin{enumerate}
+\item $2x^2-10x+12=(x-2)(x-3)$; \item $x^2+x-6=(x-3)(x+2)$;
+\item $x^2-4x+4=(x-2)(x+2)$; \item $-2x^2+5x+3=-2(x-3)\left(x+\frac{1}{2}\right)$.
+\end{enumerate}
+\item \begin{enumerate}
+\item Parodykite, kad $x^2+4$ neturi realiųjų šaknų.
+\item Tarkime, kad būtų įmanoma užrašyti $x^2+4=k(x-r)(x-s)$, kur $k\ne0$, o $r$, $s$ realieji. Ką gautumėte įrašę $x=r$? Kodėl tai prieštaravimas?
+\item Ar šis rezultatas reiškia, kad reiškinio apskritai negalima užrašyti jokios sandaugos pavidalu? Paaiškinkite, apie kokio pavidalo skaidinį čia kalbame.
+\end{enumerate}
+\item $\star$ Tegul $P(x)=ax^2+bx+c$, $a\ne0$.
+\begin{enumerate}
+\item Paaiškinkite, kodėl, kai $D>0$, galima užrašyti $P(x)=a(x-x_1)(x-x_2)$ su dviem skirtingomis realiosiomis šaknimis.
+\item Užrašykite pavidalą, kai $D=0$ ir šaknis lygi $r$.
+\item Remdamiesi 10 uždavinio idėja įrodykite, kad, kai $D<0$, $P$ neįmanoma užrašyti pavidalu $k(x-r)(x-s)$, kur $k\ne0$, $r$, $s$ realieji.
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kada galima užrašyti $P(x)=a(x-r)(x-s)$ su realiaisiais $r$, $s$? Kodėl toks pavidalas negalimas, kai $D<0$?
+\item Kiekvienu atveju apskaičiuokite $D$. Jei galima, išskaidykite tiesiniais dauginamaisiais; jei negalima – paaiškinkite.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-4x+3$; \item $x^2-4x+4$; \item $x^2-4x+5$; \item $-2x^2-2x-2$.
+\end{enumerate}\end{multicols}
+\item Duota $P(x)=3(x-2)(x+4)$.
+\begin{enumerate}
+\item Neatskliausdami raskite šaknis, $P(0)$ ir $P(1)$.
+\item Atskliauskite ir nustatykite $a$, $b$, $c$. Patikrinkite a dalies reikšmes.
+\item Raskite šaknų vidurkį ir palyginkite jį su ekstremumo tašku $-\frac{b}{2a}$.
+\item Kodėl $P(0)$ ir $P(1)$ yra neigiami? Nustatykite kiekvieno dauginamojo $x-2$ ir $x+4$ ženklą, kai $x=0$ ir kai $x=1$, ir paaiškinkite sandaugos ženklą.
+\end{enumerate}
+\item Kvadratinio daugianario $P(x)$ šaknys yra $-1$ ir $3$, o $P(0)=-6$.
+\begin{enumerate}
+\item Remdamiesi skaidymo formule užrašykite $P(x)$ per nežinomą vyriausiąjį koeficientą $a$.
+\item Iš sąlygos $P(0)=-6$ raskite $a$ ir užrašykite daugianarį.
+\item Patikrinkite šaknis bei nurodytą reikšmę ir pagrįskite, kodėl atsakymas vienintelis.
+\end{enumerate}
+\item Raskite visus kvadratinius daugianarius, kurių šaknys yra $2$ ir $5$. Ar šių duomenų užtenka vienam daugianariui nustatyti? Kokią papildomą sąlygą galėtumėte nurodyti, kad daugianaris būtų vienintelis?
+\item \begin{enumerate}
+\item Išskaidykite $2x^2-7x+3$ pavidalu $2(x-r)(x-s)$.
+\item Parodykite, kad $2\left(x-\frac{1}{2}\right)=2x-1$, ir užrašykite skaidinį be trupmeninių koeficientų skliaustuose.
+\item Patikrinkite naująjį užrašą atskliausdami. Ar pakeitėte daugianario reikšmę?
+\end{enumerate}
+\item $\star$ Tarkime, kad $P(x)=a(x-r)(x-s)$, kur $a\ne0$ ir $r\ne s$.
+\begin{enumerate}
+\item Paaiškinkite, kodėl $r$ ir $s$ yra vienintelės daugianario šaknys.
+\item Prisiminkite 6 temos 12e ir 7 temos 19 uždavinių išvadą. Koks yra šio daugianario ekstremumo taškas?
+\item Įrašę $x=\frac{r+s}{2}$ parodykite, kad ekstremumas yra $-\frac{a(r-s)^2}{4}$. Koks tai ekstremumas, kai $a>0$, o koks, kai $a<0$? Palyginkite gautą išraišką su $-\frac{D}{4a}$, pasinaudodami 8 temos 4c punkto lygybe $D=a^2(r-s)^2$.
+\end{enumerate}
+\item $\star$ Kvadratinį daugianarį galima užrašyti \emph{standartiniu pavidalu} $ax^2+bx+c$ arba \emph{pilnojo kvadrato pavidalu} $a(x-h)^2+k$, kur $h$ yra ekstremumo taškas, o $k$ – ekstremumas. Jei daugianaris turi realiųjų šaknų $r$, $s$, jis taip pat užrašomas \emph{sandaugos pavidalu} $a(x-r)(x-s)$.
+\begin{enumerate}
+\item Kokią informaciją apie daugianarį tiesiogiai matome kiekviename pavidale?
+\item Kai $r\ne s$, paaiškinkite, kodėl šioje temoje nagrinėtais būdais galime gauti visus tris pavidalus.
+\item Kai šaknis yra viena, $r=s$, palyginkite pilnojo kvadrato ir sandaugos pavidalus. Kodėl ekstremumas lygus $0$?
+\item Kai realiųjų šaknų nėra, kuriuos iš šių trijų pavidalų vis dar galime gauti? Kodėl negalime gauti nurodyto sandaugos pavidalo su realiaisiais $r$, $s$?
+\end{enumerate}
+\par\medskip
+\textbf{Sustok ir apibendrink.} Kokią informaciją gali perskaityti iš kiekvieno pavidalo? Kurie pavidalai galimi, jei daugianaris neturi realiųjų šaknų?
+\item Duotas standartinis pavidalas $P(x)=2x^2-8x+6$.
+\begin{enumerate}
+\item Išskirkite pilnąjį kvadratą. Kokie yra ekstremumo taškas ir ekstremumas?
+\item Raskite šaknis ir užrašykite daugianarį sandaugos pavidalu.
+\item Atskliauskite abu gautus pavidalus ir patikrinkite, kad gaunate pradinį daugianarį.
+\end{enumerate}
+\item Kiekvieną daugianarį užrašykite pilnojo kvadrato ir sandaugos pavidalais. Raskite ekstremumo tašką, ekstremumą ir šaknis. Pavidalus patikrinkite atskliausdami.
+\begin{multicols}{2}\begin{enumerate}
+\item $x^2-6x+8$; \item $-x^2+2x+3$; \item $2x^2+4x-6$; \item $x^2-4x+4$.
+\end{enumerate}\end{multicols}
+Kurioje dalyje pilnojo kvadrato ir sandaugos pavidalai sutampa? Kodėl?
+\item Kiekvieno daugianario duotas pilnojo kvadrato pavidalas. Užrašykite standartinį pavidalą, raskite šaknis ir, jei galima, užrašykite sandaugos pavidalą. Palyginkite šaknų skaičių.
+\begin{enumerate}
+\item $P(x)=-2(x+1)^2+8$; \item $Q(x)=3(x-2)^2$; \item $R(x)=(x+1)^2+4$.
+\end{enumerate}
+\item Kiekvieno daugianario duotas sandaugos pavidalas. Raskite šaknis, užrašykite standartinį ir pilnojo kvadrato pavidalus, nurodykite ekstremumo tašką bei ekstremumą.
+\begin{enumerate}
+\item $P(x)=3(x-2)(x-4)$; \item $Q(x)=-2(x+1)(x-3)$; \item $R(x)=2(x-2)(x-2)$.
+\end{enumerate}
+\item Išnagrinėkite mokinio teiginį: „Jei kvadratinis daugianaris turi tik vieną šaknį, jo pilnojo kvadrato ir skaidinio pavidalai reiškia du skirtingus daugianarius.“ Paaiškinkite, kas iš tikrųjų sutampa. Pateikite konkretų pavyzdį.
+\par\medskip
+\needspace{6cm}
+\textbf{Papildomi uždaviniai: jungiame temas.} Šiuose uždaviniuose skaidymą dauginamaisiais derinkite su ankstesnių temų žiniomis. Juos galite spręsti atskiru metu.
+\item Kvadratinio daugianario $P(x)$ viena šaknis yra $2$. Žinoma, kad $P(1)=P(7)$ ir $P(0)=12$.
+\begin{enumerate}
+\item Remdamiesi lygių reikšmių simetrija raskite ekstremumo tašką, tada raskite kitą šaknį.
+\item Užrašykite $P(x)$ sandaugos pavidalu ir pagal $P(0)$ raskite vyriausiąjį koeficientą.
+\item Užrašykite visus tris daugianario pavidalus ir patikrinkite sąlygas.
+\end{enumerate}
+\item Kvadratinio daugianario realiųjų šaknų suma lygi $7$, sandauga lygi $10$, o $P(3)=-8$. Raskite $P(x)$ ir jo ekstremumą. Spręsdami pasinaudokite atvirkštine Vijeto teorema bei skaidymo formule, o atsakymą patikrinkite.
+\item Kvadratinio daugianario $P(x)$ minimumo taškas yra $x=-1$, minimumas lygus $-12$, o $P(0)=-9$.
+\begin{enumerate}
+\item Užrašykite pilnojo kvadrato pavidalą ir raskite vyriausiąjį koeficientą.
+\item Raskite šaknis, užrašykite sandaugos ir standartinį pavidalus.
+\item Patikrinkite, kad gautas daugianaris tenkina visas sąlygas. Kodėl atsakymas vienintelis?
+\end{enumerate}
+\item Kvadratinio daugianario diskriminantas yra $D=36$, maksimumo taškas yra $x=1$, o maksimumas lygus $9$. Raskite $P(x)$ visais trimis pavidalais. Pirmiausia iš ryšio $P_{\max}=-\frac{D}{4a}$ raskite $a$; patikrinkite visas duotas sąlygas.
+\item Kvadratinio daugianario realiosios šaknys $r$, $s$ tenkina $r+s=2$, $r^2+s^2=10$, o $P(0)=-9$.
+\begin{enumerate}
+\item Remdamiesi tapatybe $(r+s)^2=r^2+2rs+s^2$ raskite šaknų sandaugą.
+\item Sudarykite redukuotąją lygtį, kurios šaknys yra $r$, $s$, ir jas raskite.
+\item Pagal skaidymo formulę bei $P(0)$ raskite $P(x)$; užrašykite tris pavidalus ir patikrinkite sąlygas.
+\end{enumerate}
+\item Ar egzistuoja kvadratinis daugianaris, kurio šaknys yra $1$ ir $3$, o $P(2)=0$? Atsakymą pagrįskite naudodamiesi sandaugos pavidalu.
+\item Raskite visus kvadratinius daugianarius, kurių šaknys yra $-2$ ir $4$, o vyriausiasis koeficientas teigiamas. Ką galima pasakyti apie jų ekstremumo tašką ir minimumą? Ar šių sąlygų pakanka vienam daugianariui nustatyti? Pateikite du skirtingus pavyzdžius.
+\item Ar egzistuoja kvadratinis daugianaris, kurio vyriausiasis koeficientas teigiamas, dvi skirtingos realiosios šaknys, o minimumas yra $0$? Atsakymą pagrįskite naudodamiesi pilnojo kvadrato arba sandaugos pavidalu.
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas, pabandyk pats prisiminti ir savais žodžiais paaiškinti pagrindines šios temos išvadas. Tada palygink jas su pateiktomis.
+\begin{tcolorbox}[title=Svarbiausios temos išvados,colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm]
+\begin{enumerate}
+\item \textbf{Skaidymo formulė.} Jei kvadratinio daugianario $P(x)=ax^2+bx+c$, $a\ne0$, realiosios šaknys yra $r$ ir $s$, tai
+\[P(x)=a(x-r)(x-s).\]
+Kai šaknis viena, žymime $r=s$ ir gauname $P(x)=a(x-r)^2$. Tai viena dviguboji šaknis.
+\item \textbf{Diskriminantas.} Kai $D>0$, yra dvi skirtingos realiosios šaknys ir jų sandaugos pavidalas. Kai $D=0$, gauname $a(x-r)^2$. Kai $D<0$, realiųjų šaknų nėra, todėl užrašas $a(x-r)(x-s)$ su realiaisiais $r$, $s$ negalimas.
+\item \textbf{Daugianario pavidalai.} Standartinis pavidalas $ax^2+bx+c$ parodo koeficientus; pilnojo kvadrato pavidalas $a(x-h)^2+k$ – ekstremumo tašką $h$ ir ekstremumą $k$; sandaugos pavidalas $a(x-r)(x-s)$ – realiąsias šaknis. Pirmieji du pavidalai galimi visada, trečiasis – kai yra realiųjų šaknų. Kai šaknis viena, pilnojo kvadrato ir sandaugos užrašai sutampa.
+\item \textbf{Ryšys su ekstremumu.} Kai $r\ne s$, ekstremumo taškas yra $\frac{r+s}{2}$, o ekstremumas lygus $-\frac{a(r-s)^2}{4}$. Kai $a>0$, tai minimumas, kai $a<0$ – maksimumas.
+\item \textbf{Patikrink.} Sandaugą atskliaudęs turi gauti pradinį daugianarį. Nepamiršk $a$: vien šaknų daugianariui vienareikšmiškai nustatyti nepakanka.
+\end{enumerate}
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume=uzdaviniai]
+\item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
+\begin{enumerate}
+\item Daugianarį $P(x)=-2x^2+8x+10$ užrašykite sandaugos ir pilnojo kvadrato pavidalais. Raskite jo šaknis, ekstremumo tašką ir ekstremumą. Patikrinkite atskliausdami.
+\item Kiek realiųjų šaknų turi $Q(x)=3(x-1)^2$? Užrašykite jį standartiniu ir sandaugos pavidalais.
+\item Ar galima $R(x)=x^2+2x+3$ užrašyti $a(x-r)(x-s)$ pavidalu, kai $r$, $s$ realieji? Pagrįskite.
+\item Raskite vienintelį kvadratinį daugianarį, kurio šaknys yra $-2$ ir $1$, o $P(0)=-4$. Patikrinkite sąlygas.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item \textbf{a)} $(x-2)(x-3)=x^2-5x+6$. Sandauga lygi nuliui, kai $x=2$ arba $x=3$; įrašius į daugianarį abiem atvejais gaunamas nulis.
+
+\textbf{b)} $(x+2)(x-3)=x^2-x-6$. Šaknys $-2$ ir $3$; patikra: $4+2-6=0$, $9-3-6=0$.
+
+\textbf{c)} $2(x-2)(x-3)=2x^2-10x+12$. Šaknys $2$ ir $3$; tai a dalies reiškinys, padaugintas iš $2$, todėl patikra taip pat duoda nulį.
+
+\textbf{d)} $-3(x+1)(x-2)=-3x^2+3x+6$. Šaknys $-1$ ir $2$; patikra: $-3-3+6=0$, $-12+6+6=0$.
+\item \textbf{a)} Kadangi $4\ne0$, sandauga lygi nuliui, kai $x-1=0$ arba $x+2=0$. Taigi vienintelės šaknys yra $1$ ir $-2$.
+
+\textbf{b)} Vyriausiasis koeficientas yra $4$: atskliaudę gauname $4(x^2+x-2)=4x^2+4x-8$.
+
+\textbf{c)} Iš $x+2=0$ gauname $x=-2$, o ne $2$. Pavyzdžiui, $P(2)=4\cdot1\cdot4=16\ne0$.
+\item \textbf{a)} $(x-r)(x-s)=x^2-sx-rx+rs=x^2-(r+s)x+rs$.
+
+\textbf{b)} $a(x-r)(x-s)=ax^2-a(r+s)x+ars$; koeficientas prie $x^2$ yra $a$.
+
+\textbf{c)} Pagal Vijeto teoremą $r+s=-\frac{b}{a}$, $rs=\frac{c}{a}$. Kai šaknis dviguboji, žymime $r=s$ ir šios lygybės taip pat galioja.
+
+\textbf{d)} Įrašę į b dalies lygybę gauname
+\[a(x-r)(x-s)=ax^2-a\left(-\frac{b}{a}\right)x+a\frac{c}{a}=ax^2+bx+c=P(x).\]
+Kadangi $a\ne0$, dalyba galima. Kai $r=s$, gauname $P(x)=a(x-r)^2$; įrodymo veiksmai nesikeičia.
+\item \textbf{a)} $D=(-7)^2-4\cdot2\cdot3=25$, todėl $x_1=\frac{7+5}{4}=3$, $x_2=\frac{7-5}{4}=\frac{1}{2}$.
+
+\textbf{b)} $P(x)=2(x-3)\left(x-\frac{1}{2}\right)$.
+
+\textbf{c)} $2\left(x^2-\frac{7}{2}x+\frac{3}{2}\right)=2x^2-7x+3$. Iš sandaugos matyti šaknys $3$ ir $\frac{1}{2}$, nes kiekviena jų paverčia vieną skliaustą nuliu.
+\item Šaknų porą randame pagal atvirkštinę Vijeto teoremą arba tiesiogiai; sandaugas galima patikrinti atskliaudžiant.
+
+\textbf{a)} Šaknys $3$, $4$: $x^2-7x+12=(x-3)(x-4)$.
+
+\textbf{b)} Šaknys $-3$, $2$: $x^2+x-6=(x+3)(x-2)$.
+
+\textbf{c)} Šaknys $0$, $5$: $x^2-5x=x(x-5)$.
+
+\textbf{d)} Šaknys $-3$, $3$: $x^2-9=(x+3)(x-3)$.
+
+\textbf{e)} $D=0$, šaknis $-3$: $x^2+6x+9=(x+3)^2$.
+
+\textbf{f)} $D=0$, šaknis $0$: $x^2=x\cdot x=x^2$. Kiekvienas užrašas atskliaudus duoda pradinį daugianarį; e ir f dalyse ta pati šaknis įrašoma du kartus.
+\item \textbf{a)} Šaknys $2$, $3$: $2x^2-10x+12=2(x-2)(x-3)$; atskliaudę gauname $2(x^2-5x+6)$.
+
+\textbf{b)} Šaknys $-3$, $2$: $-3x^2-3x+18=-3(x+3)(x-2)$; atskliaudę gauname $-3(x^2+x-6)$.
+
+\textbf{c)} Šaknys $3$, $\frac{1}{2}$: $2x^2-7x+3=2(x-3)\left(x-\frac{1}{2}\right)=2x^2-7x+3$.
+
+\textbf{d)} $D=25+24=49$, šaknys $3$, $-\frac{1}{2}$: $-2x^2+5x+3=-2(x-3)\left(x+\frac{1}{2}\right)$. Atskliaudę gauname $-2(x^2-\frac{5}{2}x-\frac{3}{2})=-2x^2+5x+3$.
+
+\textbf{e)} $D=0$, šaknis $\frac{3}{2}$: $4x^2-12x+9=4\left(x-\frac{3}{2}\right)^2$.
+
+\textbf{f)} Šaknys $-2$, $2$: $-2x^2+8=-2(x+2)(x-2)$. Atskliaudę gauname $-2(x^2-4)=-2x^2+8$.
+\item \textbf{a)} Iš $x^2-2=0$ gauname $x=\pm\sqrt2$, todėl $x^2-2=(x-\sqrt2)(x+\sqrt2)$. Atskliaudę gauname $x^2-(\sqrt2)^2=x^2-2$.
+
+\textbf{b)} Iš $2x^2=3$ gauname $x^2=\frac{3}{2}$, todėl šaknys yra $\pm\frac{\sqrt6}{2}$. Taigi $2x^2-3=2\left(x-\frac{\sqrt6}{2}\right)\left(x+\frac{\sqrt6}{2}\right)$. Jų kvadratų skirtumas duoda $2\left(x^2-\frac{6}{4}\right)=2x^2-3$. Šaknys nebūtinai sveikosios; čia jos iracionaliosios.
+\item \textbf{a)} $D=144-4\cdot3\cdot12=0$; vienintelė šaknis $r=\frac{12}{6}=2$.
+
+\textbf{b)} $P(x)=3(x-2)(x-2)=3(x-2)^2$.
+
+\textbf{c)} Iškėlę $3$ ir išskyrę pilnąjį kvadratą gauname $3(x^2-4x+4)=3(x-2)^2$. Šaknis yra viena: $2$; skaidinyje abu dauginamieji vienodi.
+\item \textbf{a)} Klaida: praleistas vyriausiasis koeficientas $2$. Teisinga $2(x-2)(x-3)=2x^2-10x+12$.
+
+\textbf{b)} Klaida: supainioti ženklai. Duotasis skaidinys lygus $x^2-x-6$. Teisinga $(x+3)(x-2)=x^2+x-6$.
+
+\textbf{c)} Duotasis skaidinys lygus $x^2-4$, o ne $x^2-4x+4$. Teisinga $(x-2)^2=x^2-4x+4$.
+
+\textbf{d)} Teisinga: atskliaudę gauname $-2\left(x^2-\frac{5}{2}x-\frac{3}{2}\right)=-2x^2+5x+3$.
+\item \textbf{a)} Kiekvienam realiajam $x$ yra $x^2\geq0$, todėl $x^2+4\geq4>0$. Taigi šaknų nėra.
+
+\textbf{b)} Įrašę $x=r$ į tariamą lygybę gautume $r^2+4=k\cdot0\cdot(r-s)=0$. Tačiau $r^2+4\geq4>0$. Prieštaravimas.
+
+\textbf{c)} Ne. Pavyzdžiui, $x^2+4=4\left(\frac{1}{4}x^2+1\right)$. Įrodyta tik tai, kad negalima užrašyti nurodytos sandaugos pavidalu su realiaisiais $r$, $s$ ir dviem tiesiniais dauginamaisiais.
+\item \textbf{a)} Kai $D>0$, iš 6 temos žinome, kad yra dvi skirtingos realiosios šaknys. Tuomet 3 uždavinio formulė duoda $P(x)=a(x-x_1)(x-x_2)$.
+
+\textbf{b)} Kai $D=0$, viena dviguboji šaknis yra $r$, todėl $P(x)=a(x-r)^2$.
+
+\textbf{c)} Jei $D<0$, realiųjų šaknų nėra. Jeigu būtų $P(x)=k(x-r)(x-s)$ su realiaisiais $r$, $s$, įrašius $x=r$ gautume $P(r)=0$, taigi realiąją šaknį. Tai prieštarautų $D<0$.
+\item \textbf{a)} $D=16-12=4>0$, šaknys $1$ ir $3$: $(x-1)(x-3)$.
+
+\textbf{b)} $D=16-16=0$, šaknis $2$: $(x-2)^2$.
+
+\textbf{c)} $D=16-20=-4<0$: realiųjų šaknų nėra, todėl tokio skaidinio nėra.
+
+\textbf{d)} $D=4-16=-12<0$: realiųjų šaknų nėra, todėl tokio skaidinio nėra.
+\item \textbf{a)} Šaknys $2$, $-4$. $P(0)=3(-2)\cdot4=-24$, $P(1)=3(-1)\cdot5=-15$.
+
+\textbf{b)} $P(x)=3(x^2+2x-8)=3x^2+6x-24$, taigi $a=3$, $b=6$, $c=-24$. Įrašę $0$ ir $1$ gauname $-24$ ir $-15$.
+
+\textbf{c)} Šaknų vidurkis $\frac{2+(-4)}{2}=-1$. Ekstremumo taškas taip pat $-\frac{6}{2\cdot3}=-1$.
+
+\textbf{d)} Kai $x=0$, gauname $x-2=-2<0$, $x+4=4>0$. Kai $x=1$, gauname $x-2=-1<0$, $x+4=5>0$. Abiem atvejais vienas dauginamasis neigiamas, kitas teigiamas, o $3>0$, todėl $P(0)<0$ ir $P(1)<0$. Tai atitinka a dalyje gautas reikšmes $-24$ ir $-15$.
+\item \textbf{a)} Kadangi šaknys $-1$ ir $3$, tai $P(x)=a(x+1)(x-3)$, $a\ne0$.
+
+\textbf{b)} $P(0)=a\cdot1\cdot(-3)=-3a=-6$, todėl $a=2$ ir $P(x)=2(x+1)(x-3)=2x^2-4x-6$.
+
+\textbf{c)} Įrašius $-1$ ar $3$ vienas dauginamasis tampa nuliu; $P(0)=-6$. Kiekvienas sąlygas tenkinantis daugianaris turi a dalies pavidalą, o $P(0)$ vienareikšmiškai nustato $a=2$, todėl kito nėra.
+\item Visi tokie daugianariai yra $P(x)=a(x-2)(x-5)$, kur $a\in\mathbb R$ ir $a\ne0$. Kiekvienas jų turi būtent šias šaknis, o kiekvienas daugianaris su šiomis šaknimis turi šį pavidalą pagal skaidymo formulę. Vieno daugianario duomenys nenustato, nes $a$ gali būti bet kuris nelygus nuliui realusis skaičius. Pavyzdžiui, papildžius $P(0)=10$, iš $10a=10$ gauname vienintelį $a=1$.
+\item \textbf{a)} Šaknys $3$ ir $\frac{1}{2}$, todėl $2x^2-7x+3=2(x-3)\left(x-\frac{1}{2}\right)$.
+
+\textbf{b)} Paskirstę daugiklį $2$ gauname $2\left(x-\frac{1}{2}\right)=2x-1$, taigi $P(x)=(x-3)(2x-1)$.
+
+\textbf{c)} $(x-3)(2x-1)=2x^2-x-6x+3=2x^2-7x+3$. Daugianaris nepasikeitė: tik kitaip užrašėme tuos pačius dauginamuosius.
+\item \textbf{a)} Sandauga lygi nuliui tik kai $x-r=0$ arba $x-s=0$, nes $a\ne0$. Todėl šaknys yra $r$ ir $s$, ir jokių kitų nėra.
+
+\textbf{b)} Pagal 6 temos 12e arba 7 temos 19 uždavinio išvadą ekstremumo taškas yra šaknų vidurkis: $h=\frac{r+s}{2}$.
+
+\textbf{c)} Įrašę $h=\frac{r+s}{2}$, randame $h-r=\frac{s-r}{2}$ ir $h-s=\frac{r-s}{2}$. Todėl
+\[P(h)=a\cdot\frac{s-r}{2}\cdot\frac{r-s}{2}=-\frac{a(r-s)^2}{4}.\]
+Pagal ankstesnių temų rezultatą, kai $a>0$, tai minimumas, o kai $a<0$ – maksimumas. Pagal 8 temos 4c punktą $D=a^2(r-s)^2$, todėl $-\frac{D}{4a}=-\frac{a^2(r-s)^2}{4a}=-\frac{a(r-s)^2}{4}$. Abi ekstremumo išraiškos sutampa.
+\item \textbf{a)} Standartiniame pavidale tiesiogiai matyti koeficientai $a$, $b$, $c$; pilnojo kvadrato pavidale – $a$, ekstremumo taškas $h$ ir ekstremumas $k$; sandaugos pavidale – $a$ ir šaknys $r$, $s$.
+
+\textbf{b)} Pagal 2 temoje išmoktą pilnojo kvadrato išskyrimą gauname $a(x-h)^2+k$. Kai yra dvi skirtingos realiosios šaknys, pagal 3 uždavinio formulę gauname ir $a(x-r)(x-s)$. Abu pavidalai, atskliaudus ir sutraukus narius, duoda pradinį $ax^2+bx+c$.
+
+\textbf{c)} Jei šaknis viena, $r=s$, tuomet sandaugos pavidalas yra $a(x-r)^2$. Šaknis yra ir ekstremumo taškas, o daugianario reikšmė joje lygi $0$, todėl pilnojo kvadrato pavidalas yra $a(x-r)^2+0=a(x-r)^2$. Taigi šie du užrašai sutampa.
+
+\textbf{d)} Standartinis ir pilnojo kvadrato pavidalai egzistuoja visada, kai $a\ne0$. Jei realiųjų šaknų nėra, sandauga $a(x-r)(x-s)$ su realiaisiais $r$, $s$ negalima, nes įrašius $x=r$ ji būtų lygi nuliui. Tai prieštarautų šaknų nebuvimui.
+\item \textbf{a)} Iškeliame $2$ ir išskiriame pilnąjį kvadratą:
+\[P(x)=2(x^2-4x)+6=2\bigl((x-2)^2-4\bigr)+6=2(x-2)^2-2.\]
+Kadangi $a=2>0$, minimumo taškas $x_{\min}=2$, minimumas $P_{\min}=-2$.
+
+\textbf{b)} $D=(-8)^2-4\cdot2\cdot6=16$, todėl šaknys yra $1$ ir $3$. Sandaugos pavidalas: $P(x)=2(x-1)(x-3)$.
+
+\textbf{c)} $2(x-2)^2-2=2(x^2-4x+4)-2=2x^2-8x+6$; taip pat $2(x-1)(x-3)=2(x^2-4x+3)=2x^2-8x+6$.
+\item \textbf{a)} $x^2-6x+8=(x-3)^2-1=(x-2)(x-4)$. Minimumo taškas $3$, minimumas $-1$, šaknys $2$, $4$. Atskliaudus abu pavidalus gaunamas pradinis daugianaris.
+
+\textbf{b)} $-x^2+2x+3=-(x-1)^2+4=-(x+1)(x-3)$. Maksimumo taškas $1$, maksimumas $4$, šaknys $-1$, $3$. Patikra: $-(x^2-2x+1)+4=-x^2+2x+3$; $-(x^2-2x-3)=-x^2+2x+3$.
+
+\textbf{c)} $2x^2+4x-6=2(x+1)^2-8=2(x+3)(x-1)$. Minimumo taškas $-1$, minimumas $-8$, šaknys $-3$, $1$. Patikra: $2(x^2+2x+1)-8=2x^2+4x-6$; $2(x^2+2x-3)=2x^2+4x-6$.
+
+\textbf{d)} $x^2-4x+4=(x-2)^2=(x-2)(x-2)$. Minimumo taškas $2$, minimumas $0$, šaknis $2$. Čia pilnojo kvadrato ir sandaugos pavidalai sutampa, nes yra dviguboji šaknis. Patikra: $(x-2)^2=x^2-4x+4$.
+\item \textbf{a)} Atskliaudę gauname $P(x)=-2(x^2+2x+1)+8=-2x^2-4x+6$. Iš $-2(x+1)^2+8=0$ gauname $(x+1)^2=4$, taigi šaknys yra $1$ ir $-3$. Todėl $P(x)=-2(x-1)(x+3)$.
+
+\textbf{b)} $Q(x)=3(x^2-4x+4)=3x^2-12x+12$. Vienintelė šaknis yra $2$, todėl sandaugos pavidalas $3(x-2)(x-2)=3(x-2)^2$ sutampa su duotuoju.
+
+\textbf{c)} $R(x)=x^2+2x+5$. Kiekvienam realiajam $x$ yra $(x+1)^2+4\geq4>0$, taigi realiųjų šaknų nėra ir sandaugos pavidalo su realiaisiais tiesiniais dauginamaisiais gauti negalima.
+\item \textbf{a)} Šaknys $2$ ir $4$. Atskliaudę gauname $P(x)=3x^2-18x+24$; išskyrę pilnąjį kvadratą – $P(x)=3(x-3)^2-3$. Kadangi $3>0$, minimumo taškas $3$, minimumas $-3$.
+
+\textbf{b)} Šaknys $-1$ ir $3$. Atskliaudę gauname $Q(x)=-2x^2+4x+6$, o išskyrę kvadratą – $Q(x)=-2(x-1)^2+8$. Maksimumo taškas $1$, maksimumas $8$.
+
+\textbf{c)} Šaknis $2$ yra dviguboji. $R(x)=2(x-2)^2=2x^2-8x+8$. Minimumo taškas $2$, minimumas $0$; pilnojo kvadrato pavidalas sutampa su sandaugos pavidalu.
+\item Mokinio teiginys klaidingas: visi pavidalai aprašo tą patį daugianarį. Jei vienintelė šaknis yra $r$, tai dauginamųjų sandauga $a(x-r)(x-r)$ ir pilnojo kvadrato pavidalas $a(x-r)^2$ yra vienodi, tik skirtingai užrašyti. Pavyzdžiui, $x^2-4x+4=(x-2)^2=(x-2)(x-2)$.
+\item \textbf{a)} Kadangi $1\ne7$ ir $P(1)=P(7)$, ekstremumo taškas yra $h=\frac{1+7}{2}=4$. Šaknys simetriškos taško $4$ atžvilgiu, todėl kita šaknis yra $6$: $\frac{2+6}{2}=4$.
+
+\textbf{b)} Pagal skaidymo formulę $P(x)=a(x-2)(x-6)$, $a\ne0$. Iš $P(0)=12a=12$ gauname $a=1$.
+
+\textbf{c)} Sandaugos, standartinis ir pilnojo kvadrato pavidalai yra
+\[P(x)=(x-2)(x-6)=x^2-8x+12=(x-4)^2-4.\]
+Patikra: $P(2)=0$, $P(0)=12$, $P(1)=5$, $P(7)=5$. Bet kuris sąlygas tenkinantis daugianaris turi tas pačias šaknis ir $a=1$, todėl atsakymas vienintelis.
+\item Jei šaknys $r$, $s$, tai $r+s=7$, $rs=10$. Skaičiai $2$ ir $5$ turi tokią sumą ir sandaugą, todėl pagal atvirkštinę Vijeto teoremą jie yra $x^2-7x+10$ šaknys; kitų nėra. Taigi $P(x)=a(x-2)(x-5)$. Iš $P(3)=a\cdot1\cdot(-2)=-2a=-8$ gauname $a=4$.
+
+Todėl $P(x)=4(x-2)(x-5)=4x^2-28x+40=4\left(x-\frac{7}{2}\right)^2-9$. Kadangi $a>0$, minimumo taškas $x_{\min}=\frac{7}{2}$, minimumas $P_{\min}=-9$. Patikra: šaknų suma $2+5=7$, sandauga $2\cdot5=10$, o $P(3)=-8$. Šaknys ir $a$ nustatyti vienareikšmiškai.
+\item \textbf{a)} Pagal duotą minimumo tašką ir minimumą $P(x)=a(x+1)^2-12$, kur $a>0$. Įrašę $x=0$ gauname $a-12=-9$, todėl $a=3$.
+
+\textbf{b)} Iš $3(x+1)^2-12=0$ gauname $(x+1)^2=4$, todėl $x=-3$ arba $x=1$. Visi pavidalai:
+\[P(x)=3(x+3)(x-1)=3x^2+6x-9=3(x+1)^2-12.\]
+
+\textbf{c)} Kadangi $3(x+1)^2\ge0$, tai $P(x)\ge-12$, lygybė pasiekiama, kai $x=-1$. Be to, $P(0)=-9$. Ši sąlyga vienareikšmiškai nustato $a$, todėl daugianaris vienintelis.
+\item Iš $9=-\frac{36}{4a}$ gauname $36a=-36$, taigi $a=-1$. Pagal ekstremumo duomenis pilnojo kvadrato pavidalas yra $P(x)=-(x-1)^2+9$. Spręsdami $-(x-1)^2+9=0$ gauname $(x-1)^2=9$, todėl šaknys yra $-2$ ir $4$.
+
+Visi trys pavidalai:
+\[P(x)=-(x+2)(x-4)=-x^2+2x+8=-(x-1)^2+9.\]
+Patikra: $D=2^2-4(-1)\cdot8=36$, maksimumo taškas $1$, maksimumas $9$, nes $-(x-1)^2\leq0$. Kiekviename sprendimo žingsnyje $a$, ekstremumo pavidalas ir šaknys nustatyti vienareikšmiškai.
+\item \textbf{a)} Įrašę duomenis gauname $2^2=10+2rs$, taigi $rs=-3$.
+
+\textbf{b)} Pagal Vijeto teoremą vienintelė galima redukuotoji lygtis yra $x^2-2x-3=0$. Kadangi $3+(-1)=2$ ir $3\cdot(-1)=-3$, pagal atvirkštinę teoremą jos šaknys yra $3$ ir $-1$; kitų nėra.
+
+\textbf{c)} Todėl $P(x)=a(x-3)(x+1)$. Iš $P(0)=-3a=-9$ randame $a=3$. Taigi
+\[P(x)=3(x-3)(x+1)=3x^2-6x-9=3(x-1)^2-12.\]
+Patikra: šaknų suma $3+(-1)=2$, kvadratų suma $9+1=10$, o $P(0)=-9$. Kiekvienas sąlygas tenkinantis daugianaris turi tas pačias šaknis ir tą patį $a$, todėl atsakymas vienintelis.
+\item Tokio daugianario nėra. Jei šaknys būtų $1$ ir $3$, pagal skaidymo formulę $P(x)=a(x-1)(x-3)$, kur $a\ne0$. Tada $P(2)=a\cdot1\cdot(-1)=-a\ne0$, o tai prieštarauja sąlygai $P(2)=0$.
+\item Visi ieškomi daugianariai yra $P(x)=a(x+2)(x-4)$, kur $a>0$. Kiekvienas toks daugianaris turi nurodytas šaknis. Atskliaudę ir išskyrę pilnąjį kvadratą gauname
+\[P(x)=a(x^2-2x-8)=a(x-1)^2-9a.\]
+Taigi visų minimumo taškas yra $1$, tačiau minimumas yra $-9a$ ir priklauso nuo $a$. Sąlygos nepakankamos vienam daugianariui nustatyti: pavyzdžiui, tinka $(x+2)(x-4)$ ir $2(x+2)(x-4)$.
+\item Ne, tokio daugianario nėra. Jei $a>0$, ekstremumo taškas yra minimumo taškas. Kai minimumas lygus $0$, pilnojo kvadrato pavidalas yra $P(x)=a(x-h)^2$. Lygtis $a(x-h)^2=0$ turi vieną šaknį $x=h$, todėl dviejų skirtingų realiųjų šaknų būti negali.
+\item \textbf{a)} $a=-2$, $b=8$, $c=10$, todėl $D=8^2-4(-2)\cdot10=144$. Šaknys yra $-1$ ir $5$, taigi sandaugos pavidalas $P(x)=-2(x+1)(x-5)$. Išskyrę pilnąjį kvadratą gauname $P(x)=-2(x-2)^2+18$. Kadangi $a<0$, maksimumo taškas $x_{\max}=2$, maksimumas $P_{\max}=18$. Patikra:
+\[-2(x+1)(x-5)=-2(x^2-4x-5)=-2x^2+8x+10;\]
+\[-2(x-2)^2+18=-2(x^2-4x+4)+18=-2x^2+8x+10.\]
+
+\textbf{b)} Lygybė $3(x-1)^2=0$ tenkinama tik kai $x=1$, todėl šaknis yra viena. Standartinis pavidalas $Q(x)=3x^2-6x+3$, sandaugos pavidalas $Q(x)=3(x-1)(x-1)$.
+
+\textbf{c)} $D=2^2-4\cdot1\cdot3=-8<0$, todėl realiųjų šaknų nėra. Jei toks sandaugos pavidalas egzistuotų, įrašius $x=r$ gautume realiąją šaknį. Vadinasi, toks užrašas negalimas.
+
+\textbf{d)} Pagal skaidymo formulę kiekvienas ieškomas daugianaris yra $P(x)=a(x+2)(x-1)$, $a\ne0$. Kadangi $P(0)=-2a=-4$, gauname $a=2$, taigi $P(x)=2(x+2)(x-1)=2x^2+2x-4$. Patikra: $P(-2)=P(1)=0$ ir $P(0)=-4$. Sąlyga $P(0)=-4$ vienareikšmiškai nustato $a$, todėl kito daugianario nėra.
+\end{enumerate}
+\end{document}

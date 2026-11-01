@@ -1,0 +1,481 @@
+\documentclass[12pt,a4paper]{exam}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
+\usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
+\pagestyle{plain}
+\emergencystretch=4em
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlist[enumerate,1]{label=\textbf{\arabic*.},ref=\arabic*,leftmargin=*,itemsep=7pt}
+\setlist[enumerate,2]{label=\alph*),leftmargin=*,itemsep=2pt}
+\newcommand{\svarbu}{\tikz[baseline=(zenklas.base)]\node[circle,draw=blue!50!black,line width=0.6pt,minimum size=4.5mm,inner sep=0pt,font=\sffamily\bfseries\small,text=blue!50!black] (zenklas) {!};}
+\begin{document}
+\begin{center}
+{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]
+{\small\sffamily 1 TEMA}\\[4pt]
+{\LARGE\bfseries Apibrėžimas, koeficientai ir reikšmės}\\[7pt]
+{\small Andrius Berniukevičius \quad\textbar\quad Vilniaus licėjus}\\[4pt]
+\rule{0.72\textwidth}{0.4pt}
+\end{center}
+
+\textbf{Apie kursą.} Šiame kurse kvadratinį daugianarį nagrinėsime algebriškai: nuo apibrėžimo iki jo ženklų nustatymo. Savybes pagrįsime skaičiavimais ir samprotavimais, nesinaudodami funkcijų ir jų grafikų sąvokomis. Teorija atskleidžiama sprendžiant uždavinius: pirmiausia pabandyk pats, o prireikus naudokis paaiškinimais ir bandyk dar kartą.
+
+Kada daugianario reikšmė lygi nuliui, kada ji teigiama ar neigiama? Kokia gali būti mažiausia arba didžiausia jo reikšmė? Kokios informacijos reikia daugianariui nustatyti? Prie šių klausimų grįšime įvairiose kurso temose.
+
+\newcommand{\zingsnis}[1]{\tikz[baseline=(zenklas.base)]\node[draw=black!65,fill=black!7,circle,inner sep=1pt,minimum size=5mm,font=\sffamily\bfseries\footnotesize] (zenklas) {#1};}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm]
+\textbf{Kaip dirbti su šia medžiaga?}
+
+Ši medžiaga skirta aktyviam mokymuisi: naujas mintis ir faktus atrasi spręsdamas uždavinius.
+\begin{enumerate}[label=\protect\zingsnis{\arabic*},leftmargin=8mm,itemsep=1pt,topsep=2pt]
+\item \textbf{Pirmiausia galvok pats.} Perskaityk sąlygą, išbandyk savo idėjas pasitelkdamas pavyzdžius ir užrašyk sprendimą taip, kaip supranti. Jei užstrigai, išbandyk konkretų skaičių arba grįžk prie panašaus ankstesnio uždavinio.
+\item \textbf{Tik tada pasitikrink.} Palygink savo sprendimą su pateiktuoju. Tavo būdas gali skirtis nuo pateiktojo ir vis tiek būti teisingas. Jei suklydai, išsiaiškink savo klaidą. Jei pasinaudojai pateiktu sprendimu, išnagrinėk, kodėl kiekvienas jo žingsnis teisingas. Tada užversk sprendimą ir išspręsk uždavinį iš naujo pats.
+\item \textbf{Sustok prie $\star$.} Žvaigždute pažymėti uždaviniai padeda atrasti ir suprasti svarbias idėjas, kuriomis remsimės šioje ir vėlesnėse temose. Juos išsprendęs, pabandyk savais žodžiais nusakyti, ką sužinojai ir kodėl tai teisinga.
+\item \textbf{Apibendrink ir pasitikrink.} Temos pabaigoje rasi svarbiausias išvadas. Pirmiausia pamėgink jas prisiminti pats, tada palygink su pateiktomis. Savikontrolės uždavinį ($\blacklozenge$) spręsk užvertęs santrauką, o po pertraukos prie jo sugrįžk.
+\end{enumerate}
+Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teisingas ir kada atrastą mintį galėsi pritaikyti}.
+\end{tcolorbox}
+
+\textbf{Temos esmė ir tikslas.} Susipažinsi su kvadratinio daugianario apibrėžimu, koeficientais ir reikšmėmis. Ištirsi, kaip iš reikšmių nustatyti koeficientus, ir pagrįsi jų vienareikšmiškumą.
+
+\textbf{Prieš pradėdamas:} prisimink veiksmus su realiaisiais skaičiais, trupmenomis ir laipsniais, atskliaudimą ir panašiųjų narių sutraukimą. Vėlesniems šios temos uždaviniams prireiks dviejų tiesinių lygčių su dviem nežinomaisiais sistemų sprendimo.
+
+\begin{enumerate}
+\item $\star$ Reiškinys $ax^2+bx+c$, kur $a,b,c\in\mathbb{R}$, $a\ne0$, o $x\in\mathbb{R}$, vadinamas \textbf{antrojo laipsnio daugianariu}, arba \textbf{kvadratiniu daugianariu}. Jį žymime $P(x)=ax^2+bx+c$. Skaičiai $a$, $b$, $c$ vadinami jo \textbf{koeficientais}, $a$ – \textbf{vyriausiuoju koeficientu}, $b$ – \textbf{koeficientu prie $x$}, o $c$ – \textbf{laisvuoju nariu}. Užrašas $ax^2+bx+c$ vadinamas kvadratinio daugianario \textbf{standartiniu pavidalu}.
+\begin{enumerate}
+\item Kuris koeficientas yra prie $x^2$? Kuris – prie $x$? Ką apibrėžime reiškia $a,b,c\in\mathbb{R}$ ir $x\in\mathbb{R}$?
+\item Kodėl reikalaujama, kad $a\ne0$? Kuo virsta reiškinys $ax^2+bx+c$, kai $a=0$?
+\item Ar gali būti $b=0$? O $c=0$? Kaip kiekvienu atveju užrašomas kvadratinis daugianaris?
+\item Ar gali būti $b=c=0$? Kaip tuomet užrašomas kvadratinis daugianaris?
+\item Ar koeficientai gali būti neigiami, trupmeniniai, iracionalieji skaičiai? Pagrįskite remdamiesi apibrėžimu.
+\end{enumerate}
+\needspace{5cm}
+\item Duotas daugianaris $P(x)=2x^2-3x+1$.
+\begin{enumerate}
+\item Nurodykite jo vyriausiąjį koeficientą, koeficientą prie $x$ ir laisvąjį narį.
+\item Apskaičiuokite $P(0)$, $P(1)$ ir $P(-2)$.
+\item Paaiškinkite, ką reiškia lygybė $P(1)=0$. Ar ji teisinga šiam daugianariui?
+\item Ką reiškia užrašas $P(-4)$? Ar jis reiškia, kad visą daugianarį reikia padauginti iš $-4$?
+\end{enumerate}
+\item Kurie reiškiniai yra antrojo laipsnio daugianariai kintamojo $x$ atžvilgiu? Atsakymus pagrįskite.
+\begin{multicols}{3}
+\begin{enumerate}
+\item $2x^2-3x+1$;
+\item $5x-2$;
+\item $-x^2+4$;
+\item $x^3+x^2$;
+\item $7x^2$;
+\item $\dfrac1x+x^2$;
+\item $-4$;
+\item $x^2-x$;
+\item $\sqrt2\,x^2+1$.
+\end{enumerate}
+\end{multicols}
+\item Nurodykite kiekvieno daugianario vyriausiąjį koeficientą, koeficientą prie $x$ ir laisvąjį narį.
+\begin{multicols}{3}
+\begin{enumerate}
+\item $2x^2+3x-5$;
+\item $-x^2+4x$;
+\item $5-2x^2$;
+\item $x^2$;
+\item $-3+x-x^2$;
+\item $\frac{1}{2}x^2-\frac{3}{4}x$.
+\end{enumerate}
+\end{multicols}
+
+\needspace{7\baselineskip}
+\item Užrašykite antrojo laipsnio daugianarį $P(x)$, kurio:
+\begin{enumerate}
+\item $a=2$, $b=-3$, $c=1$;
+\item $a=-1$, $b=0$, $c=4$;
+\item $a=\frac{1}{2}$, $b=-2$, $c=0$;
+\item visi trys koeficientai neigiami;
+\item tik vienas koeficientas nelygus nuliui.
+\end{enumerate}
+Ar kiekvienu atveju galimas tik vienas atsakymas?
+\item Mokinys teigia, kad daugianario $4-x^2$ koeficientai yra $a=1$, $b=0$, $c=4$. Ar jis teisus? Jeigu ne, paaiškinkite klaidą ir nurodykite teisingus koeficientus.
+\item Atskliauskite reiškinius, sutraukite panašiuosius narius ir nustatykite, kurie iš jų yra kvadratiniai daugianariai kintamojo $x$ atžvilgiu. Gautus kvadratinius daugianarius užrašykite standartiniu pavidalu ir nurodykite jų koeficientus.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $(x+1)(x-2)$;
+\item $(x+2)^2-x^2$;
+\item $2x(x-3)+5$;
+\item $(x-1)^2+2x-1$;
+\item $3x^2-2(x^2+x)+1$;
+\item $2x^2-3x-x(2x-3)$.
+\end{enumerate}
+\end{multicols}
+\item $k$ – fiksuotas realusis skaičius. Nustatykite visas $k$ reikšmes, su kuriomis reiškinys yra antrojo laipsnio daugianaris kintamojo $x$ atžvilgiu.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $(k-2)x^2+3x+1$;
+\item $kx^2+(k-1)x$;
+\item $(k^2+1)x^2+kx-3$;
+\item $(k^2-4)x^2-kx+2$.
+\end{enumerate}
+\end{multicols}
+\item Ar egzistuoja antrojo laipsnio daugianaris, kurio koeficientai tenkina šias sąlygas? Jei taip, pateikite pavyzdį; jei ne, paaiškinkite kodėl.
+\begin{enumerate}
+\item Visi trys koeficientai lygūs nuliui.
+\item Laisvasis narys yra $3$, o kiti du koeficientai – priešingi skaičiai.
+\end{enumerate}
+\needspace{4cm}
+\item Duotas daugianaris $P(x)=2x^2-3x+5$.
+\begin{enumerate}
+\item Koks yra $P$ vyriausiasis koeficientas? Apskaičiuokite $P(2)$.
+\item Mokinys apskaičiavo: $P(-1)=2\cdot(-1)^2-3\cdot(-1)+5=-2+3+5=6$. Raskite jo klaidą ir apskaičiuokite reikšmę teisingai.
+\item Apskaičiuokite $-P(1)$ ir palyginkite su b dalyje rasta $P(-1)$ reikšme. Kuo šie užrašai skiriasi?
+\end{enumerate}
+\item Apskaičiuokite nurodytas daugianarių reikšmes.
+\begin{enumerate}
+\item Jei $P(x)=x^2-4x+3$, raskite $P(0)$, $P(2)$, $P(-1)$.
+\item Jei $Q(x)=-2x^2+x+5$, raskite $Q(1)$, $Q(-1)$, $Q(2)$.
+\item Jei $R(x)=4x^2-4x+1$, raskite $R(\frac{1}{2})$ ir $R(-\frac{1}{2})$.
+\item Jei $S(x)=x^2+2x-1$, raskite $S(-3)$ ir $S(1)$.
+\end{enumerate}
+Ar skirtingos $x$ reikšmės gali duoti tą pačią daugianario reikšmę? Pasinaudokite vienu iš apskaičiuotų pavyzdžių.
+\item Žinoma, kad $P(2)=-3$.
+\begin{enumerate}
+\item Kokia $x$ reikšmė įrašyta į daugianarį? Kokia gauta daugianario reikšmė?
+\item Ar iš šios lygybės išplaukia, kad $P(-3)=2$? Atsakymą pagrįskite pateikdami kvadratinio daugianario pavyzdį.
+\item Papildomai žinoma, kad šio daugianario reikšmė, kai $x=-4$, yra lygi $7$. Užrašykite tai naudodami $P$ žymėjimą.
+\end{enumerate}
+\item\label{bendra-reiksme} Duoti daugianariai $P(x)=x^2-2x+3$ ir $Q(x)=2x^2+x-1$.
+\begin{enumerate}
+\item Apskaičiuokite $P(2)$ ir $Q(2)$. Ar į skirtingus daugianarius įrašius tą patį skaičių visada gaunamos vienodos reikšmės?
+\item Apskaičiuokite $P(-1)$, $Q(-1)$, $P(0)+Q(0)$ ir $P(1)-Q(1)$.
+\item Ką reiškia lygybė $P(3)=Q(2)$? Patikrinkite, ar ji teisinga.
+\end{enumerate}
+\item Patikrinkite, ar teiginiai teisingi. Neteisingus pataisykite.
+\begin{enumerate}
+\item Jei $P(x)=x^2-1$, tai $P(-2)=-5$.
+\item Jei $P(x)=x^2-3x+2$, tai $P(1)=0$.
+\item Jei $P(x)=-x^2+2x$, tai $P(-1)=-1$.
+\end{enumerate}
+\item\label{p0} $\star$ Duoti daugianariai $P(x)=2x^2-3x+5$, $Q(x)=-x^2+4x-2$ ir $R(x)=3x^2+x$.
+\begin{enumerate}
+\item Apskaičiuokite $P(0)$, $Q(0)$ ir $R(0)$. Palyginkite šias reikšmes su atitinkamų daugianarių laisvaisiais nariais.
+\item Įrodykite, kad jei $P(x)=ax^2+bx+c$, tai $P(0)=c$.
+\item Koks yra kvadratinio daugianario $T$ laisvasis narys, jeigu $T(0)=5$?
+\item Sudarykite du skirtingus kvadratinius daugianarius, kurių reikšmė, kai $x=0$, lygi $5$.
+\end{enumerate}
+\textbf{Sustok ir apibendrink.} Kaip iš daugianario reikšmės, kai $x=0$, nustatyti laisvąjį narį?
+\item\label{koef-formules} $\star$ Tegul $P(x)=ax^2+bx+c$, kur $a$, $b$, $c$ – bet kurie realieji skaičiai. Jau žinome, kad $P(0)=c$ (\ref{p0} uždavinys). Įrodykite likusias dvi lygybes:
+\[
+b=\frac{P(1)-P(-1)}{2},\qquad
+ a=\frac{P(1)+P(-1)}{2}-P(0).
+\]
+\textbf{Sustok ir apibendrink.} Kaip iš trijų reikšmių $P(0)$, $P(1)$ ir $P(-1)$ atkurti daugianario koeficientus?
+\needspace{6cm}
+\item $\star$ Lygybė, teisinga su visomis leistinosiomis kintamojo reikšmėmis, vadinama \textbf{tapatybe}. Pavyzdžiui, $(x+1)^2=x^2+2x+1$ yra tapatybė, o $x^2=4$ – ne.
+\begin{enumerate}
+\item Ar $(x-1)(x+1)=x^2-1$ yra tapatybė? Ar $x^2+x=2$ yra tapatybė? Pagrįskite.
+\item Duoti $P(x)=2x^2-3x+5$ ir $Q(x)=(x-1)(2x-1)+4$. Apskaičiuokite ir palyginkite jų reikšmes, kai $x=0$, $1$ ir $-1$. Ką apie koeficientus galima sužinoti iš šių trijų reikšmių?
+\item Tegul $a,b,c,a_1,b_1,c_1$ yra bet kurie realieji skaičiai, o lygybė $ax^2+bx+c=a_1x^2+b_1x+c_1$ – tapatybė. Remdamiesi \ref{koef-formules} uždaviniu įrodykite, kad $a=a_1$, $b=b_1$, $c=c_1$.
+\item Paaiškinkite, kodėl to paties kvadratinio daugianario standartinio pavidalo koeficientai nustatyti vienareikšmiškai. Ar pakaktų, kad dviejų daugianarių reikšmės sutaptų tik su viena $x$ reikšme?
+\item Įrodykite, kad $4x+4$ negalima užrašyti kaip $ax^2+bx+c$, kur $a\ne0$, taip, kad lygybė galiotų su kiekvienu realiuoju $x$.
+\end{enumerate}
+\textbf{Sustok ir apibendrink.} Ką galima pasakyti apie dviejų tapačiai lygių daugianarių atitinkamus koeficientus? Kodėl vienos bendros reikšmės nepakanka išvadai, kad daugianariai vienodi?
+\item Tegul $P(x)=ax^2+bx+c$. Raskite koeficientus $a$, $b$, $c$ ir užrašykite daugianarį, jeigu:
+\begin{enumerate}
+\item $P(0)=2$, $P(1)=6$, $P(-1)=4$;
+\item $P(0)=-1$, $P(1)=-3$, $P(-1)=5$;
+\item $P(0)=3$, $P(1)+P(-1)=10$, $P(1)-P(-1)=6$.
+\end{enumerate}
+Kiekvienu atveju patikrinkite gautą atsakymą įrašydami $x$ reikšmes.
+\item Nustatykite, ar egzistuoja antrojo laipsnio daugianaris $P(x)=ax^2+bx+c$, kurio $P(0)=2$, $P(1)=5$ ir $P(-1)=-1$. Atsakymą pagrįskite.
+\item Raskite realųjį skaičių $k$, jeigu $P(x)$ žymi duotąjį reiškinį ir:
+\begin{enumerate}
+\item $P(x)=x^2+kx+2$ ir $P(1)=6$;
+\item $P(x)=2x^2-3x+k$ ir $P(-1)=4$;
+\item $P(x)=kx^2+x-2$ ir $P(2)=0$.
+\end{enumerate}
+Ar kiekvienu atveju gautasis $P(x)$ yra kvadratinis daugianaris?
+\item Kiekvienu atveju raskite du trūkstamus koeficientus ir užrašykite kvadratinį daugianarį $P(x)=ax^2+bx+c$. Naudodamiesi duotomis sąlygomis sudarykite tiesinių lygčių sistemą. Patikrinkite atsakymą.
+\begin{enumerate}
+\item $a=1$, $P(1)=4$, $P(2)=9$;
+\item $b=-2$, $P(1)=2$, $P(2)=6$;
+\item $c=3$, $P(1)=6$, $P(2)=13$;
+\item $a=-1$, $P(-1)=2$, $P(2)=-1$;
+\item $c=-2$, $P(1)+P(-1)=4$, $P(1)-P(-1)=6$.
+\end{enumerate}
+\item $\star$ Žinoma, kad kvadratinio daugianario $P$ reikšmė $P(2)=5$. Ar šios informacijos pakanka daugianariui vienareikšmiškai nustatyti? Jei ne, sudarykite du skirtingus tokią sąlygą tenkinančius kvadratinius daugianarius.
+
+\textbf{Sustok ir apibendrink.} Kodėl viena daugianario reikšmė ne visada jį nustato vienareikšmiškai?
+\needspace{10\baselineskip}
+\item $\star$ Apibendrinkite šią temą.
+\begin{enumerate}
+\item Ką apie koeficientus pasako reikšmės $P(0)$, $P(1)$, $P(-1)$? Paaiškinkite, kodėl dviejų daugianarių koeficientai sutampa, jei jų reikšmės lygios, kai $x=0$, $1$ ir $-1$.
+\item Ar su bet kuriomis duotomis reikšmėmis $P(0)$, $P(1)$, $P(-1)$ būtinai egzistuoja jas įgyjantis \emph{kvadratinis} daugianaris? Pasinaudokite anksčiau nagrinėtu pavyzdžiu arba sugalvokite savąjį.
+\item Ar visada pakanka dviejų reikšmių, jei koeficientas prie $x$ jau žinomas? Palyginkite $P(x)=x^2$ ir $Q(x)=2x^2-1$ ties $x=1$ ir $x=-1$.
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Ką atradome?}\end{center}
+Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia atrama ir grįžk prie vietų, kurios kelia klausimų.
+
+\begin{tcolorbox}[title=Svarbiausios temos išvados,colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm]
+\textbf{1. Kvadratinis daugianaris.} $P(x)=ax^2+bx+c$, kur $a,b,c,x\in\mathbb R$ ir $a\ne0$. Skaičius $a$ yra vyriausiasis koeficientas, $b$ – koeficientas prie $x$, $c$ – laisvasis narys. Koeficientai $b$ ir $c$ gali būti lygūs nuliui.
+
+\textbf{2. Daugianario reikšmė.} $P(u)$ gauname kiekvieną $x$ pakeitę skaičiumi $u$. Įrašę nulį randame laisvąjį narį: $P(0)=c$.
+
+\textbf{3. Koeficientai iš reikšmių.} Su $P(x)=ax^2+bx+c$ galioja
+\[
+c=P(0),\qquad b=\frac{P(1)-P(-1)}{2},\qquad a=\frac{P(1)+P(-1)}{2}-P(0).
+\]
+Šios trys reikšmės vienareikšmiškai nustato $a$, $b$, $c$. Jeigu apskaičiuojame $a=0$, jas įgyjantis daugianaris nėra kvadratinis.
+
+\textbf{4. Tapatybė ir koeficientai.} Jei du pavidalo $ax^2+bx+c$ daugianariai su visomis realiosiomis $x$ reikšmėmis įgyja lygias reikšmes, jų atitinkami koeficientai yra lygūs. Sutapimas tik su viena $x$ reikšme šios išvados negarantuoja.
+
+\textbf{5. Sudarymas ir patikra.} Nežinomus koeficientus randame pagal duotas reikšmes sudarydami lygtis, tada patikriname sąlygas ir ar $a\ne0$.
+\end{tcolorbox}
+\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbiausią temos išvadą ir užsirašyk: faktą, jo galiojimo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\newpage
+\begin{center}{\Large\bfseries Savikontrolė}\end{center}
+Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+\begin{enumerate}[resume]
+\item $\blacklozenge$ Atlikite užduotis ir paaiškinkite savo sprendimus:
+\begin{enumerate}
+\item Duota $P(x)=-2x^2+3x-1$. Nurodykite $a$, $b$, $c$ ir raskite $P(-1)$ bei $-P(1)$.
+\item Raskite $Q(x)=ax^2+bx+c$, kai $Q(0)=1$, $Q(1)=4$, $Q(-1)=2$. Patikrinkite atsakymą.
+\item Ar egzistuoja kvadratinis daugianaris $R$, jeigu $R(0)=1$, $R(1)=3$ ir $R(-1)=-1$? Pagrįskite.
+\item Sudarykite du skirtingus kvadratinius daugianarius $S$ ir $T$, kurių $S(3)=T(3)=2$. Ar pagal šias vienodas reikšmes galima teigti, kad jie sutampa su visomis $x$ reikšmėmis?
+\end{enumerate}
+\end{enumerate}
+\newpage
+\begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
+\begin{enumerate}
+\item
+
+\textbf{a)} Prie $x^2$ yra $a$, prie $x$ – $b$. Visi trys koeficientai yra realieji skaičiai; $x$ gali įgyti realiąsias reikšmes.
+
+\textbf{b)} Jei $a=0$, reiškinys virsta $bx+c$: narys su $x^2$ išnyksta, tad reiškinys nebėra kvadratinis. Jei $b\ne0$, gauname pirmojo laipsnio daugianarį, o jei $b=0$ – pastovųjį reiškinį.
+
+\textbf{c)} Taip. Pagal apibrėžimą $b$ ir $c$ gali būti bet kurie realieji skaičiai, taigi ir nulis. Reikalavimas, kad koeficientas būtų nelygus nuliui, taikomas tik $a$. Kai $b=0$, gauname $ax^2+c$; kai $c=0$, gauname $ax^2+bx$.
+
+\textbf{d)} Taip. Apibrėžimas leidžia, kad abu koeficientai $b$ ir $c$ kartu būtų lygūs nuliui. Tuomet $P(x)=ax^2$, kur $a\ne0$, todėl daugianaris išlieka kvadratinis.
+
+\textbf{e)} Taip: neigiami, trupmeniniai ir iracionalieji skaičiai yra realieji, todėl gali būti koeficientai. Apibrėžimas papildomai reikalauja tik to, kad $a\ne0$.
+\item
+
+\textbf{a)} $a=2$, $b=-3$, $c=1$.
+
+\textbf{b)} $P(0)=1$, $P(1)=0$, $P(-2)=15$.
+
+\textbf{c)} Lygybė reiškia, kad įrašius $x=1$ gaunama reikšmė $0$. Ji teisinga, nes $2-3+1=0$.
+
+\textbf{d)} $P(-4)$ yra reikšmė, gaunama įrašius $x=-4$; ji nėra viso daugianario ir $-4$ sandauga. Čia $P(-4)=2\cdot16+12+1=45$.
+\item Kvadratiniai: \textbf{a), c), e), h), i)}. Jų vyriausieji koeficientai atitinkamai $2$, $-1$, $7$, $1$, $\sqrt2$ – visi nelygūs nuliui. \textbf{b) ir g)} reiškiniuose nėra nario su $x^2$.
+
+\textbf{d)} reiškinyje yra nenulinis narys $x^3$, todėl reiškinio laipsnis yra $3$.
+
+\textbf{f)} reiškinyje yra $\frac{1}{x}$, todėl jis neapibrėžtas, kai $x=0$. Kvadratinis daugianaris apibrėžtas su kiekvienu realiuoju $x$, taigi šis reiškinys nėra kvadratinis daugianaris.
+\item
+
+\textbf{a)} $a=2$, $b=3$, $c=-5$.
+
+\textbf{b)} $a=-1$, $b=4$, $c=0$.
+
+\textbf{c)} $a=-2$, $b=0$, $c=5$.
+
+\textbf{d)} $a=1$, $b=0$, $c=0$.
+
+\textbf{e)} $a=-1$, $b=1$, $c=-3$.
+
+\textbf{f)} $a=\frac{1}{2}$, $b=-\frac{3}{4}$, $c=0$.
+\item
+
+\textbf{a)} $2x^2-3x+1$;
+
+\textbf{b)} $-x^2+4$;
+
+\textbf{c)} $\frac{1}{2}x^2-2x$;
+
+\textbf{d)} pavyzdžiui, $-x^2-x-1$;
+
+\textbf{e)} pavyzdžiui, $x^2$.
+
+Punktuose a), b) ir c) koeficientai nustatyti, todėl atsakymas tik vienas. d) punkte visi koeficientai gali būti bet kurie neigiami skaičiai. e) punkte $a$ gali būti bet kuris nenulinis realusis skaičius, kai $b=c=0$. Abiem atvejais atsakymų yra be galo daug.
+\item Neteisus: $4-x^2=-x^2+0x+4$. Todėl $a=-1$, $b=0$, $c=4$. Minuso ženklas priklauso koeficientui prie $x^2$.
+\item
+
+\textbf{a)} $x^2-x-2$: kvadratinis, $a=1$, $b=-1$, $c=-2$.
+
+\textbf{b)} $4x+4$: nekvadratinis.
+
+\textbf{c)} $2x^2-6x+5$: kvadratinis, $a=2$, $b=-6$, $c=5$.
+
+\textbf{d)} $x^2$: kvadratinis, $a=1$, $b=0$, $c=0$.
+
+\textbf{e)} $x^2-2x+1$: kvadratinis, $a=1$, $b=-2$, $c=1$.
+
+\textbf{f)} $0$: nekvadratinis. Visais atvejais pirmiausia atskliaudžiame ir sutraukiame panašiuosius narius; b), d) ir f) atvejais dalis narių susiprastina.
+\item Reiškinys yra kvadratinis tik tada, kai jo koeficientas prie $x^2$ nelygus nuliui.
+
+\textbf{a)} $k-2\ne0$, taigi $k\ne2$.
+
+\textbf{b)} $k\ne0$.
+
+\textbf{c)} Kadangi $k^2\geq0$, tai $k^2+1\geq1>0$. Reiškinys yra kvadratinis daugianaris su kiekviena realiąja $k$ reikšme.
+
+\textbf{d)} $k^2-4=(k-2)(k+2)\ne0$, taigi $k\ne2$ ir $k\ne-2$. Visais atvejais $k$ yra realusis skaičius.
+\item
+
+\textbf{a)} Ne: jei visi koeficientai lygūs nuliui, tai $a=0$, o tai prieštarauja kvadratinio daugianario apibrėžimui.
+
+\textbf{b)} Taip: imkime $a=1$, $b=-1$, $c=3$. Tuomet $P(x)=x^2-x+3$, o $a$ ir $b$ yra priešingi skaičiai.
+\item
+
+\textbf{a)} Vyriausiasis koeficientas $2$; $P(2)=2\cdot4-3\cdot2+5=7$.
+
+\textbf{b)} $(-1)^2=1$, todėl $2\cdot(-1)^2=2$, o ne $-2$. Vadinasi, $P(-1)=2+3+5=10$.
+
+\textbf{c)} $P(-1)=2+3+5=10$, o $-P(1)=-(2-3+5)=-4$. Pirmuoju atveju įrašome $-1$ vietoj $x$, antruoju – apskaičiuojame $P(1)$ ir pakeičiame jo ženklą.
+\item
+
+\textbf{a)} $P(0)=3$, $P(2)=-1$, $P(-1)=8$.
+
+\textbf{b)} $Q(1)=4$, $Q(-1)=2$, $Q(2)=-1$.
+
+\textbf{c)} $R(\frac{1}{2})=0$, $R(-\frac{1}{2})=4$.
+
+\textbf{d)} $S(-3)=2$, $S(1)=2$. Taip, skirtingos $x$ reikšmės gali duoti vienodas reikšmes: paskutiniame pavyzdyje $-3\ne1$, tačiau $S(-3)=S(1)=2$.
+\item
+
+\textbf{a)} Įrašyta $x=2$, gauta reikšmė $-3$.
+
+\textbf{b)} Neišplaukia: imkime $P(x)=2x^2-11$. Tuomet $P(2)=8-11=-3$, bet $P(-3)=18-11=7\ne2$. Vienas toks pavyzdys paneigia teiginį, kad lygybė būtinai išplaukia iš sąlygos.
+
+\textbf{c)} $P(-4)=7$.
+\item
+
+\textbf{a)} $P(2)=3$, $Q(2)=9$. Vadinasi, įrašius tą patį skaičių į skirtingus daugianarius, gautos reikšmės nebūtinai vienodos.
+
+\textbf{b)} $P(-1)=6$, $Q(-1)=0$, $P(0)+Q(0)=3+(-1)=2$, $P(1)-Q(1)=2-2=0$.
+
+\textbf{c)} Lygybė reikštų, kad $P$ reikšmė, kai $x=3$, lygi $Q$ reikšmei, kai $x=2$. Bet $P(3)=6$, o $Q(2)=9$, todėl lygybė neteisinga.
+\item
+
+\textbf{a)} Neteisinga: $P(-2)=(-2)^2-1=3$.
+
+\textbf{b)} Teisinga: $P(1)=1-3+2=0$.
+
+\textbf{c)} Neteisinga: $P(-1)=-(-1)^2+2(-1)=-3$.
+\item
+
+\textbf{a)} $P(0)=5$, $Q(0)=-2$, $R(0)=0$; kiekviena reikšmė lygi atitinkamam laisvajam nariui.
+
+\textbf{b)} Įrašę $x=0$, gauname $P(0)=a\cdot0^2+b\cdot0+c=c$.
+
+\textbf{c)} Kadangi $T(0)$ lygus laisvajam nariui, šis yra $5$.
+
+\textbf{d)} Pavyzdžiui, $x^2+5$ ir $2x^2+x+5$: jų laisvieji nariai lygūs $5$, o vyriausieji koeficientai nelygūs nuliui.
+\item Įrašę $x=0$, $1$ ir $-1$, gauname
+\[
+P(0)=c,\qquad P(1)=a+b+c,\qquad P(-1)=a-b+c.
+\]
+Atėmę paskutines dvi lygybes, gauname $P(1)-P(-1)=2b$, todėl
+\[
+b=\frac{P(1)-P(-1)}{2}.
+\]
+Jas sudėję, gauname $P(1)+P(-1)=2a+2c$. Taigi
+\[
+a=\frac{P(1)+P(-1)}{2}-c
+ =\frac{P(1)+P(-1)}{2}-P(0).
+\]
+Kartu su $c=P(0)$ tai įrodo visas tris lygybes.
+\item \textbf{a)} Atskliaudę kairę pusę gauname $x^2-1$, todėl lygybė teisinga su kiekviena realiąja $x$ reikšme: tai tapatybė. Lygybė $x^2+x=2$ neteisinga, kai $x=0$, nes $0\ne2$, taigi ji nėra tapatybė.
+
+\textbf{b)} Abiem atvejais $P(0)=Q(0)=5$, $P(1)=Q(1)=4$, $P(-1)=Q(-1)=10$. Pagal \ref{koef-formules} uždavinio formules šios trys reikšmės nustato koeficientus: $a=2$, $b=-3$, $c=5$. Taigi abiejų daugianarių koeficientai sutampa.
+
+\textbf{c)} Pažymėkime $P(x)=ax^2+bx+c$, $Q(x)=a_1x^2+b_1x+c_1$. Tapatybė teisinga ir kai $x=0$, $1$, $-1$, todėl $P(0)=Q(0)$, $P(1)=Q(1)$, $P(-1)=Q(-1)$. Pagal \ref{koef-formules} uždavinį:
+\[c=P(0)=Q(0)=c_1,\qquad b=\frac{P(1)-P(-1)}{2}=\frac{Q(1)-Q(-1)}{2}=b_1,\]
+\[a=\frac{P(1)+P(-1)}{2}-P(0)=\frac{Q(1)+Q(-1)}{2}-Q(0)=a_1.\]
+
+\textbf{d)} Jei tas pats daugianaris turėtų du standartinius užrašus, jų lygybė būtų tapatybė. Pagal c dalį atitinkami koeficientai sutaptų. Vienos bendros reikšmės nepakanka: \ref{bendra-reiksme} uždavinyje $P(1)=Q(1)=2$, nors pateikti daugianariai $P(x)=x^2-2x+3$ ir $Q(x)=2x^2+x-1$ yra skirtingi.
+
+\textbf{e)} Reiškinį $4x+4$ užrašome kaip $0\cdot x^2+4x+4$. Jei lygybė $4x+4=ax^2+bx+c$ galiotų su kiekvienu realiuoju $x$, pagal c dalį turėtų būti $a=0$, $b=4$, $c=4$. Tai prieštarauja $a\ne0$, todėl taip užrašyti negalima.
+\item Naudojame \ref{koef-formules} uždavinyje įrodytas lygybes.
+
+\textbf{a)} $c=2$, $b=\frac{6-4}{2}=1$, $a=\frac{6+4}{2}-2=3$, todėl $P(x)=3x^2+x+2$. Patikra: $P(0)=2$, $P(1)=6$, $P(-1)=4$.
+
+\textbf{b)} $c=-1$, $b=\frac{-3-5}{2}=-4$, $a=\frac{-3+5}{2}-(-1)=2$, todėl $P(x)=2x^2-4x-1$. Patikra: $P(0)=-1$, $P(1)=-3$, $P(-1)=5$.
+
+\textbf{c)} $c=3$, $b=\frac{6}{2}=3$, $a=\frac{10}{2}-3=2$, todėl $P(x)=2x^2+3x+3$. Patikra: $P(0)=3$, $P(1)=8$, $P(-1)=2$; jų suma $10$, skirtumas $6$.
+\item Neegzistuoja. Tarkime, kad toks daugianaris egzistuoja. Iš $P(0)=2$ gauname $c=2$, o iš kitų dviejų reikšmių
+\[
+a=\frac{P(1)+P(-1)}{2}-P(0)=\frac{5+(-1)}{2}-2=0.
+\]
+Tačiau turi būti $a\ne0$. Gavome prieštarą, todėl tokio daugianario nėra.
+\item
+
+\textbf{a)} $P(1)=1+k+2=6$, todėl $k=3$; gauname kvadratinį daugianarį $x^2+3x+2$.
+
+\textbf{b)} $P(-1)=2+3+k=4$, todėl $k=-1$; gauname kvadratinį daugianarį $2x^2-3x-1$.
+
+\textbf{c)} $P(2)=4k+2-2=0$, todėl $k=0$; gauname $x-2$, kuris nėra kvadratinis daugianaris, nes koeficientas prie $x^2$ lygus nuliui.
+\item Kiekvienu atveju įrašome duotą koeficientą ir pagal reikšmes sudarome dvi lygtis.
+
+\textbf{a)} $P(x)=x^2+bx+c$. Iš sąlygų gauname
+\[
+\begin{cases}1+b+c=4,\\4+2b+c=9,\end{cases}
+\qquad\text{arba}\qquad
+\begin{cases}b+c=3,\\2b+c=5.\end{cases}
+\]
+Atėmę pirmąją lygtį iš antrosios, randame $b=2$, tada $c=1$. Taigi $P(x)=x^2+2x+1$. Patikra: $P(1)=4$, $P(2)=9$.
+
+\textbf{b)} $P(x)=ax^2-2x+c$. Iš sąlygų gauname
+\[
+\begin{cases}a-2+c=2,\\4a-4+c=6,\end{cases}
+\qquad\text{arba}\qquad
+\begin{cases}a+c=4,\\4a+c=10.\end{cases}
+\]
+Atėmę pirmąją lygtį iš antrosios, gauname $3a=6$, todėl $a=2$, o $c=2$. Taigi $P(x)=2x^2-2x+2$. Patikra: $P(1)=2$, $P(2)=6$.
+
+\textbf{c)} $P(x)=ax^2+bx+3$. Sąlygos duoda
+\[
+\begin{cases}a+b+3=6,\\4a+2b+3=13,\end{cases}
+\qquad\text{arba}\qquad
+\begin{cases}a+b=3,\\4a+2b=10.\end{cases}
+\]
+Iš antrosios lygties atėmę pirmąją, padaugintą iš $2$, gauname $2a=4$, todėl $a=2$, $b=1$. Taigi $P(x)=2x^2+x+3$. Patikra: $P(1)=6$, $P(2)=13$.
+
+\textbf{d)} $P(x)=-x^2+bx+c$. Sąlygos duoda
+\[
+\begin{cases}-1-b+c=2,\\-4+2b+c=-1,\end{cases}
+\qquad\text{arba}\qquad
+\begin{cases}-b+c=3,\\2b+c=3.\end{cases}
+\]
+Atėmę pirmąją lygtį iš antrosios, gauname $3b=0$, todėl $b=0$, $c=3$. Taigi $P(x)=-x^2+3$. Patikra: $P(-1)=2$, $P(2)=-1$.
+
+\textbf{e)} $P(x)=ax^2+bx-2$, todėl $P(1)=a+b-2$, o $P(-1)=a-b-2$. Iš duotos sumos ir skirtumo gauname sistemą
+\[
+\begin{cases}2a-4=4,\\2b=6.\end{cases}
+\]
+Taigi $a=4$, $b=3$ ir $P(x)=4x^2+3x-2$. Patikra: $P(1)=5$, $P(-1)=-1$; jų suma $4$, skirtumas $6$.
+\item Nepakanka. Pavyzdžiui, $P(x)=x^2+1$ ir $Q(x)=2x^2-3$ yra skirtingi kvadratiniai daugianariai, tačiau $P(2)=4+1=5$ ir $Q(2)=8-3=5$. Taigi sąlygą atitinka bent du skirtingi daugianariai.
+\item \textbf{a)} Pagal \ref{koef-formules} uždavinio formules šios trys reikšmės vienareikšmiškai nustato $a$, $b$ ir $c$. Jei dviejų daugianarių reikšmės sutampa ties $0$, $1$, $-1$, į kiekvieną koeficiento formulę įrašome tuos pačius skaičius, todėl koeficientai sutampa.
+
+\textbf{b)} Ne. Pavyzdžiui, sąlygos $P(0)=2$, $P(1)=5$, $P(-1)=-1$ duoda $c=2$, $b=3$ ir $a=0$. Taigi jas tenkina tiesinis daugianaris $3x+2$, o kvadratinio daugianario su šiomis trimis reikšmėmis nėra.
+
+\textbf{c)} Ne visada. Abiejų daugianarių koeficientas prie $x$ yra $b=0$, be to, $P(1)=Q(1)=1$ ir $P(-1)=Q(-1)=1$. Vis dėlto $P$ ir $Q$ skiriasi. Taigi dvi sąlygos ne visuomet vienareikšmiškai nustato du likusius koeficientus; svarbu, kokios reikšmės žinomos.
+\item \textbf{a)} $a=-2$, $b=3$, $c=-1$. Įrašę $x=-1$ gauname $P(-1)=-2\cdot(-1)^2+3\cdot(-1)-1=-6$. O $P(1)=-2+3-1=0$, todėl $-P(1)=0$.
+
+\textbf{b)} Įrašę duotas reikšmes randame
+\[
+c=1,\qquad b=\frac{4-2}{2}=1,\qquad a=\frac{4+2}{2}-1=2.
+\]
+Taigi $Q(x)=2x^2+x+1$. Patikra: $Q(0)=1$, $Q(1)=2+1+1=4$, $Q(-1)=2-1+1=2$. Kadangi $a=2\ne0$, gautasis daugianaris kvadratinis.
+
+\textbf{c)} Jei toks daugianaris egzistuotų, jo koeficientas prie $x^2$ turėtų būti
+\[
+a=\frac{R(1)+R(-1)}{2}-R(0)=\frac{3+(-1)}{2}-1=0.
+\]
+Kvadratinio daugianario vyriausiasis koeficientas negali būti nulis, todėl toks kvadratinis daugianaris neegzistuoja. Šias reikšmes įgyja tiesinis daugianaris $2x+1$.
+
+\textbf{d)} Pavyzdžiui, $S(x)=x^2-7$ ir $T(x)=2x^2-16$. Abu daugianariai kvadratiniai, o $S(3)=9-7=2$ ir $T(3)=18-16=2$. Jie nesutampa su visomis $x$ reikšmėmis: $S(0)=-7$, o $T(0)=-16$. Vienos bendros reikšmės nepakanka išvadai, kad daugianariai vienodi.
+\end{enumerate}
+\end{document}

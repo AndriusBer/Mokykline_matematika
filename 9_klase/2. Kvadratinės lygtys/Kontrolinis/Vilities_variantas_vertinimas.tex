@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage{babel}\babelprovide[main,import]{lithuanian}}
+\usepackage{lmodern,amsmath,amssymb,booktabs,array,tabularx,enumitem}
+\usepackage[a4paper,margin=1.6cm]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{itemsep=3pt,topsep=4pt,parsep=0pt}
+\newcommand{\sk}[1]{\par\medskip{\large\bfseries #1}\par}
+\begin{document}
+\begin{center}
+{\Large\bfseries Kontrolinio darbo perrašymas}\\[4pt]
+{\large Vilties variantas: sprendimai ir vertinimo instrukcija}
+\end{center}
+\textbf{Kvadratinės lygtys. 6 uždaviniai; 40 taškų; 45 min.}
+
+\textbf{Galutinis taškų paskirstymas:} $6+6+8+6+8+6=40$.
+Mokinio užduočių lape prie 2, 4 ir 5 uždavinių turi būti atitinkamai 6, 6 ir 8 taškai.
+
+\sk{1 uždavinys -- 6 taškai}
+\textbf{Sąlyga.} Išspręskite lygtį $(x+3)(x-2)=2x+6$.
+
+\textbf{Sprendimas.}
+\[
+x^2+x-6=2x+6\quad\Longrightarrow\quad x^2-x-12=0.
+\]
+\[
+D=(-1)^2-4\cdot1\cdot(-12)=49,\qquad
+x=\frac{1\pm7}{2}.
+\]
+\textbf{Atsakymas:} $x=-3$ arba $x=4$.
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Teisingai atskleidžia skliaustus: $x^2+x-6=2x+6$. & 2\\
+Gauna kvadratinę lygtį $x^2-x-12=0$. & 1\\
+Gauna $D=49$, išskaido $(x-4)(x+3)=0$ arba lygiaverčiai parengia lygtį šaknims rasti. & 1\\
+Randa $x=4$. & 1\\
+Randa $x=-3$. & 1\\
+\textbf{Iš viso} & \textbf{6}\\
+\bottomrule\end{tabularx}\par
+Už skliaustų atskleidimą skirti 1 iš 2 taškų, jeigu teisingai sudarytos keturios sandaugos, bet padaryta viena ženklų ar skaičiavimo klaida.
+
+\textbf{Alternatyvus sprendimas.}
+\[
+(x+3)(x-2)-2(x+3)=0\quad\Longrightarrow\quad(x+3)(x-4)=0.
+\]
+Toks sprendimas su abiem šaknimis vertinamas 6 taškais: 3 taškai už teisingą bendrojo daugiklio iškėlimą ir sandaugos lygtį, 1 taškas už nulinės sandaugos taisyklės pritaikymą ir po 1 tašką už kiekvieną šaknį. Taisyklė gali būti pritaikyta ir be atskiro žodinio paaiškinimo.
+
+\textbf{Pastaba rengiant užduočių lapą.} Jei būtina tikrinti pertvarkymą į $ax^2+bx+c=0$, šį reikalavimą reikia aiškiai įrašyti į sąlygą. Dabartinė sąlyga leidžia trumpąjį sprendimą.
+
+\newpage
+\sk{2 uždavinys -- 6 taškai}
+\textbf{Sąlyga.} Lygties $2x^2-6x+1=0$ šaknys yra $x_1$ ir $x_2$. Nerasdami šaknų, apskaičiuokite $x_1^3+x_2^3$.
+
+\textbf{Sprendimas.} Pagal Vijetos teoremą
+\[
+x_1+x_2=3,\qquad x_1x_2=\frac12.
+\]
+\[
+\begin{aligned}
+x_1^3+x_2^3
+&=(x_1+x_2)^3-3x_1x_2(x_1+x_2)\\
+&=27-3\cdot\frac12\cdot3=\frac{45}{2}.
+\end{aligned}
+\]
+\textbf{Atsakymas:} $\dfrac{45}{2}$.
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Gauna $x_1+x_2=3$. & 1\\
+Gauna $x_1x_2=\frac12$. & 1\\
+Užrašo arba išveda tapatybę $x_1^3+x_2^3=(x_1+x_2)^3-3x_1x_2(x_1+x_2)$. & 2\\
+Teisingai įstato reikšmes: $27-3\cdot\frac12\cdot3$. & 1\\
+Apskaičiuoja $\frac{45}{2}$. & 1\\
+\textbf{Iš viso} & \textbf{6}\\
+\bottomrule\end{tabularx}\par
+Už tapatybės žingsnį skirti 1 iš 2 taškų, jeigu mokinys teisingai išskleidžia $(x_1+x_2)^3$, bet neužbaigia reikiamo pertvarkymo.
+
+\textbf{Kitas pilnavertis kelias.} Kiekviena šaknis tenkina $x_i^2=3x_i-\frac12$. Todėl
+\[
+x_i^3=3x_i^2-\frac12x_i=\frac{17}{2}x_i-\frac32,
+\qquad
+x_1^3+x_2^3=\frac{17}{2}\cdot3-3=\frac{45}{2}.
+\]
+Šiuo keliu skirti 1 tašką už šaknų sumą, 1 už ryšį $x_i^2=3x_i-\frac12$, 2 už kubo išraišką, 1 už abiejų kubų sumos sudarymą ir 1 už rezultatą.
+
+\textbf{Jei mokinys pirmiausia randa šaknis,} už pilną teisingą tokį sprendimą skirti daugiausia 3 taškus: 1 už abi šaknis, 1 už teisingai sudarytą jų kubų sumą ir 1 už rezultatą. Neįvykdytas reikalavimas „nerasdami šaknų“.
+
+\newpage
+\sk{3 uždavinys -- 8 taškai}
+\textbf{Sąlyga.} Raskite visas parametro $m$ reikšmes, su kuriomis lygties
+\[
+x^2-(m+2)x+2m=0
+\]
+realiosios šaknys tenkina $x_1^2+x_2^2=20$. Patikrinkite realiųjų šaknų egzistavimą.
+
+\textbf{Sprendimas.} Pagal Vijetos teoremą
+\[
+x_1+x_2=m+2,\qquad x_1x_2=2m.
+\]
+\[
+x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2=(m+2)^2-4m=m^2+4.
+\]
+\[
+m^2+4=20\quad\Longrightarrow\quad m^2=16\quad\Longrightarrow\quad m=\pm4.
+\]
+Realiųjų šaknų egzistavimas:
+\[
+D=(m+2)^2-8m=(m-2)^2\ge0.
+\]
+Taigi abi parametro reikšmės tinka. \textbf{Atsakymas:} $m=-4$ arba $m=4$.
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Gauna $x_1+x_2=m+2$. & 1\\
+Gauna $x_1x_2=2m$. & 1\\
+Pritaiko $x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2$. & 1\\
+Sudaro $(m+2)^2-4m=20$. & 1\\
+Teisingai suprastina iki $m^2=16$. & 1\\
+Randa abi reikšmes $m=-4$ ir $m=4$. & 1\\
+Pagrindžia realiųjų šaknų egzistavimą, kai $m=-4$. & 1\\
+Pagrindžia realiųjų šaknų egzistavimą, kai $m=4$. & 1\\
+\textbf{Iš viso} & \textbf{8}\\
+\bottomrule\end{tabularx}\par
+Už bendrą patikrą $D=(m-2)^2\ge0$ skiriami abu paskutiniai taškai. Vien už nepatikrintą teiginį „abi tinka“ šių taškų neskirti.
+
+\textbf{Alternatyvus sprendimas.} Išskaidoma $(x-m)(x-2)=0$, todėl šaknys yra $m$ ir $2$. Gaunama $m^2+4=20$, taigi $m=\pm4$. Abi šaknys realios abiem gautais atvejais.
+
+Šiuo keliu skirti 2 taškus už išskaidymą, 1 už abiejų šaknų nustatymą, 1 už sąlygos lygtį, 1 už $m^2=16$, 1 už abi parametro reikšmes ir 2 už realumo pagrindimą. Teisingai parodytos realiosios šaknys abiem atvejais yra pakankamas realumo pagrindimas; diskriminanto nereikalauti.
+
+\newpage
+\sk{4 uždavinys -- 6 taškai}
+\textbf{Sąlyga.} Įvesdami tinkamą keitinį, išspręskite $x^4-5x^2-6=0$.
+
+\textbf{Sprendimas.} Įvedame $t=x^2$, $t\ge0$:
+\[
+t^2-5t-6=0\quad\Longrightarrow\quad(t-6)(t+1)=0.
+\]
+Gauname $t=6$ arba $t=-1$. Antroji reikšmė netinka, nes $x^2\ge0$. Iš $x^2=6$ gauname $x=\pm\sqrt6$.
+
+\textbf{Atsakymas:} $x=-\sqrt6$ arba $x=\sqrt6$.
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Įveda keitinį $t=x^2$. & 1\\
+Gauna $t^2-5t-6=0$. & 1\\
+Randa $t=6$. & 1\\
+Randa $t=-1$. & 1\\
+Pagrįstai atmeta $t=-1$. & 1\\
+Iš $x^2=6$ gauna abi reikšmes $x=\pm\sqrt6$. & 1\\
+\textbf{Iš viso} & \textbf{6}\\
+\bottomrule\end{tabularx}\par
+Atmetimo pagrindimu laikomas ir iš anksto užrašytas $t\ge0$, jei toliau aiškiai pasirenkamas tik $t=6$. Jei užrašyta tik viena iš dviejų šaknų, paskutinis taškas neskiriamas.
+
+Jei mokinys sprendžia be keitinio, išskaidydamas $(x^2-6)(x^2+1)=0$, už pilną teisingą sprendimą skirti daugiausia 4 taškus: 2 už išskaidymą, 1 už $x^2+1>0$ pagrindimą ir 1 už abi realiąsias šaknis. Taip išlaikomas sąlygoje reikalaujamo metodo vertinimas.
+
+\sk{5 uždavinys -- 8 taškai}
+\textbf{Sąlyga.} Įvesdami tinkamą keitinį, išspręskite
+\[
+\frac{x-2}{x+1}-2\frac{x+1}{x-2}=1.
+\]
+\textbf{Sprendimas.} $x\ne-1$, $x\ne2$. Įvedame
+\[
+t=\frac{x-2}{x+1},\qquad t\ne0.
+\]
+\[
+t-\frac2t=1\quad\Longrightarrow\quad t^2-t-2=0
+\quad\Longrightarrow\quad t=2\ \text{arba}\ t=-1.
+\]
+\[
+\begin{aligned}
+t=2:&\quad x-2=2(x+1)\quad\Longrightarrow\quad x=-4;\\
+t=-1:&\quad x-2=-(x+1)\quad\Longrightarrow\quad x=\frac12.
+\end{aligned}
+\]
+Abi reikšmės leidžiamos. \textbf{Atsakymas:} $x=-4$ arba $x=\frac12$.
+
+\newpage
+\sk{5 uždavinio vertinimas (tęsinys)}
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Nurodo abu apribojimus $x\ne-1$, $x\ne2$ arba patikrina abu pradinius vardiklius gautoms šaknims. & 1\\
+Įveda $t=\frac{x-2}{x+1}$ ir gauna $t-\frac2t=1$. & 1\\
+Gauna $t^2-t-2=0$. & 1\\
+Randa abi reikšmes $t=2$, $t=-1$. & 1\\
+Kai $t=2$, gauna $x-2=2(x+1)$ arba lygiavertę tiesinę lygtį. & 1\\
+Išsprendžia: $x=-4$. & 1\\
+Kai $t=-1$, gauna $x-2=-(x+1)$ arba lygiavertę tiesinę lygtį. & 1\\
+Išsprendžia: $x=\frac12$. & 1\\
+\textbf{Iš viso} & \textbf{8}\\
+\bottomrule\end{tabularx}\par
+Atskiro užrašo $t\ne0$ nereikalauti, jei nurodyta $x\ne2$.
+
+Jei lygtis išspręsta be keitinio, dauginant iš bendrojo vardiklio, skirti daugiausia 6 taškus: 1 už apribojimus arba patikrą, 1 už teisingą lygtį be vardiklių, 1 už kvadratinę lygtį $2x^2+7x-4=0$, 1 už tinkamą jos sprendimo eigą ir po 1 už kiekvieną šaknį.
+
+\sk{6 uždavinys -- 6 taškai}
+\textbf{Sąlyga.} Išskaidykite dauginamaisiais: a) $2x^2-7x+3$; b) $x^3-3x^2+2x-6$.
+
+\textbf{a) Sprendimas.}
+\[
+D=49-24=25,\qquad x_1=\frac12,\quad x_2=3,
+\qquad 2x^2-7x+3=(2x-1)(x-3).
+\]
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Randa vieną šaknį arba teisingai nustato vieną tiesinį daugiklį. & 1\\
+Randa kitą šaknį arba teisingai nustato kitą tiesinį daugiklį. & 1\\
+Užrašo tikslią sandaugą $(2x-1)(x-3)$, išlaikydamas vyriausiąjį koeficientą. & 1\\
+\textbf{Iš viso už a)} & \textbf{3}\\
+\bottomrule\end{tabularx}\par
+Atsakymas $(x-\frac12)(x-3)$ vertinamas 2 taškais: šaknys nustatytos teisingai, bet prarastas koeficientas 2.
+
+\textbf{b) Sprendimas.}
+\[
+x^3-3x^2+2x-6=x^2(x-3)+2(x-3)=(x-3)(x^2+2).
+\]
+\par\smallskip\renewcommand{\arraystretch}{1.2}\begin{tabularx}{\linewidth}{@{}X>{\centering\arraybackslash}p{1.1cm}@{}}\toprule Vertinamas pasiekimas & Taškai\\\midrule
+Tikslingai sugrupuoja: $(x^3-3x^2)+(2x-6)$. & 1\\
+Iškelia bendruosius daugiklius: $x^2(x-3)+2(x-3)$. & 1\\
+Užbaigia: $(x-3)(x^2+2)$. & 1\\
+\textbf{Iš viso už b)} & \textbf{3}\\
+\bottomrule\end{tabularx}\par
+Abiejose dalyse teisinga galutinė sandauga pakankamai parodo rezultatą ir vertinama visais 3 taškais. Tarpinių eilučių nereikalauti.
+
+\newpage
+\sk{Bendrosios vertinimo taisyklės}
+\begin{enumerate}[leftmargin=*,itemsep=8pt]
+\item \textbf{Vienos klaidos pakartotinai nebausti.} Po vienos aritmetinės ar ženklų klaidos tolesnius teisingus veiksmus vertinti pagal mokinio gautus duomenis, jei klaida iš esmės nesupaprastino uždavinio. Nauja nepriklausoma klaida vertinama atskirai.
+\item \textbf{Priimti lygiaverčius metodus.} Kai sąlyga aiškiai reikalauja konkretaus būdo, taikyti prie atitinkamo uždavinio nurodytas ribas. Trumpesnis pagrįstas sprendimas savaime nėra mažiau vertas.
+\item \textbf{Tarpiniai žingsniai gali būti numanomi iš teisingo pertvarkymo.} Nereikalauti atskiros eilutės vien tam, kad būtų pažymėtas kriterijus. Pavyzdžiui, tinkama sandauga ir abi šaknys gali pagrįsti kelis susijusius pasiekimus.
+\item \textbf{Už atsakymo perrašymą į langelį papildomai taškų neskirti ir neatimti.} Pakanka, kad rezultatas būtų aiškiai matomas sprendime. Vertinti galutinį mokinio pasirinktą atsakymą ir jo sprendimą.
+\item \textbf{Neteisingas atsakymas nepanaikina teisingos eigos.} Skirti taškus už teisingai atliktus vertinamus žingsnius, atsižvelgiant į vienos klaidos taisyklę.
+\item \textbf{Vien atsakymas nėra visas sprendimas.} Jei jokios eigos nėra, skirti tik lentelėje numatytus galutinio rezultato taškus: 1 uždavinyje iki 2; 2 uždavinyje 1; 3 uždavinyje 1; 4 uždavinyje 1; 5 uždavinyje iki 2. 6 uždavinyje teisinga sandauga vertinama visais atitinkamos dalies taškais.
+\item \textbf{Vertinti sveikaisiais taškais.} Netaikyti papildomų bendrų nuoskaitų už tvarką ar pasirinktą žymėjimą, jei matematinė mintis aiški.
+\item \textbf{Nedubliuoti vertinimo.} Alternatyvių sprendimo kelių taškai nesumuojami. Už vieną uždavinį negalima skirti daugiau nei jo maksimalus taškų skaičius.
+\item \textbf{Pažymio apvalinimas.} Surinktų taškų procentinę išraišką padalyti iš 10. Kai surinkta mažiau nei 70\%, gautą skaičių apvalinti į didesnę pusę iki sveikojo pažymio: 61\% atitinka 6,1, todėl pažymys yra 7. Nuo 70\% taikyti įprastą matematinį apvalinimą: 72\% atitinka 7,2, todėl pažymys yra 7, o 76\% atitinka 7,6, todėl pažymys yra 8.
+\end{enumerate}
+\medskip
+\begin{center}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Uždavinys & 1 & 2 & 3 & 4 & 5 & 6 & Iš viso\\
+\midrule
+Taškai & 6 & 6 & 8 & 6 & 8 & 6 & \textbf{40}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{document}
