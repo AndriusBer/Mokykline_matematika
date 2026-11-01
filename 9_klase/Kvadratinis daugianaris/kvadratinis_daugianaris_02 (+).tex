@@ -1,7 +1,22 @@
 \documentclass[12pt,a4paper]{article}
+\usepackage{iftex}
+% Veikia su pdfLaTeX, XeLaTeX ir LuaLaTeX.
+\ifPDFTeX
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\else
 \usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
-\setsansfont{Latin Modern Sans}
+% Unicode varikliams šriftus įkeliame iš TeX failų.
+\setmainfont{lmroman12-regular.otf}[
+	BoldFont=lmroman12-bold.otf,
+	ItalicFont=lmroman12-italic.otf,
+	BoldItalicFont=lmroman10-bolditalic.otf]
+\setsansfont{lmsans12-regular.otf}[
+	BoldFont=lmsans10-bold.otf,
+	ItalicFont=lmsans12-oblique.otf,
+	BoldItalicFont=lmsans10-boldoblique.otf]
+\fi
 \IfFileExists{lithuanian.ldf}{\usepackage[lithuanian]{babel}}{\usepackage[provide=*]{babel}\babelprovide[main,import]{lithuanian}}
 \usepackage{amsmath,amssymb,multicol,enumitem,needspace,tikz,tcolorbox}
 \usepackage[left=1.6cm,right=1.6cm,top=1.5cm,bottom=1.5cm]{geometry}
@@ -61,7 +76,7 @@ Kokį ryšį matote tarp koeficiento prie $x$ ir skaičiaus skliaustuose?
 \begin{enumerate}
 \item Kiek vienetinių kvadratėlių reikės? Paaiškinkite.
 \item Užrašykite figūros plotą kaip pradinio kvadrato, stačiakampių ir mažųjų kvadratėlių plotų sumą.
-\item Užrašykite naujojo kvadrato plotą pagal jo kraštinę, palyginkite su b dalies rezultatu ir išskirkite pilnąjį kvadratą reiškinyje $x^2+14x$.
+\item Užrašykite naujojo kvadrato plotą pagal jo kraštinę ir prilyginkite jį b dalyje gautai plotų sumai. Iš abiejų lygybės pusių atimkite pridėtų vienetinių kvadratėlių plotą. Kaip dabar galite užrašyti reiškinį $x^2+14x$?
 \end{enumerate}
 \item Tarkime, kad $x>0$ ir $b>0$. Kvadratas, kurio kraštinė $x$, ir du stačiakampiai, kurių kraštinės $x$ ir $\frac{b}{2}$, sudėti taip, kaip pavaizduota brėžinyje.
 \begin{center}
@@ -85,7 +100,7 @@ Kokį ryšį matote tarp koeficiento prie $x$ ir skaičiaus skliaustuose?
 \begin{enumerate}
 \item Apskaičiuokite $A$, $B$ ir $C$ sričių plotų sumą. Kodėl ji lygi $x^2+bx$?
 \item Koks turi būti kvadrato $D$ plotas, kad sričių $A$, $B$, $C$ ir $D$ visuma sudarytų kvadratą? Koks to kvadrato kraštinės ilgis ir plotas?
-\item Remdamiesi brėžiniu paaiškinkite, kodėl
+\item Kaip iš viso didžiojo kvadrato ploto rasti tik sričių $A$, $B$ ir $C$ plotų sumą? Pasinaudokite a ir b dalyse gautais rezultatais ir užrašykite lygybę: kairėje pusėje -- sričių $A$, $B$ ir $C$ plotų sumą, dešinėje -- didžiojo kvadrato plotą, iš kurio atimtas kvadrato $D$ plotas. Paaiškinkite, kodėl gaunate
 \[
 x^2+bx=\left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2.
 \]
@@ -99,9 +114,9 @@ x^2+bx=\left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2.
 Kodėl skliaustuose rašome $\frac{b}{2}$? Kodėl paskui atimame $\left(\frac{b}{2}\right)^2$?
 
 
-\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $x^2+bx$? Paaiškinkite, kodėl skliaustuose rašoma $\frac b2$ ir kodėl atimamas šio skaičiaus kvadratas.
-
 \textbf{Pilnojo kvadrato išskyrimas} – tai reiškinio pertvarkymas taip, kad jame atsirastų kintamojo ir skaičiaus sumos arba skirtumo kvadratas. Pavyzdžiui, įrodytoje lygybėje toks kvadratas yra $\left(x+\frac{b}{2}\right)^2$. Kvadratinio daugianario užrašas $a(x-h)^2+k$, kai $a\ne 0$, o $a$, $h$ ir $k$ yra realieji skaičiai, vadinamas jo \textbf{pilnojo kvadrato pavidalu}.
+
+\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $x^2+bx$? Paaiškinkite, kodėl skliaustuose rašoma $\frac b2$ ir kodėl atimamas šio skaičiaus kvadratas.
 
 \item Užrašykite reiškinius pavidalu $(x-h)^2+k$. Atsakymus patikrinkite atskliausdami.
 \begin{multicols}{3}\begin{enumerate}
