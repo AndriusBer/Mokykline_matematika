@@ -15,11 +15,10 @@
 \foreach \t in {3,7}{\draw[thick] (\t,-0.09)--(\t,0.09);\draw[fill=white,thick] (\t,0) circle(2pt);}
 \node[below] at (3,-0.12) {$#1$};\node[below] at (7,-0.12) {$#2$};
 \node at (1.5,0.4) {\zenklas{#3}};\node at (5,0.4) {\zenklas{#4}};\node at (8.5,0.4) {\zenklas{#5}};
-\node[above] at (3,0.08) {\scriptsize $0$};\node[above] at (7,0.08) {\scriptsize $0$};
 \end{tikzpicture}\end{center}}
 \newcommand{\vientaske}[3]{\begin{center}\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
 \draw[->,thick] (0,0)--(10,0) node[right] {$x$};\draw[thick] (5,-0.09)--(5,0.09);\draw[fill=white,thick] (5,0) circle(2pt);
-\node[below] at (5,-0.12) {$#1$};\node[above] at (5,0.08) {\scriptsize $0$};\node at (2.5,0.4) {\zenklas{#2}};\node at (7.5,0.4) {\zenklas{#3}};
+\node[below] at (5,-0.12) {$#1$};\node at (2.5,0.4) {\zenklas{#2}};\node at (7.5,0.4) {\zenklas{#3}};
 \end{tikzpicture}\end{center}}
 \newcommand{\paruosiamojitiese}[2]{\begin{center}\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
 \draw[->,thick] (0,0)--(10,0) node[right] {$x$};
@@ -52,20 +51,35 @@ Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teis
 \begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
 \item \textcolor{green!45!black}{\textbf{$+$}} rašome virš intervalo tada, kai su \emph{kiekviena} to intervalo $x$ reikšme reiškinys yra teigiamas, t. y. didesnis už nulį;
 \item \textcolor{red!75!black}{\textbf{$-$}} rašome virš intervalo tada, kai su \emph{kiekviena} to intervalo $x$ reikšme reiškinys yra neigiamas, t. y. mažesnis už nulį;
-\item ženklų tiesėje šaknį atitinkančią $x$ reikšmę žymime tuščiaviduriu tašku, o $0$ virš jo rodo, kad reiškinio reikšmė ten lygi nuliui. Tuščiaviduris taškas rodo, kad ši reikšmė neįeina į gretimus intervalus, kuriuose reiškinys griežtai teigiamas arba griežtai neigiamas. Šaknis vis tiek priklauso nagrinėjamai skaičių tiesei ir yra $P(x)=0$ sprendinys.
+\item ženklų tiesėje šaknį atitinkančią $x$ reikšmę žymime tuščiaviduriu tašku. Tuščiaviduris taškas rodo, kad šioje reikšmėje reiškinys lygus $0$, todėl ji neįeina į gretimus intervalus, kuriuose reiškinys griežtai teigiamas arba griežtai neigiamas. Šaknis vis tiek priklauso nagrinėjamai skaičių tiesei ir yra $P(x)=0$ sprendinys.
 \end{itemize}
 \textbf{Pavyzdys.} Nagrinėkime $T(x)=x-3$. Kai $x<3$, tai $x-3<0$ – kairėje nuo $3$ rašome $-$. Kai $x>3$, tai $x-3>0$ – dešinėje rašome $+$. Kai $x=3$, gauname $T(3)=0$:
 \begin{center}
 \begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
 \draw[<-,thick,red!75!black] (0,0)--(5,0);\draw[->,thick,green!45!black] (5,0)--(10,0);
 \draw[black,thick] (5,-0.09)--(5,0.09);\draw[fill=white,thick] (5,0) circle(2pt);
-\node[below] at (5,-0.12) {$3$};\node[above] at (5,0.08) {\scriptsize $0$};
+\node[below] at (5,-0.12) {$3$};
 \node[above,red!75!black] at (2.5,0.13) {\large $-$};\node[above,green!45!black] at (7.5,0.13) {\large $+$};
 \node[left] at (0,0) {$T(x)$:};\node[right] at (10,0) {$x$};
 \node[below] at (2.5,-0.12) {\small $x<3$};\node[below] at (7.5,-0.12) {\small $x>3$};
 \end{tikzpicture}
 \end{center}
-Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą pagrindžia aukščiau pateiktas palyginimas su $3$, o ne vien šie du skaičiavimai. Tolesniuose brėžiniuose spalvos padeda atpažinti ženklą, bet juo laikome $+$ arba $-$ simbolį. Ženklas virš intervalo galioja visam intervalui, o pažymėtame nulyje reiškinys nėra nei teigiamas, nei neigiamas. Brėžiniai nėra masteliniai. Atviri intervalo galai rašomi skliaustais, pavyzdžiui, $(2;5)$, o įtraukti galai – laužtiniais skliaustais: $[2;5]$ reiškia $2\le x\le5$. Sprendinių aibės brėžinyje įtrauktas galas žymimas pilnaviduriu tašku, neįtrauktas – tuščiaviduriu. Pavyzdžiui, $x\ge2$ sprendiniuose taškas $2$ įtraukiamas, o $x>2$ – ne. Ženklai $\pm\infty$ nėra skaičiai, todėl šalia jų visada rašome apvaliuosius skliaustus.
+Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą pagrindžia aukščiau pateiktas palyginimas su $3$, o ne vien šie du skaičiavimai.
+
+\medskip
+\textbf{Ką dar svarbu žinoti apie brėžinius?}
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
+\item Tolesniuose brėžiniuose spalvos padeda atpažinti ženklą, bet juo laikome $+$ arba $-$ simbolį.
+\item Ženklas virš intervalo galioja visam intervalui, o tuščiaviduriame taške reiškinys lygus $0$, todėl nėra nei teigiamas, nei neigiamas.
+\item Brėžiniai nubraižyti ne pagal mastelį.
+\end{itemize}
+
+\textbf{Kaip užrašome intervalus ir sprendinių aibes?}
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
+\item Atviri intervalo galai rašomi apvaliaisiais skliaustais, pavyzdžiui, $(2;5)$, o įtraukti galai – laužtiniais: $[2;5]$ reiškia $2\le x\le5$.
+\item Sprendinių aibės brėžinyje įtrauktas galas žymimas pilnaviduriu tašku, neįtrauktas – tuščiaviduriu. Pavyzdžiui, $x\ge2$ sprendiniuose taškas $2$ įtraukiamas, o $x>2$ – ne.
+\item Ženklai $\pm\infty$ nėra skaičiai, todėl šalia jų visada rašome apvaliuosius skliaustus.
+\end{itemize}
 \needspace{4.5cm}
 \begin{enumerate}[series=uzdaviniai]
 \item Nagrinėkite reiškinį $x-2$.
@@ -75,29 +89,29 @@ Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą p
 \item Nubraižykite skaičių tiesę ir pažymėkite ženklus.
 \end{enumerate}
 \item $\star$ \begin{enumerate}
-\item Kai $t$ realusis, nustatykite reiškinio $x-t$ ženklą kiekvienu iš atvejų $x<t$, $x=t$, $x>t$. Paaiškinkite.
-\item Pritaikykite išvadą reiškiniams $x+3$ ir $x-5$. Kur yra kiekvieno jų nulis?
+\item Tegul $t$ yra bet koks realusis skaičius. Kokį ženklą turi $x-t$, kai $x<t$, kai $x=t$ ir kai $x>t$? Paaiškinkite kiekvieną atvejį.
+\item Pritaikykite išvadą reiškiniams $x+3$ ir $x-5$. Su kuria $x$ reikšme kiekvienas iš jų lygus $0$? Kokį ženklą jie turi kairėje ir dešinėje nuo tos reikšmės?
 \end{enumerate}
-\item Duotas $P(x)=(x-1)(x-4)$. 9 temos 13d punkte nustatėme sandaugos ženklą su dviem konkrečiomis $x$ reikšmėmis. Dabar dauginamųjų ženklus tirsime kiekviename intervale. Žemiau pažymėtos abiejų dauginamųjų nulius atitinkančios reikšmės ir trys jų atskirti intervalai.
+\item Duotas $P(x)=(x-1)(x-4)$. Šiame uždavinyje tirsime, kaip kinta $P(x)$ ženklas. Skaičių tiesėje pažymėtos reikšmės $x=1$ ir $x=4$, su kuriomis vienas iš dauginamųjų lygus $0$; jos padalija tiesę į tris intervalus.
 \paruosiamojitiese{1}{4}
 \begin{enumerate}
-\item Pažymėkite $1$ ir $4$ skaičių tiesėje. Į kokius intervalus jie padalija tiesę?
+\item Užrašykite tris intervalus, į kuriuos taškai $1$ ir $4$ padalija skaičių tiesę.
 \item Kiekviename intervale nustatykite dauginamųjų $x-1$ ir $x-4$ ženklus ir pagal sandaugos ženklų taisyklę nustatykite $P(x)$ ženklą.
-\item Atskirai nustatykite $P(1)$ ir $P(4)$. Patikrinkite, apskaičiuodami $P(0)$, $P(2)$ ir $P(5)$.
+\item Atskirai nustatykite $P(1)$ ir $P(4)$. Apskaičiuokite $P(0)$, $P(2)$ ir $P(5)$ ir palyginkite su ženklais, kuriuos gavote b dalyje.
 \item Nubraižykite $P(x)$ ženklų tiesę ir atsakykite, kur $P(x)>0$, kur $P(x)<0$, o kur $P(x)=0$.
 \end{enumerate}
 \item Tegul $P(x)=-(x-1)(x-4)$.
 \begin{enumerate}
-\item Pasinaudodami 3 uždaviniu paaiškinkite, kaip daugiklis $-1$ pakeičia sandaugos ženklą. Kas nutinka nuliams?
+\item Pasinaudodami 3 uždaviniu paaiškinkite, kaip dauginimas iš $-1$ pakeičia ženklą. Ką gauname, kai $x=1$ ir kai $x=4$?
 \item Nustatykite ir skaičių tiesėje pažymėkite, kur $P(x)>0$, kur $P(x)<0$ ir kur $P(x)=0$.
 \end{enumerate}
-\item $\star$ Duota, kad $r<s$, o $P(x)=a(x-r)(x-s)$, $a\ne0$.
+\item $\star$ Tegul $r<s$ ir $P(x)=a(x-r)(x-s)$, $a\ne0$.
 \paruosiamojitiese{r}{s}
 \begin{enumerate}
 \item Kiekviename intervale $(-\infty;r)$, $(r;s)$, $(s;+\infty)$ nustatykite $x-r$ ir $x-s$ ženklus. Koks yra jų sandaugos ženklas?
 \item Remdamiesi a dalimi išnagrinėkite $P(x)$ ženklus, kai $a>0$, ir juos pavaizduokite skaičių tiesėje.
 \item Tą patį padarykite, kai $a<0$. Atskirai nurodykite, ką gauname ties $x=r$ ir $x=s$.
-\item Paaiškinkite, kodėl šaknų $r$, $s$ tvarka šioje sąlygoje svarbi nurodant intervalus.
+\item Kodėl užrašant intervalą $(r;s)$ reikia sąlygos $r<s$? Kas pasikeistų, jei būtų $r>s$?
 \end{enumerate}
 \par\medskip
 \textbf{Sustok ir apibendrink.} Kaip pagal dauginamųjų ženklus nustatyti $a(x-r)(x-s)$ ženklą kiekviename intervale? Ką žinome šaknyse?
@@ -113,13 +127,13 @@ Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą p
 \item Duotas $P(x)=(x-2)^2$.
 \begin{enumerate}
 \item Kodėl $P(x)\geq0$ kiekvienam $x$? Kada $P(x)=0$?
-\item Įrodykite, kad, kai $x\ne2$, yra $P(x)>0$. Palyginkite ženklus kairėje ir dešinėje $2$ pusėse. Kokia reikšmė yra ties $x=2$?
+\item Įrodykite, kad kai $x\ne2$, $P(x)>0$. Palyginkite $P(x)$ ženklus, kai $x<2$ ir kai $x>2$. Kam lygus $P(2)$?
 \item Pavaizduokite ženklų tiesę ir palyginkite ją su 3 uždavinio ženklų tiese.
 \end{enumerate}
 \item $\star$ Tegul $P(x)=a(x-r)^2$, $a\ne0$.
 \begin{enumerate}
 \item Nustatykite $P(r)$ ir paaiškinkite, kodėl $(x-r)^2>0$, kai $x\ne r$.
-\item Nubraižykite ženklų tieses, kai $a>0$ ir kai $a<0$. Palyginkite daugianario ženklus kairėje ir dešinėje šaknies $r$ pusėse. Kokia reikšmė yra pačioje šaknyje?
+\item Nubraižykite ženklų tieses, kai $a>0$ ir kai $a<0$. Palyginkite ženklus, kai $x<r$ ir kai $x>r$. Kam lygus $P(r)$?
 \end{enumerate}
 \par\medskip
 \textbf{Sustok ir apibendrink.} Kaip skiriasi ženklai abipus dvigubosios šaknies? Kokia reikšmė yra pačioje šaknyje?
@@ -136,13 +150,13 @@ Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą p
 \item $\star$ Tegul $P(x)=ax^2+bx+c$, $a\ne0$, ir $D<0$. Iš 4 temos 2 uždavinio žinome tapatybę
 \[P(x)=a\left(x+\frac{b}{2a}\right)^2-\frac{D}{4a}.\]
 \begin{enumerate}
-\item Remdamiesi diskriminanto ženklu paaiškinkite, kiek daugianaris turi realiųjų šaknų.
+\item Kodėl, kai $D<0$, daugianaris neturi realiųjų šaknų?
 \item Tarkime, $a>0$. Nustatykite $-\frac{D}{4a}$ ženklą ir įrodykite, kad $P(x)>0$ kiekvienam realiajam $x$.
 \item Tą patį padarykite, kai $a<0$. Palyginkite daugianario ženklą su $a$ ženklu.
 \end{enumerate}
 \par\medskip
 \textbf{Sustok ir apibendrink.} Kodėl, kai $D<0$, daugianario ženklas visur sutampa su $a$ ženklu?
-\item Nustatykite ženklą visoje skaičių tiesėje ir kiekvieną išvadą pagrįskite.
+\item Nustatykite daugianario ženklą visoje skaičių tiesėje ir kiekvieną išvadą pagrįskite.
 \begin{enumerate}
 \item $x^2+2x+5$; \item $-x^2+4x-7$; \item $2x^2+2$.
 \end{enumerate}
@@ -154,26 +168,26 @@ Pavyzdžiui, $T(2)=-1<0$, o $T(5)=2>0$. Visų kitų intervalo taškų ženklą p
 \item Duota, kad kvadratinio daugianario $P(x)$ šaknys yra $-2$ ir $4$, o $P(0)=8$.
 \begin{enumerate}
 \item Užrašykite $P(x)$ sandaugos pavidalu ir raskite $a$.
-\item Nustatykite $P$ ženklą visoje skaičių tiesėje. Koks ekstremumo taškas ir koks ekstremumas?
-\item Patikrinkite $P(0)$ ir paaiškinkite, kodėl daugianaris nustatytas vienareikšmiškai.
+\item Nustatykite $P$ ženklą visoje skaičių tiesėje. Raskite ekstremumo tašką ir ekstremumo reikšmę.
+\item Paaiškinkite, kodėl šių duomenų pakanka vienam daugianariui nustatyti.
 \end{enumerate}
 \item Tarkime, kvadratinio daugianario $P(x)$ minimumas yra $-4$, o minimumo taškas $x=3$; be to, $P(1)=4$.
 \begin{enumerate}
-\item Raskite $P(x)$ pilnojo kvadrato pavidalą.
+\item Užrašykite $P(x)$ pilnojo kvadrato pavidalu su nežinomu $a$ ir, naudodamiesi $P(1)=4$, raskite $a$.
 \item Raskite šaknis ir sandaugos pavidalą.
 \item Nustatykite ženklą visoje skaičių tiesėje ir patikrinkite duotas sąlygas.
 \end{enumerate}
 \item $\star$ Mokinys sako: „Kadangi $P(0)>0$ ir $P(5)>0$, tai $P(x)>0$ visiems $x$ tarp $0$ ir $5$.“ Nagrinėkite $P(x)=(x-1)(x-4)$.
 \begin{enumerate}
 \item Apskaičiuokite $P(0)$, $P(5)$ ir $P(2)$. Ar mokinio išvada teisinga?
-\item Kokią tiesės dalį užima taškai $1$ ir $4$? Paaiškinkite, kodėl šaknys padalija intervalą $(0;5)$.
-\item Kodėl išnagrinėjus dauginamųjų ženklus žinome, kad $P$ ženklas kiekviename iš intervalų $(-\infty;1)$, $(1;4)$, $(4;+\infty)$ yra pastovus? Paaiškinkite, kodėl tada kiekvieno tokio intervalo ženklui nustatyti pakanka vieno jame pasirinkto taško.
+\item Pažymėkite skaičių tiesėje taškus $0$, $1$, $4$, $5$. Ar šaknys $1$ ir $4$ yra tarp $0$ ir $5$? Į kiek dalių jos suskaido intervalą $(0;5)$ ir kodėl vien reikšmių $P(0)$ ir $P(5)$ nepakanka daryti išvadą apie visą šį intervalą?
+\item Kodėl kiekviename iš intervalų $(-\infty;1)$, $(1;4)$, $(4;+\infty)$ daugianario $P(x)$ ženklas pastovus?
+\item Kodėl tada kiekvieno tokio intervalo ženklui nustatyti pakanka vieno jame pasirinkto taško?
 \end{enumerate}
 \par\medskip
-\textbf{Sustok ir apibendrink.} Kada, remiantis jau pagrįstu pastoviu ženklu, vieno pasirinkto taško pakanka intervalo ženklui nustatyti? Kodėl dviejų teigiamų reikšmių neužtenka visam tarp jų esančiam intervalui?
-\item Kvadratinio daugianario $P(x)$ ženklų tiesė yra tokia:
+\textbf{Sustok ir apibendrink.} Kada intervalo ženklą galima nustatyti pagal vieną jo tašką? Kodėl dviejų teigiamų reikšmių (kaip $P(0)$ ir $P(5)$) neužtenka?
+\item Kvadratinio daugianario $P(x)$ ženklų tiesė yra tokia, o $P(0)=-8$:
 \dutaske{1}{4}{-}{+}{-}
-Be to, $P(0)=-8$.
 \begin{enumerate}
 \item Ką iš brėžinio galite pasakyti apie šaknis ir vyriausiojo koeficiento ženklą?
 \item Užrašykite $P(x)$ sandaugos pavidalu ir, naudodamiesi $P(0)$, raskite vyriausiąjį koeficientą.
@@ -185,7 +199,7 @@ o jo minimumas lygus $-8$.
 \begin{enumerate}
 \item Raskite šaknis, ekstremumo tašką ir užrašykite $P(x)$ per vyriausiąjį koeficientą $a$.
 \item Iš minimumo raskite $a$, tada užrašykite $P(x)$ visais trimis pavidalais.
-\item Patikrinkite ženklų tiesę ir minimumą. Kodėl toks daugianaris vienintelis?
+\item Patikrinkite ženklų tiesę ir minimumą. Kodėl šie duomenys nusako tik vieną daugianarį?
 \end{enumerate}
 \needspace{4cm}
 \item Kvadratinio daugianario $P(x)$ ženklų tiesė yra
@@ -193,42 +207,46 @@ o jo minimumas lygus $-8$.
 o $P(2)=-6$. Raskite $P(x)$, jo ekstremumo tašką ir ekstremumą. Patikrinkite atsakymą.
 \item Kvadratinio daugianario $P(x)$ ženklų tiesė yra
 \dutaske{-1}{3}{-}{+}{-}
-o diskriminantas lygus $64$. Raskite visus tokius daugianarius. Remkitės šaknų formule arba ryšiu $D=a^2(x_1-x_2)^2$; paaiškinkite, kaip panaudojate $a$ ženklą, ir patikrinkite gautą rezultatą.
-\item Kvadratinio daugianario ženklų tiesėje nėra nulių, o ženklas visur teigiamas:
+o diskriminantas lygus $64$. Raskite visus tokius daugianarius.
+\begin{enumerate}
+\item Užrašykite $P(x)$ per $a$ ir išreikškite $D$ per $a$ (galite remtis šaknų formule arba ryšiu $D=a^2(x_1-x_2)^2$).
+\item Raskite $a$, panaudodami ženklų tiesę, ir patikrinkite gautą rezultatą.
+\end{enumerate}
+\item Kvadratinio daugianario $P(x)$ ženklų tiesė rodo, kad $P(x)>0$ su visomis $x$ reikšmėmis (šaknų nėra):
 \visaaxis{+}
 Žinoma, kad minimumo taškas yra $x=2$, minimumas yra $3$, o $P(0)=11$. Raskite $P(x)$ standartiniu ir pilnojo kvadrato pavidalais. Ar jis turi realiųjų šaknų? Patikrinkite visas sąlygas.
 \item Kvadratinio daugianario ženklų tiesė yra tokia:
 \vientaske{2}{+}{+}
 Be to, $P(0)=12$. Raskite $P(x)$, jo diskriminantą ir ekstremumą. Patikrinkite, kad atsakymas tenkina ir ženklų tiesėje pateiktą informaciją.
-\item Kvadratinis daugianaris $P(x)$ yra teigiamas \emph{tik} kai $1<x<3$, o $P(1)=P(3)=0$. Jo maksimumas lygus $4$. Raskite $P(x)$ ir nubraižykite ženklų tiesę. Paaiškinkite, kodėl iš sąlygų pakanka duomenų vienam daugianariui rasti.
+\item Kvadratinis daugianaris $P(x)$ yra teigiamas tik intervale $(1;3)$, o $P(1)=P(3)=0$. Jo maksimumas lygus $4$. Raskite $P(x)$ ir nubraižykite ženklų tiesę. Paaiškinkite, kodėl iš sąlygų pakanka duomenų vienam daugianariui rasti.
 \item Ar egzistuoja kvadratinis daugianaris, kuris būtų teigiamas visiems realiesiems $x$, o jo diskriminantas būtų lygus $4$? Atsakymą pagrįskite.
 \item Raskite \emph{visus} kvadratinius daugianarius $P(x)=ax^2+bx+c$, kurie yra teigiami kiekvienam realiajam $x$ ir tenkina $P(0)=1$.
 \begin{enumerate}
 \item Ką apie $c$, $a$ ir diskriminantą pasako sąlygos?
-\item Užrašykite visas galimas $a$, $b$, $c$ sąlygas ir pagrįskite, kad jų pakanka.
+\item Užrašykite, kokias sąlygas turi tenkinti $a$ ir $b$, kai $c=1$, ir pagrįskite, kad jų pakanka.
 \item Pateikite du skirtingus tokius daugianarius. Ar žinomos informacijos pakanka vienam daugianariui nustatyti?
 \end{enumerate}
 \item Kiekvienu atveju nustatykite visas realiąsias $x$ reikšmes, tenkinančias atitinkamą nelygybę, ir pavaizduokite sprendinių aibes skaičių tiesėje. Įtrauktą reikšmę žymėkite pilnaviduriu, neįtrauktą – tuščiaviduriu tašku.
 \begin{enumerate}
 \item $(x-1)(x-4)>0$; \item $(x-1)(x-4)\ge0$; \item $(x-1)(x-4)\le0$; \item $(x-2)^2\le0$.
 \end{enumerate}
-Paaiškinkite, kodėl vienose dalyse šaknys įtraukiamos, o kitose – ne.
+Paaiškinkite, kodėl a)–d) dalyse vienose šaknys įtraukiamos, o kitose – ne.
 \item \textbf{Grįžkime prie kurso pradžios.} Duotas $P(x)=x^2-4x+3$.
 \begin{enumerate}
 \item Kada $P(x)=0$? Paaiškinkite, kaip tai susiję su šaknimis.
 \item Kada $P(x)>0$, kada $P(x)<0$, o kada $P(x)\ge0$? Ženklų ir sprendinių tiesėse pažymėkite taškus pagal jų įtraukimą.
 \item Raskite ekstremumo tašką ir ekstremumą. Ką jie sako apie visas daugianario reikšmes?
-\item Ar sąlygos $P(1)=P(3)=0$ ir $P(0)=3$ vienareikšmiškai nusako šį kvadratinį daugianarį? Pagrįskite.
-\item Kurių ankstesnių temų išvadomis naudojotės? Savais žodžiais apibendrinkite, kaip atsakytumėte į tuos pačius keturis klausimus apie kitą kvadratinį daugianarį.
+\item Ar vien sąlygų $P(1)=P(3)=0$ ir $P(0)=3$ pakanka, kad daugianaris būtų būtent $x^2-4x+3$? Pagrįskite.
+\item Kurių ankstesnių temų išvadomis naudojotės? Savais žodžiais apibendrinkite, kaip atsakytumėte į a)–d) klausimus apie kitą kvadratinį daugianarį.
 \end{enumerate}
-\item \textbf{Papildomas iššūkis.} Raskite realųjį $m$, su kuriuo lygtis $x^2-mx+m=0$ turi realiųjų šaknų, o jų kvadratų suma yra mažiausia. Vienintelės šaknies atveju laikykite $x_1=x_2$. Pagrįskite, kad išnagrinėjote visas leistinas $m$ reikšmes.
+\item \textbf{Papildomas iššūkis.} Raskite realųjį $m$, su kuriuo lygtis $x^2-mx+m=0$ turi realiųjų šaknų, o jų kvadratų suma yra mažiausia. Vienintelės šaknies atveju laikykite $x_1=x_2$. Nurodykite, kokios $m$ reikšmės leistinos, ir pagrįskite, kad rastoji reikšmė yra mažiausia.
 \end{enumerate}
 \newpage
 \begin{center}{\Large\bfseries Ką atradome?}\end{center}
 Prieš skaitydamas, pabandyk pats prisiminti ir savais žodžiais paaiškinti pagrindines šios temos išvadas. Tada palygink jas su pateiktomis.
 \begin{tcolorbox}[title=Svarbiausios temos išvados,colback=black!3,colframe=black!65,boxrule=0.6pt,arc=2mm]
 \begin{enumerate}
-\item \textbf{Ženklų tiesė.} $+$ virš intervalo reiškia $P(x)>0$ su kiekviena jo $x$ reikšme, o $-$ reiškia $P(x)<0$. Šaknyje $P(x)=0$: nulis nėra nei teigiamas, nei neigiamas. Sprendinių tiesėje įtrauktas taškas yra pilnaviduris, neįtrauktas – tuščiaviduris; ženklų tiesėje tuščiavidurės šaknys neįeina į griežto ženklo intervalus, bet pažymėtas $0$ nusako reikšmę šaknyje.
+\item \textbf{Ženklų tiesė.} $+$ virš intervalo reiškia $P(x)>0$ su kiekviena jo $x$ reikšme, o $-$ reiškia $P(x)<0$. Šaknyje $P(x)=0$, o skaičius $0$ nėra nei teigiamas, nei neigiamas. Sprendinių tiesėje įtrauktas taškas yra pilnaviduris, neįtrauktas – tuščiaviduris; ženklų tiesėje tuščiavidurės šaknys neįeina į griežto ženklo intervalus, nes jose reikšmė lygi $0$.
 \item \textbf{Dvi šaknys.} Kai $r<s$ ir $P(x)=a(x-r)(x-s)$, sandauga $(x-r)(x-s)$ teigiama intervaluose $(-\infty;r)$ ir $(s;+\infty)$, o intervale $(r;s)$ neigiama. Jei $a<0$, ženklai pasikeičia į priešingus; šaknyse reikšmė lygi nuliui.
 \item \textbf{Viena šaknis.} Kai $P(x)=a(x-r)^2$, tai $P(r)=0$, o su kiekvienu $x\ne r$ jo ženklas sutampa su $a$ ženklu. Abipus šaknies ženklai vienodi.
 \item \textbf{Šaknų nėra.} Kai $D<0$, visoms realiosioms $x$ reikšmėms $P(x)$ ženklas sutampa su $a$ ženklu. Tai pagrindžia pilnojo kvadrato pavidalas.
@@ -237,15 +255,15 @@ Prieš skaitydamas, pabandyk pats prisiminti ir savais žodžiais paaiškinti pa
 \end{tcolorbox}
 \textbf{Kas toliau?} Vėliau šaknis, ekstremumą, simetriją ir ženklus galėsite susieti su jų geometriniu vaizdu.
 
-\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\textbf{Ką verta užsirašyti savo teorijos santraukoje?} Pasirink svarbią išvadą ir užsirašyk faktą, jo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
 \newpage
 \begin{center}{\Large\bfseries Savikontrolė}\end{center}
-Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+Pirmiausia užversk teorijos santrauką ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
 \begin{enumerate}[resume=uzdaviniai]
 \item $\blacklozenge$ Atlikite užduotis ir pagrįskite atsakymus.
 \begin{enumerate}
 \item Raskite $P(x)=2x^2+2x-12$ šaknis, nustatykite ženklą kiekviename intervale ir nubraižykite ženklų tiesę.
-\item Nustatykite $Q(x)=-3(x-1)^2$ ženklą visoje skaičių tiesėje. Ką gaunate šaknyje?
+\item Nustatykite $Q(x)=-3(x-1)^2$ ženklą visoje skaičių tiesėje. Kam lygus $Q(1)$?
 \item Pagrįskite, koks yra $R(x)=-(x-2)^2-1$ ženklas su visomis realiosiomis $x$ reikšmėmis.
 \item Raskite kvadratinį daugianarį, kurio šaknys yra $-2$ ir $3$, ženklų tiesėje tarp šaknų yra $-$, o $P(0)=-12$. Patikrinkite visas sąlygas.
 \end{enumerate}
@@ -253,7 +271,7 @@ Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasit
 \newpage
 \begin{center}{\Large\bfseries Atsakymai ir sprendimai}\end{center}
 \begin{enumerate}
-\item \textbf{a)} Kai $x=-1$, gauname $-3$; kai $x=2$ – $0$; kai $x=5$ – $3$.
+\item \textbf{a)} Kai $x=-1$, gauname $-3$; kai $x=2$, gauname $0$; kai $x=5$, gauname $3$.
 
 \textbf{b)} Jei $x<2$, atėmę $2$ iš abiejų nelygybės pusių gauname $x-2<0$. Kai $x=2$, $x-2=0$. Jei $x>2$, analogiškai $x-2>0$.
 
@@ -261,7 +279,7 @@ Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasit
 \vientaske{2}{-}{+}
 \item \textbf{a)} Atėmę $t$ iš abiejų pusių, gauname: kai $x<t$, $x-t<0$; kai $x=t$, $x-t=0$; kai $x>t$, $x-t>0$.
 
-\textbf{b)} $x+3=x-(-3)$ nulis yra $-3$: kairėje ženklas neigiamas, dešinėje teigiamas. $x-5$ nulis yra $5$: kairėje neigiamas, dešinėje teigiamas.
+\textbf{b)} Kadangi $x+3=x-(-3)$, jis lygus $0$, kai $x=-3$: kai $x<-3$, jis neigiamas, kai $x>-3$, teigiamas. $x-5$ lygus $0$, kai $x=5$: kai $x<5$, jis neigiamas, kai $x>5$, teigiamas.
 \item \textbf{a)} Gauname intervalus $(-\infty;1)$, $(1;4)$, $(4;+\infty)$.
 
 \textbf{b)} Jei $x<1$, abu dauginamieji neigiami, todėl sandauga teigiama. Jei $1<x<4$, pirmasis teigiamas, antrasis neigiamas, todėl sandauga neigiama. Jei $x>4$, abu teigiami, todėl sandauga teigiama.
@@ -276,12 +294,12 @@ Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasit
 \node[left] at (0,-0.75) {$P(x)$}; \node at (1.6,-0.75) {\zenklas{+}};\node at (3.1,-0.75) {$0$};\node at (4.7,-0.75) {\zenklas{-}};\node at (6.3,-0.75) {$0$};\node at (7.8,-0.75) {\zenklas{+}};
 \end{tikzpicture}
 \end{center}
-\textbf{c)} $P(1)=P(4)=0$. Patikra: $P(0)=(-1)(-4)=4>0$, $P(2)=1\cdot(-2)=-2<0$, $P(5)=4\cdot1=4>0$. Šios trys reikšmės iliustruoja b dalį; ženklai visiems intervalo skaičiams pagrįsti b dalyje.
+\textbf{c)} $P(1)=P(4)=0$. Patikra: $P(0)=(-1)(-4)=4>0$, $P(2)=1\cdot(-2)=-2<0$, $P(5)=4\cdot1=4>0$. Šios reikšmės patvirtina b dalyje gautus ženklus: $P(0)>0$, $P(2)<0$, $P(5)>0$.
 
 \textbf{d)}
 \dutaske{1}{4}{+}{-}{+}
 $P(x)>0$, kai $x\in(-\infty;1)\cup(4;+\infty)$; $P(x)<0$, kai $x\in(1;4)$; $P(x)=0$, kai $x=1$ arba $x=4$.
-\item \textbf{a)} Daugyba iš $-1$ teigiamą reikšmę pakeičia neigiama ir atvirkščiai, o nulį palieka nuliu.
+\item \textbf{a)} Dauginant iš $-1$, teigiamas skaičius tampa neigiamu, o neigiamas – teigiamu. Kai $x=1$ ir $x=4$, $P(x)=0$, o $-0=0$, todėl šiose reikšmėse $P(x)$ lieka lygus $0$.
 
 \textbf{b)}
 \dutaske{1}{4}{-}{+}{-}
@@ -296,7 +314,7 @@ $P(x)>0$ intervale $(1;4)$; $P(x)<0$ intervaluose $(-\infty;1)$ ir $(4;+\infty)$
 \dutaske{r}{s}{-}{+}{-}
 Abiem atvejais $P(r)=P(s)=0$, nes vienas dauginamasis lygus nuliui.
 
-\textbf{d)} Sąlyga $r<s$ užtikrina, kad $r$ yra kairioji šaknis, o $s$ – dešinioji; tik tuomet $(r;s)$ yra intervalas tarp jų.
+\textbf{d)} Intervalą $(r;s)$ sudaro skaičiai, didesni už $r$ ir mažesni už $s$, todėl jis turi prasmę tik kai $r<s$. Jei būtų $r>s$, intervalas tarp šaknų būtų $(s;r)$, o ženklų tiesėje šaknis reikėtų sukeisti vietomis.
 \item \textbf{a)} Šaknys $-2<1$, $a=3>0$:
 \dutaske{-2}{1}{+}{-}{+}
 $P>0$ išoriniuose intervaluose, $P<0$ intervale $(-2;1)$; ties šaknimis $P=0$.
@@ -337,7 +355,7 @@ Kiekviename brėžinyje ženklai galioja atviruose intervaluose, o šaknyse daug
 \vientaske{r}{+}{+}
 Kai $a<0$, ji visur, išskyrus $r$, neigiama:
 \vientaske{r}{-}{-}
-Kai $x=r$, yra $P(r)=0$; nulis nėra nei teigiamas, nei neigiamas. Nenulinis daugianario ženklas kairėje ir dešinėje šaknies pusėse yra tas pats.
+Kai $x=r$, yra $P(r)=0$, o skaičius $0$ nėra nei teigiamas, nei neigiamas. Nenulinis daugianario ženklas kairėje ir dešinėje šaknies pusėse yra tas pats.
 \item \textbf{a)} $x^2-6x+9=(x-3)^2$; šaknis $3$, kitur reikšmės teigiamos:
 \vientaske{3}{+}{+}
 
@@ -348,7 +366,7 @@ Kai $x=r$, yra $P(r)=0$; nulis nėra nei teigiamas, nei neigiamas. Nenulinis dau
 \vientaske{0}{+}{+}
 \item \textbf{a)} Kvadratas neneigiamas: $(x-1)^2\geq0$. Pridėję po $3$ gauname $(x-1)^2+3\geq3>0$.
 
-\textbf{b)} Nuliui ši reikšmė nelygi, todėl realiųjų šaknų nėra:
+\textbf{b)} Kadangi $P(x)\geq3$, $P(x)$ niekada nelygus $0$, todėl realiųjų šaknų nėra:
 \visaaxis{+}
 
 \textbf{c)} $(x+1)^2\geq0$. Padauginę iš $-2$ pakeičiame nelygybės kryptį: $-2(x+1)^2\leq0$. Atėmę po $5$ gauname $Q(x)=-2(x+1)^2-5\leq-5<0$. Taigi $Q$ visur neigiamas.
@@ -391,7 +409,7 @@ Antrajame ties dvigubąja šaknimi $2$ ženklas nesikeičia, nors pati reikšmė
 \dutaske{-2}{4}{-}{+}{-}
 Ekstremumo taškas $\frac{-2+4}{2}=1$; $P(1)=-(3)(-3)=9$. Kadangi $a<0$, ekstremumas yra maksimumas, todėl $9$ yra didžiausioji reikšmė.
 
-\textbf{c)} $P(0)=-(2)(-4)=8$. Šaknys nustato sandaugos pavidalą, o ši reikšmė vienareikšmiškai nustato $a=-1$.
+\textbf{c)} $P(0)=-(2)(-4)=8$. Šaknys nustato sandaugos pavidalą, o $P(0)=8$ nustato tik vieną $a=-1$.
 \item \textbf{a)} $P(x)=a(x-3)^2-4$. Iš $P(1)=4a-4=4$ gauname $a=2$, todėl $P(x)=2(x-3)^2-4$.
 
 \textbf{b)} Iš $2(x-3)^2-4=0$ gauname $(x-3)^2=2$, todėl šaknys $3-\sqrt2$ ir $3+\sqrt2$. Sandaugos pavidalas yra $P(x)=2(x-3+\sqrt2)(x-3-\sqrt2)$.
@@ -401,47 +419,50 @@ Ekstremumo taškas $\frac{-2+4}{2}=1$; $P(1)=-(3)(-3)=9$. Kadangi $a<0$, ekstrem
 $P(3)=-4$, tai minimumas, nes $2(x-3)^2\geq0$; $P(1)=2\cdot4-4=4$.
 \item \textbf{a)} $P(0)=(-1)(-4)=4>0$, $P(5)=4\cdot1=4>0$, bet $P(2)=1\cdot(-2)=-2<0$. Todėl mokinio išvada klaidinga: taškas $2$ yra tarp $0$ ir $5$.
 
-\textbf{b)} Šaknys $1$ ir $4$ yra intervalo $(0;5)$ viduje: $0<1<4<5$. Todėl tiriamame intervale yra trys dalys – $(0;1)$, $(1;4)$, $(4;5)$ – ir dvi šaknys. Taškai $0$ ir $5$ yra skirtingose šaknų pusėse, todėl jų ženklai nepasako, kas vyksta tarp šaknų.
+\textbf{b)} Šaknys $1$ ir $4$ yra intervalo $(0;5)$ viduje: $0<1<4<5$. Taigi abi šaknys yra tarp $0$ ir $5$ ir suskaido intervalą $(0;5)$ į tris dalis: $(0;1)$, $(1;4)$, $(4;5)$. Taškai $0$ ir $5$ yra išorinėse dalyse, o ženklas gali keistis kertant šaknis, todėl jų reikšmės nepasako, koks ženklas vidurinėje dalyje $(1;4)$.
 
-\textbf{c)} Kiekviename iš intervalų $(-\infty;1)$, $(1;4)$, $(4;+\infty)$ kiekvieno dauginamojo $x-1$ ir $x-4$ ženklas yra pastovus: pavyzdžiui, kai $1<x<4$, pirmasis visada teigiamas, o antrasis visada neigiamas. Todėl ir jų sandaugos ženklas tame intervale yra pastovus. \emph{Jau pagrindus šį pastovumą}, bet kuris pasirinktas vienas intervalo taškas parodo viso intervalo ženklą. Pavyzdžiui, $P(0)>0$, $P(2)<0$, $P(5)>0$ leidžia pažymėti atitinkamai $+$, $-$, $+$; ties šaknimis $1$ ir $4$ reikšmė yra $0$.
+\textbf{c)} Kiekviename iš intervalų $(-\infty;1)$, $(1;4)$, $(4;+\infty)$ kiekvieno dauginamojo $x-1$ ir $x-4$ ženklas yra pastovus: pavyzdžiui, kai $1<x<4$, pirmasis visada teigiamas, o antrasis visada neigiamas. Todėl ir jų sandaugos ženklas tame intervale yra pastovus.
+
+\textbf{d)} \emph{Kai pastovumas jau pagrįstas}, bet kuris pasirinktas vienas intervalo taškas parodo viso intervalo ženklą. Pavyzdžiui, $P(0)>0$, $P(2)<0$, $P(5)>0$ leidžia pažymėti atitinkamai $+$, $-$, $+$; ties šaknimis $1$ ir $4$ reikšmė yra $0$.
 \dutaske{1}{4}{+}{-}{+}
 Vieno taško patikra savaime neįrodo ženklo pastovumo: čia jį pirmiausia pagrindėme išskaidyto kvadratinio daugianario dauginamųjų ženklais.
-\item \textbf{a)} Taškuose $x=1$ ir $x=4$ pažymėtas nulis, taigi tai šaknys. Už šaknų daugianaris neigiamas, o tarp jų teigiamas, todėl $a<0$.
+\item \textbf{a)} Taškuose $x=1$ ir $x=4$ brėžinyje pažymėti tuščiaviduriai taškai, kuriuose daugianaris lygus $0$, taigi tai šaknys. Už šaknų daugianaris neigiamas, o tarp jų teigiamas, todėl $a<0$.
 
 \textbf{b)} Pagal skaidymo formulę $P(x)=a(x-1)(x-4)$. Įrašę $x=0$ gauname $P(0)=4a=-8$, taigi $a=-2$.
 
-\textbf{c)} $P(x)=-2(x-1)(x-4)=-2x^2+10x-8=-2\left(x-\frac{5}{2}\right)^2+\frac{9}{2}$. Kadangi $a=-2<0$, ženklai už šaknų neigiami, tarp jų teigiami; $P(0)=-8$. Šaknys ir $P(0)$ vienareikšmiškai nustato daugianarį.
-\item \textbf{a)} Šaknys yra $-2$ ir $2$, todėl jų vidurkis, kartu ir ekstremumo taškas, yra $0$. Kadangi šaknys skirtingos, $P(x)=a(x+2)(x-2)$; iš ženklų tiesės $a>0$.
+\textbf{c)} $P(x)=-2(x-1)(x-4)=-2x^2+10x-8=-2\left(x-\frac{5}{2}\right)^2+\frac{9}{2}$. Kadangi $a=-2<0$, ženklai už šaknų neigiami, tarp jų teigiami; $P(0)=-8$. Šaknų ir $P(0)$ pakanka, kad daugianaris būtų nustatytas tik vienas.
+\item \textbf{a)} Šaknys yra $-2$ ir $2$, todėl ekstremumo taškas, t. y. šaknų vidurkis, yra $\frac{-2+2}{2}=0$. Kadangi šaknys skirtingos, $P(x)=a(x+2)(x-2)$; iš ženklų tiesės $a>0$.
 
 \textbf{b)} Minimumas pasiekiamas, kai $x=0$, tad $P(0)=-4a=-8$ ir $a=2$. Trys pavidalai:
 \[P(x)=2(x+2)(x-2)=2x^2-8=2(x-0)^2-8.\]
 
-\textbf{c)} $P(0)=-8$ ir, kadangi $2x^2\geq0$, minimumas tikrai yra $-8$. Iš $a>0$ ir šaknų $-2$, $2$ gaunami brėžinyje nurodyti ženklai. Šaknys ir minimumo reikšmė vienareikšmiškai nustatė $a$.
+\textbf{c)} $P(0)=-8$ ir, kadangi $2x^2\geq0$, minimumas tikrai yra $-8$. Iš $a>0$ ir šaknų $-2$, $2$ gaunami brėžinyje nurodyti ženklai. Šaknų ir minimumo reikšmės pakanka, kad $a$ būtų nustatytas tik vienas.
 \item Brėžinyje nurodytos šaknys $1$ ir $5$, o išoriniai ženklai rodo, kad $a>0$. Todėl $P(x)=a(x-1)(x-5)$. Iš $P(2)=a\cdot1\cdot(-3)=-6$ gauname $a=2$.
 
 Taigi $P(x)=2(x-1)(x-5)=2(x-3)^2-8$. Minimumo taškas yra $3$, minimumas $-8$. Patikra: $P(2)=2-8=-6$, o ženklai yra teigiami už šaknų ir neigiami tarp jų.
-\item Ženklų tiesė duoda šaknis $-1$ ir $3$ bei $a<0$, todėl $P(x)=a(x+1)(x-3)$. Atskliaudę gauname $b=-2a$, $c=-3a$, taigi
+\item \textbf{a)} Ženklų tiesė duoda šaknis $-1$ ir $3$ bei $a<0$, todėl $P(x)=a(x+1)(x-3)$. Atskliaudę gauname $b=-2a$, $c=-3a$, taigi
 \[D=b^2-4ac=4a^2+12a^2=16a^2.\]
-Iš $16a^2=64$ turime $a=2$ arba $a=-2$; ženklų tiesė reikalauja $a<0$, todėl $a=-2$. Vienintelis atsakymas yra $P(x)=-2(x+1)(x-3)=-2x^2+4x+6$.
+
+\textbf{b)} Iš $16a^2=64$ turime $a=2$ arba $a=-2$; ženklų tiesė reikalauja $a<0$, todėl $a=-2$. Vienintelis atsakymas yra $P(x)=-2(x+1)(x-3)=-2x^2+4x+6$.
 
 Patikra: $D=4^2-4(-2)\cdot6=64$, šaknys $-1$, $3$, o kai $a<0$, ženklai yra $-\,,+\,,-$, kaip brėžinyje.
 \item Pagal ekstremumo duomenis $P(x)=a(x-2)^2+3$, o iš $P(0)=4a+3=11$ gauname $a=2$. Taigi $P(x)=2(x-2)^2+3=2x^2-8x+11$.
 
-Kadangi $2(x-2)^2\geq0$, tai $P(x)\geq3>0$ visiems $x$, todėl šaknų nėra. Minimumas $3$ pasiekiamas, kai $x=2$, o $P(0)=11$. Duomenys vienareikšmiškai nustatė $a$, taigi daugianaris vienintelis.
-\item Brėžinyje ties $2$ pažymėtas vienintelis nulis, o abiejose pusėse reikšmės teigiamos. Vadinasi, $P(x)=a(x-2)^2$, kur $a>0$. Iš $P(0)=4a=12$ randame $a=3$, todėl $P(x)=3(x-2)^2=3x^2-12x+12$.
+Kadangi $2(x-2)^2\geq0$, tai $P(x)\geq3>0$ visiems $x$, todėl šaknų nėra. Minimumas $3$ pasiekiamas, kai $x=2$, o $P(0)=11$. Duomenų pakanka, kad $a$ būtų nustatytas tik vienas, taigi daugianaris vienintelis.
+\item Brėžinyje ties $2$ yra vienintelis taškas, kuriame daugianaris lygus $0$, o abiejose pusėse reikšmės teigiamos. Vadinasi, $P(x)=a(x-2)^2$, kur $a>0$. Iš $P(0)=4a=12$ randame $a=3$, todėl $P(x)=3(x-2)^2=3x^2-12x+12$.
 
 $D=(-12)^2-4\cdot3\cdot12=0$. Minimumo taškas $2$, minimumas $0$. Kadangi kvadratas teigiamas, kai $x\ne2$, o $a=3>0$, ženklų tiesė tenkinama; $P(0)=12$.
 \item Kadangi $P(1)=P(3)=0$, šaknys yra $1$ ir $3$. Daugianaris teigiamas tarp šaknų, todėl $a<0$ ir $P(x)=a(x-1)(x-3)$. Ekstremumo taškas yra šaknų vidurkis $2$. Iš maksimumo $P(2)=-a=4$ gauname $a=-4$.
 
 Taigi $P(x)=-4(x-1)(x-3)=-4(x-2)^2+4$, o jo ženklų tiesė:
 \dutaske{1}{3}{-}{+}{-}
-Patikra: $P(1)=P(3)=0$, $P(x)>0$ tik intervale $(1;3)$ ir maksimumas yra $4$. Šaknys ir maksimumas vienareikšmiškai nustato $a$, todėl daugiau atsakymų nėra.
+Patikra: $P(1)=P(3)=0$, $P(x)>0$ tik intervale $(1;3)$ ir maksimumas yra $4$. Šaknys ir maksimumas nustato tik vieną $a$, todėl daugiau atsakymų nėra.
 \item Tokio daugianario nėra. Jeigu $D=4>0$, pagal šaknų formulę jis turėtų dvi realiąsias šaknis. Kiekvienoje šaknyje daugianario reikšmė lygi $0$, todėl jis negali būti teigiamas \emph{visiems} realiesiems $x$.
 \item \textbf{a)} Iš $P(0)=1$ gauname $c=1$. Kadangi daugianaris visur teigiamas, jis neturi realiųjų šaknų, todėl $D<0$. Be to, kai realiųjų šaknų nėra, ženklas sutampa su $a$ ženklu; vadinasi, $a>0$.
 
 \textbf{b)} Kadangi $c=1$, tai $D=b^2-4a$. Visos ieškomos sąlygos yra
-\[c=1,\qquad a>0,\qquad b\in\mathbb R,\qquad b^2<4a.\]
-Jos ir pakankamos: kai $a>0$ ir $D<0$, realiųjų šaknų nėra, o daugianaris visoje tiesėje teigiamas; be to, $P(0)=c=1$.
+\[c=1,\qquad a>0,\qquad b^2<4a.\]
+Šių sąlygų taip pat pakanka: kai $a>0$ ir $D<0$, realiųjų šaknų nėra, o daugianaris visoje tiesėje teigiamas; be to, $P(0)=c=1$.
 
 \textbf{c)} Pavyzdžiui, $P(x)=x^2+1$ ir $Q(x)=2x^2+1$. Abu daugianariai teigiami visiems $x$, ir $P(0)=Q(0)=1$. Todėl vienam daugianariui nustatyti sąlygų nepakanka.
 \item Šaknys yra $1$ ir $4$. Iš sandaugos ženklų: už šaknų reiškinys teigiamas, tarp jų neigiamas, o abiejose šaknyse lygus nuliui.
@@ -458,7 +479,7 @@ Jos ir pakankamos: kai $a>0$ ir $D<0$, realiųjų šaknų nėra, o daugianaris v
 \fill (3,0) circle(2pt);\fill (7,0) circle(2pt);\node[below=4pt] at (3,0) {$1$};\node[below=4pt] at (7,0) {$4$};
 \end{tikzpicture}\end{center}
 
-\textbf{c)} Kai $(x-1)(x-4)\le0$, imame neigiamą intervalą ir abi šaknis: $x\in[1;4]$.
+\textbf{c)} Kai $(x-1)(x-4)\le0$, $P(x)\le0$ yra tarp šaknų ir pačiose šaknyse: $x\in[1;4]$.
 \begin{center}\begin{tikzpicture}[x=1cm,>=stealth]
 \draw[->] (0,0)--(10,0) node[right] {$x$};\draw[ultra thick,blue!65!black] (3,0)--(7,0);\fill (3,0) circle(2pt);\fill (7,0) circle(2pt);\node[below=4pt] at (3,0) {$1$};\node[below=4pt] at (7,0) {$4$};
 \end{tikzpicture}\end{center}
@@ -469,7 +490,7 @@ Jos ir pakankamos: kai $a>0$ ir $D<0$, realiųjų šaknų nėra, o daugianaris v
 \end{tikzpicture}\end{center}
 \item \textbf{a)} $P(x)=(x-1)(x-3)$, todėl šaknys yra $1$ ir $3$ – būtent šios reikšmės tenkina $P(x)=0$.
 
-\textbf{b)} Pagal dauginamųjų ženklus $P(x)>0$, kai $x\in(-\infty;1)\cup(3;+\infty)$; $P(x)<0$, kai $x\in(1;3)$. Pridėję šaknis gauname $P(x)\ge0$, kai $x\in(-\infty;1]\cup[3;+\infty)$. Ženklų tiesėje šaknys tuščiavidurės, nes neįeina į griežto ženklo intervalus; nurodžius $0$, jos pažymi, kur $P(x)=0$:
+\textbf{b)} Pagal dauginamųjų ženklus $P(x)>0$, kai $x\in(-\infty;1)\cup(3;+\infty)$; $P(x)<0$, kai $x\in(1;3)$. Pridėję šaknis gauname $P(x)\ge0$, kai $x\in(-\infty;1]\cup[3;+\infty)$. Ženklų tiesėje šaknys tuščiavidurės, nes jose $P(x)=0$, todėl jos neįeina į intervalus, kuriuose $P(x)>0$ ar $P(x)<0$:
 \dutaske{1}{3}{+}{-}{+}
 O sprendinių $P(x)\ge0$ tiesėje abi šaknys įtrauktos, todėl taškai pilnaviduriai:
 \begin{center}\begin{tikzpicture}[x=1cm,>=stealth]
@@ -478,9 +499,9 @@ O sprendinių $P(x)\ge0$ tiesėje abi šaknys įtrauktos, todėl taškai pilnavi
 
 \textbf{c)} $P(x)=(x-2)^2-1\ge-1$. Minimumo taškas $x_{\min}=2$, minimumas $P_{\min}=-1$: visos daugianario reikšmės yra ne mažesnės kaip $-1$, ir ši reikšmė pasiekiama, kai $x=2$.
 
-\textbf{d)} Jei kvadratinio daugianario šaknys $1$ ir $3$, tai $P(x)=a(x-1)(x-3)$. Iš $P(0)=3a=3$ gauname vienintelį $a=1$. Taigi duomenys vienareikšmiškai nusako pateiktą daugianarį; tiesioginė patikra duoda $P(1)=P(3)=0$, $P(0)=3$.
+\textbf{d)} Jei kvadratinio daugianario šaknys $1$ ir $3$, tai $P(x)=a(x-1)(x-3)$. Iš $P(0)=3a=3$ gauname $a=1$ ir daugianaris yra būtent $x^2-4x+3$; tiesioginė patikra duoda $P(1)=P(3)=0$, $P(0)=3$.
 
-\textbf{e)} Šaknų sąvoka ir formulė nagrinėtos 6 temoje, ženklai – šioje temoje, pilnasis kvadratas bei ekstremumas – 2–4 temose, skaidymas ir konstravimas – 9 temoje. Kitam daugianariui pirmiausia pasirenkame patogų pavidalą, apskaičiuojame šaknis ar ekstremumą, atskirai pagrindžiame ženklus ir patikriname, ar duomenys vienareikšmiškai nustato koeficientus.
+\textbf{e)} Šaknų sąvoka ir formulė nagrinėtos 6 temoje, ženklai – šioje temoje, pilnasis kvadratas bei ekstremumas – 2–4 temose, skaidymas ir konstravimas – 9 temoje. Kitam daugianariui pirmiausia pasirenkame patogų pavidalą, apskaičiuojame šaknis ar ekstremumą, atskirai pagrindžiame ženklus ir patikriname, ar duomenų pakanka koeficientams nustatyti.
 \item Jei šaknys realiosios, $D=m^2-4m=m(m-4)\ge0$. Ženklų tyrimas duoda $m\in(-\infty;0]\cup[4;+\infty)$: $0$ ir $4$ įtraukiame, nes tada $D=0$ ir yra viena dviguboji šaknis. Pagal Vijeto teoremą $x_1+x_2=m$, $x_1x_2=m$, todėl
 \[x_1^2+x_2^2=m^2-2m=(m-1)^2-1.\]
 Jei nepaisytume sąlygos $D\ge0$, mažiausią šio reiškinio reikšmę $-1$ gautume, kai $m=1$. Tačiau tada $D=1-4=-3<0$: realiųjų šaknų nėra, todėl $m=1$ nagrinėjamam uždaviniui netinka.
@@ -495,6 +516,6 @@ Kai $m\le0$, tai $m^2-2m\ge0$, o lygybė yra tik kai $m=0$. Kai $m\ge4$, tai $m(
 \textbf{c)} Kadangi $(x-2)^2\ge0$, tai $-(x-2)^2\le0$. Atėmę $1$ gauname $R(x)\le-1<0$ su visomis realiosiomis $x$ reikšmėmis. Realiųjų šaknų nėra:
 \visaaxis{-}
 
-\textbf{d)} Pagal skaidymo formulę $P(x)=a(x+2)(x-3)$, kur $a\ne0$. Iš $P(0)=-6a=-12$ gauname $a=2$, todėl $P(x)=2(x+2)(x-3)=2x^2-2x-12$. Patikra: $P(-2)=P(3)=0$, $P(0)=-12$. Tarp šaknų $x+2>0$, $x-3<0$, o $2>0$, todėl $P(x)<0$. Duomenys vienareikšmiškai nustato $a$.
+\textbf{d)} Pagal skaidymo formulę $P(x)=a(x+2)(x-3)$, kur $a\ne0$. Iš $P(0)=-6a=-12$ gauname $a=2$, todėl $P(x)=2(x+2)(x-3)=2x^2-2x-12$. Patikra: $P(-2)=P(3)=0$, $P(0)=-12$. Tarp šaknų $x+2>0$, $x-3<0$, o $2>0$, todėl $P(x)<0$. Duomenų pakanka, kad $a$ būtų nustatytas tik vienas.
 \end{enumerate}
 \end{document}
