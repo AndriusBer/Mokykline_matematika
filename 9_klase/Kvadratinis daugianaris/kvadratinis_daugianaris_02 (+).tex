@@ -40,8 +40,8 @@ Siek ne vien gauti teisingą atsakymą, bet ir suprasti, \textbf{kodėl jis teis
 \begin{multicols}{2}\begin{enumerate}
 \item $(x+3)^2$; \item $(x-4)^2$; \item $(x+\frac{1}{2})^2$; \item $(x-\frac{3}{2})^2$.
 \end{enumerate}\end{multicols}
-Kaip iš koeficiento prie $x$ galima nustatyti skaičių skliaustuose?
-\item Turite kvadratą, kurio kraštinė $x>0$, ir $14$ vienodų stačiakampių, kurių kraštinės yra $x$ ir $1$. Iš septynių stačiakampių sudėkite $x$ ilgio ir $7$ pločio juostą. Sudėkite dvi tokias juostas ir kiekvieną kraštine, kurios ilgis $x$, priglauskite prie vienos iš dviejų gretimų pradinio kvadrato kraštinių, kaip parodyta brėžinyje. Likusią tuščią kampo dalį norite užpildyti vienetiniais kvadratėliais, kad visa figūra būtų kvadratas.
+Kokį ryšį matote tarp koeficiento prie $x$ ir skaičiaus skliaustuose?
+\item Turite kvadratą, kurio kraštinė $x>0$, ir $14$ vienodų stačiakampių, kurių kraštinės yra $x$ ir $1$. Iš septynių stačiakampių sudėkite juostą, kurios ilgis $x$, o plotis $7$. Dvi tokias juostas priglauskite prie dviejų gretimų pradinio kvadrato kraštinių, kaip parodyta brėžinyje. Likusį tuščią kampą užpildykite vienetiniais kvadratėliais, kad visa figūra taptų kvadratu.
 \begin{center}
 \begin{tikzpicture}[scale=0.75,every node/.style={font=\small}]
 \fill[green!30] (0,0) rectangle (3,3);
@@ -61,7 +61,7 @@ Kaip iš koeficiento prie $x$ galima nustatyti skaičių skliaustuose?
 \begin{enumerate}
 \item Kiek vienetinių kvadratėlių reikės? Paaiškinkite.
 \item Užrašykite figūros plotą kaip pradinio kvadrato, stačiakampių ir mažųjų kvadratėlių plotų sumą.
-\item Palyginkite šį plotą su plotu, apskaičiuotu pagal naujojo kvadrato kraštinę, ir išskirkite pilnąjį kvadratą reiškinyje $x^2+14x$.
+\item Užrašykite naujojo kvadrato plotą pagal jo kraštinę, palyginkite su b dalies rezultatu ir išskirkite pilnąjį kvadratą reiškinyje $x^2+14x$.
 \end{enumerate}
 \item Tarkime, kad $x>0$ ir $b>0$. Kvadratas, kurio kraštinė $x$, ir du stačiakampiai, kurių kraštinės $x$ ir $\frac{b}{2}$, sudėti taip, kaip pavaizduota brėžinyje.
 \begin{center}
@@ -84,12 +84,12 @@ Kaip iš koeficiento prie $x$ galima nustatyti skaičių skliaustuose?
 \end{center}
 \begin{enumerate}
 \item Apskaičiuokite $A$, $B$ ir $C$ sričių plotų sumą. Kodėl ji lygi $x^2+bx$?
-\item Kokio ploto kvadrato $D$ reikia, kad būtų užpildytas didysis kvadratas? Koks yra didžiojo kvadrato kraštinės ilgis ir plotas?
+\item Koks turi būti kvadrato $D$ plotas, kad sričių $A$, $B$, $C$ ir $D$ visuma sudarytų kvadratą? Koks to kvadrato kraštinės ilgis ir plotas?
 \item Remdamiesi brėžiniu paaiškinkite, kodėl
 \[
 x^2+bx=\left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2.
 \]
-\item Ar brėžinys, kuriame $\frac{b}{2}$ žymi ilgį, tiesiogiai paaiškina atvejį $b<0$? Ką reikėtų padaryti, kad lygybę galėtume pagrįsti ir šiuo atveju?
+\item Brėžinyje $\frac{b}{2}$ yra ilgis, todėl jis tinka tik kai $b>0$. Kaip galima pagrįsti lygybę, kai $b<0$?
 \end{enumerate}
 
 \item $\star$ Įrodykite, kad su visomis realiosiomis $x$ ir $b$ reikšmėmis
@@ -99,7 +99,7 @@ x^2+bx=\left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2.
 Kodėl skliaustuose rašome $\frac{b}{2}$? Kodėl paskui atimame $\left(\frac{b}{2}\right)^2$?
 
 
-\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $x^2+bx$? Paaiškink, kodėl skliaustuose rašoma $\frac b2$ ir kodėl atimamas šio skaičiaus kvadratas.
+\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $x^2+bx$? Paaiškinkite, kodėl skliaustuose rašoma $\frac b2$ ir kodėl atimamas šio skaičiaus kvadratas.
 
 \textbf{Pilnojo kvadrato išskyrimas} – tai reiškinio pertvarkymas taip, kad jame atsirastų kintamojo ir skaičiaus sumos arba skirtumo kvadratas. Pavyzdžiui, įrodytoje lygybėje toks kvadratas yra $\left(x+\frac{b}{2}\right)^2$. Kvadratinio daugianario užrašas $a(x-h)^2+k$, kai $a\ne 0$, o $a$, $h$ ir $k$ yra realieji skaičiai, vadinamas jo \textbf{pilnojo kvadrato pavidalu}.
 
@@ -115,11 +115,11 @@ Kodėl skliaustuose rašome $\frac{b}{2}$? Kodėl paskui atimame $\left(\frac{b}
 \item $\star$ Tegul $a,b,x\in\mathbb R$ ir $a\ne0$.
 \begin{enumerate}
 \item Įrodykite, kad $ax^2+bx=a\left(x^2+\frac{b}{a}x\right)$. Kodėl skliaustuose prie $x$ yra $\frac{b}{a}$?
-\item Paaiškinkite, kaip išskirti pilnąjį kvadratą reiškinyje $ax^2+bx$, pasinaudojant jau išnagrinėtu pavidalu $x^2+px$.
-\item Atlikdami šiuos veiksmus išskirkite pilnąjį kvadratą reiškiniuose $2x^2-8x$ ir $-x^2+6x$. Atsakymus patikrinkite atskliausdami.
+\item Paaiškinkite, kaip išskirti pilnąjį kvadratą reiškinyje $ax^2+bx$, pasinaudodami pavidalu $x^2+bx$.
+\item Šiuo būdu išskirkite pilnąjį kvadratą reiškiniuose $2x^2-8x$ ir $-x^2+6x$. Atsakymus patikrinkite atskliausdami.
 \end{enumerate}
 
-\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $ax^2+bx$? Į ką svarbu atkreipti dėmesį, kai $a<0$?
+\textbf{Sustok ir apibendrink.} Kaip išskirti pilnąjį kvadratą reiškinyje $ax^2+bx$? Kuo skiriasi veiksmai, kai $a<0$?
 
 \needspace{8\baselineskip}
 \item Užrašykite reiškinius pavidalu $a(x-h)^2+k$. Patikrinkite atskliausdami.
@@ -133,9 +133,9 @@ Kodėl skliaustuose rašome $\frac{b}{2}$? Kodėl paskui atimame $\left(\frac{b}
 \item Mokinys užrašė $-x^2+6x=-(x-3)^2-9$.
 \begin{enumerate}
 \item Patikrinkite lygybę įrašydami $x=0$, tada paaiškinkite klaidą ir pataisykite lygybę.
-\item Ar patikra su viena $x$ reikšme galėtų įrodyti, kad lygybė yra tapatybė? Pagrįskite pavyzdžiu.
+\item Ar pakanka patikrinti lygybę su viena $x$ reikšme, kad žinotume, jog ji teisinga su visais $x$? Pagrįskite pavyzdžiu.
 \end{enumerate}
-\item $\star$ Paaiškinkite, kaip išskirti pilnąjį kvadratą kvadratiniame daugianaryje $ax^2+bx+c$, kai jau mokate tai padaryti reiškinyje $ax^2+bx$. Pritaikykite savo būdą daugianariui $2x^2-8x+3$ ir patikrinkite atsakymą atskliausdami.
+\item $\star$ Remdamiesi tuo, kaip išskiriamas pilnasis kvadratas reiškinyje $ax^2+bx$, paaiškinkite, kaip tai padaryti daugianaryje $ax^2+bx+c$. Pritaikykite šį būdą daugianariui $2x^2-8x+3$ ir patikrinkite atsakymą atskliausdami.
 
 \textbf{Sustok ir apibendrink.} Kaip pasinaudoti jau išmoktu būdu, kai daugianaryje yra ir laisvasis narys $c$?
 
@@ -147,25 +147,25 @@ Kodėl skliaustuose rašome $\frac{b}{2}$? Kodėl paskui atimame $\left(\frac{b}
 \begin{multicols}{2}\begin{enumerate}
 \item $2x^2+8x+3$; \item $3x^2-12x+5$; \item $-x^2+6x-2$; \item $-2x^2-8x+1$; \item $2x^2+6x+4$; \item $4x^2-4x+7$; \item $-3x^2+6x+5$; \item $5x^2-5x+2$.
 \end{enumerate}\end{multicols}
-\item $\star$ Raskite realiuosius skaičius $h$ ir $k$, su kuriais lygybės teisingos su visomis realiosiomis $x$ reikšmėmis:
+\item $\star$ Raskite realiuosius skaičius $h$ ir $k$, su kuriais lygybė teisinga su kiekvienu realiuoju $x$:
 \begin{enumerate}
 \item $x^2-8x+7=(x-h)^2+k$;
 \item $-2x^2+12x-1=-2(x-h)^2+k$.
 \end{enumerate}
-Išskirkite pilnąjį kvadratą ir patikrinkite gautas lygybes atskliausdami. Tada atskliauskite dešiniąją pusę su nežinomaisiais $h$ ir $k$ ir, remdamiesi 1 temos 17 uždavinio išvada apie daugianarių koeficientus, pagrįskite, kad kitų sprendinių nėra.
+Raskite $h$ ir $k$ išskirdami pilnąjį kvadratą ir patikrinkite gautas lygybes atskliausdami. Tada pagrįskite, kad kitų $h$ ir $k$ nėra: atskliauskite dešiniąją pusę ir palyginkite koeficientus, remdamiesi 1 temos 17 uždavinio išvada.
 
-\textbf{Sustok ir apibendrink.} Kaip pagrįsti, kad tam pačiam daugianariui surasti skaičiai $h$ ir $k$ yra vieninteliai?
+\textbf{Sustok ir apibendrink.} Kodėl daugianariui galima rasti tik vieną porą $h$ ir $k$?
 
-\item $\star$ Apibendrinkite:
+\item $\star$ Apibendrinkite šią temą.
 \begin{enumerate}
-\item Mokinys, išskirdamas pilnąjį kvadratą, užrašė $x^2+6x+5=(x+3)^2+5-5$. Jis teigia, kad reikia atimti $5$, nes tai yra pradinio daugianario laisvasis narys. Ar šis sprendimas teisingas? Paaiškinkite ir išskirkite pilnąjį kvadratą.
-\item Išskirkite pilnąjį kvadratą daugianaryje $-2x^2+12x+1$. Paaiškinkite, kodėl dauginant iš $-2$ svarbu pakeisti abiejų skliaustuose esančių narių ženklus.
-\item Užrašykite gautą rezultatą pavidalu $a(x-h)^2+k$ ir nurodykite $a$, $h$ bei $k$. Patikrinkite atskliausdami.
+\item Mokinys, išskirdamas pilnąjį kvadratą, užrašė $x^2+6x+5=(x+3)^2+5-5$. Jis teigia, kad reikia atimti $5$, nes tai yra pradinio daugianario laisvasis narys. Ar jo samprotavimas teisingas? Paaiškinkite ir teisingai išskirkite pilnąjį kvadratą.
+\item Išskirkite pilnąjį kvadratą daugianaryje $-2x^2+12x+1$. Paaiškinkite, kodėl iškeliant $-2$ prieš skliaustus skliaustuose likusių narių ženklai pasikeičia.
+\item Užrašykite gautą rezultatą pavidalu $a(x-h)^2+k$ ir nurodykite $a$, $h$ ir $k$. Patikrinkite atskliausdami.
 \end{enumerate}
 \end{enumerate}
 \newpage
 \begin{center}{\Large\bfseries Ką atradome?}\end{center}
-Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia atrama ir grįžk prie vietų, kurios kelia klausimų.
+Prieš skaitydamas pabandyk iš atminties pasakyti svarbiausias temos išvadas. Tada palygink savo mintis su šia teorijos santrauka ir grįžk prie vietų, kurios kelia klausimų.
 
 \begin{tcolorbox}[colback=blue!3,colframe=blue!40!black,boxrule=0.5pt,arc=1mm,colbacktitle=blue!8,coltitle=black,title={\svarbu\quad\bfseries Svarbiausios temos išvados}]
 \textbf{1. Pavidalas $x^2+bx$.} Su visomis realiosiomis $x$ ir $b$ reikšmėmis
@@ -182,22 +182,22 @@ Skliaustuose išskiriame pilnąjį kvadratą, tada abu gautus narius padauginame
 
 \textbf{3. Kvadratinis daugianaris $ax^2+bx+c$.} Išskiriame pilnąjį kvadratą reiškinyje $ax^2+bx$, pridedame $c$ ir sutraukiame skaičius.
 
-\textbf{4. Pilnojo kvadrato pavidalas.} Kvadratinį daugianarį galima užrašyti $P(x)=a(x-h)^2+k$, kur $a\ne0$, o $a$, $h$, $k$ – realieji skaičiai. Šie skaičiai yra vieninteliai. Pavyzdžiui,
+\textbf{4. Pilnojo kvadrato pavidalas.} Kvadratinį daugianarį galima užrašyti $P(x)=a(x-h)^2+k$, kur $a\ne0$, o $a$, $h$, $k$ – realieji skaičiai. Šie skaičiai nustatomi vieninteliu būdu. Pavyzdžiui,
 \[
 3(x+4)^2-7=3(x-(-4))^2-7,\quad a=3,\quad h=-4,\quad k=-7.
 \]
 \textbf{5. Patikra.} Atskliaudę gautą užrašą ir sutraukę narius turime gauti pradinį reiškinį.
 \end{tcolorbox}
-\textbf{Ką verta užsirašyti savo atramose?} Pasirink svarbiausią temos išvadą ir užsirašyk: faktą, jo galiojimo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
+\textbf{Ką verta užsirašyti savo teorijos santraukoje?} Pasirink svarbiausią temos išvadą ir užsirašyk: faktą, jo galiojimo sąlygas, kodėl jis teisingas, ir vieną savo pavyzdį. Išvadų taikymą pasitikrink toliau pateiktu $\blacklozenge$ pažymėtu uždaviniu.
 \newpage
 \begin{center}{\Large\bfseries Savikontrolė}\end{center}
-Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
+Pirmiausia užversk teorijos santrauką ir savarankiškai išspręsk uždavinį. Pasitikrink atsakymus, o jei kuri nors dalis kėlė sunkumų, grįžk prie atitinkamos išvados ir pabandyk dar kartą. Kitą dieną arba prieš pradėdamas kitą temą dar kartą išspręsk šį uždavinį nesinaudodamas santrauka.
 \begin{enumerate}[resume]
 \item $\blacklozenge$ Atlikite užduotis ir paaiškinkite savo sprendimus:
 \begin{enumerate}
 \item Išskirkite pilnąjį kvadratą daugianaryje $\frac12x^2+3x-1$.
 \item Išskirkite pilnąjį kvadratą daugianaryje $-\frac12x^2+2x+3$.
-\item Užrašykite $2(x+3)^2-5$ standartiniu pavidalu. Nurodykite ir $a$, $h$, $k$ pilnojo kvadrato pavidale $a(x-h)^2+k$.
+\item Užrašykite $2(x+3)^2-5$ standartiniu pavidalu. Taip pat nurodykite $a$, $h$ ir $k$ pilnojo kvadrato pavidale $a(x-h)^2+k$.
 \item Mokinys teigia, kad $-2(x^2-4x)=-2(x-2)^2-8$. Patikrinkite šią lygybę ir, jei reikia, pataisykite klaidą.
 \end{enumerate}
 \end{enumerate}
@@ -235,7 +235,7 @@ Pirmiausia užversk temos atramą ir savarankiškai išspręsk uždavinį. Pasit
 \end{center}
 \textbf{b)} Pradinio kvadrato plotas $x^2$, visų stačiakampių – $14x$, o pridėtų kvadratėlių – $49$. Todėl visos figūros plotas $x^2+14x+49$.
 
-\textbf{c)} Gauto kvadrato kraštinė yra $x+7$, todėl jo plotas taip pat lygus $(x+7)^2$. Vadinasi,
+\textbf{c)} Naujojo kvadrato kraštinė yra $x+7$, todėl jo plotas lygus $(x+7)^2$. Tai ta pati figūra, todėl šis plotas lygus b dalyje gautai sumai:
 \[
 x^2+14x+49=(x+7)^2,\qquad
 x^2+14x=(x+7)^2-49.
@@ -252,13 +252,13 @@ x^2+\frac{bx}{2}+\frac{bx}{2}=x^2+bx.
 x^2+bx=\left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2.
 \]
 
-\textbf{d)} Ne: kai $b<0$, skaičius $\frac{b}{2}$ yra neigiamas, todėl negali būti atkarpos ilgis. Norėdami pagrįsti lygybę ir šiuo atveju, galime ją įrodyti algebriškai, nelaikydami $b$ ir $x$ atkarpų ilgiais. Tai padarysime kitame uždavinyje.
+\textbf{d)} Kai $b<0$, skaičius $\frac{b}{2}$ yra neigiamas, todėl negali būti atkarpos ilgis ir brėžinys netinka. Lygybę galima pagrįsti algebriškai, nelaikant $b$ ir $x$ atkarpų ilgiais. Tai padarysime 4 uždavinyje.
 \item Pritaikome kvadrato formulę dešiniajai lygybės pusei ir sutraukiame narius:
 \[
 \left(x+\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2
 =x^2+2x\cdot\frac{b}{2}+\left(\frac{b}{2}\right)^2-\left(\frac{b}{2}\right)^2=x^2+bx.
 \]
-Skaičių $b$ dalijame iš $2$, nes kvadrato formulėje mišrusis narys yra $2x\cdot\frac{b}{2}=bx$. Pritaikius kvadrato formulę papildomai atsiranda $\left(\frac{b}{2}\right)^2$, todėl jį atimame: taip reiškinio reikšmė nepasikeičia.
+Skaičių $b$ dalijame iš $2$, nes kvadrato formulėje dviguboji sandauga $2\cdot x\cdot\frac{b}{2}$ turi būti lygi $bx$. Atskliaudus $\left(x+\frac{b}{2}\right)^2$, be $x^2+bx$ atsiranda papildomas narys $\left(\frac{b}{2}\right)^2$, todėl jį atimame ir reiškinio reikšmė nepasikeičia.
 \item \textbf{a)} $(x+2)^2-4=(x-(-2))^2-4$, todėl pavidale $(x-h)^2+k$ yra $h=-2$, $k=-4$;
 
 \textbf{b)} $(x+3)^2-9$;
@@ -291,16 +291,16 @@ Skaičių $b$ dalijame iš $2$, nes kvadrato formulėje mišrusis narys yra $2x\
 \textbf{g)} $(x-0)^2$;
 
 \textbf{h)} $(x+\frac{\sqrt{2}}{2})^2-\frac{1}{2}$.
-\item Atskliaudę dešinę pusę gauname $(x-3)^2-3=x^2-6x+6$, todėl teiginys neteisingas. Pritaikius kvadrato formulę atsiranda $9$, tad reikia atimti būtent $9$: $x^2-6x=(x-3)^2-9$.
+\item Atskliaudę dešiniąją pusę gauname $(x-3)^2-3=x^2-6x+6$, todėl teiginys neteisingas. Atskliaudus $(x-3)^2$ atsiranda $9$, todėl reikia atimti būtent $9$: $x^2-6x=(x-3)^2-9$.
 \item \textbf{a)} Atskliaudę gauname
 \[
 a\left(x^2+\frac{b}{a}x\right)=ax^2+a\cdot\frac{b}{a}x=ax^2+bx.
 \]
 Koeficientą $b$ dalijame iš $a$, nes atskliaudus jis vėl bus padaugintas iš $a$. Sąlyga $a\ne0$ reikalinga tam, kad galėtume dalyti iš $a$.
 
-\textbf{b)} Iškeliame $a$ prieš skliaustus. Skliaustuose lieka anksčiau nagrinėtas pavidalas $x^2+px$, kur $p=\frac{b}{a}$. Išskiriame jo pilnąjį kvadratą, o tada padauginame abu gautus narius iš $a$.
+\textbf{b)} Iškeliame $a$ prieš skliaustus. Skliaustuose lieka pavidalas $x^2+bx$, kai vietoje $b$ rašome $\frac{b}{a}$. Išskiriame jo pilnąjį kvadratą, o tada padauginame abu gautus narius iš $a$.
 
-\textbf{c)} Taikome tą patį būdą ir teigiamam, ir neigiamam koeficientui:
+\textbf{c)} Tą patį būdą taikome ir kai $a>0$, ir kai $a<0$:
 \[
 \begin{aligned}
 2x^2-8x&=2(x^2-4x)=2\bigl((x-2)^2-4\bigr)=2(x-2)^2-8;\\
@@ -334,13 +334,13 @@ Patikra: atskliaudę reiškinius $2(x-2)^2-8$ ir $-(x-3)^2+9$ atitinkamai gaunam
 \textbf{e)} $-3(x+1)^2+3$;
 
 \textbf{f)} $5(x-\frac{1}{2})^2-\frac{5}{4}$.
-\item \textbf{a)} Kai $x=0$, kairė pusė lygi $0$, o dešinė – $-9-9=-18$, todėl lygybė neteisinga. Klaida išryškėja atlikus pertvarkymą teisingai:
+\item \textbf{a)} Kai $x=0$, kairė pusė lygi $0$, o dešinė – $-9-9=-18$, todėl lygybė neteisinga. Teisingai pertvarkę matome, kur buvo klaida:
 \[
 -x^2+6x=-\bigl(x^2-6x\bigr)=-\bigl((x-3)^2-9\bigr)=-(x-3)^2+9.
 \]
-Prieš skliaustus esantis minusas pakeičia abiejų skliaustuose esančių narių ženklus.
+Mokinys pamiršo, kad minusas prieš skliaustus pakeičia abiejų skliaustuose esančių narių ženklus, todėl $-(-9)=+9$, o ne $-9$.
 
-\textbf{b)} Ne. Pavyzdžiui, lygybė $x^2=x$ teisinga, kai $x=0$, bet neteisinga, kai $x=2$, nes $4\ne2$. Viena netinkama reikšmė gali paneigti tapatybę, tačiau viena tinkama reikšmė neįrodo, kad lygybė teisinga su visomis $x$ reikšmėmis.
+\textbf{b)} Ne, nepakanka. Pavyzdžiui, lygybė $x^2=x$ teisinga, kai $x=0$, bet neteisinga, kai $x=2$, nes $4\ne2$. Viena netinkama reikšmė paneigia lygybę, o viena tinkama dar neįrodo, kad ji teisinga su visomis $x$ reikšmėmis.
 \item Pirmiausia išskiriame pilnąjį kvadratą pirmuosiuose dviejuose nariuose $ax^2+bx$, tada prie gauto reiškinio pridedame $c$ ir sutraukiame skaičius. Pavyzdžiui,
 \[
 \begin{aligned}
@@ -379,14 +379,14 @@ Patikra: $2(x-2)^2-5=2(x^2-4x+4)-5=2x^2-8x+3$. Kiekvienas pertvarkymas išsaugo 
 \textbf{h)} $5(x-\frac{1}{2})^2+\frac{3}{4}$.
 \item \textbf{a)} Išskyrę pilnąjį kvadratą gauname $x^2-8x+7=(x-4)^2-9$. Taigi $h=4$, $k=-9$. Patikra: $(x-4)^2-9=x^2-8x+7$.
 
-Kad pagrįstume, jog kitų porų nėra, atskliaudžiame bendrąjį užrašą: $(x-h)^2+k=x^2-2hx+h^2+k$. Pagal 1 temos 17 uždavinio išvadą apie daugianarių koeficientus gauname $-2h=-8$ ir $h^2+k=7$. Iš pirmosios lygybės $h=4$, o iš antrosios $k=7-16=-9$. Kitos poros nėra.
+Kad pagrįstume, jog kitų porų nėra, atskliaudžiame bendrąjį užrašą: $(x-h)^2+k=x^2-2hx+h^2+k$. Du daugianariai yra lygūs su visais $x$ tik tada, kai jų atitinkami koeficientai lygūs (1 temos 17 uždavinys), todėl gauname $-2h=-8$ ir $h^2+k=7$. Iš pirmosios lygybės $h=4$, o iš antrosios $k=7-16=-9$. Kitos poros nėra.
 
 \textbf{b)} Išskyrę pilnąjį kvadratą gauname $-2x^2+12x-1=-2(x-3)^2+17$. Taigi $h=3$, $k=17$. Patikra: $-2(x-3)^2+17=-2x^2+12x-1$.
 
-Bendruoju atveju $-2(x-h)^2+k=-2x^2+4hx-2h^2+k$. Prilyginę atitinkamus koeficientus gauname $4h=12$ ir $-2h^2+k=-1$. Todėl $h=3$, $k=-1+18=17$. Kitos poros nėra.
-\item \textbf{a)} Sprendimas neteisingas. Atskliaudę mokinio gautos lygybės dešiniąją pusę gauname $(x+3)^2+5-5=x^2+6x+9$, o ne $x^2+6x+5$.
+Bendruoju atveju $-2(x-h)^2+k=-2x^2+4hx-2h^2+k$. Pagal tą pačią išvadą prilyginę atitinkamus koeficientus gauname $4h=12$ ir $-2h^2+k=-1$. Todėl $h=3$, $k=-1+18=17$. Kitos poros nėra.
+\item \textbf{a)} Samprotavimas neteisingas. Atskliaudę mokinio gautos lygybės dešiniąją pusę gauname $(x+3)^2+5-5=x^2+6x+9$, o ne $x^2+6x+5$.
 
-Kvadratui $(x+3)^2$ sudaryti reikia pridėti $9$, nes $3^2=9$; pradinio daugianario laisvasis narys yra $5$, todėl kartu atimame $9$:
+Kad gautume kvadratą $(x+3)^2$, reikia pridėti $3^2=9$, todėl kartu atimame $9$, o laisvasis narys $5$ lieka:
 \[
 x^2+6x+5=x^2+6x+9-9+5=(x+3)^2-4.
 \]
@@ -400,7 +400,7 @@ Patikra: $(x+3)^2-4=x^2+6x+9-4=x^2+6x+5$.
 &=-2(x-3)^2+18+1=-2(x-3)^2+19.
 \end{aligned}
 \]
-Dauginame abu skliaustuose esančius narius: $-2\cdot(-9)=18$. Pridėję dar $1$, gauname $k=19$.
+Atskliaudami dauginame iš $-2$ abu narius: $(x-3)^2$ gauna ženklą $-$, o $-9$ virsta $-2\cdot(-9)=+18$. Pridėję dar $1$, gauname $k=19$.
 
 \textbf{c)} $a=-2$, $h=3$, $k=19$. Patikra: $-2(x-3)^2+19=-2(x^2-6x+9)+19=-2x^2+12x+1$.
 \item \textbf{a)} Iškeliame $\frac12$ prieš skliaustus, tada juose išskiriame pilnąjį kvadratą:
@@ -414,7 +414,7 @@ Dauginame abu skliaustuose esančius narius: $-2\cdot(-9)=18$. Pridėję dar $1$
 \]
 Patikra: $\frac12(x+3)^2-\frac{11}{2}=\frac12x^2+3x+\frac92-\frac{11}{2}=\frac12x^2+3x-1$.
 
-\textbf{b)} Iškeliame neigiamą koeficientą ir dauginame iš jo abu skliaustų narius:
+\textbf{b)} Iškeliame $-\frac12$ prieš skliaustus, o atskliaudami dauginame iš $-\frac12$ abu skliaustuose esančius narius:
 \[
 \begin{aligned}
 -\frac12x^2+2x+3&=-\frac12(x^2-4x)+3\\
@@ -430,7 +430,7 @@ Patikra: $-\frac12(x-2)^2+5=-\frac12x^2+2x-2+5=-\frac12x^2+2x+3$.
 \]
 Kadangi $x+3=x-(-3)$, tai pilnojo kvadrato pavidale $a=2$, $h=-3$, $k=-5$.
 
-\textbf{d)} Lygybė neteisinga: kai $x=0$, jos kairė pusė lygi $0$, o dešinė – $-2\cdot4-8=-16$. Mokinys netinkamai padaugino neigiamą narį iš $-2$. Teisingai:
+\textbf{d)} Lygybė neteisinga: kai $x=0$, jos kairė pusė lygi $0$, o dešinė – $-2\cdot4-8=-16$. Mokinys neteisingai padaugino narį $-4$ iš $-2$: turėjo gauti $+8$, o ne $-8$. Teisingai:
 \[
 -2(x^2-4x)=-2\bigl((x-2)^2-4\bigr)=-2(x-2)^2+8,
 \]
