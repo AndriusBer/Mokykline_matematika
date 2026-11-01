@@ -1,0 +1,151 @@
+% !TeX program = lualatex
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,enumitem,xcolor,tcolorbox,needspace,hyperref}
+\usepackage[left=1.8cm,right=1.8cm,top=1.7cm,bottom=1.7cm]{geometry}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}\raggedbottom\emergencystretch=3em
+\setlist[itemize]{leftmargin=5mm,itemsep=2pt,topsep=3pt}
+\newcommand{\tema}[2]{\clearpage\section*{#1 tema. #2}\addcontentsline{toc}{section}{#1 tema. #2}}
+\newcommand{\p}[1]{\par\smallskip\textbf{#1} }
+\renewcommand{\contentsname}{Turinys}
+\begin{document}
+\begin{center}
+{\large\sffamily\bfseries KVADRATINIS DAUGIANARIS}\\[5pt]
+{\LARGE\bfseries Metodinės rekomendacijos mokytojui}\\[5pt]
+{\small Dešimties temų kurso planavimas ir mokymo diferencijavimas}\\[5pt]
+{\small Andrius Berniukevičius \textbar\ Vilniaus licėjus}\\[4pt]
+\rule{0.72\textwidth}{0.4pt}
+\end{center}
+\begin{tcolorbox}[colback=black!3,colframe=black!65,boxrule=0.5pt,arc=2mm]
+\textbf{Paskirtis.} Šios rekomendacijos padeda suplanuoti kursą, kuriame mokiniai, spręsdami uždavinius, atranda ir pagrindžia kvadratinio daugianario savybes. Kiekvienai temai siūlomi pagrindiniai ir gilinimo uždaviniai, aptarimo klausimai bei supratimo patikra. Uždavinių numeriai atitinka kartu su šiomis rekomendacijomis pateikiamas temų redakcijas.
+\end{tcolorbox}
+\tableofcontents
+\section*{Kurso paskirtis ir darbo principai}\addcontentsline{toc}{section}{Kurso paskirtis ir darbo principai}
+Kurso tikslas – išmokyti mokinius nagrinėti $P(x)=ax^2+bx+c$ kaip reiškinį: apskaičiuoti jo reikšmes, išskirti pilnąjį kvadratą, nustatyti ekstremumą ir šaknis, naudoti simetriją, išskaidyti dauginamaisiais, pagrįsti ženklus ir pagal duomenis sudaryti daugianarį. Šiame kurse remiamasi algebriniais samprotavimais ir brėžiniais skaičių tiesėje.
+
+Kiekvieną naują idėją, kai tik įmanoma, mokiniai turėtų atrasti tokia seka: \textbf{konkretus pavyzdys $\rightarrow$ pastebėjimas $\rightarrow$ mokinio spėjimas $\rightarrow$ pagrindimas $\rightarrow$ taikymas ir patikra}. Temų medžiagoje žvaigždutė žymi svarbią idėją, o ne visą privalomą pratybų kiekį: po uždavinio, kuriame atrandama pagrindinė idėja, skirkite ir kelis jos taikymo uždavinius. Visų punktų iš eilės skirti nebūtina.
+
+\textbf{Darbo ciklas.} Mokiniai pirmiausia bando spręsti patys. Jei nesiseka, pasiūlykite konkretų skaičių, brėžinį ar ankstesnį uždavinį. Jei reikia, pateikite užuominą ar dalį sprendimo; visą sprendimą aptarkite po savarankiško bandymo. Pasinaudojęs sprendimu, mokinys išsiaiškina jo žingsnius, o paskui, užvertęs sprendimą, išsprendžia uždavinį pats. Temos pabaigoje mokiniai pirmiausia patys prisimena išvadas ir tik tada palygina jas su santrauka. Savikontrolės uždavinį naudinga spręsti užvertus santrauką, o po kelių dienų prie jo sugrįžti.
+
+\textbf{Diferencijavimas.} Pagrindiniai uždaviniai apima visiems mokiniams svarbias idėjas; mokytojas gali pasirinkti tinkamus punktus. Gilinimo uždaviniai skirti papildomai įtvirtinti ir susieti temų idėjas. Mokiniui, kuriam reikia daugiau pagalbos, galima skirti paprastesnių uždavinių, o iššūkio uždavinių neskirti. Mokinius prie įrodymo veskite palaipsniui: pasitelkite konkretų pavyzdį, tarpinį klausimą ar darbą poromis, o pagalbos vis mažinkite.
+
+\textbf{Orientacinis laikas.} Nurodytas pamokų (po 45 min.) skaičius yra orientacinis planas, o ne išbandyto kurso rezultatai. Pagrindiniams uždaviniams nagrinėti iš viso siūloma skirti 27–37 pamokas, įskaitant aptarimą ir patikras; diagnostikai, papildomoms pratyboms bei atsiskaitymams laikas planuojamas atskirai. Tempą derinkite prie klasės.
+\section*{Kurso eiga}\addcontentsline{toc}{section}{Kurso eiga}
+\small
+\begin{longtable}{@{}p{.075\textwidth}p{.48\textwidth}p{.27\textwidth}r@{}}\toprule
+\textbf{Tema} & \textbf{Pagrindinis klausimas} & \textbf{Nauda tolesnėms temoms} & \textbf{Pam.}\\\midrule\endhead
+1 & Kas yra kvadratinis daugianaris ir kaip nustatyti jo koeficientus? & Daugianario sudarymas iš reikšmių & 2–3\\
+2 & Kaip išskirti pilnąjį kvadratą? & Pavidalas $a(x-h)^2+k$ & 3–4\\
+3 & Kas yra ekstremumo taškas ir ekstremumas? & Rūšis, pasiekiamumas & 2–3\\
+4 & Kaip ekstremumą rasti iš $a,b,c$? & $D$, ekstremumo formulės & 3–4\\
+5 & Kada reikšmės lygios? Kaip jas palyginti? & Simetrija ir atstumas & 3–4\\
+6 & Kas yra šaknis ir kaip ją rasti? & Šaknų formulė, $D$ atvejai & 3–4\\
+7 & Ką apie šaknis pasako koeficientai? & Vijeto teorema & 3–4\\
+8 & Kada du skaičiai yra šaknys? & Atvirkštinė teorema, sistemos & 2–3\\
+9 & Kaip šaknys duoda sandaugos pavidalą? & Trys pavidalai & 3–4\\
+10 & Kada kvadratinis daugianaris yra teigiamas, neigiamas arba lygus nuliui? & Ženklai, nelygybių pradmenys & 3–4\\\bottomrule
+\end{longtable}
+\normalsize
+\textbf{Prieš kursą.} Trumpai patikrinkite veiksmus su trupmenomis ir neigiamaisiais skaičiais; atskliaudimą ir panašiųjų narių sutraukimą; $P(2)$ reikšmės skaičiavimą; lygčių $t^2=9$, $t^2=0$, $t^2=-1$ sprendimą; abiejų nelygybės pusių dauginimą iš neigiamo skaičiaus; dviejų tiesinių lygčių su dviem nežinomaisiais sistemos sprendimą. Ši patikra skirta išsiaiškinti, ką reikia pakartoti, o ne atrinkti mokinius. Modulio ir atstumo ryšį priminkite 5 temoje.
+
+\textbf{Kasdienė pamokos struktūra.} 5–8 min. ankstesnės idėjos prisiminimui; 10–15 min. savarankiškam darbui; 10–15 min. mokinių būdų aptarimui ir pagrindimui; 8–10 min. taikymo uždaviniui ir trumpai patikrai pamokos pabaigoje. Tai orientacinė schema, kurią galima keisti; įrodymo ar daugianario sudarymo pamokai gali prireikti daugiau laiko.
+\section*{Svarbios atramos: ko nepraleisti}\addcontentsline{toc}{section}{Svarbios atramos: ko nepraleisti}
+Toliau nurodytos išvados reikalingos vėlesniam darbui. Jei trūksta laiko, aptarkite su klase bent pagrindinę mintį ir vieną jos taikymą; visų punktų spręsti savarankiškai nebūtina. Nuoroda 3.5 reiškia 3 temos 5 uždavinį.
+\begin{itemize}
+\item \textbf{1.16–17:} reikšmės $P(0)$, $P(1)$, $P(-1)$ ir koeficientų nustatymas vieninteliu būdu; šia išvada remiamasi 2.15.
+\item \textbf{2.4, 2.8, 2.12 ir 2.15:} pilnojo kvadrato išskyrimas ir pavidalo vienatinumas; pagrindas 3 ir 4 temoms.
+\item \textbf{3.5:} ar daugianaris turi minimumą, ar maksimumą, ar ekstremumas pasiekiamas ir kad priešingos rūšies ekstremumo nėra; šiuo rezultatu remiamasi 4.3 ir daugianario sudarymo uždaviniuose.
+\item \textbf{4.2 ir 4.7:} tapatybė su diskriminantu ir vienos šaknies ryšys su nuliniu ekstremumu; prie šių išvadų grįžtama 6 ir 10 temose.
+\item \textbf{5.6 ir 5.9:} vidurio formulė, kai $u\ne v$, ir faktas, kad daugianaris tą pačią reikšmę įgyja daugiausia esant dviem skirtingoms $x$ reikšmėms; taikoma 6 temoje.
+\item \textbf{6.12e:} šaknų vidurkis ir ekstremumo taškas; tuo remiamasi 7.19 ir 9.17b.
+\item \textbf{7.10d:} kubų sumos išreiškimas šaknų suma ir sandauga; taikoma 8.21.
+\item \textbf{8.3d ir 8.4c:} sandaugos tapatybė ir $D=a^2(u-v)^2$; jų prireikia 9 ir 10 temose.
+\item \textbf{9.13d:} konkrečių dauginamųjų ženklų nustatymas; įžanga į 10 temos 3 uždavinio intervalų nagrinėjimą.
+\end{itemize}
+\textbf{Loginiai žodžiai.} „Jeigu $A$, tai $B$“ reiškia, kad iš $A$ išplaukia $B$; atvirkštiniame teiginyje $A$ ir $B$ sukeisti vietomis. Jo teisingumą reikia pagrįsti, nes jis savaime iš pradinio teiginio neišplaukia. Teiginį su jungtuku „tada ir tik tada, kai“ reikia pagrįsti abiem kryptimis. Sąlyga būtina, jei be jos išvada negalima, ir pakankama, jei ją turint išvada išplaukia. Teiginiui, kuriame tvirtinama, kad savybė galioja visais atvejais, paneigti pakanka vieno kontrpavyzdžio. Šias sąvokas aptarkite remdamiesi konkrečiais 1, 4 ir 8 temų pavyzdžiais.
+
+\tema{1}{Apibrėžimas, koeficientai ir reikšmės}
+\p{Tikslas.} Atpažinti kvadratinį daugianarį, teisingai nustatyti $a,b,c$, apskaičiuoti $P(u)$ ir suprasti, kokia informacija leidžia nustatyti koeficientus.
+\p{Pagrindiniai uždaviniai.} 1 – apibrėžimas ir atvejai $b=0$, $c=0$; 2 ir 4 – koeficientai bei reikšmės; 6 – klaida dėl $-x^2$; 10–12 – reikšmių skaičiavimas; 15–16 – $P(0)$ ir koeficientų formulės; 17 – tapatybė ir koeficientai; 18 – taikymas; 22 – vienos reikšmės nepakankamumas. Iš 7 ir 21 uždavinių pasirinkite po kelis įvairius punktus; 23 – temos apibendrinimas: aptarkite svarbiausias išvadas ir pasirinkite punktus pagal klasės pasirengimą.
+\p{Aptarimas.} Tegul mokinys paaiškina, kodėl skaičiuojant $P(-4)$ vietoj $x$ įrašome $-4$, o ne visą reiškinį dauginame iš $-4$. Paklauskite, kodėl, radus koeficientus iš trijų reikšmių, būtina patikrinti, ar $a\ne0$.
+\p{Gilinimas.} 8–9 – parametras ir egzistavimas; 19 ir likę 21 uždavinio punktai – koeficientų nustatymas ir sąlygų pakankamumas. Jei mokiniams sunku spręsti tiesinių lygčių sistemas, pirmiausia jas pakartokite ir tik tada skirkite 21 uždavinį savarankiškai.
+\p{Patikra.} Duokite $P(x)=-x^2+2x$ ir paprašykite nurodyti koeficientus, apskaičiuoti $P(-1)$ ir paaiškinti, kodėl $c=0$. Savikontrolė – 24.
+\p{Toliau.} Standartinis pavidalas ir koeficientai reikalingi visose kitose temose; koeficientų vienatinumu remiamasi 2 temos 15 uždavinyje.
+\tema{2}{Pilnojo kvadrato išskyrimas}
+\p{Tikslas.} Suprasti, kodėl pridedamas ir atimamas tas pats kvadratas, ir pertvarkyti $ax^2+bx+c$ į $a(x-h)^2+k$.
+\p{Pagrindiniai uždaviniai.} 1 – atskliaudimo priminimas; 2–3 – konkretus ir bendresnis ploto modelis; 4 – tapatybė $x^2+bx$; keli skirtingi 5–6 uždavinių punktai; 7 – tipinė klaida; 8 – kai $a\ne1$; skirtingų ženklų pavyzdžiai iš 9–10; 11 – minuso klaida; 12 ir keli 13 punktai – trijų narių atvejis; 15 – pavidalo nustatymas ir vienatinumas; 16 – apibendrinimas, aptariant svarbiausius punktus.
+\p{Aptarimas.} Geometrinis modelis remiasi teigiamais ilgiais, o 4 uždavinio algebrinė tapatybė galioja ir tada, kai $b$ neigiamas. Iškėlę $a$ prieš skliaustus, aiškiai užrašykite koeficientą $\frac ba$. Gautus pavidalus tikrinkite atskliausdami.
+\p{Gilinimas.} 14 ir likę 16 punktai – pavidalo atpažinimas ir papildomas apibendrinimas. Pasirinkite tik tiek panašių uždavinių, kiek reikia mokiniui.
+\p{Patikra.} Paprašykite paaiškinti, kodėl $x^2+8x=(x+4)^2-16$, ir išskirti kvadratą $-2x^2+8x$. Savikontrolė – 17.
+\p{Toliau.} Pilnojo kvadrato pavidalas yra 3–5 temų pagrindas.
+\tema{3}{Ekstremumo taškas ir ekstremumas}
+\p{Tikslas.} Skirti argumento reikšmę $x_{\min}$ ar $x_{\max}$ nuo mažiausiosios ar didžiausiosios daugianario reikšmės $P_{\min}$ ar $P_{\max}$; pagrįsti, kad ekstremumas pasiekiamas ir visos reikšmės tenkina reikiamą nelygybę.
+\p{Pagrindiniai uždaviniai.} 1–2 – konkretūs kvadrato pavyzdžiai; 3 – sąvokos ir klaidos; 4 – maksimumas; 5 – bendras $a(x-h)^2+k$ ir ekstremumo rūšis; keli 6–7 uždavinių punktai; 8 – klaidingi teiginiai; 10 ir 11 – daugianario sudarymo logika, po to 12 arba 13.
+\p{Aptarimas.} Pabrėžkite abi ekstremumo sąlygas: reikia parodyti, kad nelygybė galioja su visomis realiosiomis $x$ reikšmėmis ir kad lygybė pasiekiama. „Taškas“ čia yra $x$ reikšmė, o ekstremumas – atitinkama $P(x)$ reikšmė. Apibendrindami įsitikinkite, kad mokiniai supranta, kodėl, kai $a<0$, daugianaris neturi minimumo, o kai $a>0$ – maksimumo.
+\p{Gilinimas.} 13–17 sieja ekstremumą su koeficientais ir 1 temos reikšmėmis.
+\p{Patikra.} Su $P(x)=-3(x-4)^2+7$ paprašykite nurodyti maksimumo tašką ir maksimumą bei pagrįsti. Atsakymas: $x_{\max}=4$, $P_{\max}=7$, nes kvadratas neneigiamas, o lygybė pasiekiama, kai $x=4$. Savikontrolė – 18.
+\p{Toliau.} 4 temoje tuos pačius dydžius rasime iš standartinio pavidalo.
+\tema{4}{Diskriminantas ir ekstremumo formulės}
+\p{Tikslas.} Įvesti $D=b^2-4ac$, pagrįsti $x_{\mathrm e}=-\frac b{2a}$ ir $P_{\mathrm e}=-\frac D{4a}$, pasirinkti patogų skaičiavimo būdą ir tikrinti sąlygų suderinamumą.
+\p{Pagrindiniai uždaviniai.} 1 – diskriminantas; 2–3 – tapatybė ir formulių išvedimas remiantis 3 tema; keli 4 punktai – skaičiavimas dviem būdais; 5 – klaidinga ženklo išvada; pasirinkti 6 ir 7 punktai – sąlygų pagrindimas; 8–9 – ženklai; 11 – $P$ ir $-P$ ekstremumų palyginimas; 12 arba 13 – egzistavimas; vienas 16 ir vienas 19 daugianario sudarymo punktas.
+\p{Aptarimas.} Ekstremumą dažnai paprasčiau gauti pirmiausia radus $x_{\mathrm e}$ ir apskaičiavus $P(x_{\mathrm e})$. Aptarkite, kada patogu išskirti kvadratą, o kada taikyti formules. Radus $a$, patikrinkite, ar $a\ne0$ ir ar jo ženklas atitinka prašomą minimumą arba maksimumą.
+\p{Gilinimas.} 10 – laisvojo nario pokyčio įtaka; 14–15 – ženklai ir parametrai; 18–20 – vienatinumas ir skirtingi daugianario sudarymo duomenys.
+\p{Patikra.} Paprašykite paaiškinti, kodėl, žinant tik tai, kad $D>0$, negalima nustatyti ekstremumo ženklo, jei nežinomas $a$ ženklas. Savikontrolė – 21.
+\p{Toliau.} Formulės bus naudojamos simetrijai ir diskriminantui nagrinėti.
+\tema{5}{Daugianario reikšmių simetrija}
+\p{Tikslas.} Pagrįsti $P(h-t)=P(h+t)$; iš skirtingų $u,v$, kuriems $P(u)=P(v)$, rasti $h=\frac{u+v}{2}$; lyginti reikšmes pagal atstumus ir $a$ ženklą.
+\p{Pagrindiniai uždaviniai.} 1–3 – pavyzdys ir simetrija; 5 – spėjimas skaičių tiesėje; 6 – įrodymas, įskaitant $u\ne v$ sąlygą; 7–9 – taikymas ir lygios reikšmės; 10–11 – konkretūs palyginimai; 12–14 – modulis, atstumas ir bendras palyginimo pagrindimas; 15–17 – keli įvairūs palyginimai.
+\p{Aptarimas.} Brėžinys padeda pastebėti dėsningumą ir iškelti spėjimą, bet bendrą teiginį reikia pagrįsti. Atskirai aptarkite, kodėl iš $P(u)=P(v)$ negaunama vidurio formulė, jei $u=v$. Kai $a>0$, didesnė yra ta daugianario reikšmė, kuri atitinka toliau nuo $h$ esantį skaičių; kai $a<0$, ši reikšmė mažesnė.
+\p{Gilinimas.} 18–20 ir papildomi 21–31 uždaviniai jungia simetriją su daugianario sudarymu, koeficientų ženklais ir diskriminantu. Rinkitės pagal mokinių poreikius.
+\p{Patikra.} Jei $a<0$ ir $P(-6)=P(4)$, palyginkite $P(-2)$ ir $P(6)$. Atsakymas: $h=-1$, atstumai iki jo yra $1$ ir $7$, todėl $P(-2)>P(6)$. Savikontrolė – 32.
+\p{Toliau.} Simetrija padės suprasti šaknų vidurkį ir skaidinio ryšį su ekstremumu.
+\tema{6}{Kvadratinio daugianario šaknys ir jų radimo formulė}
+\p{Tikslas.} Suprasti šaknies apibrėžimą, spręsti atvejus su nuliniais koeficientais, išvesti ir taikyti šaknų formulę, sieti $D$ ženklą su realiųjų šaknų skaičiumi.
+\p{Pagrindiniai uždaviniai.} 1–2 – šaknies sąvoka; 3–5 – $x^2=t$ ir trys atvejai; 6 – bendrojo daugiklio iškėlimas; 7 – dalybos iš $x$ klaida; 8 – būdo pasirinkimas; 9–10 – pilnasis kvadratas su konkrečiais skaičiais; 11 – ankstesnės tapatybės priminimas; 12 – formulės išvedimas, įskaitant e punktą apie šaknų simetriją; 13 – diskriminanto atvejai. Iš 14 uždavinio pasirinkite atvejų, kai yra dvi, viena arba nėra realiųjų šaknų. Taip pat parinkite bent po vieną atvejį, kai $a<0$ ir kai šaknys iracionaliosios.
+\p{Aptarimas.} Atkreipkite dėmesį, kad dalijant iš nežinomojo galima prarasti šaknį; lygtis $x^2=9$ turi dvi šaknis: $3$ ir $-3$. Kai $D=0$, yra viena šaknis; kai $D<0$, realiųjų šaknų nėra. Kai $a<0$, vardiklis neigiamas, tačiau šaknų formulė galioja; kai $D>0$, ji duoda dvi šaknis.
+\p{Gilinimas.} 15 – šaknų skaičius be pačių šaknų radimo; papildomai taikykite 12e išvadą naujiems pavyzdžiams.
+\p{Patikra.} Paprašykite rasti $x^2-4x$ šaknis ir paaiškinti, kodėl negalima tiesiog padalyti iš $x$. Savikontrolė – 16.
+\p{Toliau.} 7 temoje šaknų formulė naudojama Vijeto teoremai pagrįsti.
+\tema{7}{Vijeto teorema}
+\p{Tikslas.} Iš šaknų formulės išvesti šaknų sumos ir sandaugos ryšius su koeficientais, taikyti juos tik esant realiosioms šaknims ir skaičiuoti simetrinius reiškinius.
+\p{Pagrindiniai uždaviniai.} 1–2 – nuo konkretaus spėjimo prie bendro; 3 – įrodymas ir dvigubosios šaknies susitarimas; 4–6 – taikymas, keli skirtingi punktai; 7–9 – kitos šaknies paieška ir šaknis $0$; 10 – tapatybės, kuriose reiškiniai išreiškiami šaknų suma ir sandauga; 11–12 – taikymas ir simetriškumas; 18 – realiųjų šaknų nebuvimo klaida; 19 – ryšys su ekstremumo tašku.
+\p{Aptarimas.} Jei sąlygoje nurodyta, kad šaknys realiosios, $D$ atskirai skaičiuoti nebūtina; jei tai nenurodyta, reikia pagrįsti, ar šaknys realiosios. Kai $D=0$, yra viena šaknis, formulėse žymima $x_1=x_2$. Jei viena šaknis $0$, lygtis $0\cdot x_2=0$ kitos šaknies nenusako.
+\p{Gilinimas.} 13–17 – papildomi simetriniai reiškiniai ir šaknų ženklai; 20–29 – daugianario sudarymas, egzistavimas ir ryšiai su ankstesnėmis temomis.
+\p{Patikra.} Kai $x_1+x_2=5$, $x_1x_2=6$, mokinys, neradęs šaknų, apskaičiuoja $x_1^2+x_2^2=13$ ir paaiškina, kodėl šių duomenų nepakanka vyriausiajam koeficientui nustatyti. Savikontrolė – 30.
+\p{Toliau.} 8 tema keičia samprotavimo kryptį: iš sumos ir sandaugos sprendžiama apie šaknis.
+\tema{8}{Atvirkštinė Vijeto teorema}
+\p{Tikslas.} Skirti tiesioginį teiginį ir atvirkštinį; remiantis dviejų realiųjų skaičių suma ir sandauga pagrįsti, kad skaičiai yra šaknys, sudaryti redukuotąją lygtį ir spręsti sumos bei sandaugos sistemas.
+\p{Pagrindiniai uždaviniai.} 1–2 – samprotavimo krypties keitimas; 3–4 – įrodymas įrašant, taip pat atvejis $u=v$; 5 – tiesioginė ir atvirkštinė kryptys; 6–9 – šaknų parinkimas ir klaidos dėl koeficientų; 11 ir 12 – redukuotoji lygtis; 13 – ar šaknys realiosios; 17 – sistema ir keitimo būdo palyginimas; 18 – keli įvairūs atvejai; 19 – bendras porų skaičius.
+\p{Aptarimas.} Atvirkštinė teorema sako: jeigu egzistuoja realieji skaičiai su nurodyta suma ir sandauga, tai jie yra atitinkamo daugianario šaknys. Ji negarantuoja, kad bet kokiai duotų $S,T$ porai tokie skaičiai egzistuoja. Sutvarkytosios poros $(u;v)$ ir $(v;u)$ gali skirtis.
+\p{Gilinimas.} 14–16, 20–24 – naujos šaknys, ekstremumas ir sąlygos; 25 – pasirenkamas dvigubas teoremos taikymas.
+\p{Patikra.} Paklauskite, ar egzistuoja du realieji skaičiai, kurių suma $2$, sandauga $5$; tegu mokinys paaiškina, kodėl $D<0$ rodo, kad tokių skaičių nėra. Savikontrolė – 26.
+\p{Toliau.} 3d punkte gauta sandauga paruošia 9 temos skaidymą.
+\tema{9}{Kvadratinio daugianario skaidymas dauginamaisiais}
+\p{Tikslas.} Pagrįsti ir taikyti $P(x)=a(x-r)(x-s)$, atskirti šaknų atvejus ir pasirinkti tinkamiausią iš standartinio, pilnojo kvadrato ir sandaugos pavidalų.
+\p{Pagrindiniai uždaviniai.} 1–2 – sandauga ir nuliai; 3 – formulės įrodymas; 4 – konkretus pavyzdys; 5–6 – keli skirtingi punktai; 8 – dviguboji šaknis; 9 – klaidingi skaidiniai; 10–11 – kodėl, kai $D<0$, daugianario negalima išskaidyti realiaisiais tiesiniais dauginamaisiais; 12 – trys atvejai; 13, ypač d, – ženklų užuomazga; 15 – kodėl šaknys nenusako koeficiento $a$; 17–18 – ekstremumas ir trys pavidalai; po vieną iš 19–22.
+\p{Aptarimas.} Šaknys vienos nenustato vyriausiojo koeficiento $a$. Kai šaknis viena, sandaugos ir pilnojo kvadrato užrašai sutampa. Kai $D<0$, negalimas nurodytas skaidinys su realiaisiais tiesiniais dauginamaisiais.
+\p{Gilinimas.} 14, 16 ir 24–31 – daugianario sudarymas, diskriminantas, simetrija ir sąlygų pakankamumas.
+\p{Patikra.} Pateikite $3x^2-6x-9$ ir paprašykite užrašyti jį kitais dviem pavidalais ir patikrinti atskliaudžiant. Atsakymas: $3(x-1)^2-12=3(x-3)(x+1)$. Savikontrolė – 32.
+\p{Toliau.} 10 temoje dauginamųjų ženklai tiriami intervaluose.
+\tema{10}{Kvadratinio daugianario ženklai}
+\p{Tikslas.} Pagrįsti dauginamųjų ir visos sandaugos ženklus, nagrinėti atvejus, kai šaknys dvi, kai šaknis viena ir kai šaknų nėra; atskirti ženklų tiesę nuo pasirinktos nelygybės sprendinių aibės.
+\p{Pagrindiniai uždaviniai.} Įvadinis paaiškinimas ir 1–2 – ženklų tiesės skaitymas; 3–5 – nuo pavyzdžio prie intervalų; 6–7 – keli skirtingų $a$ ženklų pavyzdžiai; 8–9 – dviguboji šaknis; 11–12 – kai šaknų nėra; 14–15 – atvejų palyginimas ir klaidingas teiginys; 18 – vieno taško patikros ribos; 19 arba 20 – daugianario sudarymas iš ženklų; 28 – griežtos ir negriežtos nelygybės; 29 – kurso apibendrinimas.
+\p{Aptarimas.} Ženklų tiesėje $+$ ar $-$ galioja visam nurodytam atviram intervalui, šaknyje reikšmė yra $0$. Sprendinių tiesėje tuščiaviduris taškas neįtrauktas, pilnaviduris įtrauktas. Paaiškinkite, ką rodo kiekviena tiesė. Vienas intervalo taškas leidžia nustatyti ženklą tik jau pagrindus, kad tame intervale ženklas pastovus.
+\p{Gilinimas.} 21–27 – sąlygų derinimas ir daugianario sudarymas; 30 – parametrinis iššūkis. Jame sąlyga $D\ge0$ būtina: formalus minimumas, kai $m=1$, netinka, nes realiųjų šaknų nėra.
+\p{Patikra.} Palyginkite $(x+2)(x-3)>0$ ir $(x+2)(x-3)\ge0$: nurodykite, ar intervalų galai įtraukiami. Atsakymai: $(-\infty;-2)\cup(3;+\infty)$ ir $(-\infty;-2]\cup[3;+\infty)$. Savikontrolė – 31.
+\p{Kurso pabaiga.} Spręsdami 29 uždavinį, sugrįžkite prie keturių kurso klausimų: nuliai, ženklai, ekstremumas ir pakankami duomenys. Tegul mokinys pasako, kurį pavidalą rinktųsi ir kodėl.
+\clearpage
+\section*{Trumpi mokytojo kontroliniai klausimai}\addcontentsline{toc}{section}{Trumpi mokytojo kontroliniai klausimai}
+\begin{itemize}
+\item Ar mokinys skiria $P(u)$ nuo $uP(x)$? Ar atpažįsta kvadratinį daugianarį, kai $b$ arba $c$ yra nulis?
+\item Ar moka ne tik išskirti pilnąjį kvadratą, bet ir paaiškinti bei patikrinti pertvarkymą?
+\item Ar atskiria ekstremumo tašką ir ekstremumą, pagrindžia, kad nelygybė galioja su visomis realiosiomis $x$ reikšmėmis ir kad lygybė pasiekiama?
+\item Ar prieš taikydamas šaknų formulę, Vijeto teoremą ar skaidymo formulę patikrina jų sąlygas? Ar nepraranda šaknies $0$?
+\item Ar aiškiai pasako, ką būtinai gauname iš duomenų, ir atskirai patikrina, kad gautas daugianaris tenkina visas sąlygas?
+\item Ar mokinys ženklų tiesėje nepainioja nulio su teigiamu ar neigiamu ženklu ir ar sprendinių tiesėje taškus žymi pagal tai, ar jie įtraukiami?
+\end{itemize}
+\textbf{Po išbandymo.} Prie kiekvienos temos užsirašykite, kiek laiko ji iš tikrųjų užtruko, kokios mokinių klaidos buvo dažniausios, kurie uždaviniai buvo būtini ir kuriuos pavyko praleisti. Remdamiesi šiais duomenimis, patikslinkite pagrindinių uždavinių parinkimą ir pamokų planą.
+\end{document}
