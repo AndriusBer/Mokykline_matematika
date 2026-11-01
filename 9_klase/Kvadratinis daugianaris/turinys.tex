@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}
+  \setmainfont{Latin Modern Roman}
+\fi
+\usepackage{graphicx,xcolor,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,left=2.3cm,right=2.3cm,top=2.2cm,bottom=2.2cm]{geometry}
+\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}\newcommand{\knyga}{\faBook}}{\newcommand{\knyga}{\includegraphics[height=0.95em]{fontawesome_book.pdf}}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\definecolor{linija}{gray}{0.83}
+\newcommand{\tema}[3]{\noindent\makebox[1cm][l]{\textbf{#1.}}\parbox[t]{\dimexpr\linewidth-2.4cm\relax}{#2}\hfill\makebox[0.7cm][r]{\href{#3}{\large\knyga}}\par\vspace{0.32cm}{\color{linija}\hrule}\vspace{0.32cm}}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Kvadratinis daugianaris}\\[0.4cm]
+{\large Andrius Berniukevičius}\\[0.12cm]
+{\large Vilniaus licėjus}\\[0.5cm]
+{\large Temų sąrašas}
+\end{center}
+\vspace{0.7cm}
+\tema{1}{Kvadratinis daugianaris: apibrėžimas, koeficientai ir reikšmės}{https://drive.google.com/file/d/1w7BV6UDns8BV5mTFGoV08dZI3RsKBFrw/view?usp=drivesdk}
+\tema{2}{Pilnojo kvadrato išskyrimas}{https://drive.google.com/file/d/13v43rZ6wmhDRcu1dO2EEJ1aZlLDRbd8L/view?usp=drivesdk}
+\tema{3}{Kvadratinio daugianario ekstremumo taškas ir ekstremumas}{https://drive.google.com/file/d/1TEfdf2K014pfBfsKE3zfhNwzGOkOeYHb/view?usp=drivesdk}
+\tema{4}{Diskriminantas ir ekstremumo formulės}{https://drive.google.com/file/d/1TntBkRxH3msgHRFI8sSkkd3f_5k-li-u/view?usp=drivesdk}
+\tema{5}{Daugianario reikšmių simetrija}{https://drive.google.com/file/d/1mz6CUye1bIQtWugE2cie0Wq952NeB3FN/view?usp=drivesdk}
+\tema{6}{Kvadratinio daugianario šaknys ir jų radimo formulė}{https://drive.google.com/file/d/1d2lm1CJ6piZSoZYLVg1Rs7-bjeGFPmcG/view?usp=drivesdk}
+\tema{7}{Vijeto teorema}{https://drive.google.com/file/d/18EgVGiTTeTz5GBbcDXCbdjK1W6atL-ut/view?usp=drivesdk}
+\tema{8}{Atvirkštinė Vijeto teorema}{https://drive.google.com/file/d/14dfNvJPVAwW9YwHHQtV9wZIQYD9zf90v/view?usp=drivesdk}
+\tema{9}{Kvadratinio daugianario skaidymas dauginamaisiais}{https://drive.google.com/file/d/1MroK_qW61OAR5eiDrp2KZEu_a_nx7bMU/view?usp=drivesdk}
+\tema{10}{Kvadratinio daugianario ženklai}{https://drive.google.com/file/d/1Z1_d2ZlJHAFiS2hPNBNKbRj2S_8ycRCX/view?usp=drivesdk}
+\end{document}
