@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generuoja pasirinkto arba visų uždavinių PDF ir bandomąjį rinkinį."""
 import argparse
+import json
 from pathlib import Path
 import re
 import shutil
@@ -21,8 +22,43 @@ def tikrinti_uzdavini(identifikatorius):
     return katalogas
 
 
-def kompiliuoti(vardas, ivestis, paskirtis):
+def parengti_nuorodas(katalogas):
+    registro_failas = BANKAS / "drive_links.json"
+    try:
+        with registro_failas.open(encoding="utf-8") as failas:
+            def be_dublikatu(poros):
+                rezultatas = {}
+                for raktas, reiksme in poros:
+                    if raktas in rezultatas:
+                        raise ValueError(f"Pasikartojantis registro laukas: {raktas}")
+                    rezultatas[raktas] = reiksme
+                return rezultatas
+            registras = json.load(failas, object_pairs_hook=be_dublikatu)
+    except FileNotFoundError:
+        raise ValueError(f"Nerastas nuorodų registras: {registro_failas}") from None
+    if not isinstance(registras, dict):
+        raise ValueError("Nuorodų registras turi būti JSON objektas")
+    eilutes = []
+    for identifikatorius, irasas in sorted(registras.items()):
+        if not ID_FORMATAS.fullmatch(identifikatorius) or not isinstance(irasas, dict):
+            raise ValueError(f"Netinkamas registro įrašas: {identifikatorius}")
+        drive_id = irasas.get("drive_id")
+        url = irasas.get("url")
+        if (not isinstance(drive_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]+", drive_id)
+                or url != f"https://drive.google.com/file/d/{drive_id}/view"):
+            raise ValueError(f"Netinkama Drive nuoroda uždaviniui {identifikatorius}")
+        eilutes.append(r"\expandafter\def\csname bankourl@" + identifikatorius
+                       + r"\endcsname{\detokenize{" + url + "}}\n")
+    nuorodu_failas = Path(katalogas) / "nuorodos.tex"
+    nuorodu_failas.write_text("".join(eilutes), encoding="utf-8")
+    return nuorodu_failas
+
+
+def kompiliuoti(vardas, ivestis, paskirtis, rinkinys=False):
     with tempfile.TemporaryDirectory(prefix=".latex-", dir=BANKAS) as laikinas:
+        if rinkinys:
+            nuorodos = parengti_nuorodas(laikinas)
+            ivestis = rf"\def\bankonuorodufailas{{{nuorodos}}}\input{{{ivestis}}}"
         for _ in range(2):
             procesas = subprocess.run(
                 ["xelatex", "-interaction=nonstopmode", "-halt-on-error",
@@ -52,7 +88,7 @@ def main():
             if not saltinis.is_file():
                 raise ValueError(f"Nerastas failas: {saltinis}")
             kompiliuoti("bandomasis", "Rinkiniai/bandomasis.tex",
-                        saltinis.with_suffix(".pdf"))
+                        saltinis.with_suffix(".pdf"), rinkinys=True)
             return
         if args.visi:
             identifikatoriai = sorted(

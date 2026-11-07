@@ -1,5 +1,12 @@
 # Uždavinių bankas
 
+Kiekvienas uždavinys laikomas kataloge `Uzdaviniai/UXXXXXX/`. Jo `.tex` faile
+vienoje vietoje saugomos `salyga`, `atsakymas` ir `sprendimas` aplinkos;
+`meta.yaml` aprašo uždavinį, o to paties ID PDF pateikia jo sprendimą.
+Sprendimo PDF sąlyga ir atsakymas rodomi prieš sprendimą, kuris prasideda
+naujame puslapyje. Ilgesnė sąlyga ar atsakymas gali užimti daugiau nei vieną
+puslapį.
+
 Komandos iš projekto šakninio katalogo:
 
 ```sh
@@ -8,47 +15,53 @@ python3 Uzduociu_bankas/Skriptai/generuoti.py --visi
 python3 Uzduociu_bankas/Skriptai/generuoti.py --rinkinys
 ```
 
-Pirmoji komanda generuoja tik pasirinkto uždavinio sprendimo PDF, antroji –
-visų uždavinių sprendimų PDF, trečioji – bandomąjį sąlygų rinkinį.
-Galima vykdyti ir iš kito darbinio katalogo, pateikus skripto kelią.
-Būtinas vienas iš šių trijų pasirinkimų.
+Pirmoji komanda generuoja pasirinkto uždavinio sprendimo PDF, antroji – visų
+uždavinių sprendimų PDF, trečioji – bandomąjį sąlygų rinkinį. ID turi būti
+`U` ir šeši ASCII skaitmenys. Kiekvienam uždaviniui reikalingi
+`Uzdaviniai/<ID>/<ID>.tex` ir `meta.yaml`. Generuojant visus uždavinius
+netinkamo formato katalogų pavadinimai praleidžiami; YAML turinys netikrinamas.
 
-ID formatas: `U` ir tiksliai šeši ASCII skaitmenys. Kiekvienam uždaviniui
-būtini `Uzdaviniai/<ID>/<ID>.tex` ir `meta.yaml`. Visų uždavinių režimu
-surandami tinkamo ID formato katalogai ir surikiuojami pagal ID; kitokie
-katalogų pavadinimai praleidžiami. Visi pasirinkti šaltiniai patikrinami prieš
-kompiliavimą. YAML turinys šiuo metu nevaliduojamas.
+Reikalingas XeLaTeX, Latin Modern šriftai ir bendro šablono paketai, įskaitant
+Polyglossia, AMS, `environ`, `enumitem`, TikZ ir `hyperref`. Skriptas kiekvieną
+PDF kompiliuoja du kartus; LaTeX pagalbiniai failai laikomi laikiname kataloge
+ir pašalinami. Esamas PDF perrašomas tik sėkmingai sukompiliavus dokumentą.
 
-Kiekvienas uždavinio `.tex` yra fragmentas su `salyga`, `atsakymas` ir
-`sprendimas` aplinkomis. Šiame faile saugomas visas uždavinio turinys, taip pat
-TikZ brėžiniai ir vidiniai numeruoti sąrašai. `meta.yaml` saugo metaduomenis;
-`google_drive_url: null` palikta būsimai nuorodai.
+## Uždavinių rinkiniai ir „Ats.“ nuorodos
 
-`Sablonai/sprendimas.tex` neturi numatytojo ID: jį pateikia generatorius.
-`Sablonai/bendras.tex` apibrėžia abu režimus ir bendrus paketus.
-Sprendimo dokumente sąlyga ir atsakymas eina prieš sprendimą, kuris
-prasideda naujame puslapyje. Ilgas turinys gali užimti daugiau puslapių.
-Rinkinio režimas įtraukia tik sąlygą kaip išorinio `enumerate` sąrašo punktą;
-atsakymas ir sprendimas nevykdomi.
+Rinkinio `.tex` faile, `enumerate` aplinkoje, kiekvieną uždavinį įtraukite jo
+pastoviu ID:
 
-`Rinkiniai/bandomasis.tex` sąrašas valdomas rankiniu būdu: šiuo metu įtraukti
-abu bandomieji uždaviniai. Naujam uždaviniui rinkinyje reikia pridėti `\input`.
-`--visi` šio sąrašo nekeičia ir rinkinio automatiškai negeneruoja.
+```latex
+\begin{enumerate}[label=\arabic*.]
+  \Uzdavinys{U000001}
+  \Uzdavinys{U000002}
+\end{enumerate}
+```
 
-Reikalingas XeLaTeX, Latin Modern šriftai ir šablone naudojami paketai
-(įskaitant Polyglossia, AMS, environ, enumitem ir TikZ).
-Kiekvienas dokumentas kompiliuojamas du kartus su išjungtu shell escape.
-Pagalbiniai failai laikomi laikiname kataloge banko viduje ir pašalinami tiek
-sėkmės, tiek klaidos atveju. Klaidos išvestis pateikiama terminale.
-PDF kopijuojamas į paskirties vietą tik sėkmingai baigus abu kompiliavimus;
-esamas atitinkamo uždavinio PDF tada perrašomas. Visų uždavinių generavimas
-nėra viena transakcija: vėlesnė klaida neatšaukia jau sugeneruotų PDF.
+Komanda įterpia sąlygą iš atitinkamo uždavinio `.tex`, automatiškai ją
+sunumeruoja ir po sąlyga pateikia paspaudžiamą nuorodą „Ats.“ į to uždavinio
+sprendimo PDF. Atsakymo ir sprendimo tekstai į rinkinį neįtraukiami. Keičiant
+uždavinių eilę nuorodų paskirtis išlieka susieta su uždavinio ID.
+Atidaryti nuorodą gali tik skaitytojai, kuriems suteikta atitinkamo Drive
+failo peržiūros prieiga.
 
-LaTeX šaltiniai laikomi patikimais projekto failais: tai nėra nepatikimo kodo
-izoliavimo sistema. Aplinkos, renkančios turinį per `environ`, neskirtos
-`verbatim` tipo turiniui. Šablonų keliai skaičiuojami nuo banko katalogo;
-rankiniu būdu kompiliuojant reikia naudoti šį darbinį katalogą.
+Generuojant `--rinkinys`, Python skaito `drive_links.json`, patikrina kiekvieno
+įrašo Drive ID ir URL, sukuria laikiną LaTeX nuorodų failą ir perduoda jį
+šablonui. Jei registro nėra, nuoroda netinkama arba reikalingo ID registre
+trūksta, generavimas sustoja ir esamas rinkinio PDF neperrašomas. URL turi
+atitikti `https://drive.google.com/file/d/<drive_id>/view` formą.
 
-Pastebėta, kad VS Code automatinis kompiliavimas bandė naudoti pdfLaTeX
-(ir paliko pagalbinius failus prie rinkinio). Šiam bankui naudokite aukščiau
-pateiktą XeLaTeX skriptą; IDE kompiliavimo konfigūracija nekeičiama.
+`Rinkiniai/bandomasis.tex` sąrašas valdomas rankiniu būdu. Šiuo metu jame yra
+`U000001` ir `U000002`; kitam uždaviniui reikia pridėti jo `\Uzdavinys{...}`
+komandą. `--visi` rinkinio nekeičia. Rinkinius kompiliuokite per
+`generuoti.py --rinkinys`, kad būtų parengtos nuorodos. `environ` pagrindu
+apibrėžtos aplinkos neskirtos `verbatim` tipo turiniui.
+
+Testai:
+
+```sh
+python3 -B -m unittest discover -s Uzduociu_bankas/Testai -v
+```
+
+Apie Drive PDF publikavimo eigą, pirmąjį bandymą ir apribojimus skaitykite
+[Publikavimas.md](Publikavimas.md).

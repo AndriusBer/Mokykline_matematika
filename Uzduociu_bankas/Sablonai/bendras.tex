@@ -13,6 +13,7 @@
 \usepackage{tikz}
 \usepackage[a4paper,margin=25mm]{geometry}
 \usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 
@@ -28,9 +29,24 @@
   \ifsprendimorezimas
     \section*{Uždavinio sąlyga}\BODY
   \else
-    \item \BODY
+    \BODY
   \fi
 }
+
+\ifsprendimorezimas\else
+  \ifdefined\bankonuorodufailas
+    \input{\bankonuorodufailas}
+  \else
+    \PackageError{uzdaviniu-bankas}{Neparengtos nuorodos}{Generuokite rinkini naudodami generuoti.py --rinkinys.}
+  \fi
+  \newcommand{\Uzdavinys}[1]{%
+    \ifcsname bankourl@#1\endcsname\else
+      \PackageError{uzdaviniu-bankas}{Nerasta nuoroda uzdaviniui #1}{Patikrinkite drive_links.json.}%
+    \fi
+    \item \input{Uzdaviniai/#1/#1.tex}%
+    \par\noindent\expandafter\href\expandafter{\csname bankourl@#1\endcsname}{Ats.}%
+  }
+\fi
 \NewEnviron{atsakymas}{%
   \ifsprendimorezimas\section*{Atsakymas}\BODY\fi
 }
