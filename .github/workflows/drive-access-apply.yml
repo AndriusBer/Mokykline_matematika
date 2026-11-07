@@ -1,0 +1,36 @@
+name: Apply Drive access for U000001
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: drive-access-u000001
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install rclone
+        run: sudo apt-get update && sudo apt-get install -y rclone
+
+      - name: Apply and verify U000001 Drive access
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000001 --apply
+          python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000001 --verify
