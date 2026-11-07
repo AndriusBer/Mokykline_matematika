@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generuoja pasirinkto arba visų uždavinių PDF ir bandomąjį rinkinį."""
+"""Generuoja pasirinktų uždavinių ir pasirinkto rinkinio PDF."""
 import argparse
 import json
 from pathlib import Path
@@ -78,17 +78,23 @@ def main():
     pasirinkimas = parser.add_mutually_exclusive_group(required=True)
     pasirinkimas.add_argument("id", nargs="?", help="U ir šeši skaitmenys")
     pasirinkimas.add_argument("--visi", action="store_true", help="Visi uždaviniai")
-    pasirinkimas.add_argument("--rinkinys", action="store_true", help="Bandomasis rinkinys")
+    pasirinkimas.add_argument("--rinkinys", nargs="?", const="bandomasis", metavar="VARDAS",
+                                help="Rinkinio vardas arba .tex failas Rinkiniai/ kataloge (numatytasis: bandomasis)")
     args = parser.parse_args()
     try:
         if not shutil.which("xelatex"):
             raise ValueError("Nerasta XeLaTeX programa (xelatex).")
         if args.rinkinys:
-            saltinis = BANKAS / "Rinkiniai/bandomasis.tex"
-            if not saltinis.is_file():
-                raise ValueError(f"Nerastas failas: {saltinis}")
-            kompiliuoti("bandomasis", "Rinkiniai/bandomasis.tex",
-                        saltinis.with_suffix(".pdf"), rinkinys=True)
+            vardas = args.rinkinys.removesuffix(".tex")
+            if not re.fullmatch(r"[^\W_][\w .-]*", vardas) or vardas != vardas.strip():
+                raise ValueError("Netinkamas rinkinio vardas: nurodykite failo vardą be katalogų ir specialių LaTeX simbolių.")
+            saltinis = BANKAS / "Rinkiniai" / f"{vardas}.tex"
+            if saltinis.is_symlink() or not saltinis.is_file():
+                raise ValueError(f"Nerastas įprastas rinkinio failas: {saltinis}")
+            paskirtis = saltinis.with_suffix(".pdf")
+            if paskirtis.is_symlink():
+                raise ValueError(f"Rinkinio PDF negali būti simbolinė nuoroda: {paskirtis}")
+            kompiliuoti(vardas, f"Rinkiniai/{vardas}.tex", paskirtis, rinkinys=True)
             return
         if args.visi:
             identifikatoriai = sorted(
