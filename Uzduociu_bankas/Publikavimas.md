@@ -2,25 +2,27 @@
 
 Publikavimas į Drive pagal nutylėjimą išjungtas. Tiksliai nustačius GitHub
 Actions repozitorijos kintamąjį `DRIVE_PDF_PUBLICATION_ENABLED=true`, leidžiami
-`main` push ir rankiniai tikri publikavimo vykdymai. Be šio kintamojo leidžiamas
-tik rankinis `workflow_dispatch` bandymas su `apply=false`. Workflow taip pat
-praleidžia Drive operacijas per pirmą push, kuriuo jis pats pridedamas.
+`main` push ir rankiniai tikri publikavimo vykdymai. Kai kintamasis išjungtas,
+leidžiamas rankinis `workflow_dispatch` dry-run ir atskira griežtai apribota
+`U000001` tikro bandymo išimtis. Workflow praleidžia Drive operacijas per
+pirmą push, kuriuo jis pats pridedamas.
 
 Publikuojami tik Git sekami `Uzduociu_bankas/Uzdaviniai/UXXXXXX/UXXXXXX.pdf`
 failai. Prieš `rclone copy` ir po jo patikrinami anksčiau registre išsaugoti
-Drive ID; po kopijavimo patikrinamas ir turinio MD5. Teisės nustatomos ir
-patvirtinamos tik šiems PDF. Po visų patikrų `drive_links.json` papildomas
+Drive ID; po kopijavimo ir po teisių nustatymo patikrinami failo ID ir turinio
+MD5. Teisės nustatomos ir patvirtinamos tik šiems PDF. Po visų patikrų `drive_links.json` papildomas
 naujais ID ir siunčiamas į `main`, jeigu šaka per vykdymą nepasikeitė.
 `rclone copy` nešalina kitų Drive failų. Esamas atskiras `sync-drive.yml`
 lieka su `--dry-run`.
 
 Saugiam bandymui: pirmiausia rankiniu workflow vykdymu pasirinkite `apply=false`
-ir `U000001`. Vėlesniam tikram bandymui būtina aiškiai nustatyti kintamąjį
-`true` ir pasirinkti `apply=true`. Kintamasis taip pat leidžia automatinį
-publikavimą po `main` push, todėl bandymo metu venkite kitų push. Pirmiausia
-patikrinkite esamą Drive API autentifikaciją, GitHub Actions rašymo leidimus ir
-šakos apsaugas. Naujų PDF ID registrui patikrinti naudokite atskirą patvirtintą
-bandomąjį uždavinį.
+ir `U000001`. Tikram rankiniam šio PDF bandymui bendro kintamojo įjungti
+nereikia: pasirinkite `apply=true`, ID `U000001` ir patvirtinimo lauke tiksliai
+įrašykite `PUBLISH U000001`. Išimtis veikia tik `workflow_dispatch` įvykiui
+`main` šakoje. Kitiems PDF tikrai publikuoti reikia bendro kintamojo `true`;
+rankinis publikavimas taip pat reikalauja `PUBLISH <ID>` patvirtinimo.
+Pirmiausia patikrinkite esamą Drive API autentifikaciją, GitHub Actions rašymo
+leidimus ir šakos apsaugas.
 
 Pakeitimai Drive ir registro GitHub commit nėra viena transakcija. Jei dalis
 operacijų nepavyksta, ankstesni pakeitimai neatšaukiami. Jei naujas PDF liko

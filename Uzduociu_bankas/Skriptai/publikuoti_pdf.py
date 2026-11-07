@@ -155,6 +155,13 @@ def publish(local, registry, backend):
         backend.plan(task, after[task]["id"])
     for task in local:
         backend.apply_and_verify(task, after[task]["id"])
+    # Patvirtiname kelią, ID ir turinį dar kartą jau po teisių nustatymo.
+    final = remote_files(backend.list())
+    validate_existing(registry, final)
+    for task, local_file in local.items():
+        if (task not in final or final[task]["id"] != after[task]["id"]
+                or final[task]["md5"] != local_file["md5"]):
+            raise PublicationError(f"Po teisių nustatymo pasikeitė PDF ID arba turinys: {task}")
     return dict(sorted(result.items()))
 
 
@@ -237,10 +244,19 @@ def main():
     mode.add_argument("--dry-run", action="store_true",
                       help="Tik skaito Drive ir imituoja kopijavimą")
     parser.add_argument("--only", help="Bandomajam vykdymui apdoroti tik vieną uždavinio ID")
+    parser.add_argument("--pilot-u000001", action="store_true",
+                        help="Patvirtinta rankinė GitHub Actions išimtis vien U000001")
     args = parser.parse_args()
     if args.only and not drive.ID_PATTERN.fullmatch(args.only):
         parser.error("ID turi būti U ir šeši skaitmenys")
-    if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true":
+    pilot = args.pilot_u000001
+    if pilot and not (args.publish and args.only == "U000001"
+                      and os.environ.get("GITHUB_ACTIONS") == "true"
+                      and os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+                      and os.environ.get("GITHUB_REF") == "refs/heads/main"
+                      and os.environ.get("DRIVE_PILOT_CONFIRMATION") == "PUBLISH U000001"):
+        parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001 vykdymui main šakoje")
+    if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true" and not pilot:
         parser.error("Tikram publikavimui reikia DRIVE_PDF_PUBLICATION_ENABLED=true")
     try:
         local = local_files(ROOT, args.only)

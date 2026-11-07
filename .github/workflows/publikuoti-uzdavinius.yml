@@ -15,6 +15,11 @@ on:
         required: true
         default: false
         type: boolean
+      confirmation:
+        description: 'Tikram rankiniam bandymui įrašykite PUBLISH U000001'
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: write
@@ -25,8 +30,8 @@ concurrency:
 
 jobs:
   publish:
-    # Išjungus publikavimą leidžiama tik rankinė dry-run patikra.
-    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]' && (vars.DRIVE_PDF_PUBLICATION_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.apply == false))
+    # Be bendro leidimo galimas tik patvirtintas rankinis U000001 bandymas arba dry-run.
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]' && (vars.DRIVE_PDF_PUBLICATION_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && (inputs.apply == false || (inputs.task_id == 'U000001' && inputs.confirmation == 'PUBLISH U000001'))))
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -69,14 +74,23 @@ jobs:
           RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
           PILOT_TASK_ID: ${{ inputs.task_id }}
           PILOT_APPLY: ${{ inputs.apply }}
+          DRIVE_PILOT_CONFIRMATION: ${{ inputs.confirmation }}
           DRIVE_PDF_PUBLICATION_ENABLED: ${{ vars.DRIVE_PDF_PUBLICATION_ENABLED }}
         shell: bash
         run: |
           set -euo pipefail
           if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
             if [ "$PILOT_APPLY" = "true" ]; then
-              test "$DRIVE_PDF_PUBLICATION_ENABLED" = "true"
-              python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only "$PILOT_TASK_ID"
+              if [ "$DRIVE_PILOT_CONFIRMATION" != "PUBLISH $PILOT_TASK_ID" ]; then
+                echo 'Klaida: trūksta tikslaus rankinio publikavimo patvirtinimo.' >&2
+                exit 1
+              fi
+              if [ "$DRIVE_PDF_PUBLICATION_ENABLED" = "true" ]; then
+                python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only "$PILOT_TASK_ID"
+              else
+                test "$PILOT_TASK_ID" = 'U000001'
+                python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only U000001 --pilot-u000001
+              fi
             else
               python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --dry-run --only "$PILOT_TASK_ID"
             fi

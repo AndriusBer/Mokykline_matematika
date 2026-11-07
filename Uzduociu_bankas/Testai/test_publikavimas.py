@@ -272,18 +272,22 @@ class PublicationTests(unittest.TestCase):
             executable.write_text('#!/bin/sh\nprintf "%s\\n" "$*" >> "$CALL_LOG"\n')
             executable.chmod(0o755)
             log = Path(directory) / "calls"
-            for event, apply, enabled, success, expected in [
-                ("push", "", "", False, None),
-                ("workflow_dispatch", "true", "", False, None),
-                ("workflow_dispatch", "true", "TRUE", False, None),
-                ("workflow_dispatch", "false", "", True, "--dry-run"),
-                ("workflow_dispatch", "true", "true", True, "--publish"),
-                ("push", "", "true", True, "--publish"),
+            for event, apply, enabled, task, confirm, success, expected in [
+                ("push", "", "", "U000001", "PUBLISH U000001", False, None),
+                ("workflow_dispatch", "true", "", "U000001", "", False, None),
+                ("workflow_dispatch", "true", "", "U000001", "publish U000001", False, None),
+                ("workflow_dispatch", "true", "", "U000002", "PUBLISH U000002", False, None),
+                ("workflow_dispatch", "true", "", "U000001", "PUBLISH U000001", True, "--pilot-u000001"),
+                ("workflow_dispatch", "false", "", "U000001", "", True, "--dry-run"),
+                ("workflow_dispatch", "true", "true", "U000001", "", False, None),
+                ("workflow_dispatch", "true", "true", "U000001", "PUBLISH U000001", True, "--publish"),
+                ("push", "", "true", "U000001", "", True, "--publish"),
             ]:
                 log.unlink(missing_ok=True)
                 env = dict(os.environ, PATH=directory, CALL_LOG=str(log),
                            GITHUB_EVENT_NAME=event, PILOT_APPLY=apply,
-                           PILOT_TASK_ID="U000001", DRIVE_PDF_PUBLICATION_ENABLED=enabled)
+                           PILOT_TASK_ID=task, DRIVE_PILOT_CONFIRMATION=confirm,
+                           DRIVE_PDF_PUBLICATION_ENABLED=enabled)
                 result = subprocess.run(["/bin/bash", "-c", script], env=env,
                                         capture_output=True, text=True)
                 with self.subTest(event=event, apply=apply, enabled=enabled):
@@ -292,6 +296,61 @@ class PublicationTests(unittest.TestCase):
                         self.assertFalse(log.exists())
                     else:
                         self.assertIn(expected, log.read_text())
+
+    def test_piloto_isimtis_leidziama_tik_rankiniu_budu_su_tiksliu_patvirtinimu(self):
+        valid = {"GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "workflow_dispatch",
+                 "GITHUB_REF": "refs/heads/main", "DRIVE_PILOT_CONFIRMATION": "PUBLISH U000001",
+                 "DRIVE_PDF_PUBLICATION_ENABLED": ""}
+        for change in [{"GITHUB_ACTIONS": "false"}, {"GITHUB_EVENT_NAME": "push"},
+                       {"GITHUB_REF": "refs/heads/kita"}, {"DRIVE_PILOT_CONFIRMATION": ""},
+                       {"DRIVE_PILOT_CONFIRMATION": "publish U000001"}]:
+            env = dict(valid, **change)
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), "--publish", "--only",
+                                "U000001", "--pilot-u000001"], env=env, capture_output=True, text=True)
+            with self.subTest(change=change):
+                self.assertNotEqual(p.returncode, 0)
+                self.assertIn("Pilotas leidžiamas tik", p.stderr)
+        for args in (["--publish", "--only", "U000002", "--pilot-u000001"],
+                     ["--publish", "--pilot-u000001"],
+                     ["--dry-run", "--only", "U000001", "--pilot-u000001"]):
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), *args], env=valid,
+                               capture_output=True, text=True)
+            with self.subTest(args=args):
+                self.assertNotEqual(p.returncode, 0)
+                self.assertIn("Pilotas leidžiamas tik", p.stderr)
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "drive_links.json"
+            path.write_text(json.dumps(self.old))
+            with patch.object(pub, "REGISTRY", path), \
+                 patch.object(pub, "local_files", return_value={"U000001": self.local["U000001"]}), \
+                 patch.object(pub, "RcloneBackend", return_value=self.backend), \
+                 patch.dict(os.environ, valid, clear=True), \
+                 patch.object(sys, "argv", [str(pub.__file__), "--publish", "--only", "U000001", "--pilot-u000001"]), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                pub.main()
+            copies = [x for x in self.backend.actions if isinstance(x, tuple) and x[0] == "copy"]
+            self.assertEqual(copies[0][1], (self.local["U000001"]["path"],))
+            self.assertIsNone(self.backend.states["ID_2"]["permission"])
+
+    def test_po_teisiu_keitimo_dar_karta_tikrinami_id_ir_md5(self):
+        original = self.backend.apply_and_verify
+        def pakeisti(task, fid):
+            original(task, fid)
+            self.backend.files[task]["md5"] = "pasikeites"
+        self.backend.apply_and_verify = pakeisti
+        with self.assertRaisesRegex(pub.PublicationError, "pasikeitė PDF ID arba turinys"):
+            self.execute()
+
+    def test_po_teisiu_keitimo_pasikeites_drive_id_atmetamas(self):
+        original = self.backend.apply_and_verify
+        def pakeisti(task, fid):
+            original(task, fid)
+            if task == "U000001":
+                self.backend.files[task]["id"] = "KITAS_ID"
+        self.backend.apply_and_verify = pakeisti
+        with self.assertRaisesRegex(pub.PublicationError, "pasikeitė Drive ID"):
+            self.execute()
 
     def test_pirmas_workflow_push_praleidzia_publikavima(self):
         workflow = (BANKAS.parent / ".github/workflows/publikuoti-uzdavinius.yml").read_text()
