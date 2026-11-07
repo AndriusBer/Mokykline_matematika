@@ -1,0 +1,101 @@
+name: Publish task PDFs to Drive
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: Uždavinio ID vieno PDF bandymui
+        required: true
+        default: U000001
+        type: string
+      apply:
+        description: Tikrai publikuoti (false vykdo dry-run)
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task-pdf-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    # Išjungus publikavimą leidžiama tik rankinė dry-run patikra.
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]' && (vars.DRIVE_PDF_PUBLICATION_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && inputs.apply == false))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact triggering revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard first publication of this workflow
+        id: first_publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" = "push" ] && ! git cat-file -e "$GITHUB_SHA^:.github/workflows/publikuoti-uzdavinius.yml" 2>/dev/null; then
+            echo 'skip=true' >> "$GITHUB_OUTPUT"
+            echo 'Pirmasis workflow paskelbimas: Drive operacijos praleidžiamos.'
+          else
+            echo 'skip=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install rclone
+        if: steps.first_publication.outputs.skip != 'true'
+        run: sudo apt-get update && sudo apt-get install -y rclone
+
+      - name: Confirm main has not advanced
+        if: steps.first_publication.outputs.skip != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse refs/remotes/origin/main)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Publish PDFs and verify Drive access
+        if: steps.first_publication.outputs.skip != 'true'
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
+          PILOT_TASK_ID: ${{ inputs.task_id }}
+          PILOT_APPLY: ${{ inputs.apply }}
+          DRIVE_PDF_PUBLICATION_ENABLED: ${{ vars.DRIVE_PDF_PUBLICATION_ENABLED }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "$PILOT_APPLY" = "true" ]; then
+              test "$DRIVE_PDF_PUBLICATION_ENABLED" = "true"
+              python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only "$PILOT_TASK_ID"
+            else
+              python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --dry-run --only "$PILOT_TASK_ID"
+            fi
+          else
+            test "$DRIVE_PDF_PUBLICATION_ENABLED" = "true"
+            python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish
+          fi
+
+      - name: Persist verified registry to main
+        if: steps.first_publication.outputs.skip != 'true' && (github.event_name == 'push' || inputs.apply == true)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse refs/remotes/origin/main)" = "$GITHUB_SHA"
+          if git diff --quiet -- Uzduociu_bankas/drive_links.json; then
+            echo "Registro pakeitimų nėra."
+            exit 0
+          fi
+          git add -- Uzduociu_bankas/drive_links.json
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Update task PDF Drive registry'
+          git push origin HEAD:main
