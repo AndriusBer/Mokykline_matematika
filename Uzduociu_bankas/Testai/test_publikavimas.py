@@ -4,6 +4,7 @@ import importlib.util
 import io
 import json
 import os
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -35,14 +36,14 @@ class FakeBackend:
         for task, data in self.files.items():
             self.states[data["id"]] = {"task": task, "restricted": False, "permission": None}
         self.next_ids = {"U000003": "NEW_3"}
-        self.new_hashes = {"U000003": "hash3"}
+        self.new_hashes = {"U000003": "3" * 32}
         self.failed = False
         self.replace_id = False
 
     def list(self):
         self.actions.append("list")
         return [{"Path": local(task, "")["path"], "ID": data["id"], "IsDir": False,
-                 "Hashes": {"MD5": data["md5"]}} for task, data in self.files.items()]
+                 "Hashes": {"md5": data["md5"]}} for task, data in self.files.items()]
 
     def copy(self, paths, dry_run=False):
         self.actions.append(("copy", tuple(paths)))
@@ -105,9 +106,9 @@ class FakeBackend:
 class PublicationTests(unittest.TestCase):
     def setUp(self):
         self.old = {"U000001": entry("ID_1"), "U000002": entry("ID_2")}
-        self.local = {"U000001": local("U000001", "hash1"), "U000003": local("U000003", "hash3")}
-        self.backend = FakeBackend({"U000001": {"id": "ID_1", "md5": "hash1"},
-                                    "U000002": {"id": "ID_2", "md5": "hash2"}})
+        self.local = {"U000001": local("U000001", "1" * 32), "U000003": local("U000003", "3" * 32)}
+        self.backend = FakeBackend({"U000001": {"id": "ID_1", "md5": "1" * 32},
+                                    "U000002": {"id": "ID_2", "md5": "2" * 32}})
 
     def execute(self):
         with contextlib.redirect_stdout(io.StringIO()):
@@ -133,11 +134,11 @@ class PublicationTests(unittest.TestCase):
         self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
 
     def test_pakeistas_pdf_atnaujinamas_issaugant_drive_id(self):
-        self.local["U000001"]["md5"] = "hash_atnaujintas"
-        self.backend.new_hashes["U000001"] = "hash_atnaujintas"
+        self.local["U000001"]["md5"] = "a" * 32
+        self.backend.new_hashes["U000001"] = "a" * 32
         result = self.execute()
         self.assertEqual(result["U000001"], self.old["U000001"])
-        self.assertEqual(self.backend.files["U000001"], {"id": "ID_1", "md5": "hash_atnaujintas"})
+        self.assertEqual(self.backend.files["U000001"], {"id": "ID_1", "md5": "a" * 32})
 
     def test_po_kopijavimo_pasikeites_id_sustabdo_pries_teises(self):
         self.backend.replace_id = True
@@ -156,7 +157,7 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(result["U000003"]["drive_id"], "NEW_3")
 
     def test_nezinomas_pdf_skirtingo_turinio_nelieciamas(self):
-        self.backend.files["U000003"] = {"id": "OTHER", "md5": "bad"}
+        self.backend.files["U000003"] = {"id": "OTHER", "md5": "b" * 32}
         with self.assertRaisesRegex(pub.PublicationError, "turinys nesutampa"):
             self.execute()
         self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
@@ -168,6 +169,47 @@ class PublicationTests(unittest.TestCase):
         duplicate["Path"] = "Uzduociu_bankas/Uzdaviniai/U000001/U000002.pdf"
         with self.assertRaises(pub.PublicationError):
             pub.remote_files([duplicate])
+
+    def test_md5_mazosios_ir_didziosios_normalizuojamos(self):
+        expected = "0123456789abcdef0123456789abcdef"
+        row = self.backend.list()[0]
+        for hashes in ({"md5": expected}, {"md5": expected.upper()},
+                       {"MD5": expected.upper()}, {"md5": expected, "MD5": expected.upper()}):
+            with self.subTest(hashes=hashes):
+                row["Hashes"] = hashes
+                self.assertEqual(pub.remote_files([row])["U000001"]["md5"], expected)
+
+    def test_trukstama_arba_netinkama_md5_atmetama(self):
+        row = self.backend.list()[0]
+        for hashes in (None, {}, [], {"sha1": "1" * 40}, {"md5": ""},
+                       {"md5": None}, {"md5": 123}, {"md5": "1" * 31},
+                       {"md5": "g" * 32}, {"md5": "1" * 32 + "\n"},
+                       {"md5": "1" * 32, "MD5": "netinkama"}):
+            with self.subTest(hashes=hashes):
+                row["Hashes"] = hashes
+                with self.assertRaisesRegex(pub.PublicationError, "MD5 kontrolin"):
+                    pub.remote_files([row])
+        del row["Hashes"]
+        with self.assertRaisesRegex(pub.PublicationError, "Trūksta.*MD5"):
+            pub.remote_files([row])
+
+    def test_nesutampancios_dvi_md5_reiksmes_atmetamos(self):
+        row = self.backend.list()[0]
+        row["Hashes"] = {"md5": "1" * 32, "MD5": "2" * 32}
+        with self.assertRaisesRegex(pub.PublicationError, "Nesutampa.*MD5"):
+            pub.remote_files([row])
+
+    @unittest.skipUnless(shutil.which("rclone"), "Nerastas rclone")
+    def test_tikras_rclone_lsjson_md5_formatas(self):
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / "U000001.pdf").write_bytes(b"bandomasis PDF turinys")
+            out = subprocess.run(["rclone", "lsjson", directory, "--hash", "--files-only"],
+                                 capture_output=True, text=True, check=True)
+            row = json.loads(out.stdout)[0]
+            self.assertIn("md5", row["Hashes"])
+            row["Path"] = local("U000001", "")["path"]
+            row["ID"] = "test_id"
+            self.assertEqual(pub.remote_files([row])["U000001"]["md5"], row["Hashes"]["md5"])
 
     def test_rclone_naudoja_copy_ir_tik_exact_failu_sarasa(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -337,7 +379,7 @@ class PublicationTests(unittest.TestCase):
         original = self.backend.apply_and_verify
         def pakeisti(task, fid):
             original(task, fid)
-            self.backend.files[task]["md5"] = "pasikeites"
+            self.backend.files[task]["md5"] = "c" * 32
         self.backend.apply_and_verify = pakeisti
         with self.assertRaisesRegex(pub.PublicationError, "pasikeitė PDF ID arba turinys"):
             self.execute()

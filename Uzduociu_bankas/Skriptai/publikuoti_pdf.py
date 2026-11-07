@@ -94,8 +94,17 @@ def remote_files(rows):
             raise PublicationError(f"Netinkamas Drive failas arba ID: {task}")
         if task in found or fid in ids:
             raise PublicationError(f"Drive yra dubliuotų kelių arba ID: {task}")
-        hashes = row.get("Hashes") or {}
-        md5 = hashes.get("MD5") if isinstance(hashes, dict) else None
+        hashes = row.get("Hashes")
+        if not isinstance(hashes, dict) or not ({"md5", "MD5"} & hashes.keys()):
+            raise PublicationError(f"Trūksta Drive PDF MD5 kontrolinės sumos: {task}")
+        values = [hashes[key] for key in ("md5", "MD5") if key in hashes]
+        if any(not isinstance(value, str) or not re.fullmatch(r"[0-9a-fA-F]{32}", value)
+               for value in values):
+            raise PublicationError(f"Netinkama Drive PDF MD5 kontrolinė suma: {task}")
+        values = [value.lower() for value in values]
+        if len(set(values)) != 1:
+            raise PublicationError(f"Nesutampa Drive PDF MD5 kontrolinės sumos: {task}")
+        md5 = values[0]
         found[task] = {"id": fid, "md5": md5}
         ids.add(fid)
     return found
