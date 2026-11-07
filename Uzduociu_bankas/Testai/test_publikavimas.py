@@ -36,8 +36,8 @@ class FakeBackend:
         self.states = {}
         for task, data in self.files.items():
             self.states[data["id"]] = {"task": task, "restricted": False, "permission": None}
-        self.next_ids = {"U000003": "NEW_3"}
-        self.new_hashes = {"U000003": "3" * 32}
+        self.next_ids = {"U000003": "NEW_3", "U000004": "NEW_4"}
+        self.new_hashes = {"U000003": "3" * 32, "U000004": "4" * 32}
         self.failed = False
         self.replace_id = False
 
@@ -350,6 +350,10 @@ class PublicationTests(unittest.TestCase):
                 ("workflow_dispatch", "true", "", "U000001", "", False, None),
                 ("workflow_dispatch", "true", "", "U000001", "publish U000001", False, None),
                 ("workflow_dispatch", "true", "", "U000002", "PUBLISH U000002", False, None),
+                ("workflow_dispatch", "true", "", "U000004", "PUBLISH U000003", False, None),
+                ("workflow_dispatch", "true", "", "U000004", "publish U000004", False, None),
+                ("workflow_dispatch", "true", "", "U000004", "PUBLISH U000004", True, "--pilot-u000004"),
+                ("workflow_dispatch", "false", "", "U000004", "", True, "--first-u000004"),
                 ("workflow_dispatch", "true", "", "U000003", "PUBLISH U000002", False, None),
                 ("workflow_dispatch", "true", "", "U000003", "publish U000003", False, None),
                 ("workflow_dispatch", "true", "", "U000003", "PUBLISH U000003", True, "--pilot-u000003"),
@@ -487,6 +491,90 @@ class PublicationTests(unittest.TestCase):
                 pub.main()
             saved = json.loads(path.read_text())
             self.assertEqual(saved["U000003"], entry("NEW_3"))
+            self.assertEqual(saved["U000001"], self.old["U000001"])
+            self.assertEqual(saved["U000002"], self.old["U000002"])
+
+    def test_u000004_pirmas_publikavimas_ir_senu_id_apsauga(self):
+        self.local["U000004"] = local("U000004", "4" * 32)
+        selected = {"U000004": self.local["U000004"]}
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = pub.publish(selected, self.old, self.backend, first_u000004=True)
+        self.assertEqual(result["U000001"], self.old["U000001"])
+        self.assertEqual(result["U000002"], self.old["U000002"])
+        self.assertEqual(result["U000004"], entry("NEW_4"))
+        self.assertEqual(self.backend.files["U000004"]["md5"], selected["U000004"]["md5"])
+        changes = [x for x in self.backend.actions if isinstance(x, tuple) and x[0] in ("PATCH", "POST")]
+        self.assertTrue(changes)
+        self.assertTrue(all("files/NEW_4" in action[1] for action in changes))
+        self.assertTrue(self.backend.states["NEW_4"]["restricted"])
+        self.assertTrue(pub.drive.permission_ok(self.backend.states["NEW_4"]["permission"]))
+        copy_actions = [x for x in self.backend.actions if isinstance(x, tuple) and x[0] == "copy"]
+        self.assertEqual(copy_actions[0][1], (selected["U000004"]["path"],))
+
+    def test_u000004_jau_registre_ar_drive_sustabdo_pries_copy(self):
+        self.local["U000004"] = local("U000004", "4" * 32)
+        selected = {"U000004": self.local["U000004"]}
+        with self.assertRaisesRegex(pub.PublicationError, "jau yra registre"):
+            pub.publish(selected, {**self.old, "U000004": entry("NEW_4")}, self.backend, first_u000004=True)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+        self.backend.files["U000004"] = {"id": "NEW_4", "md5": "4" * 32}
+        for operation in (pub.publish, pub.preview):
+            with self.subTest(operation=operation.__name__), self.assertRaisesRegex(pub.PublicationError, "jau yra Drive"):
+                operation(selected, self.old, self.backend, first_u000004=True)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+
+    def test_u000004_nesutapus_md5_teises_ir_registras_nekeičiami(self):
+        self.local["U000004"] = local("U000004", "4" * 32)
+        selected = {"U000004": self.local["U000004"]}
+        self.backend.new_hashes["U000004"] = "9" * 32
+        with self.assertRaisesRegex(pub.PublicationError, "nepatvirtintas įkelto PDF turinys"):
+            pub.publish(selected, self.old, self.backend, first_u000004=True)
+        self.assertNotIn("U000004", self.old)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] in ("POST", "PATCH") for x in self.backend.actions))
+
+    def test_u000004_pirmas_rezimas_neapima_kitu_pdf(self):
+        self.local["U000004"] = local("U000004", "4" * 32)
+        with self.assertRaisesRegex(pub.PublicationError, "tik U000004"):
+            pub.publish(self.local, self.old, self.backend, first_u000004=True)
+        self.assertEqual(self.backend.actions, [])
+
+    def test_u000004_pilotas_reikalauja_visu_saugikliu(self):
+        self.local["U000004"] = local("U000004", "4" * 32)
+        valid = {"GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "workflow_dispatch",
+                 "GITHUB_REF": "refs/heads/main", "DRIVE_PILOT_CONFIRMATION": "PUBLISH U000004",
+                 "DRIVE_PDF_PUBLICATION_ENABLED": ""}
+        for change in [{"GITHUB_ACTIONS": "false"}, {"GITHUB_EVENT_NAME": "push"},
+                       {"GITHUB_REF": "refs/heads/kita"}, {"DRIVE_PILOT_CONFIRMATION": ""},
+                       {"DRIVE_PILOT_CONFIRMATION": "publish U000004"},
+                       {"DRIVE_PILOT_CONFIRMATION": "PUBLISH U000001"}]:
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), "--publish", "--only",
+                                "U000004", "--pilot-u000004"], env=dict(valid, **change),
+                               capture_output=True, text=True)
+            with self.subTest(change=change):
+                self.assertNotEqual(p.returncode, 0)
+                self.assertIn("Pilotas leidžiamas tik", p.stderr)
+        for args in (["--publish", "--only", "U000001", "--pilot-u000004"],
+                     ["--publish", "--pilot-u000004"],
+                     ["--dry-run", "--only", "U000004", "--pilot-u000004"],
+                     ["--publish", "--only", "U000004", "--first-u000004"],
+                     ["--dry-run", "--only", "U000001", "--first-u000004"]):
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), *args], env=valid,
+                               capture_output=True, text=True)
+            with self.subTest(args=args):
+                self.assertNotEqual(p.returncode, 0)
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "drive_links.json"
+            path.write_text(json.dumps(self.old))
+            with patch.object(pub, "REGISTRY", path), \
+                 patch.object(pub, "local_files", return_value={"U000004": self.local["U000004"]}), \
+                 patch.object(pub, "RcloneBackend", return_value=self.backend), \
+                 patch.dict(os.environ, valid, clear=True), \
+                 patch.object(sys, "argv", [str(pub.__file__), "--publish", "--only", "U000004", "--pilot-u000004"]), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                pub.main()
+            saved = json.loads(path.read_text())
+            self.assertEqual(saved["U000004"], entry("NEW_4"))
             self.assertEqual(saved["U000001"], self.old["U000001"])
             self.assertEqual(saved["U000002"], self.old["U000002"])
 

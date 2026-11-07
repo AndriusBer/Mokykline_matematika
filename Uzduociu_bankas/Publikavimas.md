@@ -4,7 +4,7 @@ Publikavimas į Drive pagal nutylėjimą išjungtas. Tiksliai nustačius GitHub
 Actions repozitorijos kintamąjį `DRIVE_PDF_PUBLICATION_ENABLED=true`, leidžiami
 `main` push ir rankiniai tikri publikavimo vykdymai. Kai kintamasis išjungtas,
 leidžiamas rankinis `workflow_dispatch` dry-run ir atskira griežtai apribota
-`U000001` ir pirmojo `U000003` tikro bandymo išimtys. Workflow praleidžia Drive operacijas per
+`U000001` ir pirmųjų `U000003` bei `U000004` tikrų bandymų išimtys. Workflow praleidžia Drive operacijas per
 pirmą push, kuriuo jis pats pridedamas.
 
 Po `main` push automatiškai atrenkami tik nauji arba turiniu pasikeitę Git
@@ -46,7 +46,7 @@ nereikia: pasirinkite `apply=true`, ID `U000001` ir patvirtinimo lauke tiksliai
 `task_id=U000003`, `apply=true` ir tiksliai `PUBLISH U000003`. Šis režimas
 prieš kopijavimą privalo nerasti `U000003` nei registre, nei Drive uždavinių
 kataloge. Pirmiausia paleiskite tą patį ID su `apply=false` ir patikrinkite
-dry-run rezultatą. Kitiems PDF tikrai publikuoti reikia bendro kintamojo `true`;
+dry-run rezultatą. Pirmojo `U000004` bandymo išimtis aprašyta toliau. Kitiems PDF tikrai publikuoti reikia bendro kintamojo `true`;
 rankinis publikavimas taip pat reikalauja `PUBLISH <ID>` patvirtinimo.
 Pirmiausia patikrinkite esamą Drive API autentifikaciją, GitHub Actions rašymo
 leidimus ir šakos apsaugas.
@@ -57,7 +57,7 @@ Drive be registro įrašo, pakartotinis vykdymas jį priims tik jeigu kelias
 vienareikšmis, o MD5 atitinka Git PDF. MD5 yra turinio klaidų patikra, o ne
 apsauga nuo tyčinio klastojimo. Pasikeitus anksčiau įregistruotam ID,
 atsiradus dublikatui ar nesutampant turiniui, vykdymas nutraukiamas.
-Pirmojo `U000003` bandymo išimtis yra griežtesnė: po dalinio įkėlimo ji
+Pirmųjų `U000003` ir `U000004` bandymų išimtys yra griežtesnės: po dalinio įkėlimo ji
 neleis kartoti bandymo, kol esama Drive ir registro būsena nebus atskirai
 peržiūrėta ir sutvarkyta; tai neleidžia tyliai perimti esamo failo.
 
@@ -70,3 +70,8 @@ sąsają reikia patikrinti atskirai. Testų komanda:
 ```sh
 python3 -B -m unittest discover -s Uzduociu_bankas/Testai -p test_publikavimas.py -v
 ```
+
+Pirmojo `U000004` piloto metu pasirinkite `task_id=U000004`, `apply=true` ir
+tikslų patvirtinimą `PUBLISH U000004`. Pirmiau galima patikrinti su `apply=false`.
+Pilotas sustoja, jei ID jau yra registre arba PDF randamas Drive. Po dalinio
+įkėlimo pakartotinai nepaleiskite: pirmiausia išsiaiškinkite Drive ir registro būseną.

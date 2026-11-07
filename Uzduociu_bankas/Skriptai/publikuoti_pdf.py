@@ -181,14 +181,21 @@ def validate_existing(registry, remote):
             raise PublicationError(f"Trūksta įregistruoto PDF arba pasikeitė Drive ID: {task}")
 
 
-def preflight(local, registry, backend, first_u000003=False, previous_md5=None):
+def preflight(local, registry, backend, first_u000003=False, previous_md5=None, first_u000004=False):
     if first_u000003:
         if set(local) != {"U000003"}:
             raise PublicationError("Pirmojo bandymo režimas leidžiamas tik U000003")
         if "U000003" in registry:
             raise PublicationError("U000003 jau yra registre; pirmasis bandymas nutrauktas")
+    if first_u000004:
+        if set(local) != {"U000004"}:
+            raise PublicationError("Pirmojo bandymo režimas leidžiamas tik U000004")
+        if "U000004" in registry:
+            raise PublicationError("U000004 jau yra registre; pirmasis bandymas nutrauktas")
     before = remote_files(backend.list())
     validate_existing(registry, before)
+    if first_u000004 and "U000004" in before:
+        raise PublicationError("U000004 jau yra Drive; pirmasis bandymas nutrauktas")
     if first_u000003 and "U000003" in before:
         raise PublicationError("U000003 jau yra Drive; pirmasis bandymas nutrauktas")
     # Po nutrūkusio vykdymo neįregistruotą failą galima priimti tik esant tam pačiam turiniui.
@@ -206,8 +213,8 @@ def preflight(local, registry, backend, first_u000003=False, previous_md5=None):
     return before
 
 
-def preview(local, registry, backend, first_u000003=False):
-    before = preflight(local, registry, backend, first_u000003)
+def preview(local, registry, backend, first_u000003=False, first_u000004=False):
+    before = preflight(local, registry, backend, first_u000003, first_u000004=first_u000004)
     backend.copy([entry["path"] for entry in local.values()], dry_run=True)
     for task in local:
         if task in before:
@@ -219,9 +226,9 @@ def preview(local, registry, backend, first_u000003=False):
             print(f"{task}: būtų kuriamas PDF; teises bus galima patikrinti tik jį sukūrus")
 
 
-def publish(local, registry, backend, first_u000003=False, previous_md5=None):
+def publish(local, registry, backend, first_u000003=False, previous_md5=None, first_u000004=False):
     """Patikrina ID prieš ir po kopijavimo; grąžina registrą tik patvirtinus teises."""
-    before = preflight(local, registry, backend, first_u000003, previous_md5)
+    before = preflight(local, registry, backend, first_u000003, previous_md5, first_u000004)
     backend.copy([entry["path"] for entry in local.values()])
     after = remote_files(backend.list())
     validate_existing(registry, after)
@@ -344,23 +351,29 @@ def main():
                         help="Patvirtinta rankinė GitHub Actions išimtis vien U000001")
     pilots.add_argument("--pilot-u000003", action="store_true",
                         help="Patvirtintas pirmas rankinis U000003 publikavimas")
+    pilots.add_argument("--pilot-u000004", action="store_true",
+                        help="Patvirtintas pirmas rankinis U000004 publikavimas")
+    parser.add_argument("--first-u000004", action="store_true",
+                        help="Dry-run metu patikrinti pirmojo U000004 publikavimo sąlygas")
     parser.add_argument("--first-u000003", action="store_true",
                         help="Dry-run metu patikrinti pirmojo U000003 publikavimo sąlygas")
     args = parser.parse_args()
     if args.only and not drive.ID_PATTERN.fullmatch(args.only):
         parser.error("ID turi būti U ir šeši skaitmenys")
-    pilot_task = "U000001" if args.pilot_u000001 else "U000003" if args.pilot_u000003 else None
+    pilot_task = "U000001" if args.pilot_u000001 else "U000003" if args.pilot_u000003 else "U000004" if args.pilot_u000004 else None
     if pilot_task and not (args.publish and args.only == pilot_task
                       and os.environ.get("GITHUB_ACTIONS") == "true"
                       and os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
                       and os.environ.get("GITHUB_REF") == "refs/heads/main"
                       and os.environ.get("DRIVE_PILOT_CONFIRMATION") == f"PUBLISH {pilot_task}"):
-        parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001 arba U000003 vykdymui main šakoje")
+        parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001, U000003 arba U000004 vykdymui main šakoje")
     if args.first_u000003 and (not args.dry_run or args.only != "U000003"):
         parser.error("--first-u000003 leidžiamas tik su --dry-run --only U000003")
+    if args.first_u000004 and (not args.dry_run or args.only != "U000004"):
+        parser.error("--first-u000004 leidžiamas tik su --dry-run --only U000004")
     if args.list_changed and not args.target_commit:
         parser.error("--list-changed reikalauja --target-commit")
-    if args.target_commit and (args.only or pilot_task or args.first_u000003):
+    if args.target_commit and (args.only or pilot_task or args.first_u000003 or args.first_u000004):
         parser.error("--target-commit negalima derinti su vieno uždavinio arba piloto režimu")
     if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true" and not pilot_task:
         parser.error("Tikram publikavimui reikia DRIVE_PDF_PUBLICATION_ENABLED=true")
@@ -383,11 +396,12 @@ def main():
         with tempfile.TemporaryDirectory(prefix="publikuoti-pdf-") as tmp:
             backend = RcloneBackend(tmp)
             if args.dry_run:
-                preview(local, registry, backend, first_u000003=args.first_u000003)
+                preview(local, registry, backend, first_u000003=args.first_u000003,
+                        first_u000004=args.first_u000004)
             else:
                 previous = {task: item["known_md5"] for task, item in changed.items()} if changed else None
                 result = publish(local, registry, backend, first_u000003=args.pilot_u000003,
-                                 previous_md5=previous)
+                                 previous_md5=previous, first_u000004=args.pilot_u000004)
         if args.dry_run:
             print(f"Dry-run patikrinta uždavinių: {len(local)}")
         else:

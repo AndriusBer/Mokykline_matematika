@@ -31,8 +31,8 @@ concurrency:
 
 jobs:
   publish:
-    # Be bendro leidimo galimi tik patvirtinti U000001 / U000003 bandymai arba dry-run.
-    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]' && (vars.DRIVE_PDF_PUBLICATION_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && (inputs.apply == false || (inputs.task_id == 'U000001' && inputs.confirmation == 'PUBLISH U000001') || (inputs.task_id == 'U000003' && inputs.confirmation == 'PUBLISH U000003'))))
+    # Be bendro leidimo galimi tik patvirtinti U000001 / U000003 / U000004 bandymai arba dry-run.
+    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions[bot]' && (vars.DRIVE_PDF_PUBLICATION_ENABLED == 'true' || (github.event_name == 'workflow_dispatch' && (inputs.apply == false || (inputs.task_id == 'U000001' && inputs.confirmation == 'PUBLISH U000001') || (inputs.task_id == 'U000003' && inputs.confirmation == 'PUBLISH U000003') || (inputs.task_id == 'U000004' && inputs.confirmation == 'PUBLISH U000004'))))
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -97,6 +97,8 @@ jobs:
               fi
               if [ "$PILOT_TASK_ID" = 'U000003' ]; then
                 python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only U000003 --pilot-u000003
+              elif [ "$PILOT_TASK_ID" = 'U000004' ]; then
+                python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only U000004 --pilot-u000004
               elif [ "$DRIVE_PDF_PUBLICATION_ENABLED" = "true" ]; then
                 python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --only "$PILOT_TASK_ID"
               else
@@ -106,6 +108,8 @@ jobs:
             else
               if [ "$PILOT_TASK_ID" = 'U000003' ]; then
                 python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --dry-run --only U000003 --first-u000003
+              elif [ "$PILOT_TASK_ID" = 'U000004' ]; then
+                python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --dry-run --only U000004 --first-u000004
               else
                 python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --dry-run --only "$PILOT_TASK_ID"
               fi
