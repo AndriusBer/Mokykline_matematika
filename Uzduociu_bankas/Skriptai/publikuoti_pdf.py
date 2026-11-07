@@ -16,7 +16,9 @@ import drive_prieiga as drive
 BANKAS = Path(__file__).resolve().parents[1]
 ROOT = BANKAS.parent
 REGISTRY = BANKAS / "drive_links.json"
+CHECKPOINT = BANKAS / "drive_publication_state.json"
 PATH_RE = re.compile(r"Uzduociu_bankas/Uzdaviniai/(U[0-9]{6})/(U[0-9]{6})\.pdf")
+SHA_RE = re.compile(r"[0-9a-f]{40}")
 
 
 class PublicationError(Exception):
@@ -50,7 +52,7 @@ def read_registry(path):
     return data
 
 
-def local_files(root, only=None):
+def local_files(root, only=None, selected=None):
     result = subprocess.run(["git", "-C", str(root), "ls-files", "-z", "--",
                              "Uzduociu_bankas/Uzdaviniai"], check=True, stdout=subprocess.PIPE)
     found = {}
@@ -63,6 +65,8 @@ def local_files(root, only=None):
             raise PublicationError(f"Nesutampa katalogo ir PDF ID: {path}")
         if only and task != only:
             continue
+        if selected is not None and task not in selected:
+            continue
         file = root / path
         if file.is_symlink() or not file.is_file():
             raise PublicationError(f"Nerastas įprastas PDF failas: {path}")
@@ -74,6 +78,67 @@ def local_files(root, only=None):
     if not found:
         raise PublicationError("Nerasta pasirinktų Git sekamų uždavinių PDF")
     return dict(sorted(found.items()))
+
+
+def read_checkpoint(path):
+    with path.open(encoding="utf-8") as file:
+        data = json.load(file, object_pairs_hook=unique_json)
+    if not isinstance(data, dict) or set(data) != {"last_published_commit"}:
+        raise PublicationError("Netinkamas publikavimo žymos formatas")
+    sha = data["last_published_commit"]
+    if not isinstance(sha, str) or not SHA_RE.fullmatch(sha):
+        raise PublicationError("Netinkamas publikavimo žymos commit SHA")
+    return sha
+
+
+def changed_files(root, checkpoint, target):
+    """Grąžina nuo paskutinio patvirtinto commit naujus ir pakeistus PDF."""
+    if not SHA_RE.fullmatch(checkpoint) or not SHA_RE.fullmatch(target):
+        raise PublicationError("Netinkamas Git commit SHA")
+    head = subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
+    if head != target:
+        raise PublicationError("Darbinis Git commit neatitinka tikslinio commit")
+    ancestry = subprocess.run(["git", "-C", str(root), "merge-base", "--is-ancestor", checkpoint, target],
+                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if ancestry.returncode != 0:
+        raise PublicationError("Publikavimo žyma nėra tikslinio commit protėvis arba trūksta Git istorijos")
+    raw = subprocess.check_output(["git", "-C", str(root), "diff", "--name-status", "-z",
+                                   "--no-renames", "--diff-filter=AM", checkpoint, target,
+                                   "--", "Uzduociu_bankas/Uzdaviniai"])
+    fields = raw.decode("utf-8").split("\0")
+    if fields[-1] != "" or len(fields[:-1]) % 2:
+        raise PublicationError("Netinkamas Git pakeitimų sąrašas")
+    changed = {}
+    for status, path in zip(fields[0:-1:2], fields[1:-1:2]):
+        match = PATH_RE.fullmatch(path)
+        if not match:
+            continue
+        task, filename = match.groups()
+        if task != filename:
+            raise PublicationError(f"Nesutampa katalogo ir PDF ID: {path}")
+        content = subprocess.check_output(["git", "-C", str(root), "show", f"{target}:{path}"])
+        current = hashlib.md5(content).hexdigest()
+        previous = None
+        if status == "M":
+            before = subprocess.check_output(["git", "-C", str(root), "show", f"{checkpoint}:{path}"])
+            previous = hashlib.md5(before).hexdigest()
+            if previous == current:
+                continue
+        elif status != "A":
+            raise PublicationError(f"Netikėtas Git pakeitimo tipas: {status}")
+        known = {current}
+        if previous is not None:
+            known.add(previous)
+        commits = subprocess.check_output(["git", "-C", str(root), "log", "--format=%H",
+                                           "--diff-filter=AM", f"{checkpoint}..{target}", "--", path], text=True)
+        for commit in commits.splitlines():
+            if not SHA_RE.fullmatch(commit):
+                raise PublicationError("Netinkamas istorinio Git commit SHA")
+            version = subprocess.check_output(["git", "-C", str(root), "show", f"{commit}:{path}"])
+            known.add(hashlib.md5(version).hexdigest())
+        changed[task] = {"path": path, "md5": current, "previous_md5": previous,
+                         "known_md5": sorted(known)}
+    return dict(sorted(changed.items()))
 
 
 def remote_files(rows):
@@ -116,7 +181,7 @@ def validate_existing(registry, remote):
             raise PublicationError(f"Trūksta įregistruoto PDF arba pasikeitė Drive ID: {task}")
 
 
-def preflight(local, registry, backend, first_u000003=False):
+def preflight(local, registry, backend, first_u000003=False, previous_md5=None):
     if first_u000003:
         if set(local) != {"U000003"}:
             raise PublicationError("Pirmojo bandymo režimas leidžiamas tik U000003")
@@ -130,6 +195,14 @@ def preflight(local, registry, backend, first_u000003=False):
     for task, local_file in local.items():
         if task in before and task not in registry and before[task]["md5"] != local_file["md5"]:
             raise PublicationError(f"Neįregistruoto Drive PDF turinys nesutampa: {task}")
+        if task in before and task in registry and previous_md5 is not None:
+            old_hash = previous_md5.get(task)
+            allowed = set(old_hash) if isinstance(old_hash, (list, tuple, set)) else {old_hash}
+            allowed.add(local_file["md5"])
+            if old_hash is not None and before[task]["md5"] not in allowed:
+                raise PublicationError(f"Drive PDF MD5 neatitinka ankstesnio ar naujo Git turinio: {task}")
+        if task in before:
+            backend.plan(task, before[task]["id"])
     return before
 
 
@@ -146,9 +219,9 @@ def preview(local, registry, backend, first_u000003=False):
             print(f"{task}: būtų kuriamas PDF; teises bus galima patikrinti tik jį sukūrus")
 
 
-def publish(local, registry, backend, first_u000003=False):
+def publish(local, registry, backend, first_u000003=False, previous_md5=None):
     """Patikrina ID prieš ir po kopijavimo; grąžina registrą tik patvirtinus teises."""
-    before = preflight(local, registry, backend, first_u000003)
+    before = preflight(local, registry, backend, first_u000003, previous_md5)
     backend.copy([entry["path"] for entry in local.values()])
     after = remote_files(backend.list())
     validate_existing(registry, after)
@@ -237,19 +310,22 @@ class RcloneBackend:
         drive.process(api, task, file_id, apply=False, verify=True)
 
 
-def write_registry(registry):
-    # Po visų Drive patikrų; rašymas viename kataloge leidžia atominiu būdu pakeisti failą.
+def write_json_atomic(path, data):
     temporary = None
     try:
-        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=REGISTRY.parent,
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent,
                                          prefix=".drive-links-", delete=False) as file:
             temporary = Path(file.name)
-            json.dump(registry, file, ensure_ascii=False, indent=2)
+            json.dump(data, file, ensure_ascii=False, indent=2)
             file.write("\n")
-        os.replace(temporary, REGISTRY)
+        os.replace(temporary, path)
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
+
+
+def write_registry(registry):
+    write_json_atomic(REGISTRY, registry)
 
 
 def main():
@@ -259,6 +335,9 @@ def main():
                       help="Vykdo tikrus rclone copy ir Drive API pakeitimus")
     mode.add_argument("--dry-run", action="store_true",
                       help="Tik skaito Drive ir imituoja kopijavimą")
+    mode.add_argument("--list-changed", action="store_true",
+                      help="Tik išvardija PDF, pasikeitusius po publikavimo žymos")
+    parser.add_argument("--target-commit", help="Tikslus tikslinio Git commit SHA")
     parser.add_argument("--only", help="Bandomajam vykdymui apdoroti tik vieną uždavinio ID")
     pilots = parser.add_mutually_exclusive_group()
     pilots.add_argument("--pilot-u000001", action="store_true",
@@ -279,21 +358,42 @@ def main():
         parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001 arba U000003 vykdymui main šakoje")
     if args.first_u000003 and (not args.dry_run or args.only != "U000003"):
         parser.error("--first-u000003 leidžiamas tik su --dry-run --only U000003")
+    if args.list_changed and not args.target_commit:
+        parser.error("--list-changed reikalauja --target-commit")
+    if args.target_commit and (args.only or pilot_task or args.first_u000003):
+        parser.error("--target-commit negalima derinti su vieno uždavinio arba piloto režimu")
     if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true" and not pilot_task:
         parser.error("Tikram publikavimui reikia DRIVE_PDF_PUBLICATION_ENABLED=true")
     try:
-        local = local_files(ROOT, args.only)
+        changed = None
+        if args.target_commit:
+            changed = changed_files(ROOT, read_checkpoint(CHECKPOINT), args.target_commit)
+            if args.list_changed:
+                print(json.dumps({"tasks": list(changed)}, ensure_ascii=False))
+                return
+            if not changed:
+                print("Naujų arba pakeistų PDF nėra; Drive operacijos nevykdomos")
+                return
+            local = local_files(ROOT, selected=set(changed))
+            if set(local) != set(changed) or any(local[t]["md5"] != changed[t]["md5"] for t in changed):
+                raise PublicationError("Vietiniai PDF neatitinka tikslinio Git commit")
+        else:
+            local = local_files(ROOT, args.only)
         registry = read_registry(REGISTRY)
         with tempfile.TemporaryDirectory(prefix="publikuoti-pdf-") as tmp:
             backend = RcloneBackend(tmp)
             if args.dry_run:
                 preview(local, registry, backend, first_u000003=args.first_u000003)
             else:
-                result = publish(local, registry, backend, first_u000003=args.pilot_u000003)
+                previous = {task: item["known_md5"] for task, item in changed.items()} if changed else None
+                result = publish(local, registry, backend, first_u000003=args.pilot_u000003,
+                                 previous_md5=previous)
         if args.dry_run:
             print(f"Dry-run patikrinta uždavinių: {len(local)}")
         else:
             write_registry(result)
+            if changed:
+                write_json_atomic(CHECKPOINT, {"last_published_commit": args.target_commit})
             print(f"Patikrinta ir publikuota uždavinių: {len(local)}")
     except (PublicationError, drive.PatikrosKlaida, OSError, subprocess.CalledProcessError) as error:
         parser.exit(1, f"Klaida: {error}\n")

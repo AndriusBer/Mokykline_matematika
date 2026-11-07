@@ -1,5 +1,6 @@
 import contextlib
 import copy
+import hashlib
 import importlib.util
 import io
 import json
@@ -132,6 +133,36 @@ class PublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(pub.PublicationError, "pasikeitė Drive ID"):
             self.execute()
         self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+
+    def test_pries_copy_tikrinami_md5_ir_drive_teises(self):
+        self.local["U000001"]["md5"] = "a" * 32
+        self.backend.new_hashes["U000001"] = "a" * 32
+        with contextlib.redirect_stdout(io.StringIO()):
+            pub.publish(self.local, self.old, self.backend,
+                        previous_md5={"U000001": "1" * 32, "U000003": None})
+        copy_index = next(i for i, action in enumerate(self.backend.actions)
+                          if isinstance(action, tuple) and action[0] == "copy")
+        reads = self.backend.actions[:copy_index]
+        self.assertTrue(any(isinstance(x, tuple) and x[:2] == ("GET", "files/ID_1") for x in reads))
+        self.assertTrue(any(isinstance(x, tuple) and x[:2] == ("GET", "files/ID_1/permissions") for x in reads))
+        self.assertFalse(any(isinstance(x, tuple) and x[0] in ("POST", "PATCH") for x in reads))
+
+    def test_drive_md5_nesutapus_pries_copy_sustabdo(self):
+        self.backend.files["U000001"]["md5"] = "b" * 32
+        with self.assertRaisesRegex(pub.PublicationError, "MD5 neatitinka"):
+            pub.publish(self.local, self.old, self.backend,
+                        previous_md5={"U000001": "1" * 32, "U000003": None})
+        self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+
+    def test_tarpine_git_versija_leidziama_ankstesniam_drive_id(self):
+        self.backend.files["U000001"]["md5"] = "b" * 32
+        self.local["U000001"]["md5"] = "a" * 32
+        self.backend.new_hashes["U000001"] = "a" * 32
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = pub.publish(self.local, self.old, self.backend,
+                previous_md5={"U000001": ["1" * 32, "b" * 32, "a" * 32], "U000003": None})
+        self.assertEqual(result["U000001"], self.old["U000001"])
+        self.assertEqual(self.backend.files["U000001"]["md5"], "a" * 32)
 
     def test_pakeistas_pdf_atnaujinamas_issaugant_drive_id(self):
         self.local["U000001"]["md5"] = "a" * 32
@@ -334,7 +365,7 @@ class PublicationTests(unittest.TestCase):
                 env = dict(os.environ, PATH=directory, CALL_LOG=str(log),
                            GITHUB_EVENT_NAME=event, PILOT_APPLY=apply,
                            PILOT_TASK_ID=task, DRIVE_PILOT_CONFIRMATION=confirm,
-                           DRIVE_PDF_PUBLICATION_ENABLED=enabled)
+                           DRIVE_PDF_PUBLICATION_ENABLED=enabled, GITHUB_SHA="f" * 40)
                 result = subprocess.run(["/bin/bash", "-c", script], env=env,
                                         capture_output=True, text=True)
                 with self.subTest(event=event, apply=apply, enabled=enabled):
@@ -539,6 +570,33 @@ esac
                     self.assertNotIn("--force", calls)
                     if push_called:
                         self.assertIn("add -- Uzduociu_bankas/drive_links.json", calls)
+                        self.assertIn("Uzduociu_bankas/drive_publication_state.json", calls)
+
+    def test_workflow_pakeitimu_atranka_tusciam_ir_netusciam_sarasui(self):
+        workflow = (BANKAS.parent / ".github/workflows/publikuoti-uzdavinius.yml").read_text()
+        step = workflow.split("      - name: Find changed task PDFs\n", 1)[1]
+        script = step.split("        run: |\n", 1)[1].split("\n      - name:", 1)[0]
+        script = "\n".join(line[10:] if line.startswith("          ") else line
+                           for line in script.splitlines())
+        with tempfile.TemporaryDirectory() as directory:
+            executable = Path(directory) / "python3"
+            executable.write_text('''#!/bin/sh
+case "$1" in
+  -c) exec "$REAL_PYTHON" "$@" ;;
+  *) printf '%s\\n' "$FAKE_TASKS" ;;
+esac
+''')
+            executable.chmod(0o755)
+            output = Path(directory) / "output"
+            for tasks, expected in [([], "has_pdfs=false"), (["U000001", "U000003"], "has_pdfs=true")]:
+                output.unlink(missing_ok=True)
+                env = dict(os.environ, PATH=directory, RUNNER_TEMP=directory,
+                           GITHUB_OUTPUT=str(output), GITHUB_SHA="f" * 40,
+                           FAKE_TASKS=json.dumps({"tasks": tasks}), REAL_PYTHON=sys.executable)
+                p = subprocess.run(["/bin/bash", "-c", script], env=env, capture_output=True, text=True)
+                with self.subTest(tasks=tasks):
+                    self.assertEqual(p.returncode, 0, p.stderr)
+                    self.assertEqual(output.read_text().strip(), expected)
 
     def test_pavojingas_cli_be_publish_neveikia(self):
         p = subprocess.run([sys.executable, "-B", str(pub.__file__)], capture_output=True, text=True)
@@ -551,6 +609,203 @@ esac
         self.assertIn("dry-run", self.backend.actions)
         self.assertNotIn("U000003", self.backend.files)
         self.assertFalse(any(isinstance(x, tuple) and x[0] in ("POST", "PATCH") for x in self.backend.actions))
+
+
+class GitPakeitimuTestai(unittest.TestCase):
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.root = Path(self.temporary.name)
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
+        self.bank = self.root / "Uzduociu_bankas"
+        self.bank.mkdir()
+        self.write_pdf("U000001", b"pirmas senas")
+        self.write_pdf("U000002", b"antras nepakites")
+        self.commit("pradinis")
+        self.base = self.head()
+
+    def git(self, *args):
+        return subprocess.check_output(["git", "-C", str(self.root), *args], stderr=subprocess.PIPE)
+
+    def head(self):
+        return self.git("rev-parse", "HEAD").decode().strip()
+
+    def write_pdf(self, task, contents):
+        folder = self.bank / "Uzdaviniai" / task
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / f"{task}.pdf").write_bytes(contents)
+
+    def commit(self, message):
+        self.git("add", "--all")
+        self.git("-c", "user.name=Test", "-c", "user.email=test@example.invalid", "commit", "-qm", message)
+
+    def test_naujas_pdf_atrenkamas(self):
+        self.write_pdf("U000003", b"naujas pdf")
+        self.commit("naujas")
+        changed = pub.changed_files(self.root, self.base, self.head())
+        self.assertEqual(list(changed), ["U000003"])
+        self.assertIsNone(changed["U000003"]["previous_md5"])
+        self.assertEqual(changed["U000003"]["md5"], hashlib.md5(b"naujas pdf").hexdigest())
+
+    def test_pakeistas_ir_nepakites_pdf(self):
+        self.write_pdf("U000001", b"pirmas naujas")
+        self.commit("pakeistas")
+        changed = pub.changed_files(self.root, self.base, self.head())
+        self.assertEqual(list(changed), ["U000001"])
+        self.assertEqual(changed["U000001"]["previous_md5"], hashlib.md5(b"pirmas senas").hexdigest())
+        self.assertNotIn("U000002", changed)
+
+    def test_keli_pdf_ir_keli_commit(self):
+        self.write_pdf("U000001", b"pirmas naujas")
+        self.commit("pirmas push")
+        self.write_pdf("U000002", b"antras naujas")
+        self.write_pdf("U000003", b"trecias naujas")
+        self.commit("antras push")
+        changed = pub.changed_files(self.root, self.base, self.head())
+        self.assertEqual(list(changed), ["U000001", "U000002", "U000003"])
+
+    def test_tarpiniu_commit_maisos_teisetam_atkartojimui(self):
+        self.write_pdf("U000001", b"tarpine versija")
+        self.commit("ankstesnis push")
+        self.write_pdf("U000001", b"velesne versija")
+        self.commit("velesnis push")
+        changed = pub.changed_files(self.root, self.base, self.head())["U000001"]
+        self.assertIn(hashlib.md5(b"pirmas senas").hexdigest(), changed["known_md5"])
+        self.assertIn(hashlib.md5(b"tarpine versija").hexdigest(), changed["known_md5"])
+        self.assertIn(hashlib.md5(b"velesne versija").hexdigest(), changed["known_md5"])
+
+    def test_tex_pakeitimas_neatrenka_pdf(self):
+        (self.bank / "Uzdaviniai/U000001/U000001.tex").write_text("pakeista sąlyga")
+        self.commit("tik tex")
+        self.assertEqual(pub.changed_files(self.root, self.base, self.head()), {})
+
+    def test_grazintas_pradinis_pdf_neatrenkamas(self):
+        self.write_pdf("U000001", b"laikinas pakeitimas")
+        self.commit("pakeistas")
+        self.write_pdf("U000001", b"pirmas senas")
+        self.commit("atstatytas")
+        self.assertEqual(pub.changed_files(self.root, self.base, self.head()), {})
+
+    def test_neteisinga_arba_ne_istorijos_zyma_sustabdo(self):
+        with self.assertRaises(pub.PublicationError):
+            pub.changed_files(self.root, "blogas", self.head())
+        with self.assertRaises(pub.PublicationError):
+            pub.changed_files(self.root, "0" * 40, self.head())
+
+    def test_nepakeitus_pdf_nera_jokiu_drive_operaciju(self):
+        checkpoint = self.bank / "drive_publication_state.json"
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        (self.bank / "README.md").write_text("tik dokumentacija")
+        self.commit("tik dokumentacija")
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        before = checkpoint.read_bytes()
+        with patch.object(pub, "ROOT", self.root), patch.object(pub, "CHECKPOINT", checkpoint), \
+             patch.object(pub, "RcloneBackend") as backend, \
+             patch.object(pub, "write_registry") as write_registry, \
+             patch.dict(os.environ, {"DRIVE_PDF_PUBLICATION_ENABLED": "true"}), \
+             patch.object(sys, "argv", [str(pub.__file__), "--publish", "--target-commit", self.head()]), \
+             contextlib.redirect_stdout(io.StringIO()):
+            pub.main()
+        backend.assert_not_called()
+        write_registry.assert_not_called()
+        self.assertEqual(checkpoint.read_bytes(), before)
+
+    def test_pakeitimu_sarasas_nereikalauja_drive_prisijungimo(self):
+        self.write_pdf("U000003", b"naujas")
+        self.commit("pdf")
+        checkpoint = self.bank / "drive_publication_state.json"
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        output = io.StringIO()
+        with patch.object(pub, "ROOT", self.root), patch.object(pub, "CHECKPOINT", checkpoint), \
+             patch.object(pub, "RcloneBackend") as backend, patch.dict(os.environ, {}, clear=True), \
+             patch.object(sys, "argv", [str(pub.__file__), "--list-changed", "--target-commit", self.head()]), \
+             contextlib.redirect_stdout(output):
+            pub.main()
+        backend.assert_not_called()
+        self.assertEqual(json.loads(output.getvalue()), {"tasks": ["U000003"]})
+
+    def test_is_paskutinio_sekmingo_commit_apdorojamas_ir_ankstesnis_nepavykes_push(self):
+        self.write_pdf("U000001", b"dar nepublikuotas")
+        self.commit("ankstesnis push")
+        (self.bank / "README.md").write_text("vėlesnis push")
+        self.commit("velesnis push be pdf")
+        changed = pub.changed_files(self.root, self.base, self.head())
+        self.assertEqual(list(changed), ["U000001"])
+
+    def test_localus_neirasytas_pdf_nesupainiojamas_su_commit(self):
+        self.write_pdf("U000001", b"commite naujas")
+        self.commit("pdf")
+        target = self.head()
+        checkpoint = self.bank / "drive_publication_state.json"
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        self.write_pdf("U000001", b"vietinis kitoks")
+        with patch.object(pub, "ROOT", self.root), patch.object(pub, "CHECKPOINT", checkpoint), \
+             patch.object(pub, "RcloneBackend") as backend, \
+             patch.dict(os.environ, {"DRIVE_PDF_PUBLICATION_ENABLED": "true"}), \
+             patch.object(sys, "argv", [str(pub.__file__), "--publish", "--target-commit", target]), \
+             contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as error:
+                pub.main()
+        self.assertNotEqual(error.exception.code, 0)
+        backend.assert_not_called()
+
+    def test_uzbaigus_keiciasi_tik_sekmingo_commit_zyma(self):
+        self.write_pdf("U000001", b"atnaujintas")
+        self.write_pdf("U000003", b"naujas")
+        self.commit("du pdf")
+        target = self.head()
+        checkpoint = self.bank / "drive_publication_state.json"
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        registry_path = self.bank / "drive_links.json"
+        old = {"U000001": entry("ID_1"), "U000002": entry("ID_2")}
+        registry_path.write_text(json.dumps(old))
+        fake = FakeBackend({"U000001": {"id": "ID_1", "md5": hashlib.md5(b"pirmas senas").hexdigest()},
+                            "U000002": {"id": "ID_2", "md5": hashlib.md5(b"antras nepakites").hexdigest()}})
+        fake.new_hashes["U000001"] = hashlib.md5(b"atnaujintas").hexdigest()
+        fake.new_hashes["U000003"] = hashlib.md5(b"naujas").hexdigest()
+        with patch.object(pub, "ROOT", self.root), patch.object(pub, "CHECKPOINT", checkpoint), \
+             patch.object(pub, "REGISTRY", registry_path), patch.object(pub, "RcloneBackend", return_value=fake), \
+             patch.dict(os.environ, {"DRIVE_PDF_PUBLICATION_ENABLED": "true"}), \
+             patch.object(sys, "argv", [str(pub.__file__), "--publish", "--target-commit", target]), \
+             contextlib.redirect_stdout(io.StringIO()):
+            pub.main()
+        self.assertEqual(json.loads(checkpoint.read_text())["last_published_commit"], target)
+        registry = json.loads(registry_path.read_text())
+        self.assertEqual(registry["U000001"], old["U000001"])
+        self.assertEqual(registry["U000002"], old["U000002"])
+        self.assertEqual(registry["U000003"], entry("NEW_3"))
+        copies = [x for x in fake.actions if isinstance(x, tuple) and x[0] == "copy"]
+        self.assertEqual(set(copies[0][1]), {
+            "Uzduociu_bankas/Uzdaviniai/U000001/U000001.pdf",
+            "Uzduociu_bankas/Uzdaviniai/U000003/U000003.pdf"})
+        changes = [x for x in fake.actions if isinstance(x, tuple) and x[0] in ("PATCH", "POST")]
+        self.assertTrue(all("files/ID_2" not in action[1] for action in changes))
+
+    def test_api_klaida_nepakeicia_registro_ir_publikavimo_žymos(self):
+        self.write_pdf("U000003", b"naujas")
+        self.commit("naujas")
+        target = self.head()
+        checkpoint = self.bank / "drive_publication_state.json"
+        checkpoint.write_text(json.dumps({"last_published_commit": self.base}))
+        registry_path = self.bank / "drive_links.json"
+        old = {"U000001": entry("ID_1"), "U000002": entry("ID_2")}
+        registry_path.write_text(json.dumps(old))
+        checkpoint_before = checkpoint.read_bytes()
+        registry_before = registry_path.read_bytes()
+        fake = FakeBackend({"U000001": {"id": "ID_1", "md5": hashlib.md5(b"pirmas senas").hexdigest()},
+                            "U000002": {"id": "ID_2", "md5": hashlib.md5(b"antras nepakites").hexdigest()}})
+        fake.new_hashes["U000003"] = hashlib.md5(b"naujas").hexdigest()
+        fake.failed = True
+        with patch.object(pub, "ROOT", self.root), patch.object(pub, "CHECKPOINT", checkpoint), \
+             patch.object(pub, "REGISTRY", registry_path), patch.object(pub, "RcloneBackend", return_value=fake), \
+             patch.dict(os.environ, {"DRIVE_PDF_PUBLICATION_ENABLED": "true"}), \
+             patch.object(sys, "argv", [str(pub.__file__), "--publish", "--target-commit", target]), \
+             contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as error:
+                pub.main()
+        self.assertNotEqual(error.exception.code, 0)
+        self.assertEqual(checkpoint.read_bytes(), checkpoint_before)
+        self.assertEqual(registry_path.read_bytes(), registry_before)
 
 
 if __name__ == "__main__":

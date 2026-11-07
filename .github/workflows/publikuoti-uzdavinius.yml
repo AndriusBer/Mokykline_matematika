@@ -27,6 +27,7 @@ permissions:
 concurrency:
   group: task-pdf-publication
   cancel-in-progress: false
+  queue: max
 
 jobs:
   publish:
@@ -52,12 +53,21 @@ jobs:
             echo 'skip=false' >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Find changed task PDFs
+        id: changed
+        if: steps.first_publication.outputs.skip != 'true' && github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --list-changed --target-commit "$GITHUB_SHA" > "$RUNNER_TEMP/changed-pdfs.json"
+          python3 -c 'import json,sys; tasks=json.load(open(sys.argv[1], encoding="utf-8"))["tasks"]; print("has_pdfs=" + ("true" if tasks else "false")); print("Pasikeitę PDF: " + str(len(tasks)), file=sys.stderr)' "$RUNNER_TEMP/changed-pdfs.json" >> "$GITHUB_OUTPUT"
+
       - name: Install rclone
-        if: steps.first_publication.outputs.skip != 'true'
+        if: steps.first_publication.outputs.skip != 'true' && (github.event_name != 'push' || steps.changed.outputs.has_pdfs == 'true')
         run: sudo apt-get update && sudo apt-get install -y rclone
 
       - name: Confirm main has not advanced
-        if: steps.first_publication.outputs.skip != 'true'
+        if: steps.first_publication.outputs.skip != 'true' && (github.event_name != 'push' || steps.changed.outputs.has_pdfs == 'true')
         shell: bash
         run: |
           set -euo pipefail
@@ -66,7 +76,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
 
       - name: Publish PDFs and verify Drive access
-        if: steps.first_publication.outputs.skip != 'true'
+        if: steps.first_publication.outputs.skip != 'true' && (github.event_name != 'push' || steps.changed.outputs.has_pdfs == 'true')
         env:
           RCLONE_CONFIG_GDRIVE_TYPE: drive
           RCLONE_CONFIG_GDRIVE_SCOPE: drive
@@ -102,20 +112,20 @@ jobs:
             fi
           else
             test "$DRIVE_PDF_PUBLICATION_ENABLED" = "true"
-            python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish
+            python3 Uzduociu_bankas/Skriptai/publikuoti_pdf.py --publish --target-commit "$GITHUB_SHA"
           fi
 
       - name: Persist verified registry to main
-        if: steps.first_publication.outputs.skip != 'true' && (github.event_name == 'push' || inputs.apply == true)
+        if: steps.first_publication.outputs.skip != 'true' && ((github.event_name == 'push' && steps.changed.outputs.has_pdfs == 'true') || (github.event_name == 'workflow_dispatch' && inputs.apply == true))
         shell: bash
         run: |
           set -euo pipefail
           git fetch origin main
           test "$(git rev-parse refs/remotes/origin/main)" = "$GITHUB_SHA"
-          if git diff --quiet -- Uzduociu_bankas/drive_links.json; then
+          if git diff --quiet -- Uzduociu_bankas/drive_links.json Uzduociu_bankas/drive_publication_state.json; then
             echo "Registro pakeitimų nėra."
             exit 0
           fi
-          git add -- Uzduociu_bankas/drive_links.json
+          git add -- Uzduociu_bankas/drive_links.json Uzduociu_bankas/drive_publication_state.json
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Update task PDF Drive registry'
           git push origin HEAD:main

@@ -7,13 +7,36 @@ leidžiamas rankinis `workflow_dispatch` dry-run ir atskira griežtai apribota
 `U000001` ir pirmojo `U000003` tikro bandymo išimtys. Workflow praleidžia Drive operacijas per
 pirmą push, kuriuo jis pats pridedamas.
 
-Publikuojami tik Git sekami `Uzduociu_bankas/Uzdaviniai/UXXXXXX/UXXXXXX.pdf`
-failai. Prieš `rclone copy` ir po jo patikrinami anksčiau registre išsaugoti
+Po `main` push automatiškai atrenkami tik nauji arba turiniu pasikeitę Git
+sekami `Uzduociu_bankas/Uzdaviniai/UXXXXXX/UXXXXXX.pdf` failai, palyginti su
+paskutine sėkmingo publikavimo žyma `drive_publication_state.json`. Jei tokių
+PDF nėra, rclone nepaleidžiamas ir jokių Drive rašymo operacijų nevyksta.
+Jei ankstesnis publikavimas nepavyko, vėlesnis push gali pakartotinai apdoroti
+jo dar nepatvirtintus PDF, net jeigu tame vėlesniame push pakeistas tik `.tex`.
+Vien pakeitus `.tex`, būtina atskirai sugeneruoti ir į Git įtraukti atitinkamą
+PDF – pats `.tex` pakeitimas naujo PDF nesukuria.
+
+Prieš `rclone copy` ir po jo patikrinami anksčiau registre išsaugoti
 Drive ID; po kopijavimo ir po teisių nustatymo patikrinami failo ID ir turinio
 MD5. Teisės nustatomos ir patvirtinamos tik šiems PDF. Po visų patikrų `drive_links.json` papildomas
 naujais ID ir siunčiamas į `main`, jeigu šaka per vykdymą nepasikeitė.
 `rclone copy` nešalina kitų Drive failų. Esamas atskiras `sync-drive.yml`
 lieka su `--dry-run`.
+
+Pradinė žyma rodo į `f5ce3592d6b90ad323991aaf0a42c8fadf0ca491`: tai
+pradinis Git palyginimo taškas, o ne įrodymas, kad visi senesni PDF jau
+sutampa su Drive. Prieš įjungiant automatizavimą būtina atskirai patikrinti
+esamų PDF ID, MD5 ir teises. Senesni už šią žymą pakeitimai automatiškai
+neatrenkami. Žymos failo nešalinkite ir nekeiskite rankiniu būdu, kol neįvertinta
+Git istorija ir Drive būsena. Trūkstama žyma, nepilna istorija ar ne protėvio
+commit sustabdo vykdymą.
+
+Sėkmingai patikrinus visus pasirinktus PDF, registras ir žyma įrašomi vienu Git
+commit. Klaidos arba nepavykusio Git push atveju GitHub žyma nepasistūmėja;
+kitas sėkmingai pradėtas vykdymas vėl atrinks nepatvirtintus pakeitimus. Jei
+`main` pasikeičia vykdymo metu, job baigiamas klaida be force push. Eilė
+serializuoja iki 100 laukiančių vykdymų; esant daugiau, dalis gali būti
+atšaukta, o paskesnis vykdymas lygins nuo paskutinės išsaugotos žymos.
 
 Saugiam bandymui: pirmiausia rankiniu workflow vykdymu pasirinkite `apply=false`
 ir `U000001`. Tikram rankiniam šio PDF bandymui bendro kintamojo įjungti

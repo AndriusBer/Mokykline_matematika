@@ -7,6 +7,10 @@ Sprendimo PDF sąlyga ir atsakymas rodomi prieš sprendimą, kuris prasideda
 naujame puslapyje. Ilgesnė sąlyga ar atsakymas gali užimti daugiau nei vieną
 puslapį.
 
+Pakeitus uždavinio `.tex`, PDF automatiškai nepergeneruojamas: paleiskite
+atitinkamo ID generavimo komandą ir įtraukite naują PDF į Git commit. Vien
+`.tex` pakeitimas nesukelia to PDF publikavimo į Drive.
+
 Komandos iš projekto šakninio katalogo:
 
 ```sh
