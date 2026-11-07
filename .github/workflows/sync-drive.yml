@@ -28,3 +28,68 @@ jobs:
             --include "*.sty" \
             --exclude "*" \
             --verbose
+
+      - name: Diagnose task PDF Drive IDs (read-only)
+        shell: bash
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          rclone lsjson gdrive: \
+            --recursive \
+            --files-only \
+            --include "/Uzduociu_bankas/Uzdaviniai/U000001/U000001.pdf" \
+            --include "/Uzduociu_bankas/Uzdaviniai/U000002/U000002.pdf" |
+          python3 -c '
+          import json
+          import sys
+
+          expected = [
+              "Uzduociu_bankas/Uzdaviniai/U000001/U000001.pdf",
+              "Uzduociu_bankas/Uzdaviniai/U000002/U000002.pdf",
+          ]
+
+          try:
+              rows = json.load(sys.stdin)
+          except json.JSONDecodeError:
+              sys.exit("KLAIDA: negautas tinkamas rclone JSON.")
+
+          if not isinstance(rows, list) or not all(
+              isinstance(row, dict) for row in rows
+          ):
+              sys.exit("KLAIDA: netikėta rclone JSON struktūra.")
+
+          results = {}
+          errors = []
+
+          for path in expected:
+              matches = [row for row in rows if row.get("Path") == path]
+              if len(matches) != 1:
+                  errors.append(
+                      f"{path}: tikėtasi 1 įrašo, gauta {len(matches)}"
+                  )
+                  continue
+
+              row = matches[0]
+              drive_id = row.get("ID")
+              if row.get("IsDir") is not False:
+                  errors.append(f"{path}: įrašas nėra failas")
+              elif not isinstance(drive_id, str) or not drive_id.strip():
+                  errors.append(f"{path}: nėra tinkamo ID lauko")
+              else:
+                  results[path] = drive_id
+
+          if len(results) == 2 and len(set(results.values())) != 2:
+              errors.append("Dviem skirtingiems PDF grąžintas tas pats ID.")
+
+          if errors:
+              for error in errors:
+                  print("KLAIDA: " + error, file=sys.stderr)
+              sys.exit(1)
+
+          print(json.dumps(results, ensure_ascii=False, indent=2))
+          '

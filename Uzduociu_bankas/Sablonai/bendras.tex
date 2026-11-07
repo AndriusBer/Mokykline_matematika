@@ -1,0 +1,39 @@
+% Bendras šablonas: prieš įtraukiant nustatoma \bankorezimas.
+\usepackage{fontspec}
+\setmainfont{lmroman10-regular.otf}[
+  BoldFont=lmroman10-bold.otf,
+  ItalicFont=lmroman10-italic.otf,
+  BoldItalicFont=lmroman10-bolditalic.otf]
+\setsansfont{lmsans10-regular.otf}
+\setmonofont{lmmono10-regular.otf}
+\usepackage{polyglossia}
+\setdefaultlanguage{lithuanian}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{environ}
+\usepackage{tikz}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{enumitem}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\newif\ifsprendimorezimas
+\def\sprendimoreiksme{sprendimas}
+\ifx\bankorezimas\sprendimoreiksme
+  \sprendimorezimastrue
+\else
+  \sprendimorezimasfalse
+\fi
+
+\NewEnviron{salyga}{%
+  \ifsprendimorezimas
+    \section*{Uždavinio sąlyga}\BODY
+  \else
+    \item \BODY
+  \fi
+}
+\NewEnviron{atsakymas}{%
+  \ifsprendimorezimas\section*{Atsakymas}\BODY\fi
+}
+\NewEnviron{sprendimas}{%
+  \ifsprendimorezimas\clearpage\section*{Sprendimas}\BODY\fi
+}

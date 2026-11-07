@@ -1,0 +1,14 @@
+\documentclass[12pt]{article}
+\def\bankorezimas{sprendimas}
+\input{Sablonai/bendras.tex}
+% ID privalo pateikti generatorius; numatytosios reikšmės nėra.
+\ifdefined\uzdavinioid\else
+  \PackageError{uzdaviniu-bankas}{Nepateiktas uzdavinio ID}{Naudokite generuoti.py.}
+\fi
+\edef\uzdaviniofailas{Uzdaviniai/\uzdavinioid/\uzdavinioid.tex}
+\begin{document}
+\begin{center}
+  {\Large\bfseries Uždavinys \uzdavinioid}
+\end{center}
+\input{\uzdaviniofailas}
+\end{document}
