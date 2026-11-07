@@ -200,14 +200,14 @@ def main():
     group.add_argument("--id", default=None, help="Uždavinio ID; numatytasis U000001")
     group.add_argument("--visi", action="store_true", help="Tik skaitymui patikrinti visus PDF")
     mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--apply", action="store_true", help="Taikyti pakeitimus tik U000001")
+    mode.add_argument("--apply", action="store_true", help="Taikyti pakeitimus tik U000001 arba U000002")
     mode.add_argument("--verify", action="store_true", help="Tik patvirtinti jau nustatytas teises")
     args = parser.parse_args()
     target = "visi" if args.visi else (args.id or "U000001")
     if target != "visi" and not ID_PATTERN.fullmatch(target):
         parser.error("ID turi būti U ir šeši skaitmenys")
-    if args.apply and target != "U000001":
-        parser.error("Pirmas taikymas leidžiamas tik U000001")
+    if args.apply and target not in {"U000001", "U000002"}:
+        parser.error("Taikymas leidžiamas tik U000001 arba U000002")
     try:
         token = os.environ.get("RCLONE_CONFIG_GDRIVE_TOKEN")
         root_id = os.environ.get("RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID")

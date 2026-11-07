@@ -1,0 +1,54 @@
+name: Apply Drive access for U000002
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: 'Įrašykite APPLY U000002'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: drive-access-u000002
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Validate confirmation
+        env:
+          CONFIRMATION: ${{ inputs.confirmation }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "$CONFIRMATION" != 'APPLY U000002' ]; then
+            echo 'Klaida: būtinas tikslus patvirtinimas APPLY U000002.' >&2
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install rclone
+        run: sudo apt-get update && sudo apt-get install -y rclone
+
+      - name: Check, apply and verify U000002 Drive access
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000002
+          python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000002 --apply
+          python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000002 --verify
