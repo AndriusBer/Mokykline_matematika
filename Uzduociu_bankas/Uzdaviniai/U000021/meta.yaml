@@ -1,0 +1,29 @@
+schemos_versija: 1
+id: U000021
+pavadinimas: Lygtis pagal atvirkštinius šaknų kvadratus
+klasifikacija:
+  sritys:
+  - algebra
+  temos:
+  - algebra.lygtys.kvadratines
+  - algebra.lygtys.vijeto_teorema
+didaktika:
+  tipas: uzdavinys
+  paskirtys:
+  - igudzio_itvirtinimas
+  auditorijos:
+  - 9_klase
+sudetingumas:
+  mokyklinis: null
+  olimpiadinis: null
+  ivertinimo_busena: preliminarus
+sprendimas:
+  metodai:
+  - vijeto_teorema
+saltinis:
+  tipas: nezinomas
+  pavadinimas: Pasiruošimas kontroliniam darbui
+  vieta: Importas/uzd25.tex, 16 uždavinys
+  teisiu_busena: neivertinta
+kokybe:
+  matematine_perziura: nepatvirtinta

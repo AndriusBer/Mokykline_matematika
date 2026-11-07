@@ -1,0 +1,30 @@
+schemos_versija: 1
+id: U000029
+pavadinimas: Sandaugos lygtis su kvadratiniu keitiniu
+klasifikacija:
+  sritys:
+  - algebra
+  temos:
+  - algebra.lygtys.aukstesnio_laipsnio
+  - algebra.lygtys.kvadratines
+didaktika:
+  tipas: uzdavinys
+  paskirtys:
+  - igudzio_itvirtinimas
+  auditorijos:
+  - 9_klase
+sudetingumas:
+  mokyklinis: null
+  olimpiadinis: null
+  ivertinimo_busena: preliminarus
+sprendimas:
+  metodai:
+  - keitinys
+  - diskriminantas
+saltinis:
+  tipas: nezinomas
+  pavadinimas: Pasiruošimas kontroliniam darbui
+  vieta: Importas/uzd25.tex, 24 uždavinys
+  teisiu_busena: neivertinta
+kokybe:
+  matematine_perziura: nepatvirtinta

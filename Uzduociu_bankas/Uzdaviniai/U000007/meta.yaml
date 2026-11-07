@@ -1,0 +1,29 @@
+schemos_versija: 1
+id: U000007
+pavadinimas: Kvadratinė lygtis su skliaustais
+klasifikacija:
+  sritys:
+  - algebra
+  temos:
+  - algebra.lygtys.kvadratines
+didaktika:
+  tipas: uzdavinys
+  paskirtys:
+  - igudzio_itvirtinimas
+  auditorijos:
+  - 9_klase
+sudetingumas:
+  mokyklinis: null
+  olimpiadinis: null
+  ivertinimo_busena: preliminarus
+sprendimas:
+  metodai:
+  - lygiaverciai_pertvarkiai
+  - skaidymas_dauginamaisiais
+saltinis:
+  tipas: nezinomas
+  pavadinimas: Pasiruošimas kontroliniam darbui
+  vieta: Importas/uzd25.tex, 2 uždavinys
+  teisiu_busena: neivertinta
+kokybe:
+  matematine_perziura: nepatvirtinta
