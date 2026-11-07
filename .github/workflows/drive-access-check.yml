@@ -1,0 +1,28 @@
+name: Check Drive access (read-only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install rclone
+        run: sudo apt-get update && sudo apt-get install -y rclone
+
+      - name: Check U000001 Drive API access
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
+        run: python3 Uzduociu_bankas/Skriptai/drive_prieiga.py --id U000001

@@ -23,6 +23,7 @@ jobs:
           RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_CONFIG_GDRIVE_TOKEN }}
         run: |
           rclone sync . gdrive: \
+            --dry-run \
             --include "*.tex" \
             --include "*.pdf" \
             --include "*.sty" \
