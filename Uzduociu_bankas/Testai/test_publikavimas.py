@@ -319,6 +319,11 @@ class PublicationTests(unittest.TestCase):
                 ("workflow_dispatch", "true", "", "U000001", "", False, None),
                 ("workflow_dispatch", "true", "", "U000001", "publish U000001", False, None),
                 ("workflow_dispatch", "true", "", "U000002", "PUBLISH U000002", False, None),
+                ("workflow_dispatch", "true", "", "U000003", "PUBLISH U000002", False, None),
+                ("workflow_dispatch", "true", "", "U000003", "publish U000003", False, None),
+                ("workflow_dispatch", "true", "", "U000003", "PUBLISH U000003", True, "--pilot-u000003"),
+                ("workflow_dispatch", "true", "true", "U000003", "PUBLISH U000003", True, "--pilot-u000003"),
+                ("workflow_dispatch", "false", "", "U000003", "", True, "--first-u000003"),
                 ("workflow_dispatch", "true", "", "U000001", "PUBLISH U000001", True, "--pilot-u000001"),
                 ("workflow_dispatch", "false", "", "U000001", "", True, "--dry-run"),
                 ("workflow_dispatch", "true", "true", "U000001", "", False, None),
@@ -375,6 +380,85 @@ class PublicationTests(unittest.TestCase):
             self.assertEqual(copies[0][1], (self.local["U000001"]["path"],))
             self.assertIsNone(self.backend.states["ID_2"]["permission"])
 
+    def test_u000003_pirmas_publikavimas_ir_senu_id_apsauga(self):
+        selected = {"U000003": self.local["U000003"]}
+        with contextlib.redirect_stdout(io.StringIO()):
+            result = pub.publish(selected, self.old, self.backend, first_u000003=True)
+        self.assertEqual(result["U000001"], self.old["U000001"])
+        self.assertEqual(result["U000002"], self.old["U000002"])
+        self.assertEqual(result["U000003"], entry("NEW_3"))
+        self.assertEqual(self.backend.files["U000003"]["md5"], selected["U000003"]["md5"])
+        changes = [x for x in self.backend.actions if isinstance(x, tuple) and x[0] in ("PATCH", "POST")]
+        self.assertTrue(changes)
+        self.assertTrue(all("files/NEW_3" in action[1] for action in changes))
+        self.assertTrue(self.backend.states["NEW_3"]["restricted"])
+        self.assertTrue(pub.drive.permission_ok(self.backend.states["NEW_3"]["permission"]))
+        copy_actions = [x for x in self.backend.actions if isinstance(x, tuple) and x[0] == "copy"]
+        self.assertEqual(copy_actions[0][1], (selected["U000003"]["path"],))
+
+    def test_u000003_jau_registre_ar_drive_sustabdo_pries_copy(self):
+        selected = {"U000003": self.local["U000003"]}
+        with self.assertRaisesRegex(pub.PublicationError, "jau yra registre"):
+            pub.publish(selected, {**self.old, "U000003": entry("NEW_3")}, self.backend, first_u000003=True)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+        self.backend.files["U000003"] = {"id": "NEW_3", "md5": "3" * 32}
+        for operation in (pub.publish, pub.preview):
+            with self.subTest(operation=operation.__name__), self.assertRaisesRegex(pub.PublicationError, "jau yra Drive"):
+                operation(selected, self.old, self.backend, first_u000003=True)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] == "copy" for x in self.backend.actions))
+
+    def test_u000003_nesutapus_md5_teises_ir_registras_nekeičiami(self):
+        selected = {"U000003": self.local["U000003"]}
+        self.backend.new_hashes["U000003"] = "9" * 32
+        with self.assertRaisesRegex(pub.PublicationError, "nepatvirtintas įkelto PDF turinys"):
+            pub.publish(selected, self.old, self.backend, first_u000003=True)
+        self.assertNotIn("U000003", self.old)
+        self.assertFalse(any(isinstance(x, tuple) and x[0] in ("POST", "PATCH") for x in self.backend.actions))
+
+    def test_pirmas_rezimas_neapima_kitu_pdf(self):
+        with self.assertRaisesRegex(pub.PublicationError, "tik U000003"):
+            pub.publish(self.local, self.old, self.backend, first_u000003=True)
+        self.assertEqual(self.backend.actions, [])
+
+    def test_u000003_pilotas_reikalauja_visu_saugikliu(self):
+        valid = {"GITHUB_ACTIONS": "true", "GITHUB_EVENT_NAME": "workflow_dispatch",
+                 "GITHUB_REF": "refs/heads/main", "DRIVE_PILOT_CONFIRMATION": "PUBLISH U000003",
+                 "DRIVE_PDF_PUBLICATION_ENABLED": ""}
+        for change in [{"GITHUB_ACTIONS": "false"}, {"GITHUB_EVENT_NAME": "push"},
+                       {"GITHUB_REF": "refs/heads/kita"}, {"DRIVE_PILOT_CONFIRMATION": ""},
+                       {"DRIVE_PILOT_CONFIRMATION": "publish U000003"},
+                       {"DRIVE_PILOT_CONFIRMATION": "PUBLISH U000001"}]:
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), "--publish", "--only",
+                                "U000003", "--pilot-u000003"], env=dict(valid, **change),
+                               capture_output=True, text=True)
+            with self.subTest(change=change):
+                self.assertNotEqual(p.returncode, 0)
+                self.assertIn("Pilotas leidžiamas tik", p.stderr)
+        for args in (["--publish", "--only", "U000001", "--pilot-u000003"],
+                     ["--publish", "--pilot-u000003"],
+                     ["--dry-run", "--only", "U000003", "--pilot-u000003"],
+                     ["--publish", "--only", "U000003", "--first-u000003"],
+                     ["--dry-run", "--only", "U000001", "--first-u000003"]):
+            p = subprocess.run([sys.executable, "-B", str(pub.__file__), *args], env=valid,
+                               capture_output=True, text=True)
+            with self.subTest(args=args):
+                self.assertNotEqual(p.returncode, 0)
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "drive_links.json"
+            path.write_text(json.dumps(self.old))
+            with patch.object(pub, "REGISTRY", path), \
+                 patch.object(pub, "local_files", return_value={"U000003": self.local["U000003"]}), \
+                 patch.object(pub, "RcloneBackend", return_value=self.backend), \
+                 patch.dict(os.environ, valid, clear=True), \
+                 patch.object(sys, "argv", [str(pub.__file__), "--publish", "--only", "U000003", "--pilot-u000003"]), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                pub.main()
+            saved = json.loads(path.read_text())
+            self.assertEqual(saved["U000003"], entry("NEW_3"))
+            self.assertEqual(saved["U000001"], self.old["U000001"])
+            self.assertEqual(saved["U000002"], self.old["U000002"])
+
     def test_po_teisiu_keitimo_dar_karta_tikrinami_id_ir_md5(self):
         original = self.backend.apply_and_verify
         def pakeisti(task, fid):
@@ -417,6 +501,44 @@ class PublicationTests(unittest.TestCase):
                 with self.subTest(event=event, git_exit=git_exit):
                     self.assertEqual(result.returncode, 0, result.stderr)
                     self.assertIn(expected, output.read_text())
+
+    def test_workflow_registro_git_irasymai_ir_klaidos(self):
+        workflow = (BANKAS.parent / ".github/workflows/publikuoti-uzdavinius.yml").read_text()
+        step = workflow.split("      - name: Persist verified registry to main\n", 1)[1]
+        script = step.split("        run: |\n", 1)[1]
+        script = "\n".join(line[10:] if line.startswith("          ") else line
+                           for line in script.splitlines())
+        with tempfile.TemporaryDirectory() as directory:
+            executable = Path(directory) / "git"
+            executable.write_text('''#!/bin/sh
+printf '%s\\n' "$*" >> "$CALL_LOG"
+case "$1" in
+  rev-parse) printf '%s\\n' "$FAKE_MAIN" ;;
+  diff) exit "$FAKE_DIFF" ;;
+  push) exit "$FAKE_PUSH" ;;
+esac
+''')
+            executable.chmod(0o755)
+            log = Path(directory) / "calls"
+            cases = [
+                ("same", "1", "0", True, True),
+                ("same", "0", "0", True, False),
+                ("same", "1", "1", False, True),
+                ("changed", "1", "0", False, False),
+            ]
+            for main, diff, push, success, push_called in cases:
+                log.unlink(missing_ok=True)
+                env = dict(os.environ, PATH=directory, CALL_LOG=str(log), GITHUB_SHA="same",
+                           FAKE_MAIN=main, FAKE_DIFF=diff, FAKE_PUSH=push)
+                result = subprocess.run(["/bin/bash", "-c", script], env=env,
+                                        capture_output=True, text=True)
+                calls = log.read_text()
+                with self.subTest(main=main, diff=diff, push=push):
+                    self.assertEqual(result.returncode == 0, success, result.stderr)
+                    self.assertEqual("push origin HEAD:main" in calls, push_called)
+                    self.assertNotIn("--force", calls)
+                    if push_called:
+                        self.assertIn("add -- Uzduociu_bankas/drive_links.json", calls)
 
     def test_pavojingas_cli_be_publish_neveikia(self):
         p = subprocess.run([sys.executable, "-B", str(pub.__file__)], capture_output=True, text=True)

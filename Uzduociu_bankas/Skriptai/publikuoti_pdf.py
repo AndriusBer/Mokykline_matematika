@@ -116,9 +116,16 @@ def validate_existing(registry, remote):
             raise PublicationError(f"Trūksta įregistruoto PDF arba pasikeitė Drive ID: {task}")
 
 
-def preflight(local, registry, backend):
+def preflight(local, registry, backend, first_u000003=False):
+    if first_u000003:
+        if set(local) != {"U000003"}:
+            raise PublicationError("Pirmojo bandymo režimas leidžiamas tik U000003")
+        if "U000003" in registry:
+            raise PublicationError("U000003 jau yra registre; pirmasis bandymas nutrauktas")
     before = remote_files(backend.list())
     validate_existing(registry, before)
+    if first_u000003 and "U000003" in before:
+        raise PublicationError("U000003 jau yra Drive; pirmasis bandymas nutrauktas")
     # Po nutrūkusio vykdymo neįregistruotą failą galima priimti tik esant tam pačiam turiniui.
     for task, local_file in local.items():
         if task in before and task not in registry and before[task]["md5"] != local_file["md5"]:
@@ -126,8 +133,8 @@ def preflight(local, registry, backend):
     return before
 
 
-def preview(local, registry, backend):
-    before = preflight(local, registry, backend)
+def preview(local, registry, backend, first_u000003=False):
+    before = preflight(local, registry, backend, first_u000003)
     backend.copy([entry["path"] for entry in local.values()], dry_run=True)
     for task in local:
         if task in before:
@@ -139,9 +146,9 @@ def preview(local, registry, backend):
             print(f"{task}: būtų kuriamas PDF; teises bus galima patikrinti tik jį sukūrus")
 
 
-def publish(local, registry, backend):
+def publish(local, registry, backend, first_u000003=False):
     """Patikrina ID prieš ir po kopijavimo; grąžina registrą tik patvirtinus teises."""
-    before = preflight(local, registry, backend)
+    before = preflight(local, registry, backend, first_u000003)
     backend.copy([entry["path"] for entry in local.values()])
     after = remote_files(backend.list())
     validate_existing(registry, after)
@@ -253,19 +260,26 @@ def main():
     mode.add_argument("--dry-run", action="store_true",
                       help="Tik skaito Drive ir imituoja kopijavimą")
     parser.add_argument("--only", help="Bandomajam vykdymui apdoroti tik vieną uždavinio ID")
-    parser.add_argument("--pilot-u000001", action="store_true",
+    pilots = parser.add_mutually_exclusive_group()
+    pilots.add_argument("--pilot-u000001", action="store_true",
                         help="Patvirtinta rankinė GitHub Actions išimtis vien U000001")
+    pilots.add_argument("--pilot-u000003", action="store_true",
+                        help="Patvirtintas pirmas rankinis U000003 publikavimas")
+    parser.add_argument("--first-u000003", action="store_true",
+                        help="Dry-run metu patikrinti pirmojo U000003 publikavimo sąlygas")
     args = parser.parse_args()
     if args.only and not drive.ID_PATTERN.fullmatch(args.only):
         parser.error("ID turi būti U ir šeši skaitmenys")
-    pilot = args.pilot_u000001
-    if pilot and not (args.publish and args.only == "U000001"
+    pilot_task = "U000001" if args.pilot_u000001 else "U000003" if args.pilot_u000003 else None
+    if pilot_task and not (args.publish and args.only == pilot_task
                       and os.environ.get("GITHUB_ACTIONS") == "true"
                       and os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
                       and os.environ.get("GITHUB_REF") == "refs/heads/main"
-                      and os.environ.get("DRIVE_PILOT_CONFIRMATION") == "PUBLISH U000001"):
-        parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001 vykdymui main šakoje")
-    if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true" and not pilot:
+                      and os.environ.get("DRIVE_PILOT_CONFIRMATION") == f"PUBLISH {pilot_task}"):
+        parser.error("Pilotas leidžiamas tik rankiniam, patvirtintam U000001 arba U000003 vykdymui main šakoje")
+    if args.first_u000003 and (not args.dry_run or args.only != "U000003"):
+        parser.error("--first-u000003 leidžiamas tik su --dry-run --only U000003")
+    if args.publish and os.environ.get("DRIVE_PDF_PUBLICATION_ENABLED") != "true" and not pilot_task:
         parser.error("Tikram publikavimui reikia DRIVE_PDF_PUBLICATION_ENABLED=true")
     try:
         local = local_files(ROOT, args.only)
@@ -273,9 +287,9 @@ def main():
         with tempfile.TemporaryDirectory(prefix="publikuoti-pdf-") as tmp:
             backend = RcloneBackend(tmp)
             if args.dry_run:
-                preview(local, registry, backend)
+                preview(local, registry, backend, first_u000003=args.first_u000003)
             else:
-                result = publish(local, registry, backend)
+                result = publish(local, registry, backend, first_u000003=args.pilot_u000003)
         if args.dry_run:
             print(f"Dry-run patikrinta uždavinių: {len(local)}")
         else:
